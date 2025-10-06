@@ -1,4 +1,4 @@
-# ๐ฒ Code Noodling  
+# Code Noodling  
 ### Prime Generation + Physical Dice Simulation Suite  
 
 An experimental C/C++/CUDA project exploring:  
