@@ -119,7 +119,7 @@ OSE_CUDA.cc                (optional legacy)
 - **Hardware autodetect:** automatically uses all CPU threads and available CUDA devices.  
 - **Deterministic seeding:** optional uses primes for stable pseudo-random sequences.  
 - **PhysX cooking:** convex meshes generated internally for D8, D12, D20 via `die_mesh.h`.  
-- **Chute geometry:** procedural ramp (30ยฐ tilt) + sidewalls + backstop.  
+- **Chute geometry:** procedural ramp (30° tilt) + sidewalls + backstop.  
 - **Visualization:** controlled via `--pvd`; debug draw enabled for collision shapes & contacts.  
 - **Data outputs:** JSON + CSV + chi-square test summary.  
 
