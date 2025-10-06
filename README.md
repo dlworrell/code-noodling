@@ -14,8 +14,8 @@ An experimental C/C++/CUDA project exploring:
 
 | Component | Description |
 |------------|-------------|
-| **OSE / CUDA Sieve** | Optimized Sieve of Eratosthenes โ segmented, odd-only, GPU-parallel, JSON export |
-| **Dice Engine (CPU)** | Pure math engine for `NdM+K` expressions โ unbiased, optional prime-seeded randomness, chi-square validation |
+| **OSE / CUDA Sieve** | Optimized Sieve of Eratosthenes segmented, odd-only, GPU-parallel, JSON export |
+| **Dice Engine (CPU)** | Pure math engine for `NdM+K` expressions unbiased, optional prime-seeded randomness, chi-square validation |
 | **PhysX Dice Simulator** | Fully physical D6, D8, D12, D20 dice with realistic collisions, ramp chute, multi-threading, and GPU acceleration |
 | **Visualization** | Optional live streaming via `--pvd` to PhysX Visual Debugger or NVIDIA Omniverse View |
 | **Data Outputs** | JSON and CSV result logging, with chi-square test of fairness and probability distribution graphs |
