@@ -40,3 +40,71 @@ cmake --build . -j
 
 ### 🧠 Tesla K80 users: CUDA architecture defaults to sm_37.
 ‘’’ Override with: -DCMAKE_CUDA_ARCHITECTURES=37 (or 80 for A100s, etc.)
+
+### 💻 CPU Dice Engine
+
+‘’’ bash
+
+# Fair D6, 10k rolls, chi-square test
+./dice_cpu --faces 6 --count 10000 --chi
+
+# D20, 20k rolls, prime-seeded, CSV output
+./dice_cpu --faces 20 --count 20000 --use-prime-seeds primes_50M.json --csv d20.csv --chi
+
+# RPG Expression Example
+./dice_cpu --spec "3d6+2" --count 5000 --use-prime-seeds primes_50M.json --log-json rolls.json --chi
+
+# Flags:
+	•	--spec NdM+K → Dice expression (can repeat)
+	•	--count N → Number of rolls per set
+	•	--chi → Enable chi-square fairness check
+	•	--csv / --log-json → Export results
+
+###🧮 CUDA Multi-GPU Prime Generator
+
+‘’’bash
+./cuda_sieve_mgpu 50000000 --gpus 4 --seg 256M --json primes_50M.json
+
+# Generates all primes ≤ 50 M using up to 4 Tesla K80 GPUs, writing them to primes_50M.json.
+
+###🧊 PhysX Dice Simulator (D6/D8/D12/D20)
+
+‘’’bash
+# Basic D6 simulation with 50k rolls and chi-square test
+‘’’./physx_dice_multi --spec 1d6 --trials 50000 --chi
+
+# Complex run with multiple dice, chute ramp, PVD visualization, and JSON/CSV output
+‘’’./physx_dice_multi \
+  --spec 3d6+2 --spec 1d8 --spec 1d12 --spec 1d20 \
+  --trials 20000 \
+  --use-prime-seeds primes_50M.json \
+  --chute \
+  --pvd 127.0.0.1:5425 \
+  --json physx_runs.json --csv physx_counts.csv --chi
+
+### Flags:
+	•	--chute → Adds an angled ramp, side walls, and backstop for realism
+	•	--pvd [host:port] → Stream live to PhysX Visual Debugger (default 127.0.0.1:5425)
+	•	--use-prime-seeds → Deterministic seed list from JSON primes
+	•	--json / --csv → Write results to disk
+
+# 💡 Make sure PVD is running before launching your sim to see live dice tumbling!
+
+### 📁 Repository Layout
+
+###🧰 Technical Notes
+	•	Hardware autodetect: automatically uses all CPU threads and available CUDA devices.
+	•	Deterministic seeding: optional — uses primes for stable pseudo-random sequences.
+	•	PhysX cooking: convex meshes generated internally for D8, D12, D20 via die_mesh.h.
+	•	Chute geometry: procedural — ramp (30° tilt) + sidewalls + backstop.
+	•	Visualization: controlled via --pvd; debug draw enabled for collision shapes & contacts.
+	•	Data outputs: JSON + CSV + chi-square test summary.
+
+### 🧪 Example Workflow
+
+
+
+
+
+
+
