@@ -1,13 +1,37 @@
+# Build trees
 /build/
 /cmake-build-*/
-/CMakeFiles/
-/CMakeCache.txt
+/out/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+*.make
+*.ninja
+*.ninja_deps
+*.ninja_log
+
+# Compiled objects
 *.o
 *.obj
-*.pdb
+*.lo
 *.a
 *.lib
 *.dll
 *.dylib
 *.so
-*.exe
+*.exp
+*.pdb
+*.ilk
+
+# IDE & misc
+*.user
+*.vcxproj*
+*.sln
+.DS_Store
+.vscode/
+.idea/
+
+# Generated data
+*.json
+*.csv
+*.log
