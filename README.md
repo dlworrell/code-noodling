@@ -88,11 +88,11 @@ cmake --build . -j
 	•	--use-prime-seeds → Deterministic seed list from JSON primes
 	•	--json / --csv → Write results to disk
 
-# 💡 Make sure PVD is running before launching your sim to see live dice tumbling!
+### 💡 Make sure PVD is running before launching your sim to see live dice tumbling!
 
-### 📁 Repository Layout
+##📁 Repository Layout
 
-###🧰 Technical Notes
+##🧰 Technical Notes
 	•	Hardware autodetect: automatically uses all CPU threads and available CUDA devices.
 	•	Deterministic seeding: optional — uses primes for stable pseudo-random sequences.
 	•	PhysX cooking: convex meshes generated internally for D8, D12, D20 via die_mesh.h.
@@ -100,7 +100,7 @@ cmake --build . -j
 	•	Visualization: controlled via --pvd; debug draw enabled for collision shapes & contacts.
 	•	Data outputs: JSON + CSV + chi-square test summary.
 
-### 🧪 Example Workflow
+##🧪 Example Workflow
 
 # Step 1: Generate prime seeds
 ./cuda_sieve_mgpu 50000000 --json primes_50M.json
@@ -112,9 +112,9 @@ cmake --build . -j
 
 Donovan Worrell
 Seattle, WA, USA
-#📧 donovan.worrell@gmail.com
+📧 donovan.worrell@gmail.com
 
-###🪪 License
+#🪪 License
 
 MIT License © 2025 Donovan Worrell
 Permission is granted to use, modify, and distribute this software with attribution
