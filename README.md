@@ -37,7 +37,7 @@ An experimental C/C++/CUDA project exploring:
 mkdir build && cd build
 cmake .. -DBUILD_CUDA_SIEVE_MGPU=ON -DBUILD_PHYSX_DICE=ON
 cmake --build . -j
-
+```
 ##🧠 Tesla K80 users: CUDA architecture defaults to sm_37.
 #Override with: -DCMAKE_CUDA_ARCHITECTURES=37 (or 80 for A100s, etc.)
 
@@ -53,7 +53,7 @@ cmake --build . -j
 
 # #RPG Expression Example
 ./dice_cpu --spec "3d6+2" --count 5000 --use-prime-seeds primes_50M.json --log-json rolls.json --chi
-
+```
 # Flags:
 	•	--spec NdM+K → Dice expression (can repeat)
 	•	--count N → Number of rolls per set
@@ -81,7 +81,7 @@ cmake --build . -j
   --chute \
   --pvd 127.0.0.1:5425 \
   --json physx_runs.json --csv physx_counts.csv --chi
-
+```
 ### Flags:
 	•	--chute → Adds an angled ramp, side walls, and backstop for realism
 	•	--pvd [host:port] → Stream live to PhysX Visual Debugger (default 127.0.0.1:5425)
