@@ -10,19 +10,19 @@ An experimental C/C++/CUDA project exploring:
 
 ---
 
-## ๐ Features
+## Features
 
 | Component | Description |
 |------------|-------------|
-| ๐งฎ **OSE / CUDA Sieve** | Optimized Sieve of Eratosthenes โ segmented, odd-only, GPU-parallel, JSON export |
-| โ๏ธ **Dice Engine (CPU)** | Pure math engine for `NdM+K` expressions โ unbiased, optional prime-seeded randomness, chi-square validation |
-| ๐ง **PhysX Dice Simulator** | Fully physical D6, D8, D12, D20 dice with realistic collisions, ramp chute, multi-threading, and GPU acceleration |
-| ๐ญ **Visualization** | Optional live streaming via `--pvd` to PhysX Visual Debugger or NVIDIA Omniverse View |
-| ๐ **Data Outputs** | JSON and CSV result logging, with chi-square test of fairness and probability distribution graphs |
+| **OSE / CUDA Sieve** | Optimized Sieve of Eratosthenes โ segmented, odd-only, GPU-parallel, JSON export |
+| **Dice Engine (CPU)** | Pure math engine for `NdM+K` expressions โ unbiased, optional prime-seeded randomness, chi-square validation |
+| **PhysX Dice Simulator** | Fully physical D6, D8, D12, D20 dice with realistic collisions, ramp chute, multi-threading, and GPU acceleration |
+| **Visualization** | Optional live streaming via `--pvd` to PhysX Visual Debugger or NVIDIA Omniverse View |
+| **Data Outputs** | JSON and CSV result logging, with chi-square test of fairness and probability distribution graphs |
 
 ---
 
-## ๐๏ธ Build Instructions
+## Build Instructions
 
 ### Prerequisites
 - **CMake โฅ 3.20**
@@ -31,7 +31,7 @@ An experimental C/C++/CUDA project exploring:
 - *(Optional)* **NVIDIA PhysX SDK** (for physics dice)
 - *(Optional)* **PhysX Visual Debugger (PVD)** โ to visualize rolls live
 
-### ๐งฉ Build All Targets
+### Build All Targets
 
 ```bash
 mkdir build && cd build
@@ -39,7 +39,7 @@ cmake .. -DBUILD_CUDA_SIEVE_MGPU=ON -DBUILD_PHYSX_DICE=ON
 cmake --build . -j
 ```
 
-> ๐ง  **Tesla K80 users:** CUDA architecture defaults to `sm_37`.  
+> **Tesla K80 users:** CUDA architecture defaults to `sm_37`.  
 > Override with:  
 > `-DCMAKE_CUDA_ARCHITECTURES=37` *(or `80` for A100s, etc.)*
 
@@ -66,13 +66,13 @@ cmake --build . -j
 
 ---
 
-## ๐งฎ CUDA Multi-GPU Prime Generator
+## CUDA Multi-GPU Prime Generator
 
 ```bash
 ./cuda_sieve_mgpu 50000000 --gpus 4 --seg 256M --json primes_50M.json
 ```
 
-Generates all primes โค 50 M using up to four Tesla K80 GPUs, writing them to `primes_50M.json`.
+Generates all primes 50 M using up to four Tesla K80 GPUs, writing them to `primes_50M.json`.
 
 ---
 
@@ -96,25 +96,25 @@ Generates all primes โค 50 M using up to four Tesla K80 GPUs, writing them
 
 ---
 
-## ๐ Repository Layout
+## Repository Layout
 
 ```text
 code-noodling/
-โโโ CMakeLists.txt
-โโโ .gitignore
-โโโ cuda_sieve_mgpu.cu
-โโโ dice_cpu.cpp
-โโโ physx_dice_multi.cpp
-โโโ die_mesh.h
-โโโ OSE.c                      (optional legacy)
-โโโ OSE_CUDA.cc                (optional legacy)
-โโโ README.md
-โโโ primes_50M.json            (generated at runtime)
+ CMakeLists.txt
+ .gitignore
+ cuda_sieve_mgpu.cu
+ dice_cpu.cpp
+ physx_dice_multi.cpp
+ die_mesh.h
+ OSE.c                      (optional legacy)
+ OSE_CUDA.cc                (optional legacy)
+ README.md
+ primes_50M.json            (generated at runtime)
 ```
 
 ---
 
-## ๐งฐ Technical Notes
+## Technical Notes
 
 - **Hardware autodetect:** automatically uses all CPU threads and available CUDA devices.  
 - **Deterministic seeding:** optional โ uses primes for stable pseudo-random sequences.  
@@ -125,7 +125,7 @@ code-noodling/
 
 ---
 
-## ๐งช Example Workflow
+##  Example Workflow
 
 ```bash
 # Step 1 โ Generate prime seeds
@@ -137,15 +137,15 @@ code-noodling/
 
 ---
 
-## ๐งโ๐ป Author
+## Author
 
 **Donovan Worrell**  
 Seattle, WA, USA  
-๐ง donovan.worrell@gmail.com  
+donovan.worrell@gmail.com  
 
 ---
 
-## ๐ชช License
+## License
 
 MIT License ยฉ 2025 Donovan Worrell  
 Permission is granted to use, modify, and distribute this software with attribution.
