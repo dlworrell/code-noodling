@@ -37,3 +37,6 @@ An experimental C/C++/CUDA project exploring:
 mkdir build && cd build
 cmake .. -DBUILD_CUDA_SIEVE_MGPU=ON -DBUILD_PHYSX_DICE=ON
 cmake --build . -j
+
+### 🧠 Tesla K80 users: CUDA architecture defaults to sm_37.
+‘’’ Override with: -DCMAKE_CUDA_ARCHITECTURES=37 (or 80 for A100s, etc.)
