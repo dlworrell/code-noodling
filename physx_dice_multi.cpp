@@ -155,7 +155,7 @@ struct ScenePack {
     PxScene*    scene=nullptr;
     PxMaterial* mat=nullptr;
 };
-static ScenePack makeScene(PxPhysics* phy, int cpuThreads){
+static ScenePack makeScene(PxPhysics* phy, int cpuThreads, bool chute=false){
     ScenePack sp;
     PxSceneDesc sd(phy->getTolerancesScale());
     sd.gravity = PxVec3(0,-9.81f,0);
@@ -163,9 +163,28 @@ static ScenePack makeScene(PxPhysics* phy, int cpuThreads){
     sd.filterShader = PxDefaultSimulationFilterShader;
     sp.scene = phy->createScene(sd);
     sp.mat   = phy->createMaterial(0.6f,0.6f,0.25f);
+
     // ground
     PxRigidStatic* plane = PxCreatePlane(*phy, PxPlane(0,1,0,0), *sp.mat);
     sp.scene->addActor(*plane);
+
+    if (chute){
+        // angled ramp
+        PxTransform rampPose(PxVec3(0,0.5f,-1.5f), PxQuat(PxPi/6, PxVec3(1,0,0))); // ~30° angle
+        PxRigidStatic* ramp = PxCreateStatic(*phy, rampPose, PxBoxGeometry(1.5f,0.1f,2.0f), *sp.mat);
+        sp.scene->addActor(*ramp);
+        // side walls
+        PxTransform leftWall(PxVec3(-1.0f,0.5f,-1.5f));
+        PxTransform rightWall(PxVec3(1.0f,0.5f,-1.5f));
+        PxRigidStatic* lw = PxCreateStatic(*phy, leftWall, PxBoxGeometry(0.05f,0.5f,2.0f), *sp.mat);
+        PxRigidStatic* rw = PxCreateStatic(*phy, rightWall, PxBoxGeometry(0.05f,0.5f,2.0f), *sp.mat);
+        sp.scene->addActor(*lw); sp.scene->addActor(*rw);
+        // backstop
+        PxTransform backStop(PxVec3(0,0.5f,-3.2f));
+        PxRigidStatic* bs = PxCreateStatic(*phy, backStop, PxBoxGeometry(1.0f,0.5f,0.05f), *sp.mat);
+        sp.scene->addActor(*bs);
+    }
+
     return sp;
 }
 static void freeScene(ScenePack& sp){
@@ -214,7 +233,7 @@ static void run_worker(Task t, SpecAgg* agg,
     DieMesh dm;
     if (doPhys){
         px = makePx();
-        sp = makeScene(px.phy, cpuThreadsInScene);
+        sp = makeScene(px.phy, cpuThreadsInScene, chute);
 
         // Optional cooking for convexes
         PxCookingParams cp(px.phy->getTolerancesScale());
@@ -307,6 +326,7 @@ int main(int argc, char** argv){
         else if (a=="--seed-per-roll"){ seed_per_roll=true; }
         else if (a=="--seed-per-bundle"){ seed_per_roll=false; } // (future enhancement)
         else if (a=="--mix"){ interleave=true; } // round-robin specs
+        else if (a=="--chute"){ chute=true; } // create the dice tower
         else { std::cerr<<"Unknown arg: "<<a<<"\n"; return 2; }
     }
     if (specs.empty()) { Spec s; s.label="1d6"; specs.push_back(s); }
