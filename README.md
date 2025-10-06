@@ -29,7 +29,7 @@ An experimental C/C++/CUDA project exploring:
 - **C++17 compiler** (clang / gcc / MSVC)
 - *(Optional)* **CUDA Toolkit** (for GPU sieve)
 - *(Optional)* **NVIDIA PhysX SDK** (for physics dice)
-- *(Optional)* **PhysX Visual Debugger (PVD)** โ to visualize rolls live
+- *(Optional)* **PhysX Visual Debugger (PVD)** to visualize rolls live
 
 ### Build All Targets
 
@@ -59,9 +59,9 @@ cmake --build . -j
 ```
 
 **Flags**
-- `--spec NdM+K` โ Dice expression (can repeat)  
-- `--count N` โ Number of rolls per set  
-- `--chi` โ Enable chi-square fairness check  
+- `--spec NdM+K` Dice expression (can repeat)  
+- `--count N` Number of rolls per set  
+- `--chi` Enable chi-square fairness check  
 - `--csv` / `--log-json` โ Export results  
 
 ---
@@ -100,16 +100,16 @@ Generates all primes 50 M using up to four Tesla K80 GPUs, writing them to `prim
 
 ```text
 code-noodling/
- CMakeLists.txt
- .gitignore
- cuda_sieve_mgpu.cu
- dice_cpu.cpp
- physx_dice_multi.cpp
- die_mesh.h
- OSE.c                      (optional legacy)
- OSE_CUDA.cc                (optional legacy)
- README.md
- primes_50M.json            (generated at runtime)
+CMakeLists.txt
+.gitignore
+cuda_sieve_mgpu.cu
+dice_cpu.cpp
+physx_dice_multi.cpp
+die_mesh.h
+OSE.c                      (optional legacy)
+OSE_CUDA.cc                (optional legacy)
+README.md
+primes_50M.json            (generated at runtime)
 ```
 
 ---
@@ -117,9 +117,9 @@ code-noodling/
 ## Technical Notes
 
 - **Hardware autodetect:** automatically uses all CPU threads and available CUDA devices.  
-- **Deterministic seeding:** optional โ uses primes for stable pseudo-random sequences.  
+- **Deterministic seeding:** optional uses primes for stable pseudo-random sequences.  
 - **PhysX cooking:** convex meshes generated internally for D8, D12, D20 via `die_mesh.h`.  
-- **Chute geometry:** procedural โ ramp (30ยฐ tilt) + sidewalls + backstop.  
+- **Chute geometry:** procedural ramp (30ยฐ tilt) + sidewalls + backstop.  
 - **Visualization:** controlled via `--pvd`; debug draw enabled for collision shapes & contacts.  
 - **Data outputs:** JSON + CSV + chi-square test summary.  
 
