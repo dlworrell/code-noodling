@@ -25,7 +25,7 @@ An experimental C/C++/CUDA project exploring:
 ## Build Instructions
 
 ### Prerequisites
-- **CMake โฅ 3.20**
+- **CMake 3.20**
 - **C++17 compiler** (clang / gcc / MSVC)
 - *(Optional)* **CUDA Toolkit** (for GPU sieve)
 - *(Optional)* **NVIDIA PhysX SDK** (for physics dice)
@@ -45,7 +45,7 @@ cmake --build . -j
 
 ---
 
-## ๐ป CPU Dice Engine
+## CPU Dice Engine
 
 ```bash
 # Fair D6, 10k rolls, chi-square test
@@ -76,7 +76,7 @@ Generates all primes 50 M using up to four Tesla K80 GPUs, writing them to `prim
 
 ---
 
-## ๐ง PhysX Dice Simulator (D6/D8/D12/D20)
+## PhysX Dice Simulator (D6/D8/D12/D20)
 
 ```bash
 # Basic D6 simulation with 50k rolls and chi-square test
@@ -87,12 +87,12 @@ Generates all primes 50 M using up to four Tesla K80 GPUs, writing them to `prim
 ```
 
 **Flags**
-- `--chute` โ Adds an angled ramp, side walls, and backstop for realism  
-- `--pvd [host:port]` โ Stream live to PhysX Visual Debugger *(default: 127.0.0.1 : 5425)*  
-- `--use-prime-seeds` โ Deterministic seed list from JSON primes  
-- `--json` / `--csv` โ Write results to disk  
+- `--chute` Adds an angled ramp, side walls, and backstop for realism  
+- `--pvd [host:port]` Stream live to PhysX Visual Debugger *(default: 127.0.0.1 : 5425)*  
+- `--use-prime-seeds` Deterministic seed list from JSON primes  
+- `--json` / `--csv` Write results to disk  
 
-> ๐ก Make sure PVD is running **before** launching your sim to see live dice tumbling!
+>  Make sure PVD is running **before** launching your sim to see live dice tumbling!
 
 ---
 
