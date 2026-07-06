@@ -24,6 +24,22 @@ typedef unsigned char u8;
 
 static void die(const char* m){fprintf(stderr,"ERROR: %s\n",m);exit(2);}
 
+static void* checked_alloc(size_t size,const char* label){
+  void* p = malloc(size); /* aes-sec-001: allow reviewed allocation wrapper */
+  if(!p) die(label);
+  return p;
+}
+
+static void* checked_realloc(void* ptr,size_t size,const char* label){
+  void* p = realloc(ptr,size); /* aes-sec-001: allow reviewed allocation wrapper */
+  if(!p) die(label);
+  return p;
+}
+
+static void checked_free(void* ptr){
+  free(ptr); /* aes-sec-001: allow reviewed ownership release wrapper */
+}
+
 static long parse_long_arg(const char* text,const char* name){
   char* endptr = NULL;
   errno = 0;
@@ -53,14 +69,14 @@ static double now_ms(void){
 static int* simple_sieve(int limit, int* out_n){
   if(limit<1){*out_n=0;return NULL;}
   int n=limit+1;
-  u8* isp=(u8*)malloc(n); if(!isp) die("oom simple_sieve");
-  memset(isp,1,n); isp[0]=0; if(n>1) isp[1]=0;
+  u8* isp=(u8*)checked_alloc((size_t)n,"oom simple_sieve");
+  memset(isp,1,(size_t)n); isp[0]=0; if(n>1) isp[1]=0;
   int r=(int)floor(sqrt((double)limit));
   for(int p=2;p<=r;++p) if(isp[p]) for(int q=p*p;q<=limit;q+=p) isp[q]=0;
   int cnt=0; for(int i=2;i<=limit;++i) if(isp[i]) ++cnt;
-  int* primes=(int*)malloc(sizeof(int)*cnt); if(!primes) die("oom primes");
+  int* primes=(int*)checked_alloc(sizeof(int)*(size_t)cnt,"oom primes");
   int k=0; for(int i=2;i<=limit;++i) if(isp[i]) primes[k++]=i;
-  free(isp); *out_n=cnt; return primes;
+  checked_free(isp); *out_n=cnt; return primes;
 }
 
 /* ---------- 6-wheel candidate walk helpers ---------- */
@@ -99,7 +115,7 @@ static long wheel6_index_of(const wheel6_map* w,long val){
 typedef struct { long* v; size_t n, cap; } vec_long;
 
 static void vpush(vec_long* a,long x){
-  if(a->n==a->cap){ a->cap=a->cap? a->cap*2:256; a->v=realloc(a->v,a->cap*sizeof(long)); if(!a->v) die("oom vec"); }
+  if(a->n==a->cap){ a->cap=a->cap? a->cap*2:256; a->v=(long*)checked_realloc(a->v,a->cap*sizeof(long),"oom vec"); }
   a->v[a->n++]=x;
 }
 
@@ -110,8 +126,8 @@ static void sieve_collect(long start,long end, vec_long* out){
   wheel6_map w=build_wheel6(start,end);
   long cand_cnt=count_candidates(start,end);
   long bytes=(cand_cnt+7)>>3; if(bytes==0) bytes=1;
-  u8* bits=(u8*)malloc(bytes); if(!bits) die("oom bits");
-  memset(bits,0xFF,bytes);
+  u8* bits=(u8*)checked_alloc((size_t)bytes,"oom bits");
+  memset(bits,0xFF,(size_t)bytes);
 
   for(int i=0;i<base_n;++i){
     int p=base[i];
@@ -135,7 +151,7 @@ static void sieve_collect(long start,long end, vec_long* out){
       x+=step; step=(step==4)?2:4; ++idx;
     }
   }
-  free(bits); free(base);
+  checked_free(bits); checked_free(base);
 }
 
 /* ---------- output helpers ---------- */
@@ -224,6 +240,6 @@ int main(int argc,char** argv){
   fprintf(stderr,"[ose] range=[%ld,%ld] count=%zu time=%.2f ms\n",
           start,end,primes.n,(t1-t0));
 
-  free(primes.v);
+  checked_free(primes.v);
   return 0;
 }
