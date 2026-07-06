@@ -22,8 +22,10 @@
 #include <cuda_runtime.h>
 #include <algorithm>
 #include <atomic>
+#include <cerrno>
 #include <chrono>
 #include <cinttypes>
+#include <climits>
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
@@ -48,6 +50,26 @@
 } while(0)
 
 using u8 = unsigned char;
+
+static long long parse_ll_arg(const char* text, const char* name) {
+  char* endptr = nullptr;
+  errno = 0;
+  long long value = std::strtoll(text, &endptr, 10);
+  if (errno != 0 || endptr == text || *endptr != '\0') {
+    std::fprintf(stderr, "Bad %s: %s\n", name, text);
+    std::exit(2);
+  }
+  return value;
+}
+
+static int parse_int_arg(const char* text, const char* name) {
+  long long value = parse_ll_arg(text, name);
+  if (value < INT_MIN || value > INT_MAX) {
+    std::fprintf(stderr, "%s out of int range: %s\n", name, text);
+    std::exit(2);
+  }
+  return (int)value;
+}
 
 // ---------------- CPU base primes ----------------
 static std::vector<int> simple_sieve(int limit) {
@@ -258,7 +280,7 @@ int main(int argc, char** argv) {
     std::fprintf(stderr, "Usage: %s N [--gpus 4] [--seg 128M] [--cols N] [--json FILE|-]\n", argv[0]);
     return 2;
   }
-  long long N = std::atoll(argv[1]);
+  long long N = parse_ll_arg(argv[1], "N");
   if (N < 2) { std::cout << "\n"; return 0; }
 
   int want_gpus = 4;
@@ -267,9 +289,9 @@ int main(int argc, char** argv) {
   const char* json_path = nullptr;
 
   for (int i = 2; i < argc; ++i) {
-    if (!std::strcmp(argv[i], "--gpus") && i+1 < argc) { want_gpus = std::atoi(argv[++i]); continue; }
+    if (!std::strcmp(argv[i], "--gpus") && i+1 < argc) { want_gpus = parse_int_arg(argv[++i], "--gpus"); continue; }
     if (!std::strcmp(argv[i], "--seg")  && i+1 < argc) { seg_bytes = parse_size_arg(argv[++i]); continue; }
-    if (!std::strcmp(argv[i], "--cols") && i+1 < argc) { forced_cols = std::atoi(argv[++i]); continue; }
+    if (!std::strcmp(argv[i], "--cols") && i+1 < argc) { forced_cols = parse_int_arg(argv[++i], "--cols"); continue; }
     if (!std::strcmp(argv[i], "--json") && i+1 < argc) { json_path  = argv[++i]; continue; }
     std::fprintf(stderr, "Unknown option: %s\n", argv[i]); return 2;
   }
