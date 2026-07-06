@@ -13,6 +13,8 @@
 #include <math.h>
 #include <string.h>
 #include <time.h>
+#include <errno.h>
+#include <limits.h>
 #ifdef __unix__
 #include <sys/ioctl.h>
 #include <unistd.h>
@@ -21,6 +23,26 @@
 typedef unsigned char u8;
 
 static void die(const char* m){fprintf(stderr,"ERROR: %s\n",m);exit(2);}
+
+static long parse_long_arg(const char* text,const char* name){
+  char* endptr = NULL;
+  errno = 0;
+  long value = strtol(text,&endptr,10);
+  if(errno!=0 || endptr==text || *endptr!='\0'){
+    fprintf(stderr,"ERROR: invalid %s: %s\n",name,text);
+    exit(2);
+  }
+  return value;
+}
+
+static int parse_int_arg(const char* text,const char* name){
+  long value = parse_long_arg(text,name);
+  if(value<INT_MIN || value>INT_MAX){
+    fprintf(stderr,"ERROR: %s out of int range: %s\n",name,text);
+    exit(2);
+  }
+  return (int)value;
+}
 
 static double now_ms(void){
   struct timespec ts; clock_gettime(CLOCK_MONOTONIC,&ts);
@@ -170,8 +192,8 @@ int main(int argc,char** argv){
     fprintf(stderr,"Usage: %s START END [--cols N] [--json FILE|-] [--no-list]\n", argv[0]);
     return 2;
   }
-  long start = atol(argv[1]);
-  long end   = atol(argv[2]);
+  long start = parse_long_arg(argv[1],"START");
+  long end   = parse_long_arg(argv[2],"END");
   if(end<start) die("END < START");
 
   int forced_cols = 0;
@@ -179,7 +201,7 @@ int main(int argc,char** argv){
   int no_list = 0;
 
   for(int i=3;i<argc;++i){
-    if(strcmp(argv[i],"--cols")==0 && i+1<argc){ forced_cols = atoi(argv[++i]); continue; }
+    if(strcmp(argv[i],"--cols")==0 && i+1<argc){ forced_cols = parse_int_arg(argv[++i],"--cols"); continue; }
     if(strcmp(argv[i],"--json")==0 && i+1<argc){ json_path = argv[++i]; continue; }
     if(strcmp(argv[i],"--no-list")==0){ no_list = 1; continue; }
     fprintf(stderr,"Unknown option: %s\n", argv[i]); return 2;
