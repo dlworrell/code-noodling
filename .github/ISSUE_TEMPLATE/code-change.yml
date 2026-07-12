@@ -1,0 +1,59 @@
+name: Code change request
+description: Request a code, interface, build, workflow, or behavior change governed by AES-DEV-001 and AES-SEC-001.
+title: "[change]: "
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: What must change, and why?
+    validations:
+      required: true
+  - type: textarea
+    id: design
+    attributes:
+      label: Architecture, specification, or ADR
+      description: Link the governing design. State whether the work is exploratory.
+    validations:
+      required: true
+  - type: textarea
+    id: interfaces
+    attributes:
+      label: Interface and versioning impact
+      description: Identify affected APIs, formats, protocols, workflows, compatibility, and migration.
+    validations:
+      required: true
+  - type: textarea
+    id: tests
+    attributes:
+      label: Test and validation plan
+      description: Include unit, integration, regression, static-analysis, sanitizer, fuzz, or benchmark evidence as applicable.
+    validations:
+      required: true
+  - type: textarea
+    id: operations
+    attributes:
+      label: Observability, failure modes, and recovery
+      description: Describe diagnostics, failure behavior, recovery, and operator or automation actions.
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: Security and trust boundaries
+      description: Identify external inputs, authorities, unsafe operations, length and overflow checks, cryptography, and waivers.
+    validations:
+      required: true
+  - type: checkboxes
+    id: discipline
+    attributes:
+      label: Check-in discipline
+      options:
+        - label: The work can be delivered as small logical commits.
+          required: true
+        - label: Documentation will be updated in the same change series.
+          required: true
+        - label: No banned unsafe interface will be introduced.
+          required: true
+        - label: Any exception will be recorded in an approved waiver or ADR.
+          required: true
