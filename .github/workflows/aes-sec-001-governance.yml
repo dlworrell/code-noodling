@@ -1,0 +1,18 @@
+name: AES-SEC-001 Governance
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  governance:
+    uses: dlworrell/AEMS/.github/workflows/aes-sec-001-distributed.yml@main
+    with:
+      include_dangerous_primitives: true
+      strict: true
