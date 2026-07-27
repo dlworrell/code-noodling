@@ -1,0 +1,21 @@
+---
+# AEMS distributed AES-SEC-001 baseline.
+#
+# The broad deprecated-buffer checker remains reporting-only because it also
+# reports reviewed primitives such as memcpy, snprintf, and ordinary memset.
+# Exact AES bans are enforced by scripts/aes_sec_001_scan.py.
+Checks: >
+  -*,
+  bugprone-infinite-loop,
+  bugprone-string-constructor,
+  clang-analyzer-security.insecureAPI.strcpy,
+  clang-analyzer-security.insecureAPI.gets,
+  clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling
+WarningsAsErrors: >
+  bugprone-infinite-loop,
+  bugprone-string-constructor,
+  clang-analyzer-security.insecureAPI.strcpy,
+  clang-analyzer-security.insecureAPI.gets
+HeaderFilterRegex: '.*'
+FormatStyle: file
+...
