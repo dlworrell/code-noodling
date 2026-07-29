@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "repository": "dlworrell/code-noodling",
+  "baseline": {
+    "captured_at": "2026-07-27",
+    "source": "AEMS workflow run 30327790203; artifact 8676292176; sha256:d29ea776a6ccf9f5e40e92597235ffedf7ddb35e5364b68ca57f5a3bdda97679",
+    "findings": [
+      {
+        "finding_id": "aes-sec-001:77c072e0e18c94e18204f8e8c37eae9d15bbf51afe89b5060b18712799eaa18d",
+        "source_fingerprint": "sha256:885b7e9ad2e2622ada376d66dcc585b6f648e4b1a4131184d0c06a5d6713fe33",
+        "path": "OSE.c",
+        "line": 73,
+        "symbol": "memset"
+      },
+      {
+        "finding_id": "aes-sec-001:ec0b3b20356100058070c905323e729704d6ed0e89c0f8c799386d8e919aa850",
+        "source_fingerprint": "sha256:282364a5fea696df34bfd288d86301d3bce1f4483522c7becba03b81d02cd740",
+        "path": "OSE.c",
+        "line": 130,
+        "symbol": "memset"
+      }
+    ]
+  },
+  "dispositions": [
+    {
+      "finding_id": "aes-sec-001:77c072e0e18c94e18204f8e8c37eae9d15bbf51afe89b5060b18712799eaa18d",
+      "source_fingerprint": "sha256:885b7e9ad2e2622ada376d66dcc585b6f648e4b1a4131184d0c06a5d6713fe33",
+      "path": "OSE.c",
+      "line": 73,
+      "symbol": "memset",
+      "classification": "approved-invariant",
+      "rationale": "simple_sieve allocates exactly n bytes through checked_alloc and immediately initializes exactly n bytes before any indexed access. n is limit + 1 after the function has rejected limit values below 1, and the buffer stores one byte per sieve entry.",
+      "invariant": "isp points to a successful checked_alloc((size_t)n) allocation, and memset receives the identical (size_t)n byte count. This is ordinary initialization, not secret erasure.",
+      "evidence": [
+        "OSE.c::simple_sieve",
+        "https://github.com/dlworrell/code-noodling/issues/3"
+      ],
+      "owner": "dlworrell",
+      "reviewer": "dlworrell",
+      "reviewed_at": "2026-07-29",
+      "reassess_after": "2027-07-29",
+      "resolution_commit": null
+    },
+    {
+      "finding_id": "aes-sec-001:ec0b3b20356100058070c905323e729704d6ed0e89c0f8c799386d8e919aa850",
+      "source_fingerprint": "sha256:282364a5fea696df34bfd288d86301d3bce1f4483522c7becba03b81d02cd740",
+      "path": "OSE.c",
+      "line": 130,
+      "symbol": "memset",
+      "classification": "approved-invariant",
+      "rationale": "sieve_collect derives the packed candidate byte count, normalizes an empty segment to a one-byte allocation, allocates exactly that count through checked_alloc, and initializes the same count before bit access.",
+      "invariant": "bits points to a successful checked_alloc((size_t)bytes) allocation, bytes is at least one on the call path, and memset receives the identical (size_t)bytes count. This is ordinary bitset initialization, not secret erasure.",
+      "evidence": [
+        "OSE.c::sieve_collect",
+        "https://github.com/dlworrell/code-noodling/issues/3"
+      ],
+      "owner": "dlworrell",
+      "reviewer": "dlworrell",
+      "reviewed_at": "2026-07-29",
+      "reassess_after": "2027-07-29",
+      "resolution_commit": null
+    }
+  ]
+}
