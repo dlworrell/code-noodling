@@ -30,8 +30,16 @@ Makefile
 .DS_Store
 .vscode/
 .idea/
+.tools/
+__pycache__/
+*.py[cod]
 
 # Generated data
 *.json
 *.csv
 *.log
+
+# Election inputs and EDT-generated evidence are deliberately versioned.
+!election-data/input/**/*.csv
+!election-data/input/**/*.csv.xls
+!reports/elections/**/*.json
