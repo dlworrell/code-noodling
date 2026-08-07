@@ -39,6 +39,22 @@ def _optional_positive_int(value: object, location: str) -> int | None:
     return value
 
 
+def _score(value: object, location: str, default: int) -> int:
+    if value is None:
+        return default
+    if type(value) is not int or not 0 <= value <= 100:
+        raise ElectionReportError(f"{location} must be an integer from 0 through 100")
+    return value
+
+
+def _optional_string(value: object, location: str, default: str) -> str:
+    if value is None:
+        return default
+    if not isinstance(value, str) or not value.strip():
+        raise ElectionReportError(f"{location} must be a non-empty string")
+    return value.strip()
+
+
 def load_config(path: Path) -> ElectionConfig:
     try:
         with path.open("rb") as stream:
@@ -80,6 +96,11 @@ def load_config(path: Path) -> ElectionConfig:
         priority = row.get("priority", 0)
         if type(priority) is not int:
             raise ElectionReportError(f"{location}.priority must be an integer")
+        expected_final_ballots = _optional_positive_int(
+            row.get("expected_final_ballots"),
+            f"{location}.expected_final_ballots",
+        )
+        default_forecast_reliability = 50 if expected_final_ballots else 0
         sources.append(
             SourceConfig(
                 source_id=source_id,
@@ -91,9 +112,18 @@ def load_config(path: Path) -> ElectionConfig:
                     row.get("certification_date"),
                     f"{location}.certification_date",
                 ),
-                expected_final_ballots=_optional_positive_int(
-                    row.get("expected_final_ballots"),
-                    f"{location}.expected_final_ballots",
+                expected_final_ballots=expected_final_ballots,
+                forecast_reliability=_score(
+                    row.get("forecast_reliability"),
+                    f"{location}.forecast_reliability",
+                    default_forecast_reliability,
+                ),
+                forecast_basis=_optional_string(
+                    row.get("forecast_basis"),
+                    f"{location}.forecast_basis",
+                    "Configured expected final ballot count."
+                    if expected_final_ballots
+                    else "No remaining-ballot forecast is configured.",
                 ),
             )
         )

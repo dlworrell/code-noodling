@@ -22,6 +22,9 @@ class ContestResult:
     name: str
     order: float
     ballots: int
+    reported_ballots: int
+    overvotes: int | None
+    undervotes: int | None
     choices: tuple[ChoiceResult, ...]
     key: str
 
@@ -44,6 +47,8 @@ class SourceConfig:
     priority: int
     certification_date: date | None = None
     expected_final_ballots: int | None = None
+    forecast_reliability: int = 0
+    forecast_basis: str = "No remaining-ballot forecast is configured."
 
 
 @dataclass(frozen=True)
@@ -58,6 +63,11 @@ class ElectionConfig:
 class RiskAssessment:
     level: str
     flip_band: str
+    change_probability: float | None
+    probability_model: str
+    reliability_score: int
+    reliability_grade: str
+    reliability_rationale: str
     required_share: float | None
     estimated_remaining_votes: int | None
     latest_batch_share: float | None
@@ -86,6 +96,9 @@ class RaceAnalysis:
     jurisdiction: str
     snapshot: str
     ballots: int
+    reported_ballots: int
+    overvotes: int | None
+    undervotes: int | None
     valid_votes: int
     rule: str
     controlling: bool

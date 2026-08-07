@@ -140,13 +140,14 @@ OSE_CUDA.cc                (optional legacy)
 ## Election Result Reporting
 
 The repository also contains a standard-library Python workflow for comparing dated
-Washington election-result snapshots and estimating how exposed each current winner,
-top-two cutoff, or judicial majority status is to change before certification.
+Washington election-result snapshots and estimating the statistical probability that
+each current winner, top-two cutoff, or judicial majority status changes before
+certification. Every probability carries a separate 0–100 evidence-reliability score.
 
-Drop official CSV exports into `election-data/input/<source>/` with a date in each
-filename, then run the GitHub Actions workflow named **Election Result Reports**. It
-uses the Engineering Documents Toolkit (EDT) to publish and validate the report under
-`reports/elections/`.
+Drop official county CSV exports or Washington `All Results` XLSX workbooks into
+`election-data/input/<source>/` with a date in each filename, then run the GitHub
+Actions workflow named **Election Result Reports**. It uses the Engineering Documents
+Toolkit (EDT) to publish and validate the report under `reports/elections/`.
 
 See [Election Result Reporting](docs/election-reporting.md) for input requirements,
 formulas, risk-band definitions, scope controls, and local execution.

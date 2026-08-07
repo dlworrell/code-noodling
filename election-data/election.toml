@@ -14,6 +14,8 @@ scope = "county"
 priority = 10
 certification_date = 2026-08-18
 expected_final_ballots = 654552
+forecast_reliability = 75
+forecast_basis = "Official King County 45% turnout forecast times 1,454,559 voters."
 
 [[sources]]
 id = "washington"
@@ -22,6 +24,9 @@ jurisdiction = "Washington State"
 scope = "state"
 priority = 100
 certification_date = 2026-08-21
+expected_final_ballots = 2061930
+forecast_reliability = 45
+forecast_basis = "Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters."
 
 # Add an override only when the inferred rule is wrong for a specific export.
 # [[contest_rules]]
