@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 from collections import Counter
 
 from .ingest import load_source_snapshots
@@ -29,12 +30,18 @@ RISK_ORDER = {
 FLIP_BANDS = {
     "not_applicable": "not applicable",
     "unknown": "not estimable",
-    "very_low": "under 5%",
-    "low": "5–15%",
-    "meaningful": "15–35%",
-    "high": "25–45%",
-    "toss_up": "35–65%",
+    "very_low": "under 2% modeled probability",
+    "low": "2–10% modeled probability",
+    "meaningful": "10–25% modeled probability",
+    "high": "25–40% modeled probability",
+    "toss_up": "40% or higher modeled probability",
 }
+PROBABILITY_MODEL = "tempered_beta_binomial_v1"
+# Mail-ballot batches are compositionally different. These caps preserve the observed
+# vote share while preventing raw ballot volume from creating false precision.
+CUMULATIVE_EFFECTIVE_SAMPLE_CAP = 300
+LATEST_BATCH_EFFECTIVE_SAMPLE_CAP = 200
+EXACT_TAIL_MAX_REMAINING = 5_000
 MEASURE_CHOICES = {
     "yes",
     "no",
@@ -135,77 +142,213 @@ def _remaining_contest_ballots(
     )
 
 
+def _probability_level(probability: float | None) -> str:
+    if probability is None:
+        return "unknown"
+    if probability >= 0.40:
+        return "toss_up"
+    if probability >= 0.25:
+        return "high"
+    if probability >= 0.10:
+        return "meaningful"
+    if probability >= 0.02:
+        return "low"
+    return "very_low"
+
+
+def _tempered_beta_binomial_probability(
+    change_votes: int,
+    current_votes: int,
+    remaining_votes: int,
+    margin: int,
+    latest_batch_share: float | None,
+    latest_batch_votes: int | None,
+    tie_changes: bool,
+) -> tuple[float, float]:
+    """Return the predictive tail probability and exact required future share."""
+    if remaining_votes <= 0:
+        return 0.0, 1.0
+    if tie_changes:
+        threshold = math.ceil((remaining_votes + margin) / 2)
+    else:
+        threshold = math.floor((remaining_votes + margin) / 2) + 1
+    required_share = threshold / remaining_votes
+    if threshold <= 0:
+        return 1.0, required_share
+    if threshold > remaining_votes:
+        return 0.0, required_share
+
+    observed_total = change_votes + current_votes
+    observed_share = change_votes / observed_total if observed_total else 0.5
+    cumulative_weight = min(observed_total, CUMULATIVE_EFFECTIVE_SAMPLE_CAP)
+    alpha = 1.0 + observed_share * cumulative_weight
+    beta = 1.0 + (1.0 - observed_share) * cumulative_weight
+    if (
+        latest_batch_share is not None
+        and latest_batch_votes is not None
+        and latest_batch_votes > 0
+    ):
+        batch_weight = min(latest_batch_votes, LATEST_BATCH_EFFECTIVE_SAMPLE_CAP)
+        alpha += latest_batch_share * batch_weight
+        beta += (1.0 - latest_batch_share) * batch_weight
+
+    if remaining_votes <= EXACT_TAIL_MAX_REMAINING:
+        log_probabilities = []
+        for future_change_votes in range(threshold, remaining_votes + 1):
+            future_current_votes = remaining_votes - future_change_votes
+            log_probability = (
+                math.lgamma(remaining_votes + 1)
+                - math.lgamma(future_change_votes + 1)
+                - math.lgamma(future_current_votes + 1)
+                + math.lgamma(future_change_votes + alpha)
+                + math.lgamma(future_current_votes + beta)
+                - math.lgamma(remaining_votes + alpha + beta)
+                + math.lgamma(alpha + beta)
+                - math.lgamma(alpha)
+                - math.lgamma(beta)
+            )
+            log_probabilities.append(log_probability)
+        maximum = max(log_probabilities)
+        probability = math.exp(maximum) * sum(
+            math.exp(value - maximum) for value in log_probabilities
+        )
+        return max(0.0, min(1.0, probability)), required_share
+
+    shape_total = alpha + beta
+    mean = remaining_votes * alpha / shape_total
+    variance = (
+        remaining_votes
+        * alpha
+        * beta
+        * (shape_total + remaining_votes)
+        / (shape_total * shape_total * (shape_total + 1.0))
+    )
+    if variance <= 0:
+        return (1.0 if mean >= threshold else 0.0), required_share
+    z_score = (threshold - 0.5 - mean) / math.sqrt(variance)
+    probability = 0.5 * math.erfc(z_score / math.sqrt(2.0))
+    return max(0.0, min(1.0, probability)), required_share
+
+
+def _reliability(
+    source: SourceConfig,
+    probability: float | None,
+    history_points: int,
+    observed_votes: int,
+    denominator_reconciled: bool,
+    controlling: bool,
+) -> tuple[int, str, str]:
+    """Score input evidence separately from the modeled change probability."""
+    if probability is None:
+        return (
+            0,
+            "Insufficient",
+            "No remaining-ballot forecast is available, so the probability is not "
+            "estimable.",
+        )
+    history_score = 25 if history_points <= 1 else 65 if history_points == 2 else 85
+    sample_score = min(100.0, 20.0 * math.log10(observed_votes + 1.0))
+    raw_score = (
+        0.55 * source.forecast_reliability
+        + 0.25 * history_score
+        + 0.20 * sample_score
+    )
+    adjustments: list[str] = []
+    if observed_votes < 500:
+        raw_score -= 10.0
+        adjustments.append("small decision-vote pool")
+    elif observed_votes < 2_000:
+        raw_score -= 5.0
+        adjustments.append("limited decision-vote pool")
+    if denominator_reconciled:
+        raw_score -= 5.0
+        adjustments.append("reconciled ballot denominator")
+    if not controlling:
+        raw_score = min(raw_score, 25.0)
+        adjustments.append("noncontrolling county slice")
+    score = max(0, min(85, round(raw_score)))
+    grade = (
+        "High"
+        if score >= 75
+        else "Moderate"
+        if score >= 50
+        else "Low"
+        if score >= 25
+        else "Insufficient"
+    )
+    adjustment_text = (
+        f" Adjustments: {', '.join(adjustments)}." if adjustments else ""
+    )
+    rationale = (
+        f"Forecast evidence {source.forecast_reliability}/100; "
+        f"{history_points} compatible snapshot(s); {observed_votes:,} observed "
+        f"decision votes. Basis: {source.forecast_basis}{adjustment_text}"
+    )
+    return score, grade, rationale
+
+
 def _risk_from_requirement(
     margin: int,
     remaining_votes: int | None,
     latest_batch_share: float | None,
     latest_batch_votes: int | None,
     lead_changed: bool,
+    change_votes: int,
+    current_votes: int,
+    source: SourceConfig,
+    history_points: int,
+    denominator_reconciled: bool,
+    controlling: bool,
+    tie_changes: bool = False,
 ) -> RiskAssessment:
-    required_share: float | None = None
     if remaining_votes is None:
-        level = "unknown"
+        probability = None
+        required_share = None
         rationale = "No expected-final-ballot forecast is configured for this source."
-    elif remaining_votes <= 0:
-        level = "very_low"
-        rationale = "The configured final-ballot forecast leaves no estimated votes."
-    elif margin <= 0:
-        required_share = 0.5
-        level = "toss_up"
-        rationale = "The current decision boundary is tied."
     else:
-        required_share = 0.5 + margin / (2.0 * remaining_votes)
-        if required_share <= 0.505:
-            level = "toss_up"
-        elif required_share <= 0.52:
-            level = "high"
-        elif required_share <= 0.55:
-            level = "meaningful"
-        elif required_share <= 0.60:
-            level = "low"
-        else:
-            level = "very_low"
-        rationale = (
-            f"The change side needs about {required_share:.1%} of the estimated "
-            "remaining decision votes."
+        probability, required_share = _tempered_beta_binomial_probability(
+            change_votes,
+            current_votes,
+            remaining_votes,
+            margin,
+            latest_batch_share,
+            latest_batch_votes,
+            tie_changes,
         )
-        if margin <= 3 and remaining_votes >= margin:
-            level = "toss_up"
-            rationale += " The absolute margin is three votes or fewer."
+        if remaining_votes <= 0:
+            rationale = (
+                "The configured final-ballot forecast leaves no estimated decision "
+                "votes."
+            )
+        else:
+            rationale = (
+                f"The tempered beta-binomial model estimates a {probability:.1%} "
+                f"chance of change across {remaining_votes:,} estimated remaining "
+                f"decision votes; the change side needs {required_share:.1%}."
+            )
+        if lead_changed:
+            rationale += " The boundary changed in an earlier supplied snapshot."
 
-    if lead_changed and level not in {"unknown", "not_applicable"}:
-        level = "toss_up"
-        rationale += " The lead changed in an earlier supplied snapshot."
-    elif (
-        required_share is not None
-        and latest_batch_share is not None
-        and latest_batch_votes is not None
-        and latest_batch_votes > 0
-    ):
-        if latest_batch_share >= required_share + 0.005:
-            promotion = {
-                "very_low": "low",
-                "low": "meaningful",
-                "meaningful": "high",
-                "high": "toss_up",
-                "toss_up": "toss_up",
-            }
-            level = promotion.get(level, level)
-            rationale += " The latest batch exceeded that required share."
-        elif latest_batch_share <= 0.47:
-            demotion = {
-                "toss_up": "high",
-                "high": "meaningful",
-                "meaningful": "low",
-                "low": "very_low",
-                "very_low": "very_low",
-            }
-            level = demotion.get(level, level)
-            rationale += " The latest batch moved materially toward the current side."
+    level = _probability_level(probability)
+    reliability_score, reliability_grade, reliability_rationale = _reliability(
+        source,
+        probability,
+        history_points,
+        change_votes + current_votes,
+        denominator_reconciled,
+        controlling,
+    )
 
     return RiskAssessment(
         level=level,
         flip_band=FLIP_BANDS[level],
+        change_probability=probability,
+        probability_model=(
+            PROBABILITY_MODEL if probability is not None else "not_available"
+        ),
+        reliability_score=reliability_score,
+        reliability_grade=reliability_grade,
+        reliability_rationale=reliability_rationale,
         required_share=required_share,
         estimated_remaining_votes=remaining_votes,
         latest_batch_share=latest_batch_share,
@@ -223,6 +366,7 @@ def _pair_decision(
     source: SourceConfig,
     latest: Snapshot,
     history: tuple[Snapshot, ...],
+    controlling: bool,
 ) -> DecisionAnalysis:
     margin = current.votes - challenger.votes
     remaining_ballots = _remaining_contest_ballots(source, latest, contest)
@@ -269,6 +413,12 @@ def _pair_decision(
         latest_batch_share,
         latest_batch_votes,
         lead_changed,
+        challenger.votes,
+        current.votes,
+        source,
+        len(margin_history),
+        contest.ballots != contest.reported_ballots,
+        controlling,
     )
     return DecisionAnalysis(
         kind=kind,
@@ -287,6 +437,7 @@ def _majority_decision(
     source: SourceConfig,
     latest: Snapshot,
     history: tuple[Snapshot, ...],
+    controlling: bool,
 ) -> DecisionAnalysis:
     total_votes = sum(choice.votes for choice in contest.choices)
     signed_margin = 2 * leader.votes - total_votes
@@ -349,6 +500,13 @@ def _majority_decision(
         latest_batch_share,
         latest_batch_votes,
         lead_changed,
+        total_votes - leader.votes if has_majority else leader.votes,
+        leader.votes if has_majority else total_votes - leader.votes,
+        source,
+        len(history_values),
+        contest.ballots != contest.reported_ballots,
+        controlling,
+        tie_changes=has_majority,
     )
     return DecisionAnalysis(
         kind="majority_status",
@@ -412,11 +570,19 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
         ranked = _ranked_choices(contest, config)
         rule = _infer_rule(source, contest, config)
         history = history_map[source.source_id]
+        controlling, scope_note = _scope_status(source, contest)
         decisions: list[DecisionAnalysis] = []
         if rule == "winner" and len(ranked) >= 2:
             decisions.append(
                 _pair_decision(
-                    "winner", ranked[0], ranked[1], contest, source, latest, history
+                    "winner",
+                    ranked[0],
+                    ranked[1],
+                    contest,
+                    source,
+                    latest,
+                    history,
+                    controlling,
                 )
             )
         elif rule in {"top_two", "wa_judicial"} and len(ranked) >= 3:
@@ -429,14 +595,16 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
                     source,
                     latest,
                     history,
+                    controlling,
                 )
             )
         if rule == "wa_judicial" and ranked:
             decisions.append(
-                _majority_decision(ranked[0], contest, source, latest, history)
+                _majority_decision(
+                    ranked[0], contest, source, latest, history, controlling
+                )
             )
 
-        controlling, scope_note = _scope_status(source, contest)
         races.append(
             RaceAnalysis(
                 contest_id=contest.contest_id,
@@ -446,6 +614,9 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
                 jurisdiction=source.jurisdiction,
                 snapshot=latest.timestamp.isoformat(timespec="minutes"),
                 ballots=contest.ballots,
+                reported_ballots=contest.reported_ballots,
+                overvotes=contest.overvotes,
+                undervotes=contest.undervotes,
                 valid_votes=sum(choice.votes for choice in contest.choices),
                 rule=rule,
                 controlling=controlling,

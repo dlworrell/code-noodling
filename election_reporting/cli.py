@@ -13,7 +13,7 @@ from .publish import publish
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="python -m election_reporting",
-        description="Analyze dated election-result CSV snapshots and publish with EDT.",
+        description="Analyze dated election-result snapshots and publish with EDT.",
     )
     parser.add_argument(
         "--config",

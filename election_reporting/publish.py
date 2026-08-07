@@ -24,6 +24,11 @@ def _decision_payload(decision: object) -> dict[str, object]:
         "risk": {
             "level": risk.level,
             "flip_band": risk.flip_band,
+            "change_probability": risk.change_probability,
+            "probability_model": risk.probability_model,
+            "reliability_score": risk.reliability_score,
+            "reliability_grade": risk.reliability_grade,
+            "reliability_rationale": risk.reliability_rationale,
             "required_share": risk.required_share,
             "estimated_remaining_votes": risk.estimated_remaining_votes,
             "latest_batch_share": risk.latest_batch_share,
@@ -40,16 +45,32 @@ def _decision_payload(decision: object) -> dict[str, object]:
 
 def analysis_payload(analysis: ElectionAnalysis) -> dict[str, object]:
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "tool_version": __version__,
         "title": analysis.title,
         "as_of": analysis.as_of,
         "methodology": {
-            "probability_status": "heuristic bands, not a statistical forecast",
+            "probability_status": (
+                "conditional tempered beta-binomial predictive probability; not an "
+                "election call"
+            ),
+            "probability_model": "tempered_beta_binomial_v1",
+            "tail_evaluation": (
+                "exact through 5,000 remaining decision votes; moment-matched normal "
+                "approximation above 5,000"
+            ),
+            "effective_sample_caps": {
+                "cumulative_votes": 300,
+                "latest_batch_votes": 200,
+            },
             "risk_bands": FLIP_BANDS,
             "remaining_votes": (
                 "contest ballots scaled proportionally from the configured "
                 "source-level expected final ballot count"
+            ),
+            "xlsx_ballot_denominator": (
+                "maximum of reported Ballots Cast and valid votes plus overvotes "
+                "plus undervotes"
             ),
         },
         "inputs": [
@@ -71,6 +92,9 @@ def analysis_payload(analysis: ElectionAnalysis) -> dict[str, object]:
                 "jurisdiction": race.jurisdiction,
                 "snapshot": race.snapshot,
                 "ballots": race.ballots,
+                "reported_ballots": race.reported_ballots,
+                "overvotes": race.overvotes,
+                "undervotes": race.undervotes,
                 "valid_votes": race.valid_votes,
                 "rule": race.rule,
                 "controlling": race.controlling,
@@ -92,6 +116,68 @@ def _slug(value: str) -> str:
     return slug[:72] or "race"
 
 
+def _probability_label(value: float | None) -> str:
+    if value is None:
+        return "Not estimable"
+    if value < 0.001:
+        return "<0.1%"
+    return f"{value:.1%}"
+
+
+def _table_text(value: str) -> str:
+    return " ".join(value.split()).replace("|", "\\|")
+
+
+def _at_glance_table(analysis: ElectionAnalysis) -> str:
+    rows: list[tuple[tuple[object, ...], str]] = []
+    for race in analysis.races:
+        if not race.decisions:
+            scope = "Controlling" if race.controlling else "County slice"
+            order = (
+                not race.controlling,
+                True,
+                0.0,
+                race.contest.casefold(),
+                "not_applicable",
+            )
+            row = (
+                f"| Not applicable | N/A | {_table_text(race.contest)} | "
+                f"No modeled boundary | — | {scope} |"
+            )
+            rows.append((order, row))
+        for decision in race.decisions:
+            probability = decision.risk.change_probability
+            order = (
+                not race.controlling,
+                probability is None,
+                -(probability or 0.0),
+                race.contest.casefold(),
+                decision.kind,
+            )
+            reliability = (
+                f"{decision.risk.reliability_score}/100 "
+                f"{decision.risk.reliability_grade}"
+            )
+            boundary = decision.kind.replace("_", " ").title()
+            current = (
+                f"{decision.current_side} +{decision.margin:,} over "
+                f"{decision.change_side}"
+            )
+            scope = "Controlling" if race.controlling else "County slice"
+            row = (
+                f"| {_probability_label(probability)} | {reliability} | "
+                f"{_table_text(race.contest)} | {_table_text(boundary)} | "
+                f"{_table_text(current)} | {scope} |"
+            )
+            rows.append((order, row))
+    rows.sort(key=lambda item: item[0])
+    header = [
+        "| Change probability | Reliability | Race | Boundary | Current margin | Scope |",
+        "| ---: | --- | --- | --- | --- | --- |",
+    ]
+    return "\n".join(header + [row for _order, row in rows])
+
+
 def _node(node_id: str, kind: str, text: str, **metadata: object) -> dict[str, object]:
     return {
         "id": node_id,
@@ -105,13 +191,22 @@ def _node(node_id: str, kind: str, text: str, **metadata: object) -> dict[str, o
 
 def _race_nodes(race: RaceAnalysis, index: int) -> list[dict[str, object]]:
     prefix = f"race-{index:03d}-{_slug(race.contest)}"
+    ballot_detail = ""
+    if race.ballots != race.reported_ballots:
+        ballot_detail = (
+            " The workbook's Ballots Cast value was "
+            f"{race.reported_ballots:,}; the displayed denominator is reconciled from "
+            f"{race.valid_votes:,} valid votes, {race.overvotes or 0:,} overvotes, and "
+            f"{race.undervotes or 0:,} undervotes."
+        )
     nodes = [
         _node(f"{prefix}-heading", "heading2", race.contest, level=2),
         _node(
             f"{prefix}-source",
             "paragraph",
             f"Source: {race.jurisdiction} ({race.source_id}), snapshot {race.snapshot}. "
-            f"Ballots with contest: {race.ballots:,}. Valid votes: {race.valid_votes:,}.",
+            f"Ballots with contest: {race.ballots:,}. Valid votes: {race.valid_votes:,}."
+            f"{ballot_detail}",
         ),
         _node(
             f"{prefix}-scope",
@@ -154,8 +249,18 @@ def _race_nodes(race: RaceAnalysis, index: int) -> list[dict[str, object]]:
             _node(
                 f"{decision_prefix}-risk",
                 "paragraph",
-                f"Estimated change risk: {_risk_label(decision.risk.level)} "
-                f"({decision.risk.flip_band}). {decision.risk.rationale}",
+                f"Modeled change probability: "
+                f"{_probability_label(decision.risk.change_probability)}. "
+                f"Reliability: {decision.risk.reliability_score}/100 "
+                f"({decision.risk.reliability_grade}). Exposure band: "
+                f"{_risk_label(decision.risk.level)}. {decision.risk.rationale}",
+            )
+        )
+        nodes.append(
+            _node(
+                f"{decision_prefix}-reliability",
+                "paragraph",
+                f"Reliability basis: {decision.risk.reliability_rationale}",
             )
         )
         if decision.risk.latest_batch_share is not None:
@@ -211,6 +316,15 @@ def build_edom(analysis: ElectionAnalysis) -> dict[str, object]:
             )
             + ".",
         ),
+        _node("at-glance-heading", "heading2", "At-a-glance decisions", level=2),
+        _node(
+            "at-glance-guide",
+            "paragraph",
+            "Sorted by modeled change probability, with controlling results before "
+            "county-only slices. Reliability measures evidence quality, not the chance "
+            "that the current result is correct.",
+        ),
+        _node("at-glance-table", "paragraph", _at_glance_table(analysis)),
         _node(
             "method-heading",
             "heading2",
@@ -220,8 +334,10 @@ def build_edom(analysis: ElectionAnalysis) -> dict[str, object]:
         _node(
             "method-risk",
             "paragraph",
-            "Risk percentages are transparent heuristic bands, not statistical election "
-            "forecasts. Ballot batches are not assumed to be random samples.",
+            "Change probabilities use a tempered beta-binomial posterior predictive "
+            "model. Tails are exact through 5,000 remaining decision votes and use a "
+            "moment-matched normal approximation above that. Effective sample caps "
+            "prevent every counted ballot from being treated as an independent draw.",
         ),
         _node(
             "method-remaining",
@@ -231,11 +347,25 @@ def build_edom(analysis: ElectionAnalysis) -> dict[str, object]:
             "produce an Unknown assessment.",
         ),
         _node(
+            "method-reliability",
+            "paragraph",
+            "Reliability is a 0–100 evidence score combining remaining-ballot forecast "
+            "quality, compatible snapshot history, and observed decision-vote volume. "
+            "Reconciled denominators reduce it; noncontrolling slices are capped at 25.",
+        ),
+        _node(
             "method-scope",
             "paragraph",
             "When the available file is only a county slice of a multicounty or statewide "
             "race, the report marks it noncontrolling and does not treat it as the official "
             "outcome forecast.",
+        ),
+        _node(
+            "method-ballot-reconciliation",
+            "paragraph",
+            "For statewide XLSX inputs, the ballot denominator is the larger of the "
+            "reported Ballots Cast value and the auditable sum of valid votes, "
+            "overvotes, and undervotes. Any adjustment is disclosed on that race.",
         ),
         _node("races-heading", "heading2", "Race-by-race analysis", level=2),
     ]

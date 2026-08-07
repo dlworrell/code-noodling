@@ -17,10 +17,13 @@ semantic documentation and report-validation engine.
 
 Add a standard-library Python subsystem that:
 
-1. treats dated official CSV exports as immutable snapshots;
-2. hashes and parses every input with strict schema and numeric validation;
+1. treats dated official county CSV exports and statewide XLSX workbooks as immutable
+   snapshots;
+2. hashes and parses every input with strict schema and numeric validation, reconciling
+   statewide ballot denominators against valid-vote, overvote, and undervote totals;
 3. models explicit winner, top-two cutoff, and Washington majority-status boundaries;
-4. compares compatible successive snapshots without assuming batches are random;
+4. estimates conditional change probabilities with a tempered beta-binomial model and
+   reports a separate evidence-reliability score;
 5. estimates the remaining vote pool only from declared source-level forecasts;
 6. emits a complete machine-readable analysis and canonical EDOM document;
 7. delegates Markdown/HTML publication and document-quality evidence to a pinned EDT
@@ -39,13 +42,18 @@ Positive consequences:
 - Additional updates require only a dated file drop.
 - Every report records its exact input hashes and EDT validation evidence.
 - Historical margins and latest-batch shares become mechanically reproducible.
+- Every modeled boundary has a scan-friendly probability and reliability score while
+  preserving the model inputs in JSON.
 - State or district aggregates can supersede local slices without removing local
   history.
+- Statewide export timing gaps cannot produce a denominator below its detailed tally,
+  and every reconciliation remains visible in generated evidence.
 - The model's formulas, risk bands, and limitations are reviewable in code and docs.
 
 Tradeoffs:
 
-- Risk bands remain heuristic because ballot batches are not independent random
+- Numerical probabilities remain conditional on the remaining-ballot estimate and a
+  documented exchangeability model because ballot batches are not independent random
   samples.
 - Forecast quality depends on the configured expected final ballot count.
 - EDT is an explicit build dependency and is pinned in CI for reproducibility.
