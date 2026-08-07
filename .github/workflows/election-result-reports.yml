@@ -1,0 +1,94 @@
+name: Election Result Reports
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_reports:
+        description: Commit regenerated reports to the current branch
+        required: true
+        type: boolean
+        default: true
+  push:
+    paths:
+      - "election-data/**"
+      - "election_reporting/**"
+      - "tests/test_election_reporting.py"
+      - ".github/workflows/election-result-reports.yml"
+  pull_request:
+    paths:
+      - "election-data/**"
+      - "election_reporting/**"
+      - "reports/elections/**"
+      - "tests/test_election_reporting.py"
+      - ".github/workflows/election-result-reports.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: election-result-reports-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  analyze-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Code Noodling
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check out pinned EDT
+        uses: actions/checkout@v4
+        with:
+          repository: dlworrell/engineering-docs-toolkit
+          ref: 649981ec78c97aafe4374284ad7e8c57c11a4640
+          path: .tools/engineering-docs-toolkit
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test election reporting
+        env:
+          PYTHONPATH: .:.tools/engineering-docs-toolkit
+        run: python -m unittest discover -s tests -p 'test_election_reporting.py' -v
+
+      - name: Generate and validate EDT reports
+        env:
+          PYTHONPATH: .:.tools/engineering-docs-toolkit
+        run: >-
+          python -m election_reporting
+          --config election-data/election.toml
+          --output reports/elections
+
+      - name: Check generated patch formatting
+        run: git diff --check
+
+      - name: Upload report evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: election-result-reports
+          path: reports/elections/
+          if-no-files-found: error
+
+      - name: Verify reports are current in pull requests
+        if: github.event_name == 'pull_request'
+        run: git diff --exit-code -- reports/elections
+
+      - name: Commit regenerated reports
+        if: >-
+          github.event_name == 'push' ||
+          (github.event_name == 'workflow_dispatch' && inputs.commit_reports)
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/elections
+          if git diff --cached --quiet; then
+            echo "Reports are already current."
+            exit 0
+          fi
+          git commit -m "reports: update election result analysis [skip ci]"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

@@ -1,0 +1,30 @@
+schema_version = 1
+
+[election]
+title = "2026 Washington Primary Election Outcome-Change Analysis"
+
+[analysis]
+write_in_labels = ["write-in", "write in"]
+
+[[sources]]
+id = "king-county"
+path = "input/king-county"
+jurisdiction = "King County, Washington"
+scope = "county"
+priority = 10
+certification_date = 2026-08-18
+expected_final_ballots = 654552
+
+[[sources]]
+id = "washington"
+path = "input/washington"
+jurisdiction = "Washington State"
+scope = "state"
+priority = 100
+certification_date = 2026-08-21
+
+# Add an override only when the inferred rule is wrong for a specific export.
+# [[contest_rules]]
+# source_id = "king-county"
+# contest_id = "123"
+# rule = "winner"

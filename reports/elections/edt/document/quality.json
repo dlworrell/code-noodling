@@ -1,0 +1,11 @@
+{
+  "structural_score": 100.0,
+  "semantic_score": 100.0,
+  "reference_score": 100.0,
+  "overall_score": 100.0,
+  "publication_ready": true,
+  "errors": 0,
+  "warnings": 0,
+  "broken_references": 0,
+  "orphan_references": 0
+}
