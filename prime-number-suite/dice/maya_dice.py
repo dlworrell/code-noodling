@@ -1,10 +1,18 @@
+"""Prototype Maya geometry generator for dice meshes used by this suite.
+
+Run this module only inside Autodesk Maya, where ``maya.cmds`` is available.
+It creates and exports example meshes; it does not participate in prime
+generation or statistical validation. The guarded example block prevents an
+import from immediately modifying the active Maya scene.
+"""
+
 import maya.cmds as cmds
 import math
 
 def create_dice(sides, size=1.0):
     """
     Create a die with a specified number of sides and carve numbers into the center of each face.
-    
+
     Args:
         sides (int): Number of sides on the die (supports 4, 6, 8, 12, 20, and up to 100).
         size (float): Diameter of the die.
@@ -72,11 +80,11 @@ def add_numbers_to_faces(die, sides, size):
         # Create text for the face number
         text = cmds.textCurves(ch=False, f="Arial|w400|h100", t=str(i + 1))[0]
         cmds.group(text, name=f"face_{i + 1}_text")
-        
+
         # Find the face center and normal
         face_center = cmds.polyInfo(die + f".f[{i}]", faceNormals=True)
         center_pos = extract_face_center(face_center)
-        
+
         # Position and scale the number
         cmds.xform(text, s=[0.1, 0.1, 0.1])  # Scale down
         cmds.xform(text, t=center_pos)  # Translate to face center
@@ -94,6 +102,7 @@ def extract_face_center(face_data):
     return center_pos
 
 
-# Example: Create dice with up to 100 sides
-for sides in [4, 6, 8, 12, 20, 30, 50, 100]:
-    create_dice(sides)
+if __name__ == "__main__":
+    # Example: create dice with up to 100 sides in the current Maya scene.
+    for sides in [4, 6, 8, 12, 20, 30, 50, 100]:
+        create_dice(sides)

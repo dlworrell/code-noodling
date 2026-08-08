@@ -3,17 +3,8 @@
 // prime-seeded determinism, JSON/CSV logs, chi-square, and full physical support
 // for D6/D8/D12/D20 via convex meshes + local-face-normal top-face detection.
 //
-// Build notes (CMake):
-//   add_executable(physx_dice_multi physx_dice_multi.cpp)
-//   target_compile_options(physx_dice_multi PRIVATE -O3 -march=native)
-//   find_library(PHYSX_LIB PhysX_64)
-//   find_library(PHYSX_FOUNDATION_LIB PhysXFoundation_64)
-//   find_library(PHYSX_COMMON_LIB PhysXCommon_64)
-//   find_library(PHYSX_EXT_LIB PhysXExtensions_static)
-//   find_library(PHYSX_COOKING_LIB PhysXCooking_64)
-//   target_link_libraries(physx_dice_multi PRIVATE
-//       ${PHYSX_LIB} ${PHYSX_FOUNDATION_LIB} ${PHYSX_COMMON_LIB}
-//       ${PHYSX_EXT_LIB} ${PHYSX_COOKING_LIB})
+// Build through ../CMakeLists.txt with BUILD_PHYSX_DICE=ON and PHYSX_ROOT set
+// to the NVIDIA PhysX SDK when it is not installed in a standard location.
 //
 // Usage examples:
 //   ./physx_dice_multi --spec 1d6 --trials 50000 --chi
@@ -34,6 +25,7 @@
 #include <fstream>
 #include <future>
 #include <iostream>
+#include <memory>
 #include <mutex>
 #include <random>
 #include <string>
@@ -67,20 +59,19 @@ static std::vector<uint64_t> load_primes_json(const std::string& path){
 }
 
 /* ------------------------- RNG & unbiased sampler ------------------------- */
-static thread_local std::mt19937_64 g_rng{0xA02BDBF7BB3C0A7ULL};
 static inline uint64_t splitmix64(uint64_t x){
     x += 0x9e3779b97f4a7c15ULL;
     x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9ULL;
     x = (x ^ (x >> 27)) * 0x94d049bb133111ebULL;
     return x ^ (x >> 31);
 }
-static inline void seed_from_prime(uint64_t p){ g_rng.seed(splitmix64(p)); }
 
-// Lemire + rejection: unbiased [0..n-1] for any n
-static inline uint64_t uniform_u64_unbiased(uint64_t n){
+// Lemire + rejection: unbiased [0..n-1] for any n. The generator is passed
+// explicitly so prime seeding applies equally to physical and virtual dice.
+static inline uint64_t uniform_u64_unbiased(std::mt19937_64& rng, uint64_t n){
     if (n == 0) return 0;
     for(;;){
-        uint64_t x = g_rng();
+        uint64_t x = rng();
         __uint128_t m = (__uint128_t)x * (__uint128_t)n;
         uint64_t l = (uint64_t)m;
         if (l < n) {
@@ -90,7 +81,6 @@ static inline uint64_t uniform_u64_unbiased(uint64_t n){
         return (uint64_t)(m >> 64);
     }
 }
-static inline int roll_unbiased(int faces){ return (int)uniform_u64_unbiased((uint64_t)faces) + 1; }
 
 /* ------------------------- Chi-square p-value ------------------------------ */
 static double gammaln(double z){
@@ -101,7 +91,9 @@ static double gammaln(double z){
     return -tmp + std::log(2.5066282746310005*ser/x);
 }
 static double gammap(double s, double x){
-    if (x<=0) return 0.0; const int ITMAX=1000; const double EPS=1e-12;
+    if (x<=0) return 0.0;
+    const int ITMAX=1000;
+    const double EPS=1e-12;
     double ap=s, sum=1.0/s, del=sum;
     for(int n=1;n<=ITMAX;++n){ ap+=1.0; del*=x/ap; sum+=del; if(std::fabs(del)<std::fabs(sum)*EPS) break; }
     return sum * std::exp(-x + s*std::log(x) - gammaln(s));
@@ -125,7 +117,8 @@ static bool parse_spec(const std::string& s, Spec& out){
         v = neg? -(int)val : (int)val; return true;
     };
     size_t save=i; if(!read_int(N)){ N=1; i=save; }
-    if(i>=n || (s[i]!='d'&&s[i]!='D')) return false; ++i;
+    if(i>=n || (s[i]!='d'&&s[i]!='D')) return false;
+    ++i;
     if(!read_int(M)) return false;
     if(i<n){ if(s[i]=='+'){++i; if(!read_int(K)) return false;}
              else if(s[i]=='-'){++i; int t=0; if(!read_int(t)) return false; K=-t;} }
@@ -203,7 +196,11 @@ static void stepUntilSettle(PxScene* scn, PxRigidDynamic* die, int maxSteps=2000
 }
 
 /* ------------------------- Worker (one thread) ------------------------------ */
-struct Task { Spec spec; uint64_t trials=0; };
+struct Task {
+    Spec spec;
+    uint64_t trials=0;
+    uint64_t seed_offset=0; // Logical first trial, preserved across task shards.
+};
 struct SpecAgg {
     Spec spec;
     std::vector<uint64_t> counts; // per-face counts
@@ -215,6 +212,7 @@ struct SpecAgg {
 static void run_worker(Task t, SpecAgg* agg,
                        const std::vector<uint64_t>* primes,
                        bool seed_per_roll,
+                       bool use_chute,
                        int cpuThreadsInScene = 2)
 {
     // local RNG (prime-seeded as needed)
@@ -233,7 +231,7 @@ static void run_worker(Task t, SpecAgg* agg,
     DieMesh dm;
     if (doPhys){
         px = makePx();
-        sp = makeScene(px.phy, cpuThreadsInScene, chute);
+        sp = makeScene(px.phy, cpuThreadsInScene, use_chute);
 
         // Optional cooking for convexes
         PxCookingParams cp(px.phy->getTolerancesScale());
@@ -269,7 +267,13 @@ static void run_worker(Task t, SpecAgg* agg,
     std::vector<uint64_t> local_counts((size_t)t.spec.M, 0);
 
     for (uint64_t trial=0; trial < t.trials; ++trial){
-        if (seed_per_roll) rng.seed(splitmix64(prime_at(trial)));
+        uint64_t sequence_index = t.seed_offset + trial;
+        if (seed_per_roll) {
+            // Mix the logical index with the prime so wrapping a short prime
+            // list never repeats an identical initial RNG state.
+            rng.seed(splitmix64(prime_at(sequence_index) ^
+                                splitmix64(sequence_index)));
+        }
 
         int sum = t.spec.K;
         if (doPhys){
@@ -284,7 +288,7 @@ static void run_worker(Task t, SpecAgg* agg,
         } else {
             // Unbiased virtual for other M
             for (int i=0;i<t.spec.N;++i){
-                int face = (int)uniform_u64_unbiased((uint64_t)t.spec.M) + 1;
+                int face = (int)uniform_u64_unbiased(rng, (uint64_t)t.spec.M) + 1;
                 local_counts[(size_t)(face-1)]++;
                 sum += face;
             }
@@ -312,7 +316,7 @@ int main(int argc, char** argv){
     std::vector<Spec> specs;   // multiple allowed
     uint64_t trials = 10000;   // per-spec trials
     std::string primes_path, json_path, csv_path;
-    bool chi=false, seed_per_roll=true, interleave=false;
+    bool chi=false, seed_per_roll=true, interleave=false, use_chute=false;
 
     for(int i=1;i<argc;++i){
         std::string a=argv[i];
@@ -326,7 +330,7 @@ int main(int argc, char** argv){
         else if (a=="--seed-per-roll"){ seed_per_roll=true; }
         else if (a=="--seed-per-bundle"){ seed_per_roll=false; } // (future enhancement)
         else if (a=="--mix"){ interleave=true; } // round-robin specs
-        else if (a=="--chute"){ chute=true; } // create the dice tower
+        else if (a=="--chute"){ use_chute=true; } // create the dice tower
         else { std::cerr<<"Unknown arg: "<<a<<"\n"; return 2; }
     }
     if (specs.empty()) { Spec s; s.label="1d6"; specs.push_back(s); }
@@ -345,11 +349,12 @@ int main(int argc, char** argv){
         primes = load_primes_json(primes_path);
         if (primes.empty()) std::cerr<<"WARN: no primes loaded; using fixed seed.\n";
     }
-    if (primes.empty()) g_rng.seed(0xA02BDBF7BB3C0A7ULL);
-
     // Prepare aggregators (one per spec)
-    std::vector<SpecAgg> aggs; aggs.reserve(specs.size());
-    for (auto& s: specs) aggs.emplace_back(s);
+    // SpecAgg owns a mutex and is therefore non-movable; unique_ptr keeps the
+    // vector resizable without attempting to move synchronization primitives.
+    std::vector<std::unique_ptr<SpecAgg>> aggs;
+    aggs.reserve(specs.size());
+    for (auto& s: specs) aggs.emplace_back(std::make_unique<SpecAgg>(s));
 
     // Create tasks
     std::vector<Task> tasks;
@@ -373,8 +378,11 @@ int main(int argc, char** argv){
             uint64_t shard = std::max<uint64_t>(100, base.trials / workers);
             uint64_t done=0;
             while (done < base.trials){
-                Task t = base; t.trials = std::min<uint64_t>(shard, base.trials - done);
-                run_worker(t, &aggs[idx], primes.empty()? nullptr : &primes, seed_per_roll, sceneThreads);
+                Task t = base;
+                t.trials = std::min<uint64_t>(shard, base.trials - done);
+                t.seed_offset = done;
+                run_worker(t, aggs[idx].get(), primes.empty()? nullptr : &primes,
+                           seed_per_roll, use_chute, sceneThreads);
                 done += t.trials;
             }
         }
@@ -393,14 +401,15 @@ int main(int argc, char** argv){
 
     for (size_t si=0; si<specs.size(); ++si){
         auto& s = specs[si];
-        auto& A = aggs[si];
+        auto& A = *aggs[si];
         if (csv_path.size()){
             for (size_t f=0; f<A.counts.size(); ++f){
                 coutf<<s.label<<","<<(f+1)<<","<<A.counts[f]<<"\n";
             }
         }
         if (json_path.size()){
-            if(!jfirst) jout<<",\n"; jfirst=false;
+            if(!jfirst) jout<<",\n";
+            jfirst=false;
             jout<<"    {\"spec\":\""<<s.label<<"\",\"faces\":"<<s.M<<",\"trials\":"<<A.total_trials<<",\"counts\":[";
             for(size_t f=0; f<A.counts.size(); ++f){
                 if(f) jout<<","; jout<<A.counts[f];
