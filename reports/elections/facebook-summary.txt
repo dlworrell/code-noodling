@@ -1,0 +1,53 @@
+🗳️ ELECTION RESULTS: WHAT COULD STILL CHANGE
+
+2026 Washington Primary Election Outcome-Change Analysis
+Results snapshot: 2026-08-08 00:18
+
+The analysis reviewed 244 reported contests. It modeled 166 controlling decision boundaries across 161 races.
+
+HIGHEST-PROBABILITY CONTROLLING DECISIONS (EXCLUDING PCO RACES)
+
+• State Representative Pos. 2 - Legislative District 1
+  Top Two Cutoff: Cliff Moon leads Jenne Alderks by 153 votes. Modeled change probability: 75.2%. Reliability: 58/100 (Moderate).
+• State Senator - Legislative District 42
+  Top Two Cutoff: Michael Alvarez Shepard leads Eamonn Collins by 9 votes. Modeled change probability: 48.5%. Reliability: 49/100 (Low).
+• Assessor (Vote for 1)
+  Top Two Cutoff: Dominique M Scarimbolo leads Christopher Roberts by 1,213 votes. Modeled change probability: 35.0%. Reliability: 68/100 (Moderate).
+• Skykomish School District No. 404 Proposition No. 1 (Vote for 1)
+  Winner: Yes leads No by 3 votes. Modeled change probability: 29.6%. Reliability: 45/100 (Low).
+• King County Fire Protection Dist. No. 47 Proposition No. 1 (Vote for 1)
+  Winner: Rejected leads Approved by 33 votes. Modeled change probability: 1.4%. Reliability: 48/100 (Low).
+• State Representative Pos. 2 - Legislative District 29
+  Top Two Cutoff: Patrick Stickney leads Natasha Laitila by 172 votes. Modeled change probability: 1.2%. Reliability: 46/100 (Low).
+
+PRECINCT COMMITTEE OFFICER RACES
+
+These small-vote contests have some of the highest numerical probabilities, but their reliability is limited.
+• Democratic Precinct Committee Officer SHL 32-0802 (Vote for 1)
+  Winner: Andrew Holt and Norbert Steele are tied at this boundary. Modeled change probability: 50.0%. Reliability: 45/100 (Low).
+• Democratic Precinct Committee Officer SEA 36-1743 (Vote for 1)
+  Winner: Laura Marie Rivera leads Claire Ramos by 1 vote. Modeled change probability: 42.1%. Reliability: 45/100 (Low).
+• Democratic Precinct Committee Officer COV 47-3279 (Vote for 1)
+  Winner: Kimberley Darby leads Sean Smith by 1 vote. Modeled change probability: 40.9%. Reliability: 44/100 (Low).
+
+OVERALL EXPOSURE
+
+Using each controlling race's highest-risk boundary: Toss-up 5, High 8, Meaningful 9, Low 10, and Very low 129. Another 83 controlling races have no modeled change boundary.
+
+EVIDENCE RELIABILITY
+
+High 0, Moderate 53, Low 113, and Insufficient 0.
+Reliability measures the strength of the available evidence. It is not the probability that the current result is correct.
+
+DATA QUALITY NOTE
+
+The parser reconciled 6 contest ballot denominators because valid votes plus overvotes and undervotes exceeded the reported Ballots Cast value. Each adjustment is disclosed in the full report and lowers its reliability score.
+
+IMPORTANT
+
+These are conditional model estimates based on the remaining-ballot forecast and observed vote mix. Ballot batches are not random samples. This is not an official result, a race call, or a substitute for certification.
+
+Full race-by-race report and methodology:
+https://github.com/dlworrell/code-noodling/blob/main/reports/elections/election-analysis.md
+
+#WashingtonElections #ElectionResults #ElectionData

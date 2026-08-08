@@ -11,6 +11,7 @@ election-data/input/
 │   └── …newer-dated-snapshot.csv.xls
 └── washington/
     ├── 2026-08-07-0118.xlsx
+    ├── 2026-08-08-0018.xlsx
     └── …newer-dated-snapshot.xlsx
 ```
 
