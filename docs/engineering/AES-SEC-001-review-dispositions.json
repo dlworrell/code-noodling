@@ -2,62 +2,94 @@
   "schema_version": "1.0.0",
   "repository": "dlworrell/code-noodling",
   "baseline": {
-    "captured_at": "2026-07-27",
-    "source": "AEMS workflow run 30327790203; artifact 8676292176; sha256:d29ea776a6ccf9f5e40e92597235ffedf7ddb35e5364b68ca57f5a3bdda97679",
+    "captured_at": "2026-08-08",
+    "source": "AEMS workflow run 31233379796; artifact 9014581108; sha256:f705f4fef5f7f2dd0d3cc8536b7603547e2d0fa75553666d67579900b1dd2876",
     "findings": [
       {
-        "finding_id": "aes-sec-001:77c072e0e18c94e18204f8e8c37eae9d15bbf51afe89b5060b18712799eaa18d",
-        "source_fingerprint": "sha256:885b7e9ad2e2622ada376d66dcc585b6f648e4b1a4131184d0c06a5d6713fe33",
-        "path": "OSE.c",
-        "line": 73,
-        "symbol": "memset"
+        "finding_id": "aes-sec-001:6fc5de1abf023dd4f2ea18c07e2865023a6d76e69a1045ee850a0ba813f42f9d",
+        "source_fingerprint": "sha256:a1978bd34505f504f6dddabc0897c82186f7f976619bb773ca9cedbe9b5741d0",
+        "path": "prime-number-suite/generators/ose.c",
+        "line": 53,
+        "symbol": "malloc"
       },
       {
-        "finding_id": "aes-sec-001:ec0b3b20356100058070c905323e729704d6ed0e89c0f8c799386d8e919aa850",
-        "source_fingerprint": "sha256:282364a5fea696df34bfd288d86301d3bce1f4483522c7becba03b81d02cd740",
-        "path": "OSE.c",
-        "line": 130,
-        "symbol": "memset"
+        "finding_id": "aes-sec-001:e6b6f675e8900b075424c735b58a4a7c71d2151d861d144015bad05c40099d08",
+        "source_fingerprint": "sha256:ee4da8e07ac8f9715acf2da869a924080bc770c6c61275d653f348e5c29dc658",
+        "path": "prime-number-suite/generators/ose.c",
+        "line": 65,
+        "symbol": "realloc"
+      },
+      {
+        "finding_id": "aes-sec-001:877a13f5e585a695813d08a07360e0ac67fc64e917c36c37de26e62675f0d604",
+        "source_fingerprint": "sha256:fa62e16d8e20638dff64e449e0793f6bbac627a53545bc55873babfa77f8989d",
+        "path": "prime-number-suite/generators/ose.c",
+        "line": 73,
+        "symbol": "free"
       }
     ]
   },
   "dispositions": [
     {
-      "finding_id": "aes-sec-001:77c072e0e18c94e18204f8e8c37eae9d15bbf51afe89b5060b18712799eaa18d",
-      "source_fingerprint": "sha256:885b7e9ad2e2622ada376d66dcc585b6f648e4b1a4131184d0c06a5d6713fe33",
-      "path": "OSE.c",
-      "line": 73,
-      "symbol": "memset",
+      "finding_id": "aes-sec-001:6fc5de1abf023dd4f2ea18c07e2865023a6d76e69a1045ee850a0ba813f42f9d",
+      "source_fingerprint": "sha256:a1978bd34505f504f6dddabc0897c82186f7f976619bb773ca9cedbe9b5741d0",
+      "path": "prime-number-suite/generators/ose.c",
+      "line": 53,
+      "symbol": "malloc",
       "classification": "approved-invariant",
-      "rationale": "simple_sieve allocates exactly n bytes through checked_alloc and immediately initializes exactly n bytes before any indexed access. n is limit + 1 after the function has rejected limit values below 1, and the buffer stores one byte per sieve entry.",
-      "invariant": "isp points to a successful checked_alloc((size_t)n) allocation, and memset receives the identical (size_t)n byte count. This is ordinary initialization, not secret erasure.",
+      "rationale": "checked_alloc is the sieve's single allocation boundary. It rejects zero-byte requests, verifies that malloc returned a non-null pointer, and terminates before a failed allocation can reach a caller. Call sites either prove their byte counts against SIZE_MAX or derive a nonzero rounded bit-buffer size from an already range-checked candidate count.",
+      "invariant": "size is greater than zero on entry to malloc; every multiplication used to form size is checked against SIZE_MAX first; and the returned pointer is not exposed unless allocation is non-null.",
       "evidence": [
-        "OSE.c::simple_sieve",
-        "https://github.com/dlworrell/code-noodling/issues/3"
+        "prime-number-suite/generators/ose.c::checked_alloc",
+        "prime-number-suite/generators/ose.c::simple_sieve",
+        "prime-number-suite/generators/ose.c::sieve_collect",
+        "https://github.com/dlworrell/code-noodling/pull/8"
       ],
       "owner": "dlworrell",
       "reviewer": "dlworrell",
-      "reviewed_at": "2026-07-29",
-      "reassess_after": "2027-07-29",
+      "reviewed_at": "2026-08-08",
+      "reassess_after": "2027-08-08",
       "resolution_commit": null
     },
     {
-      "finding_id": "aes-sec-001:ec0b3b20356100058070c905323e729704d6ed0e89c0f8c799386d8e919aa850",
-      "source_fingerprint": "sha256:282364a5fea696df34bfd288d86301d3bce1f4483522c7becba03b81d02cd740",
-      "path": "OSE.c",
-      "line": 130,
-      "symbol": "memset",
+      "finding_id": "aes-sec-001:e6b6f675e8900b075424c735b58a4a7c71d2151d861d144015bad05c40099d08",
+      "source_fingerprint": "sha256:ee4da8e07ac8f9715acf2da869a924080bc770c6c61275d653f348e5c29dc658",
+      "path": "prime-number-suite/generators/ose.c",
+      "line": 65,
+      "symbol": "realloc",
       "classification": "approved-invariant",
-      "rationale": "sieve_collect derives the packed candidate byte count, normalizes an empty segment to a one-byte allocation, allocates exactly that count through checked_alloc, and initializes the same count before bit access.",
-      "invariant": "bits points to a successful checked_alloc((size_t)bytes) allocation, bytes is at least one on the call path, and memset receives the identical (size_t)bytes count. This is ordinary bitset initialization, not secret erasure.",
+      "rationale": "checked_realloc is used only to grow the result vector. vector_push checks capacity doubling and element-byte multiplication against SIZE_MAX before calling it. The wrapper stores realloc's result in a temporary pointer and exits on failure, so the caller's original allocation is never overwritten by a null result on any continuing path.",
+      "invariant": "size is nonzero and overflow-checked; allocation receives realloc's return value before the caller's vector pointer is updated; and failure terminates while the original allocation remains valid until process teardown.",
       "evidence": [
-        "OSE.c::sieve_collect",
-        "https://github.com/dlworrell/code-noodling/issues/3"
+        "prime-number-suite/generators/ose.c::checked_realloc",
+        "prime-number-suite/generators/ose.c::vector_push",
+        "https://github.com/dlworrell/code-noodling/pull/8"
       ],
       "owner": "dlworrell",
       "reviewer": "dlworrell",
-      "reviewed_at": "2026-07-29",
-      "reassess_after": "2027-07-29",
+      "reviewed_at": "2026-08-08",
+      "reassess_after": "2027-08-08",
+      "resolution_commit": null
+    },
+    {
+      "finding_id": "aes-sec-001:877a13f5e585a695813d08a07360e0ac67fc64e917c36c37de26e62675f0d604",
+      "source_fingerprint": "sha256:fa62e16d8e20638dff64e449e0793f6bbac627a53545bc55873babfa77f8989d",
+      "path": "prime-number-suite/generators/ose.c",
+      "line": 73,
+      "symbol": "free",
+      "classification": "approved-invariant",
+      "rationale": "checked_free centralizes releases for the base sieve, candidate bitset, base-prime array, and final result vector. Each owned allocation has one release on its completed control path; the one early error release is immediately followed by fail, and passing null remains explicitly valid under C11 free semantics.",
+      "invariant": "Each pointer is either null or owned by the current function or result vector, is released at most once on any continuing control path, and is not dereferenced after checked_free returns.",
+      "evidence": [
+        "prime-number-suite/generators/ose.c::checked_free",
+        "prime-number-suite/generators/ose.c::simple_sieve",
+        "prime-number-suite/generators/ose.c::sieve_collect",
+        "prime-number-suite/generators/ose.c::main",
+        "https://github.com/dlworrell/code-noodling/pull/8"
+      ],
+      "owner": "dlworrell",
+      "reviewer": "dlworrell",
+      "reviewed_at": "2026-08-08",
+      "reassess_after": "2027-08-08",
       "resolution_commit": null
     }
   ]

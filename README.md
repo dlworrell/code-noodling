@@ -1,168 +1,69 @@
-# Code Noodling  
-### Prime Generation + Physical Dice Simulation Suite  
+# Code Noodling
 
-An experimental C/C++/CUDA project exploring:  
-- **Optimized prime sieving** (CPU + multi-GPU CUDA)  
-- **Accurate dice randomness** for tabletop and RPG mechanics  
-- **Physically simulated dice rolls** using NVIDIA PhysX  
-- **Auto-tuned performance** across CPU/GPU hardware  
-- **Live visualization** with the PhysX Visual Debugger (PVD)
+`code-noodling` is an experimental monorepo for small engineering and analysis
+projects. Each codebase owns its source, build configuration, tests, generated
+outputs, and detailed documentation in a dedicated directory. `README.md` is
+the only tracked file stored directly at the repository root.
 
----
+## Codebases
 
-## Features
+| Codebase | Location | Purpose | Entry documentation |
+|---|---|---|---|
+| Prime Number and Dice Suite | [`prime-number-suite/`](prime-number-suite/) | CPU/CUDA prime generation, deterministic prime-seeded dice, and PhysX/Maya experiments | [`prime-number-suite/README.md`](prime-number-suite/README.md) |
+| Election Result Reporting | [`election_reporting/`](election_reporting/) and [`election-data/`](election-data/) | Parse Washington election snapshots and estimate the probability that reported decision boundaries change | [`docs/election-reporting.md`](docs/election-reporting.md) |
 
-| Component | Description |
-|------------|-------------|
-| **OSE / CUDA Sieve** | Optimized Sieve of Eratosthenes segmented, odd-only, GPU-parallel, JSON export |
-| **Dice Engine (CPU)** | Pure math engine for `NdM+K` expressions unbiased, optional prime-seeded randomness, chi-square validation |
-| **PhysX Dice Simulator** | Fully physical D6, D8, D12, D20 dice with realistic collisions, ramp chute, multi-threading, and GPU acceleration |
-| **Visualization** | Optional live streaming via `--pvd` to PhysX Visual Debugger or NVIDIA Omniverse View |
-| **Data Outputs** | JSON and CSV result logging, with chi-square test of fairness and probability distribution graphs |
-
----
-
-## Build Instructions
-
-### Prerequisites
-- **CMake 3.20**
-- **C++17 compiler** (clang / gcc / MSVC)
-- *(Optional)* **CUDA Toolkit** (for GPU sieve)
-- *(Optional)* **NVIDIA PhysX SDK** (for physics dice)
-- *(Optional)* **PhysX Visual Debugger (PVD)** to visualize rolls live
-
-### Build All Targets
-
-```bash
-mkdir build && cd build
-cmake .. -DBUILD_CUDA_SIEVE_MGPU=ON -DBUILD_PHYSX_DICE=ON
-cmake --build . -j
-```
-
-> **Tesla K80 users:** CUDA architecture defaults to `sm_37`.  
-> Override with:  
-> `-DCMAKE_CUDA_ARCHITECTURES=37` *(or `80` for A100s, etc.)*
-
----
-
-## CPU Dice Engine
-
-```bash
-# Fair D6, 10k rolls, chi-square test
-./dice_cpu --faces 6 --count 10000 --chi
-
-# D20, 20k rolls, prime-seeded, CSV output
-./dice_cpu --faces 20 --count 20000 --use-prime-seeds primes_50M.json --csv d20.csv --chi
-
-# RPG Expression Example
-./dice_cpu --spec "3d6+2" --count 5000 --use-prime-seeds primes_50M.json --log-json rolls.json --chi
-```
-
-**Flags**
-- `--spec NdM+K` Dice expression (can repeat)  
-- `--count N` Number of rolls per set  
-- `--chi` Enable chi-square fairness check  
-- `--csv` / `--log-json` โ Export results  
-
----
-
-## CUDA Multi-GPU Prime Generator
-
-```bash
-./cuda_sieve_mgpu 50000000 --gpus 4 --seg 256M --json primes_50M.json
-```
-
-Generates all primes 50 M using up to four Tesla K80 GPUs, writing them to `primes_50M.json`.
-
----
-
-## PhysX Dice Simulator (D6/D8/D12/D20)
-
-```bash
-# Basic D6 simulation with 50k rolls and chi-square test
-./physx_dice_multi --spec 1d6 --trials 50000 --chi
-
-# Complex run with multiple dice, chute ramp, PVD visualization, and JSON/CSV output
-./physx_dice_multi   --spec 3d6+2 --spec 1d8 --spec 1d12 --spec 1d20   --trials 20000   --use-prime-seeds primes_50M.json   --chute   --pvd 127.0.0.1:5425   --json physx_runs.json --csv physx_counts.csv --chi
-```
-
-**Flags**
-- `--chute` Adds an angled ramp, side walls, and backstop for realism  
-- `--pvd [host:port]` Stream live to PhysX Visual Debugger *(default: 127.0.0.1 : 5425)*  
-- `--use-prime-seeds` Deterministic seed list from JSON primes  
-- `--json` / `--csv` Write results to disk  
-
->  Make sure PVD is running **before** launching your sim to see live dice tumbling!
-
----
-
-## Repository Layout
+## Repository Layout
 
 ```text
 code-noodling/
-CMakeLists.txt
-.gitignore
-cuda_sieve_mgpu.cu
-dice_cpu.cpp
-physx_dice_multi.cpp
-die_mesh.h
-OSE.c                      (optional legacy)
-OSE_CUDA.cc                (optional legacy)
-README.md
-primes_50M.json            (generated at runtime)
+├── README.md                   repository index (only loose root file)
+├── .github/                    GitHub workflows and contribution templates
+├── docs/                       shared and election-reporting documentation
+├── election-data/              election configuration and source snapshots
+├── election_reporting/         election-analysis Python package
+├── prime-number-suite/         prime generators and prime-seeded dice code
+├── reports/                    generated election reports and EDT evidence
+└── tests/                      election-reporting tests
 ```
 
----
+The `.github/` directory remains at repository level because GitHub requires
+that location for Actions workflows and contribution templates. Existing
+election-reporting directories retain their established paths.
 
-## Technical Notes
+## Quick Start
 
-- **Hardware autodetect:** automatically uses all CPU threads and available CUDA devices.  
-- **Deterministic seeding:** optional uses primes for stable pseudo-random sequences.  
-- **PhysX cooking:** convex meshes generated internally for D8, D12, D20 via `die_mesh.h`.  
-- **Chute geometry:** procedural ramp (30° tilt) + sidewalls + backstop.  
-- **Visualization:** controlled via `--pvd`; debug draw enabled for collision shapes & contacts.  
-- **Data outputs:** JSON + CSV + chi-square test summary.  
-
----
-
-##  Example Workflow
+For the prime and dice programs:
 
 ```bash
-# Step 1 โ Generate prime seeds
-./cuda_sieve_mgpu 50000000 --json primes_50M.json
-
-# Step 2 โ Simulate physical dice using those seeds
-./physx_dice_multi --spec 2d6+3 --trials 10000 --use-prime-seeds primes_50M.json --chute --pvd --chi
+cmake -S prime-number-suite -B prime-number-suite/build \
+  -DBUILD_CUDA_SIEVE_MGPU=OFF \
+  -DBUILD_PHYSX_DICE=OFF
+cmake --build prime-number-suite/build --parallel
+ctest --test-dir prime-number-suite/build --output-on-failure
 ```
 
----
+For election reporting:
 
-## Election Result Reporting
+```bash
+python -m unittest discover -s tests -p 'test_election_reporting.py' -v
+python -m election_reporting \
+  --config election-data/election.toml \
+  --output reports/elections
+```
 
-The repository also contains a standard-library Python workflow for comparing dated
-Washington election-result snapshots and estimating the statistical probability that
-each current winner, top-two cutoff, or judicial majority status changes before
-certification. Every probability carries a separate 0–100 evidence-reliability score.
+See each codebase's documentation for prerequisites, optional hardware support,
+input formats, model limitations, and review status.
 
-Drop official county CSV exports or Washington `All Results` XLSX workbooks into
-`election-data/input/<source>/` with a date in each filename, then run the GitHub
-Actions workflow named **Election Result Reports**. It uses the Engineering Documents
-Toolkit (EDT) to publish and validate the report under `reports/elections/`.
+## Engineering Governance
 
-See [Election Result Reporting](docs/election-reporting.md) for input requirements,
-formulas, risk-band definitions, scope controls, and local execution.
+C and C++ changes inherit the repository's AES-SEC-001 secure-coding profile.
+The local profile and waiver log live under [`docs/engineering/`](docs/engineering/).
+The prime/dice suite's compiler-analysis configuration now lives beside the
+code it governs at [`prime-number-suite/.clang-tidy`](prime-number-suite/.clang-tidy).
 
----
+## Author and License
 
-## Author
+Donovan Worrell — Seattle, Washington, USA
 
-**Donovan Worrell**  
-Seattle, WA, USA  
-donovan.worrell@gmail.com  
-
----
-
-## License
-
-MIT License ยฉ 2025 Donovan Worrell  
-Permission is granted to use, modify, and distribute this software with attribution.
+MIT License © 2025 Donovan Worrell. Permission is granted to use, modify, and
+distribute this software with attribution.

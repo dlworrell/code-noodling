@@ -1,0 +1,64 @@
+name: Prime Number Suite
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "prime-number-suite/**"
+      - ".github/workflows/prime-number-suite.yml"
+      - "README.md"
+  pull_request:
+    paths:
+      - "prime-number-suite/**"
+      - ".github/workflows/prime-number-suite.yml"
+      - "README.md"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: prime-number-suite-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  portable-build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Code Noodling
+        uses: actions/checkout@v4
+
+      - name: Configure portable targets
+        run: >-
+          cmake
+          -S prime-number-suite
+          -B prime-number-suite/build
+          -DCMAKE_BUILD_TYPE=Debug
+          -DCMAKE_C_FLAGS=-Werror
+          -DCMAKE_CXX_FLAGS=-Werror
+          -DBUILD_CUDA_SIEVE_MGPU=OFF
+          -DBUILD_PHYSX_DICE=OFF
+
+      - name: Build portable targets
+        run: cmake --build prime-number-suite/build --parallel
+
+      - name: Run integration tests
+        run: ctest --test-dir prime-number-suite/build --output-on-failure
+
+      - name: Check Maya prototype syntax
+        run: python -m py_compile prime-number-suite/dice/maya_dice.py
+
+      - name: Configure sanitizer build
+        run: >-
+          cmake
+          -S prime-number-suite
+          -B prime-number-suite/build-sanitized
+          -DCMAKE_BUILD_TYPE=Debug
+          -DCMAKE_C_FLAGS=-fsanitize=address,undefined
+          -DCMAKE_CXX_FLAGS=-fsanitize=address,undefined
+          -DBUILD_CUDA_SIEVE_MGPU=OFF
+          -DBUILD_PHYSX_DICE=OFF
+
+      - name: Build and test with sanitizers
+        run: |
+          cmake --build prime-number-suite/build-sanitized --parallel
+          ctest --test-dir prime-number-suite/build-sanitized --output-on-failure

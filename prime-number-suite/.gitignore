@@ -1,5 +1,6 @@
 # Build trees
 /build/
+/build-*/
 /cmake-build-*/
 /out/
 CMakeCache.txt
@@ -22,8 +23,12 @@ Makefile
 *.exp
 *.pdb
 *.ilk
+ose_cpu
+dice_cpu
+cuda_sieve_mgpu
+physx_dice_multi
 
-# IDE & misc
+# IDE and language caches scoped to this suite
 *.user
 *.vcxproj*
 *.sln
@@ -38,8 +43,3 @@ __pycache__/
 *.json
 *.csv
 *.log
-
-# Election inputs and EDT-generated evidence are deliberately versioned.
-!election-data/input/**/*.csv
-!election-data/input/**/*.csv.xls
-!reports/elections/**/*.json

@@ -12,7 +12,39 @@ permissions:
 
 jobs:
   governance:
-    uses: dlworrell/AEMS/.github/workflows/aes-sec-001-distributed.yml@main
-    with:
-      include_dangerous_primitives: true
-      strict: true
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out governed repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install Clang-Tidy
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes clang-tidy
+
+      # The prime/C++ codebase owns this policy. Keeping its configuration in
+      # the suite preserves the repository contract that README.md is the only
+      # loose file at the root while retaining the same governance validation.
+      - name: Validate prime-suite Clang-Tidy policy
+        run: clang-tidy --verify-config --config-file=prime-number-suite/.clang-tidy
+
+      - name: Run distributed AES-SEC-001 governance scan
+        uses: dlworrell/AEMS/.github/actions/aes-sec-001@main
+        with:
+          include-dangerous-primitives: true
+          strict: true
+          strict-review-ratchet: true
+
+      - name: Upload governance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aes-sec-001-governance-${{ github.run_id }}
+          path: build/aems/aes-sec-001/
+          if-no-files-found: error
+          retention-days: 30

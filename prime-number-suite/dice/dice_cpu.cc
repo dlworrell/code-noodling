@@ -1,5 +1,5 @@
-// dice_cpu.cpp — unbiased dice for any n, with optional prime-seeded determinism.
-// Build: add_executable(dice_cpu dice_cpu.cpp)  (CMake snippet below)
+// dice_cpu.cc — unbiased dice for any n, with optional prime-seeded determinism.
+// Build through ../CMakeLists.txt; this file is the maintained CPU dice target.
 // Usage examples:
 //   ./dice_cpu --faces 6 --count 10000 --chi
 //   ./dice_cpu --spec "3d6+2" --count 5000 --use-prime-seeds primes.json --chi
@@ -51,8 +51,12 @@ static inline uint64_t splitmix64(uint64_t x){
     return x ^ (x >> 31);
 }
 
-// seed RNG deterministically from a prime
-static inline void seed_from_prime(uint64_t p) { g_rng.seed(splitmix64(p)); }
+// Seed deterministically from both a prime and its logical sequence position.
+// The index prevents a short prime list from repeating identical rolls when
+// prime_at() wraps around the list.
+static inline void seed_from_prime(uint64_t prime, uint64_t sequence_index) {
+    g_rng.seed(splitmix64(prime ^ splitmix64(sequence_index)));
+}
 
 // unbiased integer in [0..n-1] for any n (Lemire + rejection)
 static inline uint64_t uniform_u64_unbiased(uint64_t n){
@@ -87,7 +91,8 @@ static bool parse_spec(const std::string& s, RollSpec& out){
     // optional N
     size_t save=i;
     if (!read_int(N)) { N=1; i=save; }
-    if (i>=s.size() || (s[i]!='d' && s[i]!='D')) return false; ++i;
+    if (i>=s.size() || (s[i]!='d' && s[i]!='D')) return false;
+    ++i;
     if (!read_int(M)) return false;
     if (i<s.size()) {
         if (s[i]=='+'){ ++i; if (!read_int(K)) return false; }
@@ -106,7 +111,9 @@ static double gammaln(double z){ // Lanczos
     return -tmp + std::log(2.5066282746310005*ser/x);
 }
 static double gammap(double s, double x){ // lower regularized P(s,x)
-    if (x<=0) return 0.0; const int ITMAX=1000; const double EPS=1e-12;
+    if (x<=0) return 0.0;
+    const int ITMAX=1000;
+    const double EPS=1e-12;
     double ap=s, sum=1.0/s, del=sum;
     for(int n=1;n<=ITMAX;++n){ ap+=1.0; del*=x/ap; sum+=del; if(std::fabs(del)<std::fabs(sum)*EPS) break; }
     return sum * std::exp(-x + s*std::log(x) - gammaln(s));
@@ -195,11 +202,17 @@ int main(int argc, char** argv){
     for (int t=0; t<count; ++t, ++trial_idx) {
         if (!spec_str.empty()) {
             // roll NdM + K as a bundle (optionally bundle-seeded)
-            if (seed_per_bundle && !primes.empty()) seed_from_prime(prime_at(trial_idx));
+            if (seed_per_bundle && !primes.empty()) {
+                seed_from_prime(prime_at(trial_idx), trial_idx);
+            }
             int total = spec.K;
             std::vector<int> each; each.reserve(spec.N);
             for (int d=0; d<spec.N; ++d) {
-                if (seed_per_roll && !primes.empty()) seed_from_prime(prime_at(trial_idx* (uint64_t)spec.N + d));
+                if (seed_per_roll && !primes.empty()) {
+                    uint64_t sequence_index =
+                        trial_idx * (uint64_t)spec.N + (uint64_t)d;
+                    seed_from_prime(prime_at(sequence_index), sequence_index);
+                }
                 int r = roll_die(spec.M);
                 each.push_back(r);
                 counts[(size_t)(r-1)]++;
@@ -220,7 +233,9 @@ int main(int argc, char** argv){
             std::cout << total << (t+1<count? ' ' : '\n');
         } else {
             // simple single-die per trial
-            if (seed_per_roll && !primes.empty()) seed_from_prime(prime_at(trial_idx));
+            if (seed_per_roll && !primes.empty()) {
+                seed_from_prime(prime_at(trial_idx), trial_idx);
+            }
             int r = roll_die(faces);
             counts[(size_t)(r-1)]++;
             if (json_out) {

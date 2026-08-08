@@ -1,3 +1,6 @@
+ARCHIVED DOCUMENT — paths below describe the former root-level layout.
+Current documentation: README.md
+
 🎲 CODE NOODLING
 Prime Generation + Physical Dice Simulation Suite
 
