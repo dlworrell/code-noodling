@@ -10,7 +10,7 @@ from xml.sax.saxutils import escape
 from election_reporting.analysis import analyze_election
 from election_reporting.config import load_config
 from election_reporting.ingest import normalize_contest_key, read_snapshot
-from election_reporting.publish import publish
+from election_reporting.publish import facebook_summary, publish
 
 
 HEADER = (
@@ -342,20 +342,21 @@ class ElectionReportingTests(unittest.TestCase):
             self.assertGreater(decision.risk.change_probability or 0.0, 0.25)
             self.assertLess(decision.risk.change_probability or 0.0, 0.40)
 
-    def test_tied_boundary_has_symmetric_probability(self) -> None:
+    def test_unchanged_tie_is_symmetric_without_false_lead_change(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             inputs = root / "inputs"
             inputs.mkdir()
-            (inputs / "2026-08-06.csv").write_text(
-                result_rows(
-                    "Local Proposition 1 (Vote for 1)",
-                    "9",
-                    100,
-                    [("Yes", 50), ("No", 50)],
-                ),
-                encoding="utf-8",
-            )
+            for snapshot_date in ("2026-08-05", "2026-08-06"):
+                (inputs / f"{snapshot_date}.csv").write_text(
+                    result_rows(
+                        "Local Proposition 1 (Vote for 1)",
+                        "9",
+                        100,
+                        [("Yes", 50), ("No", 50)],
+                    ),
+                    encoding="utf-8",
+                )
             config_path = root / "election.toml"
             config_path.write_text(
                 "schema_version = 1\n"
@@ -370,12 +371,18 @@ class ElectionReportingTests(unittest.TestCase):
                 "expected_final_ballots = 150\n",
                 encoding="utf-8",
             )
-            risk = analyze_election(load_config(config_path)).races[0].decisions[0].risk
+            analysis = analyze_election(load_config(config_path))
+            risk = analysis.races[0].decisions[0].risk
             self.assertAlmostEqual(
                 risk.change_probability or 0.0,
                 0.45405,
                 places=5,
             )
+            self.assertFalse(risk.lead_changed)
+            self.assertEqual(analysis.races[0].decisions[0].current_state, "Yes and No are tied.")
+            social_report = facebook_summary(analysis)
+            self.assertIn("Yes and No are tied at this boundary.", social_report)
+            self.assertNotIn("leads No by 0 votes", social_report)
 
     def test_edt_publication_writes_human_and_quality_reports(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -409,6 +416,7 @@ class ElectionReportingTests(unittest.TestCase):
             publish(analyze_election(load_config(config_path)), output)
             self.assertTrue((output / "election-analysis.md").exists())
             self.assertTrue((output / "election-analysis.html").exists())
+            self.assertTrue((output / "facebook-summary.txt").exists())
             payload = json.loads((output / "analysis.json").read_text(encoding="utf-8"))
             risk = payload["races"][0]["decisions"][0]["risk"]
             self.assertIsInstance(risk["change_probability"], float)
@@ -416,6 +424,14 @@ class ElectionReportingTests(unittest.TestCase):
             markdown = (output / "election-analysis.md").read_text(encoding="utf-8")
             self.assertIn("## At-a-glance decisions", markdown)
             self.assertIn("| Change probability | Reliability |", markdown)
+            facebook = (output / "facebook-summary.txt").read_text(encoding="utf-8")
+            self.assertIn("ELECTION RESULTS: WHAT COULD STILL CHANGE", facebook)
+            self.assertIn("Local Proposition 1", facebook)
+            self.assertIn("Modeled change probability:", facebook)
+            self.assertIn("Reliability:", facebook)
+            self.assertIn("not an official result, a race call", facebook)
+            self.assertIn("Full race-by-race report and methodology:", facebook)
+            self.assertNotIn("| Change probability |", facebook)
             quality_path = output / "edt" / "document" / "quality.json"
             quality = json.loads(quality_path.read_text(encoding="utf-8"))
             self.assertTrue(quality["publication_ready"])

@@ -148,6 +148,8 @@ Drop official county CSV exports or Washington `All Results` XLSX workbooks into
 `election-data/input/<source>/` with a date in each filename, then run the GitHub
 Actions workflow named **Election Result Reports**. It uses the Engineering Documents
 Toolkit (EDT) to publish and validate the report under `reports/elections/`.
+The generated `facebook-summary.txt` is a concise, copy-ready social post with the
+leading change probabilities, reliability scores, and an explicit model caveat.
 
 See [Election Result Reporting](docs/election-reporting.md) for input requirements,
 formulas, risk-band definitions, scope controls, and local execution.
