@@ -25,7 +25,8 @@ Add a standard-library Python subsystem that:
 4. estimates conditional change probabilities with a tempered beta-binomial model and
    reports a separate evidence-reliability score;
 5. estimates the remaining vote pool only from declared source-level forecasts;
-6. emits a complete machine-readable analysis and canonical EDOM document;
+6. emits a complete machine-readable analysis, canonical EDOM document, and concise
+   Facebook-ready plain-text summary;
 7. delegates Markdown/HTML publication and document-quality evidence to a pinned EDT
    revision; and
 8. retains source priority and scope warnings so a local slice cannot silently replace
@@ -44,6 +45,8 @@ Positive consequences:
 - Historical margins and latest-batch shares become mechanically reproducible.
 - Every modeled boundary has a scan-friendly probability and reliability score while
   preserving the model inputs in JSON.
+- A copy-ready public summary preserves the probability, reliability, and model caveat
+  without relying on Markdown-table rendering.
 - State or district aggregates can supersede local slices without removing local
   history.
 - Statewide export timing gaps cannot produce a denominator below its detailed tally,

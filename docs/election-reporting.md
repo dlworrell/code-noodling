@@ -10,7 +10,8 @@ It ingests dated VoteWA county CSV exports and Washington `All Results` XLSX
 workbooks, preserves source hashes, compares successive snapshots, estimates the
 remaining contest-level vote pool, and creates a race-by-race canonical EDOM document.
 The Engineering Documents Toolkit (EDT) validates that document and publishes
-Markdown and HTML under `reports/elections/`.
+Markdown and HTML under `reports/elections/`. The same build also writes a compact
+plain-text summary that can be pasted directly into Facebook.
 
 Each modeled boundary has a conditional statistical change probability and a separate
 0–100 reliability score. The report begins with a probability-sorted table so close
@@ -28,7 +29,7 @@ election-data/
     ├── king-county/              dated county snapshots
     └── washington/               dated controlling aggregate snapshots
 election_reporting/               Python implementation
-reports/elections/                generated JSON, EDOM, Markdown, HTML, and EDT checks
+reports/elections/                generated JSON, EDOM, human summaries, and EDT checks
 tests/test_election_reporting.py  parser, analysis, and publication tests
 ```
 
@@ -37,7 +38,7 @@ tests/test_election_reporting.py  parser, analysis, and publication tests
 1. Download the official result export.
 2. Put it in the appropriate source directory.
 3. Rename it so the filename contains the report timestamp, for example
-   `2026-08-07-1600.csv.xls` or `2026-08-07-1700.xlsx`.
+   `2026-08-07-1600.csv.xls` or `2026-08-08-0018.xlsx`.
 4. Keep all older files.
 5. Run the GitHub Actions workflow named `Election Result Reports`.
 
@@ -196,6 +197,22 @@ The exposure label is derived directly from the modeled probability:
 The exact probability, threshold share, remaining-vote estimate, effective model name,
 and reliability rationale are retained in `analysis.json`.
 
+## Facebook summary
+
+`facebook-summary.txt` is a copy-ready plain-text post rather than a Markdown table. It
+includes the six highest-probability controlling decisions outside precinct committee
+officer races, up to three PCO decisions at or above 10 percent, the overall exposure
+counts, and the reliability-grade distribution. Each listed decision retains its
+margin, probability, and reliability score.
+
+When a statewide export requires ballot-denominator reconciliation, the post also
+reports how many controlling contests were adjusted and explains that the adjustment
+reduces the reliability score.
+
+The post links to the complete report and repeats the model caveat so the summary does
+not circulate without its central limitation: the values are conditional estimates,
+not official results or race calls.
+
 ## Scope and authority
 
 Each input source has a priority. When matching contests exist in more than one source,
@@ -221,6 +238,7 @@ reports/elections/
 ├── canonical-document.edom.json
 ├── election-analysis.md
 ├── election-analysis.html
+├── facebook-summary.txt
 └── edt/document/
     ├── validation.json
     ├── validation.md

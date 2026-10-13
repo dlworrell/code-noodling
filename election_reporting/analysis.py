@@ -390,7 +390,10 @@ def _pair_decision(
         margin_history.append(
             (snapshot.timestamp.isoformat(timespec="minutes"), current_votes - challenger_votes)
         )
-    lead_changed = any(value <= 0 for _stamp, value in margin_history[:-1])
+    currently_ahead = margin > 0
+    lead_changed = any(
+        (value > 0) != currently_ahead for _stamp, value in margin_history[:-1]
+    )
 
     latest_batch_share = None
     latest_batch_votes = None
@@ -420,9 +423,16 @@ def _pair_decision(
         contest.ballots != contest.reported_ballots,
         controlling,
     )
+    if margin == 0:
+        current_state = f"{current.name} and {challenger.name} are tied."
+    else:
+        vote_word = "vote" if margin == 1 else "votes"
+        current_state = (
+            f"{current.name} leads {challenger.name} by {margin:,} {vote_word}."
+        )
     return DecisionAnalysis(
         kind=kind,
-        current_state=f"{current.name} leads {challenger.name} by {margin:,} votes.",
+        current_state=current_state,
         current_side=current.name,
         change_side=challenger.name,
         margin=margin,

@@ -2,11 +2,18 @@ from __future__ import annotations
 
 import json
 import re
+from collections import Counter
 from pathlib import Path
 
 from . import __version__
 from .analysis import FLIP_BANDS, risk_counts
-from .model import ElectionAnalysis, ElectionReportError, RaceAnalysis
+from .model import DecisionAnalysis, ElectionAnalysis, ElectionReportError, RaceAnalysis
+
+
+PUBLIC_REPORT_URL = (
+    "https://github.com/dlworrell/code-noodling/blob/main/"
+    "reports/elections/election-analysis.md"
+)
 
 
 def _risk_label(value: str) -> str:
@@ -176,6 +183,193 @@ def _at_glance_table(analysis: ElectionAnalysis) -> str:
         "| ---: | --- | --- | --- | --- | --- |",
     ]
     return "\n".join(header + [row for _order, row in rows])
+
+
+def _facebook_decisions(
+    analysis: ElectionAnalysis,
+    *,
+    precinct_committee_officer: bool,
+) -> list[tuple[RaceAnalysis, DecisionAnalysis]]:
+    marker = "precinct committee officer"
+    items: list[tuple[RaceAnalysis, DecisionAnalysis]] = []
+    for race in analysis.races:
+        is_precinct_race = marker in race.contest.casefold()
+        if not race.controlling or is_precinct_race != precinct_committee_officer:
+            continue
+        for decision in race.decisions:
+            if decision.risk.change_probability is not None:
+                items.append((race, decision))
+    return sorted(
+        items,
+        key=lambda item: (
+            -(item[1].risk.change_probability or 0.0),
+            item[0].contest.casefold(),
+            item[1].kind,
+        ),
+    )
+
+
+def _facebook_decision_item(
+    race: RaceAnalysis,
+    decision: DecisionAnalysis,
+) -> str:
+    boundary = decision.kind.replace("_", " ").title()
+    current_state = decision.current_state
+    if decision.kind in {"winner", "top_two_cutoff"}:
+        if decision.margin == 0:
+            current_state = (
+                f"{decision.current_side} and {decision.change_side} are tied at "
+                "this boundary."
+            )
+        else:
+            vote_word = "vote" if decision.margin == 1 else "votes"
+            current_state = (
+                f"{decision.current_side} leads {decision.change_side} by "
+                f"{decision.margin:,} {vote_word}."
+            )
+    return (
+        f"• {race.contest}\n"
+        f"  {boundary}: {current_state} "
+        f"Modeled change probability: "
+        f"{_probability_label(decision.risk.change_probability)}. "
+        f"Reliability: {decision.risk.reliability_score}/100 "
+        f"({decision.risk.reliability_grade})."
+    )
+
+
+def facebook_summary(analysis: ElectionAnalysis) -> str:
+    """Build a compact, plain-text report suitable for a Facebook post."""
+    counts = risk_counts(analysis)
+    controlling_races = [race for race in analysis.races if race.controlling]
+    modeled_races = [race for race in controlling_races if race.decisions]
+    modeled_decisions = [
+        decision
+        for race in controlling_races
+        for decision in race.decisions
+        if decision.risk.change_probability is not None
+    ]
+    reliability_counts = Counter(
+        decision.risk.reliability_grade for decision in modeled_decisions
+    )
+    reconciled_races = [
+        race for race in controlling_races if race.ballots != race.reported_ballots
+    ]
+    other_decisions = _facebook_decisions(
+        analysis,
+        precinct_committee_officer=False,
+    )[:6]
+    precinct_decisions = [
+        item
+        for item in _facebook_decisions(
+            analysis,
+            precinct_committee_officer=True,
+        )
+        if (item[1].risk.change_probability or 0.0) >= 0.10
+    ][:3]
+
+    lines = [
+        "🗳️ ELECTION RESULTS: WHAT COULD STILL CHANGE",
+        "",
+        analysis.title,
+        f"Results snapshot: {analysis.as_of.replace('T', ' ')}",
+        "",
+        (
+            f"The analysis reviewed {len(analysis.races)} reported contests. "
+            f"It modeled {len(modeled_decisions)} controlling decision boundaries "
+            f"across {len(modeled_races)} races."
+        ),
+        "",
+        "HIGHEST-PROBABILITY CONTROLLING DECISIONS (EXCLUDING PCO RACES)",
+        "",
+    ]
+    if other_decisions:
+        lines.extend(
+            _facebook_decision_item(race, decision)
+            for race, decision in other_decisions
+        )
+    else:
+        lines.append("• No controlling decision has an estimable probability.")
+
+    if precinct_decisions:
+        lines.extend(
+            [
+                "",
+                "PRECINCT COMMITTEE OFFICER RACES",
+                "",
+                (
+                    "These small-vote contests have some of the highest numerical "
+                    "probabilities, but their reliability is limited."
+                ),
+            ]
+        )
+        lines.extend(
+            _facebook_decision_item(race, decision)
+            for race, decision in precinct_decisions
+        )
+
+    lines.extend(
+        [
+            "",
+            "OVERALL EXPOSURE",
+            "",
+            (
+                "Using each controlling race's highest-risk boundary: "
+                f"Toss-up {counts.get('toss_up', 0)}, "
+                f"High {counts.get('high', 0)}, "
+                f"Meaningful {counts.get('meaningful', 0)}, "
+                f"Low {counts.get('low', 0)}, and "
+                f"Very low {counts.get('very_low', 0)}. "
+                f"Another {counts.get('not_applicable', 0)} controlling races "
+                "have no modeled change boundary."
+            ),
+            "",
+            "EVIDENCE RELIABILITY",
+            "",
+            (
+                f"High {reliability_counts.get('High', 0)}, "
+                f"Moderate {reliability_counts.get('Moderate', 0)}, "
+                f"Low {reliability_counts.get('Low', 0)}, and "
+                f"Insufficient {reliability_counts.get('Insufficient', 0)}."
+            ),
+            (
+                "Reliability measures the strength of the available evidence. It is "
+                "not the probability that the current result is correct."
+            ),
+        ]
+    )
+    if reconciled_races:
+        lines.extend(
+            [
+                "",
+                "DATA QUALITY NOTE",
+                "",
+                (
+                    f"The parser reconciled {len(reconciled_races)} contest ballot "
+                    "denominators because valid votes plus overvotes and undervotes "
+                    "exceeded the reported Ballots Cast value. Each adjustment is "
+                    "disclosed in the full report and lowers its reliability score."
+                ),
+            ]
+        )
+    lines.extend(
+        [
+            "",
+            "IMPORTANT",
+            "",
+            (
+                "These are conditional model estimates based on the remaining-ballot "
+                "forecast and observed vote mix. Ballot batches are not random "
+                "samples. This is not an official result, a race call, or a substitute "
+                "for certification."
+            ),
+            "",
+            "Full race-by-race report and methodology:",
+            PUBLIC_REPORT_URL,
+            "",
+            "#WashingtonElections #ElectionResults #ElectionData",
+        ]
+    )
+    return "\n".join(lines) + "\n"
 
 
 def _node(node_id: str, kind: str, text: str, **metadata: object) -> dict[str, object]:
@@ -404,6 +598,7 @@ def publish(analysis: ElectionAnalysis, output_dir: Path) -> None:
     edom = build_edom(analysis)
     analysis_path = output_dir / "analysis.json"
     edom_path = output_dir / "canonical-document.edom.json"
+    facebook_path = output_dir / "facebook-summary.txt"
     analysis_path.write_text(
         json.dumps(payload, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
         encoding="utf-8",
@@ -412,6 +607,7 @@ def publish(analysis: ElectionAnalysis, output_dir: Path) -> None:
         json.dumps(edom, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
         encoding="utf-8",
     )
+    facebook_path.write_text(facebook_summary(analysis), encoding="utf-8")
     generate_document_reports(edom, output_dir / "edt" / "document")
     write_edom_markdown(edom_path, output_dir / "election-analysis.md")
     write_edom_html(
