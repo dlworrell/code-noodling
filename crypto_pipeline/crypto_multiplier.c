@@ -1,80 +1,76 @@
 #if !defined(_WIN32) && !defined(_WIN64)
-/* Expose O_CLOEXEC when compiling in strict C11 mode. */
 #ifndef _POSIX_C_SOURCE
 #define _POSIX_C_SOURCE 200809L
 #endif
 #endif
-
 #include "crypto_multiplier.h"
 #include <errno.h>
 #include <string.h>
-#include <fcntl.h>
-#include <unistd.h>
-
 #if defined(_WIN32) || defined(_WIN64)
 #include <windows.h>
 #include <bcrypt.h>
+#else
+#include <fcntl.h>
+#include <unistd.h>
 #endif
 
-#define THRESHOLD_KARATSUBA 32
-#define THRESHOLD_NTT       1024
-
-/* Bound all VLAs and byte-count arithmetic before touching caller memory. */
-static int valid_limb_count(size_t size) {
-    return size > 0 && size <= CRYPTO_MAX_LIMBS;
+static int valid_limb_count(size_t n) { return n > 0 && n <= CRYPTO_MAX_LIMBS; }
+static void wipe(void *p, size_t bytes) {
+    volatile unsigned char *q = p;
+    while (bytes--) *q++ = 0;
 }
-
-// ============================================================================
-// 1. LOWEST-LEVEL AUXILIARY FUNCTIONS
-// ============================================================================
-
-static inline limb_t ct_select(limb_t mask, limb_t a, limb_t b) {
-    return (mask & a) | (~mask & b);
-}
-
-void ct_modular_reduce_final(limb_t *r, const limb_t *mod, size_t size) {
-    if (!r || !mod || !valid_limb_count(size)) {
-        errno = EINVAL;
-        return;
+static int compare(const limb_t *a, const limb_t *b, size_t n) {
+    for (size_t i = n; i-- > 0;) {
+        if (a[i] != b[i]) return a[i] > b[i] ? 1 : -1;
     }
+    return 0;
+}
+static int is_zero(const limb_t *a, size_t n) {
+    limb_t bits = 0;
+    for (size_t i = 0; i < n; ++i) bits |= a[i];
+    return bits == 0;
+}
+static int is_one(const limb_t *a, size_t n) {
+    if (a[0] != 1) return 0;
+    for (size_t i = 1; i < n; ++i) if (a[i]) return 0;
+    return 1;
+}
+static int valid_modulus(const limb_t *m, size_t n) {
+    return !is_zero(m, n) && !is_one(m, n);
+}
+/* Returns borrow; supports r==a. Widen BEFORE adding borrow to b[i]. */
+static limb_t subtract(limb_t *r, const limb_t *a, const limb_t *b, size_t n) {
     limb_t borrow = 0;
-    limb_t temp[size];
-    for (size_t i = 0; i < size; i++) {
-        uint64_t diff = r[i] - mod[i] - borrow;
-        temp[i] = diff;
-        borrow = (r[i] < mod[i] + borrow) ? 1 : 0; 
+    for (size_t i = 0; i < n; ++i) {
+        dlimb_t sub = (dlimb_t)b[i] + borrow;
+        limb_t next = (dlimb_t)a[i] < sub;
+        r[i] = (limb_t)((dlimb_t)a[i] - sub);
+        borrow = next;
     }
-    limb_t mask = ~(limb_t)(0 - borrow);
-    for (size_t i = 0; i < size; i++) {
-        r[i] = ct_select(mask, temp[i], r[i]);
-    }
+    return borrow;
 }
-
-/**
- * COMPONENT 3: Constant-Time Single-Limb Modular Inverse
- * Calculates: inv = -mod[0]^-1 mod 2^64
- * Uses branchless Newton's method iterations. Valid for any odd modulus.
- */
+/* Value high*R+r is known to be <2*m. Retain the overflow bit. */
+static void final_subtract(limb_t *r, const limb_t *m, size_t n, limb_t high) {
+    limb_t temp[n];
+    limb_t borrow = subtract(temp, r, m, n);
+    limb_t mask = (limb_t)0 - (limb_t)((high != 0) | (borrow == 0));
+    for (size_t i = 0; i < n; ++i) r[i] = (mask & temp[i]) | (~mask & r[i]);
+}
+void ct_modular_reduce_final(limb_t *r, const limb_t *mod, size_t size) {
+    if (!r || !mod || !valid_limb_count(size)) { errno = EINVAL; return; }
+    if (!valid_modulus(mod, size)) { errno = EDOM; return; }
+    final_subtract(r, mod, size, 0);
+    errno = 0;
+}
 limb_t compute_montgomery_inverse(limb_t mod0) {
-    limb_t inv = mod0 * (2 - mod0 * mod0); 
-
-    inv *= 2 - mod0 * inv; // 8 bits
-    inv *= 2 - mod0 * inv; // 16 bits
-    inv *= 2 - mod0 * inv; // 32 bits
-    inv *= 2 - mod0 * inv; // 64 bits
-
-    return (limb_t)(0 - inv);
+    if (!(mod0 & 1)) { errno = EDOM; return 0; }
+    limb_t inv = 1;
+    /* Each Newton iteration doubles the correct low bits: 1 -> 64. */
+    for (unsigned i = 0; i < 6; ++i) inv *= 2 - mod0 * inv;
+    errno = 0;
+    return (limb_t)0 - inv;
 }
 
-// ============================================================================
-// 2. CORE MULTIPLICATION & REDUCTION ENGINES
-// ============================================================================
-
-/**
- * COMPONENT 1: Secure Comba Multiplication (a * b)
- * Computes a 2*size result from two inputs of length 'size'.
- * Fully unrolled/deterministic loops with no data-dependent branches.
- */
 void secure_comba_multiply(limb_t *result, const limb_t *a, const limb_t *b, size_t size) {
     if (!result || !a || !b || !valid_limb_count(size)) {
         errno = EINVAL;
@@ -106,286 +102,303 @@ void secure_comba_multiply(limb_t *result, const limb_t *a, const limb_t *b, siz
         c2 = 0;
     }
     result[2 * size - 1] = c0;
+    errno = 0;
 }
 
-/**
- * COMPONENT 2: Secure Montgomery Modular Reduction
- * Reduces the 2*size intermediate 'product' modulo 'mod' in-place.
- */
+
+/* REDC(T), with R=2^(64*n). Contract: odd m>1 and 0<=T<m*R. */
 void secure_montgomery_reduction(limb_t *product, const limb_t *mod, size_t size, limb_t inv) {
-    if (!product || !mod || !valid_limb_count(size)) {
-        errno = EINVAL;
-        return;
+    if (!product || !mod || !valid_limb_count(size)) { errno = EINVAL; return; }
+    if (!(mod[0] & 1) || !valid_modulus(mod, size) ||
+        mod[0] * inv != UINT64_MAX || compare(product + size, mod, size) >= 0) {
+        errno = EDOM; return;
     }
-    for (size_t i = 0; i < size; i++) {
+    limb_t high = 0;
+    for (size_t i = 0; i < size; ++i) {
         limb_t u = product[i] * inv;
         dlimb_t carry = 0;
-        for (size_t j = 0; j < size; j++) {
-            dlimb_t temp = (dlimb_t)product[i + j] + ((dlimb_t)u * mod[j]) + carry;
-            product[i + j] = (limb_t)temp;
-            carry = temp >> 64;
+        for (size_t j = 0; j < size; ++j) {
+            dlimb_t sum = (dlimb_t)u * mod[j] + product[i+j] + carry;
+            product[i+j] = (limb_t)sum;
+            carry = sum >> 64;
         }
-
-        size_t k = i + size;
-        while (carry > 0 && k < 2 * size) {
-            dlimb_t temp = (dlimb_t)product[k] + carry;
-            product[k] = (limb_t)temp;
-            carry = temp >> 64;
-            k++;
+        /* Fixed loop bounds; carry beyond the allocation is kept separately. */
+        for (size_t k = i + size; k < 2 * size; ++k) {
+            dlimb_t sum = (dlimb_t)product[k] + carry;
+            product[k] = (limb_t)sum;
+            carry = sum >> 64;
         }
+        high += (limb_t)carry;
     }
-
     memmove(product, product + size, size * sizeof(limb_t));
     memset(product + size, 0, size * sizeof(limb_t));
-    ct_modular_reduce_final(product, mod, size);
+    final_subtract(product, mod, size, high);
+    errno = 0;
 }
 
-/**
- * CONSTANT-TIME MULTI-PRECISION MODULAR INVERSION (Binary GCD Variant)
- * Computes: result_inv = input^-1 mod mod
- */
-void ct_mod_inverse_multiprecision(limb_t *result_inv, const limb_t *input, const limb_t *mod, size_t size) {
-    if (!result_inv || !input || !mod || !valid_limb_count(size)) {
-        errno = EINVAL;
+/* Sum-form Karatsuba: keep h+1 limbs in BOTH midpoint sums. */
+static void karatsuba_recursive(limb_t *r, const limb_t *a, const limb_t *b, size_t n) {
+    if (n <= 16) { secure_comba_multiply(r, a, b, n); return; }
+    if (n & 1) {
+        /* Pad one zero limb; retain recursive Karatsuba for odd lengths. */
+        limb_t pa[n+1], pb[n+1], pr[2*(n+1)];
+        memcpy(pa, a, n * sizeof(limb_t));
+        memcpy(pb, b, n * sizeof(limb_t));
+        pa[n] = 0; pb[n] = 0;
+        karatsuba_recursive(pr, pa, pb, n+1);
+        memcpy(r, pr, 2*n * sizeof(limb_t));
         return;
     }
-    limb_t u[size], v[size], x1[size], x2[size];
-    memcpy(u, input, size * sizeof(limb_t));
-    memcpy(v, mod, size * sizeof(limb_t));
-    
-    memset(x1, 0, size * sizeof(limb_t));
-    memset(x2, 0, size * sizeof(limb_t));
-    x1[0] = 1; 
-
-    size_t total_iterations = size * 64 * 2; 
-
-    for (size_t iter = 0; iter < total_iterations; iter++) {
-        // Track states dynamically using bitwise flag evaluation
-        // NOTE: Standard multi-precision shift and branchless cross-addition 
-        // is executed here based on flags for custom modular math libraries.
-        limb_t u_is_even = (u[0] & 1) - 1; 
-        limb_t v_is_even = (v[0] & 1) - 1; 
-        (void)u_is_even; (void)v_is_even; // Suppress compiler tracking
+    size_t h = n / 2, k = h + 1;
+    limb_t sa[k], sb[k], cross[2*k];
+    limb_t ca = 0, cb = 0;
+    for (size_t i = 0; i < h; ++i) {
+        dlimb_t x = (dlimb_t)a[i] + a[h+i] + ca;
+        dlimb_t y = (dlimb_t)b[i] + b[h+i] + cb;
+        sa[i] = (limb_t)x; ca = (limb_t)(x >> 64);
+        sb[i] = (limb_t)y; cb = (limb_t)(y >> 64);
     }
-
-    memcpy(result_inv, x1, size * sizeof(limb_t));
+    sa[h] = ca; sb[h] = cb;
+    karatsuba_recursive(r, a, b, h);
+    karatsuba_recursive(r+n, a+h, b+h, h);
+    karatsuba_recursive(cross, sa, sb, k);
+    /* Two separate subtractions preserve borrows of up to two in the sum. */
+    for (size_t part = 0; part < 2; ++part) {
+        limb_t borrow = 0;
+        for (size_t i = 0; i < 2*k; ++i) {
+            dlimb_t sub = (dlimb_t)(i < n ? r[part*n+i] : 0) + borrow;
+            limb_t next = (dlimb_t)cross[i] < sub;
+            cross[i] = (limb_t)((dlimb_t)cross[i] - sub);
+            borrow = next;
+        }
+    }
+    limb_t carry = 0;
+    for (size_t i = 0; i < 2*n-h; ++i) {
+        dlimb_t sum = (dlimb_t)r[h+i] + (i < 2*k ? cross[i] : 0) + carry;
+        r[h+i] = (limb_t)sum;
+        carry = (limb_t)(sum >> 64);
+    }
+}
+void karatsuba_multiply(limb_t *result, const limb_t *a, const limb_t *b, size_t size) {
+    if (!result || !a || !b || !valid_limb_count(size)) { errno = EINVAL; return; }
+    karatsuba_recursive(result, a, b, size);
+    errno = 0;
+}
+static uint32_t mod_power(uint32_t a, uint32_t e, uint32_t p) {
+    uint64_t value = 1, base = a;
+    while (e) {
+        if (e & 1) value = value * base % p;
+        base = base * base % p;
+        e >>= 1;
+    }
+    return (uint32_t)value;
+}
+/* Iterative radix-2 NTT. Both primes admit primitive root 3 and length<=8192. */
+static void transform(uint32_t *a, size_t length, uint32_t p, int inverse) {
+    for (size_t i = 1, j = 0; i < length; ++i) {
+        size_t bit = length >> 1;
+        while (j & bit) { j ^= bit; bit >>= 1; }
+        j ^= bit;
+        if (i < j) { uint32_t temp = a[i]; a[i] = a[j]; a[j] = temp; }
+    }
+    for (size_t width = 2; width <= length; width <<= 1) {
+        uint32_t root = mod_power(3, (p-1)/(uint32_t)width, p);
+        if (inverse) root = mod_power(root, p-2, p);
+        for (size_t i = 0; i < length; i += width) {
+            uint64_t w = 1;
+            for (size_t j = 0; j < width/2; ++j) {
+                uint32_t u = a[i+j];
+                uint32_t v = (uint32_t)(w * a[i+j+width/2] % p);
+                a[i+j] = u+v >= p ? u+v-p : u+v;
+                a[i+j+width/2] = u >= v ? u-v : u+p-v;
+                w = w * root % p;
+            }
+        }
+    }
+    if (inverse) {
+        uint32_t inv_length = mod_power((uint32_t)length, p-2, p);
+        for (size_t i = 0; i < length; ++i) a[i] = (uint32_t)((uint64_t)a[i] * inv_length % p);
+    }
+}
+/* Base-2^16 convolution, exact CRT reconstruction, then carry propagation.
+ * Max coefficient: 4096*(65535^2) < p1*p2, so CRT is unambiguous.
+ * This is a practical bounded NTT, not the Harvey-van der Hoeven algorithm. */
+void ntt_polynomial_multiply(limb_t *result, const limb_t *a, const limb_t *b, size_t n) {
+    if (!result || !a || !b || !valid_limb_count(n)) { errno = EINVAL; return; }
+    const uint32_t primes[2] = {998244353u, 1004535809u};
+    size_t digits = 4*n, length = 1;
+    while (length < 2*digits) length <<= 1;
+    uint32_t fa[length], fb[length], first[2*digits];
+    uint32_t inv_p1 = mod_power(primes[0], primes[1]-2, primes[1]);
+    memset(result, 0, 2*n * sizeof(limb_t));
+    for (size_t pass = 0; pass < 2; ++pass) {
+        uint32_t p = primes[pass];
+        for (size_t i = 0; i < length; ++i) {
+            fa[i] = i < digits ? (uint32_t)((a[i/4] >> (16*(i%4))) & 65535u) : 0;
+            fb[i] = i < digits ? (uint32_t)((b[i/4] >> (16*(i%4))) & 65535u) : 0;
+        }
+        transform(fa, length, p, 0); transform(fb, length, p, 0);
+        for (size_t i = 0; i < length; ++i) fa[i] = (uint32_t)((uint64_t)fa[i] * fb[i] % p);
+        transform(fa, length, p, 1);
+        if (pass == 0) {
+            memcpy(first, fa, 2*digits * sizeof(uint32_t));
+        } else {
+            uint64_t carry = 0;
+            for (size_t i = 0; i < 2*digits; ++i) {
+                uint64_t delta = ((uint64_t)fa[i] + p - first[i]) % p;
+                uint64_t coefficient = first[i] + (uint64_t)primes[0] * (delta * inv_p1 % p);
+                uint64_t value = coefficient + carry;
+                result[i/4] |= (limb_t)(value & 65535u) << (16*(i%4));
+                carry = value >> 16;
+            }
+        }
+    }
+    errno = 0;
+}
+void crypto_multiply_reduce(limb_t *result, const limb_t *a, const limb_t *b,
+                            const limb_t *mod, size_t size, int is_constant_time) {
+    if (!result || !a || !b || !mod || !valid_limb_count(size)) { errno = EINVAL; return; }
+    if (!(mod[0] & 1) || !valid_modulus(mod, size) ||
+        compare(a, mod, size) >= 0 || compare(b, mod, size) >= 0) { errno = EDOM; return; }
+    limb_t inv = compute_montgomery_inverse(mod[0]);
+    if (is_constant_time || size < 64) secure_comba_multiply(result, a, b, size);
+    else karatsuba_multiply(result, a, b, size);
+    /* All dispatch sizes have the same Montgomery semantics. */
+    secure_montgomery_reduction(result, mod, size, inv);
 }
 
-/**
- * HARDWARE ANTIDOTE: Secure Final Unblinding
- */
-void execute_unblinding(
-    limb_t *final_output,
-    const limb_t *blinded_result,
-    const limb_t *original_k,
-    const limb_t *mod,
-    size_t size
-) {
-    if (!final_output || !blinded_result || !original_k || !mod || !valid_limb_count(size)) {
-        errno = EINVAL;
-        return;
+/* Binary long division. Invariant: r<m; after shifting r<2*m. */
+static void limb_remainder(limb_t *r, const limb_t *a, size_t an, const limb_t *m, size_t n) {
+    memset(r, 0, n * sizeof(limb_t));
+    for (size_t bit = an * 64; bit-- > 0;) {
+        limb_t carry = (a[bit / 64] >> (bit % 64)) & 1;
+        for (size_t j = 0; j < n; ++j) {
+            limb_t next = r[j] >> 63;
+            r[j] = (r[j] << 1) | carry;
+            carry = next;
+        }
+        final_subtract(r, m, n, carry);
     }
-    limb_t k_inv[size];
-    limb_t intermediate_product[2 * size];
-    limb_t mont_inv = compute_montgomery_inverse(mod[0]);
-
-    ct_mod_inverse_multiprecision(k_inv, original_k, mod, size);
-    secure_comba_multiply(intermediate_product, blinded_result, k_inv, size);
-    secure_montgomery_reduction(intermediate_product, mod, size, mont_inv);
-    memcpy(final_output, intermediate_product, size * sizeof(limb_t));
-
-    volatile unsigned char *p = (volatile unsigned char *)k_inv;
-    size_t n = sizeof(k_inv);
-    while (n--) *p++ = 0;
 }
-
-/**
- * Platform-independent, Cryptographically Secure Random Byte Generator (CSPRNG)
- */
+int crypto_mod_multiply(limb_t *result, const limb_t *a, const limb_t *b,
+                        const limb_t *mod, size_t n) {
+    if (!result || !a || !b || !mod || !valid_limb_count(n)) { errno = EINVAL; return -1; }
+    if (!valid_modulus(mod, n)) { errno = EDOM; return -1; }
+    limb_t product[2*n];
+    karatsuba_recursive(product, a, b, n);
+    limb_remainder(result, product, 2*n, mod, n);
+    wipe(product, sizeof(product));
+    errno = 0; return 0;
+}
+static void shift_right(limb_t *a, size_t n, limb_t high) {
+    for (size_t i = n; i-- > 0;) {
+        limb_t next = a[i] & 1;
+        a[i] = (a[i] >> 1) | (high << 63);
+        high = next;
+    }
+}
+/* For odd m, half of odd x is (x+m)/2. Retain the addition overflow. */
+static void half_mod(limb_t *x, const limb_t *m, size_t n) {
+    limb_t carry = 0;
+    if (x[0] & 1) {
+        for (size_t i = 0; i < n; ++i) {
+            dlimb_t sum = (dlimb_t)x[i] + m[i] + carry;
+            x[i] = (limb_t)sum; carry = (limb_t)(sum >> 64);
+        }
+    }
+    shift_right(x, n, carry);
+}
+static void subtract_mod(limb_t *x, const limb_t *y, const limb_t *m, size_t n) {
+    if (subtract(x, x, y, n)) {
+        limb_t carry = 0;
+        for (size_t i = 0; i < n; ++i) {
+            dlimb_t sum = (dlimb_t)x[i] + m[i] + carry;
+            x[i] = (limb_t)sum; carry = (limb_t)(sum >> 64);
+        }
+    }
+}
+/* Variable-time binary extended GCD. u=input*x1 (mod m), v=input*x2 (mod m). */
+int crypto_mod_inverse(limb_t *result, const limb_t *input, const limb_t *mod, size_t n) {
+    if (!result || !input || !mod || !valid_limb_count(n)) { errno = EINVAL; return -1; }
+    if (!(mod[0] & 1) || !valid_modulus(mod, n)) { errno = EDOM; return -1; }
+    limb_t u[n], v[n], x1[n], x2[n];
+    limb_remainder(u, input, n, mod, n);
+    memcpy(v, mod, n * sizeof(limb_t));
+    memset(x1, 0, n * sizeof(limb_t));
+    memset(x2, 0, n * sizeof(limb_t));
+    x1[0] = 1;
+    int ok = 0;
+    while (!is_zero(u, n) && !is_zero(v, n)) {
+        if (is_one(u, n) || is_one(v, n)) { ok = 1; break; }
+        while (!(u[0] & 1)) { shift_right(u, n, 0); half_mod(x1, mod, n); }
+        while (!(v[0] & 1)) { shift_right(v, n, 0); half_mod(x2, mod, n); }
+        if (compare(u, v, n) >= 0) { subtract(u, u, v, n); subtract_mod(x1, x2, mod, n); }
+        else { subtract(v, v, u, n); subtract_mod(x2, x1, mod, n); }
+    }
+    /* One may have become 1 immediately before the other became zero. */
+    if (is_one(u, n) || is_one(v, n)) ok = 1;
+    if (ok) memcpy(result, is_one(u, n) ? x1 : x2, n * sizeof(limb_t));
+    wipe(u, sizeof(u)); wipe(v, sizeof(v)); wipe(x1, sizeof(x1)); wipe(x2, sizeof(x2));
+    errno = ok ? 0 : EDOM; return ok ? 0 : -1;
+}
+/* Deprecated compatibility name: this routine is NOT constant-time. */
+void ct_mod_inverse_multiprecision(limb_t *r, const limb_t *a, const limb_t *m, size_t n) {
+    (void)crypto_mod_inverse(r, a, m, n);
+}
 int secure_get_random_bytes(uint8_t *buffer, size_t length) {
+    if (!buffer || length > CRYPTO_MAX_LIMBS * sizeof(limb_t)) { errno = EINVAL; return -1; }
 #if defined(_WIN32) || defined(_WIN64)
-    NTSTATUS status = BCryptGenRandom(NULL, buffer, (ULONG)length, BCRYPT_USE_SYSTEM_PREFERRED_RANDOM);
-    return (status == 0) ? 0 : -1;
+    if (BCryptGenRandom(NULL, buffer, (ULONG)length, BCRYPT_USE_SYSTEM_PREFERRED_RANDOM) != 0) {
+        errno = EIO; return -1;
+    }
 #else
     int fd = open("/dev/urandom", O_RDONLY | O_CLOEXEC);
     if (fd < 0) return -1;
-    
-    ssize_t bytes_read = read(fd, buffer, length);
+    size_t done = 0;
+    while (done < length) {
+        ssize_t got = read(fd, buffer + done, length - done);
+        if (got < 0 && errno == EINTR) continue;
+        if (got <= 0) { int err = got < 0 ? errno : EIO; close(fd); errno = err; return -1; }
+        done += (size_t)got;
+    }
     close(fd);
-    
-    return (bytes_read == (ssize_t)length) ? 0 : -1;
 #endif
+    errno = 0; return 0;
 }
-
-/**
- * HARDWARE ANTIDOTE: Data Blinding Execution Layer
- */
-int execute_blinded_multiplication(limb_t *blinded_a, const limb_t *original_a, size_t size) {
-    if (!blinded_a || !original_a || !valid_limb_count(size)) {
-        errno = EINVAL;
-        return -1;
+/* Return both a*k mod m and k; uniform rejection sampling among units mod m. */
+int crypto_blind(limb_t *blinded, limb_t *factor, const limb_t *a, const limb_t *m, size_t n) {
+    if (!blinded || !factor || !a || !m || !valid_limb_count(n)) { errno = EINVAL; return -1; }
+    if (!(m[0] & 1) || !valid_modulus(m, n)) { errno = EDOM; return -1; }
+    limb_t k[n], inverse[n], value[n];
+    size_t used = n;
+    while (used > 1 && m[used-1] == 0) --used;
+    limb_t mask = m[used-1];
+    for (unsigned shift = 1; shift < 64; shift *= 2) mask |= mask >> shift;
+    int status = -1, error = EAGAIN;
+    memset(k, 0, n * sizeof(limb_t));
+    for (unsigned attempt = 0; attempt < 128; ++attempt) {
+        if (secure_get_random_bytes((uint8_t *)k, used * sizeof(limb_t))) { error = errno; break; }
+        k[used-1] &= mask;
+        if (is_zero(k, n) || compare(k, m, n) >= 0) continue;
+        if (crypto_mod_inverse(inverse, k, m, n)) continue;
+        (void)crypto_mod_multiply(value, a, k, m, n);
+        memcpy(blinded, value, n * sizeof(limb_t));
+        memcpy(factor, k, n * sizeof(limb_t));
+        status = 0; error = 0; break;
     }
-    limb_t k[size];
-    
-    if (secure_get_random_bytes((uint8_t *)k, size * sizeof(limb_t)) != 0) {
-        return -1; 
-    }
-    
-    k[0] |= 1;
-
-    limb_t intermediate[2 * size];
-    secure_comba_multiply(intermediate, original_a, k, size);
-    memcpy(blinded_a, intermediate, size * sizeof(limb_t));
-
-    volatile unsigned char *p = (volatile unsigned char *)k;
-    size_t n = sizeof(k);
-    while (n--) *p++ = 0;
-
-    return 0;
-   } 
-    /**
- * RECURSIVE KARATSUBA MULTIPLICATION (Optimized Variant)
- * Computes: result = a * b
- * Requires scratch space of size '4 * size'. Asymptotically scales at O(n^1.58).
- */
-static void karatsuba_multiply_recursive(limb_t *result, const limb_t *a, const limb_t *b, size_t size, limb_t *scratch) {
-    // Base case fallback to faster Comba multiplication for small arrays
-    if (size <= 16 || size % 2 != 0) {
-        secure_comba_multiply(result, a, b, size);
-        return;
-    }
-
-    size_t half = size / 2;
-
-    // Split pointers into low and high segments
-    const limb_t *a_low = a;
-    const limb_t *a_high = a + half;
-    const limb_t *b_low = b;
-    const limb_t *b_high = b + half;
-
-    limb_t *z0 = result;                 // Lower segment: 2 * half space
-    limb_t *z2 = result + 2 * half;      // Upper segment: 2 * half space
-    limb_t *z1 = scratch;                // Middle evaluation scratchpad
-    
-    // Allocate temporary buffers for mixed midpoint additions
-    limb_t *t_a = scratch + 2 * half;
-    limb_t *t_b = t_a + half;
-    limb_t *next_scratch = t_b + half;
-
-    // Step 1: Compute z0 = a_low * b_low
-    karatsuba_multiply_recursive(z0, a_low, b_low, half, next_scratch);
-
-    // Step 2: Compute z2 = a_high * b_high
-    karatsuba_multiply_recursive(z2, a_high, b_high, half, next_scratch);
-
-    // Step 3: Compute Cross Midpoints: t_a = a_low + a_high, t_b = b_low + b_high
-    limb_t carry_a = 0, carry_b = 0;
-    for (size_t i = 0; i < half; i++) {
-        dlimb_t sum_a = (dlimb_t)a_low[i] + a_high[i] + carry_a;
-        t_a[i] = (limb_t)sum_a;
-        carry_a = sum_a >> 64;
-
-        dlimb_t sum_b = (dlimb_t)b_low[i] + b_high[i] + carry_b;
-        t_b[i] = (limb_t)sum_b;
-        carry_b = sum_b >> 64;
-    }
-
-    // Step 4: Compute z1 = (a_low + a_high) * (b_low + b_high)
-    karatsuba_multiply_recursive(z1, t_a, t_b, half, next_scratch);
-
-    // Step 5: Combine pieces using linear array reduction formulas:
-    // result = z2*X^n + (z1 - z2 - z0)*X^(n/2) + z0
-    // This accumulates overlapping windows back into the main buffer.
-    limb_t borrow = 0;
-    for (size_t i = 0; i < 2 * half; i++) {
-        dlimb_t diff = (dlimb_t)z1[i] - z0[i] - z2[i] - borrow;
-        z1[i] = (limb_t)diff;
-        borrow = (diff >> 64) ? 1 : 0; // Notice data-dependent shortcutting (unsafe for secrets!)
-    }
-
-    // Accumulate structural mid-window additions to reconstruct the complete output
-    limb_t carry = 0;
-    for (size_t i = 0; i < 2 * half; i++) {
-        dlimb_t sum = (dlimb_t)result[half + i] + z1[i] + carry;
-        result[half + i] = (limb_t)sum;
-        carry = sum >> 64;
-    }
-    result[half + 2 * half] += carry;
+    wipe(k, sizeof(k)); wipe(inverse, sizeof(inverse)); wipe(value, sizeof(value));
+    errno = error; return status;
 }
-
-/**
- * EXPOSED WRAPPER FOR KARATSUBA MULTIPLICATION
- */
-void karatsuba_multiply(limb_t *result, const limb_t *a, const limb_t *b, size_t size) {
-    if (!result || !a || !b || !valid_limb_count(size)) {
-        errno = EINVAL;
-        return;
-    }
-    // Dynamic stack-allocated scratch space (4 * size) handles allocation patterns cleanly
-    limb_t scratch[size * 4];
-    memset(scratch, 0, sizeof(scratch));
-    karatsuba_multiply_recursive(result, a, b, size, scratch);
+/* The old ABI cannot return k or specify m. Fail instead of discarding k. */
+int execute_blinded_multiplication(limb_t *out, const limb_t *a, size_t n) {
+    if (!out || !a || !valid_limb_count(n)) { errno = EINVAL; return -1; }
+    errno = ENOTSUP; return -1;
 }
-
-
-// ============================================================================
-// 3. TOP-LEVEL ADAPTIVE DISPATCHER (The Wrapper)
-// ============================================================================
-/**
- * PLACEHOLDER FOR NUMBER THEORETIC TRANSFORM (NTT) POLYNOMIAL MULTIPLICATION
- * Scaled at O(n log n) for extremely large parameters (e.g., PQC / Lattice Keys).
- * This stub acts as a safe functional fallback.
- */
-void ntt_polynomial_multiply(limb_t *result, const limb_t *a, const limb_t *b, size_t size) {
-    if (!result || !a || !b || !valid_limb_count(size)) {
-        errno = EINVAL;
-        return;
-    }
-    // In a live production NTT layer, this block executes:
-    // 1. Forward_NTT(a)
-    // 2. Forward_NTT(b)
-    // 3. Hadamard/Element-wise Vector multiplication 
-    // 4. Inverse_NTT(result)
-    
-    // Fallback to our high-performance Karatsuba pipeline if NTT structures 
-    // are not explicitly initialized for this dimension range.
-    karatsuba_multiply(result, a, b, size);
-}
-
-void crypto_multiply_reduce(
-    limb_t *result, 
-    const limb_t *a, 
-    const limb_t *b, 
-    const limb_t *mod, 
-    size_t size, 
-    int is_constant_time
-) {
-    if (!result || !a || !b || !mod || !valid_limb_count(size)) {
-        errno = EINVAL;
-        return;
-    }
-    if (is_constant_time) {
-        limb_t inv = compute_montgomery_inverse(mod[0]);
-        secure_comba_multiply(result, a, b, size);
-        secure_montgomery_reduction(result, mod, size, inv);
-        return;
-    }
-
-    // SPEED PIPELINE PATH (Variable Time Allowed)
-    if (size < THRESHOLD_KARATSUBA) {
-        secure_comba_multiply(result, a, b, size); // Comba is still faster for small dimensions
-        limb_t inv = compute_montgomery_inverse(mod[0]);
-        secure_montgomery_reduction(result, mod, size, inv);
-    } 
-    else if (size < THRESHOLD_NTT) {
-        limb_t temp_prod[2 * size];
-        karatsuba_multiply(temp_prod, a, b, size);
-        
-        limb_t inv = compute_montgomery_inverse(mod[0]);
-        memcpy(result, temp_prod, 2 * size * sizeof(limb_t));
-        secure_montgomery_reduction(result, mod, size, inv);
-    } 
-    else {
-    ntt_polynomial_multiply(result, a, b, size);
-    }
+void execute_unblinding(limb_t *out, const limb_t *blinded, const limb_t *k,
+                        const limb_t *m, size_t n) {
+    if (!out || !blinded || !k || !m || !valid_limb_count(n)) { errno = EINVAL; return; }
+    limb_t inverse[n];
+    if (crypto_mod_inverse(inverse, k, m, n)) { wipe(inverse, sizeof(inverse)); return; }
+    (void)crypto_mod_multiply(out, blinded, inverse, m, n);
+    wipe(inverse, sizeof(inverse));
 }

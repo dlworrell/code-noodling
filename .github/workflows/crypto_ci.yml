@@ -45,3 +45,6 @@ jobs:
 
     - name: Boundary tests with AddressSanitizer and UndefinedBehaviorSanitizer
       run: make bounds-sanitize
+
+    - name: Differential arithmetic tests against Python integers
+      run: python3 test_arithmetic.py
