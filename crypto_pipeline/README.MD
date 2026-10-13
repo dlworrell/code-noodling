@@ -1,4 +1,10 @@
-# Integer multiplication experiments
+> **Experimental prototype:** the inverse routine is unfinished and other arithmetic
+> and timing defects remain. Do not use this code to protect secrets. CI checks
+> compilation and memory behavior, not cryptographic security. See
+> [the memory review and open defects](../docs/engineering/CRYPTO-MEMORY-REVIEW.md).
+> Array counts are limited to 1..1024 limbs; buffer contracts are in the header.
+
+# Secure Cryptographic Multiplication Wrapper Engine
 
 Inspired by Jack Murtagh's Scientific American article, *Mathematicians still
  don't know the fastest way to multiply numbers* (October 2026), archived in

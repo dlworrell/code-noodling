@@ -5,7 +5,8 @@
 #endif
 #endif
 
-#include <stdint.h>
+#include "crypto_multiplier.h"
+#include <errno.h>
 #include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -18,8 +19,10 @@
 #define THRESHOLD_KARATSUBA 32
 #define THRESHOLD_NTT       1024
 
-typedef uint64_t limb_t;
-typedef unsigned __int128 dlimb_t; 
+/* Bound all VLAs and byte-count arithmetic before touching caller memory. */
+static int valid_limb_count(size_t size) {
+    return size > 0 && size <= CRYPTO_MAX_LIMBS;
+}
 
 // ============================================================================
 // 1. LOWEST-LEVEL AUXILIARY FUNCTIONS
@@ -30,6 +33,10 @@ static inline limb_t ct_select(limb_t mask, limb_t a, limb_t b) {
 }
 
 void ct_modular_reduce_final(limb_t *r, const limb_t *mod, size_t size) {
+    if (!r || !mod || !valid_limb_count(size)) {
+        errno = EINVAL;
+        return;
+    }
     limb_t borrow = 0;
     limb_t temp[size];
     for (size_t i = 0; i < size; i++) {
@@ -69,6 +76,10 @@ limb_t compute_montgomery_inverse(limb_t mod0) {
  * Fully unrolled/deterministic loops with no data-dependent branches.
  */
 void secure_comba_multiply(limb_t *result, const limb_t *a, const limb_t *b, size_t size) {
+    if (!result || !a || !b || !valid_limb_count(size)) {
+        errno = EINVAL;
+        return;
+    }
     limb_t c0 = 0, c1 = 0, c2 = 0;
     memset(result, 0, 2 * size * sizeof(limb_t));
 
@@ -102,6 +113,10 @@ void secure_comba_multiply(limb_t *result, const limb_t *a, const limb_t *b, siz
  * Reduces the 2*size intermediate 'product' modulo 'mod' in-place.
  */
 void secure_montgomery_reduction(limb_t *product, const limb_t *mod, size_t size, limb_t inv) {
+    if (!product || !mod || !valid_limb_count(size)) {
+        errno = EINVAL;
+        return;
+    }
     for (size_t i = 0; i < size; i++) {
         limb_t u = product[i] * inv;
         dlimb_t carry = 0;
@@ -130,6 +145,10 @@ void secure_montgomery_reduction(limb_t *product, const limb_t *mod, size_t size
  * Computes: result_inv = input^-1 mod mod
  */
 void ct_mod_inverse_multiprecision(limb_t *result_inv, const limb_t *input, const limb_t *mod, size_t size) {
+    if (!result_inv || !input || !mod || !valid_limb_count(size)) {
+        errno = EINVAL;
+        return;
+    }
     limb_t u[size], v[size], x1[size], x2[size];
     memcpy(u, input, size * sizeof(limb_t));
     memcpy(v, mod, size * sizeof(limb_t));
@@ -162,6 +181,10 @@ void execute_unblinding(
     const limb_t *mod,
     size_t size
 ) {
+    if (!final_output || !blinded_result || !original_k || !mod || !valid_limb_count(size)) {
+        errno = EINVAL;
+        return;
+    }
     limb_t k_inv[size];
     limb_t intermediate_product[2 * size];
     limb_t mont_inv = compute_montgomery_inverse(mod[0]);
@@ -198,6 +221,10 @@ int secure_get_random_bytes(uint8_t *buffer, size_t length) {
  * HARDWARE ANTIDOTE: Data Blinding Execution Layer
  */
 int execute_blinded_multiplication(limb_t *blinded_a, const limb_t *original_a, size_t size) {
+    if (!blinded_a || !original_a || !valid_limb_count(size)) {
+        errno = EINVAL;
+        return -1;
+    }
     limb_t k[size];
     
     if (secure_get_random_bytes((uint8_t *)k, size * sizeof(limb_t)) != 0) {
@@ -219,11 +246,11 @@ int execute_blinded_multiplication(limb_t *blinded_a, const limb_t *original_a, 
     /**
  * RECURSIVE KARATSUBA MULTIPLICATION (Optimized Variant)
  * Computes: result = a * b
- * Requires scratch space of size '2 * size'. Asymptotically scales at O(n^1.58).
+ * Requires scratch space of size '4 * size'. Asymptotically scales at O(n^1.58).
  */
-void karatsuba_multiply_recursive(limb_t *result, const limb_t *a, const limb_t *b, size_t size, limb_t *scratch) {
+static void karatsuba_multiply_recursive(limb_t *result, const limb_t *a, const limb_t *b, size_t size, limb_t *scratch) {
     // Base case fallback to faster Comba multiplication for small arrays
-    if (size <= 16) {
+    if (size <= 16 || size % 2 != 0) {
         secure_comba_multiply(result, a, b, size);
         return;
     }
@@ -290,6 +317,10 @@ void karatsuba_multiply_recursive(limb_t *result, const limb_t *a, const limb_t 
  * EXPOSED WRAPPER FOR KARATSUBA MULTIPLICATION
  */
 void karatsuba_multiply(limb_t *result, const limb_t *a, const limb_t *b, size_t size) {
+    if (!result || !a || !b || !valid_limb_count(size)) {
+        errno = EINVAL;
+        return;
+    }
     // Dynamic stack-allocated scratch space (4 * size) handles allocation patterns cleanly
     limb_t scratch[size * 4];
     memset(scratch, 0, sizeof(scratch));
@@ -306,6 +337,10 @@ void karatsuba_multiply(limb_t *result, const limb_t *a, const limb_t *b, size_t
  * This stub acts as a safe functional fallback.
  */
 void ntt_polynomial_multiply(limb_t *result, const limb_t *a, const limb_t *b, size_t size) {
+    if (!result || !a || !b || !valid_limb_count(size)) {
+        errno = EINVAL;
+        return;
+    }
     // In a live production NTT layer, this block executes:
     // 1. Forward_NTT(a)
     // 2. Forward_NTT(b)
@@ -325,6 +360,10 @@ void crypto_multiply_reduce(
     size_t size, 
     int is_constant_time
 ) {
+    if (!result || !a || !b || !mod || !valid_limb_count(size)) {
+        errno = EINVAL;
+        return;
+    }
     if (is_constant_time) {
         limb_t inv = compute_montgomery_inverse(mod[0]);
         secure_comba_multiply(result, a, b, size);
