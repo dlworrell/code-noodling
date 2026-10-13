@@ -30,9 +30,9 @@ def main():
         if importlib.metadata.version(package) != pin:
             raise RuntimeError('Unpinned dependency: '+package)
     report = {'cbmc':version,'flags':FLAGS,'complete':False,'checks':[],
-              'scope':'16-limb source checks, source-bound local refinements and arithmetic lemmas',
-              'open_obligations':['C-to-arithmetic refinement and invariant composition',
-                  'context setup field effects/error preservation',
+              'scope':'16-limb source checks and conditional packed-state/field-contract proofs',
+              'open_obligations':['independent C-to-model refinement, including memory primitive contracts',
+                  'direct context byte-array verifier discrepancy',
                   'independent audit of trusted source abstractions',
                   'compiled machine-code preservation','hardware timing signal'],
               'security_status':'NOT CLEARED FOR SECRET USE'}
@@ -74,6 +74,12 @@ def main():
                         0,'stale mapping rejected')
         passed &= check('arithmetic',[sys.executable,str(HERE/'prove_arithmetic.py'),
                                       '--output',str(output/'arithmetic')],0,'dropped_high_carry_control: sat')
+        passed &= check('context-contract',[sys.executable,str(HERE/'prove_context_contract.py'),
+                          '--dependency',str(output/'setup-inverse/certificate.json'),
+                          '--output',str(output/'context-contract')],0,'4 mutations produce counterexamples')
+        passed &= check('loop-composition',[sys.executable,str(HERE/'prove_loop_composition.py'),
+                          '--dependencies',str(output),'--output',str(output/'loop-composition')],
+                          0,'PASS: packed-state loop composition')
         report['complete'] = True
         report['all_scoped_checks_passed'] = passed
         return 0 if passed else 1

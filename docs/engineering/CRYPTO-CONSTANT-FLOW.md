@@ -177,9 +177,12 @@ source information-flow checker with deliberate-leak controls, and 14
 SMT-checked arithmetic lemmas. These are proof fragments and source checks,
 **not a completed functional or compiled-code proof**. The custom source
 checker/parser are trusted components. Initialization now has a trusted source-level abstract check. Setup inverse
-lifting and five local C arithmetic steps are source-bound SMT checks. Context
-copy/error effects, whole-loop invariant composition, independent model audit,
-and compiler preservation remain explicitly open. Physical timing clearance is also unchanged.
+lifting and five local C arithmetic steps are source-bound SMT checks. The third milestone adds packed-state loop composition and nine context field
+contracts under explicit, trusted C-to-model and memory-primitive mappings.
+Negative controls detect lost carries, skipped subtraction and four context
+model faults. Independent C refinement, the direct context byte-array verifier
+discrepancy, model audit and compiler preservation remain open. Physical timing
+clearance is unchanged.
 
 ## Assembly review and remaining work
 
