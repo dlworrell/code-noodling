@@ -176,9 +176,10 @@ CBMC memory/undefined-operation checks on the production C, a conservative
 source information-flow checker with deliberate-leak controls, and 14
 SMT-checked arithmetic lemmas. These are proof fragments and source checks,
 **not a completed functional or compiled-code proof**. The custom source
-checker/parser are trusted components. Initialization completeness, setup,
-C-to-mathematics refinement/invariant composition, and compiler preservation
-remain explicitly open. Physical timing clearance is also unchanged.
+checker/parser are trusted components. Initialization now has a trusted source-level abstract check. Setup inverse
+lifting and five local C arithmetic steps are source-bound SMT checks. Context
+copy/error effects, whole-loop invariant composition, independent model audit,
+and compiler preservation remain explicitly open. Physical timing clearance is also unchanged.
 
 ## Assembly review and remaining work
 

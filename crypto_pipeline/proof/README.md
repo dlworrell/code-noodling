@@ -26,7 +26,10 @@ EM, hardware instruction-latency, or whole-protocol claim is included.
 | CBMC `memory16.c` | Bounds, pointer validity/overflow, signed overflow, shift/division checks, return/errno, complete loop unwinding at n=16 | Actual production C is included directly; CBMC/GCC preprocessing/library models are trusted; this does not separately prove every read initialized |
 | Source information-flow checker | Every branch, short circuit, loop bound, array index/base, local array size, and memset argument is public under its restricted C model | Custom checker and pycparser are trusted, not formally verified; assumes defined execution; no compiler or machine-code theorem |
 | Z3 arithmetic obligations | 14 universal word/packed-state/REDC/subtraction lemmas | Standalone mathematical lemmas; correspondence to every C step and complete invariant composition remain open |
-| Negative controls | Four source leaks rejected and a dropped-high-carry arithmetic counterexample found | Validates specific checker behaviors, not soundness of the checkers themselves |
+| Initialization abstract execution | 1,512 array reads are initialized; all 16 output limbs written; 32+16 scratch limbs zero on return | Actual C AST, secret values abstracted to unknown; trusted restricted interpreter; valid 16-limb public path only |
+| Setup inverse lifting | Six recognized C iterations establish the negative inverse modulo 2^64 | Eight SMT obligations plus an exact AST specialization; context copy/error effects remain open |
+| Local C arithmetic refinement | Five source-bound word-step obligations: multiply/split, carry propagation, borrow/narrowing, mask/selection | Exact kernel AST must match; whole-loop induction is still open |
+| Negative controls | Four flow leaks, five initialization/wipe defects, two broken setup recurrences, a stale arithmetic mapping, and the dropped-high-carry arithmetic counterexample are detected | Validates specific checker behaviors, not soundness of the checkers themselves |
 
 The memory harness permits arbitrary modulus, inverse and operand bits, a
 stronger input domain for these memory properties than the arithmetic contract.
@@ -56,6 +59,54 @@ explicit witness `z*R-T = m*Q`, which implies congruence without asking the solv
 to reason about a variable-modulus remainder. The full proof still needs the
 C refinement and induction linking packed states to these equations.
 
+## Second milestone: initialization and source-bound refinements
+
+`check_initialization.py` executes the restricted C AST at n=16, representing
+all input/context payload words as initialized unknown values. Each scratch
+slot starts uninitialized; `memset` initializes exactly the represented byte
+range. Array reads check the actual public index, writes mark that slot, and
+pointer p follows its actual scratch-array target. Any unknown control/index,
+unsupported construct, out-of-range public arithmetic or out-of-bounds access
+fails. Return stops execution. Final checks require every output slot initialized
+and both scratch arrays zero. Caller buffers/context must themselves be valid
+and initialized. This models source array erasure, not register spills or an
+optimizer's treatment of secret copies.
+
+Five mutations remove product initialization, leave difference elements unwritten,
+leave an output unwritten, remove carry initialization, or truncate a wipe. Each
+must fail for an initialization/wipe reason. This checker is a trusted abstract
+interpreter, not an independently verified C semantics implementation. The
+experimental CBMC uninitialized-local pass did not understand these array writes
+and memset well enough to establish this property; it is not credited as a proof.
+
+`prove_setup_inverse.py` matches the full setup function's canonical AST to an
+explicit schema, with only initial inverse and iteration count interpreted as
+parameters. For odd m[0], the initial inverse 1 is correct modulo 2. Each source
+iteration doubles precision: 1,2,4,8,16,32,64 bits. The SMT equations include
+separate integer wrap quotients for the unsigned 64-bit product, subtraction,
+result product, and final negation. No claim that C executes in unbounded integers
+is made. Each lift supplies an explicit divisibility witness. Five iterations
+are rejected for insufficient precision; initial inverse zero fails the base
+case. Other source-schema changes require re-review. These eight obligations
+prove the recognized recurrence and stored inverse, not every setup field effect.
+
+`prove_c_steps.py` similarly binds five local obligations to the exact kernel AST
+and records the corresponding C loop bodies. A changed shift is rejected as a
+stale mapping. The obligations establish that the multiply-accumulate fits 128
+bits, that storing/shifting splits it exactly, that carry propagation yields a
+bit, that 128-to-64-bit borrow narrowing matches modular subtraction, and that
+the mask selects the intended limb. Their preconditions, including the incoming
+carry range and final high/borrow bits, still need to be carried through the
+whole loops. A matching source hash alone is not that composition proof.
+
+Context-effects verification remains open. Direct and inverse-abstracted CBMC
+attempts exhausted local resources. Z3's array backend returned UNKNOWN; an
+alternative CBMC array encoding produced a modulus-copy counterexample. Replaying
+that concrete modulus (limb 0 = 1, limb 15 = 128) against the native GCC build did
+not reproduce the copy failure. This does not resolve the verifier discrepancy.
+Those runs are retained as failed/incomplete attempts in the second milestone's
+evidence and are not part of the passing CI claim.
+
 ## Reproduce
 
 On Linux x86-64 with Python 3.12, GCC preprocessing, curl and dpkg-deb:
@@ -81,7 +132,7 @@ optimizations; existing GCC/Clang dynamic taint checks remain complementary.
 
 ## Remaining proof work
 
-1. Prove initialization completeness and context setup/inverse correctness.
+1. Complete context setup copying, zeroing and error-preservation checks; independently audit the trusted initialization and setup-inverse models.
 2. Connect actual limb arrays and C word operations to packed integer state;
    instantiate and compose row/carry/REDC loop invariants through all 16 limbs.
 3. Derive the functional output theorem from that refinement, rather than
