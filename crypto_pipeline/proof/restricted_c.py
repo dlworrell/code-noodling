@@ -7,7 +7,6 @@ from pycparser import c_ast, c_generator
 
 ROOT = Path(__file__).resolve().parents[1]
 PRELUDE = '''typedef unsigned long size_t;
-typedef unsigned long uintptr_t;
 typedef unsigned long long limb_t;
 typedef unsigned __int128 dlimb_t;
 typedef struct { size_t limbs; limb_t inverse; limb_t modulus[1024]; } crypto_montgomery_ctx;

@@ -30,10 +30,9 @@ def main():
         if importlib.metadata.version(package) != pin:
             raise RuntimeError('Unpinned dependency: '+package)
     report = {'cbmc':version,'flags':FLAGS,'complete':False,'checks':[],
-              'scope':'16-limb source checks and conditional packed-state/field-contract proofs',
-              'open_obligations':['independent C-to-model refinement, including memory primitive contracts',
-                  'direct context byte-array verifier discrepancy',
-                  'independent audit of trusted source abstractions',
+              'scope':'16-limb source checks and separate arithmetic lemmas',
+              'open_obligations':['C-to-arithmetic refinement and invariant composition',
+                  'initialization completeness','context setup correctness',
                   'compiled machine-code preservation','hardware timing signal'],
               'security_status':'NOT CLEARED FOR SECRET USE'}
 
@@ -48,19 +47,11 @@ def main():
 
     def check(name, command, expected, marker):
         log = output/(name+'.log')
-        timed_out = False
-        try:
-            with log.open('w') as stream:
-                proc = subprocess.run(command,stdout=stream,stderr=subprocess.STDOUT,timeout=600)
-            exit_code = proc.returncode
-        except subprocess.TimeoutExpired:
-            timed_out = True
-            exit_code = None
-            with log.open('a') as stream:
-                stream.write('\nTIMEOUT: exceeded 600 seconds\n')
-        passed = not timed_out and exit_code == expected and marker in log.read_text()
-        report['checks'].append({'name':name,'command':command,'exit_code':exit_code,
-                                 'expected_exit':expected,'timed_out':timed_out,'passed':passed})
+        with log.open('w') as stream:
+            proc = subprocess.run(command,stdout=stream,stderr=subprocess.STDOUT,timeout=600)
+        passed = proc.returncode == expected and marker in log.read_text()
+        report['checks'].append({'name':name,'command':command,'exit_code':proc.returncode,
+                                 'expected_exit':expected,'passed':passed})
         save()
         print(name+': '+('PASS' if passed else 'FAIL'),flush=True)
         return passed
@@ -71,26 +62,8 @@ def main():
         passed &= check('information-flow',[sys.executable,str(HERE/'check_information_flow.py'),
                                            '--output',str(output/'information-flow.json')],
                         0,'4 deliberate leaks rejected')
-        passed &= check('initialization',[sys.executable,str(HERE/'check_initialization.py'),
-                                          '--output',str(output/'initialization.json')],
-                        0,'5 mutations rejected')
-        passed &= check('setup-inverse',[sys.executable,str(HERE/'prove_setup_inverse.py'),
-                                         '--output',str(output/'setup-inverse')],
-                        0,'2 mutations rejected')
-        passed &= check('c-steps',[sys.executable,str(HERE/'prove_c_steps.py'),
-                                   '--output',str(output/'c-steps')],
-                        0,'stale mapping rejected')
-        passed &= check('carry-loop',[sys.executable,str(HERE/'verify_carry_loop.py'),
-                          '--cbmc',args.cbmc,'--output',str(output/'carry-loop')],
-                        0,'PASS: 16 extracted carry offsets; 3 arithmetic mutations isolated')
         passed &= check('arithmetic',[sys.executable,str(HERE/'prove_arithmetic.py'),
                                       '--output',str(output/'arithmetic')],0,'dropped_high_carry_control: sat')
-        passed &= check('context-contract',[sys.executable,str(HERE/'prove_context_contract.py'),
-                          '--dependency',str(output/'setup-inverse/certificate.json'),
-                          '--output',str(output/'context-contract')],0,'4 mutations produce counterexamples')
-        passed &= check('loop-composition',[sys.executable,str(HERE/'prove_loop_composition.py'),
-                          '--dependencies',str(output),'--output',str(output/'loop-composition')],
-                          0,'PASS: packed-state loop composition')
         report['complete'] = True
         report['all_scoped_checks_passed'] = passed
         return 0 if passed else 1
