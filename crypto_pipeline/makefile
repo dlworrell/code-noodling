@@ -19,8 +19,8 @@ crypto_multiplier.o: crypto_multiplier.c crypto_multiplier.h
 test_suite.o: test_suite.c crypto_multiplier.h
 	$(CC) $(CFLAGS) -c test_suite.c
 	
-shared: crypto_multiplier.c crypto_multiplier.h
-	$(CC) $(CFLAGS) -fPIC -shared -o libcryptomult.so crypto_multiplier.c
+shared: crypto_multiplier.c crypto_multiplier.h crypto_montgomery_ct.c crypto_montgomery_ct.h
+	$(CC) $(CFLAGS) -fPIC -shared -o libcryptomult.so crypto_multiplier.c crypto_montgomery_ct.c
 	
 clean:
 	rm -f *.o $(TARGET) test_bounds libcryptomult.so
