@@ -37,7 +37,7 @@ jobs:
     # Timing measurements on shared runners are evidence, not a portable proof.
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
@@ -45,8 +45,8 @@ jobs:
           repository: oreparaz/dudect
           ref: dc269651fb2567e46755cfb2a13d3875592968b5
           path: crypto_pipeline/vendor/dudect
-      - name: Run bounded timing experiments and deliberate-leak control
-        run: ./crypto_pipeline/run_dudect.sh
+      - name: Diagnose 16-limb signal with a fixed control matrix
+        run: python3 crypto_pipeline/run_timing_diagnosis.py --output build/ct-timing
       - name: Retain timing evidence
         if: always()
         uses: actions/upload-artifact@v4

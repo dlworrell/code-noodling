@@ -60,7 +60,8 @@ The callback observes a result byte to retain the computation.
 
 `run_dudect.sh` runs 101 batches per class/size on one CPU, stops with a nonzero
 exit code on detected leakage, and validates a deliberate timing-leak control.
-It is available through manual workflow_dispatch. Shared-runner measurements
+It remains available as a quick local sweep. Manual workflow_dispatch now runs
+the diagnostic matrix below so failures do not discard later controls. Shared-runner measurements
 are exploratory evidence; repeat on controlled target hardware before drawing
 security conclusions. The default deterministic CI matrix does not run timing.
 
@@ -90,6 +91,83 @@ secret-input candidate. The
 16-limb result needs diagnosis with controls and independent hardware; it may
 reflect a real hardware-level effect or an experimental confounder. It is not
 justified to attribute it to noise without further evidence.
+
+## Diagnostic matrix: 2026-10-13
+
+`run_timing_diagnosis.py` predeclares ten experiments: five modes, each with
+zero-versus-random and m-1-versus-random inputs, at 16 limbs and 101 batches.
+It compiles the same candidate object once, pins every process to one CPU,
+records the plan before measuring, and saves each exit status, raw log, build
+command, environment, object assembly, and hashes. Threshold crossings do not
+stop later experiments. An unexpected control result makes the overall command
+fail; this is diagnostic evidence, not a green security gate. Existing output
+directories are refused, so an earlier failed result cannot be overwritten.
+Infrastructure exceptions preserve partial evidence; only a report with
+`matrix_completed: true` represents a completed matrix.
+
+Modes are the original deliberate leak and public-operand baseline, plus:
+- **Input only:** volatile reads of all 32 input limbs, XOR accumulation and the
+  same byte sink, with no Montgomery call. This tests a different, shorter code
+  path and does not reproduce every memory access of the candidate.
+- **Random labels:** execute the real candidate on the same input mixture but
+  independently randomize statistical class labels after preparing each input.
+  This is a diagnostic null control, not a way to test actual operand leakage.
+- **Candidate:** the original input labels and unmodified arithmetic.
+
+Local GCC 13.3 O2, CPU 0, same virtualized Xeon host; final reported abs(t):
+
+| Mode | Zero class | m-1 class | Result |
+|---|---:|---:|---|
+| Deliberate leak | 194.97 | 193.49 | Both detected, batch 4 |
+| Public baseline | 2.18 | 2.26 | No crossing in 101 batches |
+| Input only | 10.06 | 10.11 | Detected at batches 51 and 12 |
+| Random labels | 2.18 | 2.15 | No crossing in 101 batches |
+| Candidate | 3.00 | 6.13 | No crossing in 101 batches |
+
+The matrix exited 1 because the input-only controls crossed the threshold.
+[Full evidence](evidence/montgomery-diagnosis-20261013.json) includes raw logs,
+metadata, hashes and the input-only callback disassembly. Inspection confirms
+that callback has fixed-count loads/XORs and sink access, with no Montgomery
+call, multiplication or secret-dependent branch/address.
+
+**Inference:** the observed separation is not unique to Montgomery arithmetic.
+Input preparation, memory/data-path behavior, and shared-host measurement effects
+are possible contributors. This experiment does not distinguish them, establish
+a root cause, or rule out an additional arithmetic leak. In particular, the new
+candidate non-crossings do not erase the earlier t=10.11 result. Both datasets
+remain part of the record. No arithmetic changes were made to chase a green run.
+
+### Controlled target procedure
+
+Run on the actual intended deployment CPU and OS, preferably an otherwise idle
+physical machine. Select an available CPU, record whether its SMT sibling is
+active, and record virtualization, frequency governor, turbo/power settings,
+compiler and OS versions. CPU affinity alone is not CPU isolation. The script
+records lscpu, OS/compiler versions, governor and sibling information where
+available; record actual competing workloads and power settings separately.
+Do not change shared-host system settings just to run this experiment.
+
+Clone dudect and check out the pinned revision above, then run from the repo:
+
+```sh
+python3 crypto_pipeline/run_timing_diagnosis.py \
+  --dudect /path/to/dudect --cpu 2 --compiler gcc --optimization O2 \
+  --output build/diagnosis-target-gcc-O2-01
+```
+
+Choose the compiler/optimization combinations and repetition count before
+measuring (for example GCC and Clang, O2 and O3, three complete matrices each).
+Use a new directory for each run and keep every result, including controls and
+nonzero exits. Check the deliberate-leak controls detect and inspect any null
+control crossing before interpreting candidate comparisons. A clean matrix on
+one machine is a bounded observation, not clearance or a proof.
+
+Next discriminating experiments, on that hardware: compare input-only and
+candidate behavior across independently prepared datasets and cache states;
+then isolate multiplication, reduction, and final selection if the candidate
+signal persists while controls remain quiet. Preserve the original harness as a
+reference and predeclare each variation. The shared environment used here is
+not a substitute for this controlled-hardware step.
 
 ## Assembly review and remaining work
 

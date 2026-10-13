@@ -18,6 +18,14 @@ static volatile uint8_t sink;
 uint8_t do_one_computation(uint8_t *data) {
     /* dudect allocates aligned storage; chunk stride is a multiple of 8. */
     limb_t *a = (limb_t *)(void *)data;
+#ifdef CT_TIMING_INPUT_ONLY
+    /* Fixed-address volatile reads retain all input traffic, without arithmetic. */
+    const volatile limb_t *input = a;
+    limb_t observed = 0;
+    for (size_t i = 0; i < 2*CT_LIMBS; ++i) observed ^= input[i];
+    sink ^= (uint8_t)observed;
+    return sink;
+#else
     limb_t out[CT_LIMBS];
 #ifdef CT_TIMING_NEGATIVE_CONTROL
     /* Deliberate timing leak to validate the measurement setup. */
@@ -35,6 +43,7 @@ uint8_t do_one_computation(uint8_t *data) {
                                      b, CT_LIMBS, &mont);
     sink ^= (uint8_t)(out[0] ^ (limb_t)rc);
     return sink;
+#endif
 }
 void prepare_inputs(dudect_config_t *config, uint8_t *data, uint8_t *classes) {
     randombytes(data, config->number_measurements * config->chunk_size);
@@ -49,6 +58,10 @@ void prepare_inputs(dudect_config_t *config, uint8_t *data, uint8_t *classes) {
             /* Public modulus R-1: clearing the low bit guarantees a,b<m. */
             p[0] &= ~UINT64_C(1); p[CT_LIMBS] &= ~UINT64_C(1);
         }
+#ifdef CT_TIMING_RANDOM_LABELS
+        /* Preserve the mixture but break the link between values and labels. */
+        classes[i] = randombit();
+#endif
     }
 }
 int main(void) {
