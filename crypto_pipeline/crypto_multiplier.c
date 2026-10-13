@@ -1,3 +1,10 @@
+#if !defined(_WIN32) && !defined(_WIN64)
+/* Expose O_CLOEXEC when compiling in strict C11 mode. */
+#ifndef _POSIX_C_SOURCE
+#define _POSIX_C_SOURCE 200809L
+#endif
+#endif
+
 #include <stdint.h>
 #include <string.h>
 #include <fcntl.h>
