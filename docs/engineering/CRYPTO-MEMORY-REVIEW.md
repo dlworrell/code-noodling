@@ -1,65 +1,65 @@
-# Cryptographic prototype memory review
+# Cryptographic experiment memory review
 
 Reviewed 2026-10-13 by Codex (automated code review); owner: dlworrell.
-Scope: the twelve memory primitive calls in crypto_pipeline/crypto_multiplier.c.
-This is not a cryptographic correctness or side-channel certification.
+Scope: sixteen memory primitive calls in crypto_pipeline/crypto_multiplier.c.
+This review concerns buffer bounds, not timing or cryptographic certification.
+The prior twelve-call review is preserved in repository history; this revision
+reassesses calls whose source fingerprints or ordinal identities have changed.
 
-## Enforced and caller obligations
+## Preconditions and bounds
 
-Every limb-array entry point rejects NULL arrays and counts outside 1..1024
-before allocating a VLA or accessing array storage. Invalid inputs leave output
-unchanged and set errno to EINVAL (the blinding function also returns -1).
-The cap bounds all byte counts: n*8 <= 8192, 2*n*8 <= 16384, and
-4*n*8 <= 32768 bytes. Recursive scratch plus nested local arrays require adequate
-stack space; applications with small thread stacks must supply a larger stack.
+Public array entry points validate non-NULL pointers and counts in 1..1024
+before any VLA or memory access. Private helpers receive validated bounded
+counts. The header specifies exact array capacities and disjoint output/input
+storage; read-only inputs can alias each other. Pointer-only APIs cannot verify
+allocation size. Supplying a short buffer or forbidden overlap violates the
+caller contract. In-place reduction is explicitly documented.
 
-The legacy C interfaces cannot infer allocation capacity from a pointer. Callers
-must provide valid aligned arrays of the lengths documented in the header.
-Outputs must be disjoint from input arrays; read-only inputs may alias each other.
-The explicitly in-place reduction operations modify their own product/r array.
-These requirements also apply to FFI callers. An undersized allocation or
-forbidden overlap remains a caller contract violation, not a checked error.
+The ordinary product needs 2*n limbs. Odd Karatsuba calls n>16 pad to n+1, at
+most 1024, in private pa/pb/pr arrays. Even calls split at h=n/2, with h+1-limb
+midpoint sums and 2*(h+1)-limb cross product. Every recursive operand is fully
+initialized. Reconstruction accesses only the 2*n-limb result. Recursion shrinks
+after any one-limb padding step.
 
-## Per-call review
+NTT uses d=4*n<=4096 digits and power-of-two L>=2*d, L<=8192. Its fa/fb arrays
+hold L uint32_t elements and first holds 2*d. Transform arrays require up to
+96 KiB of stack, plus caller and function overhead. Recursive arithmetic and
+other local arrays also need sufficient stack; this code targets normal hosted
+thread stacks, not tiny embedded stacks.
 
-All memset calls are ordinary initialization, not secret erasure.
+All memset calls below initialize ordinary working storage. None is relied upon
+for secret erasure. Explicit wiping uses a volatile byte loop, but not all
+multiplication or transform intermediates are erased; see the arithmetic notes.
 
-| Call | Bound / overlap argument |
+## Reviewed primitive calls
+
+| Site | Bound / overlap invariant |
 |---|---|
-| Comba result initialization | Caller supplies 2*n output limbs. Validated n bounds the identical zero-fill byte count. Recursive callers provide 2*n limbs in result/scratch segments. |
-| Reduction memmove | Caller supplies 2*n product limbs. Source [n,2*n) and destination [0,n) are in that allocation. memmove permits overlap. |
-| Reduction upper-half initialization | Destination [n,2*n) is the upper half of that same product allocation. |
-| Inverse input to u | u is n limbs; input is contractually n readable limbs; u is a distinct local array. |
-| Inverse modulus to v | v is n limbs; mod is contractually n readable limbs; v is a distinct local array. |
-| Inverse x1 initialization | x1 is exactly n limbs; n was checked before VLA creation. |
-| Inverse x2 initialization | x2 is exactly n limbs; n was checked before VLA creation. |
-| Inverse x1 to result_inv | Source is local n-limb x1; caller supplies n writable limbs disjoint from locals. This is memory-safe under the contract but the inverse algorithm is unfinished. |
-| Unblinding final copy | Source intermediate_product is 2*n limbs; only its low n limbs are copied to the n-limb output. |
-| Blinding final copy | Source intermediate is 2*n limbs; only n limbs are copied to the n-limb output. Truncation is an arithmetic issue, not an out-of-bounds copy. |
-| Karatsuba scratch initialization | scratch is 4*n limbs and memset uses sizeof(scratch). Recursive helper is now private. For even n>16 it reserves 2*n limbs and recurses at n/2, so S(n)=2*n+S(n/2)<4*n; odd sizes use Comba instead of dropping a high limb. |
-| Dispatcher temporary to result | temp_prod is 2*n limbs; result contract requires 2*n writable limbs; the source is a distinct local array. |
+| Comba output initialization | The validated output contract provides 2*n limbs, matching the fill count. Internal calls provide equivalent bounded local segments. |
+| REDC memmove | Source [n,2*n) and destination [0,n) lie within the 2*n-limb product allocation. memmove permits overlap. |
+| REDC upper-half zeroing | product+n has n remaining limbs, exactly the fill length. |
+| Odd Karatsuba pa copy | pa has n+1 limbs; n source limbs are copied, then the final limb is explicitly zeroed. |
+| Odd Karatsuba pb copy | Same bound for pb; local destination is distinct from caller source. |
+| Odd Karatsuba result copy | pr has 2*(n+1) initialized limbs; exactly 2*n go to the contracted output. |
+| NTT output initialization | Output has 2*n limbs and the fill matches. |
+| NTT residue copy | first has 2*d uint32_t elements; fa has L>=2*d initialized elements; arrays are distinct. |
+| Long-division remainder initialization | r has n limbs, passed either as a private n-limb array or a contracted output; fill is n limbs. |
+| Inverse modulus copy | v is an n-limb VLA; mod contract supplies n readable limbs, distinct from local v. |
+| Inverse x1 initialization | x1 is n limbs, matching the fill. |
+| Inverse x2 initialization | x2 is n limbs, matching the fill. |
+| Inverse result copy | Either selected local coefficient has n initialized limbs; output contract supplies n writable limbs. No output copy occurs on failure. |
+| Blinding factor initialization | k is n limbs; zero-fill initializes also the unused high limbs when the modulus has leading zero limbs. |
+| Blinded-value copy | value and caller blinded output each have n limbs; value is initialized by successful ordinary modular multiplication. |
+| Factor copy | k and caller factor output each have n limbs and are disjoint. Both output copies occur only after successful sampling. |
 
-## Evidence and limits
+## Regression evidence
 
-Run `make -C crypto_pipeline bounds-sanitize` for instrumented regression tests.
-They cover rejected counts 0, 1025, SIZE_MAX; representative NULL arguments;
-and sizes 1,16,17,31,32,33,63,64,65,1023,1024 through all limb-array entry points.
-Output sentinels supplement AddressSanitizer/UndefinedBehaviorSanitizer checks.
-The workflow runs these tests with sanitizer recovery disabled.
-Existing four-limb smoke cases also run under Valgrind.
+`make -C crypto_pipeline bounds-sanitize` runs ASan/UBSan with recovery disabled,
+invalid input/count checks, boundary lengths, output sentinels, and selected
+mathematical regressions. `python3 crypto_pipeline/test_arithmetic.py` compares
+products/reductions/inverses with independent Python integers, including maximum
+sizes. GitHub CI runs these alongside clang-tidy and Valgrind smoke execution.
+These checks complement the per-call invariants; they are not exhaustive proofs.
 
-Approval of a memory primitive's invariant does not approve its surrounding
-arithmetic. Known open correctness/security problems include:
-
-- Multiprecision inverse is a placeholder returning 1, so unblinding is unfinished.
-- Karatsuba drops midpoint-addition carries; borrow and carry propagation need
-  mathematical repair and independent big-integer oracle tests.
-- Montgomery reduction can drop a carry beyond 2*n limbs and its final
-  subtraction can overflow mod[i]+borrow. Its carry loop is data-dependent.
-- The NTT fallback branch does not perform modular reduction.
-- Blinding discards the upper product and does not return the blinding factor.
-- The sample Python binding encodes only two of its four limbs.
-
-These are open defects, not waived or resolved by this ledger. The prototype
-must not be described as production-ready or side-channel safe. A future checked
-API should take explicit capacities and return status instead of relying on errno.
+See [arithmetic notes](CRYPTO-ARITHMETIC.md) for repaired mathematical defects,
+API migration, NTT coefficient bounds, benchmarks, and remaining security work.
