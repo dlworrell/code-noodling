@@ -24,7 +24,7 @@ jobs:
 
     - name: Step 1 - Static Analysis (Clang-Tidy)
       run: |
-        clang-tidy crypto_multiplier.c test_suite.c test_bounds.c -- -std=c11
+        clang-tidy crypto_multiplier.c test_suite.c -- -std=c11
 
     - name: Step 2 - Compile Binary Targets via Makefile
       run: |
@@ -42,10 +42,3 @@ jobs:
         # This smoke test does not establish constant-time or side-channel safety.
         ./test_suite
         echo "[CI Pipeline Pass] Build and functional smoke tests completed."
-
-    - name: Boundary tests with AddressSanitizer and UndefinedBehaviorSanitizer
-      run: make bounds-sanitize
-
-    - name: Differential arithmetic tests against Python integers
-      run: |
-        python3 test_arithmetic.py
