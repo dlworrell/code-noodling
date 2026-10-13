@@ -1,3 +1,9 @@
+> **Experimental prototype:** the inverse routine is unfinished and other arithmetic
+> and timing defects remain. Do not use this code to protect secrets. CI checks
+> compilation and memory behavior, not cryptographic security. See
+> [the memory review and open defects](../docs/engineering/CRYPTO-MEMORY-REVIEW.md).
+> Array counts are limited to 1..1024 limbs; buffer contracts are in the header.
+
 # Secure Cryptographic Multiplication Wrapper Engine
 
 ![Build Status](https://github.com)
