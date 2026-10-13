@@ -99,13 +99,39 @@ the mask selects the intended limb. Their preconditions, including the incoming
 carry range and final high/borrow bits, still need to be carried through the
 whole loops. A matching source hash alone is not that composition proof.
 
-Context-effects verification remains open. Direct and inverse-abstracted CBMC
+Direct byte-level context-effects verification remains open. Direct and inverse-abstracted CBMC
 attempts exhausted local resources. Z3's array backend returned UNKNOWN; an
 alternative CBMC array encoding produced a modulus-copy counterexample. Replaying
 that concrete modulus (limb 0 = 1, limb 15 = 128) against the native GCC build did
 not reproduce the copy failure. This does not resolve the verifier discrepancy.
 Those runs are retained as failed/incomplete attempts in the second milestone's
 evidence and are not part of the passing CI claim.
+
+## Third milestone: conditional composition and field contracts
+
+`prove_loop_composition.py` binds the exact kernel AST to packed-state equations.
+It checks telescoping product/carry/subtraction rows, all 16 REDC offsets and
+coefficient bounds, retained-high bounds, canonical selection, and the final
+Montgomery congruence witness. It requires the local arithmetic, inverse, and
+initialization certificates. Dropping the final row carry and skipping final
+subtraction each produce a concrete counterexample. Static footprint checks
+cover the initially zero carry destinations and preservation of cancelled limbs.
+
+These are checked algebraic composition obligations under a **trusted manual
+C-to-equation specialization**. Exact AST matching prevents silent source drift;
+it does not independently prove the mapping or discharge every C invariant
+precondition. This is not an end-to-end C functional correctness theorem.
+
+`prove_context_contract.py` checks nine typed-field properties under explicit
+word contracts for zeroing and nonoverlapping copying. Success is scoped to
+16 limbs; null pointers, zero/oversized counts and invalid 16-limb moduli cover
+error paths. It checks copying, zero tail, stored length/inverse, return/errno,
+and unchanged fields on errors. Four model mutations produce counterexamples.
+Padding bytes and independent byte-level C semantics are excluded. An additional
+explicit-word CBMC attempt exhausted memory; no failed attempt counts as proof.
+
+The runner executes both models in CI and retains their SMT inputs, certificates,
+and dependency hashes. Cryptographic security status remains unchanged.
 
 ## Reproduce
 
@@ -132,13 +158,10 @@ optimizations; existing GCC/Clang dynamic taint checks remain complementary.
 
 ## Remaining proof work
 
-1. Complete context setup copying, zeroing and error-preservation checks; independently audit the trusted initialization and setup-inverse models.
-2. Connect actual limb arrays and C word operations to packed integer state;
-   instantiate and compose row/carry/REDC loop invariants through all 16 limbs.
-3. Derive the functional output theorem from that refinement, rather than
-   treating independently proved arithmetic lemmas as a proof of the C.
-4. Independently audit or replace the custom source checker, and establish
-   preservation to the selected executable/compiler configuration.
+1. Independently verify the C-to-equation specialization and standard memory primitive contracts; audit the initialization and inverse models.
+2. Replace trusted composition/footprint glue with independently checked C refinement, including invariant preconditions across iterations.
+3. Resolve the direct context byte-array verifier discrepancy; the field model does not resolve it.
+4. Establish preservation to the selected executable/compiler configuration.
 5. Resolve the empirical timing signal under an appropriate hardware model.
 
 An exploratory CBMC self-composition recorded complete traces, then arbitrary
