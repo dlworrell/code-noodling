@@ -30,9 +30,10 @@ def main():
         if importlib.metadata.version(package) != pin:
             raise RuntimeError('Unpinned dependency: '+package)
     report = {'cbmc':version,'flags':FLAGS,'complete':False,'checks':[],
-              'scope':'16-limb source checks and separate arithmetic lemmas',
+              'scope':'16-limb source checks, source-bound local refinements and arithmetic lemmas',
               'open_obligations':['C-to-arithmetic refinement and invariant composition',
-                  'initialization completeness','context setup correctness',
+                  'context setup field effects/error preservation',
+                  'independent audit of trusted source abstractions',
                   'compiled machine-code preservation','hardware timing signal'],
               'security_status':'NOT CLEARED FOR SECRET USE'}
 
@@ -62,6 +63,15 @@ def main():
         passed &= check('information-flow',[sys.executable,str(HERE/'check_information_flow.py'),
                                            '--output',str(output/'information-flow.json')],
                         0,'4 deliberate leaks rejected')
+        passed &= check('initialization',[sys.executable,str(HERE/'check_initialization.py'),
+                                          '--output',str(output/'initialization.json')],
+                        0,'5 mutations rejected')
+        passed &= check('setup-inverse',[sys.executable,str(HERE/'prove_setup_inverse.py'),
+                                         '--output',str(output/'setup-inverse')],
+                        0,'2 mutations rejected')
+        passed &= check('c-steps',[sys.executable,str(HERE/'prove_c_steps.py'),
+                                   '--output',str(output/'c-steps')],
+                        0,'stale mapping rejected')
         passed &= check('arithmetic',[sys.executable,str(HERE/'prove_arithmetic.py'),
                                       '--output',str(output/'arithmetic')],0,'dropped_high_carry_control: sat')
         report['complete'] = True
