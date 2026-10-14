@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <errno.h>
+
+#ifdef NDEBUG
+#error "Test assertions must remain enabled"
+#endif
 #include "crypto_multiplier.h"
 
 // Simple printing helper
@@ -33,22 +38,28 @@ int main() {
 
     // Verify inverse pre-computation
     limb_t inv = compute_montgomery_inverse(mod[0]);
-    assert(inv % 2 != 0); // Must be odd
+    assert(errno == 0 && mod[0] * inv == UINT64_MAX);
     printf("[PASS] Inverse computed successfully: 0x%016llX\n", (unsigned long long)inv);
 
     // Run execution routes
     printf("\nExecuting Secure Path for Case 1 (Dense)...\n");
     crypto_multiply_reduce(res1, a1, b1, mod, size, 1);
     print_limbs("Case 1 Modular Result", res1, size);
+    /* Independent Python integer oracle: a*b*pow(2**256,-1,m) % m. */
+    const limb_t expected1[4] = {UINT64_C(0xedcba987654320fe), UINT64_C(0x13579be02468acf1), UINT64_C(0x6d3a06d3a06d3a06), UINT64_C(0xe6f8091a2b3c4d5e)};
+    assert(errno == 0);
+    for (size_t i = 0; i < size; ++i) assert(res1[i] == expected1[i]);
+    for (size_t i = size; i < 2 * size; ++i) assert(res1[i] == 0);
 
     printf("\nExecuting Secure Path for Case 2 (Sparse)...\n");
     crypto_multiply_reduce(res2, a2, b2, mod, size, 1);
     print_limbs("Case 2 Modular Result", res2, size);
+    /* Independent Python integer oracle: a*b*pow(2**256,-1,m) % m. */
+    const limb_t expected2[4] = {UINT64_C(0xffffffffffffffff), UINT64_C(0x0000000000000004), UINT64_C(0xffffffffffffffff), UINT64_C(0xfffffffffffffffd)};
+    assert(errno == 0);
+    for (size_t i = 0; i < size; ++i) assert(res2[i] == expected2[i]);
+    for (size_t i = size; i < 2 * size; ++i) assert(res2[i] == 0);
 
-    // Sanity check: Case 2 should give exactly 2 * 1 = 2 (in Montgomery Space reduction)
-    // Note: Real testing requires transforming inputs into Montgomery space (Multiplied by R mod M)
-    // to get standard expected algebraic outputs.
-    
     printf("\n[SUCCESS] Functional pipeline validation complete.\n");
     return 0;
 }

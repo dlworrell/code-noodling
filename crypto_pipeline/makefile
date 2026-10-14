@@ -25,7 +25,7 @@ shared: crypto_multiplier.c crypto_multiplier.h crypto_montgomery_ct.c crypto_mo
 clean:
 	rm -f *.o $(TARGET) test_bounds libcryptomult.so
 
-.PHONY: all clean
+.PHONY: all shared clean
 
 # Dedicated bounds checks, instrumented independently of optimized objects.
 bounds-sanitize: crypto_multiplier.c crypto_multiplier.h test_bounds.c
