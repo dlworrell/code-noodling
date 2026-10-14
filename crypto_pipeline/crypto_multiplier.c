@@ -55,6 +55,7 @@ static void final_subtract(limb_t *r, const limb_t *m, size_t n, limb_t high) {
     limb_t borrow = subtract(temp, r, m, n);
     limb_t mask = (limb_t)0 - (limb_t)((high != 0) | (borrow == 0));
     for (size_t i = 0; i < n; ++i) r[i] = (mask & temp[i]) | (~mask & r[i]);
+    wipe(temp, n * sizeof(limb_t));
 }
 void ct_modular_reduce_final(limb_t *r, const limb_t *mod, size_t size) {
     if (!r || !mod || !valid_limb_count(size)) { errno = EINVAL; return; }

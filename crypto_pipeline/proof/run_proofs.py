@@ -48,11 +48,19 @@ def main():
 
     def check(name, command, expected, marker):
         log = output/(name+'.log')
-        with log.open('w') as stream:
-            proc = subprocess.run(command,stdout=stream,stderr=subprocess.STDOUT,timeout=600)
-        passed = proc.returncode == expected and marker in log.read_text()
-        report['checks'].append({'name':name,'command':command,'exit_code':proc.returncode,
-                                 'expected_exit':expected,'passed':passed})
+        timed_out = False
+        try:
+            with log.open('w') as stream:
+                proc = subprocess.run(command,stdout=stream,stderr=subprocess.STDOUT,timeout=600)
+            exit_code = proc.returncode
+        except subprocess.TimeoutExpired:
+            timed_out = True
+            exit_code = None
+            with log.open('a') as stream:
+                stream.write('\nTIMEOUT: exceeded 600 seconds\n')
+        passed = not timed_out and exit_code == expected and marker in log.read_text()
+        report['checks'].append({'name':name,'command':command,'exit_code':exit_code,
+                                 'expected_exit':expected,'timed_out':timed_out,'passed':passed})
         save()
         print(name+': '+('PASS' if passed else 'FAIL'),flush=True)
         return passed
