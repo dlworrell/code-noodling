@@ -4,6 +4,13 @@
 
 int crypto_montgomery_ctx_init(crypto_montgomery_ctx *ctx, const limb_t *modulus, size_t n) {
     if (!ctx || !modulus || n == 0 || n > CRYPTO_MAX_LIMBS) { errno = EINVAL; return -1; }
+    /* Supported flat-address target: compare distances, never wrapping endpoints.
+     * Caller still supplies valid, aligned, sufficiently large objects. */
+    uintptr_t ms = (uintptr_t)modulus;
+    uintptr_t cs = (uintptr_t)ctx;
+    size_t mb = n * sizeof(*modulus);
+    size_t cb = sizeof(*ctx);
+    if (ms <= cs ? cs - ms < mb : ms - cs < cb) { errno = EINVAL; return -1; }
     /* Only public modulus bits are inspected by this setup routine. */
     limb_t upper = 0;
     for (size_t i = 1; i < n; ++i) upper |= modulus[i];

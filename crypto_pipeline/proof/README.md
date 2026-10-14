@@ -176,3 +176,15 @@ References:
 - https://model-checking.github.io/cbmc-training/cbmc/overview/loop-unwinding.html
 - https://github.com/Z3Prover/z3
 - https://github.com/eliben/pycparser
+
+### Setup overlap rejection (2026-10-14)
+
+Setup now rejects intersecting context/modulus ranges before reading modulus
+payloads, using ordered unsigned address differences on the supported flat-address
+target. The caller must still supply valid aligned objects of sufficient size.
+The six Newton iterations and the multiplication kernel are unchanged. The exact
+setup AST mapping was reviewed and updated for the five inserted statements.
+The field-contract model includes an abstract public overlap error predicate;
+its correspondence to pointer-to-integer conversion and interval arithmetic is
+trusted, not an independently checked byte-memory theorem. Native tests cover
+both address orderings, exact adjacency, and unchanged context on rejection.
