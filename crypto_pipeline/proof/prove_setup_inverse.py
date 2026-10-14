@@ -15,7 +15,7 @@ import z3
 from restricted_c import ROOT,PRELUDE
 
 B=1<<64
-SCHEMA='b85da1e107a1d41d9b035936b053af241ed991cd678ed5ad7139c6aa2c183833'
+SCHEMA='5a53373c7dbb500432a9b2685d8eea9732006525fd58473ce5723da36412deb1'
 
 
 def extract(source):
@@ -26,16 +26,16 @@ def extract(source):
     functions=[n for n in ast.ext if isinstance(n,c_ast.FuncDef) and n.decl.name=='crypto_montgomery_ctx_init']
     if len(functions)!=1: raise ValueError('setup definition missing')
     function=functions[0]
-    if len(function.body.block_items)!=12: raise ValueError('unsupported setup schema')
-    initial=function.body.block_items[4].init
-    count=function.body.block_items[5].cond.right
+    if len(function.body.block_items)!=17: raise ValueError('unsupported setup schema')
+    initial=function.body.block_items[9].init
+    count=function.body.block_items[10].cond.right
     if not isinstance(initial,c_ast.Constant) or not isinstance(count,c_ast.Constant):
         raise ValueError('setup constants required')
     initial_value=int(initial.value,0);iterations=int(count.value,0)
     if not 0<=initial_value<B or not 0<=iterations<=6: raise ValueError('unsupported setup constants')
     normalized=copy.deepcopy(function)
-    normalized.body.block_items[4].init=c_ast.Constant('int','1')
-    normalized.body.block_items[5].cond.right=c_ast.Constant('int','6')
+    normalized.body.block_items[9].init=c_ast.Constant('int','1')
+    normalized.body.block_items[10].cond.right=c_ast.Constant('int','6')
     canonical=c_generator.CGenerator().visit(normalized)
     if hashlib.sha256(canonical.encode()).hexdigest()!=SCHEMA:
         raise ValueError('setup schema changed; proof mapping must be reviewed')

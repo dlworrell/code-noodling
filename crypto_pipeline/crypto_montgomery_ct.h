@@ -14,7 +14,8 @@ typedef struct {
 } crypto_montgomery_ctx;
 
 /* Public setup: modulus is n limbs, odd and >1; 1<=n<=1024.
- * ctx and modulus must not overlap. Returns 0 or -1 with EINVAL/EDOM.
+ * Overlap is rejected on the supported flat-address target. Caller provides valid
+ * aligned objects of sufficient size. Returns 0 or -1 with EINVAL/EDOM.
  * On error ctx is unchanged; on success errno=0. */
 int crypto_montgomery_ctx_init(crypto_montgomery_ctx *ctx, const limb_t *modulus, size_t n);
 

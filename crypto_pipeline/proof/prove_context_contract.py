@@ -27,11 +27,11 @@ def run(source,out,dependency,mutation=None):
     old=z3.Array('old_context_modulus',z3.IntSort(),bv)
     oldlen,oldinv,inverse=z3.BitVecs('old_length old_inverse computed_inverse',64)
     witness=z3.Int('witness')
-    ctx_null,mod_null=z3.Bools('ctx_null mod_null')
+    ctx_null,mod_null,overlap=z3.Bools('ctx_null mod_null overlap')
     count=z3.BitVec('count',64)
     upper=z3.BitVecVal(0,64)
     for i in range(1,N):upper=upper|modulus[i]
-    invalid=z3.Or(ctx_null,mod_null,count==0,z3.UGT(count,CAP))
+    invalid=z3.Or(ctx_null,mod_null,overlap,count==0,z3.UGT(count,CAP))
     domain=z3.And((modulus[0]&1)==1,z3.Or(upper!=0,z3.UGT(modulus[0],1)))
     success=z3.And(z3.Not(invalid),domain)
     # Only successful n=16 is included; invalid count covers all 0 or >1024.
@@ -73,8 +73,8 @@ def run(source,out,dependency,mutation=None):
     report={'source_sha256':digest,'schema_sha256':SCHEMA,
             'dependency_sha256':hashlib.sha256(dependency.read_bytes()).hexdigest(),
             'obligations':records,'passed':all(r['result']=='unsat' for r in records),
-            'scope':'typed context fields: success at n=16, null pointers, n=0, all n>1024, invalid modulus at n=16; padding bytes excluded',
-            'trusted':['exact-AST specialization','word contracts for memset zero and nonoverlapping memcpy','C layout/64-bit unsigned-word mapping','Z3'],
+            'scope':'typed context fields: success at n=16, null pointers, rejected overlap, n=0, all n>1024, invalid modulus at n=16; padding bytes excluded',
+            'trusted':['exact-AST specialization','word contracts for memset zero and nonoverlapping memcpy','C layout/64-bit unsigned-word mapping; flat-address overlap predicate specialization','Z3'],
             'primitive_contracts':{'memset':'zero every context field; ignores padding observations',
                                    'memcpy':'copy exactly n initialized aligned nonoverlapping limbs'},
             'not_claimed':'independent byte-level C proof or resolution of the earlier CBMC discrepancy'}

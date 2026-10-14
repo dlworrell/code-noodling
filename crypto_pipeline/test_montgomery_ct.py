@@ -36,6 +36,34 @@ class MontgomeryCandidateTests(unittest.TestCase):
                     self.assertEqual(c.get_errno(),0)
                     self.assertEqual(integer(out),(a*b*rinv)%m,(n,m,a,b))
 
+    def test_setup_rejects_overlap_without_writes(self):
+        ctx = Context()
+        ctx.modulus[0] = 11
+        saved = bytes(ctx)
+        for offset in (0, Context.modulus.offset, c.sizeof(Context) - c.sizeof(U)):
+            pointer = c.cast(c.byref(ctx, offset), P)
+            c.set_errno(0)
+            self.assertEqual(lib.crypto_montgomery_ctx_init(c.byref(ctx), pointer, 1), -1)
+            self.assertEqual(c.get_errno(), errno.EINVAL)
+            self.assertEqual(bytes(ctx), saved)
+
+    def test_setup_adjacent_ranges_and_reverse_overlap(self):
+        class Layout(c.Structure):
+            _fields_ = [('before', U * 2), ('ctx', Context), ('after', U * 2)]
+        storage = Layout()
+        for offset in (0, Layout.after.offset):
+            pointer = c.cast(c.byref(storage, offset), P)
+            pointer[0] = 11
+            pointer[1] = 0
+            self.assertEqual(lib.crypto_montgomery_ctx_init(c.byref(storage.ctx), pointer, 2), 0)
+            self.assertEqual(storage.ctx.modulus[0], 11)
+        pointer = c.cast(c.byref(storage, c.sizeof(U)), P)
+        saved = bytes(storage)
+        c.set_errno(0)
+        self.assertEqual(lib.crypto_montgomery_ctx_init(c.byref(storage.ctx), pointer, 2), -1)
+        self.assertEqual(c.get_errno(), errno.EINVAL)
+        self.assertEqual(bytes(storage), saved)
+
     def test_public_setup_errors_preserve_context(self):
         ctx=Context()
         self.assertEqual(lib.crypto_montgomery_ctx_init(c.byref(ctx),limbs(11,1),1),0)
