@@ -4,7 +4,7 @@
  * Review status: reference-only; it is intentionally excluded from CMake.
  * The actor-name raycast is incomplete (the actor is named "Die", not by face)
  * and the scene has no ground plane, so this file must not be used for
- * statistical results. See ../physx_dice_multi.cpp for the maintained path.
+ * statistical results. See ../physx/physx_dice_multi.cpp for the maintained path.
  */
 
 #include <PxPhysicsAPI.h>

@@ -1,5 +1,6 @@
-// dice_cpu.cc — unbiased dice for any n, with optional prime-seeded determinism.
-// Build through ../CMakeLists.txt; this file is the maintained CPU dice target.
+// dice_cpu.cpp — unbiased dice for any n, with optional prime-seeded determinism.
+// Build with the Autotools package in ../ (configure && make) or through
+// ../../CMakeLists.txt; this file is the maintained CPU dice target.
 // Usage examples:
 //   ./dice_cpu --faces 6 --count 10000 --chi
 //   ./dice_cpu --spec "3d6+2" --count 5000 --use-prime-seeds primes.json --chi

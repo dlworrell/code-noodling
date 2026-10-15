@@ -1,4 +1,4 @@
-// die_mesh.h — Platonic solids + face normals + convex mesh cooking for PhysX
+// die_mesh.hpp — Platonic solids + face normals + convex mesh cooking for PhysX
 // Provides: make_d6_box, make_d8, make_d12, make_d20, cook_points_to_convex,
 // spawn_die_mesh, top_face_from_normals.
 // Works stand-alone; put in the same directory as physx_dice_multi.cpp.

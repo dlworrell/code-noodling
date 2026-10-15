@@ -3,7 +3,7 @@
 // prime-seeded determinism, JSON/CSV logs, chi-square, and full physical support
 // for D6/D8/D12/D20 via convex meshes + local-face-normal top-face detection.
 //
-// Build through ../CMakeLists.txt with BUILD_PHYSX_DICE=ON and PHYSX_ROOT set
+// Build through ../CMakeLists.txt (prime-number-suite/) with BUILD_PHYSX_DICE=ON and PHYSX_ROOT set
 // to the NVIDIA PhysX SDK when it is not installed in a standard location.
 //
 // Usage examples:
@@ -11,7 +11,7 @@
 //   ./physx_dice_multi --spec 3d6+2 --spec 1d8 --spec 1d12 --spec 1d20 \
 //       --trials 20000 --use-prime-seeds primes.json --json runs.json --csv counts.csv --chi
 //
-// Requires: die_mesh.h (in the same directory)
+// Requires: die_mesh.hpp (in the same directory)
 
 #include <PxPhysicsAPI.h>
 #include <algorithm>
@@ -32,7 +32,7 @@
 #include <thread>
 #include <vector>
 
-#include "die_mesh.h"
+#include "die_mesh.hpp"
 
 using namespace physx;
 

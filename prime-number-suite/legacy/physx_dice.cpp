@@ -1,6 +1,6 @@
 // physx_dice.cpp — historical prime-seeded PhysX D6 simulator.
 // Review status: reference-only and intentionally excluded from CMake. The
-// maintained multi-die implementation is ../physx_dice_multi.cpp.
+// maintained multi-die implementation is ../physx/physx_dice_multi.cpp.
 // Build (CMake target example at the end):
 //   add_executable(physx_dice physx_dice.cpp)
 //   target_link_libraries(physx_dice PRIVATE PhysX_64 PhysXFoundation_64 PhysXCommon_64 PhysXExtensions_static)
