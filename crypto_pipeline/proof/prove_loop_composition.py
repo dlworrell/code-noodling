@@ -186,7 +186,23 @@ def prove_all(out,dependencies):
           [z*R==T+M*Q,result==z-choose_sub*M],
           result*R-T==M*(Q-choose_sub*R))
 
-    # Concrete legal word a…228 tokens truncated…            'passed':all(r['result']==r['expected'] for r in records),
+    # Concrete legal word assignment detects a dropped row-end carry.
+    # x=1, y_last=B-1, old_last=1 yields new_last=0, carry_out=1.
+    witness=[x==1,carry[0]==0,*mac]
+    witness += [old[j]==(1 if j==N-1 else 0) for j in range(N)]
+    witness += [y[j]==(B-1 if j==N-1 else 0) for j in range(N)]
+    witness += [new[j]==0 for j in range(N)]
+    witness += [carry[j]==(1 if j==N else 0) for j in range(1,N+1)]
+    prove('dropped_row_carry_control',witness,
+          pack(new)==pack(old)+x*pack(y),expected='sat')
+    # A valid reduced representative above m must take the subtraction.
+    prove('skipped_final_subtraction_control',assumptions+[M==3,upper==4,h==0,D==1,br==0],
+          upper<M,expected='sat')
+
+    report={'source_sha256':digest,'schema_sha256':SCHEMA,'limbs':N,
+            'dependencies':deps,'obligations':records,'product_footprints':footprints,
+            'redc_zero_footprints':zero_footprints,
+            'passed':all(r['result']==r['expected'] for r in records),
             'conclusion':'Packed-state loop composition for the recognized 16-limb algorithm, conditional on the source-to-equation specialization and listed local contracts',
             'trusted':['exact-AST source specialization','composition/footprint checker','pycparser','Z3'],
             'not_claimed':['independently verified C semantics/refinement','compiled-code constant time','hardware timing clearance']}
