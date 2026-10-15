@@ -8,6 +8,11 @@ Inherited Standard: AES-SEC-001
 
 This repository inherits `AES-SEC-001: Secure C and C++ Coding Rules` from the Atarix Engineering Standard.
 
+Project-owned C, C++, and CUDA sources live under `prime-number-suite/` and
+`crypto_pipeline/`. The repository-wide analysis configuration is the root
+`.clang-tidy`. The prime suite's warning profile and build targets are defined
+by `prime-number-suite/CMakeLists.txt` and `prime-number-suite/dice/Makefile.am`.
+
 No new C or C++ code may be accepted unless it follows the AES secure-coding profile.
 
 ## Required Local Behavior

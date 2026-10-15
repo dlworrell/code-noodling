@@ -1,0 +1,126 @@
+name: Prime Suite
+
+on:
+  push:
+    paths:
+      - "prime-number-suite/**"
+      - "!prime-number-suite/dice/**"
+      - ".github/workflows/prime-suite.yml"
+  pull_request:
+    paths:
+      - "prime-number-suite/**"
+      - "!prime-number-suite/dice/**"
+      - ".github/workflows/prime-suite.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: prime-suite-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  cpu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Configure CPU targets
+        run: >-
+          cmake
+          -S prime-number-suite
+          -B build
+          -DCMAKE_C_FLAGS=-Werror
+          -DCMAKE_CXX_FLAGS=-Werror
+          -DBUILD_CUDA_SIEVE_MGPU=OFF
+          -DBUILD_PHYSX_DICE=OFF
+
+      - name: Build CPU targets
+        run: cmake --build build --parallel
+
+      - name: Run integration tests
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Check Maya prototype syntax
+        run: python3 -m py_compile prime-number-suite/physx/maya_dice.py
+
+      - name: Configure sanitizer build
+        run: >-
+          cmake
+          -S prime-number-suite
+          -B build-sanitized
+          -DCMAKE_BUILD_TYPE=Debug
+          -DCMAKE_C_FLAGS=-fsanitize=address,undefined
+          -DCMAKE_CXX_FLAGS=-fsanitize=address,undefined
+          -DBUILD_CUDA_SIEVE_MGPU=OFF
+          -DBUILD_PHYSX_DICE=OFF
+
+      - name: Build and test with sanitizers
+        run: |
+          cmake --build build-sanitized --parallel
+          ctest --test-dir build-sanitized --output-on-failure
+
+  # Compile-only CUDA builds: hosted runners have no GPU.
+  cuda:
+    name: cuda (${{ matrix.name }})
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.informational }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # REQUIRED: Tesla K80 (sm_37, Kepler) needs CUDA <= 11.x and the 470
+          # driver branch. CUDA 11.4 nvcc supports GCC <= 10; focal ships GCC 9.
+          - name: legacy-k80-sm37
+            image: nvidia/cuda:11.4.3-devel-ubuntu20.04
+            architectures: "37"
+            cuda_flags: -Wno-deprecated-gpu-targets
+            informational: false
+          # Informational: confirms the sieve still builds for current GPUs.
+          # CUDA 12 cannot target sm_37, so this never replaces the job above.
+          - name: modern-sm75-sm86
+            image: nvidia/cuda:12.6.3-devel-ubuntu24.04
+            architectures: "75;86"
+            cuda_flags: ""
+            informational: true
+    container:
+      image: ${{ matrix.image }}
+    steps:
+      - name: Install build tools
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          apt-get update
+          apt-get install --yes --no-install-recommends g++ make python3 python3-pip git ca-certificates
+          # The suite needs CMake >= 3.20; focal's packaged CMake is 3.16.
+          python3 -m pip install --upgrade "cmake>=3.20,<4" ||
+            python3 -m pip install --break-system-packages --upgrade "cmake>=3.20,<4"
+          cmake --version
+          nvcc --version
+          g++ --version
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Configure CUDA sieve
+        run: >-
+          cmake
+          -S prime-number-suite
+          -B build-cuda
+          -DBUILD_CUDA_SIEVE_MGPU=ON
+          -DBUILD_PHYSX_DICE=OFF
+          -DBUILD_TESTING=OFF
+          "-DCMAKE_CUDA_ARCHITECTURES=${{ matrix.architectures }}"
+          "-DCMAKE_CUDA_FLAGS=${{ matrix.cuda_flags }}"
+
+      - name: Compile CUDA sieve
+        run: cmake --build build-cuda --target cuda_sieve_mgpu --parallel
+
+      - name: Confirm embedded GPU code
+        run: |
+          cuobjdump --list-elf build-cuda/cuda_sieve_mgpu | tee elf.txt
+          for arch in $(echo "${{ matrix.architectures }}" | tr ';' ' '); do
+            grep -q "sm_${arch}" elf.txt || { echo "missing sm_${arch} code"; exit 1; }
+          done

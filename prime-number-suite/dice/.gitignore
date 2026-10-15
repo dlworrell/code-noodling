@@ -1,0 +1,24 @@
+# Autotools-generated files: run `autoreconf -fi` to recreate them.
+/aclocal.m4
+/autom4te.cache/
+/build-aux/
+/configure
+/configure~
+/config.log
+/config.status
+/config.cache
+/Makefile
+/Makefile.in
+/m4/
+
+# Build and test outputs
+/dice_cpu
+*.o
+.deps/
+.dirstamp
+/test-suite.log
+/tests/*.log
+/tests/*.trs
+/dice-cpu-*.tar.gz
+/dice-cpu-*/
+/_build/
