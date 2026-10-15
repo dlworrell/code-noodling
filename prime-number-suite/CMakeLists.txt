@@ -1,129 +1,156 @@
 cmake_minimum_required(VERSION 3.20)
-project(code_noodling LANGUAGES C CXX)
+project(prime_number_suite LANGUAGES C CXX)
 
-# =========================
-# Options
-# =========================
 option(BUILD_CUDA_SIEVE_MGPU "Build the multi-GPU CUDA sieve (K80-optimized)" ON)
-option(BUILD_PHYSX_DICE      "Build PhysX dice simulator (D6/D8/D12/D20 + chute + PVD)" ON)
+option(BUILD_PHYSX_DICE "Build the maintained PhysX dice simulator" ON)
+# Host-specific tuning is opt-in so CI and shared binaries stay portable.
+option(NATIVE_ARCH "Compile host code with -march=native" OFF)
 
 set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-# =========================
-# CPU targets
-# =========================
+# Apply a consistent reviewer-facing warning baseline to host code and keep the
+# historical -O3 for every build type except Debug, so sanitizer and debugger
+# builds retain their expected behavior.
+function(configure_host_target target)
+  if(MSVC)
+    target_compile_options(${target} PRIVATE /W4)
+  else()
+    target_compile_options(${target} PRIVATE
+      -Wall -Wextra -Wpedantic
+      $<$<NOT:$<CONFIG:Debug>>:-O3>
+    )
+    if(NATIVE_ARCH)
+      target_compile_options(${target} PRIVATE -march=native)
+    endif()
+  endif()
+endfunction()
 
-# OSE (CPU) — your original prime code if you want to keep it building
-if (EXISTS "${CMAKE_SOURCE_DIR}/OSE.c")
-  add_executable(ose_cpu OSE.c)
-  target_compile_options(ose_cpu PRIVATE -O3 -march=native)
+# CPU prime generator.
+add_executable(ose_cpu generators/ose.c)
+configure_host_target(ose_cpu)
+if(NOT MSVC)
+  target_link_libraries(ose_cpu PRIVATE m)
 endif()
 
-# Unbiased dice engine (any n, NdM+K, JSON/CSV, chi-square)
-if (EXISTS "${CMAKE_SOURCE_DIR}/dice_cpu.cpp")
-  add_executable(dice_cpu dice_cpu.cpp)
-  target_compile_options(dice_cpu PRIVATE -O3 -march=native)
-elseif (EXISTS "${CMAKE_SOURCE_DIR}/dice roll improved.cpp")
-  add_executable(dice_cpu "dice roll improved.cpp")
-  target_compile_options(dice_cpu PRIVATE -O3 -march=native)
-endif()
+# CPU dice engine and prime-list consumer. The same source is also packaged
+# with Autotools in dice/.
+add_executable(dice_cpu dice/src/dice_cpu.cpp)
+configure_host_target(dice_cpu)
 
-# =========================
-# CUDA multi-GPU sieve
-# =========================
-if (BUILD_CUDA_SIEVE_MGPU)
+# Optional multi-GPU prime generator. Configuration remains successful on
+# machines without CUDA so the portable CPU targets can still be reviewed.
+if(BUILD_CUDA_SIEVE_MGPU)
   include(CheckLanguage)
   check_language(CUDA)
-  if (CMAKE_CUDA_COMPILER)
-    enable_language(CUDA)
-
-    # Default to Tesla K80 arch (sm_37); you can override at configure time:
-    #   cmake .. -DCMAKE_CUDA_ARCHITECTURES=37
-    if (NOT CMAKE_CUDA_ARCHITECTURES)
+  if(CMAKE_CUDA_COMPILER)
+    if(NOT CMAKE_CUDA_ARCHITECTURES)
+      # Tesla K80 (sm_37) is the primary target and must stay supported; it
+      # needs CUDA <= 11.x. Override for newer GPUs, for example
+      # -DCMAKE_CUDA_ARCHITECTURES="75;86".
       set(CMAKE_CUDA_ARCHITECTURES 37)
     endif()
+    enable_language(CUDA)
 
-    if (EXISTS "${CMAKE_SOURCE_DIR}/cuda_sieve_mgpu.cu")
-      add_executable(cuda_sieve_mgpu cuda_sieve_mgpu.cu)
-      # Threads-per-block default can be overridden: -DTPB=512
-      target_compile_definitions(cuda_sieve_mgpu PRIVATE TPB=256)
-      target_compile_options(cuda_sieve_mgpu PRIVATE
-        $<$<COMPILE_LANGUAGE:CUDA>:-O3>
-        $<$<COMPILE_LANGUAGE:CXX>:-O3>
-      )
-    endif()
-
-    # If you keep a legacy OSE_CUDA.cc, force CUDA language for it:
-    if (EXISTS "${CMAKE_SOURCE_DIR}/OSE_CUDA.cc")
-      set_source_files_properties(OSE_CUDA.cc PROPERTIES LANGUAGE CUDA)
-      add_executable(ose_cuda OSE_CUDA.cc)
-      target_compile_options(ose_cuda PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-O3 --use_fast_math>)
-    endif()
-  else()
-    message(WARNING "CUDA compiler not found; skipping CUDA targets.")
-  endif()
-endif()
-
-# =========================
-# PhysX dice simulator
-# =========================
-if (BUILD_PHYSX_DICE AND EXISTS "${CMAKE_SOURCE_DIR}/physx_dice_multi.cpp")
-  add_executable(physx_dice_multi physx_dice_multi.cpp)
-  target_compile_options(physx_dice_multi PRIVATE -O3 -march=native)
-
-  # ---- PhysX SDK discovery (adjust to your install) ----
-  # Optionally set PHYSX_ROOT yourself:
-  #   cmake .. -DPHYSX_ROOT=/opt/NVIDIA/PhysX
-  if (NOT DEFINED PHYSX_ROOT)
-    set(PHYSX_ROOT "" CACHE PATH "Root directory of PhysX SDK (optional)")
-  endif()
-
-  find_path(PHYSX_INCLUDE_DIR PxPhysicsAPI.h
-    HINTS "${PHYSX_ROOT}/include" ENV CPATH
-          /usr/include /usr/local/include /opt/physx/include)
-
-  find_library(PHYSX_LIB            NAMES PhysX_64 PhysX)
-  find_library(PHYSX_FOUNDATION_LIB NAMES PhysXFoundation_64 PhysXFoundation)
-  find_library(PHYSX_COMMON_LIB     NAMES PhysXCommon_64 PhysXCommon)
-  find_library(PHYSX_EXT_LIB        NAMES PhysXExtensions_static PhysXExtensions)
-  find_library(PHYSX_COOKING_LIB    NAMES PhysXCooking_64 PhysXCooking)
-  find_library(PHYSX_PVD_LIB        NAMES PhysXPvdSDK_static PhysXPvdSDK)
-
-  if (PHYSX_INCLUDE_DIR AND PHYSX_LIB AND PHYSX_FOUNDATION_LIB AND PHYSX_COMMON_LIB AND PHYSX_EXT_LIB AND PHYSX_COOKING_LIB AND PHYSX_PVD_LIB)
-    target_include_directories(physx_dice_multi PRIVATE ${PHYSX_INCLUDE_DIR})
-    target_link_libraries(physx_dice_multi PRIVATE
-      ${PHYSX_LIB}
-      ${PHYSX_FOUNDATION_LIB}
-      ${PHYSX_COMMON_LIB}
-      ${PHYSX_EXT_LIB}
-      ${PHYSX_COOKING_LIB}
-      ${PHYSX_PVD_LIB}
+    add_executable(cuda_sieve_mgpu generators/cuda_sieve_mgpu.cu)
+    set_target_properties(cuda_sieve_mgpu PROPERTIES
+      CUDA_STANDARD 17
+      CUDA_STANDARD_REQUIRED ON
+      CUDA_EXTENSIONS OFF
+    )
+    # The K80 implementation is tuned around 256 threads per block.
+    target_compile_definitions(cuda_sieve_mgpu PRIVATE TPB=256)
+    target_compile_options(cuda_sieve_mgpu PRIVATE
+      $<$<COMPILE_LANGUAGE:CUDA>:-O3>
     )
   else()
-    message(WARNING "PhysX not fully found; will try to build but linking may fail.
-    Found:
-      PHYSX_INCLUDE_DIR=${PHYSX_INCLUDE_DIR}
-      PHYSX_LIB=${PHYSX_LIB}
-      PHYSX_FOUNDATION_LIB=${PHYSX_FOUNDATION_LIB}
-      PHYSX_COMMON_LIB=${PHYSX_COMMON_LIB}
-      PHYSX_EXT_LIB=${PHYSX_EXT_LIB}
-      PHYSX_COOKING_LIB=${PHYSX_COOKING_LIB}
-      PHYSX_PVD_LIB=${PHYSX_PVD_LIB}")
+    message(WARNING "CUDA compiler not found; skipping cuda_sieve_mgpu.")
   endif()
 endif()
 
-# =========================
-# Summary
-# =========================
-message(STATUS "------------------------------------------------------------")
-message(STATUS "Targets:")
-get_property(ALL_TGTS DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY BUILDSYSTEM_TARGETS)
-foreach(t ${ALL_TGTS})
-  message(STATUS "  - ${t}")
-endforeach()
-message(STATUS "Options: BUILD_CUDA_SIEVE_MGPU=${BUILD_CUDA_SIEVE_MGPU}  BUILD_PHYSX_DICE=${BUILD_PHYSX_DICE}")
-message(STATUS "CUDA architectures: ${CMAKE_CUDA_ARCHITECTURES}")
-message(STATUS "------------------------------------------------------------")
+# Optional maintained PhysX simulator. The prototypes in legacy/ are kept for
+# review and are intentionally not build targets.
+if(BUILD_PHYSX_DICE)
+  set(PHYSX_ROOT "" CACHE PATH "Root directory of the NVIDIA PhysX SDK")
+  find_path(PHYSX_INCLUDE_DIR PxPhysicsAPI.h
+    HINTS "${PHYSX_ROOT}/include" ENV CPATH
+    PATHS /usr/include /usr/local/include /opt/physx/include
+  )
+  find_library(PHYSX_LIB
+    NAMES PhysX_64 PhysX
+    HINTS "${PHYSX_ROOT}/lib" "${PHYSX_ROOT}/bin"
+  )
+  find_library(PHYSX_FOUNDATION_LIB
+    NAMES PhysXFoundation_64 PhysXFoundation
+    HINTS "${PHYSX_ROOT}/lib" "${PHYSX_ROOT}/bin"
+  )
+  find_library(PHYSX_COMMON_LIB
+    NAMES PhysXCommon_64 PhysXCommon
+    HINTS "${PHYSX_ROOT}/lib" "${PHYSX_ROOT}/bin"
+  )
+  find_library(PHYSX_EXT_LIB
+    NAMES PhysXExtensions_static PhysXExtensions
+    HINTS "${PHYSX_ROOT}/lib" "${PHYSX_ROOT}/bin"
+  )
+  find_library(PHYSX_COOKING_LIB
+    NAMES PhysXCooking_64 PhysXCooking
+    HINTS "${PHYSX_ROOT}/lib" "${PHYSX_ROOT}/bin"
+  )
+  find_library(PHYSX_PVD_LIB
+    NAMES PhysXPvdSDK_static PhysXPvdSDK
+    HINTS "${PHYSX_ROOT}/lib" "${PHYSX_ROOT}/bin"
+  )
+
+  if(PHYSX_INCLUDE_DIR AND PHYSX_LIB AND PHYSX_FOUNDATION_LIB AND
+     PHYSX_COMMON_LIB AND PHYSX_EXT_LIB AND PHYSX_COOKING_LIB AND
+     PHYSX_PVD_LIB)
+    add_executable(physx_dice_multi physx/physx_dice_multi.cpp)
+    configure_host_target(physx_dice_multi)
+    target_include_directories(physx_dice_multi PRIVATE
+      "${PHYSX_INCLUDE_DIR}"
+      "${CMAKE_CURRENT_SOURCE_DIR}/physx"
+    )
+    target_link_libraries(physx_dice_multi PRIVATE
+      "${PHYSX_LIB}"
+      "${PHYSX_FOUNDATION_LIB}"
+      "${PHYSX_COMMON_LIB}"
+      "${PHYSX_EXT_LIB}"
+      "${PHYSX_COOKING_LIB}"
+      "${PHYSX_PVD_LIB}"
+    )
+  else()
+    message(WARNING "PhysX SDK not fully found; skipping physx_dice_multi.")
+  endif()
+endif()
+
+include(CTest)
+if(BUILD_TESTING)
+  find_package(Python3 QUIET COMPONENTS Interpreter)
+  if(Python3_Interpreter_FOUND)
+    add_test(
+      NAME prime-number-suite.ose
+      COMMAND "${Python3_EXECUTABLE}"
+              "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_ose.py"
+              "$<TARGET_FILE:ose_cpu>"
+    )
+    add_test(
+      NAME prime-number-suite.dice-cpu
+      COMMAND "${Python3_EXECUTABLE}"
+              "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_dice_cpu.py"
+              "$<TARGET_FILE:dice_cpu>"
+              "$<TARGET_FILE:ose_cpu>"
+    )
+  else()
+    message(WARNING "Python 3 not found; skipping integration tests.")
+  endif()
+endif()
+
+message(STATUS "BUILD_CUDA_SIEVE_MGPU=${BUILD_CUDA_SIEVE_MGPU}")
+message(STATUS "BUILD_PHYSX_DICE=${BUILD_PHYSX_DICE}")
+message(STATUS "NATIVE_ARCH=${NATIVE_ARCH}")
+message(STATUS "CMAKE_CUDA_ARCHITECTURES=${CMAKE_CUDA_ARCHITECTURES}")
