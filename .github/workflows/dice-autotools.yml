@@ -1,0 +1,62 @@
+name: Dice Autotools
+
+on:
+  push:
+    paths:
+      - "prime-number-suite/dice/**"
+      - ".github/workflows/dice-autotools.yml"
+  pull_request:
+    paths:
+      - "prime-number-suite/dice/**"
+      - ".github/workflows/dice-autotools.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dice-autotools-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: prime-number-suite/dice
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Autotools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes autoconf automake autoconf-archive g++
+
+      - name: Generate build system
+        run: autoreconf -fi
+
+      - name: Configure
+        run: ./configure
+
+      - name: Build
+        run: make
+
+      - name: Run tests
+        run: make check
+
+      - name: Build and test the release tarball
+        run: make distcheck
+
+      - name: Upload test logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dice-autotools-test-logs
+          path: |
+            prime-number-suite/dice/test-suite.log
+            prime-number-suite/dice/tests/*.log
+            prime-number-suite/dice/dice-cpu-*/_build/sub/test-suite.log
+            prime-number-suite/dice/dice-cpu-*/_build/sub/tests/*.log
+            prime-number-suite/dice/config.log
+          if-no-files-found: ignore
