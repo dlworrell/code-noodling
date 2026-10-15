@@ -1,0 +1,63 @@
+name: Montgomery Constant-Flow Candidate
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  constant-flow:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler: [gcc, clang]
+        optimization: [O2, O3]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install validation tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc clang valgrind binutils python3
+      - name: Timing runner failure-handling tests
+        run: python3 -m unittest discover -s crypto_pipeline -p test_timing_runner.py
+      - name: Oracle, taint analysis, negative control, and sanitizers
+        env:
+          CT_CC: ${{ matrix.compiler }}
+          CT_OPT: -${{ matrix.optimization }}
+        run: ./crypto_pipeline/run_constant_flow.sh
+      - name: Retain assembly, environment, binary hashes, and test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: montgomery-${{ matrix.compiler }}-${{ matrix.optimization }}
+          path: build/constant-flow/
+          if-no-files-found: error
+  timing-experiment:
+    # Timing measurements on shared runners are evidence, not a portable proof.
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        optimization: [O2, O3]
+        limbs: [4, 16, 32]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: oreparaz/dudect
+          ref: dc269651fb2567e46755cfb2a13d3875592968b5
+          path: crypto_pipeline/vendor/dudect
+      - name: Diagnose timing with a fixed control matrix
+        run: python3 crypto_pipeline/run_timing_diagnosis.py --optimization ${{ matrix.optimization }} --limbs ${{ matrix.limbs }} --output build/ct-timing
+      - name: Retain timing evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: montgomery-timing-${{ matrix.optimization }}-${{ matrix.limbs }}
+          path: build/ct-timing/
+          if-no-files-found: error

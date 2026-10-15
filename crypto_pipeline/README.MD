@@ -80,3 +80,13 @@ the target hardware. This is an empirical comparison, not an optimality claim.
 
 See [mathematical notes](../docs/engineering/CRYPTO-ARITHMETIC.md) and
 [memory review](../docs/engineering/CRYPTO-MEMORY-REVIEW.md).
+
+## Separate Montgomery constant-flow candidate
+
+`crypto_montgomery_ct.h` defines a public modulus context and a separate
+capacity-checked API for secret reduced operands. It does not call the legacy
+variable-time dispatcher. See [scope and evidence](../docs/engineering/CRYPTO-CONSTANT-FLOW.md).
+
+**Not cleared for secret use:** an extended local timing test crossed dudect's
+threshold at 16 limbs. Constant-flow instrumentation and arithmetic checks do
+not settle this timing signal. The PR remains experimental.

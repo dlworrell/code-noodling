@@ -1,0 +1,626 @@
+{
+  "formal": {
+    "cbmc": "6.8.0 (cbmc-6.8.0)",
+    "flags": [
+      "--function",
+      "main",
+      "--unwind",
+      "34",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--pointer-overflow-check",
+      "--signed-overflow-check",
+      "--undefined-shift-check",
+      "--div-by-zero-check",
+      "--slice-formula"
+    ],
+    "complete": true,
+    "checks": [
+      {
+        "name": "memory16",
+        "command": [
+          "../cbmc-tools/usr/bin/cbmc",
+          "/workspace/scratch/42a40998932d/code-noodling/crypto_pipeline/proof/memory16.c",
+          "--function",
+          "main",
+          "--unwind",
+          "34",
+          "--unwinding-assertions",
+          "--bounds-check",
+          "--pointer-check",
+          "--pointer-overflow-check",
+          "--signed-overflow-check",
+          "--undefined-shift-check",
+          "--div-by-zero-check",
+          "--slice-formula"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "timed_out": false,
+        "passed": true
+      },
+      {
+        "name": "information-flow",
+        "command": [
+          "/workspace/scratch/42a40998932d/code-noodling/.tools/proof-venv/bin/python",
+          "/workspace/scratch/42a40998932d/code-noodling/crypto_pipeline/proof/check_information_flow.py",
+          "--output",
+          "/workspace/scratch/42a40998932d/code-noodling/build/formal-carry-final-05/information-flow.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "timed_out": false,
+        "passed": true
+      },
+      {
+        "name": "initialization",
+        "command": [
+          "/workspace/scratch/42a40998932d/code-noodling/.tools/proof-venv/bin/python",
+          "/workspace/scratch/42a40998932d/code-noodling/crypto_pipeline/proof/check_initialization.py",
+          "--output",
+          "/workspace/scratch/42a40998932d/code-noodling/build/formal-carry-final-05/initialization.json"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "timed_out": false,
+        "passed": true
+      },
+      {
+        "name": "setup-inverse",
+        "command": [
+          "/workspace/scratch/42a40998932d/code-noodling/.tools/proof-venv/bin/python",
+          "/workspace/scratch/42a40998932d/code-noodling/crypto_pipeline/proof/prove_setup_inverse.py",
+          "--output",
+          "/workspace/scratch/42a40998932d/code-noodling/build/formal-carry-final-05/setup-inverse"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "timed_out": false,
+        "passed": true
+      },
+      {
+        "name": "c-steps",
+        "command": [
+          "/workspace/scratch/42a40998932d/code-noodling/.tools/proof-venv/bin/python",
+          "/workspace/scratch/42a40998932d/code-noodling/crypto_pipeline/proof/prove_c_steps.py",
+          "--output",
+          "/workspace/scratch/42a40998932d/code-noodling/build/formal-carry-final-05/c-steps"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "timed_out": false,
+        "passed": true
+      },
+      {
+        "name": "carry-loop",
+        "command": [
+          "/workspace/scratch/42a40998932d/code-noodling/.tools/proof-venv/bin/python",
+          "/workspace/scratch/42a40998932d/code-noodling/crypto_pipeline/proof/verify_carry_loop.py",
+          "--cbmc",
+          "../cbmc-tools/usr/bin/cbmc",
+          "--output",
+          "/workspace/scratch/42a40998932d/code-noodling/build/formal-carry-final-05/carry-loop"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "timed_out": false,
+        "passed": true
+      },
+      {
+        "name": "arithmetic",
+        "command": [
+          "/workspace/scratch/42a40998932d/code-noodling/.tools/proof-venv/bin/python",
+          "/workspace/scratch/42a40998932d/code-noodling/crypto_pipeline/proof/prove_arithmetic.py",
+          "--output",
+          "/workspace/scratch/42a40998932d/code-noodling/build/formal-carry-final-05/arithmetic"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "timed_out": false,
+        "passed": true
+      },
+      {
+        "name": "context-contract",
+        "command": [
+          "/workspace/scratch/42a40998932d/code-noodling/.tools/proof-venv/bin/python",
+          "/workspace/scratch/42a40998932d/code-noodling/crypto_pipeline/proof/prove_context_contract.py",
+          "--dependency",
+          "/workspace/scratch/42a40998932d/code-noodling/build/formal-carry-final-05/setup-inverse/certificate.json",
+          "--output",
+          "/workspace/scratch/42a40998932d/code-noodling/build/formal-carry-final-05/context-contract"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "timed_out": false,
+        "passed": true
+      },
+      {
+        "name": "loop-composition",
+        "command": [
+          "/workspace/scratch/42a40998932d/code-noodling/.tools/proof-venv/bin/python",
+          "/workspace/scratch/42a40998932d/code-noodling/crypto_pipeline/proof/prove_loop_composition.py",
+          "--dependencies",
+          "/workspace/scratch/42a40998932d/code-noodling/build/formal-carry-final-05",
+          "--output",
+          "/workspace/scratch/42a40998932d/code-noodling/build/formal-carry-final-05/loop-composition"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "timed_out": false,
+        "passed": true
+      }
+    ],
+    "scope": "16-limb source checks and conditional packed-state/field-contract proofs",
+    "open_obligations": [
+      "independent C-to-model refinement, including memory primitive contracts",
+      "direct context byte-array verifier discrepancy",
+      "independent audit of trusted source abstractions",
+      "compiled machine-code preservation",
+      "hardware timing signal"
+    ],
+    "security_status": "NOT CLEARED FOR SECRET USE",
+    "source_sha256": {
+      "proof/README.md": "f0d06688c2322a20daf2ccf3a60124d1f3d22d10d44f619a02d57e9fa8194139",
+      "proof/check_information_flow.py": "85213ab26fe1e21607ddb9154b7b34eb6205635146238bfc2db4a1a73b2d39bb",
+      "proof/check_initialization.py": "be336270b2ca3a23c39c88b9b9d87a8d5b8338e1dfa28ca2b45c613557536522",
+      "proof/install_cbmc.sh": "d648f210f9ebfb849c964bf98bca426e1f8bd1e1fea92b0df7be5247108eb2b6",
+      "proof/memory16.c": "dc583642a75e8ae6e6d8024f9eb390113ee94dddbaa7aaaf515c3aa24036b51d",
+      "proof/prove_arithmetic.py": "fa941e71eeaae780a0e2b7cb3f22c56b06d845c5a5a7d6f49cc49e98db671f09",
+      "proof/prove_c_steps.py": "d01828cbe9936e59a2ee48ddf288891ca4e767f9cba480758dabe93e40ea098f",
+      "proof/prove_context_contract.py": "8afc6743c5e1bfe64d93854dbb2b98f52b432ad8af853be13f0a1bce0a5109a1",
+      "proof/prove_loop_composition.py": "f9c31d1b8716c292d6b46d0fd9b18678639e5efcbebf7fe63152c37e46f58aa3",
+      "proof/prove_setup_inverse.py": "242cd1b4e515d64348fcc972a546f86c860a72edef7353d74faf1e7dd53d0b31",
+      "proof/requirements.txt": "856a12f7a6cde614c592c3b42ad42f3ed3474d877ad5696d6d273fa5e2378a29",
+      "proof/restricted_c.py": "a6d6b2deaf424cff0ca7b5e1843dbfe800efa58c5561470104d1d7755a0f2c85",
+      "proof/run_proofs.py": "f6399b484877891569ea998ecd85c64e887598ceed7559229e12084ebe97f7c5",
+      "proof/test_carry_driver.py": "e5db2167628a3479abdeab89c3c3f39d34e1786d33955cda179ee3fe4d09bfc5",
+      "proof/verify_carry_loop.py": "7b514f8ec19097d95de473018a75421d4d4819d88e0fe2572d3a8d63ee63a95b",
+      "crypto_montgomery_ct.c": "dad3e200fc9f56d2d850e67f1ae2ffc995306242276c51490600a4213bf212ae",
+      "crypto_montgomery_ct.h": "061c4a4b118986af898b41637ac9dc728f6815838ef8e8d2ca0d2538dc318c65",
+      "crypto_multiplier.h": "746bc602578d9e8bc9af45088f3db34d59d705a43e6d45f719fc45a024efedff"
+    },
+    "all_scoped_checks_passed": true
+  },
+  "carry_certificate": {
+    "passed": true,
+    "complete": true,
+    "limbs": 16,
+    "packed_bits": 1025,
+    "schema_sha256": "172b99ca3c7c9e045903e954b7ef1def968706e8f7f019c0fb4661a51fc9deac",
+    "scope": "All 16 REDC suffix offsets; arbitrary initialized words and full-word incoming carry; initial high=0",
+    "trusted": [
+      "restricted parser and AST extraction",
+      "harness construction and header/type binding",
+      "pycparser 2.23",
+      "CBMC 6.8.0 and its frontend/preprocessor/SAT solver"
+    ],
+    "open": [
+      "MAC establishes the incoming full-word carry range",
+      "outer REDC invariants and retained high accumulation across rows",
+      "independent frontend/refinement verification",
+      "machine-code preservation and hardware timing"
+    ],
+    "cbmc": "6.8.0 (cbmc-6.8.0)",
+    "source_sha256": "dad3e200fc9f56d2d850e67f1ae2ffc995306242276c51490600a4213bf212ae",
+    "header_sha256": {
+      "crypto_multiplier.h": "746bc602578d9e8bc9af45088f3db34d59d705a43e6d45f719fc45a024efedff",
+      "crypto_montgomery_ct.h": "061c4a4b118986af898b41637ac9dc728f6815838ef8e8d2ca0d2538dc318c65"
+    },
+    "extracted_sha256": "ad20cd5555e59121c38bcd10447f22f76edd250dbfa1e8e5750e4c522dcc02e4",
+    "stale_source_rejected": true,
+    "checks": [
+      {
+        "name": "row-00",
+        "row": 0,
+        "mutation": null,
+        "passed": true,
+        "returncode": 0,
+        "property_count": 46,
+        "failed_property_ids": []
+      },
+      {
+        "name": "row-01",
+        "row": 1,
+        "mutation": null,
+        "passed": true,
+        "returncode": 0,
+        "property_count": 46,
+        "failed_property_ids": []
+      },
+      {
+        "name": "row-02",
+        "row": 2,
+        "mutation": null,
+        "passed": true,
+        "returncode": 0,
+        "property_count": 46,
+        "failed_property_ids": []
+      },
+      {
+        "name": "row-03",
+        "row": 3,
+        "mutation": null,
+        "passed": true,
+        "returncode": 0,
+        "property_count": 46,
+        "failed_property_ids": []
+      },
+      {
+        "name": "row-04",
+        "row": 4,
+        "mutation": null,
+        "passed": true,
+        "returncode": 0,
+        "property_count": 46,
+        "failed_property_ids": []
+      },
+      {
+        "name": "row-05",
+        "row": 5,
+        "mutation": null,
+        "passed": true,
+        "returncode": 0,
+        "property_count": 46,
+        "failed_property_ids": []
+      },
+      {
+        "name": "row-06",
+        "row": 6,
+        "mutation": null,
+        "passed": true,
+        "returncode": 0,
+        "property_count": 46,
+        "failed_property_ids": []
+      },
+      {
+        "name": "row-07",
+        "row": 7,
+        "mutation": null,
+        "passed": true,
+        "returncode": 0,
+        "property_count": 46,
+        "failed_property_ids": []
+      },
+      {
+        "name": "row-08",
+        "row": 8,
+        "mutation": null,
+        "passed": true,
+        "returncode": 0,
+        "property_count": 46,
+        "failed_property_ids": []
+      },
+      {
+        "name": "row-09",
+        "row": 9,
+        "mutation": null,
+        "passed": true,
+        "returncode": 0,
+        "property_count": 46,
+        "failed_property_ids": []
+      },
+      {
+        "name": "row-10",
+        "row": 10,
+        "mutation": null,
+        "passed": true,
+        "returncode": 0,
+        "property_count": 46,
+        "failed_property_ids": []
+      },
+      {
+        "name": "row-11",
+        "row": 11,
+        "mutation": null,
+        "passed": true,
+        "returncode": 0,
+        "property_count": 46,
+        "failed_property_ids": []
+      },
+      {
+        "name": "row-12",
+        "row": 12,
+        "mutation": null,
+        "passed": true,
+        "returncode": 0,
+        "property_count": 46,
+        "failed_property_ids": []
+      },
+      {
+        "name": "row-13",
+        "row": 13,
+        "mutation": null,
+        "passed": true,
+        "returncode": 0,
+        "property_count": 46,
+        "failed_property_ids": []
+      },
+      {
+        "name": "row-14",
+        "row": 14,
+        "mutation": null,
+        "passed": true,
+        "returncode": 0,
+        "property_count": 46,
+        "failed_property_ids": []
+      },
+      {
+        "name": "row-15",
+        "row": 15,
+        "mutation": null,
+        "passed": true,
+        "returncode": 0,
+        "property_count": 46,
+        "failed_property_ids": []
+      },
+      {
+        "name": "drop-incoming",
+        "row": 0,
+        "mutation": "drop-incoming",
+        "passed": true,
+        "returncode": 10,
+        "property_count": 46,
+        "failed_property_ids": [
+          "main.assertion.1"
+        ]
+      },
+      {
+        "name": "drop-terminal",
+        "row": 0,
+        "mutation": "drop-terminal",
+        "passed": true,
+        "returncode": 10,
+        "property_count": 45,
+        "failed_property_ids": [
+          "main.assertion.1"
+        ]
+      },
+      {
+        "name": "truncate-propagation",
+        "row": 0,
+        "mutation": "truncate-propagation",
+        "passed": true,
+        "returncode": 10,
+        "property_count": 47,
+        "failed_property_ids": [
+          "main.assertion.1"
+        ]
+      }
+    ],
+    "artifact_sha256": {
+      "drop-incoming.c": "da2cf2efd9b6e88b4508d358c257924fde3f9b994323c2a8e2769731a0869def",
+      "drop-incoming.command.json": "af847e3bae238a562779d03674ef1cd0272bd93bff0565e34d38b2885138bc37",
+      "drop-incoming.json": "ee75c6435ef1d8aacab60aa7d474d3c4067e0b66d8592e52299f29db5cb7ef28",
+      "drop-incoming.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "drop-terminal.c": "1ed589217d9abcaf0630920d43c3ccc00fd0eba64a6467df3655165c50cf1955",
+      "drop-terminal.command.json": "1a4c65c0d0de434fd408dc8ea4ebd2167605a977d6963f1ac05865700156f63f",
+      "drop-terminal.json": "b4a683f75c793aacb36e2542fce61150062175732637e11377fb30acc0733106",
+      "drop-terminal.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "extracted.c": "0019b9d4919d22705985438d3a345d9321e54174e1f4ffe9d16c992ea9bcfa7a",
+      "row-00.c": "c30237ee6d91971091cbb243b1d5ecc3ef483a18da01002929cbe2f2769a9957",
+      "row-00.command.json": "17cedcf68dc16677be218c6b9dbb95ff1ef40692a9c05c6c8734f7e432889eab",
+      "row-00.json": "8a54d744a6bca7ff8a8b3a1f26a2e80a5f0311dd798117be92e7d44bb0a64e5d",
+      "row-00.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "row-01.c": "c30237ee6d91971091cbb243b1d5ecc3ef483a18da01002929cbe2f2769a9957",
+      "row-01.command.json": "ec5e3b6f4b261f9c58c02ff87366c01c7ac22ecdc4721cce017701ec83272163",
+      "row-01.json": "def68901ae71e38b611a89a1c83b7849ce38c7b005147e3199023c9ae030b79b",
+      "row-01.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "row-02.c": "c30237ee6d91971091cbb243b1d5ecc3ef483a18da01002929cbe2f2769a9957",
+      "row-02.command.json": "3256a4846ee26d1c8b803377fe6d164d104bd3a5565d1da582dce7dc5b59be00",
+      "row-02.json": "1d655a5cd63ac1bf279bed9bd01d022bd1b1acf907f4a1bd2163d0a888a8db85",
+      "row-02.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "row-03.c": "c30237ee6d91971091cbb243b1d5ecc3ef483a18da01002929cbe2f2769a9957",
+      "row-03.command.json": "4c8c0fe9b7aba2abe5e45fe336812aed40d1e753c1923bf119ad4ad1986e4f09",
+      "row-03.json": "b5b2cebdded6be509fe26ed8d4919e7adcff4e2b3a925623778b22e5c5b1e923",
+      "row-03.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "row-04.c": "c30237ee6d91971091cbb243b1d5ecc3ef483a18da01002929cbe2f2769a9957",
+      "row-04.command.json": "d71858081c7b37447a7e4719c65b15b6aa8e1845d8b20fdd82fd8aae3a53778d",
+      "row-04.json": "215d09317249e15367dcbdaeaa24c89ceda15d5db3e35a373a24eb867daae7a2",
+      "row-04.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "row-05.c": "c30237ee6d91971091cbb243b1d5ecc3ef483a18da01002929cbe2f2769a9957",
+      "row-05.command.json": "df4248cf9ee96b61a513eeb346100ae58c83cb3667acc9c6f68187c802f03fd3",
+      "row-05.json": "c04710fd860ec687f97ed78663f4b62b93b957a9fd42efb006d1d45284792907",
+      "row-05.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "row-06.c": "c30237ee6d91971091cbb243b1d5ecc3ef483a18da01002929cbe2f2769a9957",
+      "row-06.command.json": "f0d8272367b7dfb88abbebced6947d8b491449c2f43170ca396796423f5fbda0",
+      "row-06.json": "4bd07bdf817251502fc1cad40b6c815941825fb9a02fdfffb7285bd9864c1328",
+      "row-06.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "row-07.c": "c30237ee6d91971091cbb243b1d5ecc3ef483a18da01002929cbe2f2769a9957",
+      "row-07.command.json": "29b230a83b37c449495ee944ab228dcca2568e2bdbc29c9c57b3c014793c8520",
+      "row-07.json": "a8e03a27facbc203583ef9f06a2c6df01c39e5f012b45d36da603dcd69536a6d",
+      "row-07.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "row-08.c": "c30237ee6d91971091cbb243b1d5ecc3ef483a18da01002929cbe2f2769a9957",
+      "row-08.command.json": "bb092475599b312bcfaf221a5b721247439fc2d4969966027e14049d3bab116a",
+      "row-08.json": "c47fa438d1814b9f6243e15e665f111ffbd4a3ef16bea3073795131fffd54fc8",
+      "row-08.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "row-09.c": "c30237ee6d91971091cbb243b1d5ecc3ef483a18da01002929cbe2f2769a9957",
+      "row-09.command.json": "c41b954041a3f8c7610a0cf6a148d56db6278116d467a2155354fec8a02b187c",
+      "row-09.json": "656cd28a1f9948c468f5c31b91d51881c60cf19295526fe92c78b15e8f6e2c31",
+      "row-09.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "row-10.c": "c30237ee6d91971091cbb243b1d5ecc3ef483a18da01002929cbe2f2769a9957",
+      "row-10.command.json": "4da9f09b5d5e34554461ee3d764896033fb95de2f353d73cd37850583aacce87",
+      "row-10.json": "0a4525b4e789a99bd97c68792c06921f218cd0d1c3390cb6169d55ae0c4c6e0d",
+      "row-10.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "row-11.c": "c30237ee6d91971091cbb243b1d5ecc3ef483a18da01002929cbe2f2769a9957",
+      "row-11.command.json": "e248d3dfe226d71149d0555760c7ceb5fd0269a9f83f651c1f0b4b25c70be1ec",
+      "row-11.json": "3711c079f9d47223eed6636311463649e43d1d76c3bbb68e3ace4e0ada1cb203",
+      "row-11.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "row-12.c": "c30237ee6d91971091cbb243b1d5ecc3ef483a18da01002929cbe2f2769a9957",
+      "row-12.command.json": "db8092833cd6b530bc4df0269037bf1ce8f69821b73fa320ad514f3f4ad43991",
+      "row-12.json": "7814b8c1a57323907371528a3848996a1f99e09b8cab3296b0a12e4afe7b9a9b",
+      "row-12.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "row-13.c": "c30237ee6d91971091cbb243b1d5ecc3ef483a18da01002929cbe2f2769a9957",
+      "row-13.command.json": "1f7ef06a524cd09dc0246511d292d374617241abd713c324b289fb946eaf4aa4",
+      "row-13.json": "c70d85a9ca5f85402eaa324aadb5a7b28ad8994cb20295acb50b0dc22c3d6f8f",
+      "row-13.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "row-14.c": "c30237ee6d91971091cbb243b1d5ecc3ef483a18da01002929cbe2f2769a9957",
+      "row-14.command.json": "a5e9f592220229ebae315e73a9c4370dd084300db5871a04b37ac3b63efacab1",
+      "row-14.json": "daf48c786e483f5f24a2a5a7d4b14d02107f70e5db09e6a3e22fb4bcbc0da1a4",
+      "row-14.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "row-15.c": "c30237ee6d91971091cbb243b1d5ecc3ef483a18da01002929cbe2f2769a9957",
+      "row-15.command.json": "55238932febd8ed3bc977308273ac2a4346e3ed7b3b2d5eca4ef8e900378aad2",
+      "row-15.json": "f6b03c5b2bbc4a4b9f294ee38c942fa574bb1fce0e9529664d558dd05104b0eb",
+      "row-15.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source/crypto_montgomery_ct.c": "dad3e200fc9f56d2d850e67f1ae2ffc995306242276c51490600a4213bf212ae",
+      "source/crypto_montgomery_ct.h": "061c4a4b118986af898b41637ac9dc728f6815838ef8e8d2ca0d2538dc318c65",
+      "source/crypto_multiplier.h": "746bc602578d9e8bc9af45088f3db34d59d705a43e6d45f719fc45a024efedff",
+      "truncate-propagation.c": "4844304d52f4aeeed730f742d3f8d9093d5d345a231d21e30b4749cc01939922",
+      "truncate-propagation.command.json": "575b593949cede4b6ce2c142351bc276ea9165b9d757df28514a38366d06638d",
+      "truncate-propagation.json": "e1edf1c1e1db3e481f87109c69758367820c3555dfc29f5b06172959543af544",
+      "truncate-propagation.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "counterexamples": [
+    {
+      "mutation": "drop-incoming",
+      "row": 0,
+      "incoming_carry": "0x1",
+      "old_suffix": [
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000"
+      ],
+      "new_suffix": [
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000"
+      ],
+      "terminal_high": 0,
+      "expected_integer": "0x1",
+      "actual_integer": "0x0",
+      "failed_property": "main.assertion.1",
+      "independent_python_integer_replay": "matches CBMC and violates identity"
+    },
+    {
+      "mutation": "drop-terminal",
+      "row": 0,
+      "incoming_carry": "0x8000000000000000",
+      "old_suffix": [
+        "8000000000000000",
+        "ffffffffffffffff",
+        "ffffffffffffffff",
+        "ffffffffffffffff",
+        "ffffffffffffffff",
+        "ffffffffffffffff",
+        "ffffffffffffffff",
+        "ffffffffffffffff",
+        "ffffffffffffffff",
+        "ffffffffffffffff",
+        "ffffffffffffffff",
+        "ffffffffffffffff",
+        "ffffffffffffffff",
+        "ffffffffffffffff",
+        "ffffffffffffffff",
+        "ffffffffffffffff"
+      ],
+      "new_suffix": [
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000"
+      ],
+      "terminal_high": 0,
+      "expected_integer": "0x10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "actual_integer": "0x0",
+      "failed_property": "main.assertion.1",
+      "independent_python_integer_replay": "matches CBMC and violates identity"
+    },
+    {
+      "mutation": "truncate-propagation",
+      "row": 0,
+      "incoming_carry": "0xacb5ce5522aaeffb",
+      "old_suffix": [
+        "af950d56ad551001",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000"
+      ],
+      "new_suffix": [
+        "5c4adbabcffffffc",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000",
+        "0000000000000000"
+      ],
+      "terminal_high": 1,
+      "expected_integer": "0x15c4adbabcffffffc",
+      "actual_integer": "0x10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005c4adbabcffffffc",
+      "failed_property": "main.assertion.1",
+      "independent_python_integer_replay": "matches CBMC and violates identity"
+    }
+  ],
+  "driver_tests": {
+    "count": 14,
+    "passed": true
+  },
+  "governance": {
+    "has_banned_api_findings": false,
+    "has_native_code": true,
+    "passes_minimum_adoption_gate": true,
+    "passes_review_ratchet": true,
+    "requires_secure_profile": true
+  },
+  "note": "Raw CBMC JSON, traces, commands, generated C and certificates are retained by the formal workflow; compact counterexamples here were independently replayed with Python integers."
+}

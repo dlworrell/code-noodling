@@ -443,6 +443,69 @@
       "reviewed_at": "2026-10-13",
       "reassess_after": "2027-01-13",
       "resolution_commit": null
+    },
+    {
+      "finding_id": "aes-sec-001:f7ad43920701c238b37e9bb599dc056772667f7a314c2c5450c41a67a1b479b0",
+      "source_fingerprint": "sha256:4b5f0a17be72831646bcfa0bccf0f370498be9e4ab2c872b137728f4cc482848",
+      "path": "crypto_pipeline/crypto_montgomery_ct.c",
+      "line": 13,
+      "symbol": "memset",
+      "classification": "approved-invariant",
+      "rationale": "Bounded initialization/copy in the separate Montgomery candidate. This disposition approves memory bounds only, not side-channel security.",
+      "invariant": "ctx points to a writable crypto_montgomery_ctx by contract. memset covers exactly sizeof(*ctx), after public input validation. This is public context initialization, not secret erasure.",
+      "evidence": [
+        "crypto_pipeline/crypto_montgomery_ct.h",
+        "crypto_pipeline/test_montgomery_ct.c",
+        "crypto_pipeline/test_montgomery_ct.py",
+        "docs/engineering/CRYPTO-CONSTANT-FLOW.md"
+      ],
+      "owner": "dlworrell",
+      "reviewer": "Codex (automated code review)",
+      "reviewed_at": "2026-10-13",
+      "reassess_after": "2027-01-13",
+      "resolution_commit": null
+    },
+    {
+      "finding_id": "aes-sec-001:450cd3428612f3766ba70630e3e76d61139d76ac867a3b35aa157ca80645e74c",
+      "source_fingerprint": "sha256:5b5458a1be1aa89bc08039d956fd31499278072e11c5798d181f52019f508692",
+      "path": "crypto_pipeline/crypto_montgomery_ct.c",
+      "line": 14,
+      "symbol": "memcpy",
+      "classification": "approved-invariant",
+      "rationale": "Bounded initialization/copy in the separate Montgomery candidate. This disposition approves memory bounds only, not side-channel security.",
+      "invariant": "n is public and validated in 1..1024; ctx->modulus holds 1024 limbs; modulus provides n readable limbs and does not overlap ctx. The copy is exactly n limbs.",
+      "evidence": [
+        "crypto_pipeline/crypto_montgomery_ct.h",
+        "crypto_pipeline/test_montgomery_ct.c",
+        "crypto_pipeline/test_montgomery_ct.py",
+        "docs/engineering/CRYPTO-CONSTANT-FLOW.md"
+      ],
+      "owner": "dlworrell",
+      "reviewer": "Codex (automated code review)",
+      "reviewed_at": "2026-10-13",
+      "reassess_after": "2027-01-13",
+      "resolution_commit": null
+    },
+    {
+      "finding_id": "aes-sec-001:8cd6e533c4acb059a97914a535075e2949fff8c934a7c94279738ff12164edaa",
+      "source_fingerprint": "sha256:6b6f53d19258999374dee24c9109b05cf9eefda3f4459b56383e589481c35d0c",
+      "path": "crypto_pipeline/crypto_montgomery_ct.c",
+      "line": 32,
+      "symbol": "memset",
+      "classification": "approved-invariant",
+      "rationale": "Bounded initialization/copy in the separate Montgomery candidate. This disposition approves memory bounds only, not side-channel security.",
+      "invariant": "t is a local 2*n-limb VLA created after public length validation. The fill is exactly 2*n limbs. This initializes arithmetic scratch; separate volatile stores wipe it after use.",
+      "evidence": [
+        "crypto_pipeline/crypto_montgomery_ct.h",
+        "crypto_pipeline/test_montgomery_ct.c",
+        "crypto_pipeline/test_montgomery_ct.py",
+        "docs/engineering/CRYPTO-CONSTANT-FLOW.md"
+      ],
+      "owner": "dlworrell",
+      "reviewer": "Codex (automated code review)",
+      "reviewed_at": "2026-10-13",
+      "reassess_after": "2027-01-13",
+      "resolution_commit": null
     }
   ]
 }
