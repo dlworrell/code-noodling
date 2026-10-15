@@ -23,6 +23,13 @@ shared: crypto_multiplier.c crypto_multiplier.h
 	$(CC) $(CFLAGS) -fPIC -shared -o libcryptomult.so crypto_multiplier.c
 	
 clean:
-	rm -f *.o $(TARGET)
+	rm -f *.o $(TARGET) test_bounds libcryptomult.so
 
-.PHONY: all clean
+.PHONY: all shared clean
+
+# Dedicated bounds checks, instrumented independently of optimized objects.
+bounds-sanitize: crypto_multiplier.c crypto_multiplier.h test_bounds.c
+	$(CC) -std=c11 -O1 -g -Wall -Wextra -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover=all crypto_multiplier.c test_bounds.c -o test_bounds
+	./test_bounds
+
+.PHONY: bounds-sanitize

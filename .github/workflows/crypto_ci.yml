@@ -9,6 +9,9 @@ on:
 jobs:
   audit-and-test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: crypto_pipeline
 
     steps:
     - name: Check out Repository Code
@@ -21,7 +24,7 @@ jobs:
 
     - name: Step 1 - Static Analysis (Clang-Tidy)
       run: |
-        clang-tidy crypto_multiplier.c -- -std=c11 -fno-aggressive-loop-optimizations
+        clang-tidy crypto_multiplier.c test_suite.c test_bounds.c -- -std=c11
 
     - name: Step 2 - Compile Binary Targets via Makefile
       run: |
@@ -32,10 +35,17 @@ jobs:
     - name: Step 3 - Execution Verification & Memory Leak Audit
       run: |
         # Run test executable inside Valgrind's Memcheck engine
-        valgrind --leak-check=full --show-leak-kinds=all --errors-to-fail=1 ./test_suite
+        valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_suite
 
-    - name: Step 4 - Basic Side-Channel Consistency Test
+    - name: Step 4 - Functional Smoke Test
       run: |
-        # Ensure our optimization path runs correctly
+        # This smoke test does not establish constant-time or side-channel safety.
         ./test_suite
-        echo "[CI Pipeline Pass] Code layout aligns with security profile definitions."
+        echo "[CI Pipeline Pass] Build and functional smoke tests completed."
+
+    - name: Boundary tests with AddressSanitizer and UndefinedBehaviorSanitizer
+      run: make bounds-sanitize
+
+    - name: Differential arithmetic tests against Python integers
+      run: |
+        python3 test_arithmetic.py
