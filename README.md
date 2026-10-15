@@ -1,141 +1,71 @@
-# Code Noodling  
-### Prime Generation + Physical Dice Simulation Suite  
+# Code Noodling
 
-An experimental C/C++/CUDA project exploring:  
-- **Optimized prime sieving** (CPU + multi-GPU CUDA)  
-- **Accurate dice randomness** for tabletop and RPG mechanics  
-- **Physically simulated dice rolls** using NVIDIA PhysX  
-- **Auto-tuned performance** across CPU/GPU hardware  
-- **Live visualization** with the PhysX Visual Debugger (PVD)
-- **Multi-precision integer arithmetic** experiments (Comba, Karatsuba, NTT, Montgomery) in `crypto_pipeline/`
+`code-noodling` is an experimental monorepo for small engineering and analysis
+projects. Each codebase keeps its source, build configuration, tests, and
+detailed documentation in its own directory.
 
----
+## Codebases
 
-## Features
+| Codebase | Location | Purpose | Documentation |
+|---|---|---|---|
+| Prime Number and Dice Suite | [`prime-number-suite/`](prime-number-suite/) | CPU and multi-GPU (Tesla K80) prime sieves, an unbiased prime-seeded dice engine, and PhysX/Maya dice experiments | [`prime-number-suite/README.md`](prime-number-suite/README.md) |
+| Crypto Pipeline | [`crypto_pipeline/`](crypto_pipeline/) | Multi-precision integer multiplication experiments (research prototype) | [`crypto_pipeline/README.MD`](crypto_pipeline/README.MD) |
+| Election Result Reporting | [`election_reporting/`](election_reporting/), [`election-data/`](election-data/) | Washington election snapshot comparison and change-probability reports | [`docs/election-reporting.md`](docs/election-reporting.md) |
 
-| Component | Description |
-|------------|-------------|
-| **OSE / CUDA Sieve** | Optimized Sieve of Eratosthenes segmented, odd-only, GPU-parallel, JSON export |
-| **Dice Engine (CPU)** | Pure math engine for `NdM+K` expressions unbiased, optional prime-seeded randomness, chi-square validation |
-| **PhysX Dice Simulator** | Fully physical D6, D8, D12, D20 dice with realistic collisions, ramp chute, multi-threading, and GPU acceleration |
-| **Visualization** | Optional live streaming via `--pvd` to PhysX Visual Debugger or NVIDIA Omniverse View |
-| **Data Outputs** | JSON and CSV result logging, with chi-square test of fairness and probability distribution graphs |
-| **Crypto Pipeline** | Experimental 64-bit-limb multiplication and modular arithmetic in C, checked against Python integers; research prototype, not production cryptography |
-
----
-
-## Build Instructions
-
-### Prerequisites
-- **CMake 3.20**
-- **C++17 compiler** (clang / gcc / MSVC)
-- *(Optional)* **CUDA Toolkit** (for GPU sieve)
-- *(Optional)* **NVIDIA PhysX SDK** (for physics dice)
-- *(Optional)* **PhysX Visual Debugger (PVD)** to visualize rolls live
-
-### Build All Targets
-
-```bash
-mkdir build && cd build
-cmake .. -DBUILD_CUDA_SIEVE_MGPU=ON -DBUILD_PHYSX_DICE=ON
-cmake --build . -j
-```
-
-> **Tesla K80 users:** CUDA architecture defaults to `sm_37`.  
-> Override with:  
-> `-DCMAKE_CUDA_ARCHITECTURES=37` *(or `80` for A100s, etc.)*
-
----
-
-## CPU Dice Engine
-
-```bash
-# Fair D6, 10k rolls, chi-square test
-./dice_cpu --faces 6 --count 10000 --chi
-
-# D20, 20k rolls, prime-seeded, CSV output
-./dice_cpu --faces 20 --count 20000 --use-prime-seeds primes_50M.json --csv d20.csv --chi
-
-# RPG Expression Example
-./dice_cpu --spec "3d6+2" --count 5000 --use-prime-seeds primes_50M.json --log-json rolls.json --chi
-```
-
-**Flags**
-- `--spec NdM+K` Dice expression (can repeat)  
-- `--count N` Number of rolls per set  
-- `--chi` Enable chi-square fairness check  
-- `--csv` / `--log-json` โ Export results  
-
----
-
-## CUDA Multi-GPU Prime Generator
-
-```bash
-./cuda_sieve_mgpu 50000000 --gpus 4 --seg 256M --json primes_50M.json
-```
-
-Generates all primes 50 M using up to four Tesla K80 GPUs, writing them to `primes_50M.json`.
-
----
-
-## PhysX Dice Simulator (D6/D8/D12/D20)
-
-```bash
-# Basic D6 simulation with 50k rolls and chi-square test
-./physx_dice_multi --spec 1d6 --trials 50000 --chi
-
-# Complex run with multiple dice, chute ramp, PVD visualization, and JSON/CSV output
-./physx_dice_multi   --spec 3d6+2 --spec 1d8 --spec 1d12 --spec 1d20   --trials 20000   --use-prime-seeds primes_50M.json   --chute   --pvd 127.0.0.1:5425   --json physx_runs.json --csv physx_counts.csv --chi
-```
-
-**Flags**
-- `--chute` Adds an angled ramp, side walls, and backstop for realism  
-- `--pvd [host:port]` Stream live to PhysX Visual Debugger *(default: 127.0.0.1 : 5425)*  
-- `--use-prime-seeds` Deterministic seed list from JSON primes  
-- `--json` / `--csv` Write results to disk  
-
->  Make sure PVD is running **before** launching your sim to see live dice tumbling!
-
----
-
-## Repository Layout
+## Repository Layout
 
 ```text
 code-noodling/
-CMakeLists.txt
-.gitignore
-cuda_sieve_mgpu.cu
-dice_cpu.cpp
-physx_dice_multi.cpp
-die_mesh.h
-OSE.c                      (optional legacy)
-OSE_CUDA.cc                (optional legacy)
-README.md
-primes_50M.json            (generated at runtime)
+├── README.md
+├── .clang-tidy              repository C/C++ static-analysis policy
+├── .github/                 workflows and contribution templates
+├── crypto_pipeline/         integer multiplication experiments
+├── docs/                    engineering standards and election docs
+├── election-data/           election configuration and source snapshots
+├── election_reporting/      election-analysis Python package
+├── prime-number-suite/      prime generators and dice programs
+├── reports/                 generated election reports
+└── tests/                   election-reporting tests
 ```
 
----
+## Quick Start
 
-## Technical Notes
-
-- **Hardware autodetect:** automatically uses all CPU threads and available CUDA devices.  
-- **Deterministic seeding:** optional uses primes for stable pseudo-random sequences.  
-- **PhysX cooking:** convex meshes generated internally for D8, D12, D20 via `die_mesh.h`.  
-- **Chute geometry:** procedural ramp (30° tilt) + sidewalls + backstop.  
-- **Visualization:** controlled via `--pvd`; debug draw enabled for collision shapes & contacts.  
-- **Data outputs:** JSON + CSV + chi-square test summary.  
-
----
-
-##  Example Workflow
+Prime generators and CPU dice (CMake):
 
 ```bash
-# Step 1 โ Generate prime seeds
-./cuda_sieve_mgpu 50000000 --json primes_50M.json
-
-# Step 2 โ Simulate physical dice using those seeds
-./physx_dice_multi --spec 2d6+3 --trials 10000 --use-prime-seeds primes_50M.json --chute --pvd --chi
+cmake -S prime-number-suite -B build \
+  -DBUILD_CUDA_SIEVE_MGPU=OFF -DBUILD_PHYSX_DICE=OFF
+cmake --build build --parallel
+ctest --test-dir build --output-on-failure
 ```
+
+Dice engine as a standalone Autotools package:
+
+```bash
+cd prime-number-suite/dice
+autoreconf -fi && ./configure && make && make check
+```
+
+The CUDA sieve defaults to the Tesla K80 (`sm_37`), which needs CUDA 11.x and
+the 470 driver. See the suite README's
+[Legacy GPU support](prime-number-suite/README.md#legacy-gpu-support-tesla-k80)
+section.
+
+## Continuous Integration
+
+| Workflow | Scope |
+|---|---|
+| Dice Autotools | `prime-number-suite/dice/`: build, `make check`, `make distcheck` |
+| Prime Suite | rest of `prime-number-suite/`: CPU build and tests, CUDA 11.4 `sm_37` compile (required), CUDA 12 compile (informational) |
+| K80 Hardware Check | manual only, on a self-hosted K80 runner |
+| Cryptographic Wrapper Validation Pipeline | `crypto_pipeline/` |
+| Election Result Reports | election data and reporting code |
+| AES-SEC-001 Governance | repository-wide C/C++ secure-coding scan |
+
+## Engineering Governance
+
+C and C++ changes inherit the AES-SEC-001 secure-coding profile. The profile,
+review dispositions, and waiver log are in [`docs/engineering/`](docs/engineering/).
 
 ---
 
