@@ -1,245 +1,544 @@
-// OSE.c — segmented sieve with 6-wheel; multi-column or JSON output
-// Build: cc -O3 -std=c11 -Wall -Wextra -o ose OSE.c -lm
-// Usage:
-//   ./ose START END                 # auto columns to terminal width
-//   ./ose START END --cols 4        # 4 columns
-//   ./ose START END --json primes.json
-//   ./ose START END --json -        # JSON to stdout
-//   ./ose START END --no-list --json primes.json
+/*
+ * ose.c - inclusive-range prime generator using a segmented 6-wheel sieve.
+ *
+ * Only values congruent to 1 or 5 modulo 6 are represented after handling
+ * the primes 2 and 3 explicitly. The candidate set is stored as one bit per
+ * value, while a conventional sieve supplies the base primes through
+ * floor(sqrt(end)). This keeps memory proportional to the requested range
+ * plus its square root rather than to every integer from zero through end.
+ *
+ * Standalone build:
+ *   cc -O3 -std=c11 -Wall -Wextra -Wpedantic -o ose_cpu ose.c -lm
+ *
+ * Examples:
+ *   ./ose_cpu 1 100
+ *   ./ose_cpu 1 100 --cols 4
+ *   ./ose_cpu 1 100 --json primes.json --no-list
+ *   ./ose_cpu 1 100 --json -
+ */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <math.h>
-#include <string.h>
-#include <time.h>
 #include <errno.h>
 #include <limits.h>
-#ifdef __unix__
+#include <math.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#if defined(__unix__) || defined(__APPLE__)
 #include <sys/ioctl.h>
 #include <unistd.h>
 #endif
 
-typedef unsigned char u8;
+typedef unsigned char byte_t;
 
-static void die(const char* m){fprintf(stderr,"ERROR: %s\n",m);exit(2);}
-
-static void* checked_alloc(size_t size,const char* label){
-  void* p = malloc(size); /* aes-sec-001: allow reviewed allocation wrapper */
-  if(!p) die(label);
-  return p;
+/* Terminate on an unrecoverable validation or allocation failure. */
+static void fail(const char *message) {
+  (void)fprintf(stderr, "ERROR: %s\n", message);
+  exit(EXIT_FAILURE);
 }
 
-static void* checked_realloc(void* ptr,size_t size,const char* label){
-  void* p = realloc(ptr,size); /* aes-sec-001: allow reviewed allocation wrapper */
-  if(!p) die(label);
-  return p;
+/*
+ * Keep raw allocation operations behind small, reviewed ownership helpers.
+ * A zero-size allocation is rejected so callers never depend on the
+ * implementation-defined result of malloc(0) or calloc(0, size).
+ */
+static void *checked_alloc(size_t size, const char *label) {
+  if (size == 0U) {
+    fail("internal zero-size allocation");
+  }
+
+  void *allocation = malloc(size); /* AES-SEC-001: reviewed allocation boundary. */
+  if (allocation == NULL) {
+    fail(label);
+  }
+  return allocation;
 }
 
-static void checked_free(void* ptr){
-  free(ptr); /* aes-sec-001: allow reviewed ownership release wrapper */
+static void *checked_realloc(void *pointer, size_t size, const char *label) {
+  if (size == 0U) {
+    fail("internal zero-size reallocation");
+  }
+
+  void *allocation = realloc(pointer, size); /* AES-SEC-001: reviewed ownership boundary. */
+  if (allocation == NULL) {
+    fail(label);
+  }
+  return allocation;
 }
 
-static long parse_long_arg(const char* text,const char* name){
-  char* endptr = NULL;
+static void checked_free(void *pointer) {
+  free(pointer); /* AES-SEC-001: reviewed ownership release boundary. */
+}
+
+/* Parse a complete base-10 long; partial values such as "12x" are invalid. */
+static long parse_long_arg(const char *text, const char *name) {
+  char *end_pointer = NULL;
   errno = 0;
-  long value = strtol(text,&endptr,10);
-  if(errno!=0 || endptr==text || *endptr!='\0'){
-    fprintf(stderr,"ERROR: invalid %s: %s\n",name,text);
+  long value = strtol(text, &end_pointer, 10);
+
+  if (errno != 0 || end_pointer == text || *end_pointer != '\0') {
+    (void)fprintf(stderr, "ERROR: invalid %s: %s\n", name, text);
     exit(2);
   }
   return value;
 }
 
-static int parse_int_arg(const char* text,const char* name){
-  long value = parse_long_arg(text,name);
-  if(value<INT_MIN || value>INT_MAX){
-    fprintf(stderr,"ERROR: %s out of int range: %s\n",name,text);
+static int parse_positive_int_arg(const char *text, const char *name) {
+  long value = parse_long_arg(text, name);
+  if (value < 1L || value > INT_MAX) {
+    (void)fprintf(stderr, "ERROR: %s must be in [1, %d]: %s\n", name,
+                  INT_MAX, text);
     exit(2);
   }
   return (int)value;
 }
 
-static double now_ms(void){
-  struct timespec ts; clock_gettime(CLOCK_MONOTONIC,&ts);
-  return ts.tv_sec*1000.0 + ts.tv_nsec/1e6;
+/* C11's timespec_get avoids a platform-specific clock_gettime feature macro. */
+static double now_milliseconds(void) {
+  struct timespec timestamp;
+  if (timespec_get(&timestamp, TIME_UTC) != TIME_UTC) {
+    fail("could not read the system clock");
+  }
+
+  return (double)timestamp.tv_sec * 1000.0 +
+         (double)timestamp.tv_nsec / 1000000.0;
 }
 
-/* ---------- Simple sieve up to limit (inclusive) ---------- */
-static int* simple_sieve(int limit, int* out_n){
-  if(limit<1){*out_n=0;return NULL;}
-  int n=limit+1;
-  u8* isp=(u8*)checked_alloc((size_t)n,"oom simple_sieve");
-  memset(isp,1,(size_t)n); isp[0]=0; if(n>1) isp[1]=0;
-  int r=(int)floor(sqrt((double)limit));
-  for(int p=2;p<=r;++p) if(isp[p]) for(int q=p*p;q<=limit;q+=p) isp[q]=0;
-  int cnt=0; for(int i=2;i<=limit;++i) if(isp[i]) ++cnt;
-  int* primes=(int*)checked_alloc(sizeof(int)*(size_t)cnt,"oom primes");
-  int k=0; for(int i=2;i<=limit;++i) if(isp[i]) primes[k++]=i;
-  checked_free(isp); *out_n=cnt; return primes;
+/*
+ * Return floor(sqrt(value)) and repair any floating-point rounding at the
+ * integer boundary without multiplying values that could overflow long.
+ */
+static long integer_square_root(long value) {
+  if (value <= 0L) {
+    return 0L;
+  }
+
+  long root = (long)sqrtl((long double)value);
+  while (root > value / root) {
+    --root;
+  }
+  while (root < LONG_MAX) {
+    long next = root + 1L;
+    if (next > value / next) {
+      break;
+    }
+    root = next;
+  }
+  return root;
 }
 
-/* ---------- 6-wheel candidate walk helpers ---------- */
-#define BITGET(B,i) (((B)[(i)>>3]>>((i)&7))&1u)
-#define BITCLR(B,i) ((B)[(i)>>3] &= (u8)~(1u<<((i)&7)))
-#define BITSET(B,i) ((B)[(i)>>3] |= (u8)(1u<<((i)&7)))
+/* Generate every base prime in [2, limit] using one byte per integer. */
+static long *simple_sieve(long limit, size_t *prime_count) {
+  *prime_count = 0U;
+  if (limit < 2L) {
+    return NULL;
+  }
+  if ((uintmax_t)limit >= (uintmax_t)SIZE_MAX) {
+    fail("base-prime sieve is too large for this platform");
+  }
 
-typedef struct { long start, end, first; int first_step; } wheel6_map;
+  size_t value_count = (size_t)limit + 1U;
+  byte_t *is_prime = checked_alloc(value_count, "out of memory for base sieve");
+  for (size_t value = 0U; value < value_count; ++value) {
+    is_prime[value] = 1U;
+  }
+  is_prime[0] = 0U;
+  is_prime[1] = 0U;
 
-static long count_candidates(long start,long end){
-  if(end<start) return 0;
-  long x=start; int m=(int)(x%6+6)%6;
-  while(m!=1 && m!=5){ ++x; m=(m+1)%6; if(x>end) return 0; }
-  long cnt=1; int step=(m==1)?4:2;
-  for(;;){ x+=step; step=(step==4)?2:4; if(x>end) break; ++cnt; }
-  return cnt;
-}
+  for (long prime = 2L; prime <= limit / prime; ++prime) {
+    if (is_prime[(size_t)prime] == 0U) {
+      continue;
+    }
 
-static wheel6_map build_wheel6(long start,long end){
-  wheel6_map w={start,end,end+1,0};
-  if(end<start) return w;
-  long x=start; int m=(int)(x%6+6)%6;
-  while(m!=1 && m!=5){ ++x; m=(m+1)%6; if(x>end) return w; }
-  w.first=x; w.first_step=(m==1)?4:2; return w;
-}
-
-static long wheel6_index_of(const wheel6_map* w,long val){
-  if(val<w->first || val>w->end) return -1;
-  int m=(int)(val%6+6)%6; if(m!=1 && m!=5) return -1;
-  long idx=0, x=w->first; int step=w->first_step;
-  while(x<val){ x+=step; step=(step==4)?2:4; ++idx; }
-  return idx;
-}
-
-/* ---------- sieve segment and collect primes ---------- */
-typedef struct { long* v; size_t n, cap; } vec_long;
-
-static void vpush(vec_long* a,long x){
-  if(a->n==a->cap){ a->cap=a->cap? a->cap*2:256; a->v=(long*)checked_realloc(a->v,a->cap*sizeof(long),"oom vec"); }
-  a->v[a->n++]=x;
-}
-
-static void sieve_collect(long start,long end, vec_long* out){
-  int base_n=0; int limit=(int)floor(sqrt((double)end));
-  int* base=simple_sieve(limit,&base_n);
-
-  wheel6_map w=build_wheel6(start,end);
-  long cand_cnt=count_candidates(start,end);
-  long bytes=(cand_cnt+7)>>3; if(bytes==0) bytes=1;
-  u8* bits=(u8*)checked_alloc((size_t)bytes,"oom bits");
-  memset(bits,0xFF,(size_t)bytes);
-
-  for(int i=0;i<base_n;++i){
-    int p=base[i];
-    if(p<5) continue;                 // 2,3 excluded by wheel
-    long p2=(long)p*(long)p;
-    long q=((start + p - 1)/p)*p;     // ceil(start/p)*p
-    if(q<p2) q=p2;
-    for(long m=q; m<=end; m+=p){
-      int mod=(int)(m%6+6)%6; if(mod!=1 && mod!=5) continue;
-      long idx=wheel6_index_of(&w,m); if(idx>=0) BITCLR(bits,idx);
+    for (long composite = prime * prime; composite <= limit;) {
+      is_prime[(size_t)composite] = 0U;
+      if (composite > limit - prime) {
+        break;
+      }
+      composite += prime;
     }
   }
 
-  if(start<=2 && 2<=end) vpush(out,2);
-  if(start<=3 && 3<=end) vpush(out,3);
-
-  long x=w.first; if(x<=end){
-    int step=w.first_step; long idx=0;
-    while(x<=end){
-      if(BITGET(bits,idx) && x>=5) vpush(out,x);
-      x+=step; step=(step==4)?2:4; ++idx;
+  size_t count = 0U;
+  for (long value = 2L; value <= limit; ++value) {
+    if (is_prime[(size_t)value] != 0U) {
+      ++count;
     }
   }
-  checked_free(bits); checked_free(base);
+  if (count > SIZE_MAX / sizeof(long)) {
+    checked_free(is_prime);
+    fail("base-prime array size overflow");
+  }
+
+  long *primes = checked_alloc(count * sizeof(*primes),
+                               "out of memory for base primes");
+  size_t output_index = 0U;
+  for (long value = 2L; value <= limit; ++value) {
+    if (is_prime[(size_t)value] != 0U) {
+      primes[output_index++] = value;
+    }
+  }
+
+  checked_free(is_prime);
+  *prime_count = count;
+  return primes;
 }
 
-/* ---------- output helpers ---------- */
-static int term_width(void){
-#ifdef __unix__
-  struct winsize w;
-  if(isatty(STDOUT_FILENO) && ioctl(STDOUT_FILENO,TIOCGWINSZ,&w)==0 && w.ws_col>0)
-    return (int)w.ws_col;
+/*
+ * A wheel map describes the alternating +2/+4 candidate walk. first_step is
+ * the distance from candidate zero to candidate one within each six-value
+ * cycle: 4 for a first value congruent to 1, or 2 for one congruent to 5.
+ */
+typedef struct {
+  long first;
+  long end;
+  int first_step;
+  bool has_candidates;
+} wheel6_map;
+
+static int modulo_six(long value) {
+  int remainder = (int)(value % 6L);
+  return remainder < 0 ? remainder + 6 : remainder;
+}
+
+static wheel6_map build_wheel6(long start, long end) {
+  wheel6_map wheel = {0L, end, 0, false};
+  if (end < start) {
+    return wheel;
+  }
+
+  long candidate = start;
+  for (;;) {
+    int remainder = modulo_six(candidate);
+    if (remainder == 1 || remainder == 5) {
+      wheel.first = candidate;
+      wheel.first_step = remainder == 1 ? 4 : 2;
+      wheel.has_candidates = true;
+      return wheel;
+    }
+    if (candidate == end) {
+      return wheel;
+    }
+    ++candidate;
+  }
+}
+
+/* Count represented candidates without walking the complete input range. */
+static size_t wheel6_candidate_count(const wheel6_map *wheel) {
+  if (!wheel->has_candidates) {
+    return 0U;
+  }
+
+  unsigned long distance = (unsigned long)(wheel->end - wheel->first);
+  uintmax_t count = (uintmax_t)(distance / 6UL) * 2U + 1U;
+  if (distance % 6UL >= (unsigned long)wheel->first_step) {
+    ++count;
+  }
+  if (count > (uintmax_t)SIZE_MAX) {
+    fail("candidate count exceeds addressable memory");
+  }
+  return (size_t)count;
+}
+
+/* Map a 6-wheel candidate to its bit index in constant time. */
+static bool wheel6_index_of(const wheel6_map *wheel, long value,
+                            size_t *index) {
+  if (!wheel->has_candidates || value < wheel->first || value > wheel->end) {
+    return false;
+  }
+
+  long distance = value - wheel->first;
+  long cycle_offset = distance % 6L;
+  if (cycle_offset != 0L && cycle_offset != (long)wheel->first_step) {
+    return false;
+  }
+
+  uintmax_t candidate_index = (uintmax_t)(distance / 6L) * 2U;
+  if (cycle_offset != 0L) {
+    ++candidate_index;
+  }
+  if (candidate_index > (uintmax_t)SIZE_MAX) {
+    fail("candidate index exceeds addressable memory");
+  }
+
+  *index = (size_t)candidate_index;
+  return true;
+}
+
+#define BIT_GET(buffer, index)                                               \
+  (((buffer)[(index) >> 3U] >> ((index)&7U)) & 1U)
+#define BIT_CLEAR(buffer, index)                                             \
+  ((buffer)[(index) >> 3U] &= (byte_t)~(1U << ((index)&7U)))
+
+typedef struct {
+  long *values;
+  size_t count;
+  size_t capacity;
+} long_vector;
+
+/* Append while checking both capacity doubling and byte-size arithmetic. */
+static void vector_push(long_vector *vector, long value) {
+  if (vector->count == vector->capacity) {
+    size_t new_capacity = 256U;
+    if (vector->capacity != 0U) {
+      if (vector->capacity > SIZE_MAX / 2U) {
+        fail("prime result capacity overflow");
+      }
+      new_capacity = vector->capacity * 2U;
+    }
+    if (new_capacity > SIZE_MAX / sizeof(*vector->values)) {
+      fail("prime result byte-size overflow");
+    }
+
+    vector->values = checked_realloc(
+        vector->values, new_capacity * sizeof(*vector->values),
+        "out of memory for prime results");
+    vector->capacity = new_capacity;
+  }
+
+  vector->values[vector->count++] = value;
+}
+
+/*
+ * Mark composites in the requested range and append primes in ascending order.
+ * start may be negative; the wheel begins at max(start, 5), so non-positive
+ * inputs never enter the candidate set.
+ */
+static void sieve_collect(long start, long end, long_vector *output) {
+  if (start <= 2L && end >= 2L) {
+    vector_push(output, 2L);
+  }
+  if (start <= 3L && end >= 3L) {
+    vector_push(output, 3L);
+  }
+  if (end < 5L) {
+    return;
+  }
+
+  long candidate_start = start < 5L ? 5L : start;
+  wheel6_map wheel = build_wheel6(candidate_start, end);
+  size_t candidate_count = wheel6_candidate_count(&wheel);
+  if (candidate_count == 0U) {
+    return;
+  }
+
+  size_t byte_count = candidate_count / 8U;
+  if (candidate_count % 8U != 0U) {
+    ++byte_count;
+  }
+  byte_t *candidate_bits = checked_alloc(byte_count,
+                                         "out of memory for candidate bits");
+  for (size_t byte_index = 0U; byte_index < byte_count; ++byte_index) {
+    candidate_bits[byte_index] = UCHAR_MAX;
+  }
+
+  size_t base_count = 0U;
+  long limit = integer_square_root(end);
+  long *base_primes = simple_sieve(limit, &base_count);
+
+  for (size_t base_index = 0U; base_index < base_count; ++base_index) {
+    long prime = base_primes[base_index];
+    if (prime < 5L) {
+      continue; /* Multiples of 2 and 3 are absent from the wheel. */
+    }
+
+    long first_multiple = prime * prime; /* prime <= floor(sqrt(end)). */
+    if (candidate_start > first_multiple) {
+      long remainder = candidate_start % prime;
+      if (remainder == 0L) {
+        first_multiple = candidate_start;
+      } else {
+        long adjustment = prime - remainder;
+        if (candidate_start > LONG_MAX - adjustment) {
+          continue; /* The next multiple lies outside the long domain. */
+        }
+        first_multiple = candidate_start + adjustment;
+      }
+    }
+
+    for (long multiple = first_multiple; multiple <= end;) {
+      size_t candidate_index = 0U;
+      if (wheel6_index_of(&wheel, multiple, &candidate_index)) {
+        BIT_CLEAR(candidate_bits, candidate_index);
+      }
+
+      if (multiple > end - prime) {
+        break;
+      }
+      multiple += prime;
+    }
+  }
+
+  long candidate = wheel.first;
+  int step = wheel.first_step;
+  for (size_t index = 0U; index < candidate_count; ++index) {
+    if (BIT_GET(candidate_bits, index) != 0U) {
+      vector_push(output, candidate);
+    }
+    if (index + 1U < candidate_count) {
+      candidate += (long)step;
+      step = step == 4 ? 2 : 4;
+    }
+  }
+
+  checked_free(base_primes);
+  checked_free(candidate_bits);
+}
+
+/* Return the interactive terminal width, or a stable noninteractive default. */
+static int terminal_width(void) {
+#if defined(__unix__) || defined(__APPLE__)
+  struct winsize window;
+  if (isatty(STDOUT_FILENO) != 0 &&
+      ioctl(STDOUT_FILENO, TIOCGWINSZ, &window) == 0 && window.ws_col > 0U) {
+    return (int)window.ws_col;
+  }
 #endif
-  return 100; // sensible default
+  return 100;
 }
 
-static void print_columns(const long* a,size_t n,int cols){
-  if(n==0){ puts(""); return; }
-  // find max width
-  long mx=a[n-1]; int w=1; while(mx){ ++w; mx/=10; }
-  int colw=w+1;                      // 1 space gap
-  if(cols<=0){                       // auto-fit by terminal width
-    int tw=term_width();
-    cols = (tw>colw)? (tw/colw) : 1;
+/* Print column-major output so each visual column remains ascending. */
+static void print_columns(const long *values, size_t count, int requested_columns) {
+  if (count == 0U) {
+    (void)putchar('\n');
+    return;
   }
-  size_t rows=(n+cols-1)/cols;
-  for(size_t r=0;r<rows;++r){
-    for(int c=0;c<cols;++c){
-      size_t i=c*rows + r;
-      if(i<n) printf("%*ld", w, a[i]);
-      if(c<cols-1 && c*rows + r + rows < n) putchar(' ');
+
+  long maximum = values[count - 1U];
+  int value_width = 1;
+  while (maximum >= 10L) {
+    ++value_width;
+    maximum /= 10L;
+  }
+
+  int column_width = value_width + 1;
+  int columns = requested_columns;
+  if (columns == 0) {
+    int width = terminal_width();
+    columns = width > column_width ? width / column_width : 1;
+  }
+
+  size_t column_count = (size_t)columns;
+  size_t rows = count / column_count;
+  if (count % column_count != 0U) {
+    ++rows;
+  }
+
+  for (size_t row = 0U; row < rows; ++row) {
+    for (size_t column = 0U; column < column_count; ++column) {
+      size_t index = column * rows + row;
+      if (index < count) {
+        (void)printf("%*ld", value_width, values[index]);
+      }
+      if (column + 1U < column_count && index + rows < count) {
+        (void)putchar(' ');
+      }
     }
-    putchar('\n');
+    (void)putchar('\n');
   }
 }
 
-static int write_json(const char* path,long start,long end,const long* a,size_t n){
-  FILE* f = (path && strcmp(path,"-")==0) ? stdout : fopen(path,"w");
-  if(!f) return -1;
-  fprintf(f,"{\n");
-  fprintf(f,"  \"range\": {\"start\": %ld, \"end\": %ld},\n", start, end);
-  fprintf(f,"  \"count\": %zu,\n", n);
-  fprintf(f,"  \"primes\": [");
-  for(size_t i=0;i<n;++i){
-    if(i) fputc(',',f);
-    if((i%16)==0){ fputc('\n',f); fputs("    ",f); }
-    fprintf(f,"%ld", a[i]);
+/* Serialize a stable schema consumed by the repository's dice simulators. */
+static int write_json(const char *path, long start, long end, const long *values,
+                      size_t count) {
+  bool use_stdout = path != NULL && strcmp(path, "-") == 0;
+  FILE *stream = use_stdout ? stdout : fopen(path, "w");
+  if (stream == NULL) {
+    return -1;
   }
-  if(n) fputc('\n',f);
-  fprintf(f,"  ]\n}\n");
-  if(f!=stdout) fclose(f);
-  return 0;
+
+  (void)fprintf(stream, "{\n");
+  (void)fprintf(stream, "  \"range\": {\"start\": %ld, \"end\": %ld},\n",
+                start, end);
+  (void)fprintf(stream, "  \"count\": %zu,\n", count);
+  (void)fprintf(stream, "  \"primes\": [");
+  for (size_t index = 0U; index < count; ++index) {
+    if (index != 0U) {
+      (void)fputc(',', stream);
+    }
+    if (index % 16U == 0U) {
+      (void)fputc('\n', stream);
+      (void)fputs("    ", stream);
+    }
+    (void)fprintf(stream, "%ld", values[index]);
+  }
+  if (count != 0U) {
+    (void)fputc('\n', stream);
+  }
+  (void)fprintf(stream, "  ]\n}\n");
+
+  if (use_stdout) {
+    return fflush(stream) == 0 ? 0 : -1;
+  }
+  return fclose(stream) == 0 ? 0 : -1;
 }
 
-/* ---------- main ---------- */
-int main(int argc,char** argv){
-  if(argc<3){
-    fprintf(stderr,"Usage: %s START END [--cols N] [--json FILE|-] [--no-list]\n", argv[0]);
+int main(int argument_count, char **argument_values) {
+  if (argument_count < 3) {
+    (void)fprintf(
+        stderr,
+        "Usage: %s START END [--cols N] [--json FILE|-] [--no-list]\n",
+        argument_values[0]);
     return 2;
   }
-  long start = parse_long_arg(argv[1],"START");
-  long end   = parse_long_arg(argv[2],"END");
-  if(end<start) die("END < START");
 
-  int forced_cols = 0;
-  const char* json_path = NULL;
-  int no_list = 0;
-
-  for(int i=3;i<argc;++i){
-    if(strcmp(argv[i],"--cols")==0 && i+1<argc){ forced_cols = parse_int_arg(argv[++i],"--cols"); continue; }
-    if(strcmp(argv[i],"--json")==0 && i+1<argc){ json_path = argv[++i]; continue; }
-    if(strcmp(argv[i],"--no-list")==0){ no_list = 1; continue; }
-    fprintf(stderr,"Unknown option: %s\n", argv[i]); return 2;
+  long start = parse_long_arg(argument_values[1], "START");
+  long end = parse_long_arg(argument_values[2], "END");
+  if (end < start) {
+    fail("END is less than START");
   }
 
-  double t0=now_ms();
-  vec_long primes={0,0,0};
-  sieve_collect(start,end,&primes);
-  double t1=now_ms();
+  int requested_columns = 0;
+  const char *json_path = NULL;
+  bool suppress_list = false;
 
-  if(json_path){
-    if(write_json(json_path,start,end,primes.v,primes.n)!=0)
-      fprintf(stderr,"WARN: could not write JSON to %s\n", json_path);
+  for (int index = 3; index < argument_count; ++index) {
+    if (strcmp(argument_values[index], "--cols") == 0 &&
+        index + 1 < argument_count) {
+      requested_columns =
+          parse_positive_int_arg(argument_values[++index], "--cols");
+      continue;
+    }
+    if (strcmp(argument_values[index], "--json") == 0 &&
+        index + 1 < argument_count) {
+      json_path = argument_values[++index];
+      continue;
+    }
+    if (strcmp(argument_values[index], "--no-list") == 0) {
+      suppress_list = true;
+      continue;
+    }
+
+    (void)fprintf(stderr, "Unknown or incomplete option: %s\n",
+                  argument_values[index]);
+    return 2;
   }
 
-  if(!no_list){
-    print_columns(primes.v, primes.n, forced_cols);
+  /* JSON written to stdout must not be followed by human-readable columns. */
+  if (json_path != NULL && strcmp(json_path, "-") == 0) {
+    suppress_list = true;
   }
 
-  fprintf(stderr,"[ose] range=[%ld,%ld] count=%zu time=%.2f ms\n",
-          start,end,primes.n,(t1-t0));
+  double start_time = now_milliseconds();
+  long_vector primes = {NULL, 0U, 0U};
+  sieve_collect(start, end, &primes);
+  double end_time = now_milliseconds();
 
-  checked_free(primes.v);
-  return 0;
+  int exit_status = EXIT_SUCCESS;
+  if (json_path != NULL &&
+      write_json(json_path, start, end, primes.values, primes.count) != 0) {
+    (void)fprintf(stderr, "ERROR: could not write JSON to %s\n", json_path);
+    exit_status = EXIT_FAILURE;
+  }
+  if (!suppress_list) {
+    print_columns(primes.values, primes.count, requested_columns);
+  }
+
+  (void)fprintf(stderr, "[ose] range=[%ld,%ld] count=%zu time=%.2f ms\n",
+                start, end, primes.count, end_time - start_time);
+  checked_free(primes.values);
+  return exit_status;
 }

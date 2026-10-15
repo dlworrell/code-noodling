@@ -1,7 +1,19 @@
+/*
+ * Earliest PhysX dice-roll proof of concept, preserved for history.
+ *
+ * Review status: reference-only; it is intentionally excluded from CMake.
+ * The actor-name raycast is incomplete (the actor is named "Die", not by face)
+ * and the scene has no ground plane, so this file must not be used for
+ * statistical results. See ../physx_dice_multi.cpp for the maintained path.
+ */
+
 #include <PxPhysicsAPI.h>
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
-#include <vector>
+#include <string>
 #include <unordered_map>
+#include <vector>
 
 using namespace physx;
 

@@ -1,372 +1,527 @@
-// cuda_sieve_mgpu.cu
-// Multi-GPU segmented sieve (odd-only) with JSON or column output.
-// Optimized for 4x Tesla K80 (SM 3.7).
-//
-// Build:
-//   nvcc -O3 -arch=sm_37 -Xcompiler -fopenmp -o cuda_sieve_mgpu cuda_sieve_mgpu.cu
-//
-// Usage:
-//   ./cuda_sieve_mgpu N                       # columns to terminal width
-//   ./cuda_sieve_mgpu N --cols 6             # force 6 columns
-//   ./cuda_sieve_mgpu N --json primes.json   # write JSON (no columns)
-//   ./cuda_sieve_mgpu N --json -             # JSON to stdout
-//   ./cuda_sieve_mgpu N --gpus 4 --seg 128M  # select #GPUs and segment size
-//
-// Notes:
-//   - Stores only odds on device: candidate i -> value v = 2*i+1 (i>=1 corresponds to 3)
-//   - Base primes up to floor(sqrt(N)) are computed on CPU (fast, tiny).
-//   - Each GPU processes a disjoint slice of [3..N], segmented to bound memory.
-//   - Results are merged on host in order, then printed or serialized.
-//
+/*
+ * cuda_sieve_mgpu.cu - multi-GPU, odd-only segmented prime generator.
+ *
+ * The host computes base primes through floor(sqrt(N)), divides the odd
+ * candidates in [3, N] into disjoint contiguous slices, and assigns one slice
+ * to each selected CUDA device. Each device processes its slice in bounded
+ * segments so memory use is controlled by --seg. Results are merged in slice
+ * order and can be printed as columns or serialized for the dice simulators.
+ *
+ * Standalone build for the repository's Tesla K80 target:
+ *   nvcc -O3 -std=c++17 -arch=sm_37 -o cuda_sieve_mgpu \
+ *     cuda_sieve_mgpu.cu
+ *
+ * Examples:
+ *   ./cuda_sieve_mgpu 50000000
+ *   ./cuda_sieve_mgpu 50000000 --cols 6
+ *   ./cuda_sieve_mgpu 50000000 --gpus 4 --seg 128M
+ *   ./cuda_sieve_mgpu 50000000 --json primes_50M.json
+ */
 
 #include <cuda_runtime.h>
+
 #include <algorithm>
-#include <atomic>
 #include <cerrno>
 #include <chrono>
-#include <cinttypes>
 #include <climits>
 #include <cmath>
-#include <cstdio>
+#include <cstddef>
 #include <cstdlib>
 #include <cstring>
+#include <fstream>
 #include <future>
+#include <iomanip>
 #include <iostream>
-#include <numeric>
+#include <limits>
 #include <string>
-#include <thread>
 #include <vector>
+
+#if defined(__unix__) || defined(__APPLE__)
+#include <sys/ioctl.h>
+#include <unistd.h>
+#endif
 
 #ifndef TPB
 #define TPB 256
 #endif
 
-#define CUDA_OK(call) do { \
-  cudaError_t _e = (call); \
-  if (_e != cudaSuccess) { \
-    std::fprintf(stderr, "CUDA error %s:%d: %s\n", __FILE__, __LINE__, cudaGetErrorString(_e)); \
-    std::exit(1); \
-  } \
-} while(0)
+using byte_t = unsigned char;
 
-using u8 = unsigned char;
+/* Convert every CUDA failure into a diagnostic containing the call site. */
+static void check_cuda(cudaError_t result, const char *expression,
+                       const char *file, int line) {
+  if (result != cudaSuccess) {
+    std::cerr << "CUDA error for " << expression << " at " << file << ':'
+              << line << ": " << cudaGetErrorString(result) << '\n';
+    std::exit(EXIT_FAILURE);
+  }
+}
 
-static long long parse_ll_arg(const char* text, const char* name) {
-  char* endptr = nullptr;
+#define CUDA_CHECK(expression)                                               \
+  check_cuda((expression), #expression, __FILE__, __LINE__)
+
+[[noreturn]] static void invalid_argument(const std::string &message) {
+  std::cerr << "ERROR: " << message << '\n';
+  std::exit(2);
+}
+
+/* Parse a complete signed decimal value and reject trailing characters. */
+static long long parse_long_long(const char *text, const char *name) {
+  char *end_pointer = nullptr;
   errno = 0;
-  long long value = std::strtoll(text, &endptr, 10);
-  if (errno != 0 || endptr == text || *endptr != '\0') {
-    std::fprintf(stderr, "Bad %s: %s\n", name, text);
-    std::exit(2);
+  long long value = std::strtoll(text, &end_pointer, 10);
+  if (errno != 0 || end_pointer == text || *end_pointer != '\0') {
+    invalid_argument(std::string("invalid ") + name + ": " + text);
   }
   return value;
 }
 
-static int parse_int_arg(const char* text, const char* name) {
-  long long value = parse_ll_arg(text, name);
-  if (value < INT_MIN || value > INT_MAX) {
-    std::fprintf(stderr, "%s out of int range: %s\n", name, text);
-    std::exit(2);
+static int parse_positive_int(const char *text, const char *name) {
+  long long value = parse_long_long(text, name);
+  if (value < 1LL || value > static_cast<long long>(INT_MAX)) {
+    invalid_argument(std::string(name) + " must be in [1, " +
+                     std::to_string(INT_MAX) + "]: " + text);
   }
-  return (int)value;
+  return static_cast<int>(value);
 }
 
-// ---------------- CPU base primes ----------------
-static std::vector<int> simple_sieve(int limit) {
-  if (limit < 1) return {};
-  std::vector<u8> is(limit + 1, 1);
-  is[0] = 0; if (limit >= 1) is[1] = 0;
-  int r = (int)std::floor(std::sqrt((double)limit));
-  for (int p = 2; p <= r; ++p) if (is[p]) {
-    for (int q = p * p; q <= limit; q += p) is[q] = 0;
+/*
+ * Parse byte counts with an optional binary K/M/G suffix. Overflow is checked
+ * before multiplication and the result is constrained to both size_t and the
+ * signed arithmetic used to advance segment bounds.
+ */
+static std::size_t parse_segment_bytes(const std::string &text) {
+  if (text.empty() || text.front() == '-') {
+    invalid_argument("invalid --seg value: " + text);
   }
+
+  char *end_pointer = nullptr;
+  errno = 0;
+  unsigned long long base = std::strtoull(text.c_str(), &end_pointer, 10);
+  if (errno != 0 || end_pointer == text.c_str()) {
+    invalid_argument("invalid --seg value: " + text);
+  }
+
+  unsigned long long multiplier = 1ULL;
+  if (*end_pointer != '\0') {
+    if (end_pointer[1] != '\0') {
+      invalid_argument("invalid --seg suffix: " + text);
+    }
+    switch (*end_pointer) {
+      case 'K':
+      case 'k':
+        multiplier = 1024ULL;
+        break;
+      case 'M':
+      case 'm':
+        multiplier = 1024ULL * 1024ULL;
+        break;
+      case 'G':
+      case 'g':
+        multiplier = 1024ULL * 1024ULL * 1024ULL;
+        break;
+      default:
+        invalid_argument("invalid --seg suffix: " + text);
+    }
+  }
+
+  constexpr unsigned long long max_size_t =
+      static_cast<unsigned long long>(std::numeric_limits<std::size_t>::max());
+  constexpr unsigned long long max_segment =
+      static_cast<unsigned long long>(LLONG_MAX / 2LL);
+  unsigned long long maximum = std::min(max_size_t, max_segment);
+  if (base == 0ULL || base > maximum / multiplier) {
+    invalid_argument("--seg is zero or exceeds the supported size: " + text);
+  }
+
+  unsigned long long bytes = base * multiplier;
+  if (bytes < 1024ULL) {
+    invalid_argument("--seg must reserve at least 1024 bytes");
+  }
+  return static_cast<std::size_t>(bytes);
+}
+
+/* Compute floor(sqrt(value)) and correct floating-point boundary rounding. */
+static long long integer_square_root(long long value) {
+  if (value <= 0LL) {
+    return 0LL;
+  }
+
+  long long root = static_cast<long long>(std::sqrt(
+      static_cast<long double>(value)));
+  while (root > value / root) {
+    --root;
+  }
+  while (root < LLONG_MAX) {
+    long long next = root + 1LL;
+    if (next > value / next) {
+      break;
+    }
+    root = next;
+  }
+  return root;
+}
+
+/* Host-side sieve for the relatively small set of GPU marking primes. */
+static std::vector<int> simple_sieve(int limit) {
+  if (limit < 2) {
+    return {};
+  }
+
+  std::vector<byte_t> is_prime(static_cast<std::size_t>(limit) + 1U, 1U);
+  is_prime[0] = 0U;
+  is_prime[1] = 0U;
+
+  for (int prime = 2; prime <= limit / prime; ++prime) {
+    if (is_prime[static_cast<std::size_t>(prime)] == 0U) {
+      continue;
+    }
+
+    for (long long composite = 1LL * prime * prime; composite <= limit;
+         composite += prime) {
+      is_prime[static_cast<std::size_t>(composite)] = 0U;
+    }
+  }
+
   std::vector<int> primes;
-  primes.reserve(limit / std::max(1.0, std::log((double)limit)));
-  for (int i = 2; i <= limit; ++i) if (is[i]) primes.push_back(i);
+  for (int value = 2; value <= limit; ++value) {
+    if (is_prime[static_cast<std::size_t>(value)] != 0U) {
+      primes.push_back(value);
+    }
+  }
   return primes;
 }
 
-// ---------------- Device kernel ------------------
-// flags[k] == 1 means (2*k+1) is a candidate; 0 = composite.
-// segment covers odd numbers [segL..segR] inclusive, segL & segR odd.
-// Index mapping: val = 2*k+1  => k = (val-1)/2
-__global__
-void mark_multiples_odd(u8* flags, long long segL, long long segR, int p) {
-  // First multiple >= segL:
-  long long p2 = 1LL * p * p;
-  long long start = (segL > p2 ? segL : p2);
-  if ((start % 2) == 0) ++start;              // keep odd
-  // advance start so that start ≡ 0 (mod p)
-  long long rem = start % p;
-  if (rem) start += (p - rem);
-  if ((start % 2) == 0) start += p;           // ensure odd multiple of p
+/*
+ * Mark odd multiples of one base prime in a segment. The kernel indexes the
+ * sequence start, start+2p, start+4p, ... rather than multiplying an
+ * unconstrained thread index into signed arithmetic.
+ */
+__global__ void mark_odd_multiples(byte_t *flags, long long segment_lower,
+                                   long long segment_upper, int prime) {
+  long long prime_squared = 1LL * prime * prime;
+  long long first = segment_lower > prime_squared ? segment_lower
+                                                   : prime_squared;
 
-  // Grid-stride over multiples of p
-  long long stride = 1LL * p * gridDim.x * blockDim.x * 2; // step by 2p per "full" cycle on odds
-  long long first = start + 2LL * p * (blockIdx.x * blockDim.x + threadIdx.x);
+  long long remainder = first % prime;
+  if (remainder != 0LL) {
+    long long adjustment = static_cast<long long>(prime) - remainder;
+    if (first > LLONG_MAX - adjustment) {
+      return;
+    }
+    first += adjustment;
+  }
+  if ((first & 1LL) == 0LL) {
+    if (first > LLONG_MAX - prime) {
+      return;
+    }
+    first += prime;
+  }
+  if (first > segment_upper) {
+    return;
+  }
 
-  for (long long m = first; m <= segR; m += stride) {
-    // m is odd multiple of p
-    long long k = (m - segL) >> 1;            // index in flags for segment
-    flags[k] = 0;
+  unsigned long long prime_step =
+      2ULL * static_cast<unsigned long long>(prime);
+  unsigned long long multiple_count =
+      static_cast<unsigned long long>(segment_upper - first) / prime_step + 1ULL;
+  unsigned long long thread_index =
+      static_cast<unsigned long long>(blockIdx.x) * blockDim.x + threadIdx.x;
+  unsigned long long thread_count =
+      static_cast<unsigned long long>(gridDim.x) * blockDim.x;
+
+  for (unsigned long long offset = thread_index; offset < multiple_count;) {
+    long long multiple = first + static_cast<long long>(offset * prime_step);
+    std::size_t flag_index =
+        static_cast<std::size_t>((multiple - segment_lower) / 2LL);
+    flags[flag_index] = 0U;
+
+    if (offset > ULLONG_MAX - thread_count) {
+      break;
+    }
+    offset += thread_count;
   }
 }
 
-// --------------- Utility: term width --------------
-static int term_width() {
+static int terminal_width() {
 #if defined(__unix__) || defined(__APPLE__)
-  #include <sys/ioctl.h>
-  #include <unistd.h>
-  struct winsize w;
-  if (isatty(STDOUT_FILENO) && ioctl(STDOUT_FILENO, TIOCGWINSZ, &w) == 0 && w.ws_col > 0)
-    return (int)w.ws_col;
+  struct winsize window;
+  if (isatty(STDOUT_FILENO) != 0 &&
+      ioctl(STDOUT_FILENO, TIOCGWINSZ, &window) == 0 && window.ws_col > 0U) {
+    return static_cast<int>(window.ws_col);
+  }
 #endif
   return 100;
 }
 
-// --------------- Printing / JSON ------------------
-static void print_columns(const std::vector<long long>& v, int cols) {
-  if (v.empty()) { std::cout << "\n"; return; }
-  // compute width
-  long long mx = v.back();
-  int w = 1; for (auto x = mx; x; x/=10) ++w;
-  int colw = w + 1;
-  if (cols <= 0) {
-    int tw = term_width();
-    cols = (tw > colw ? tw / colw : 1);
+/* Print column-major output so each visual column remains ascending. */
+static void print_columns(const std::vector<long long> &values,
+                          int requested_columns) {
+  if (values.empty()) {
+    std::cout << '\n';
+    return;
   }
-  size_t n = v.size();
-  size_t rows = (n + cols - 1) / cols;
-  for (size_t r = 0; r < rows; ++r) {
-    for (int c = 0; c < cols; ++c) {
-      size_t i = c * rows + r;
-      if (i < n) std::printf("%*lld", w, v[i]);
-      if (c < cols - 1 && (c + 1) * rows + r < n) std::printf(" ");
-    }
-    std::printf("\n");
+
+  int value_width = 1;
+  for (long long maximum = values.back(); maximum >= 10LL; maximum /= 10LL) {
+    ++value_width;
   }
-}
 
-static int write_json(const char* path, long long N, const std::vector<long long>& primes) {
-  FILE* f = (path && std::string(path) == "-") ? stdout : std::fopen(path, "w");
-  if (!f) return -1;
-  std::fprintf(f, "{\n");
-  std::fprintf(f, "  \"range\": {\"start\": 2, \"end\": %lld},\n", N);
-  std::fprintf(f, "  \"count\": %zu,\n", primes.size());
-  std::fprintf(f, "  \"primes\": [");
-  for (size_t i = 0; i < primes.size(); ++i) {
-    if (i % 16 == 0) std::fprintf(f, "\n    ");
-    std::fprintf(f, "%lld", primes[i]);
-    if (i + 1 < primes.size()) std::fputc(',', f);
+  int column_width = value_width + 1;
+  int columns = requested_columns;
+  if (columns == 0) {
+    int width = terminal_width();
+    columns = width > column_width ? width / column_width : 1;
   }
-  if (!primes.empty()) std::fputc('\n', f);
-  std::fprintf(f, "  ]\n}\n");
-  if (f != stdout) std::fclose(f);
-  return 0;
-}
 
-// --------------- Per-GPU worker -------------------
-struct GpuSliceResult {
-  std::vector<long long> primes;
-  int device = -1;
-};
+  std::size_t column_count = static_cast<std::size_t>(columns);
+  std::size_t rows = values.size() / column_count;
+  if (values.size() % column_count != 0U) {
+    ++rows;
+  }
 
-struct WorkerArgs {
-  int device;
-  long long globalN;
-  long long sliceL; // inclusive
-  long long sliceR; // inclusive
-  size_t segment_bytes; // bytes of flags per segment on device
-  const int* base_primes; // host pointer
-  int base_count;
-};
-
-static void gpu_worker(WorkerArgs args, std::promise<GpuSliceResult> prom) {
-  CUDA_OK(cudaSetDevice(args.device));
-
-  // Copy base primes to device
-  int *d_base = nullptr;
-  CUDA_OK(cudaMalloc(&d_base, args.base_count * sizeof(int)));
-  CUDA_OK(cudaMemcpy(d_base, args.base_primes, args.base_count * sizeof(int), cudaMemcpyHostToDevice));
-
-  // Output buffer on host
-  std::vector<long long> out;
-  out.reserve((size_t)( (args.sliceR - args.sliceL + 1) / std::log(std::max(3.0, (double)args.sliceR)) / 2 ));
-
-  // Segment loop over odd numbers in [sliceL..sliceR]
-  // Ensure segment bounds are odd
-  auto make_odd = [](long long x){ return (x % 2 == 0) ? (x + 1) : x; };
-  long long L = make_odd(args.sliceL);
-  long long R = make_odd(args.sliceR);
-
-  // How many odd numbers fit in segment_bytes?
-  size_t max_flags = args.segment_bytes; // bytes of flags
-  if (max_flags < 1024) max_flags = 1024; // floor
-  // Each odd -> 1 byte flag. Segment span = 2*max_flags on values.
-  long long seg_span_vals = 2LL * (long long)max_flags;
-
-  u8* d_flags = nullptr;
-  CUDA_OK(cudaMalloc(&d_flags, max_flags * sizeof(u8)));
-
-  // Pre-create a stream for overlap (optional)
-  cudaStream_t stream;
-  CUDA_OK(cudaStreamCreate(&stream));
-
-  for (long long segL = L; segL <= R; segL += seg_span_vals) {
-    long long segR = std::min(segL + seg_span_vals - 2, R); // inclusive, keep odd
-    size_t odd_count = (size_t)((segR - segL) / 2 + 1);     // number of odds in segment
-
-    // Set all flags = 1
-    CUDA_OK(cudaMemsetAsync(d_flags, 1, odd_count * sizeof(u8), stream));
-
-    // Launch one kernel per base prime p >= 3
-    int blocks = (int)((odd_count + TPB - 1) / TPB);
-    if (blocks < 1) blocks = 1;
-    if (blocks > 65535) blocks = 65535;
-
-    for (int i = 0; i < args.base_count; ++i) {
-      int p = args.base_primes[i];
-      if (p == 2) continue;                     // odds only
-      long long p2 = 1LL * p * p;
-      if (p2 > segR) break;                     // nothing to mark beyond p^2
-      mark_multiples_odd<<<blocks, TPB, 0, stream>>>(d_flags, segL, segR, p);
-    }
-    CUDA_OK(cudaPeekAtLastError());
-    CUDA_OK(cudaStreamSynchronize(stream));
-
-    // Copy flags back and collect primes
-    std::vector<u8> h_flags(odd_count);
-    CUDA_OK(cudaMemcpyAsync(h_flags.data(), d_flags, odd_count * sizeof(u8), cudaMemcpyDeviceToHost, stream));
-    CUDA_OK(cudaStreamSynchronize(stream));
-
-    // Push primes from this segment
-    // Also consider 2 if inside slice (handled once at the end in main)
-    for (size_t k = 0; k < odd_count; ++k) {
-      if (h_flags[k]) {
-        long long val = segL + 2LL * (long long)k;
-        if (val >= 3) out.push_back(val);
+  for (std::size_t row = 0U; row < rows; ++row) {
+    for (std::size_t column = 0U; column < column_count; ++column) {
+      std::size_t index = column * rows + row;
+      if (index < values.size()) {
+        std::cout << std::setw(value_width) << values[index];
+      }
+      if (column + 1U < column_count && index + rows < values.size()) {
+        std::cout << ' ';
       }
     }
+    std::cout << '\n';
   }
-
-  CUDA_OK(cudaStreamDestroy(stream));
-  CUDA_OK(cudaFree(d_flags));
-  CUDA_OK(cudaFree(d_base));
-
-  GpuSliceResult res;
-  res.device = args.device;
-  std::sort(out.begin(), out.end());
-  res.primes.swap(out);
-  prom.set_value(std::move(res));
 }
 
-// --------------- CLI parsing helpers --------------
-static long long parse_size_arg(const std::string& s) {
-  // supports K/M/G suffix
-  char suf = 0;
-  long long v = 0;
-  if (std::sscanf(s.c_str(), "%lld%c", &v, &suf) >= 1) {
-    if (suf=='K'||suf=='k') v *= 1024LL;
-    else if (suf=='M'||suf=='m') v *= 1024LL*1024LL;
-    else if (suf=='G'||suf=='g') v *= 1024LL*1024LL*1024LL;
-    return v;
+/* Serialize the same stable schema emitted by the CPU generator. */
+static bool write_json(const std::string &path, long long upper_bound,
+                       const std::vector<long long> &primes) {
+  std::ofstream file;
+  std::ostream *output = &std::cout;
+  if (path != "-") {
+    file.open(path);
+    if (!file.is_open()) {
+      return false;
+    }
+    output = &file;
   }
-  std::fprintf(stderr, "Bad size: %s\n", s.c_str());
-  std::exit(2);
+
+  *output << "{\n"
+          << "  \"range\": {\"start\": 2, \"end\": " << upper_bound
+          << "},\n"
+          << "  \"count\": " << primes.size() << ",\n"
+          << "  \"primes\": [";
+  for (std::size_t index = 0U; index < primes.size(); ++index) {
+    if (index != 0U) {
+      *output << ',';
+    }
+    if (index % 16U == 0U) {
+      *output << "\n    ";
+    }
+    *output << primes[index];
+  }
+  if (!primes.empty()) {
+    *output << '\n';
+  }
+  *output << "  ]\n}\n";
+  output->flush();
+  return output->good();
 }
 
-int main(int argc, char** argv) {
-  if (argc < 2) {
-    std::fprintf(stderr, "Usage: %s N [--gpus 4] [--seg 128M] [--cols N] [--json FILE|-]\n", argv[0]);
+struct gpu_worker_arguments {
+  int device;
+  long long slice_lower; /* Inclusive and odd. */
+  long long slice_upper; /* Inclusive and odd. */
+  std::size_t segment_bytes;
+  const std::vector<int> *base_primes;
+};
+
+/* Process one disjoint odd-number slice on one CUDA device. */
+static std::vector<long long> gpu_worker(gpu_worker_arguments arguments) {
+  CUDA_CHECK(cudaSetDevice(arguments.device));
+
+  byte_t *device_flags = nullptr;
+  CUDA_CHECK(cudaMalloc(&device_flags, arguments.segment_bytes));
+
+  cudaStream_t stream;
+  CUDA_CHECK(cudaStreamCreate(&stream));
+
+  std::vector<long long> output;
+  long long segment_lower = arguments.slice_lower;
+  for (;;) {
+    unsigned long long available_odds =
+        static_cast<unsigned long long>(arguments.slice_upper - segment_lower) /
+            2ULL +
+        1ULL;
+    std::size_t odd_count = arguments.segment_bytes;
+    if (available_odds < static_cast<unsigned long long>(odd_count)) {
+      odd_count = static_cast<std::size_t>(available_odds);
+    }
+
+    long long segment_upper =
+        segment_lower + 2LL * static_cast<long long>(odd_count - 1U);
+    CUDA_CHECK(cudaMemsetAsync(device_flags, 1, odd_count, stream));
+
+    std::size_t block_count = odd_count / static_cast<std::size_t>(TPB);
+    if (odd_count % static_cast<std::size_t>(TPB) != 0U) {
+      ++block_count;
+    }
+    block_count = std::max<std::size_t>(1U, block_count);
+    block_count = std::min<std::size_t>(65535U, block_count);
+
+    for (int prime : *arguments.base_primes) {
+      if (prime == 2) {
+        continue; /* Even candidates are not represented. */
+      }
+      if (1LL * prime * prime > segment_upper) {
+        break;
+      }
+      mark_odd_multiples<<<static_cast<unsigned int>(block_count), TPB, 0,
+                           stream>>>(device_flags, segment_lower, segment_upper,
+                                    prime);
+    }
+    CUDA_CHECK(cudaPeekAtLastError());
+    CUDA_CHECK(cudaStreamSynchronize(stream));
+
+    std::vector<byte_t> host_flags(odd_count);
+    CUDA_CHECK(cudaMemcpyAsync(host_flags.data(), device_flags, odd_count,
+                               cudaMemcpyDeviceToHost, stream));
+    CUDA_CHECK(cudaStreamSynchronize(stream));
+
+    for (std::size_t index = 0U; index < odd_count; ++index) {
+      if (host_flags[index] != 0U) {
+        output.push_back(segment_lower + 2LL * static_cast<long long>(index));
+      }
+    }
+
+    if (segment_upper == arguments.slice_upper) {
+      break;
+    }
+    segment_lower = segment_upper + 2LL;
+  }
+
+  CUDA_CHECK(cudaStreamDestroy(stream));
+  CUDA_CHECK(cudaFree(device_flags));
+  return output;
+}
+
+int main(int argument_count, char **argument_values) {
+  if (argument_count < 2) {
+    std::cerr << "Usage: " << argument_values[0]
+              << " N [--gpus N] [--seg 128M] [--cols N] [--json FILE|-]\n";
     return 2;
   }
-  long long N = parse_ll_arg(argv[1], "N");
-  if (N < 2) { std::cout << "\n"; return 0; }
 
-  int want_gpus = 4;
-  long long seg_bytes = 128LL * 1024 * 1024; // default: 128 MB flags per GPU segment
-  int forced_cols = 0;
-  const char* json_path = nullptr;
+  long long upper_bound = parse_long_long(argument_values[1], "N");
+  int requested_gpus = 4;
+  std::size_t segment_bytes = 128U * 1024U * 1024U;
+  int requested_columns = 0;
+  std::string json_path;
 
-  for (int i = 2; i < argc; ++i) {
-    if (!std::strcmp(argv[i], "--gpus") && i+1 < argc) { want_gpus = parse_int_arg(argv[++i], "--gpus"); continue; }
-    if (!std::strcmp(argv[i], "--seg")  && i+1 < argc) { seg_bytes = parse_size_arg(argv[++i]); continue; }
-    if (!std::strcmp(argv[i], "--cols") && i+1 < argc) { forced_cols = parse_int_arg(argv[++i], "--cols"); continue; }
-    if (!std::strcmp(argv[i], "--json") && i+1 < argc) { json_path  = argv[++i]; continue; }
-    std::fprintf(stderr, "Unknown option: %s\n", argv[i]); return 2;
+  for (int index = 2; index < argument_count; ++index) {
+    if (std::strcmp(argument_values[index], "--gpus") == 0 &&
+        index + 1 < argument_count) {
+      requested_gpus = parse_positive_int(argument_values[++index], "--gpus");
+      continue;
+    }
+    if (std::strcmp(argument_values[index], "--seg") == 0 &&
+        index + 1 < argument_count) {
+      segment_bytes = parse_segment_bytes(argument_values[++index]);
+      continue;
+    }
+    if (std::strcmp(argument_values[index], "--cols") == 0 &&
+        index + 1 < argument_count) {
+      requested_columns =
+          parse_positive_int(argument_values[++index], "--cols");
+      continue;
+    }
+    if (std::strcmp(argument_values[index], "--json") == 0 &&
+        index + 1 < argument_count) {
+      json_path = argument_values[++index];
+      continue;
+    }
+
+    std::cerr << "Unknown or incomplete option: " << argument_values[index]
+              << '\n';
+    return 2;
   }
 
-  // Clamp to available devices
-  int dev_count = 0;
-  CUDA_OK(cudaGetDeviceCount(&dev_count));
-  if (dev_count <= 0) { std::fprintf(stderr, "No CUDA devices found.\n"); return 2; }
-  if (want_gpus > dev_count) want_gpus = dev_count;
-
-  auto t0 = std::chrono::high_resolution_clock::now();
-
-  // Base primes up to floor(sqrt(N))
-  int limit = (int)std::floor(std::sqrt((double)N));
-  std::vector<int> base = simple_sieve(limit);
-
-  // Partition [3..N] across GPUs as contiguous slices
-  long long L = 3;
-  long long R = N;
-  long long span = R - L + 1;
-  long long per = span / want_gpus;
-  long long rem = span % want_gpus;
-
-  std::vector<std::future<GpuSliceResult>> futures;
-  futures.reserve(want_gpus);
-
-  const int* base_ptr = base.data();
-  int base_count = (int)base.size();
-
-  for (int g = 0; g < want_gpus; ++g) {
-    long long a = L + g * per + std::min<long long>(g, rem);
-    long long b = a + per - 1;
-    if (g < rem) b += 1;
-    if (b > R) b = R;
-
-    WorkerArgs args;
-    args.device = g;
-    args.globalN = N;
-    args.sliceL = a;
-    args.sliceR = b;
-    args.segment_bytes = (size_t)seg_bytes; // bytes of odd flags
-    args.base_primes = base_ptr;
-    args.base_count = base_count;
-
-    std::promise<GpuSliceResult> prom;
-    futures.emplace_back(prom.get_future());
-    std::thread(gpu_worker, args, std::move(prom)).detach();
-  }
-
-  // Merge results in order (device slices are increasing by construction)
+  auto start_time = std::chrono::steady_clock::now();
   std::vector<long long> primes;
-  primes.reserve( (size_t)( N / std::max(2.0, std::log((double)N)) ) );
-
-  // Include 2 if within range
-  primes.push_back(2);
-
-  for (auto& fut : futures) {
-    GpuSliceResult r = fut.get();
-    // r.primes already sorted
-    primes.insert(primes.end(), r.primes.begin(), r.primes.end());
+  if (upper_bound >= 2LL) {
+    primes.push_back(2LL);
   }
 
-  auto t1 = std::chrono::high_resolution_clock::now();
-  double ms = std::chrono::duration<double, std::milli>(t1 - t0).count();
+  int worker_count = 0;
+  if (upper_bound >= 3LL) {
+    long long base_limit = integer_square_root(upper_bound);
+    if (base_limit > static_cast<long long>(INT_MAX)) {
+      invalid_argument("N is too large for the current 32-bit base-prime index");
+    }
+    std::vector<int> base_primes = simple_sieve(static_cast<int>(base_limit));
 
-  // Output
-  if (json_path) {
-    if (write_json(json_path, N, primes) != 0) {
-      std::fprintf(stderr, "WARN: could not write JSON to %s\n", json_path);
+    int device_count = 0;
+    CUDA_CHECK(cudaGetDeviceCount(&device_count));
+    if (device_count < 1) {
+      std::cerr << "ERROR: no CUDA devices were found\n";
+      return 2;
+    }
+
+    long long odd_candidate_count = (upper_bound - 3LL) / 2LL + 1LL;
+    worker_count = std::min(requested_gpus, device_count);
+    if (static_cast<long long>(worker_count) > odd_candidate_count) {
+      worker_count = static_cast<int>(odd_candidate_count);
+    }
+
+    long long candidates_per_worker = odd_candidate_count / worker_count;
+    long long remainder = odd_candidate_count % worker_count;
+    long long next_candidate_index = 0LL;
+    std::vector<std::future<std::vector<long long>>> futures;
+    futures.reserve(static_cast<std::size_t>(worker_count));
+
+    for (int device = 0; device < worker_count; ++device) {
+      long long slice_count =
+          candidates_per_worker + (device < remainder ? 1LL : 0LL);
+      long long slice_first_index = next_candidate_index;
+      long long slice_last_index = slice_first_index + slice_count - 1LL;
+      next_candidate_index += slice_count;
+
+      gpu_worker_arguments arguments{
+          device,
+          3LL + 2LL * slice_first_index,
+          3LL + 2LL * slice_last_index,
+          segment_bytes,
+          &base_primes,
+      };
+      futures.push_back(
+          std::async(std::launch::async, gpu_worker, arguments));
+    }
+
+    /* Futures are stored in slice order, so concatenation preserves sorting. */
+    for (auto &future : futures) {
+      std::vector<long long> slice_primes = future.get();
+      primes.insert(primes.end(), slice_primes.begin(), slice_primes.end());
+    }
+  }
+
+  auto end_time = std::chrono::steady_clock::now();
+  double elapsed_milliseconds =
+      std::chrono::duration<double, std::milli>(end_time - start_time).count();
+
+  bool output_ok = true;
+  if (!json_path.empty()) {
+    output_ok = write_json(json_path, upper_bound, primes);
+    if (!output_ok) {
+      std::cerr << "ERROR: could not write JSON to " << json_path << '\n';
     }
   } else {
-    print_columns(primes, forced_cols);
+    print_columns(primes, requested_columns);
   }
 
-  std::fprintf(stderr, "[cuda_sieve] N=%lld  primes=%zu  gpus=%d  seg=%lld bytes  time=%.2f ms\n",
-               N, primes.size(), want_gpus, seg_bytes, ms);
-  return 0;
+  std::cerr << "[cuda_sieve] N=" << upper_bound << " primes=" << primes.size()
+            << " gpus=" << worker_count << " seg=" << segment_bytes
+            << " bytes time=" << std::fixed << std::setprecision(2)
+            << elapsed_milliseconds << " ms\n";
+  return output_ok ? EXIT_SUCCESS : EXIT_FAILURE;
 }

@@ -38,6 +38,7 @@ static DieMesh make_d6_box(){
 }
 
 static DieMesh make_d8(PxPhysics& phy, float scale=1.0f){
+    (void)phy; // Geometry cooking is performed by the caller after this table is built.
     DieMesh dm; dm.scale=scale; dm.faces=8;
     dm.faceNormalsLocal = {
         unit(PxVec3(+1,+1, 0)), unit(PxVec3(+1,-1, 0)),
@@ -50,6 +51,7 @@ static DieMesh make_d8(PxPhysics& phy, float scale=1.0f){
 }
 
 static DieMesh make_d12(PxPhysics& phy, float scale=1.0f){
+    (void)phy; // Geometry cooking is performed by the caller after this table is built.
     DieMesh dm; dm.scale=scale; dm.faces=12;
     const float phi = (1.0f + std::sqrt(5.0f))*0.5f;
     dm.faceNormalsLocal = {
@@ -65,6 +67,7 @@ static DieMesh make_d12(PxPhysics& phy, float scale=1.0f){
 }
 
 static DieMesh make_d20(PxPhysics& phy, float scale=1.0f){
+    (void)phy; // Geometry cooking is performed by the caller after this table is built.
     DieMesh dm; dm.scale=scale; dm.faces=20;
     const float phi=(1.0f+std::sqrt(5.0f))*0.5f;
     std::vector<PxVec3> n = {
@@ -84,6 +87,7 @@ static DieMesh make_d20(PxPhysics& phy, float scale=1.0f){
 static PxConvexMesh* cook_points_to_convex(PxPhysics& phy, PxCooking& cook,
                                            const std::vector<PxVec3>& pts, float scale=1.0f)
 {
+    (void)scale; // Points are cooked at unit scale; PxMeshScale is applied when spawned.
     PxConvexMeshDesc d;
     d.points.count  = (uint32_t)pts.size();
     d.points.stride = sizeof(PxVec3);

@@ -1,8 +1,21 @@
+/*
+ * Historical PhysX D6 prototype retained for implementation comparison.
+ *
+ * Review status: reference-only; it is intentionally not a CMake target. The
+ * maintained implementations are ../dice_cpu.cc and ../physx_dice_multi.cpp.
+ * This prototype represents every die as a cube and its raycast/name approach
+ * does not reliably identify the upward face. Reviewers should not treat it as
+ * a validated randomness implementation.
+ */
+
 #include <PxPhysicsAPI.h>
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
-#include <vector>
-#include <unordered_map>
 #include <random>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
 using namespace physx;
 
