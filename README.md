@@ -7,6 +7,7 @@ An experimental C/C++/CUDA project exploring:
 - **Physically simulated dice rolls** using NVIDIA PhysX  
 - **Auto-tuned performance** across CPU/GPU hardware  
 - **Live visualization** with the PhysX Visual Debugger (PVD)
+- **Multi-precision integer arithmetic** experiments (Comba, Karatsuba, NTT, Montgomery) in `crypto_pipeline/`
 
 ---
 
@@ -19,6 +20,7 @@ An experimental C/C++/CUDA project exploring:
 | **PhysX Dice Simulator** | Fully physical D6, D8, D12, D20 dice with realistic collisions, ramp chute, multi-threading, and GPU acceleration |
 | **Visualization** | Optional live streaming via `--pvd` to PhysX Visual Debugger or NVIDIA Omniverse View |
 | **Data Outputs** | JSON and CSV result logging, with chi-square test of fairness and probability distribution graphs |
+| **Crypto Pipeline** | Experimental 64-bit-limb multiplication and modular arithmetic in C, checked against Python integers; research prototype, not production cryptography |
 
 ---
 
@@ -134,6 +136,52 @@ OSE_CUDA.cc                (optional legacy)
 # Step 2 โ Simulate physical dice using those seeds
 ./physx_dice_multi --spec 2d6+3 --trials 10000 --use-prime-seeds primes_50M.json --chute --pvd --chi
 ```
+
+---
+
+## Crypto Pipeline: Integer Multiplication Experiments
+
+`crypto_pipeline/` compares exact full-width multiplication algorithms and their
+practical crossover costs, inspired by the Scientific American article archived in
+that directory. Modular arithmetic is a separate layer on top.
+
+> **Research prototype, not production cryptography.** No API is certified
+> constant-time or side-channel resistant, and legacy `secure_`/`ct_` names do not
+> establish those properties.
+
+| Algorithm | Notes |
+|-----------|-------|
+| **Comba** | Base-2^64 column multiplication; automatic dispatch uses it below 64 limbs |
+| **Karatsuba** | Recursive, carry-preserving, odd sizes zero-padded; dispatched from 64 limbs |
+| **NTT** | Two-prime radix-2 transform with CRT reconstruction; directly callable, slower than Karatsuba in local benchmarks |
+| **Montgomery REDC** | `a*b*R^-1 mod m` for odd moduli |
+| **Modular multiply / inverse / blinding** | Ordinary `a*b mod m`, variable-time binary extended-GCD inverse, and blinding that returns its factor |
+
+Inputs are 1 to 1024 little-endian 64-bit limbs. A ctypes binding is in
+`linking_ctypes.py`.
+
+```bash
+cd crypto_pipeline
+make clean && make shared all
+./test_suite                 # functional smoke test
+python3 test_arithmetic.py   # differential tests against Python integers
+make bounds-sanitize         # boundary tests under ASan/UBSan
+python3 benchmark_multiply.py
+```
+
+CI (**Cryptographic Wrapper Validation Pipeline**) runs clang-tidy, Valgrind, the
+sanitizer bounds tests and the Python oracle. The **AES-SEC-001 Governance**
+workflow scans for review-required memory primitives. Each one needs a recorded
+disposition in `docs/engineering/AES-SEC-001-review-dispositions.json`.
+
+A separate Montgomery constant-flow candidate is under review in PR #9. It is
+**not cleared for secret use**, because a local timing test crossed the dudect
+threshold. The scoped formal-verification scripts in `crypto_pipeline/proof/`
+target that candidate. They become runnable once PR #9 lands.
+
+See the [crypto pipeline README](crypto_pipeline/README.MD),
+[mathematical notes](docs/engineering/CRYPTO-ARITHMETIC.md) and
+[memory review](docs/engineering/CRYPTO-MEMORY-REVIEW.md).
 
 ---
 
