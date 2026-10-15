@@ -45,6 +45,21 @@ def prove_all(out,dependencies):
     if init['source_sha256']!=digest or not init['output_initialized'] or not init['scratch_arrays_zero_on_return']:
         raise ValueError('stale/failed initialization dependency')
     deps['initialization.json']=hashlib.sha256(init_path.read_bytes()).hexdigest()
+    carry_path=dependencies/'carry-loop/certificate.json'
+    carry_certificate=json.loads(carry_path.read_text())
+    if (not carry_certificate.get('passed') or not carry_certificate.get('complete')
+            or carry_certificate.get('source_sha256')!=digest
+            or carry_certificate.get('schema_sha256')!=SCHEMA
+            or carry_certificate.get('limbs')!=N or carry_certificate.get('packed_bits')!=1025):
+        raise ValueError('stale/failed extracted carry dependency')
+    carry_checks=carry_certificate.get('checks',[])
+    required_carry=[(f'row-{row:02d}',row,None,0) for row in range(N)]
+    required_carry += [(name,0,name,10) for name in
+                      ('drop-incoming','drop-terminal','truncate-propagation')]
+    if ([(r.get('name'),r.get('row'),r.get('mutation'),r.get('returncode')) for r in carry_checks]
+            != required_carry or any(not r.get('passed') for r in carry_checks)):
+        raise ValueError('incomplete extracted carry checks')
+    deps['carry-loop/certificate.json']=hashlib.sha256(carry_path.read_bytes()).hexdigest()
     records=[]
     def prove(name,premises,claim,expected="unsat"):
         solver=z3.Solver();solver.set(timeout=30000)
@@ -86,7 +101,9 @@ def prove_all(out,dependencies):
     prefix=z3.IntVal(0)
     for i in range(N):prefix=prefix+a[i]*B**i
     prove('product_prefix_complete',[],prefix==pack(a))
-    # Carry propagation through the remaining upper limbs in each REDC row.
+    # The extracted CBMC block establishes this local suffix identity for each
+    # offset, given an incoming full-word carry and initial high=0. Connecting
+    # the MAC and existing outer high state remains trusted composition glue.
     for i in range(N):
         length=N-i
         before=[z3.Int(f'cp_{i}_old_{j}') for j in range(length)]
@@ -169,23 +186,7 @@ def prove_all(out,dependencies):
           [z*R==T+M*Q,result==z-choose_sub*M],
           result*R-T==M*(Q-choose_sub*R))
 
-    # Concrete legal word assignment detects a dropped row-end carry.
-    # x=1, y_last=B-1, old_last=1 yields new_last=0, carry_out=1.
-    witness=[x==1,carry[0]==0,*mac]
-    witness += [old[j]==(1 if j==N-1 else 0) for j in range(N)]
-    witness += [y[j]==(B-1 if j==N-1 else 0) for j in range(N)]
-    witness += [new[j]==0 for j in range(N)]
-    witness += [carry[j]==(1 if j==N else 0) for j in range(1,N+1)]
-    prove('dropped_row_carry_control',witness,
-          pack(new)==pack(old)+x*pack(y),expected='sat')
-    # A valid reduced representative above m must take the subtraction.
-    prove('skipped_final_subtraction_control',assumptions+[M==3,upper==4,h==0,D==1,br==0],
-          upper<M,expected='sat')
-
-    report={'source_sha256':digest,'schema_sha256':SCHEMA,'limbs':N,
-            'dependencies':deps,'obligations':records,'product_footprints':footprints,
-            'redc_zero_footprints':zero_footprints,
-            'passed':all(r['result']==r['expected'] for r in records),
+    # Concrete legal word a…228 tokens truncated…            'passed':all(r['result']==r['expected'] for r in records),
             'conclusion':'Packed-state loop composition for the recognized 16-limb algorithm, conditional on the source-to-equation specialization and listed local contracts',
             'trusted':['exact-AST source specialization','composition/footprint checker','pycparser','Z3'],
             'not_claimed':['independently verified C semantics/refinement','compiled-code constant time','hardware timing clearance']}

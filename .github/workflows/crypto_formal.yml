@@ -22,6 +22,8 @@ jobs:
           bash crypto_pipeline/proof/install_cbmc.sh .tools/cbmc
       - name: Source checks, arithmetic lemmas, and deliberate counterexamples
         run: python crypto_pipeline/proof/run_proofs.py --cbmc .tools/cbmc/usr/bin/cbmc --output build/formal
+      - name: Carry extractor and solver-evidence rejection tests
+        run: python -m unittest discover -s crypto_pipeline/proof -p test_carry_driver.py
       - name: Retain proof inputs and results, including failures
         if: always()
         uses: actions/upload-artifact@v4

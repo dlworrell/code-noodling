@@ -80,6 +80,9 @@ def main():
         passed &= check('c-steps',[sys.executable,str(HERE/'prove_c_steps.py'),
                                    '--output',str(output/'c-steps')],
                         0,'stale mapping rejected')
+        passed &= check('carry-loop',[sys.executable,str(HERE/'verify_carry_loop.py'),
+                          '--cbmc',args.cbmc,'--output',str(output/'carry-loop')],
+                        0,'PASS: 16 extracted carry offsets; 3 arithmetic mutations isolated')
         passed &= check('arithmetic',[sys.executable,str(HERE/'prove_arithmetic.py'),
                                       '--output',str(output/'arithmetic')],0,'dropped_high_carry_control: sat')
         passed &= check('context-contract',[sys.executable,str(HERE/'prove_context_contract.py'),
