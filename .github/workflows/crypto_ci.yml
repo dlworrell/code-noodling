@@ -9,44 +9,29 @@ on:
 jobs:
   audit-and-test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: crypto_pipeline
 
     steps:
     - name: Check out Repository Code
       uses: actions/checkout@v4
 
+    # Logic lives in the crypto_pipeline scope (Catylist ADR-0004).
     - name: Install Defensive Auditing Tools
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y build-essential clang clang-tidy valgrind libssl-dev
+      run: crypto_pipeline/ci/validate.sh install-tools
 
     - name: Step 1 - Static Analysis (Clang-Tidy)
-      run: |
-        clang-tidy crypto_multiplier.c crypto_montgomery_ct.c test_montgomery_ct.c test_suite.c test_bounds.c -- -std=c11
+      run: crypto_pipeline/ci/validate.sh static-analysis
 
     - name: Step 2 - Compile Binary Targets via Makefile
-      run: |
-        make clean
-        make shared
-        make all
+      run: crypto_pipeline/ci/validate.sh build
 
     - name: Step 3 - Execution Verification & Memory Leak Audit
-      run: |
-        # Run test executable inside Valgrind's Memcheck engine
-        valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_suite
+      run: crypto_pipeline/ci/validate.sh memcheck
 
     - name: Step 4 - Functional Smoke Test
-      run: |
-        # This smoke test does not establish constant-time or side-channel safety.
-        ./test_suite
-        echo "[CI Pipeline Pass] Build and functional smoke tests completed."
+      run: crypto_pipeline/ci/validate.sh smoke
 
     - name: Boundary tests with AddressSanitizer and UndefinedBehaviorSanitizer
-      run: make bounds-sanitize
+      run: crypto_pipeline/ci/validate.sh bounds
 
     - name: Differential arithmetic tests against Python integers
-      run: |
-        python3 test_arithmetic.py
-        python3 test_montgomery_ct.py
+      run: crypto_pipeline/ci/validate.sh differential

@@ -105,8 +105,8 @@
         "crypto_pipeline/crypto_multiplier.h",
         "crypto_pipeline/test_bounds.c",
         "crypto_pipeline/test_arithmetic.py",
-        "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
-        "docs/engineering/CRYPTO-ARITHMETIC.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+        "crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -127,8 +127,8 @@
         "crypto_pipeline/crypto_multiplier.h",
         "crypto_pipeline/test_bounds.c",
         "crypto_pipeline/test_arithmetic.py",
-        "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
-        "docs/engineering/CRYPTO-ARITHMETIC.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+        "crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -149,8 +149,8 @@
         "crypto_pipeline/crypto_multiplier.h",
         "crypto_pipeline/test_bounds.c",
         "crypto_pipeline/test_arithmetic.py",
-        "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
-        "docs/engineering/CRYPTO-ARITHMETIC.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+        "crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -171,8 +171,8 @@
         "crypto_pipeline/crypto_multiplier.h",
         "crypto_pipeline/test_bounds.c",
         "crypto_pipeline/test_arithmetic.py",
-        "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
-        "docs/engineering/CRYPTO-ARITHMETIC.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+        "crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -193,8 +193,8 @@
         "crypto_pipeline/crypto_multiplier.h",
         "crypto_pipeline/test_bounds.c",
         "crypto_pipeline/test_arithmetic.py",
-        "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
-        "docs/engineering/CRYPTO-ARITHMETIC.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+        "crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -215,8 +215,8 @@
         "crypto_pipeline/crypto_multiplier.h",
         "crypto_pipeline/test_bounds.c",
         "crypto_pipeline/test_arithmetic.py",
-        "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
-        "docs/engineering/CRYPTO-ARITHMETIC.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+        "crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -237,8 +237,8 @@
         "crypto_pipeline/crypto_multiplier.h",
         "crypto_pipeline/test_bounds.c",
         "crypto_pipeline/test_arithmetic.py",
-        "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
-        "docs/engineering/CRYPTO-ARITHMETIC.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+        "crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -259,8 +259,8 @@
         "crypto_pipeline/crypto_multiplier.h",
         "crypto_pipeline/test_bounds.c",
         "crypto_pipeline/test_arithmetic.py",
-        "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
-        "docs/engineering/CRYPTO-ARITHMETIC.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+        "crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -281,8 +281,8 @@
         "crypto_pipeline/crypto_multiplier.h",
         "crypto_pipeline/test_bounds.c",
         "crypto_pipeline/test_arithmetic.py",
-        "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
-        "docs/engineering/CRYPTO-ARITHMETIC.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+        "crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -303,8 +303,8 @@
         "crypto_pipeline/crypto_multiplier.h",
         "crypto_pipeline/test_bounds.c",
         "crypto_pipeline/test_arithmetic.py",
-        "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
-        "docs/engineering/CRYPTO-ARITHMETIC.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+        "crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -325,8 +325,8 @@
         "crypto_pipeline/crypto_multiplier.h",
         "crypto_pipeline/test_bounds.c",
         "crypto_pipeline/test_arithmetic.py",
-        "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
-        "docs/engineering/CRYPTO-ARITHMETIC.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+        "crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -347,8 +347,8 @@
         "crypto_pipeline/crypto_multiplier.h",
         "crypto_pipeline/test_bounds.c",
         "crypto_pipeline/test_arithmetic.py",
-        "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
-        "docs/engineering/CRYPTO-ARITHMETIC.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+        "crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -369,8 +369,8 @@
         "crypto_pipeline/crypto_multiplier.h",
         "crypto_pipeline/test_bounds.c",
         "crypto_pipeline/test_arithmetic.py",
-        "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
-        "docs/engineering/CRYPTO-ARITHMETIC.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+        "crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -391,8 +391,8 @@
         "crypto_pipeline/crypto_multiplier.h",
         "crypto_pipeline/test_bounds.c",
         "crypto_pipeline/test_arithmetic.py",
-        "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
-        "docs/engineering/CRYPTO-ARITHMETIC.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+        "crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -413,8 +413,8 @@
         "crypto_pipeline/crypto_multiplier.h",
         "crypto_pipeline/test_bounds.c",
         "crypto_pipeline/test_arithmetic.py",
-        "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
-        "docs/engineering/CRYPTO-ARITHMETIC.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+        "crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -435,8 +435,8 @@
         "crypto_pipeline/crypto_multiplier.h",
         "crypto_pipeline/test_bounds.c",
         "crypto_pipeline/test_arithmetic.py",
-        "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
-        "docs/engineering/CRYPTO-ARITHMETIC.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+        "crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -457,7 +457,7 @@
         "crypto_pipeline/crypto_montgomery_ct.h",
         "crypto_pipeline/test_montgomery_ct.c",
         "crypto_pipeline/test_montgomery_ct.py",
-        "docs/engineering/CRYPTO-CONSTANT-FLOW.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-CONSTANT-FLOW.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -478,7 +478,7 @@
         "crypto_pipeline/crypto_montgomery_ct.h",
         "crypto_pipeline/test_montgomery_ct.c",
         "crypto_pipeline/test_montgomery_ct.py",
-        "docs/engineering/CRYPTO-CONSTANT-FLOW.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-CONSTANT-FLOW.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",
@@ -499,7 +499,7 @@
         "crypto_pipeline/crypto_montgomery_ct.h",
         "crypto_pipeline/test_montgomery_ct.c",
         "crypto_pipeline/test_montgomery_ct.py",
-        "docs/engineering/CRYPTO-CONSTANT-FLOW.md"
+        "crypto_pipeline/docs/engineering/CRYPTO-CONSTANT-FLOW.md"
       ],
       "owner": "dlworrell",
       "reviewer": "Codex (automated code review)",

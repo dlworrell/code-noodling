@@ -9,6 +9,19 @@ algorithms and their practical crossover costs.
 Python integers, but no API is certified constant-time or side-channel resistant.
 Legacy `secure_`, `ct_`, and `is_constant_time` names do not establish those properties.
 
+## Scope layout
+
+This directory is the `crypto-pipeline` governed project scope declared in the
+repository's [`aes-manifest.yaml`](../aes-manifest.yaml) (Catylist ADR-0004).
+
+| Path | Contents |
+|---|---|
+| `*.c`, `*.h`, `*.py`, `makefile`, `run_*.sh` | Sources, harnesses and build |
+| [`tests/`](tests/) | C and Python tests |
+| [`proof/`](proof/) | Scoped formal checks |
+| [`ci/`](ci/) | Logic called by the root crypto workflows |
+| [`docs/engineering/`](docs/engineering/) | AES-SEC-001 profile, waivers, review ledger, engineering notes and [evidence](docs/engineering/evidence/) |
+
 ## Implemented algorithms
 
 - Comba: base-2^64 column multiplication with a three-limb accumulator.
@@ -36,7 +49,7 @@ Run from `crypto_pipeline/` on Linux with GCC or Clang and Python 3:
 make clean
 make shared all
 ./test_suite
-python3 test_arithmetic.py
+python3 tests/test_arithmetic.py
 make bounds-sanitize
 python3 benchmark_multiply.py
 ```
@@ -78,14 +91,14 @@ experiments: the local benchmark found no winning NTT crossover within the
 supported range. These thresholds are provisional and should be remeasured on
 the target hardware. This is an empirical comparison, not an optimality claim.
 
-See [mathematical notes](../docs/engineering/CRYPTO-ARITHMETIC.md) and
-[memory review](../docs/engineering/CRYPTO-MEMORY-REVIEW.md).
+See [mathematical notes](docs/engineering/CRYPTO-ARITHMETIC.md) and
+[memory review](docs/engineering/CRYPTO-MEMORY-REVIEW.md).
 
 ## Separate Montgomery constant-flow candidate
 
 `crypto_montgomery_ct.h` defines a public modulus context and a separate
 capacity-checked API for secret reduced operands. It does not call the legacy
-variable-time dispatcher. See [scope and evidence](../docs/engineering/CRYPTO-CONSTANT-FLOW.md).
+variable-time dispatcher. See [scope and evidence](docs/engineering/CRYPTO-CONSTANT-FLOW.md).
 
 **Not cleared for secret use:** an extended local timing test crossed dudect's
 threshold at 16 limbs. Constant-flow instrumentation and arithmetic checks do
