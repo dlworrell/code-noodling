@@ -1,10 +1,17 @@
 name: Election Result Reports
 
+# ADR-0006 (AES-DEV-001-R003/R005): this workflow never pushes to the default
+# branch. When regenerated reports differ from what is committed, the
+# publish-pull-request job writes a GitHub-verified commit (GraphQL
+# createCommitOnBranch) to the workflow-owned automation/election-reports branch
+# and opens or updates a pull request to the default branch.
+# Never add pull_request_target: the publish job holds a write token.
+
 on:
   workflow_dispatch:
     inputs:
       commit_reports:
-        description: Commit regenerated reports to the current branch
+        description: Open or update a pull request with regenerated reports (default branch only)
         required: true
         type: boolean
         default: true
@@ -13,6 +20,7 @@ on:
       - "election-data/**"
       - "election_reporting/**"
       - "tests/test_election_reporting.py"
+      - "tests/test_publish_reports.py"
       - ".github/workflows/election-result-reports.yml"
   pull_request:
     paths:
@@ -20,23 +28,27 @@ on:
       - "election_reporting/**"
       - "reports/elections/**"
       - "tests/test_election_reporting.py"
+      - "tests/test_publish_reports.py"
       - ".github/workflows/election-result-reports.yml"
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: election-result-reports-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  analyze-and-publish:
+  analyze:
     runs-on: ubuntu-latest
+    outputs:
+      reports_changed: ${{ steps.report_diff.outputs.changed }}
     steps:
       - name: Check out Code Noodling
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Check out pinned EDT
         uses: actions/checkout@v4
@@ -44,6 +56,7 @@ jobs:
           repository: dlworrell/engineering-docs-toolkit
           ref: 649981ec78c97aafe4374284ad7e8c57c11a4640
           path: .tools/engineering-docs-toolkit
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -54,6 +67,11 @@ jobs:
         env:
           PYTHONPATH: .:.tools/engineering-docs-toolkit
         run: python -m unittest discover -s tests -p 'test_election_reporting.py' -v
+
+      - name: Test report publisher
+        env:
+          PYTHONPATH: .
+        run: python -m unittest discover -s tests -p 'test_publish_reports.py' -v
 
       - name: Generate and validate EDT reports
         env:
@@ -73,22 +91,65 @@ jobs:
           path: reports/elections/
           if-no-files-found: error
 
-      - name: Verify reports are current in pull requests
-        if: github.event_name == 'pull_request'
-        run: git diff --exit-code -- reports/elections
-
-      - name: Commit regenerated reports
-        if: >-
-          github.event_name == 'push' ||
-          (github.event_name == 'workflow_dispatch' && inputs.commit_reports)
+      - name: Detect report changes
+        id: report_diff
         shell: bash
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reports/elections
-          if git diff --cached --quiet; then
+          git add -A -- reports/elections
+          if git diff --cached --quiet -- reports/elections; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "Reports are already current."
-            exit 0
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git diff --cached --stat -- reports/elections
+            if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
+              echo "::warning::Committed reports differ from regenerated reports. Nothing is committed from pull requests; the regenerated reports are in the election-result-reports artifact and will arrive through an automation pull request after merge."
+            fi
           fi
-          git commit -m "reports: update election result analysis [skip ci]"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+
+  publish-pull-request:
+    needs: analyze
+    if: >-
+      needs.analyze.outputs.reports_changed == 'true' &&
+      github.ref == format('refs/heads/{0}', github.event.repository.default_branch) &&
+      (github.event_name == 'push' ||
+       github.event_name == 'schedule' ||
+       (github.event_name == 'workflow_dispatch' && inputs.commit_reports))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Check out analyzed commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Replace reports with regenerated evidence
+        run: rm -rf reports/elections
+
+      - name: Download regenerated reports
+        uses: actions/download-artifact@v4
+        with:
+          name: election-result-reports
+          path: reports/elections
+
+      - name: Publish verified commit and pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: .
+          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: >-
+          python -m election_reporting.ci.publish_reports
+          --base "$BASE_BRANCH"
+          --base-sha "$GITHUB_SHA"
+          --branch automation/election-reports
+          --path reports/elections
+          --run-url "$RUN_URL"

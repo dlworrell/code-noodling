@@ -59,7 +59,7 @@ section.
 | Prime Suite | rest of `prime-number-suite/`: CPU build and tests, CUDA 11.4 `sm_37` compile (required), CUDA 12 compile (informational) |
 | K80 Hardware Check | manual only, on a self-hosted K80 runner |
 | Cryptographic Wrapper Validation Pipeline | `crypto_pipeline/` |
-| Election Result Reports | election data and reporting code |
+| Election Result Reports | election data and reporting code; report updates arrive as a verified automation pull request |
 | AES-SEC-001 Governance | repository-wide C/C++ secure-coding scan |
 
 ## Engineering Governance
