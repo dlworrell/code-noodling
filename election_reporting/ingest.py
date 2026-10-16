@@ -32,6 +32,10 @@ XLSX_PACKAGE_REL_NS = (
     "http://schemas.openxmlformats.org/package/2006/relationships"
 )
 MAX_XLSX_UNCOMPRESSED_BYTES = 50 * 1024 * 1024
+XLSX_METADATA_MEMBERS = ("xl/workbook.xml", "xl/_rels/workbook.xml.rels")
+XLSX_SHARED_STRINGS = "xl/sharedStrings.xml"
+# Leading bytes of every Apple binary property list ("bplist00", "bplist15", ...).
+APPLE_BINARY_PLIST_MAGIC = b"bplist"
 
 
 def normalize_contest_key(value: str) -> str:
@@ -120,7 +124,7 @@ def _xlsx_name(tag: str) -> str:
 
 def _xlsx_shared_strings(archive: zipfile.ZipFile) -> list[str]:
     try:
-        payload = archive.read("xl/sharedStrings.xml")
+        payload = archive.read(XLSX_SHARED_STRINGS)
     except KeyError:
         return []
     root = ET.fromstring(payload)
@@ -208,6 +212,22 @@ def _xlsx_rows(
     return rows
 
 
+def _check_xlsx_read_budget(
+    archive: zipfile.ZipFile, path: Path, members: tuple[str, ...]
+) -> None:
+    uncompressed_size = 0
+    for name in members:
+        try:
+            uncompressed_size += archive.getinfo(name).file_size
+        except KeyError:
+            continue
+    if uncompressed_size > MAX_XLSX_UNCOMPRESSED_BYTES:
+        raise ElectionReportError(
+            f"{path} exceeds the {MAX_XLSX_UNCOMPRESSED_BYTES:,}-byte "
+            "uncompressed XLSX safety limit"
+        )
+
+
 def _read_statewide_xlsx(
     path: Path,
     source_id: str,
@@ -216,13 +236,15 @@ def _read_statewide_xlsx(
 ) -> Snapshot:
     try:
         with zipfile.ZipFile(io.BytesIO(raw_bytes)) as archive:
-            uncompressed_size = sum(item.file_size for item in archive.infolist())
-            if uncompressed_size > MAX_XLSX_UNCOMPRESSED_BYTES:
-                raise ElectionReportError(
-                    f"{path} exceeds the {MAX_XLSX_UNCOMPRESSED_BYTES:,}-byte "
-                    "uncompressed XLSX safety limit"
-                )
+            _check_xlsx_read_budget(archive, path, XLSX_METADATA_MEMBERS)
             worksheet_path = _xlsx_summary_path(archive, path)
+            # Only the members actually read count toward the limit, so a large
+            # precinct sheet that is never decompressed does not reject the file.
+            _check_xlsx_read_budget(
+                archive,
+                path,
+                (*XLSX_METADATA_MEMBERS, XLSX_SHARED_STRINGS, worksheet_path),
+            )
             rows = _xlsx_rows(
                 archive,
                 worksheet_path,
@@ -319,6 +341,14 @@ def read_snapshot(path: Path, source_id: str) -> Snapshot:
     if raw_bytes.startswith(b"\xd0\xcf\x11\xe0"):
         raise ElectionReportError(
             f"{path} is a legacy binary spreadsheet; export it as CSV or XLSX"
+        )
+    if raw_bytes.startswith(APPLE_BINARY_PLIST_MAGIC):
+        raise ElectionReportError(
+            f"{path} is an Apple binary property list (bplist), not election "
+            "results; it is typically an iOS/macOS Files or Safari download "
+            "reference saved under the export's name. Re-export the results "
+            "from the official source (CSV or XLSX) and commit the downloaded "
+            "file itself"
         )
     try:
         text = raw_bytes.decode("utf-8-sig")
