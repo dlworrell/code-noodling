@@ -1,6 +1,6 @@
 {
   "summary": {
-    "nodes": 1948,
+    "nodes": 1972,
     "edges": 0,
     "broken": 0,
     "orphans": 0
@@ -1024,6 +1024,15 @@
       "orphan": false
     },
     {
+      "node_id": "race-010-u-s-representative-congressional-district-10-decision-1-batch",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
       "node_id": "race-010-u-s-representative-congressional-district-10-decision-1-history",
       "kind": "paragraph",
       "page": null,
@@ -1285,6 +1294,15 @@
       "orphan": false
     },
     {
+      "node_id": "race-014-state-representative-pos-2-legislative-district-2-decision-1-batch",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
       "node_id": "race-014-state-representative-pos-2-legislative-district-2-decision-1-history",
       "kind": "paragraph",
       "page": null,
@@ -1358,6 +1376,15 @@
     },
     {
       "node_id": "race-015-state-representative-pos-1-legislative-district-3-decision-1-reliability",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "race-015-state-representative-pos-1-legislative-district-3-decision-1-batch",
       "kind": "paragraph",
       "page": null,
       "incoming": [],
@@ -1447,6 +1474,15 @@
       "orphan": false
     },
     {
+      "node_id": "race-016-state-representative-pos-2-legislative-district-3-decision-1-batch",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
       "node_id": "race-016-state-representative-pos-2-legislative-district-3-decision-1-history",
       "kind": "paragraph",
       "page": null,
@@ -1520,6 +1556,15 @@
     },
     {
       "node_id": "race-017-state-representative-pos-1-legislative-district-4-decision-1-reliability",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "race-017-state-representative-pos-1-legislative-district-4-decision-1-batch",
       "kind": "paragraph",
       "page": null,
       "incoming": [],
@@ -1609,6 +1654,15 @@
       "orphan": false
     },
     {
+      "node_id": "race-018-state-representative-pos-2-legislative-district-4-decision-1-batch",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
       "node_id": "race-018-state-representative-pos-2-legislative-district-4-decision-1-history",
       "kind": "paragraph",
       "page": null,
@@ -1682,6 +1736,15 @@
     },
     {
       "node_id": "race-019-state-representative-pos-1-legislative-district-5-decision-1-reliability",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "race-019-state-representative-pos-1-legislative-district-5-decision-1-batch",
       "kind": "paragraph",
       "page": null,
       "incoming": [],
@@ -1861,6 +1924,15 @@
       "orphan": false
     },
     {
+      "node_id": "race-022-state-representative-pos-1-legislative-district-6-decision-1-batch",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
       "node_id": "race-022-state-representative-pos-1-legislative-district-6-decision-1-history",
       "kind": "paragraph",
       "page": null,
@@ -1934,6 +2006,15 @@
     },
     {
       "node_id": "race-023-state-representative-pos-2-legislative-district-6-decision-1-reliability",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "race-023-state-representative-pos-2-legislative-district-6-decision-1-batch",
       "kind": "paragraph",
       "page": null,
       "incoming": [],
@@ -2555,6 +2636,15 @@
     },
     {
       "node_id": "race-034-state-representative-pos-1-legislative-district-11-decision-1-reliability",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "race-034-state-representative-pos-1-legislative-district-11-decision-1-batch",
       "kind": "paragraph",
       "page": null,
       "incoming": [],
@@ -4174,6 +4264,15 @@
       "orphan": false
     },
     {
+      "node_id": "race-062-state-representative-pos-2-legislative-district-23-decision-1-batch",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
       "node_id": "race-062-state-representative-pos-2-legislative-district-23-decision-1-history",
       "kind": "paragraph",
       "page": null,
@@ -4435,6 +4534,15 @@
       "orphan": false
     },
     {
+      "node_id": "race-065-state-representative-pos-1-legislative-district-25-decision-1-batch",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
       "node_id": "race-065-state-representative-pos-1-legislative-district-25-decision-1-history",
       "kind": "paragraph",
       "page": null,
@@ -4508,6 +4616,15 @@
     },
     {
       "node_id": "race-066-state-representative-pos-2-legislative-district-25-decision-1-reliability",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "race-066-state-representative-pos-2-legislative-district-25-decision-1-batch",
       "kind": "paragraph",
       "page": null,
       "incoming": [],
@@ -5084,6 +5201,15 @@
     },
     {
       "node_id": "race-076-state-representative-pos-2-legislative-district-29-decision-1-reliability",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "race-076-state-representative-pos-2-legislative-district-29-decision-1-batch",
       "kind": "paragraph",
       "page": null,
       "incoming": [],
@@ -5713,6 +5839,15 @@
       "orphan": false
     },
     {
+      "node_id": "race-087-state-representative-pos-1-legislative-district-33-decision-1-batch",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
       "node_id": "race-087-state-representative-pos-1-legislative-district-33-decision-1-history",
       "kind": "paragraph",
       "page": null,
@@ -5786,6 +5921,15 @@
     },
     {
       "node_id": "race-088-state-representative-pos-2-legislative-district-33-decision-1-reliability",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "race-088-state-representative-pos-2-legislative-district-33-decision-1-batch",
       "kind": "paragraph",
       "page": null,
       "incoming": [],
@@ -6748,6 +6892,15 @@
       "orphan": false
     },
     {
+      "node_id": "race-105-state-representative-pos-1-legislative-district-38-decision-1-batch",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
       "node_id": "race-105-state-representative-pos-1-legislative-district-38-decision-1-history",
       "kind": "paragraph",
       "page": null,
@@ -7189,6 +7342,15 @@
       "orphan": false
     },
     {
+      "node_id": "race-111-state-representative-pos-1-legislative-district-41-decision-1-batch",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
       "node_id": "race-111-state-representative-pos-1-legislative-district-41-decision-1-history",
       "kind": "paragraph",
       "page": null,
@@ -7441,6 +7603,15 @@
       "orphan": false
     },
     {
+      "node_id": "race-114-state-senator-legislative-district-42-decision-1-batch",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
       "node_id": "race-114-state-senator-legislative-district-42-decision-1-history",
       "kind": "paragraph",
       "page": null,
@@ -7604,6 +7775,15 @@
     },
     {
       "node_id": "race-117-state-senator-legislative-district-43-decision-1-reliability",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "race-117-state-senator-legislative-district-43-decision-1-batch",
       "kind": "paragraph",
       "page": null,
       "incoming": [],
@@ -8089,6 +8269,15 @@
       "orphan": false
     },
     {
+      "node_id": "race-126-state-representative-pos-2-legislative-district-45-decision-1-batch",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
       "node_id": "race-126-state-representative-pos-2-legislative-district-45-decision-1-history",
       "kind": "paragraph",
       "page": null,
@@ -8207,6 +8396,15 @@
     },
     {
       "node_id": "race-128-state-representative-pos-1-legislative-district-46-decision-1-reliability",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "race-128-state-representative-pos-1-legislative-district-46-decision-1-batch",
       "kind": "paragraph",
       "page": null,
       "incoming": [],
@@ -8378,6 +8576,15 @@
     },
     {
       "node_id": "race-131-state-representative-pos-1-legislative-district-47-decision-1-reliability",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "race-131-state-representative-pos-1-legislative-district-47-decision-1-batch",
       "kind": "paragraph",
       "page": null,
       "incoming": [],
@@ -8684,6 +8891,15 @@
     },
     {
       "node_id": "race-137-state-representative-pos-1-legislative-district-49-decision-1-reliability",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "race-137-state-representative-pos-1-legislative-district-49-decision-1-batch",
       "kind": "paragraph",
       "page": null,
       "incoming": [],

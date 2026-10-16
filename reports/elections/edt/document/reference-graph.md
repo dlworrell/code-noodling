@@ -1,6 +1,6 @@
 # EDT Reference Index
 
-Nodes: 1948
+Nodes: 1972
 Edges: 0
 Broken references: 0
 Orphans: 0
@@ -120,6 +120,7 @@ Orphans: 0
 | race-010-u-s-representative-congressional-district-10-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-010-u-s-representative-congressional-district-10-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-010-u-s-representative-congressional-district-10-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-010-u-s-representative-congressional-district-10-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-010-u-s-representative-congressional-district-10-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-011-state-representative-pos-1-legislative-district-1-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-011-state-representative-pos-1-legislative-district-1-source | paragraph |  | 0 | 0 | 0 | False |
@@ -149,6 +150,7 @@ Orphans: 0
 | race-014-state-representative-pos-2-legislative-district-2-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-014-state-representative-pos-2-legislative-district-2-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-014-state-representative-pos-2-legislative-district-2-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-014-state-representative-pos-2-legislative-district-2-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-014-state-representative-pos-2-legislative-district-2-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-015-state-representative-pos-1-legislative-district-3-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-015-state-representative-pos-1-legislative-district-3-source | paragraph |  | 0 | 0 | 0 | False |
@@ -158,6 +160,7 @@ Orphans: 0
 | race-015-state-representative-pos-1-legislative-district-3-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-015-state-representative-pos-1-legislative-district-3-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-015-state-representative-pos-1-legislative-district-3-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-015-state-representative-pos-1-legislative-district-3-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-015-state-representative-pos-1-legislative-district-3-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-016-state-representative-pos-2-legislative-district-3-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-016-state-representative-pos-2-legislative-district-3-source | paragraph |  | 0 | 0 | 0 | False |
@@ -167,6 +170,7 @@ Orphans: 0
 | race-016-state-representative-pos-2-legislative-district-3-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-016-state-representative-pos-2-legislative-district-3-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-016-state-representative-pos-2-legislative-district-3-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-016-state-representative-pos-2-legislative-district-3-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-016-state-representative-pos-2-legislative-district-3-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-017-state-representative-pos-1-legislative-district-4-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-017-state-representative-pos-1-legislative-district-4-source | paragraph |  | 0 | 0 | 0 | False |
@@ -176,6 +180,7 @@ Orphans: 0
 | race-017-state-representative-pos-1-legislative-district-4-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-017-state-representative-pos-1-legislative-district-4-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-017-state-representative-pos-1-legislative-district-4-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-017-state-representative-pos-1-legislative-district-4-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-017-state-representative-pos-1-legislative-district-4-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-018-state-representative-pos-2-legislative-district-4-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-018-state-representative-pos-2-legislative-district-4-source | paragraph |  | 0 | 0 | 0 | False |
@@ -185,6 +190,7 @@ Orphans: 0
 | race-018-state-representative-pos-2-legislative-district-4-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-018-state-representative-pos-2-legislative-district-4-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-018-state-representative-pos-2-legislative-district-4-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-018-state-representative-pos-2-legislative-district-4-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-018-state-representative-pos-2-legislative-district-4-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-019-state-representative-pos-1-legislative-district-5-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-019-state-representative-pos-1-legislative-district-5-source | paragraph |  | 0 | 0 | 0 | False |
@@ -194,6 +200,7 @@ Orphans: 0
 | race-019-state-representative-pos-1-legislative-district-5-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-019-state-representative-pos-1-legislative-district-5-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-019-state-representative-pos-1-legislative-district-5-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-019-state-representative-pos-1-legislative-district-5-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-019-state-representative-pos-1-legislative-district-5-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-020-state-representative-pos-2-legislative-district-5-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-020-state-representative-pos-2-legislative-district-5-source | paragraph |  | 0 | 0 | 0 | False |
@@ -213,6 +220,7 @@ Orphans: 0
 | race-022-state-representative-pos-1-legislative-district-6-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-022-state-representative-pos-1-legislative-district-6-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-022-state-representative-pos-1-legislative-district-6-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-022-state-representative-pos-1-legislative-district-6-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-022-state-representative-pos-1-legislative-district-6-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-023-state-representative-pos-2-legislative-district-6-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-023-state-representative-pos-2-legislative-district-6-source | paragraph |  | 0 | 0 | 0 | False |
@@ -222,6 +230,7 @@ Orphans: 0
 | race-023-state-representative-pos-2-legislative-district-6-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-023-state-representative-pos-2-legislative-district-6-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-023-state-representative-pos-2-legislative-district-6-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-023-state-representative-pos-2-legislative-district-6-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-023-state-representative-pos-2-legislative-district-6-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-024-state-senator-legislative-district-7-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-024-state-senator-legislative-district-7-source | paragraph |  | 0 | 0 | 0 | False |
@@ -291,6 +300,7 @@ Orphans: 0
 | race-034-state-representative-pos-1-legislative-district-11-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-034-state-representative-pos-1-legislative-district-11-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-034-state-representative-pos-1-legislative-district-11-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-034-state-representative-pos-1-legislative-district-11-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-034-state-representative-pos-1-legislative-district-11-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-035-state-representative-pos-2-legislative-district-11-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-035-state-representative-pos-2-legislative-district-11-source | paragraph |  | 0 | 0 | 0 | False |
@@ -470,6 +480,7 @@ Orphans: 0
 | race-062-state-representative-pos-2-legislative-district-23-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-062-state-representative-pos-2-legislative-district-23-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-062-state-representative-pos-2-legislative-district-23-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-062-state-representative-pos-2-legislative-district-23-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-062-state-representative-pos-2-legislative-district-23-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-063-state-representative-pos-1-legislative-district-24-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-063-state-representative-pos-1-legislative-district-24-source | paragraph |  | 0 | 0 | 0 | False |
@@ -499,6 +510,7 @@ Orphans: 0
 | race-065-state-representative-pos-1-legislative-district-25-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-065-state-representative-pos-1-legislative-district-25-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-065-state-representative-pos-1-legislative-district-25-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-065-state-representative-pos-1-legislative-district-25-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-065-state-representative-pos-1-legislative-district-25-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-066-state-representative-pos-2-legislative-district-25-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-066-state-representative-pos-2-legislative-district-25-source | paragraph |  | 0 | 0 | 0 | False |
@@ -508,6 +520,7 @@ Orphans: 0
 | race-066-state-representative-pos-2-legislative-district-25-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-066-state-representative-pos-2-legislative-district-25-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-066-state-representative-pos-2-legislative-district-25-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-066-state-representative-pos-2-legislative-district-25-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-066-state-representative-pos-2-legislative-district-25-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-067-state-senator-legislative-district-26-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-067-state-senator-legislative-district-26-source | paragraph |  | 0 | 0 | 0 | False |
@@ -572,6 +585,7 @@ Orphans: 0
 | race-076-state-representative-pos-2-legislative-district-29-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-076-state-representative-pos-2-legislative-district-29-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-076-state-representative-pos-2-legislative-district-29-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-076-state-representative-pos-2-legislative-district-29-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-076-state-representative-pos-2-legislative-district-29-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-077-state-senator-legislative-district-30-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-077-state-senator-legislative-district-30-source | paragraph |  | 0 | 0 | 0 | False |
@@ -641,6 +655,7 @@ Orphans: 0
 | race-087-state-representative-pos-1-legislative-district-33-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-087-state-representative-pos-1-legislative-district-33-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-087-state-representative-pos-1-legislative-district-33-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-087-state-representative-pos-1-legislative-district-33-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-087-state-representative-pos-1-legislative-district-33-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-088-state-representative-pos-2-legislative-district-33-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-088-state-representative-pos-2-legislative-district-33-source | paragraph |  | 0 | 0 | 0 | False |
@@ -650,6 +665,7 @@ Orphans: 0
 | race-088-state-representative-pos-2-legislative-district-33-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-088-state-representative-pos-2-legislative-district-33-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-088-state-representative-pos-2-legislative-district-33-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-088-state-representative-pos-2-legislative-district-33-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-088-state-representative-pos-2-legislative-district-33-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-089-state-senator-legislative-district-34-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-089-state-senator-legislative-district-34-source | paragraph |  | 0 | 0 | 0 | False |
@@ -756,6 +772,7 @@ Orphans: 0
 | race-105-state-representative-pos-1-legislative-district-38-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-105-state-representative-pos-1-legislative-district-38-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-105-state-representative-pos-1-legislative-district-38-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-105-state-representative-pos-1-legislative-district-38-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-105-state-representative-pos-1-legislative-district-38-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-106-state-representative-pos-2-legislative-district-38-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-106-state-representative-pos-2-legislative-district-38-source | paragraph |  | 0 | 0 | 0 | False |
@@ -805,6 +822,7 @@ Orphans: 0
 | race-111-state-representative-pos-1-legislative-district-41-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-111-state-representative-pos-1-legislative-district-41-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-111-state-representative-pos-1-legislative-district-41-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-111-state-representative-pos-1-legislative-district-41-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-111-state-representative-pos-1-legislative-district-41-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-112-state-representative-pos-2-legislative-district-41-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-112-state-representative-pos-2-legislative-district-41-source | paragraph |  | 0 | 0 | 0 | False |
@@ -833,6 +851,7 @@ Orphans: 0
 | race-114-state-senator-legislative-district-42-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-114-state-senator-legislative-district-42-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-114-state-senator-legislative-district-42-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-114-state-senator-legislative-district-42-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-114-state-senator-legislative-district-42-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-115-state-representative-pos-1-legislative-district-42-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-115-state-representative-pos-1-legislative-district-42-source | paragraph |  | 0 | 0 | 0 | False |
@@ -852,6 +871,7 @@ Orphans: 0
 | race-117-state-senator-legislative-district-43-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-117-state-senator-legislative-district-43-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-117-state-senator-legislative-district-43-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-117-state-senator-legislative-district-43-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-117-state-senator-legislative-district-43-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-118-state-representative-pos-1-legislative-district-43-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-118-state-representative-pos-1-legislative-district-43-source | paragraph |  | 0 | 0 | 0 | False |
@@ -905,6 +925,7 @@ Orphans: 0
 | race-126-state-representative-pos-2-legislative-district-45-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-126-state-representative-pos-2-legislative-district-45-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-126-state-representative-pos-2-legislative-district-45-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-126-state-representative-pos-2-legislative-district-45-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-126-state-representative-pos-2-legislative-district-45-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-127-state-senator-legislative-district-46-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-127-state-senator-legislative-district-46-source | paragraph |  | 0 | 0 | 0 | False |
@@ -919,6 +940,7 @@ Orphans: 0
 | race-128-state-representative-pos-1-legislative-district-46-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-128-state-representative-pos-1-legislative-district-46-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-128-state-representative-pos-1-legislative-district-46-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-128-state-representative-pos-1-legislative-district-46-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-128-state-representative-pos-1-legislative-district-46-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-129-state-representative-pos-2-legislative-district-46-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-129-state-representative-pos-2-legislative-district-46-source | paragraph |  | 0 | 0 | 0 | False |
@@ -938,6 +960,7 @@ Orphans: 0
 | race-131-state-representative-pos-1-legislative-district-47-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-131-state-representative-pos-1-legislative-district-47-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-131-state-representative-pos-1-legislative-district-47-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-131-state-representative-pos-1-legislative-district-47-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-131-state-representative-pos-1-legislative-district-47-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-132-state-representative-pos-2-legislative-district-47-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-132-state-representative-pos-2-legislative-district-47-source | paragraph |  | 0 | 0 | 0 | False |
@@ -972,6 +995,7 @@ Orphans: 0
 | race-137-state-representative-pos-1-legislative-district-49-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
 | race-137-state-representative-pos-1-legislative-district-49-decision-1-risk | paragraph |  | 0 | 0 | 0 | False |
 | race-137-state-representative-pos-1-legislative-district-49-decision-1-reliability | paragraph |  | 0 | 0 | 0 | False |
+| race-137-state-representative-pos-1-legislative-district-49-decision-1-batch | paragraph |  | 0 | 0 | 0 | False |
 | race-137-state-representative-pos-1-legislative-district-49-decision-1-history | paragraph |  | 0 | 0 | 0 | False |
 | race-138-state-representative-pos-2-legislative-district-49-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-138-state-representative-pos-2-legislative-district-49-source | paragraph |  | 0 | 0 | 0 | False |
