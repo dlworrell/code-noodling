@@ -110,8 +110,8 @@ threshold. The scoped formal-verification scripts in `crypto_pipeline/proof/`
 target that candidate. They become runnable once PR #9 lands.
 
 See the [crypto pipeline README](crypto_pipeline/README.MD),
-[mathematical notes](docs/engineering/CRYPTO-ARITHMETIC.md) and
-[memory review](docs/engineering/CRYPTO-MEMORY-REVIEW.md).
+[mathematical notes](crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md) and
+[memory review](crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md).
 
 ---
 
