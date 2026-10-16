@@ -32,6 +32,8 @@ XLSX_PACKAGE_REL_NS = (
     "http://schemas.openxmlformats.org/package/2006/relationships"
 )
 MAX_XLSX_UNCOMPRESSED_BYTES = 50 * 1024 * 1024
+# Leading bytes of every Apple binary property list ("bplist00", "bplist15", ...).
+APPLE_BINARY_PLIST_MAGIC = b"bplist"
 
 
 def normalize_contest_key(value: str) -> str:
@@ -319,6 +321,14 @@ def read_snapshot(path: Path, source_id: str) -> Snapshot:
     if raw_bytes.startswith(b"\xd0\xcf\x11\xe0"):
         raise ElectionReportError(
             f"{path} is a legacy binary spreadsheet; export it as CSV or XLSX"
+        )
+    if raw_bytes.startswith(APPLE_BINARY_PLIST_MAGIC):
+        raise ElectionReportError(
+            f"{path} is an Apple binary property list (bplist), not election "
+            "results; it is typically an iOS/macOS Files or Safari download "
+            "reference saved under the export's name. Re-export the results "
+            "from the official source (CSV or XLSX) and commit the downloaded "
+            "file itself"
         )
     try:
         text = raw_bytes.decode("utf-8-sig")

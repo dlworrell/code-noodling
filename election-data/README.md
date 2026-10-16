@@ -21,6 +21,10 @@ Requirements:
   of multiple reports on one day.
 - `.csv`, `.csv.xls`, `.xls`, and `.txt` names are accepted when the content is UTF-8
   CSV text.
+- Commit the downloaded export itself. On iOS/macOS, copying a file out of the Files
+  app or Safari downloads can produce an Apple binary property list (a file reference
+  starting with `bplist00`) under the export's name; the parser rejects such files
+  with a message asking for a fresh export.
 - `.xlsx` is accepted for the official Washington `All Results` workbook. The parser
   reads `Summary Results` directly with the Python standard library; it ignores the
   much larger precinct sheet because the summary already contains controlling totals.

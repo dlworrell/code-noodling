@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import plistlib
 import tempfile
 import unittest
 import zipfile
@@ -10,6 +11,7 @@ from xml.sax.saxutils import escape
 from election_reporting.analysis import analyze_election
 from election_reporting.config import load_config
 from election_reporting.ingest import normalize_contest_key, read_snapshot
+from election_reporting.model import ElectionReportError
 from election_reporting.publish import facebook_summary, publish
 
 
@@ -104,6 +106,21 @@ class ElectionReportingTests(unittest.TestCase):
             contest = next(iter(snapshot.contests.values()))
             self.assertEqual(contest.ballots, 1000)
             self.assertEqual(contest.choices[2].votes, 290)
+
+    def test_apple_binary_plist_is_rejected_with_clear_message(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "2026-08-06-1600.csv.xls"
+            path.write_bytes(
+                plistlib.dumps(
+                    {"$archiver": "NSKeyedArchiver", "$version": 100000},
+                    fmt=plistlib.FMT_BINARY,
+                )
+            )
+            with self.assertRaisesRegex(
+                ElectionReportError,
+                r"Apple binary property list.*not election results.*Re-export",
+            ):
+                read_snapshot(path, "county")
 
     def test_statewide_summary_xlsx_is_accepted(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
