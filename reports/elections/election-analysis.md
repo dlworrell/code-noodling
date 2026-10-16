@@ -1,10 +1,10 @@
 # 2026 Washington Primary Election Outcome-Change Analysis
 
-Analysis as of 2026-08-08T00:18; 244 contests reported.
+Analysis as of 2026-10-14T11:00; 244 contests reported.
 
 ## Summary
 
-Controlling-contest risk counts: Toss Up 5; High 8; Meaningful 9; Low 10; Very Low 129; Unknown 0; Not Applicable 83.
+Controlling-contest risk counts: Toss Up 4; High 8; Meaningful 9; Low 11; Very Low 129; Unknown 0; Not Applicable 83.
 
 ## At-a-glance decisions
 
@@ -12,9 +12,8 @@ Sorted by modeled change probability, with controlling results before county-onl
 
 | Change probability | Reliability | Race | Boundary | Current margin | Scope |
 | ---: | --- | --- | --- | --- | --- |
-| 75.2% | 58/100 Moderate | State Representative Pos. 2 - Legislative District 1 | Top Two Cutoff | Cliff Moon +153 over Jenne Alderks | Controlling |
+| 56.3% | 59/100 Moderate | State Senator - Legislative District 42 | Top Two Cutoff | Michael Alvarez Shepard +4 over Eamonn Collins | Controlling |
 | 50.0% | 45/100 Low | Democratic Precinct Committee Officer SHL 32-0802 (Vote for 1) | Winner | Andrew Holt +0 over Norbert Steele | Controlling |
-| 48.5% | 49/100 Low | State Senator - Legislative District 42 | Top Two Cutoff | Michael Alvarez Shepard +9 over Eamonn Collins | Controlling |
 | 42.1% | 45/100 Low | Democratic Precinct Committee Officer SEA 36-1743 (Vote for 1) | Winner | Laura Marie Rivera +1 over Claire Ramos | Controlling |
 | 40.9% | 44/100 Low | Democratic Precinct Committee Officer COV 47-3279 (Vote for 1) | Winner | Kimberley Darby +1 over Sean Smith | Controlling |
 | 38.4% | 46/100 Low | Democratic Precinct Committee Officer SEA 46-2314 (Vote for 1) | Winner | Sylvia Haven +2 over Nancy Lichter | Controlling |
@@ -34,6 +33,7 @@ Sorted by modeled change probability, with controlling results before county-onl
 | 14.3% | 44/100 Low | Democratic Precinct Committee Officer Meadowbrook (Vote for 1) | Winner | Roger Ledbetter +4 over Tim Noonan | Controlling |
 | 12.5% | 46/100 Low | Democratic Precinct Committee Officer SEA 37-1838 (Vote for 1) | Winner | Bridgette Maryman +8 over Jamie Fackler | Controlling |
 | 11.5% | 45/100 Low | Democratic Precinct Committee Officer SEA 43-1860 (Vote for 1) | Winner | Leonard Harrison Jerome +5 over Emeka Alozie | Controlling |
+| 9.5% | 63/100 Moderate | State Representative Pos. 2 - Legislative District 1 | Top Two Cutoff | Cliff Moon +136 over Jenne Alderks | Controlling |
 | 8.0% | 46/100 Low | Democratic Precinct Committee Officer SEA 36-1345 (Vote for 1) | Winner | James Apa +8 over Joanna Grist | Controlling |
 | 8.0% | 44/100 Low | Republican Precinct Committee Officer Bronson (Vote for 1) | Winner | Dale Fonk +6 over Tiffany Atwood | Controlling |
 | 7.0% | 44/100 Low | Republican Precinct Committee Officer Brooktrails (Vote for 1) | Winner | Jana Lottinville +5 over Dan Farrer | Controlling |
@@ -45,15 +45,14 @@ Sorted by modeled change probability, with controlling results before county-onl
 | 3.0% | 44/100 Low | Democratic Precinct Committee Officer AUB 47-2701 (Vote for 1) | Winner | Shantell Sanders +7 over Hanan Amer | Controlling |
 | 2.3% | 46/100 Low | Democratic Precinct Committee Officer SEA 37-1608 (Vote for 1) | Winner | Melissa Falcone +12 over E. Bailey Medilo | Controlling |
 | 1.4% | 48/100 Low | King County Fire Protection Dist. No. 47 Proposition No. 1 (Vote for 1) | Winner | Rejected +33 over Approved | Controlling |
-| 1.2% | 46/100 Low | State Representative Pos. 2 - Legislative District 29 | Top Two Cutoff | Patrick Stickney +172 over Natasha Laitila | Controlling |
 | 1.0% | 43/100 Low | Republican Precinct Committee Officer RNT 11-3929 (Vote for 1) | Winner | Angie Phillips +6 over Linda Mills | Controlling |
 | 0.9% | 45/100 Low | Democratic Precinct Committee Officer SEA 37-3729 (Vote for 1) | Winner | Suresh Chanmugam +12 over Chio Saeteurn | Controlling |
 | 0.9% | 46/100 Low | Democratic Precinct Committee Officer TUK 11-3128 (Vote for 1) | Winner | Kate Kruller +16 over Tamara M Bauman | Controlling |
-| 0.8% | 48/100 Low | State Representative Pos. 2 - Legislative District 6 | Top Two Cutoff | Julia Payne +338 over Aaron M. Croft | Controlling |
 | 0.7% | 44/100 Low | Democratic Precinct Committee Officer SEA 43-2542 (Vote for 1) | Winner | Aspen Coyle +10 over Paul Lee | Controlling |
 | 0.6% | 45/100 Low | Democratic Precinct Committee Officer KEN 33-0595 (Vote for 1) | Winner | Fanny Pacheco +14 over Daniel Schirmer | Controlling |
 | 0.5% | 68/100 Moderate | Northeast Electoral District Judge Position No. 1 (Vote for 1) | Majority Status | no majority +5,618 over Jan Trasen | Controlling |
 | 0.4% | 46/100 Low | Democratic Precinct Committee Officer SEA 37-1938 (Vote for 1) | Winner | Ian Mosher +20 over Marietta Zintak | Controlling |
+| 0.3% | 58/100 Moderate | State Representative Pos. 2 - Legislative District 6 | Top Two Cutoff | Julia Payne +259 over Aaron M. Croft | Controlling |
 | 0.3% | 46/100 Low | Democratic Precinct Committee Officer SEA 37-1617 (Vote for 1) | Winner | Scott Winn +16 over Carla McLean | Controlling |
 | 0.3% | 45/100 Low | Democratic Precinct Committee Officer SEA 37-1636 (Vote for 1) | Winner | Chukundi Salisbury Sr +16 over Daniel Escapa | Controlling |
 | 0.2% | 45/100 Low | Democratic Precinct Committee Officer SEA 43-2040 (Vote for 1) | Winner | Seth May +15 over Jeremy Erdman | Controlling |
@@ -63,7 +62,6 @@ Sorted by modeled change probability, with controlling results before county-onl
 | <0.1% | 45/100 Low | Democratic Precinct Committee Officer SEA 46-1403 (Vote for 1) | Winner | Brandon Monson +15 over Stephen Paolini | Controlling |
 | <0.1% | 46/100 Low | Democratic Precinct Committee Officer SEA 43-1851 (Vote for 1) | Winner | Bryce Kolton +20 over Daniel Heppner | Controlling |
 | <0.1% | 44/100 Low | Democratic Precinct Committee Officer BEL 48-0217 (Vote for 1) | Winner | Alex Marcellus +14 over Rick Kirkham | Controlling |
-| <0.1% | 49/100 Low | State Representative Pos. 2 - Legislative District 3 | Top Two Cutoff | Natalie Poulson +791 over Pam Kohlmeier | Controlling |
 | <0.1% | 45/100 Low | Democratic Precinct Committee Officer BEL 48-2776 (Vote for 1) | Winner | Paul B Neil +18 over Vikram Modgil | Controlling |
 | <0.1% | 45/100 Low | Democratic Precinct Committee Officer SEA 34-1487 (Vote for 1) | Winner | Helen Sernett +18 over Jesse Scott-Kandoll | Controlling |
 | <0.1% | 44/100 Low | Republican Precinct Committee Officer SHL 32-1053 (Vote for 1) | Winner | Laura Steinmetz +12 over Ping Liu | Controlling |
@@ -71,9 +69,9 @@ Sorted by modeled change probability, with controlling results before county-onl
 | <0.1% | 45/100 Low | Democratic Precinct Committee Officer SEA 34-1247 (Vote for 1) | Winner | Leslie S Harris +20 over Hudayfa Ismail | Controlling |
 | <0.1% | 66/100 Moderate | Northeast Electoral District Judge Position No. 1 (Vote for 1) | Top Two Cutoff | Bianca Tse +4,220 over Josh Schaer | Controlling |
 | <0.1% | 56/100 Moderate | City of Black Diamond Proposition No. 1 (Vote for 1) | Winner | Yes +166 over No | Controlling |
+| <0.1% | 56/100 Moderate | State Representative Pos. 2 - Legislative District 29 | Top Two Cutoff | Patrick Stickney +172 over Natasha Laitila | Controlling |
 | <0.1% | 44/100 Low | Democratic Precinct Committee Officer Briar (Vote for 1) | Winner | Eric Carlson +17 over Gordon Baxter | Controlling |
 | <0.1% | 46/100 Low | Democratic Precinct Committee Officer RNT 11-0991 (Vote for 1) | Winner | Gina Fuentevilla +24 over Rachel Segerhammar | Controlling |
-| <0.1% | 61/100 Moderate | Justice Position #03 - Supreme Court | Top Two Cutoff | Jaime Michelle Hawk +31,484 over Mike Diaz | Controlling |
 | <0.1% | 45/100 Low | Republican Precinct Committee Officer Two Rivers (Vote for 1) | Winner | Michael Bladow +19 over Paul Michael Mcmahon | Controlling |
 | <0.1% | 46/100 Low | Democratic Precinct Committee Officer SEA 46-2295 (Vote for 1) | Winner | Sharon London +25 over David Lichter | Controlling |
 | <0.1% | 44/100 Low | Democratic Precinct Committee Officer SEA 37-1882 (Vote for 1) | Winner | Jennifer Parada +19 over Casey Smith | Controlling |
@@ -81,19 +79,14 @@ Sorted by modeled change probability, with controlling results before county-onl
 | <0.1% | 45/100 Low | Democratic Precinct Committee Officer SEA 43-1870 (Vote for 1) | Winner | Sean Butterfield +20 over Jase Pickering | Controlling |
 | <0.1% | 44/100 Low | Democratic Precinct Committee Officer SEA 46-2252 (Vote for 1) | Winner | Frank Field +18 over Paul Nacamuli | Controlling |
 | <0.1% | 44/100 Low | Republican Precinct Committee Officer KEN 47-0026 (Vote for 1) | Winner | MyAnn Morrow +16 over Melissa D Ohashi | Controlling |
-| <0.1% | 60/100 Moderate | U.S. Representative - Congressional District 8 | Top Two Cutoff | Spencer Meline +1,460 over Trinh Ha | Controlling |
 | <0.1% | 45/100 Low | Democratic Precinct Committee Officer RNT 11-3222 (Vote for 1) | Winner | Laura Cain-Harris +24 over Livey Beha | Controlling |
 | <0.1% | 45/100 Low | Democratic Precinct Committee Officer SEA 46-2323 (Vote for 1) | Winner | Matt Weatherford +23 over Ed Freeman | Controlling |
-| <0.1% | 47/100 Low | State Representative Pos. 2 - Legislative District 33 | Top Two Cutoff | Yuri Marinchik +555 over Alex Andrade | Controlling |
 | <0.1% | 46/100 Low | Democratic Precinct Committee Officer SHL 32-0875 (Vote for 1) | Winner | Bettelinn Brown +30 over Allison Luzader | Controlling |
 | <0.1% | 44/100 Low | Democratic Precinct Committee Officer AUB 47-2729 (Vote for 1) | Winner | Trevon Cooper +19 over TJ Revely | Controlling |
-| <0.1% | 46/100 Low | State Representative Pos. 1 - Legislative District 33 | Top Two Cutoff | Chris Martinez +376 over Darryl K. Jones | Controlling |
 | <0.1% | 46/100 Low | Democratic Precinct Committee Officer SEA 37-1871 (Vote for 1) | Winner | Beth Brunton +34 over April Vian | Controlling |
-| <0.1% | 53/100 Moderate | State Representative Pos. 2 - Legislative District 24 | Top Two Cutoff | Kaylee Kuehn +1,022 over Patrick DePoe | Controlling |
 | <0.1% | 46/100 Low | Democratic Precinct Committee Officer SHL 32-0423 (Vote for 1) | Winner | Janet M Way +33 over Candy Wilson | Controlling |
 | <0.1% | 44/100 Low | Democratic Precinct Committee Officer Pipeline (Vote for 1) | Winner | Laura Billington +21 over Bill Cooper | Controlling |
 | <0.1% | 44/100 Low | Democratic Precinct Committee Officer SEA 43-1993 (Vote for 1) | Winner | Anne Purcell +22 over Bob Mahon | Controlling |
-| <0.1% | 58/100 Moderate | State Representative Pos. 2 - Legislative District 39 | Top Two Cutoff | Steve Ewing +621 over Robert J Sutherland | Controlling |
 | <0.1% | 46/100 Low | Democratic Precinct Committee Officer SHL 32-0897 (Vote for 1) | Winner | Lauri DeVore +41 over Tom Fitzpatrick | Controlling |
 | <0.1% | 45/100 Low | Democratic Precinct Committee Officer SHL 32-1228 (Vote for 1) | Winner | Janice Gedlund +32 over Christine Ann Pinto | Controlling |
 | <0.1% | 46/100 Low | Democratic Precinct Committee Officer KIR 48-3401 (Vote for 1) | Winner | Margit Moore +42 over Bill Cruikshank | Controlling |
@@ -104,80 +97,87 @@ Sorted by modeled change probability, with controlling results before county-onl
 | <0.1% | 45/100 Low | Democratic Precinct Committee Officer SEA 37-1900 (Vote for 1) | Winner | Megan Riel-Mehan +30 over Heather Hess | Controlling |
 | <0.1% | 45/100 Low | Democratic Precinct Committee Officer SEA 37-1555 (Vote for 1) | Winner | Kendall Oehler +37 over Greg Thiessen | Controlling |
 | <0.1% | 45/100 Low | Democratic Precinct Committee Officer SEA 43-1373 (Vote for 1) | Winner | Carl Slater +37 over Aaron Wheeler | Controlling |
+| <0.1% | 59/100 Moderate | State Representative Pos. 2 - Legislative District 24 | Top Two Cutoff | Kaylee Kuehn +918 over Patrick DePoe | Controlling |
 | <0.1% | 45/100 Low | Democratic Precinct Committee Officer RNT 11-0988 (Vote for 1) | Winner | Patricia Ogunmola +35 over Richard Dustin Wight | Controlling |
+| <0.1% | 61/100 Moderate | Justice Position #03 - Supreme Court | Top Two Cutoff | Jaime Michelle Hawk +35,258 over Mike Diaz | Controlling |
+| <0.1% | 59/100 Moderate | State Representative Pos. 2 - Legislative District 3 | Top Two Cutoff | Luc Jasmin III +919 over Pam Kohlmeier | Controlling |
 | <0.1% | 44/100 Low | Republican Precinct Committee Officer NEW 41-3529 (Vote for 1) | Winner | Mathew Patrick Thomas +31 over Chinmay Nagarkar | Controlling |
-| <0.1% | 58/100 Moderate | State Representative Pos. 2 - Legislative District 10 | Top Two Cutoff | Tim Hazelo +1,250 over Carrie R. Kennedy | Controlling |
-| <0.1% | 61/100 Moderate | Justice Position #01 - Supreme Court | Majority Status | Colleen Melody +99,846 over all other choices | Controlling |
-| <0.1% | 47/100 Low | State Representative Pos. 1 - Legislative District 11 | Top Two Cutoff | Ashley Fedan +1,330 over Christian Rombough | Controlling |
-| <0.1% | 55/100 Moderate | U.S. Representative - Congressional District 5 | Top Two Cutoff | Carmela Conroy +5,905 over Nate Powell | Controlling |
+| <0.1% | 57/100 Moderate | State Representative Pos. 1 - Legislative District 33 | Top Two Cutoff | Chris Martinez +367 over Darryl K. Jones | Controlling |
+| <0.1% | 65/100 Moderate | U.S. Representative - Congressional District 8 | Top Two Cutoff | Spencer Meline +1,984 over Trinh Ha | Controlling |
+| <0.1% | 63/100 Moderate | State Representative Pos. 2 - Legislative District 39 | Top Two Cutoff | Steve Ewing +745 over Robert J Sutherland | Controlling |
+| <0.1% | 57/100 Moderate | State Representative Pos. 2 - Legislative District 33 | Top Two Cutoff | Yuri Marinchik +600 over Alex Andrade | Controlling |
 | <0.1% | 67/100 Moderate | City of Seattle Municipal Court Judge Position No. 5 (Vote for 1) | Top Two Cutoff | Garmon Newsom +15,804 over Lindsay Calkins | Controlling |
-| <0.1% | 57/100 Moderate | Hospital District 304, Proposition No. 1 | Winner | Rejected +966 over Approved | Controlling |
-| <0.1% | 57/100 Moderate | State Representative Pos. 2 - Legislative District 40 | Top Two Cutoff | Joseph Segault +1,020 over Salomon Rodrigue Mbouombouo | Controlling |
-| <0.1% | 61/100 Moderate | Justice Position #07 - Supreme Court | Majority Status | Debra L. Stephens +148,785 over all other choices | Controlling |
-| <0.1% | 47/100 Low | State Representative Pos. 2 - Legislative District 45 | Top Two Cutoff | John P Gibbons +1,651 over Chandler Torbett | Controlling |
-| <0.1% | 60/100 Moderate | U.S. Representative - Congressional District 9 | Top Two Cutoff | Doug Basler +6,681 over Kshama Sawant | Controlling |
-| <0.1% | 58/100 Moderate | State Representative Pos. 2 - Legislative District 13 | Top Two Cutoff | Joshua Thompson +1,762 over Don Myers | Controlling |
-| <0.1% | 47/100 Low | State Representative Pos. 1 - Legislative District 6 | Top Two Cutoff | Alan Nolan +1,863 over Isaiah Paine | Controlling |
-| <0.1% | 58/100 Moderate | State Representative Pos. 1 - Legislative District 32 | Top Two Cutoff | Danica Noble +1,979 over Lisa Rezac | Controlling |
+| <0.1% | 61/100 Moderate | Justice Position #01 - Supreme Court | Majority Status | Colleen Melody +101,380 over all other choices | Controlling |
+| <0.1% | 60/100 Moderate | U.S. Representative - Congressional District 5 | Top Two Cutoff | Carmela Conroy +5,044 over Nate Powell | Controlling |
+| <0.1% | 63/100 Moderate | State Representative Pos. 2 - Legislative District 10 | Top Two Cutoff | Tim Hazelo +1,299 over Carrie R. Kennedy | Controlling |
 | <0.1% | 63/100 Moderate | King County Fire Protection Dist. No. 43 Proposition No. 1 (Vote for 1) | Winner | Yes +3,136 over No | Controlling |
-| <0.1% | 61/100 Moderate | Proposition No. 1 - Sno - Isle Library District | Winner | Yes +26,805 over No | Controlling |
-| <0.1% | 59/100 Moderate | State Representative Pos. 2 - Legislative District 12 | Top Two Cutoff | Maggie Adams +3,507 over Adam James | Controlling |
+| <0.1% | 66/100 Moderate | Justice Position #07 - Supreme Court | Majority Status | Debra L. Stephens +151,001 over all other choices | Controlling |
+| <0.1% | 62/100 Moderate | Hospital District 304, Proposition No. 1 | Winner | Rejected +1,181 over Approved | Controlling |
+| <0.1% | 62/100 Moderate | State Representative Pos. 2 - Legislative District 40 | Top Two Cutoff | Joseph Segault +1,085 over Salomon Rodrigue Mbouombouo | Controlling |
 | <0.1% | 68/100 Moderate | City of Seattle Proposition No. 1 (Vote for 1) | Winner | Yes +72,323 over No | Controlling |
-| <0.1% | 58/100 Moderate | State Representative Pos. 2 - Legislative District 15 | Top Two Cutoff | Liz Hallock +2,668 over Chase Foster | Controlling |
 | <0.1% | 64/100 Moderate | Metropolitan King County Council District No. 8 (Vote for 1) | Top Two Cutoff | Nick Duda +7,892 over Mia Jacobson | Controlling |
-| <0.1% | 47/100 Low | State Representative Pos. 1 - Legislative District 38 | Top Two Cutoff | Thomas (Jeff) Kelly +2,443 over Annie Fitzgerald | Controlling |
 | <0.1% | 45/100 Low | Democratic Precinct Committee Officer KMR 01-0677 (Vote for 1) | Winner | Madison Long +37 over Jack Jensen | Controlling |
 | <0.1% | 44/100 Low | Democratic Precinct Committee Officer SEA 37-1919 (Vote for 1) | Winner | Maya Cutforth +36 over Kirky Hanson | Controlling |
 | <0.1% | 45/100 Low | Democratic Precinct Committee Officer SEA 43-1859 (Vote for 1) | Winner | Adora Blue +42 over Aaron McCloud | Controlling |
 | <0.1% | 44/100 Low | Democratic Precinct Committee Officer SEA 43-1976 (Vote for 1) | Winner | Amy Madden +32 over Matthew Epshtein | Controlling |
 | <0.1% | 44/100 Low | Democratic Precinct Committee Officer SEA 46-3262 (Vote for 1) | Winner | Tara Gallagher +32 over John Luethe | Controlling |
-| <0.1% | 61/100 Moderate | Justice Position #01 - Supreme Court | Top Two Cutoff | Scott Edwards +188,345 over Laura Christensen Colberg | Controlling |
-| <0.1% | 61/100 Moderate | Justice Position #03 - Supreme Court | Majority Status | no majority +482,579 over David Stevens | Controlling |
-| <0.1% | 61/100 Moderate | Justice Position #05 - Supreme Court | Majority Status | no majority +448,445 over Theo Angelis | Controlling |
-| <0.1% | 61/100 Moderate | Justice Position #05 - Supreme Court | Top Two Cutoff | Dave Larson +172,135 over Sharonda Amamilo | Controlling |
-| <0.1% | 61/100 Moderate | Justice Position #07 - Supreme Court | Top Two Cutoff | Todd A. Bloom +239,019 over Karim A. Merchant | Controlling |
+| <0.1% | 61/100 Moderate | Justice Position #01 - Supreme Court | Top Two Cutoff | Scott Edwards +208,284 over Laura Christensen Colberg | Controlling |
+| <0.1% | 61/100 Moderate | Justice Position #03 - Supreme Court | Majority Status | no majority +515,494 over David Stevens | Controlling |
+| <0.1% | 66/100 Moderate | Justice Position #05 - Supreme Court | Majority Status | no majority +492,633 over Theo Angelis | Controlling |
+| <0.1% | 66/100 Moderate | Justice Position #05 - Supreme Court | Top Two Cutoff | Dave Larson +188,570 over Sharonda Amamilo | Controlling |
+| <0.1% | 66/100 Moderate | Justice Position #07 - Supreme Court | Top Two Cutoff | Todd A. Bloom +260,744 over Karim A. Merchant | Controlling |
 | <0.1% | 65/100 Moderate | Metropolitan King County Council District No. 2 (Vote for 1) | Top Two Cutoff | Toshiko Grace Hasegawa +12,587 over Miriam Mboya | Controlling |
-| <0.1% | 47/100 Low | Proposition No. 1 Emergency Medical Services Property Tax Levy | Winner | Yes +271 over No | Controlling |
-| <0.1% | 56/100 Moderate | Proposition No. 1 Renewal of One-Year Special Levy | Winner | Approved +1,244 over Rejected | Controlling |
-| <0.1% | 59/100 Moderate | PUD Commissioner District 1 | Top Two Cutoff | Janet St Clair +6,221 over Bruce King | Controlling |
+| <0.1% | 66/100 Moderate | Proposition No. 1 - Sno - Isle Library District | Winner | Yes +27,014 over No | Controlling |
+| <0.1% | 53/100 Moderate | Proposition No. 1 Emergency Medical Services Property Tax Levy | Winner | Yes +307 over No | Controlling |
+| <0.1% | 61/100 Moderate | Proposition No. 1 Renewal of One-Year Special Levy | Winner | Approved +1,322 over Rejected | Controlling |
+| <0.1% | 64/100 Moderate | PUD Commissioner District 1 | Top Two Cutoff | Janet St Clair +6,326 over Bruce King | Controlling |
 | <0.1% | 44/100 Low | Republican Precinct Committee Officer BOT 01-0868 (Vote for 1) | Winner | Ozzie Bagan +21 over Meera Hessami | Controlling |
 | <0.1% | 45/100 Low | Republican Precinct Committee Officer White River (Vote for 1) | Winner | Paul R Fisher +36 over Nirav Sheth | Controlling |
 | <0.1% | 63/100 Moderate | Seattle City Council District No. 5 (Vote for 1) | Top Two Cutoff | Julie Kang +5,427 over Dimitri Georgakopoulos | Controlling |
-| <0.1% | 40/100 Low | Snoqualmie Pass Fire & Rescue Intent to Continue Voter Authorized Benefit Charge | Winner | Yes +109 over No | Controlling |
+| <0.1% | 45/100 Low | Snoqualmie Pass Fire & Rescue Intent to Continue Voter Authorized Benefit Charge | Winner | Yes +116 over No | Controlling |
 | <0.1% | 43/100 Low | Snoqualmie Pass Fire and Rescue Proposition No. 1 (Vote for 1) | Winner | Yes +24 over No | Controlling |
-| <0.1% | 31/100 Low | South Beach Regional Fire Authority - Bonds Issue | Winner | Approved +0 over Rejected | Controlling |
-| <0.1% | 56/100 Moderate | State Representative Pos. 1 - Legislative District 14 | Top Two Cutoff | Chelsea Dimas +4,779 over William Chichenoff | Controlling |
-| <0.1% | 58/100 Moderate | State Representative Pos. 1 - Legislative District 17 | Top Two Cutoff | Kevin Waters +18,725 over Thomas Everett Haynes | Controlling |
-| <0.1% | 53/100 Moderate | State Representative Pos. 1 - Legislative District 24 | Top Two Cutoff | Eric W. Pratt +4,576 over Aiden I.R. Hamilton | Controlling |
-| <0.1% | 48/100 Low | State Representative Pos. 1 - Legislative District 25 | Top Two Cutoff | David Berg +6,531 over Nick Oloo | Controlling |
-| <0.1% | 59/100 Moderate | State Representative Pos. 1 - Legislative District 26 | Top Two Cutoff | Adison Richards +5,512 over Natalie Bornfleth | Controlling |
-| <0.1% | 48/100 Low | State Representative Pos. 1 - Legislative District 3 | Top Two Cutoff | Tony Kiepe +9,368 over John Kness | Controlling |
-| <0.1% | 58/100 Moderate | State Representative Pos. 1 - Legislative District 35 | Top Two Cutoff | Jim Pierson +3,881 over Shaena Garberich | Controlling |
-| <0.1% | 58/100 Moderate | State Representative Pos. 1 - Legislative District 39 | Top Two Cutoff | Sam Low +10,385 over Dusty Wisniew | Controlling |
-| <0.1% | 48/100 Low | State Representative Pos. 1 - Legislative District 4 | Top Two Cutoff | Trent Maier +3,572 over Debra Long | Controlling |
-| <0.1% | 47/100 Low | State Representative Pos. 1 - Legislative District 41 | Top Two Cutoff | Elle Nguyen +9,029 over Alex Tsimerman | Controlling |
-| <0.1% | 48/100 Low | State Representative Pos. 1 - Legislative District 46 | Top Two Cutoff | Will Dreher +5,946 over Ron Davis | Controlling |
-| <0.1% | 47/100 Low | State Representative Pos. 1 - Legislative District 47 | Top Two Cutoff | Cobi Clark +2,533 over Jasnoor Kaur Hans | Controlling |
-| <0.1% | 48/100 Low | State Representative Pos. 1 - Legislative District 49 | Top Two Cutoff | Sarah Mittelman +3,258 over Mike Pond | Controlling |
-| <0.1% | 48/100 Low | State Representative Pos. 1 - Legislative District 5 | Top Two Cutoff | Michelle Bennett +12,633 over Aimee Warmerdam | Controlling |
-| <0.1% | 56/100 Moderate | State Representative Pos. 2 - Legislative District 14 | Top Two Cutoff | Ezequiel Morfin +1,497 over Tony G Sandoval | Controlling |
-| <0.1% | 58/100 Moderate | State Representative Pos. 2 - Legislative District 19 | Top Two Cutoff | Joel McEntire +13,483 over Jimi O'Hagan | Controlling |
-| <0.1% | 57/100 Moderate | State Representative Pos. 2 - Legislative District 2 | Top Two Cutoff | Angela Taylor +6,586 over Martin L Miller | Controlling |
-| <0.1% | 48/100 Low | State Representative Pos. 2 - Legislative District 23 | Top Two Cutoff | Lance Byrd +6,106 over Kristin Lillegard | Controlling |
-| <0.1% | 48/100 Low | State Representative Pos. 2 - Legislative District 25 | Top Two Cutoff | Jenn Marie Strickling +12,032 over Ren Fanony | Controlling |
-| <0.1% | 59/100 Moderate | State Representative Pos. 2 - Legislative District 26 | Top Two Cutoff | Renee Hernandez Greenfield +12,211 over Tedd Wetherbee | Controlling |
-| <0.1% | 48/100 Low | State Representative Pos. 2 - Legislative District 4 | Top Two Cutoff | Rob Tupper +9,356 over Bob Curtis | Controlling |
-| <0.1% | 58/100 Moderate | State Senator - Legislative District 32 | Top Two Cutoff | Jesse Salomon +7,523 over Ira McBee | Controlling |
-| <0.1% | 47/100 Low | State Senator - Legislative District 43 | Top Two Cutoff | Hannah Sabio-Howell +4,782 over Heather-Marie Wilson | Controlling |
-| <0.1% | 57/100 Moderate | State Senator - Legislative District 7 | Top Two Cutoff | Ronald L McCoy +6,581 over Brandon Ray Medina | Controlling |
-| <0.1% | 41/100 Low | Two Year Maintenance and Operation Levy for Pool | Winner | Yes +102 over No | Controlling |
-| <0.1% | 60/100 Moderate | U.S. Representative - Congressional District 1 | Top Two Cutoff | Mary Silva +29,580 over James Etzkorn | Controlling |
-| <0.1% | 60/100 Moderate | U.S. Representative - Congressional District 10 | Top Two Cutoff | Chris D. Chung +31,507 over Adam Arafat | Controlling |
-| <0.1% | 61/100 Moderate | U.S. Representative - Congressional District 2 | Top Two Cutoff | Edwin H. Feller +37,605 over Tomas Scheel | Controlling |
-| <0.1% | 61/100 Moderate | U.S. Representative - Congressional District 3 | Top Two Cutoff | Marie Gluesenkamp Perez +41,556 over Brent Hennrich | Controlling |
-| <0.1% | 60/100 Moderate | U.S. Representative - Congressional District 4 | Top Two Cutoff | John Duresky +21,301 over Jerrod Sessler | Controlling |
-| <0.1% | 55/100 Moderate | U.S. Representative - Congressional District 6 | Top Two Cutoff | Teresa Fox +29,401 over Leon Lawson | Controlling |
-| <0.1% | 59/100 Moderate | U.S. Representative - Congressional District 7 | Top Two Cutoff | Nirav Sheth +12,819 over Gwen Kirkland | Controlling |
+| <0.1% | 36/100 Low | South Beach Regional Fire Authority - Bonds Issue | Winner | Approved +0 over Rejected | Controlling |
+| <0.1% | 58/100 Moderate | State Representative Pos. 1 - Legislative District 11 | Top Two Cutoff | Ashley Fedan +1,659 over Christian Rombough | Controlling |
+| <0.1% | 61/100 Moderate | State Representative Pos. 1 - Legislative District 14 | Top Two Cutoff | Chelsea Dimas +4,934 over William Chichenoff | Controlling |
+| <0.1% | 63/100 Moderate | State Representative Pos. 1 - Legislative District 17 | Top Two Cutoff | Kevin Waters +19,007 over Thomas Everett Haynes | Controlling |
+| <0.1% | 58/100 Moderate | State Representative Pos. 1 - Legislative District 24 | Top Two Cutoff | Eric W. Pratt +5,849 over Aiden I.R. Hamilton | Controlling |
+| <0.1% | 58/100 Moderate | State Representative Pos. 1 - Legislative District 25 | Top Two Cutoff | David Berg +6,574 over Nick Oloo | Controlling |
+| <0.1% | 64/100 Moderate | State Representative Pos. 1 - Legislative District 26 | Top Two Cutoff | Adison Richards +5,545 over Natalie Bornfleth | Controlling |
+| <0.1% | 58/100 Moderate | State Representative Pos. 1 - Legislative District 3 | Top Two Cutoff | Tony Kiepe +10,508 over John Kness | Controlling |
+| <0.1% | 63/100 Moderate | State Representative Pos. 1 - Legislative District 32 | Top Two Cutoff | Danica Noble +2,123 over Lisa Rezac | Controlling |
+| <0.1% | 63/100 Moderate | State Representative Pos. 1 - Legislative District 35 | Top Two Cutoff | Jim Pierson +4,727 over Shaena Garberich | Controlling |
+| <0.1% | 57/100 Moderate | State Representative Pos. 1 - Legislative District 38 | Top Two Cutoff | Thomas (Jeff) Kelly +2,451 over Annie Fitzgerald | Controlling |
+| <0.1% | 63/100 Moderate | State Representative Pos. 1 - Legislative District 39 | Top Two Cutoff | Sam Low +10,924 over Dusty Wisniew | Controlling |
+| <0.1% | 58/100 Moderate | State Representative Pos. 1 - Legislative District 4 | Top Two Cutoff | Trent Maier +4,085 over Debra Long | Controlling |
+| <0.1% | 57/100 Moderate | State Representative Pos. 1 - Legislative District 41 | Top Two Cutoff | Elle Nguyen +9,486 over Alex Tsimerman | Controlling |
+| <0.1% | 58/100 Moderate | State Representative Pos. 1 - Legislative District 46 | Top Two Cutoff | Will Dreher +6,151 over Ron Davis | Controlling |
+| <0.1% | 58/100 Moderate | State Representative Pos. 1 - Legislative District 47 | Top Two Cutoff | Cobi Clark +2,714 over Jasnoor Kaur Hans | Controlling |
+| <0.1% | 58/100 Moderate | State Representative Pos. 1 - Legislative District 49 | Top Two Cutoff | Sarah Mittelman +3,265 over Mike Pond | Controlling |
+| <0.1% | 58/100 Moderate | State Representative Pos. 1 - Legislative District 5 | Top Two Cutoff | Michelle Bennett +13,687 over Aimee Warmerdam | Controlling |
+| <0.1% | 58/100 Moderate | State Representative Pos. 1 - Legislative District 6 | Top Two Cutoff | Alan Nolan +2,415 over Isaiah Paine | Controlling |
+| <0.1% | 64/100 Moderate | State Representative Pos. 2 - Legislative District 12 | Top Two Cutoff | Maggie Adams +3,994 over Adam James | Controlling |
+| <0.1% | 63/100 Moderate | State Representative Pos. 2 - Legislative District 13 | Top Two Cutoff | Joshua Thompson +1,921 over Don Myers | Controlling |
+| <0.1% | 61/100 Moderate | State Representative Pos. 2 - Legislative District 14 | Top Two Cutoff | Ezequiel Morfin +1,586 over Tony G Sandoval | Controlling |
+| <0.1% | 63/100 Moderate | State Representative Pos. 2 - Legislative District 15 | Top Two Cutoff | Liz Hallock +2,688 over Chase Foster | Controlling |
+| <0.1% | 63/100 Moderate | State Representative Pos. 2 - Legislative District 19 | Top Two Cutoff | Joel McEntire +14,266 over Jimi O'Hagan | Controlling |
+| <0.1% | 63/100 Moderate | State Representative Pos. 2 - Legislative District 2 | Top Two Cutoff | Angela Taylor +7,664 over Martin L Miller | Controlling |
+| <0.1% | 58/100 Moderate | State Representative Pos. 2 - Legislative District 23 | Top Two Cutoff | Lance Byrd +8,320 over Kristin Lillegard | Controlling |
+| <0.1% | 58/100 Moderate | State Representative Pos. 2 - Legislative District 25 | Top Two Cutoff | Jenn Marie Strickling +12,133 over Ren Fanony | Controlling |
+| <0.1% | 64/100 Moderate | State Representative Pos. 2 - Legislative District 26 | Top Two Cutoff | Renee Hernandez Greenfield +13,303 over Tedd Wetherbee | Controlling |
+| <0.1% | 58/100 Moderate | State Representative Pos. 2 - Legislative District 4 | Top Two Cutoff | Rob Tupper +10,047 over Bob Curtis | Controlling |
+| <0.1% | 58/100 Moderate | State Representative Pos. 2 - Legislative District 45 | Top Two Cutoff | John P Gibbons +1,757 over Chandler Torbett | Controlling |
+| <0.1% | 63/100 Moderate | State Senator - Legislative District 32 | Top Two Cutoff | Jesse Salomon +7,909 over Ira McBee | Controlling |
+| <0.1% | 57/100 Moderate | State Senator - Legislative District 43 | Top Two Cutoff | Hannah Sabio-Howell +5,352 over Heather-Marie Wilson | Controlling |
+| <0.1% | 63/100 Moderate | State Senator - Legislative District 7 | Top Two Cutoff | Ronald L McCoy +7,572 over Brandon Ray Medina | Controlling |
+| <0.1% | 46/100 Low | Two Year Maintenance and Operation Levy for Pool | Winner | Yes +119 over No | Controlling |
+| <0.1% | 65/100 Moderate | U.S. Representative - Congressional District 1 | Top Two Cutoff | Mary Silva +30,065 over James Etzkorn | Controlling |
+| <0.1% | 65/100 Moderate | U.S. Representative - Congressional District 10 | Top Two Cutoff | Chris D. Chung +32,879 over Alex Scheel | Controlling |
+| <0.1% | 66/100 Moderate | U.S. Representative - Congressional District 2 | Top Two Cutoff | Edwin H. Feller +39,580 over Tomas Scheel | Controlling |
+| <0.1% | 66/100 Moderate | U.S. Representative - Congressional District 3 | Top Two Cutoff | Marie Gluesenkamp Perez +42,205 over Brent Hennrich | Controlling |
+| <0.1% | 65/100 Moderate | U.S. Representative - Congressional District 4 | Top Two Cutoff | John Duresky +21,873 over Jerrod Sessler | Controlling |
+| <0.1% | 61/100 Moderate | U.S. Representative - Congressional District 6 | Top Two Cutoff | Teresa Fox +35,735 over Leon Lawson | Controlling |
+| <0.1% | 64/100 Moderate | U.S. Representative - Congressional District 7 | Top Two Cutoff | Nirav Sheth +13,763 over Gwen Kirkland | Controlling |
+| <0.1% | 65/100 Moderate | U.S. Representative - Congressional District 9 | Top Two Cutoff | Doug Basler +6,487 over Kshama Sawant | Controlling |
 | Not applicable | N/A | City of Covington Proposition No. 1 (Vote for 1) | No modeled boundary | — | Controlling |
 | Not applicable | N/A | Emergency Medical Services Property Tax Levy | No modeled boundary | — | Controlling |
 | Not applicable | N/A | Proposition No. 1 -Darrington School District | No modeled boundary | — | Controlling |
@@ -278,1329 +278,1361 @@ For statewide XLSX inputs, the ballot denominator is the larger of the reported 
 
 ## U.S. Representative - Congressional District 1
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 159,269. Valid votes: 156,719.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 163,014. Valid votes: 160,573.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Suzan DelBene 83,191; Mary Silva 41,269; James Etzkorn 11,689; Hunter Gordon 9,629; Bryce Nickel 3,828; Benjamin Kincaid 3,463; Catherine Hildebrand 3,439; Write-In 211.
+Standings: Suzan DelBene 85,156; Mary Silva 42,088; James Etzkorn 12,023; Hunter Gordon 10,014; Bryce Nickel 3,929; Benjamin Kincaid 3,580; Catherine Hildebrand 3,562; Write-In 221.
 
 ### Top Two Cutoff
 
-Mary Silva leads James Etzkorn by 29,580 votes.
+Mary Silva leads James Etzkorn by 30,065 votes.
 
-Modeled change probability: <0.1%. Reliability: 60/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 10,522 estimated remaining decision votes; the change side needs 190.6%.
+Modeled change probability: <0.1%. Reliability: 65/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 5,772 estimated remaining decision votes; the change side needs 310.4%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 52,958 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 54,111 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: James Etzkorn received 32.98% of 2,341 decision votes.
+Latest comparable batch: James Etzkorn received 28.97% of 1,153 decision votes.
 
-Margin history: 2026-08-07T01:18 +28,783; 2026-08-08T00:18 +29,580.
+Margin history: 2026-08-07T01:18 +28,783; 2026-08-08T00:18 +29,580; 2026-10-14T11:00 +30,065.
 
 ## U.S. Representative - Congressional District 2
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 204,541. Valid votes: 201,555.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 212,654. Valid votes: 209,510.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Rick Larsen 85,750; Edwin H. Feller 65,688; Tomas Scheel 28,083; Devin Hermanson 21,865; Write-In 169.
+Standings: Rick Larsen 88,708; Edwin H. Feller 68,713; Tomas Scheel 29,133; Devin Hermanson 22,775; Write-In 181.
 
 ### Top Two Cutoff
 
-Edwin H. Feller leads Tomas Scheel by 37,605 votes.
+Edwin H. Feller leads Tomas Scheel by 39,580 votes.
 
-Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 18,631 estimated remaining decision votes; the change side needs 150.9%.
+Modeled change probability: <0.1%. Reliability: 66/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 10,437 estimated remaining decision votes; the change side needs 239.6%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 93,771 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 97,846 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Tomas Scheel received 27.90% of 7,069 decision votes.
+Latest comparable batch: Tomas Scheel received 25.77% of 4,075 decision votes.
 
-Margin history: 2026-08-07T01:18 +34,480; 2026-08-08T00:18 +37,605.
+Margin history: 2026-08-07T01:18 +34,480; 2026-08-08T00:18 +37,605; 2026-10-14T11:00 +39,580.
 
 ## U.S. Representative - Congressional District 3
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 212,844. Valid votes: 210,571.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 216,864. Valid votes: 214,491.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: John Braun 83,289; Marie Gluesenkamp Perez 76,887; Brent Hennrich 35,331; John P. Roco 3,937; John Saulie-Rohman 3,442; Lawrence Kellogg 2,624; Troy Rasband 2,006; Austin Braswell 1,604; Antony Barran 1,300; Write-in 151.
+Standings: John Braun 85,064; Marie Gluesenkamp Perez 78,025; Brent Hennrich 35,820; John P. Roco 4,102; John Saulie-Rohman 3,549; Lawrence Kellogg 2,727; Troy Rasband 2,058; Austin Braswell 1,656; Antony Barran 1,345; Write-in 145.
 
 ### Top Two Cutoff
 
-Marie Gluesenkamp Perez leads Brent Hennrich by 41,556 votes.
+Marie Gluesenkamp Perez leads Brent Hennrich by 42,205 votes.
 
-Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 22,296 estimated remaining decision votes; the change side needs 143.2%.
+Modeled change probability: <0.1%. Reliability: 66/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 12,144 estimated remaining decision votes; the change side needs 223.8%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 112,218 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 113,845 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Brent Hennrich received 33.43% of 1,810 decision votes.
+Latest comparable batch: Brent Hennrich received 30.06% of 1,627 decision votes.
 
-Margin history: 2026-08-07T01:18 +40,956; 2026-08-08T00:18 +41,556.
+Margin history: 2026-08-07T01:18 +40,956; 2026-08-08T00:18 +41,556; 2026-10-14T11:00 +42,205.
 
 ## U.S. Representative - Congressional District 4
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 139,016. Valid votes: 136,144.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 145,781. Valid votes: 142,661.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Amanda McKinney 47,157; John Duresky 40,993; Jerrod Sessler 19,692; Matt Boehnke 14,557; Favian Valencia 5,491; Jacek "Jack" Kobiesa 2,137; Devin Poore 1,825; John C. Hughs 1,575; Elpidia Saavedra 1,319; Zac Rossi 829; Ken Vaz 456; Write-In 113.
+Standings: Amanda McKinney 49,652; John Duresky 42,681; Jerrod Sessler 20,808; Matt Boehnke 15,013; Favian Valencia 5,776; Jacek "Jack" Kobiesa 2,214; Devin Poore 1,956; John C. Hughs 1,695; Elpidia Saavedra 1,393; Zac Rossi 879; Ken Vaz 477; Write-In 117.
 
 ### Top Two Cutoff
 
-John Duresky leads Jerrod Sessler by 21,301 votes.
+John Duresky leads Jerrod Sessler by 21,873 votes.
 
-Modeled change probability: <0.1%. Reliability: 60/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 12,057 estimated remaining decision votes; the change side needs 138.3%.
+Modeled change probability: <0.1%. Reliability: 65/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 6,772 estimated remaining decision votes; the change side needs 211.5%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 60,685 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 63,489 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Jerrod Sessler received 33.29% of 13,991 decision votes.
+Latest comparable batch: Jerrod Sessler received 39.80% of 2,804 decision votes.
 
-Margin history: 2026-08-07T01:18 +16,624; 2026-08-08T00:18 +21,301.
+Margin history: 2026-08-07T01:18 +16,624; 2026-08-08T00:18 +21,301; 2026-10-14T11:00 +21,873.
 
 ## U.S. Representative - Congressional District 5
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 175,016. Valid votes: 172,237. The workbook's Ballots Cast value was 163,196; the displayed denominator is reconciled from 172,237 valid votes, 293 overvotes, and 2,486 undervotes.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 207,562. Valid votes: 204,209. The workbook's Ballots Cast value was 191,653; the displayed denominator is reconciled from 204,209 valid votes, 331 overvotes, and 3,022 undervotes.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Michael Baumgartner 80,524; Carmela Conroy 33,774; Nate Powell 27,869; Kevin Fagan 7,676; David Womack 6,177; Bajun R. Mavalwalla 5,453; Richard Freudenberg 2,471; Ann Marie Danimus 2,422; Matthew Hayes 2,035; Kyle Usrey 1,925; Michael McGarr 1,000; Andrew Bartleson 768; Write-in 143.
+Standings: Michael Baumgartner 96,791; Carmela Conroy 38,487; Nate Powell 33,443; Kevin Fagan 9,048; David Womack 7,242; Bajun R. Mavalwalla 6,482; Ann Marie Danimus 2,920; Richard Freudenberg 2,866; Matthew Hayes 2,417; Kyle Usrey 2,274; Michael McGarr 1,152; Andrew Bartleson 915; Write-in 172.
 
 ### Top Two Cutoff
 
-Carmela Conroy leads Nate Powell by 5,905 votes.
+Carmela Conroy leads Nate Powell by 5,044 votes.
 
-Modeled change probability: <0.1%. Reliability: 55/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 12,248 estimated remaining decision votes; the change side needs 74.1%.
+Modeled change probability: <0.1%. Reliability: 60/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 7,673 estimated remaining decision votes; the change side needs 82.9%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 61,643 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: reconciled ballot denominator.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 71,930 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: reconciled ballot denominator.
 
-Latest comparable batch: Nate Powell received 55.27% of 10,233 decision votes.
+Latest comparable batch: Nate Powell received 54.18% of 10,287 decision votes.
 
-Margin history: 2026-08-07T01:18 +6,984; 2026-08-08T00:18 +5,905.
+Margin history: 2026-08-07T01:18 +6,984; 2026-08-08T00:18 +5,905; 2026-10-14T11:00 +5,044.
 
 ## U.S. Representative - Congressional District 6
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 194,533. Valid votes: 191,908. The workbook's Ballots Cast value was 180,355; the displayed denominator is reconciled from 191,908 valid votes, 146 overvotes, and 2,479 undervotes.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 229,054. Valid votes: 225,962. The workbook's Ballots Cast value was 213,145; the displayed denominator is reconciled from 225,962 valid votes, 116 overvotes, and 2,976 undervotes.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Emily Randall 116,632; Teresa Fox 46,766; Leon Lawson 17,365; Brian P. O'Gorman 6,020; Macy Jones 5,021; Write-In 104.
+Standings: Emily Randall 132,805; Teresa Fox 57,700; Leon Lawson 21,965; Brian P. O'Gorman 7,307; Macy Jones 6,044; Write-In 141.
 
 ### Top Two Cutoff
 
-Teresa Fox leads Leon Lawson by 29,401 votes.
+Teresa Fox leads Leon Lawson by 35,735 votes.
 
-Modeled change probability: <0.1%. Reliability: 55/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 12,742 estimated remaining decision votes; the change side needs 165.4%.
+Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 8,498 estimated remaining decision votes; the change side needs 260.3%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 64,131 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: reconciled ballot denominator.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 79,665 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: reconciled ballot denominator.
 
-Latest comparable batch: Leon Lawson received 28.24% of 6,555 decision votes.
+Latest comparable batch: Leon Lawson received 29.61% of 15,534 decision votes.
 
-Margin history: 2026-08-07T01:18 +26,548; 2026-08-08T00:18 +29,401.
+Margin history: 2026-08-07T01:18 +26,548; 2026-08-08T00:18 +29,401; 2026-10-14T11:00 +35,735.
 
 ## U.S. Representative - Congressional District 7
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 204,458. Valid votes: 200,009.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 221,294. Valid votes: 216,741.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Pramila Jayapal 168,907; Nirav Sheth 19,593; Gwen Kirkland 6,774; David W. Blomstrom 3,975; Write-in 760.
+Standings: Pramila Jayapal 182,844; Nirav Sheth 21,282; Gwen Kirkland 7,519; David W. Blomstrom 4,294; Write-in 802.
 
 ### Top Two Cutoff
 
-Nirav Sheth leads Gwen Kirkland by 12,819 votes.
+Nirav Sheth leads Gwen Kirkland by 13,763 votes.
 
-Modeled change probability: <0.1%. Reliability: 59/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 5,239 estimated remaining decision votes; the change side needs 172.4%.
+Modeled change probability: <0.1%. Reliability: 64/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 3,072 estimated remaining decision votes; the change side needs 274.0%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 26,367 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 28,801 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Gwen Kirkland received 29.96% of 4,049 decision votes.
+Latest comparable batch: Gwen Kirkland received 30.61% of 2,434 decision votes.
 
-Margin history: 2026-08-07T01:18 +11,196; 2026-08-08T00:18 +12,819.
+Margin history: 2026-08-07T01:18 +11,196; 2026-08-08T00:18 +12,819; 2026-10-14T11:00 +13,763.
 
 ## U.S. Representative - Congressional District 8
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 183,242. Valid votes: 180,419.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 194,321. Valid votes: 191,585.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Kim Schrier 96,559; Spencer Meline 28,445; Trinh Ha 26,985; Bob Hagglund 19,463; Keith Arnold 4,368; Andres Valleza 4,284; Write-in 315.
+Standings: Kim Schrier 102,853; Spencer Meline 30,324; Trinh Ha 28,340; Bob Hagglund 20,382; Keith Arnold 4,777; Andres Valleza 4,549; Write-in 360.
 
 ### Top Two Cutoff
 
-Spencer Meline leads Trinh Ha by 1,460 votes.
+Spencer Meline leads Trinh Ha by 1,984 votes.
 
-Modeled change probability: <0.1%. Reliability: 60/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 11,013 estimated remaining decision votes; the change side needs 56.6%.
+Modeled change probability: <0.1%. Reliability: 65/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 6,258 estimated remaining decision votes; the change side needs 65.9%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 55,430 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 58,664 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Trinh Ha received 42.57% of 5,664 decision votes.
+Latest comparable batch: Trinh Ha received 41.90% of 3,234 decision votes.
 
-Margin history: 2026-08-07T01:18 +618; 2026-08-08T00:18 +1,460.
+Margin history: 2026-08-07T01:18 +618; 2026-08-08T00:18 +1,460; 2026-10-14T11:00 +1,984.
 
 ## U.S. Representative - Congressional District 9
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 134,241. Valid votes: 132,072.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 143,943. Valid votes: 142,356.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Adam Smith 63,114; Doug Basler 28,909; Kshama Sawant 22,228; Melissa Chaudhry 16,204; Jacob Perasso 1,424; Write-in 193.
+Standings: Adam Smith 67,095; Doug Basler 31,070; Kshama Sawant 24,583; Melissa Chaudhry 17,811; Jacob Perasso 1,588; Write-in 209.
 
 ### Top Two Cutoff
 
-Doug Basler leads Kshama Sawant by 6,681 votes.
+Doug Basler leads Kshama Sawant by 6,487 votes.
 
-Modeled change probability: <0.1%. Reliability: 60/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 10,160 estimated remaining decision votes; the change side needs 82.9%.
+Modeled change probability: <0.1%. Reliability: 65/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 5,936 estimated remaining decision votes; the change side needs 104.6%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 51,137 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 55,653 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Kshama Sawant received 57.84% of 10,062 decision votes.
+Latest comparable batch: Kshama Sawant received 52.15% of 4,516 decision votes.
 
-Margin history: 2026-08-07T01:18 +8,259; 2026-08-08T00:18 +6,681.
+Margin history: 2026-08-07T01:18 +8,259; 2026-08-08T00:18 +6,681; 2026-10-14T11:00 +6,487.
 
 ## U.S. Representative - Congressional District 10
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 139,002. Valid votes: 136,957.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 158,386. Valid votes: 155,922.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Marilyn Strickland 65,297; Chris D. Chung 44,202; Adam Arafat 12,695; Alex Scheel 12,568; Derek Maynes 1,248; Kurtis Engle 596; Write-In 351.
+Standings: Marilyn Strickland 73,689; Chris D. Chung 48,953; Alex Scheel 16,074; Adam Arafat 14,695; Derek Maynes 1,431; Kurtis Engle 713; Write-In 367.
 
 ### Top Two Cutoff
 
-Chris D. Chung leads Adam Arafat by 31,507 votes.
+Chris D. Chung leads Alex Scheel by 32,879 votes.
 
-Modeled change probability: <0.1%. Reliability: 60/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 11,304 estimated remaining decision votes; the change side needs 189.4%.
+Modeled change probability: <0.1%. Reliability: 65/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 6,936 estimated remaining decision votes; the change side needs 287.0%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 56,897 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 65,027 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-07T01:18 +31,507; 2026-08-08T00:18 +31,507.
+Latest comparable batch: Alex Scheel received 42.46% of 8,257 decision votes.
+
+Margin history: 2026-08-07T01:18 +31,634; 2026-08-08T00:18 +31,634; 2026-10-14T11:00 +32,879.
 
 ## State Representative Pos. 1 - Legislative District 1
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 38,680. Valid votes: 37,872.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 40,206. Valid votes: 39,374.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Davina Duerr 28,324; Maggie Wang 9,484; Write-in 64.
+Standings: Davina Duerr 29,426; Maggie Wang 9,878; Write-in 70.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 1
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 38,680. Valid votes: 37,897.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 40,206. Valid votes: 39,457.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Shelley Kloba 18,426; Cliff Moon 8,751; Jenne Alderks 8,598; Jeff Lyon 2,094; Write-In 28.
+Standings: Shelley Kloba 19,150; Cliff Moon 9,110; Jenne Alderks 8,974; Jeff Lyon 2,190; Write-In 33.
 
 ### Top Two Cutoff
 
-Cliff Moon leads Jenne Alderks by 153 votes.
+Cliff Moon leads Jenne Alderks by 136 votes.
 
-Modeled change probability: 75.2%. Reliability: 58/100 (Moderate). Exposure band: Toss Up. The tempered beta-binomial model estimates a 75.2% chance of change across 3,447 estimated remaining decision votes; the change side needs 52.2%.
+Modeled change probability: 9.5%. Reliability: 63/100 (Moderate). Exposure band: Low. The tempered beta-binomial model estimates a 9.5% chance of change across 1,929 estimated remaining decision votes; the change side needs 53.6%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 17,349 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 18,084 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Jenne Alderks received 60.34% of 1,601 decision votes.
+Latest comparable batch: Jenne Alderks received 51.16% of 735 decision votes.
 
-Margin history: 2026-08-07T01:18 +484; 2026-08-08T00:18 +153.
+Margin history: 2026-08-07T01:18 +484; 2026-08-08T00:18 +153; 2026-10-14T11:00 +136.
 
 ## State Representative Pos. 1 - Legislative District 2
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 28,692. Valid votes: 28,090.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 32,399. Valid votes: 31,660.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Andrew Barkis 16,435; William Dehnel 11,597; Write-In 58.
+Standings: Andrew Barkis 18,389; William Dehnel 13,214; Write-In 57.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 2
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 28,692. Valid votes: 28,149.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 32,399. Valid votes: 31,732.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Matt Marshall 16,130; Angela Taylor 9,280; Martin L Miller 2,694; Write-In 45.
+Standings: Matt Marshall 18,054; Angela Taylor 10,650; Martin L Miller 2,986; Write-In 42.
 
 ### Top Two Cutoff
 
-Angela Taylor leads Martin L Miller by 6,586 votes.
+Angela Taylor leads Martin L Miller by 7,664 votes.
 
-Modeled change probability: <0.1%. Reliability: 57/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,379 estimated remaining decision votes; the change side needs 188.4%.
+Modeled change probability: <0.1%. Reliability: 63/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,455 estimated remaining decision votes; the change side needs 313.4%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 11,974 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 13,636 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-07T01:18 +6,586; 2026-08-08T00:18 +6,586.
+Latest comparable batch: Martin L Miller received 17.57% of 1,662 decision votes.
+
+Margin history: 2026-08-07T01:18 +6,586; 2026-08-08T00:18 +6,586; 2026-10-14T11:00 +7,664.
 
 ## State Representative Pos. 1 - Legislative District 3
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 39,018. Valid votes: 38,245.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 42,959. Valid votes: 42,060.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Natasha Hill 24,792; Tony Kiepe 11,371; John Kness 2,003; Write-In 79.
+Standings: Natasha Hill 27,075; Tony Kiepe 12,705; John Kness 2,197; Write-In 83.
 
 ### Top Two Cutoff
 
-Tony Kiepe leads John Kness by 9,368 votes.
+Tony Kiepe leads John Kness by 10,508 votes.
 
-Modeled change probability: <0.1%. Reliability: 48/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,657 estimated remaining decision votes; the change side needs 226.3%.
+Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,589 estimated remaining decision votes; the change side needs 380.7%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 13,374 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 14,902 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +9,368.
+Latest comparable batch: John Kness received 12.70% of 1,528 decision votes.
+
+Margin history: 2026-08-08T00:18 +9,368; 2026-10-14T11:00 +10,508.
 
 ## State Representative Pos. 2 - Legislative District 3
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 39,018. Valid votes: 38,109.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 42,959. Valid votes: 41,926.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Luc Jasmin III 12,481; Natalie Poulson 12,372; Pam Kohlmeier 11,581; Donovan Arnold DeLeon 1,640; Write-in 35.
+Standings: Natalie Poulson 13,790; Luc Jasmin III 13,581; Pam Kohlmeier 12,662; Donovan Arnold DeLeon 1,850; Write-in 43.
 
 ### Top Two Cutoff
 
-Natalie Poulson leads Pam Kohlmeier by 791 votes.
+Luc Jasmin III leads Pam Kohlmeier by 919 votes.
 
-Modeled change probability: <0.1%. Reliability: 49/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 4,759 estimated remaining decision votes; the change side needs 58.3%.
+Modeled change probability: <0.1%. Reliability: 59/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,799 estimated remaining decision votes; the change side needs 66.5%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 23,953 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 26,243 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +791.
+Latest comparable batch: Pam Kohlmeier received 49.56% of 2,181 decision votes.
+
+Margin history: 2026-08-08T00:18 +900; 2026-10-14T11:00 +919.
 
 ## State Representative Pos. 1 - Legislative District 4
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 38,602. Valid votes: 32,151.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 42,966. Valid votes: 35,780.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Hillary Q. Pham 10,216; Trent Maier 9,442; Debra Long 5,870; George Wagner 5,319; Write-In 1,304.
+Standings: Hillary Q. Pham 11,278; Trent Maier 10,583; Debra Long 6,498; George Wagner 6,002; Write-In 1,419.
 
 ### Top Two Cutoff
 
-Trent Maier leads Debra Long by 3,572 votes.
+Trent Maier leads Debra Long by 4,085 votes.
 
-Modeled change probability: <0.1%. Reliability: 48/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 3,042 estimated remaining decision votes; the change side needs 108.7%.
+Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,822 estimated remaining decision votes; the change side needs 162.1%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 15,312 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 17,081 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +3,572.
+Latest comparable batch: Debra Long received 35.50% of 1,769 decision votes.
+
+Margin history: 2026-08-08T00:18 +3,572; 2026-10-14T11:00 +4,085.
 
 ## State Representative Pos. 2 - Legislative District 4
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 38,602. Valid votes: 37,306.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 42,966. Valid votes: 41,405.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Rob Chase 15,884; Rob Tupper 15,300; Bob Curtis 5,944; Write-in 178.
+Standings: Rob Chase 17,757; Rob Tupper 16,778; Bob Curtis 6,731; Write-in 139.
 
 ### Top Two Cutoff
 
-Rob Tupper leads Bob Curtis by 9,356 votes.
+Rob Tupper leads Bob Curtis by 10,047 votes.
 
-Modeled change probability: <0.1%. Reliability: 48/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 4,221 estimated remaining decision votes; the change side needs 160.8%.
+Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,508 estimated remaining decision votes; the change side needs 250.3%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 21,244 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 23,509 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +9,356.
+Latest comparable batch: Bob Curtis received 34.75% of 2,265 decision votes.
+
+Margin history: 2026-08-08T00:18 +9,356; 2026-10-14T11:00 +10,047.
 
 ## State Representative Pos. 1 - Legislative District 5
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 38,339. Valid votes: 37,542.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 41,922. Valid votes: 41,084.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Zach Hall 16,868; Michelle Bennett 16,157; Aimee Warmerdam 3,524; Topher Leritz 958; Write-in 35.
+Standings: Zach Hall 18,294; Michelle Bennett 17,681; Aimee Warmerdam 3,994; Topher Leritz 1,083; Write-in 32.
 
 ### Top Two Cutoff
 
-Michelle Bennett leads Aimee Warmerdam by 12,633 votes.
+Michelle Bennett leads Aimee Warmerdam by 13,687 votes.
 
-Modeled change probability: <0.1%. Reliability: 48/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 3,910 estimated remaining decision votes; the change side needs 211.6%.
+Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,312 estimated remaining decision votes; the change side needs 346.0%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 19,681 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 21,675 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +12,633.
+Latest comparable batch: Aimee Warmerdam received 23.57% of 1,994 decision votes.
+
+Margin history: 2026-08-08T00:18 +12,633; 2026-10-14T11:00 +13,687.
 
 ## State Representative Pos. 2 - Legislative District 5
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 38,339. Valid votes: 37,772.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 41,922. Valid votes: 41,300.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Lisa Callan 21,812; Patrick Peacock 15,925; Write-In 35.
+Standings: Lisa Callan 23,812; Patrick Peacock 17,449; Write-In 39.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Senator - Legislative District 6
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 29,214. Valid votes: 20,584.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 37,970. Valid votes: 26,665.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Jeff Holy 18,890; Write-In 1,694.
+Standings: Jeff Holy 24,422; Write-In 2,243.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 6
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 29,214. Valid votes: 28,067.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 37,970. Valid votes: 36,358.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Michaela Kelso 8,619; Alan Nolan 7,219; Isaiah Paine 5,356; Nicolette Ocheltree 3,386; Jennifer Morton 2,077; Sueann Davis 1,335; Write-in 75.
+Standings: Michaela Kelso 11,093; Alan Nolan 9,450; Isaiah Paine 7,035; Nicolette Ocheltree 4,313; Jennifer Morton 2,640; Sueann Davis 1,732; Write-in 95.
 
 ### Top Two Cutoff
 
-Alan Nolan leads Isaiah Paine by 1,863 votes.
+Alan Nolan leads Isaiah Paine by 2,415 votes.
 
-Modeled change probability: <0.1%. Reliability: 47/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,498 estimated remaining decision votes; the change side needs 87.3%.
+Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,758 estimated remaining decision votes; the change side needs 118.7%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 12,575 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 16,485 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +1,863.
+Latest comparable batch: Isaiah Paine received 42.94% of 3,910 decision votes.
+
+Margin history: 2026-08-08T00:18 +1,863; 2026-10-14T11:00 +2,415.
 
 ## State Representative Pos. 2 - Legislative District 6
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 29,214. Valid votes: 28,436.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 37,970. Valid votes: 36,884.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Jonathan Bingle 14,327; Julia Payne 7,193; Aaron M. Croft 6,855; Write-In 61.
+Standings: Jonathan Bingle 18,651; Julia Payne 9,209; Aaron M. Croft 8,950; Write-In 74.
 
 ### Top Two Cutoff
 
-Julia Payne leads Aaron M. Croft by 338 votes.
+Julia Payne leads Aaron M. Croft by 259 votes.
 
-Modeled change probability: 0.8%. Reliability: 48/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.8% chance of change across 2,791 estimated remaining decision votes; the change side needs 56.1%.
+Modeled change probability: 0.3%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.3% chance of change across 1,937 estimated remaining decision votes; the change side needs 56.7%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 14,048 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 18,159 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +338.
+Latest comparable batch: Aaron M. Croft received 50.96% of 4,111 decision votes.
+
+Margin history: 2026-08-08T00:18 +338; 2026-10-14T11:00 +259.
 
 ## State Senator - Legislative District 7
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 38,297. Valid votes: 35,107.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 44,914. Valid votes: 41,252.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Shelly Short 20,456; Ronald L McCoy 9,528; Brandon Ray Medina 2,947; David Swoap 1,969; Write-in 207.
+Standings: Shelly Short 24,089; Ronald L McCoy 11,061; Brandon Ray Medina 3,489; David Swoap 2,341; Write-in 272.
 
 ### Top Two Cutoff
 
-Ronald L McCoy leads Brandon Ray Medina by 6,581 votes.
+Ronald L McCoy leads Brandon Ray Medina by 7,572 votes.
 
-Modeled change probability: <0.1%. Reliability: 57/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,479 estimated remaining decision votes; the change side needs 182.8%.
+Modeled change probability: <0.1%. Reliability: 63/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,552 estimated remaining decision votes; the change side needs 294.0%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 12,475 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 14,550 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Brandon Ray Medina received 25.99% of 2,613 decision votes.
+Latest comparable batch: Brandon Ray Medina received 26.12% of 2,075 decision votes.
 
-Margin history: 2026-08-07T01:18 +5,326; 2026-08-08T00:18 +6,581.
+Margin history: 2026-08-07T01:18 +5,326; 2026-08-08T00:18 +6,581; 2026-10-14T11:00 +7,572.
 
 ## State Representative Pos. 1 - Legislative District 7
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 38,297. Valid votes: 26,684.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 44,914. Valid votes: 31,519.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Andrew Engell 25,853; Write-in 831.
+Standings: Andrew Engell 30,454; Write-in 1,065.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 7
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 38,297. Valid votes: 26,471.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 44,914. Valid votes: 31,266.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Hunter Abell 25,656; Write-in 815.
+Standings: Hunter Abell 30,220; Write-in 1,046.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Senator - Legislative District 8
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 34,346. Valid votes: 30,489.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 34,759. Valid votes: 30,873.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Nikki Torres 15,841; Gabe Galbraith 14,123; Write-In 525.
+Standings: Nikki Torres 16,065; Gabe Galbraith 14,297; Write-In 511.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 8
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 34,346. Valid votes: 24,505.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 34,759. Valid votes: 24,751.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Stephanie Barnard 23,822; Write-In 683.
+Standings: Stephanie Barnard 24,103; Write-In 648.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 8
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 34,346. Valid votes: 24,729.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 34,759. Valid votes: 24,979.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: April Connors 24,047; Write-In 682.
+Standings: April Connors 24,314; Write-In 665.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 9
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 37,683. Valid votes: 27,353.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 43,136. Valid votes: 31,238.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Mary Dye 25,920; Write-In 1,433.
+Standings: Mary Dye 29,519; Write-In 1,719.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 9
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 37,683. Valid votes: 36,466.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 43,136. Valid votes: 41,729.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Joe Schmick 22,877; Karina Wallace 13,523; Write-In 66.
+Standings: Joe Schmick 26,118; Karina Wallace 15,534; Write-In 77.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 10
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 47,228. Valid votes: 46,343.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 49,184. Valid votes: 48,256.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Clyde Shavers 26,816; Robert (Chili) Hicks 19,490; Write-In 37.
+Standings: Clyde Shavers 28,026; Robert (Chili) Hicks 20,190; Write-In 40.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 10
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 47,228. Valid votes: 46,309.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 49,184. Valid votes: 48,227.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Dave Paul 27,084; Tim Hazelo 10,211; Carrie R. Kennedy 8,961; Write-In 53.
+Standings: Dave Paul 28,301; Tim Hazelo 10,584; Carrie R. Kennedy 9,285; Write-In 57.
 
 ### Top Two Cutoff
 
-Tim Hazelo leads Carrie R. Kennedy by 1,250 votes.
+Tim Hazelo leads Carrie R. Kennedy by 1,299 votes.
 
-Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 3,809 estimated remaining decision votes; the change side needs 66.4%.
+Modeled change probability: <0.1%. Reliability: 63/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,119 estimated remaining decision votes; the change side needs 80.7%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 19,172 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 19,869 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Carrie R. Kennedy received 47.95% of 2,751 decision votes.
+Latest comparable batch: Carrie R. Kennedy received 46.48% of 697 decision votes.
 
-Margin history: 2026-08-07T01:18 +1,137; 2026-08-08T00:18 +1,250.
+Margin history: 2026-08-07T01:18 +1,137; 2026-08-08T00:18 +1,250; 2026-10-14T11:00 +1,299.
 
 ## State Representative Pos. 1 - Legislative District 11
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 23,700. Valid votes: 23,167.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 26,500. Valid votes: 25,968.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: David Hackney 9,886; Ashley Fedan 7,292; Christian Rombough 5,962; Write-in 27.
+Standings: David Hackney 10,998; Ashley Fedan 8,298; Christian Rombough 6,639; Write-in 33.
 
 ### Top Two Cutoff
 
-Ashley Fedan leads Christian Rombough by 1,330 votes.
+Ashley Fedan leads Christian Rombough by 1,659 votes.
 
-Modeled change probability: <0.1%. Reliability: 47/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,633 estimated remaining decision votes; the change side needs 75.3%.
+Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,593 estimated remaining decision votes; the change side needs 102.1%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 13,254 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 14,937 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +1,330.
+Latest comparable batch: Christian Rombough received 40.23% of 1,683 decision votes.
+
+Margin history: 2026-08-08T00:18 +1,330; 2026-10-14T11:00 +1,659.
 
 ## State Representative Pos. 2 - Legislative District 11
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 23,700. Valid votes: 18,504.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 26,500. Valid votes: 20,659.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Steve Bergquist 17,522; Write-in 982.
+Standings: Steve Bergquist 19,576; Write-in 1,083.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 12
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 42,886. Valid votes: 42,065.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 45,140. Valid votes: 44,276.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Brian Burnett 21,246; Stacy Willoughby 20,786; Write-In 33.
+Standings: Brian Burnett 22,207; Stacy Willoughby 22,033; Write-In 36.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 12
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 42,886. Valid votes: 42,092.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 45,140. Valid votes: 44,348.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Mike Steele 17,391; Maggie Adams 14,089; Adam James 10,582; Write-In 30.
+Standings: Mike Steele 18,242; Maggie Adams 15,035; Adam James 11,041; Write-In 30.
 
 ### Top Two Cutoff
 
-Maggie Adams leads Adam James by 3,507 votes.
+Maggie Adams leads Adam James by 3,994 votes.
 
-Modeled change probability: <0.1%. Reliability: 59/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 4,902 estimated remaining decision votes; the change side needs 85.8%.
+Modeled change probability: <0.1%. Reliability: 64/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,781 estimated remaining decision votes; the change side needs 121.8%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 24,671 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 26,076 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Adam James received 47.25% of 2,108 decision votes.
+Latest comparable batch: Adam James received 32.67% of 1,405 decision votes.
 
-Margin history: 2026-08-07T01:18 +3,391; 2026-08-08T00:18 +3,507.
+Margin history: 2026-08-07T01:18 +3,391; 2026-08-08T00:18 +3,507; 2026-10-14T11:00 +3,994.
 
 ## State Senator - Legislative District 13
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 27,670. Valid votes: 20,892.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 31,928. Valid votes: 24,154.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Alex Ybarra 20,303; Write-In 589.
+Standings: Alex Ybarra 23,489; Write-In 665.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 13
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 27,670. Valid votes: 26,695.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 31,928. Valid votes: 30,807.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Tom Dent 18,839; Juan "Jerry" Garcia 7,807; Write-In 49.
+Standings: Tom Dent 21,849; Juan "Jerry" Garcia 8,898; Write-In 60.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 13
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 27,670. Valid votes: 22,539.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 31,928. Valid votes: 26,114.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Deanna Martinez 8,254; Joshua Thompson 7,811; Don Myers 6,049; Write-In 425.
+Standings: Deanna Martinez 9,713; Joshua Thompson 8,924; Don Myers 7,003; Write-In 474.
 
 ### Top Two Cutoff
 
-Joshua Thompson leads Don Myers by 1,762 votes.
+Joshua Thompson leads Don Myers by 1,921 votes.
 
-Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,754 estimated remaining decision votes; the change side needs 82.0%.
+Modeled change probability: <0.1%. Reliability: 63/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,699 estimated remaining decision votes; the change side needs 106.6%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 13,860 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 15,927 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Don Myers received 46.63% of 832 decision votes.
+Latest comparable batch: Don Myers received 46.15% of 2,067 decision votes.
 
-Margin history: 2026-08-07T01:18 +1,706; 2026-08-08T00:18 +1,762.
+Margin history: 2026-08-07T01:18 +1,706; 2026-08-08T00:18 +1,762; 2026-10-14T11:00 +1,921.
 
 ## State Representative Pos. 1 - Legislative District 14
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 13,033. Valid votes: 12,609.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 13,612. Valid votes: 13,151.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Gloria Mendoza 6,434; Chelsea Dimas 5,455; William Chichenoff 676; Write-In 44.
+Standings: Gloria Mendoza 6,759; Chelsea Dimas 5,640; William Chichenoff 706; Write-In 46.
 
 ### Top Two Cutoff
 
-Chelsea Dimas leads William Chichenoff by 4,779 votes.
+Chelsea Dimas leads William Chichenoff by 4,934 votes.
 
-Modeled change probability: <0.1%. Reliability: 56/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,218 estimated remaining decision votes; the change side needs 246.2%.
+Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 677 estimated remaining decision votes; the change side needs 414.5%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 6,131 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 6,346 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: William Chichenoff received 12.74% of 1,154 decision votes.
+Latest comparable batch: William Chichenoff received 13.95% of 215 decision votes.
 
-Margin history: 2026-08-07T01:18 +3,919; 2026-08-08T00:18 +4,779.
+Margin history: 2026-08-07T01:18 +3,919; 2026-08-08T00:18 +4,779; 2026-10-14T11:00 +4,934.
 
 ## State Representative Pos. 2 - Legislative District 14
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 13,033. Valid votes: 12,594.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 13,612. Valid votes: 13,128.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Deb Manjarrez 6,390; Ezequiel Morfin 3,835; Tony G Sandoval 2,338; Write-In 31.
+Standings: Deb Manjarrez 6,700; Ezequiel Morfin 3,992; Tony G Sandoval 2,406; Write-In 30.
 
 ### Top Two Cutoff
 
-Ezequiel Morfin leads Tony G Sandoval by 1,497 votes.
+Ezequiel Morfin leads Tony G Sandoval by 1,586 votes.
 
-Modeled change probability: <0.1%. Reliability: 56/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,226 estimated remaining decision votes; the change side needs 111.1%.
+Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 682 estimated remaining decision votes; the change side needs 166.4%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 6,173 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 6,398 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Tony G Sandoval received 31.63% of 1,176 decision votes.
+Latest comparable batch: Tony G Sandoval received 30.22% of 225 decision votes.
 
-Margin history: 2026-08-07T01:18 +1,065; 2026-08-08T00:18 +1,497.
+Margin history: 2026-08-07T01:18 +1,065; 2026-08-08T00:18 +1,497; 2026-10-14T11:00 +1,586.
 
 ## State Senator - Legislative District 15
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 32,163. Valid votes: 24,772.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 32,321. Valid votes: 24,885.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Jeremie Dufault 23,612; Write-In 1,160.
+Standings: Jeremie Dufault 23,718; Write-In 1,167.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 15
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 32,163. Valid votes: 30,981.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 32,321. Valid votes: 31,126.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Chris Corry 20,814; Jack McEntire 10,100; Write-In 67.
+Standings: Chris Corry 20,900; Jack McEntire 10,159; Write-In 67.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 15
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 32,163. Valid votes: 30,281.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 32,321. Valid votes: 30,425.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Reedy Berg 14,652; Liz Hallock 9,083; Chase Foster 6,415; Write-In 131.
+Standings: Reedy Berg 14,710; Liz Hallock 9,136; Chase Foster 6,448; Write-In 131.
 
 ### Top Two Cutoff
 
-Liz Hallock leads Chase Foster by 2,668 votes.
+Liz Hallock leads Chase Foster by 2,688 votes.
 
-Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 3,079 estimated remaining decision votes; the change side needs 93.3%.
+Modeled change probability: <0.1%. Reliability: 63/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,662 estimated remaining decision votes; the change side needs 130.9%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 15,498 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 15,584 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Chase Foster received 45.00% of 2,322 decision votes.
+Latest comparable batch: Chase Foster received 38.37% of 86 decision votes.
 
-Margin history: 2026-08-07T01:18 +2,436; 2026-08-08T00:18 +2,668.
+Margin history: 2026-08-07T01:18 +2,436; 2026-08-08T00:18 +2,668; 2026-10-14T11:00 +2,688.
 
 ## State Representative Pos. 2 - Legislative District 16
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 31,458. Valid votes: 30,699. The workbook's Ballots Cast value was 19,638; the displayed denominator is reconciled from 30,699 valid votes, 17 overvotes, and 742 undervotes.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 36,212. Valid votes: 35,351. The workbook's Ballots Cast value was 20,303; the displayed denominator is reconciled from 35,351 valid votes, 3 overvotes, and 858 undervotes.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Skyler Rude 17,786; Derek Sarley 12,887; Write-In 26.
+Standings: Skyler Rude 20,493; Derek Sarley 14,831; Write-In 27.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 16
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 31,458. Valid votes: 30,740. The workbook's Ballots Cast value was 19,638; the displayed denominator is reconciled from 30,740 valid votes, 17 overvotes, and 701 undervotes.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 36,212. Valid votes: 35,397. The workbook's Ballots Cast value was 20,303; the displayed denominator is reconciled from 35,397 valid votes, 2 overvotes, and 813 undervotes.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Mark Klicker 18,545; Kyle Palmer 12,162; Write-In 33.
+Standings: Mark Klicker 21,367; Kyle Palmer 13,998; Write-In 32.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 17
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 47,472. Valid votes: 46,659.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 48,041. Valid votes: 47,191.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Ben Christly 24,495; Kevin Waters 20,416; Thomas Everett Haynes 1,691; Write-In 57.
+Standings: Ben Christly 24,703; Kevin Waters 20,718; Thomas Everett Haynes 1,711; Write-In 59.
 
 ### Top Two Cutoff
 
-Kevin Waters leads Thomas Everett Haynes by 18,725 votes.
+Kevin Waters leads Thomas Everett Haynes by 19,007 votes.
 
-Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 4,392 estimated remaining decision votes; the change side needs 263.2%.
+Modeled change probability: <0.1%. Reliability: 63/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,392 estimated remaining decision votes; the change side needs 447.3%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 22,107 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 22,429 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Thomas Everett Haynes received 11.60% of 914 decision votes.
+Latest comparable batch: Thomas Everett Haynes received 6.21% of 322 decision votes.
 
-Margin history: 2026-08-07T01:18 +18,023; 2026-08-08T00:18 +18,725.
+Margin history: 2026-08-07T01:18 +18,023; 2026-08-08T00:18 +18,725; 2026-10-14T11:00 +19,007.
 
 ## State Representative Pos. 2 - Legislative District 17
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 47,472. Valid votes: 46,541.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 48,041. Valid votes: 47,067.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Diana H. Perez 25,606; David Stuebe 20,863; Write-In 72.
+Standings: Diana H. Perez 25,825; David Stuebe 21,170; Write-In 72.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 18
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 44,402. Valid votes: 43,835.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 44,527. Valid votes: 43,945.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Randi L. Knott 22,804; Stephanie McClintock 20,959; Write-In 72.
+Standings: Randi L. Knott 22,859; Stephanie McClintock 21,014; Write-In 72.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 18
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 44,402. Valid votes: 43,708.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 44,527. Valid votes: 43,818.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Deken Letinich 23,353; John Ley 20,269; Write-In 86.
+Standings: Deken Letinich 23,407; John Ley 20,325; Write-In 86.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 19
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 41,344. Valid votes: 40,454.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 44,436. Valid votes: 43,450.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Jim Walsh 22,472; Kevin Moynihan 17,915; Write-In 67.
+Standings: Jim Walsh 24,113; Kevin Moynihan 19,272; Write-In 65.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 19
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 41,344. Valid votes: 39,529.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 44,436. Valid votes: 42,453.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Terry Carlson 17,071; Joel McEntire 16,561; Jimi O'Hagan 3,078; Daniel William Bradley 2,749; Write-In 70.
+Standings: Terry Carlson 18,354; Joel McEntire 17,670; Jimi O'Hagan 3,404; Daniel William Bradley 2,958; Write-In 67.
 
 ### Top Two Cutoff
 
-Joel McEntire leads Jimi O'Hagan by 13,483 votes.
+Joel McEntire leads Jimi O'Hagan by 14,266 votes.
 
-Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 3,902 estimated remaining decision votes; the change side needs 222.8%.
+Modeled change probability: <0.1%. Reliability: 63/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,248 estimated remaining decision votes; the change side needs 367.3%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 19,639 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 21,074 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Jimi O'Hagan received 19.49% of 1,606 decision votes.
+Latest comparable batch: Jimi O'Hagan received 22.72% of 1,435 decision votes.
 
-Margin history: 2026-08-07T01:18 +12,503; 2026-08-08T00:18 +13,483.
+Margin history: 2026-08-07T01:18 +12,503; 2026-08-08T00:18 +13,483; 2026-10-14T11:00 +14,266.
 
 ## State Representative Pos. 1 - Legislative District 20
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 48,182. Valid votes: 47,003.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 49,205. Valid votes: 47,975.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Peter Abbarno 30,788; Andy Zahn 16,122; Write-In 93.
+Standings: Peter Abbarno 31,475; Andy Zahn 16,418; Write-In 82.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 20
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 48,182. Valid votes: 46,979.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 49,205. Valid votes: 47,945.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Ed Orcutt 29,466; Evan Jones 17,424; Write-In 89.
+Standings: Ed Orcutt 30,140; Evan Jones 17,728; Write-In 77.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Senator - Legislative District 21
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 33,069. Valid votes: 32,217.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 33,190. Valid votes: 32,323.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Marko Liias 23,221; Riaz Khan 8,841; Write-In 155.
+Standings: Marko Liias 23,290; Riaz Khan 8,873; Write-In 160.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 21
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 33,069. Valid votes: 30,153.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 33,190. Valid votes: 30,274.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Strom Peterson 16,288; Jason Moon 13,337; Write-In 528.
+Standings: Strom Peterson 16,344; Jason Moon 13,379; Write-In 551.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 21
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 33,069. Valid votes: 31,444.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 33,190. Valid votes: 31,554.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Lillian Ortiz-Self 22,836; Bruce Guthrie 8,399; Write-In 209.
+Standings: Lillian Ortiz-Self 22,909; Bruce Guthrie 8,430; Write-In 215.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 22
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 35,220. Valid votes: 34,501.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 47,509. Valid votes: 46,436.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Beth Doglio 24,832; Don Hewett 9,574; Write-In 95.
+Standings: Beth Doglio 33,979; Don Hewett 12,329; Write-In 128.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 22
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 35,220. Valid votes: 30,522.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 47,509. Valid votes: 41,278.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Lisa Parshley 21,394; Jamie Keenan-deVargas 8,236; Write-In 892.
+Standings: Lisa Parshley 28,156; Jamie Keenan-deVargas 11,907; Write-In 1,215.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 23
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 41,727. Valid votes: 36,905.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 48,652. Valid votes: 42,944.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Tarra Simmons 21,755; Daria Ilgen 14,467; Write-In 683.
+Standings: Tarra Simmons 24,583; Daria Ilgen 16,753; Write-In 1,608.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 23
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 41,727. Valid votes: 41,202.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 48,652. Valid votes: 48,036.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Greg Nance 24,721; Lance Byrd 11,287; Kristin Lillegard 5,181; Write-in 13.
+Standings: Greg Nance 27,915; Lance Byrd 14,202; Kristin Lillegard 5,882; Write-in 37.
 
 ### Top Two Cutoff
 
-Lance Byrd leads Kristin Lillegard by 6,106 votes.
+Lance Byrd leads Kristin Lillegard by 8,320 votes.
 
-Modeled change probability: <0.1%. Reliability: 48/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 3,272 estimated remaining decision votes; the change side needs 143.3%.
+Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,142 estimated remaining decision votes; the change side needs 244.3%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 16,468 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 20,084 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +6,106.
+Latest comparable batch: Kristin Lillegard received 19.39% of 3,616 decision votes.
+
+Margin history: 2026-08-08T00:18 +6,106; 2026-10-14T11:00 +8,320.
 
 ## State Representative Pos. 1 - Legislative District 24
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 43,633. Valid votes: 42,664. The workbook's Ballots Cast value was 29,455; the displayed denominator is reconciled from 42,664 valid votes, 33 overvotes, and 936 undervotes.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 55,226. Valid votes: 53,986. The workbook's Ballots Cast value was 39,317; the displayed denominator is reconciled from 53,986 valid votes, 30 overvotes, and 1,210 undervotes.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Adam Bernbaum 26,501; Eric W. Pratt 8,984; Aiden I.R. Hamilton 4,408; Ted Bowen 2,742; Write-In 29.
+Standings: Adam Bernbaum 32,592; Eric W. Pratt 11,779; Aiden I.R. Hamilton 5,930; Ted Bowen 3,643; Write-In 42.
 
 ### Top Two Cutoff
 
-Eric W. Pratt leads Aiden I.R. Hamilton by 4,576 votes.
+Eric W. Pratt leads Aiden I.R. Hamilton by 5,849 votes.
 
-Modeled change probability: <0.1%. Reliability: 53/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,661 estimated remaining decision votes; the change side needs 136.0%.
+Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,889 estimated remaining decision votes; the change side needs 204.9%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 13,392 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: reconciled ballot denominator.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 17,709 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: reconciled ballot denominator.
 
-Latest comparable batch: Aiden I.R. Hamilton received 34.84% of 2,397 decision votes.
+Latest comparable batch: Aiden I.R. Hamilton received 35.26% of 4,317 decision votes.
 
-Margin history: 2026-08-07T01:18 +3,849; 2026-08-08T00:18 +4,576.
+Margin history: 2026-08-07T01:18 +3,849; 2026-08-08T00:18 +4,576; 2026-10-14T11:00 +5,849.
 
 ## State Representative Pos. 2 - Legislative District 24
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 43,633. Valid votes: 41,469. The workbook's Ballots Cast value was 29,455; the displayed denominator is reconciled from 41,469 valid votes, 28 overvotes, and 2,136 undervotes.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 55,226. Valid votes: 52,420. The workbook's Ballots Cast value was 39,317; the displayed denominator is reconciled from 52,420 valid votes, 29 overvotes, and 2,777 undervotes.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Marcia Kelbon 15,136; Kaylee Kuehn 11,206; Patrick DePoe 10,184; Mark Hodgson 2,907; Bradley Nemo Callaway 1,837; Write-In 199.
+Standings: Marcia Kelbon 19,818; Kaylee Kuehn 13,617; Patrick DePoe 12,699; Mark Hodgson 3,644; Bradley Nemo Callaway 2,374; Write-In 268.
 
 ### Top Two Cutoff
 
-Kaylee Kuehn leads Patrick DePoe by 1,022 votes.
+Kaylee Kuehn leads Patrick DePoe by 918 votes.
 
-Modeled change probability: <0.1%. Reliability: 53/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 4,250 estimated remaining decision votes; the change side needs 62.0%.
+Modeled change probability: <0.1%. Reliability: 59/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,807 estimated remaining decision votes; the change side needs 66.4%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 21,390 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: reconciled ballot denominator.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 26,316 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: reconciled ballot denominator.
 
-Latest comparable batch: Patrick DePoe received 53.61% of 2,591 decision votes.
+Latest comparable batch: Patrick DePoe received 51.06% of 4,926 decision votes.
 
-Margin history: 2026-08-07T01:18 +1,209; 2026-08-08T00:18 +1,022.
+Margin history: 2026-08-07T01:18 +1,209; 2026-08-08T00:18 +1,022; 2026-10-14T11:00 +918.
 
 ## State Representative Pos. 1 - Legislative District 25
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 28,896. Valid votes: 28,589.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 29,124. Valid votes: 28,812.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Michael Keaton 14,359; David Berg 10,368; Nick Oloo 3,837; Write-In 25.
+Standings: Michael Keaton 14,460; David Berg 10,454; Nick Oloo 3,880; Write-In 18.
 
 ### Top Two Cutoff
 
-David Berg leads Nick Oloo by 6,531 votes.
+David Berg leads Nick Oloo by 6,574 votes.
 
-Modeled change probability: <0.1%. Reliability: 48/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,822 estimated remaining decision votes; the change side needs 165.7%.
+Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,529 estimated remaining decision votes; the change side needs 265.0%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 14,205 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 14,334 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +6,531.
+Latest comparable batch: Nick Oloo received 33.33% of 129 decision votes.
+
+Margin history: 2026-08-08T00:18 +6,531; 2026-10-14T11:00 +6,574.
 
 ## State Representative Pos. 2 - Legislative District 25
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 28,896. Valid votes: 28,621.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 29,124. Valid votes: 28,823.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Cyndy Jacobsen 13,909; Jenn Marie Strickling 13,354; Ren Fanony 1,322; Write-In 36.
+Standings: Cyndy Jacobsen 14,005; Jenn Marie Strickling 13,466; Ren Fanony 1,333; Write-In 19.
 
 ### Top Two Cutoff
 
-Jenn Marie Strickling leads Ren Fanony by 12,032 votes.
+Jenn Marie Strickling leads Ren Fanony by 12,133 votes.
 
-Modeled change probability: <0.1%. Reliability: 48/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,916 estimated remaining decision votes; the change side needs 256.3%.
+Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,579 estimated remaining decision votes; the change side needs 434.3%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 14,676 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 14,799 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +12,032.
+Latest comparable batch: Ren Fanony received 8.94% of 123 decision votes.
+
+Margin history: 2026-08-08T00:18 +12,032; 2026-10-14T11:00 +12,133.
 
 ## State Senator - Legislative District 26
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 46,583. Valid votes: 46,196.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 51,386. Valid votes: 50,944.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Deborah Krishnadasan 26,480; Gary Parker 19,688; Write-In 28.
+Standings: Deborah Krishnadasan 28,575; Gary Parker 22,328; Write-In 41.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 26
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 46,583. Valid votes: 46,012.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 51,386. Valid votes: 50,761.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: David Olson 19,649; Adison Richards 15,929; Natalie Bornfleth 10,417; Write-In 17.
+Standings: David Olson 22,256; Adison Richards 17,012; Natalie Bornfleth 11,467; Write-In 26.
 
 ### Top Two Cutoff
 
-Adison Richards leads Natalie Bornfleth by 5,512 votes.
+Adison Richards leads Natalie Bornfleth by 5,545 votes.
 
-Modeled change probability: <0.1%. Reliability: 59/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 5,234 estimated remaining decision votes; the change side needs 102.7%.
+Modeled change probability: <0.1%. Reliability: 64/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 3,038 estimated remaining decision votes; the change side needs 141.3%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 26,346 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 28,479 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Natalie Bornfleth received 50.14% of 2,100 decision votes.
+Latest comparable batch: Natalie Bornfleth received 49.23% of 2,133 decision votes.
 
-Margin history: 2026-08-07T01:18 +5,518; 2026-08-08T00:18 +5,512.
+Margin history: 2026-08-07T01:18 +5,518; 2026-08-08T00:18 +5,512; 2026-10-14T11:00 +5,545.
 
 ## State Representative Pos. 2 - Legislative District 26
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 46,583. Valid votes: 45,887.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 51,386. Valid votes: 50,619.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Katy Cornell 20,000; Renee Hernandez Greenfield 18,497; Tedd Wetherbee 6,286; Randy Phillips 1,082; Write-In 22.
+Standings: Katy Cornell 22,635; Renee Hernandez Greenfield 20,023; Tedd Wetherbee 6,720; Randy Phillips 1,213; Write-In 28.
 
 ### Top Two Cutoff
 
-Renee Hernandez Greenfield leads Tedd Wetherbee by 12,211 votes.
+Renee Hernandez Greenfield leads Tedd Wetherbee by 13,303 votes.
 
-Modeled change probability: <0.1%. Reliability: 59/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 4,924 estimated remaining decision votes; the change side needs 174.0%.
+Modeled change probability: <0.1%. Reliability: 64/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,852 estimated remaining decision votes; the change side needs 283.2%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 24,783 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 26,743 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Tedd Wetherbee received 22.11% of 1,990 decision votes.
+Latest comparable batch: Tedd Wetherbee received 22.14% of 1,960 decision votes.
 
-Margin history: 2026-08-07T01:18 +11,101; 2026-08-08T00:18 +12,211.
+Margin history: 2026-08-07T01:18 +11,101; 2026-08-08T00:18 +12,211; 2026-10-14T11:00 +13,303.
 
 ## State Representative Pos. 1 - Legislative District 27
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 34,312. Valid votes: 33,494.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 34,639. Valid votes: 33,783.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Laurie Jinkins 25,861; Carole Sue Braaten 7,507; Write-In 126.
+Standings: Laurie Jinkins 26,099; Carole Sue Braaten 7,580; Write-In 104.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 27
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 34,312. Valid votes: 27,614.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 34,639. Valid votes: 27,563.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Jake Fey 26,088; Write-In 1,526.
+Standings: Jake Fey 26,333; Write-In 1,230.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 28
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 25,382. Valid votes: 25,120.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 25,563. Valid votes: 25,307.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Mari Leavitt 16,198; Kathy Richardson 8,863; Write-In 59.
+Standings: Mari Leavitt 16,321; Kathy Richardson 8,927; Write-In 59.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 28
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 25,382. Valid votes: 19,714.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 25,563. Valid votes: 19,608.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Dan Bronoske 17,656; Write-In 2,058.
+Standings: Dan Bronoske 17,782; Write-In 1,826.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Senator - Legislative District 29
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 19,110. Valid votes: 17,141.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 19,285. Valid votes: 17,162.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Sharlett Mena 11,965; David Anderson 4,394; Write-In 782.
+Standings: Sharlett Mena 12,071; David Anderson 4,440; Write-In 651.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 29
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 19,110. Valid votes: 16,878.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 19,285. Valid votes: 16,876.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Krista Perez 8,171; Melanie Morgan 7,794; Write-In 913; Write-In 0.
+Standings: Krista Perez 8,245; Melanie Morgan 7,858; Write-In 773.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 29
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 19,110. Valid votes: 18,713.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 19,285. Valid votes: 18,899.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Joe Bushnell 4,062; Patrick Stickney 3,744; Natasha Laitila 3,572; Darek Blum 3,292; Sheri Hayes 2,236; Erin Chapman-Smith 1,768; Write-In 39.
+Standings: Joe Bushnell 4,092; Patrick Stickney 3,784; Natasha Laitila 3,612; Darek Blum 3,332; Sheri Hayes 2,255; Erin Chapman-Smith 1,793; Write-In 31.
 
 ### Top Two Cutoff
 
 Patrick Stickney leads Natasha Laitila by 172 votes.
 
-Modeled change probability: 1.2%. Reliability: 46/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 1.2% chance of change across 1,454 estimated remaining decision votes; the change side needs 56.0%.
+Modeled change probability: <0.1%. Reliability: 56/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 789 estimated remaining decision votes; the change side needs 61.0%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 7,316 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 7,396 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +172.
+Latest comparable batch: Natasha Laitila received 50.00% of 80 decision votes.
+
+Margin history: 2026-08-08T00:18 +172; 2026-10-14T11:00 +172.
 
 ## State Senator - Legislative District 30
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 21,908. Valid votes: 21,618.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 23,755. Valid votes: 23,441.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Claire Wilson 13,373; Michael Rutland 8,234; Write-In 11.
+Standings: Claire Wilson 14,561; Michael Rutland 8,865; Write-In 15.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 30
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 21,908. Valid votes: 21,580.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 23,755. Valid votes: 23,390.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Jamila E. Taylor 13,753; Tiffany Bowyer 7,805; Write-In 22.
+Standings: Jamila E. Taylor 14,957; Tiffany Bowyer 8,404; Write-In 29.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 30
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 21,908. Valid votes: 21,298.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 23,755. Valid votes: 23,092.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Kristine Reeves 13,531; Paul McDaniel 7,676; Write-In 91.
+Standings: Kristine Reeves 14,714; Paul McDaniel 8,275; Write-In 103.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Senator - Legislative District 31
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 33,868. Valid votes: 33,610.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 34,514. Valid votes: 34,247.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Phil Fortunato 18,260; Tamara Stramel 15,319; Write-In 31.
+Standings: Phil Fortunato 18,583; Tamara Stramel 15,638; Write-In 26.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 31
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 33,868. Valid votes: 33,365.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 34,514. Valid votes: 33,996.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Drew Stokesbary 19,335; Stephen Szczurko-Walton 13,996; Write-In 34.
+Standings: Drew Stokesbary 19,674; Stephen Szczurko-Walton 14,299; Write-In 23.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 31
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 33,868. Valid votes: 33,355.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 34,514. Valid votes: 33,986.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Joshua Penner 18,716; John Bielka 14,592; Write-In 47.
+Standings: Joshua Penner 19,039; John Bielka 14,915; Write-In 32.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Senator - Legislative District 32
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 39,592. Valid votes: 38,740.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 41,245. Valid votes: 40,458.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Cindy Ryu 17,013; Jesse Salomon 14,600; Ira McBee 7,077; Write-In 50.
+Standings: Cindy Ryu 17,876; Jesse Salomon 15,221; Ira McBee 7,312; Write-In 49.
 
 ### Top Two Cutoff
 
-Jesse Salomon leads Ira McBee by 7,523 votes.
+Jesse Salomon leads Ira McBee by 7,909 votes.
 
-Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 4,307 estimated remaining decision votes; the change side needs 137.4%.
+Modeled change probability: <0.1%. Reliability: 63/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,404 estimated remaining decision votes; the change side needs 214.5%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 21,677 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 22,533 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Ira McBee received 26.09% of 1,334 decision votes.
+Latest comparable batch: Ira McBee received 27.45% of 856 decision votes.
 
-Margin history: 2026-08-07T01:18 +6,885; 2026-08-08T00:18 +7,523.
+Margin history: 2026-08-07T01:18 +6,885; 2026-08-08T00:18 +7,523; 2026-10-14T11:00 +7,909.
 
 ## State Representative Pos. 1 - Legislative District 32
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 39,592. Valid votes: 38,591.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 41,245. Valid votes: 40,234.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Keith Scully 10,166; Danica Noble 9,344; Lisa Rezac 7,365; Will Chen 4,277; Chris Bloomquist 3,864; Jenna Nand 3,543; Write-In 32.
+Standings: Keith Scully 10,698; Danica Noble 9,735; Lisa Rezac 7,612; Will Chen 4,415; Chris Bloomquist 4,044; Jenna Nand 3,697; Write-In 33.
 
 ### Top Two Cutoff
 
-Danica Noble leads Lisa Rezac by 1,979 votes.
+Danica Noble leads Lisa Rezac by 2,123 votes.
 
-Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 3,320 estimated remaining decision votes; the change side needs 79.8%.
+Modeled change probability: <0.1%. Reliability: 63/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,851 estimated remaining decision votes; the change side needs 107.4%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 16,709 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 17,347 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Lisa Rezac received 29.88% of 1,205 decision votes.
+Latest comparable batch: Lisa Rezac received 38.71% of 638 decision votes.
 
-Margin history: 2026-08-07T01:18 +1,494; 2026-08-08T00:18 +1,979.
+Margin history: 2026-08-07T01:18 +1,494; 2026-08-08T00:18 +1,979; 2026-10-14T11:00 +2,123.
 
 ## State Representative Pos. 2 - Legislative District 32
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 39,592. Valid votes: 35,717.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 41,245. Valid votes: 37,293.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Lauren Davis 25,693; Imraan Siddiqi 9,275; Write-In 749.
+Standings: Lauren Davis 26,708; Imraan Siddiqi 9,791; Write-In 794.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Senator - Legislative District 33
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 25,478. Valid votes: 20,191.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 26,408. Valid votes: 20,893.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Tina L. Orwall 19,248; Write-In 943.
+Standings: Tina L. Orwall 19,890; Write-In 1,003.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 33
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 25,478. Valid votes: 24,988.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 26,408. Valid votes: 25,919.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Edwin Obras 17,711; Chris Martinez 3,796; Darryl K. Jones 3,420; Write-In 61.
+Standings: Edwin Obras 18,352; Chris Martinez 3,934; Darryl K. Jones 3,567; Write-In 66.
 
 ### Top Two Cutoff
 
-Chris Martinez leads Darryl K. Jones by 376 votes.
+Chris Martinez leads Darryl K. Jones by 367 votes.
 
-Modeled change probability: <0.1%. Reliability: 46/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,434 estimated remaining decision votes; the change side needs 63.2%.
+Modeled change probability: <0.1%. Reliability: 57/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 800 estimated remaining decision votes; the change side needs 73.0%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 7,216 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 7,501 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +376.
+Latest comparable batch: Darryl K. Jones received 51.58% of 285 decision votes.
+
+Margin history: 2026-08-08T00:18 +376; 2026-10-14T11:00 +367.
 
 ## State Representative Pos. 2 - Legislative District 33
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 25,478. Valid votes: 24,940.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 26,408. Valid votes: 25,882.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Mia Su-Ling Gregerson 13,297; Yuri Marinchik 6,076; Alex Andrade 5,521; Write-In 46.
+Standings: Mia Su-Ling Gregerson 13,795; Yuri Marinchik 6,317; Alex Andrade 5,717; Write-In 53.
 
 ### Top Two Cutoff
 
-Yuri Marinchik leads Alex Andrade by 555 votes.
+Yuri Marinchik leads Alex Andrade by 600 votes.
 
-Modeled change probability: <0.1%. Reliability: 47/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,304 estimated remaining decision votes; the change side needs 62.1%.
+Modeled change probability: <0.1%. Reliability: 57/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,284 estimated remaining decision votes; the change side needs 73.4%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 11,597 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 12,034 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +555.
+Latest comparable batch: Alex Andrade received 44.85% of 437 decision votes.
+
+Margin history: 2026-08-08T00:18 +555; 2026-10-14T11:00 +600.
 
 ## State Senator - Legislative District 34
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 41,282. Valid votes: 33,480.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 44,200. Valid votes: 35,730.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Emily Alvarado 32,588; Write-In 892.
+Standings: Emily Alvarado 34,790; Write-In 940.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 34
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 41,282. Valid votes: 32,954.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 44,200. Valid votes: 35,161.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Brianna K. Thomas 32,055; Write-In 899.
+Standings: Brianna K. Thomas 34,217; Write-In 944.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 34
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 41,282. Valid votes: 38,446.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 44,200. Valid votes: 41,171.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Joe Fitzgibbon 28,721; Mary Anito 9,237; Write-In 488.
+Standings: Joe Fitzgibbon 30,680; Mary Anito 9,999; Write-In 492.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Senator - Legislative District 35
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 37,923. Valid votes: 37,298.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 51,161. Valid votes: 50,277.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Drew C MacEwen 18,825; Carolina Mejia 18,429; Write-In 44.
+Standings: Drew C MacEwen 25,643; Carolina Mejia 24,574; Write-In 60.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 35
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 37,923. Valid votes: 37,143.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 51,161. Valid votes: 50,069.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Dan Griffey 19,585; Jim Pierson 10,709; Shaena Garberich 6,828; Write-In 21.
+Standings: Dan Griffey 26,669; Jim Pierson 14,047; Shaena Garberich 9,320; Write-In 33.
 
 ### Top Two Cutoff
 
-Jim Pierson leads Shaena Garberich by 3,881 votes.
+Jim Pierson leads Shaena Garberich by 4,727 votes.
 
-Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 3,484 estimated remaining decision votes; the change side needs 105.7%.
+Modeled change probability: <0.1%. Reliability: 63/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,492 estimated remaining decision votes; the change side needs 144.9%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 17,537 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 23,367 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Shaena Garberich received 42.57% of 1,292 decision votes.
+Latest comparable batch: Shaena Garberich received 42.74% of 5,830 decision votes.
 
-Margin history: 2026-08-07T01:18 +3,689; 2026-08-08T00:18 +3,881.
+Margin history: 2026-08-07T01:18 +3,689; 2026-08-08T00:18 +3,881; 2026-10-14T11:00 +4,727.
 
 ## State Representative Pos. 2 - Legislative District 35
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 37,923. Valid votes: 37,149.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 51,161. Valid votes: 50,070.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Travis Couture 19,652; Maria Littlesun 17,461; Write-In 36.
+Standings: Travis Couture 26,651; Maria Littlesun 23,368; Write-In 51.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
@@ -1624,11 +1656,11 @@ Margin history: 2026-08-06T16:00 +1,213.
 
 ## State Senator - Legislative District 36
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 44,592. Valid votes: 43,335.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 49,976. Valid votes: 48,523.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Noel C. Frame 37,987; Jillian England 5,257; Write-In 91.
+Standings: Noel C. Frame 42,548; Jillian England 5,876; Write-In 99.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
@@ -1652,11 +1684,11 @@ Margin history: 2026-08-06T16:00 +12,587.
 
 ## State Representative Pos. 1 - Legislative District 36
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 44,592. Valid votes: 37,196.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 49,976. Valid votes: 41,442.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Julia Grant Reed 36,436; Write-In 760.
+Standings: Julia Grant Reed 40,696; Write-In 746.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
@@ -1680,177 +1712,181 @@ Margin history: 2026-08-06T16:00 +7,892.
 
 ## State Representative Pos. 2 - Legislative District 36
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 44,592. Valid votes: 37,389.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 49,976. Valid votes: 41,647.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Liz Berry 36,596; Write-In 793.
+Standings: Liz Berry 40,870; Write-In 777.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Senator - Legislative District 37
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 38,282. Valid votes: 35,755.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 40,955. Valid votes: 38,230.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Chipalo Street 26,434; Tatiana Brown 8,970; Write-In 351.
+Standings: Chipalo Street 28,196; Tatiana Brown 9,729; Write-In 305.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 37
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 38,282. Valid votes: 36,176.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 40,955. Valid votes: 38,669.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Kelabe Tewolde 18,454; Sharon Tomiko Santos 17,434; Write-In 288; Write-In 0.
+Standings: Kelabe Tewolde 19,902; Sharon Tomiko Santos 18,517; Write-In 250.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 37
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 38,282. Valid votes: 35,722.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 40,955. Valid votes: 38,138.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Jaelynn Scott 31,528; Evon McCorkle 3,842; Write-In 352.
+Standings: Jaelynn Scott 33,678; Evon McCorkle 4,143; Write-In 317.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Senator - Legislative District 38
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 28,548. Valid votes: 28,015.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 28,652. Valid votes: 28,112.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: June Robinson 18,539; Brad Bender 9,422; Write-In 54.
+Standings: June Robinson 18,608; Brad Bender 9,450; Write-In 54.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 38
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 28,548. Valid votes: 26,723.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 28,652. Valid votes: 26,825.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Julio Cortes 13,659; Thomas (Jeff) Kelly 7,600; Annie Fitzgerald 5,157; Write-In 307.
+Standings: Julio Cortes 13,707; Thomas (Jeff) Kelly 7,627; Annie Fitzgerald 5,176; Write-In 315.
 
 ### Top Two Cutoff
 
-Thomas (Jeff) Kelly leads Annie Fitzgerald by 2,443 votes.
+Thomas (Jeff) Kelly leads Annie Fitzgerald by 2,451 votes.
 
-Modeled change probability: <0.1%. Reliability: 47/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,535 estimated remaining decision votes; the change side needs 98.2%.
+Modeled change probability: <0.1%. Reliability: 57/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,366 estimated remaining decision votes; the change side needs 139.8%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 12,757 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 12,803 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +2,443.
+Latest comparable batch: Annie Fitzgerald received 41.30% of 46 decision votes.
+
+Margin history: 2026-08-08T00:18 +2,443; 2026-10-14T11:00 +2,451.
 
 ## State Representative Pos. 2 - Legislative District 38
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 28,548. Valid votes: 21,966.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 28,652. Valid votes: 22,087.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Mary Fosse 20,368; Write-In 1,598.
+Standings: Mary Fosse 20,443; Write-In 1,644.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 39
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 34,834. Valid votes: 34,226.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 37,393. Valid votes: 36,718.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Kathryn Lewandowsky 14,922; Sam Low 14,830; Dusty Wisniew 4,445; Write-In 29.
+Standings: Kathryn Lewandowsky 15,940; Sam Low 15,836; Dusty Wisniew 4,912; Write-In 30.
 
 ### Top Two Cutoff
 
-Sam Low leads Dusty Wisniew by 10,385 votes.
+Sam Low leads Dusty Wisniew by 10,924 votes.
 
-Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 3,830 estimated remaining decision votes; the change side needs 185.6%.
+Modeled change probability: <0.1%. Reliability: 63/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,213 estimated remaining decision votes; the change side needs 296.8%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 19,275 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 20,748 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Dusty Wisniew received 32.65% of 1,550 decision votes.
+Latest comparable batch: Dusty Wisniew received 31.70% of 1,473 decision votes.
 
-Margin history: 2026-08-07T01:18 +9,847; 2026-08-08T00:18 +10,385.
+Margin history: 2026-08-07T01:18 +9,847; 2026-08-08T00:18 +10,385; 2026-10-14T11:00 +10,924.
 
 ## State Representative Pos. 2 - Legislative District 39
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 34,834. Valid votes: 34,110.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 37,393. Valid votes: 36,598.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Ida Keeley 15,698; Steve Ewing 9,069; Robert J Sutherland 8,448; Lacey Sauvageau 866; Write-In 29.
+Standings: Ida Keeley 16,742; Steve Ewing 9,817; Robert J Sutherland 9,072; Lacey Sauvageau 937; Write-In 30.
 
 ### Top Two Cutoff
 
-Steve Ewing leads Robert J Sutherland by 621 votes.
+Steve Ewing leads Robert J Sutherland by 745 votes.
 
-Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 3,480 estimated remaining decision votes; the change side needs 58.9%.
+Modeled change probability: <0.1%. Reliability: 63/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,015 estimated remaining decision votes; the change side needs 68.5%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 17,517 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 18,889 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Robert J Sutherland received 42.20% of 1,429 decision votes.
+Latest comparable batch: Robert J Sutherland received 45.48% of 1,372 decision votes.
 
-Margin history: 2026-08-07T01:18 +398; 2026-08-08T00:18 +621.
+Margin history: 2026-08-07T01:18 +398; 2026-08-08T00:18 +621; 2026-10-14T11:00 +745.
 
 ## State Representative Pos. 1 - Legislative District 40
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 45,189. Valid votes: 44,531.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 48,270. Valid votes: 47,539.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Debra Lekanoff 32,603; Cindy Carter 11,872; Write-In 56.
+Standings: Debra Lekanoff 34,514; Cindy Carter 12,966; Write-In 59.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 40
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 45,189. Valid votes: 43,210.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 48,270. Valid votes: 46,061.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Alex Ramel 29,501; Joseph Segault 5,553; Salomon Rodrigue Mbouombouo 4,533; Monte Jay Mahan 3,509; Write-In 114.
+Standings: Alex Ramel 31,216; Joseph Segault 5,988; Salomon Rodrigue Mbouombouo 4,903; Monte Jay Mahan 3,833; Write-In 121.
 
 ### Top Two Cutoff
 
-Joseph Segault leads Salomon Rodrigue Mbouombouo by 1,020 votes.
+Joseph Segault leads Salomon Rodrigue Mbouombouo by 1,085 votes.
 
-Modeled change probability: <0.1%. Reliability: 57/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,004 estimated remaining decision votes; the change side needs 75.5%.
+Modeled change probability: <0.1%. Reliability: 62/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,162 estimated remaining decision votes; the change side needs 96.7%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 10,086 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 10,891 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Salomon Rodrigue Mbouombouo received 45.07% of 1,145 decision votes.
+Latest comparable batch: Salomon Rodrigue Mbouombouo received 45.96% of 805 decision votes.
 
-Margin history: 2026-08-07T01:18 +907; 2026-08-08T00:18 +1,020.
+Margin history: 2026-08-07T01:18 +907; 2026-08-08T00:18 +1,020; 2026-10-14T11:00 +1,085.
 
 ## State Representative Pos. 1 - Legislative District 41
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 35,987. Valid votes: 35,286.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 37,603. Valid votes: 36,891.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Janice Zahn 25,474; Elle Nguyen 9,391; Alex Tsimerman 362; Write-In 59.
+Standings: Janice Zahn 26,578; Elle Nguyen 9,871; Alex Tsimerman 385; Write-In 57.
 
 ### Top Two Cutoff
 
-Elle Nguyen leads Alex Tsimerman by 9,029 votes.
+Elle Nguyen leads Alex Tsimerman by 9,486 votes.
 
-Modeled change probability: <0.1%. Reliability: 47/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,938 estimated remaining decision votes; the change side needs 283.0%.
+Modeled change probability: <0.1%. Reliability: 57/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,094 estimated remaining decision votes; the change side needs 483.6%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 9,753 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 10,256 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +9,029.
+Latest comparable batch: Alex Tsimerman received 4.57% of 503 decision votes.
+
+Margin history: 2026-08-08T00:18 +9,029; 2026-10-14T11:00 +9,486.
 
 ## State Representative Pos. 2 - Legislative District 41
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 35,987. Valid votes: 34,691.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 37,603. Valid votes: 36,241.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: My-Linh T Thai 23,042; Michael Rosen 11,524; Write-In 125.
+Standings: My-Linh T Thai 24,035; Michael Rosen 12,106; Write-In 100.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
@@ -1884,117 +1920,121 @@ Margin history: 2026-08-06T16:00 -5,618.
 
 ## State Senator - Legislative District 42
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 50,053. Valid votes: 49,291.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 50,451. Valid votes: 49,654.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Erika Creydt 21,986; Michael Alvarez Shepard 13,023; Eamonn Collins 13,014; Ryan Bowman 1,234; Write-In 34.
+Standings: Erika Creydt 22,125; Michael Alvarez Shepard 13,125; Eamonn Collins 13,121; Ryan Bowman 1,248; Write-In 35.
 
 ### Top Two Cutoff
 
-Michael Alvarez Shepard leads Eamonn Collins by 9 votes.
+Michael Alvarez Shepard leads Eamonn Collins by 4 votes.
 
-Modeled change probability: 48.5%. Reliability: 49/100 (Low). Exposure band: Toss Up. The tempered beta-binomial model estimates a 48.5% chance of change across 5,173 estimated remaining decision votes; the change side needs 50.1%.
+Modeled change probability: 56.3%. Reliability: 59/100 (Moderate). Exposure band: Toss Up. The tempered beta-binomial model estimates a 56.3% chance of change across 2,800 estimated remaining decision votes; the change side needs 50.1%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 26,037 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 26,246 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +9.
+Latest comparable batch: Eamonn Collins received 51.20% of 209 decision votes.
+
+Margin history: 2026-08-08T00:18 +9; 2026-10-14T11:00 +4.
 
 ## State Representative Pos. 1 - Legislative District 42
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 50,053. Valid votes: 49,327.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 50,451. Valid votes: 49,691.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Alicia Rule 27,710; Misty Flowers 21,515; Write-In 102.
+Standings: Alicia Rule 27,934; Misty Flowers 21,655; Write-In 102.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 42
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 50,053. Valid votes: 49,409.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 50,451. Valid votes: 49,773.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Joe Timmons 26,588; Justin Pike 22,761; Write-In 60.
+Standings: Joe Timmons 26,802; Justin Pike 22,911; Write-In 60.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Senator - Legislative District 43
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 35,547. Valid votes: 34,512.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 39,205. Valid votes: 38,177.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Jamie Pedersen 23,157; Hannah Sabio-Howell 8,024; Heather-Marie Wilson 3,242; Write-In 89.
+Standings: Jamie Pedersen 25,454; Hannah Sabio-Howell 8,990; Heather-Marie Wilson 3,638; Write-In 95.
 
 ### Top Two Cutoff
 
-Hannah Sabio-Howell leads Heather-Marie Wilson by 4,782 votes.
+Hannah Sabio-Howell leads Heather-Marie Wilson by 5,352 votes.
 
-Modeled change probability: <0.1%. Reliability: 47/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,238 estimated remaining decision votes; the change side needs 156.9%.
+Modeled change probability: <0.1%. Reliability: 57/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,347 estimated remaining decision votes; the change side needs 248.7%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 11,266 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 12,628 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +4,782.
+Latest comparable batch: Heather-Marie Wilson received 29.07% of 1,362 decision votes.
+
+Margin history: 2026-08-08T00:18 +4,782; 2026-10-14T11:00 +5,352.
 
 ## State Representative Pos. 1 - Legislative District 43
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 35,547. Valid votes: 32,701.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 39,205. Valid votes: 35,913.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Nicole Macri 29,946; Alby Clendennin 2,365; Write-In 390.
+Standings: Nicole Macri 32,872; Alby Clendennin 2,647; Write-In 394.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 43
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 35,547. Valid votes: 27,844.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 39,205. Valid votes: 30,450.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Shaun Scott 26,894; Write-In 950.
+Standings: Shaun Scott 29,474; Write-In 976.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Senator - Legislative District 44
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 36,525. Valid votes: 35,998.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 36,665. Valid votes: 36,118.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: John Lovick 22,270; Sherri Larkin 13,675; Write-In 53.
+Standings: John Lovick 22,347; Sherri Larkin 13,724; Write-In 47.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 44
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 36,525. Valid votes: 35,854.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 36,665. Valid votes: 35,980.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Brandy Donaghy 21,382; Chris Elder 14,436; Write-In 36.
+Standings: Brandy Donaghy 21,460; Chris Elder 14,485; Write-In 35.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 44
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 36,525. Valid votes: 35,883.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 36,665. Valid votes: 36,007.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: April Berg 22,029; Tonya Stadlman 13,811; Write-In 43.
+Standings: April Berg 22,107; Tonya Stadlman 13,863; Write-In 37.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Senator - Legislative District 45
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 35,700. Valid votes: 27,800.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 37,825. Valid votes: 28,952.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Manka Dhingra 25,137; Write-In 2,663.
+Standings: Manka Dhingra 26,547; Write-In 2,405.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
@@ -2018,125 +2058,131 @@ Margin history: 2026-08-06T16:00 +166.
 
 ## State Representative Pos. 1 - Legislative District 45
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 35,700. Valid votes: 35,007.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 37,825. Valid votes: 37,093.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Roger Goodman 25,538; JoAnn Tolentino 9,377; Write-In 92.
+Standings: Roger Goodman 27,038; JoAnn Tolentino 9,967; Write-In 88.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 2 - Legislative District 45
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 35,700. Valid votes: 34,425.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 37,825. Valid votes: 36,498.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Vanessa Kritzer 21,632; John P Gibbons 7,155; Chandler Torbett 5,504; Write-In 134.
+Standings: Vanessa Kritzer 22,890; John P Gibbons 7,630; Chandler Torbett 5,873; Write-In 105.
 
 ### Top Two Cutoff
 
-John P Gibbons leads Chandler Torbett by 1,651 votes.
+John P Gibbons leads Chandler Torbett by 1,757 votes.
 
-Modeled change probability: <0.1%. Reliability: 47/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,515 estimated remaining decision votes; the change side needs 82.9%.
+Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,440 estimated remaining decision votes; the change side needs 111.0%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 12,659 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 13,503 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +1,651.
+Latest comparable batch: Chandler Torbett received 43.72% of 844 decision votes.
+
+Margin history: 2026-08-08T00:18 +1,651; 2026-10-14T11:00 +1,757.
 
 ## State Senator - Legislative District 46
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 44,176. Valid votes: 42,770.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 46,753. Valid votes: 45,250.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Javier Valdez 38,737; Sandra Stephens 3,925; Write-In 108.
+Standings: Javier Valdez 40,980; Sandra Stephens 4,153; Write-In 117.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 46
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 44,176. Valid votes: 41,591.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 46,753. Valid votes: 44,205.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Gerry Pollet 21,619; Will Dreher 12,765; Ron Davis 6,819; Write-In 388.
+Standings: Gerry Pollet 22,807; Will Dreher 13,592; Ron Davis 7,441; Write-In 365.
 
 ### Top Two Cutoff
 
-Will Dreher leads Ron Davis by 5,946 votes.
+Will Dreher leads Ron Davis by 6,151 votes.
 
-Modeled change probability: <0.1%. Reliability: 48/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 3,891 estimated remaining decision votes; the change side needs 126.4%.
+Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,244 estimated remaining decision votes; the change side needs 187.1%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 19,584 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 21,033 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +5,946.
+Latest comparable batch: Ron Davis received 42.93% of 1,449 decision votes.
+
+Margin history: 2026-08-08T00:18 +5,946; 2026-10-14T11:00 +6,151.
 
 ## State Representative Pos. 2 - Legislative District 46
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 44,176. Valid votes: 41,654.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 46,753. Valid votes: 44,038.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Darya Farivar 37,237; Rodney 'Star' Thornley 4,137; Write-In 280.
+Standings: Darya Farivar 39,373; Rodney 'Star' Thornley 4,386; Write-In 279.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Senator - Legislative District 47
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 26,447. Valid votes: 25,930.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 29,652. Valid votes: 29,098.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Claudia Kauffman 15,333; Kristina Soltys 10,564; Write-In 33.
+Standings: Claudia Kauffman 17,258; Kristina Soltys 11,807; Write-In 33.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 47
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 26,447. Valid votes: 24,968.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 29,652. Valid votes: 27,988.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Debra Jean Entenman 9,447; Cobi Clark 7,504; Jasnoor Kaur Hans 4,971; Logan Evans 2,719; Write-In 327.
+Standings: Debra Jean Entenman 10,619; Cobi Clark 8,361; Jasnoor Kaur Hans 5,647; Logan Evans 3,047; Write-In 314.
 
 ### Top Two Cutoff
 
-Cobi Clark leads Jasnoor Kaur Hans by 2,533 votes.
+Cobi Clark leads Jasnoor Kaur Hans by 2,714 votes.
 
-Modeled change probability: <0.1%. Reliability: 47/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 2,479 estimated remaining decision votes; the change side needs 101.1%.
+Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,494 estimated remaining decision votes; the change side needs 140.9%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 12,475 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 14,008 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +2,533.
+Latest comparable batch: Jasnoor Kaur Hans received 44.10% of 1,533 decision votes.
+
+Margin history: 2026-08-08T00:18 +2,533; 2026-10-14T11:00 +2,714.
 
 ## State Representative Pos. 2 - Legislative District 47
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 26,447. Valid votes: 25,900.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 29,652. Valid votes: 29,024.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Chris Stearns 15,538; Ted Cooke 10,315; Write-In 47.
+Standings: Chris Stearns 17,457; Ted Cooke 11,521; Write-In 46.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Senator - Legislative District 48
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 25,537. Valid votes: 19,861.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 26,795. Valid votes: 20,639.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Vandana Slatter 18,778; Write-In 1,083.
+Standings: Vandana Slatter 19,677; Write-In 962.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 48
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 25,537. Valid votes: 24,828.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 26,795. Valid votes: 26,047.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Osman Salahuddin 17,516; Jeffery Poppe 7,250; Write-In 62.
+Standings: Osman Salahuddin 18,388; Jeffery Poppe 7,599; Write-In 60.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
@@ -2152,193 +2198,195 @@ No modeled decision boundary: the race is uncontested, ignored by configuration,
 
 ## State Representative Pos. 2 - Legislative District 48
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 25,537. Valid votes: 22,854.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 26,795. Valid votes: 23,916.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Amy Walen 11,199; Jessica Forsythe 11,066; Write-In 589.
+Standings: Jessica Forsythe 11,708; Amy Walen 11,691; Write-In 517.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## State Representative Pos. 1 - Legislative District 49
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 34,353. Valid votes: 33,784.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 34,484. Valid votes: 33,901.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Kim D. Harless 17,744; Sarah Mittelman 9,623; Mike Pond 6,365; Write-In 52.
+Standings: Kim D. Harless 17,809; Sarah Mittelman 9,652; Mike Pond 6,387; Write-In 53.
 
 ### Top Two Cutoff
 
-Sarah Mittelman leads Mike Pond by 3,258 votes.
+Sarah Mittelman leads Mike Pond by 3,265 votes.
 
-Modeled change probability: <0.1%. Reliability: 48/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 3,176 estimated remaining decision votes; the change side needs 101.3%.
+Modeled change probability: <0.1%. Reliability: 58/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,711 estimated remaining decision votes; the change side needs 145.5%.
 
-Reliability basis: Forecast evidence 45/100; 1 compatible snapshot(s); 15,988 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 16,039 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Margin history: 2026-08-08T00:18 +3,258.
+Latest comparable batch: Mike Pond received 43.14% of 51 decision votes.
+
+Margin history: 2026-08-08T00:18 +3,258; 2026-10-14T11:00 +3,265.
 
 ## State Representative Pos. 2 - Legislative District 49
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 34,353. Valid votes: 33,486.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 34,484. Valid votes: 33,600.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Monica Jurado Stonier 24,311; Derek Thompson 9,070; Write-In 105.
+Standings: Monica Jurado Stonier 24,398; Derek Thompson 9,095; Write-In 107.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## Justice Position #01 - Supreme Court
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 1,720,164. Valid votes: 1,612,300.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 1,863,187. Valid votes: 1,746,550. The workbook's Ballots Cast value was 1,861,055; the displayed denominator is reconciled from 1,746,550 valid votes, 231 overvotes, and 116,406 undervotes.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Colleen Melody 856,073; Scott Edwards 470,353; Laura Christensen Colberg 282,008; Write-in 3,866.
+Standings: Colleen Melody 923,965; Scott Edwards 513,394; Laura Christensen Colberg 305,110; Write-in 4,081.
 
 ### Top Two Cutoff
 
-Scott Edwards leads Laura Christensen Colberg by 188,345 votes.
+Scott Edwards leads Laura Christensen Colberg by 208,284 votes.
 
-Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 149,481 estimated remaining decision votes; the change side needs 113.0%.
+Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 87,308 estimated remaining decision votes; the change side needs 169.3%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 752,361 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 818,504 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: reconciled ballot denominator.
 
-Latest comparable batch: Laura Christensen Colberg received 38.51% of 73,890 decision votes.
+Latest comparable batch: Laura Christensen Colberg received 34.93% of 66,143 decision votes.
 
-Margin history: 2026-08-07T01:18 +171,359; 2026-08-08T00:18 +188,345.
+Margin history: 2026-08-07T01:18 +171,359; 2026-08-08T00:18 +188,345; 2026-10-14T11:00 +208,284.
 
 ### Majority Status
 
-Colleen Melody has 53.10% and is above 50%.
+Colleen Melody has 52.90% and is above 50%.
 
-Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 320,335 estimated remaining decision votes; the change side needs 65.6%.
+Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 186,302 estimated remaining decision votes; the change side needs 77.2%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 1,612,300 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 1,746,550 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: reconciled ballot denominator.
 
-Latest comparable batch: all other choices received 42.88% of 173,246 decision votes.
+Latest comparable batch: all other choices received 49.43% of 134,250 decision votes.
 
-Margin history: 2026-08-07T01:18 +75,190; 2026-08-08T00:18 +99,846.
+Margin history: 2026-08-07T01:18 +75,190; 2026-08-08T00:18 +99,846; 2026-10-14T11:00 +101,380.
 
 ## Justice Position #03 - Supreme Court
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 1,720,164. Valid votes: 1,606,325.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 1,861,604. Valid votes: 1,740,028. The workbook's Ballots Cast value was 1,861,055; the displayed denominator is reconciled from 1,740,028 valid votes, 179 overvotes, and 121,397 undervotes.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: David Stevens 561,873; Jaime Michelle Hawk 535,467; Mike Diaz 503,983; Write-in 5,002.
+Standings: David Stevens 612,267; Jaime Michelle Hawk 578,979; Mike Diaz 543,721; Write-in 5,061.
 
 ### Top Two Cutoff
 
-Jaime Michelle Hawk leads Mike Diaz by 31,484 votes.
+Jaime Michelle Hawk leads Mike Diaz by 35,258 votes.
 
-Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 206,520 estimated remaining decision votes; the change side needs 57.6%.
+Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 119,756 estimated remaining decision votes; the change side needs 64.7%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 1,039,450 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 1,122,700 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: reconciled ballot denominator.
 
-Latest comparable batch: Mike Diaz received 49.14% of 115,599 decision votes.
+Latest comparable batch: Mike Diaz received 47.73% of 83,250 decision votes.
 
-Margin history: 2026-08-07T01:18 +29,501; 2026-08-08T00:18 +31,484.
+Margin history: 2026-08-07T01:18 +29,501; 2026-08-08T00:18 +31,484; 2026-10-14T11:00 +35,258.
 
 ### Majority Status
 
-David Stevens has 34.98%; no candidate is above 50%.
+David Stevens has 35.19%; no candidate is above 50%.
 
-Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 319,148 estimated remaining decision votes; the change side needs 125.6%.
+Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 185,606 estimated remaining decision votes; the change side needs 188.9%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 1,606,325 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 1,740,028 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: reconciled ballot denominator.
 
-Latest comparable batch: David Stevens received 32.76% of 172,681 decision votes.
+Latest comparable batch: David Stevens received 37.69% of 133,703 decision votes.
 
-Margin history: 2026-08-07T01:18 -423,052; 2026-08-08T00:18 -482,579.
+Margin history: 2026-08-07T01:18 -423,052; 2026-08-08T00:18 -482,579; 2026-10-14T11:00 -515,494.
 
 ## Justice Position #05 - Supreme Court
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 1,720,164. Valid votes: 1,605,829.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 1,861,055. Valid votes: 1,739,425.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Theo Angelis 578,692; Dave Larson 513,638; Sharonda Amamilo 341,503; Greg Miller 168,432; Write-in 3,564.
+Standings: Theo Angelis 623,396; Dave Larson 559,629; Sharonda Amamilo 371,059; Greg Miller 181,542; Write-in 3,799.
 
 ### Top Two Cutoff
 
-Dave Larson leads Sharonda Amamilo by 172,135 votes.
+Dave Larson leads Sharonda Amamilo by 188,570 votes.
 
-Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 169,901 estimated remaining decision votes; the change side needs 100.7%.
+Modeled change probability: <0.1%. Reliability: 66/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 99,275 estimated remaining decision votes; the change side needs 145.0%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 855,141 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 930,688 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Sharonda Amamilo received 41.61% of 87,567 decision votes.
+Latest comparable batch: Sharonda Amamilo received 39.12% of 75,547 decision votes.
 
-Margin history: 2026-08-07T01:18 +157,436; 2026-08-08T00:18 +172,135.
+Margin history: 2026-08-07T01:18 +157,436; 2026-08-08T00:18 +172,135; 2026-10-14T11:00 +188,570.
 
 ### Majority Status
 
-Theo Angelis has 36.04%; no candidate is above 50%.
+Theo Angelis has 35.84%; no candidate is above 50%.
 
-Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 319,050 estimated remaining decision votes; the change side needs 120.3%.
+Modeled change probability: <0.1%. Reliability: 66/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 185,542 estimated remaining decision votes; the change side needs 182.8%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 1,605,829 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 1,739,425 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Theo Angelis received 40.05% of 172,087 decision votes.
+Latest comparable batch: Theo Angelis received 33.46% of 133,596 decision votes.
 
-Margin history: 2026-08-07T01:18 -414,212; 2026-08-08T00:18 -448,445.
+Margin history: 2026-08-07T01:18 -414,212; 2026-08-08T00:18 -448,445; 2026-10-14T11:00 -492,633.
 
 ## Justice Position #07 - Supreme Court
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 1,720,164. Valid votes: 1,594,429.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 1,861,055. Valid votes: 1,726,167.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Debra L. Stephens 871,607; Todd A. Bloom 429,302; Karim A. Merchant 190,283; David R Shelvey 99,185; Write-in 4,052.
+Standings: Debra L. Stephens 938,584; Todd A. Bloom 468,347; Karim A. Merchant 207,603; David R Shelvey 107,635; Write-in 3,998.
 
 ### Top Two Cutoff
 
-Todd A. Bloom leads Karim A. Merchant by 239,019 votes.
+Todd A. Bloom leads Karim A. Merchant by 260,744 votes.
 
-Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 123,101 estimated remaining decision votes; the change side needs 147.1%.
+Modeled change probability: <0.1%. Reliability: 66/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 72,103 estimated remaining decision votes; the change side needs 230.8%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 619,585 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 675,950 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Karim A. Merchant received 34.31% of 64,122 decision votes.
+Latest comparable batch: Karim A. Merchant received 30.73% of 56,365 decision votes.
 
-Margin history: 2026-08-07T01:18 +218,897; 2026-08-08T00:18 +239,019.
+Margin history: 2026-08-07T01:18 +218,897; 2026-08-08T00:18 +239,019; 2026-10-14T11:00 +260,744.
 
 ### Majority Status
 
-Debra L. Stephens has 54.67% and is above 50%.
+Debra L. Stephens has 54.37% and is above 50%.
 
-Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 316,785 estimated remaining decision votes; the change side needs 73.5%.
+Modeled change probability: <0.1%. Reliability: 66/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 184,128 estimated remaining decision votes; the change side needs 91.0%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 1,594,429 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 1,726,167 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: all other choices received 43.17% of 170,694 decision votes.
+Latest comparable batch: all other choices received 49.16% of 131,738 decision votes.
 
-Margin history: 2026-08-07T01:18 +125,457; 2026-08-08T00:18 +148,785.
+Margin history: 2026-08-07T01:18 +125,457; 2026-08-08T00:18 +148,785; 2026-10-14T11:00 +151,001.
 
 ## PUD Commissioner District 1
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 64,682. Valid votes: 59,342.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 65,070. Valid votes: 59,669.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Sid Logan 29,494; Janet St Clair 17,911; Bruce King 11,690; Write-in 247.
+Standings: Sid Logan 29,635; Janet St Clair 18,066; Bruce King 11,740; Write-in 228.
 
 ### Top Two Cutoff
 
-Janet St Clair leads Bruce King by 6,221 votes.
+Janet St Clair leads Bruce King by 6,326 votes.
 
-Modeled change probability: <0.1%. Reliability: 59/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 5,881 estimated remaining decision votes; the change side needs 102.9%.
+Modeled change probability: <0.1%. Reliability: 64/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 3,179 estimated remaining decision votes; the change side needs 149.5%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 29,601 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 29,806 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Bruce King received 33.55% of 2,107 decision votes.
+Latest comparable batch: Bruce King received 24.39% of 205 decision votes.
 
-Margin history: 2026-08-07T01:18 +5,528; 2026-08-08T00:18 +6,221.
+Margin history: 2026-08-07T01:18 +5,528; 2026-08-08T00:18 +6,221; 2026-10-14T11:00 +6,326.
 
 ## South Beach Regional Fire Authority - Bonds Issue
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 0. Valid votes: 0.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 0. Valid votes: 0.
 
 Scope: This source is treated as controlling for the reported contest.
 
@@ -2348,51 +2396,51 @@ Standings: Approved 0; Rejected 0.
 
 Approved and Rejected are tied.
 
-Modeled change probability: <0.1%. Reliability: 31/100 (Low). Exposure band: Very Low. The configured final-ballot forecast leaves no estimated decision votes.
+Modeled change probability: <0.1%. Reliability: 36/100 (Low). Exposure band: Very Low. The configured final-ballot forecast leaves no estimated decision votes.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 0 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: small decision-vote pool.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 0 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: small decision-vote pool.
 
-Margin history: 2026-08-07T01:18 +0; 2026-08-08T00:18 +0.
+Margin history: 2026-08-07T01:18 +0; 2026-08-08T00:18 +0; 2026-10-14T11:00 +0.
 
 ## Snoqualmie Pass Fire & Rescue Intent to Continue Voter Authorized Benefit Charge
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 177. Valid votes: 175.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 210. Valid votes: 206.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Yes 142; No 33.
+Standings: Yes 161; No 45.
 
 ### Winner
 
-Yes leads No by 109 votes.
+Yes leads No by 116 votes.
 
-Modeled change probability: <0.1%. Reliability: 40/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 35 estimated remaining decision votes; the change side needs 208.6%.
+Modeled change probability: <0.1%. Reliability: 45/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 22 estimated remaining decision votes; the change side needs 318.2%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 175 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: small decision-vote pool.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 206 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: small decision-vote pool.
 
-Latest comparable batch: No received 0.00% of 4 decision votes.
+Latest comparable batch: No received 38.71% of 31 decision votes.
 
-Margin history: 2026-08-07T01:18 +105; 2026-08-08T00:18 +109.
+Margin history: 2026-08-07T01:18 +105; 2026-08-08T00:18 +109; 2026-10-14T11:00 +116.
 
 ## Hospital District 304, Proposition No. 1
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 10,620. Valid votes: 10,012.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 13,679. Valid votes: 12,887.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Rejected 5,489; Approved 4,523.
+Standings: Rejected 7,034; Approved 5,853.
 
 ### Winner
 
-Rejected leads Approved by 966 votes.
+Rejected leads Approved by 1,181 votes.
 
-Modeled change probability: <0.1%. Reliability: 57/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,989 estimated remaining decision votes; the change side needs 74.3%.
+Modeled change probability: <0.1%. Reliability: 62/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 1,375 estimated remaining decision votes; the change side needs 93.0%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 10,012 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 12,887 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Approved received 44.90% of 2,802 decision votes.
+Latest comparable batch: Approved received 46.26% of 2,875 decision votes.
 
-Margin history: 2026-08-07T01:18 +680; 2026-08-08T00:18 +966.
+Margin history: 2026-08-07T01:18 +680; 2026-08-08T00:18 +966; 2026-10-14T11:00 +1,181.
 
 ## Seattle City Council District No. 5 (Vote for 1)
 
@@ -2414,97 +2462,97 @@ Margin history: 2026-08-06T16:00 +5,427.
 
 ## Proposition No. 1 -Darrington School District
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 1,240. Valid votes: 1,230.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 1,259. Valid votes: 1,249.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Levy Yes 854; Levy No 376.
+Standings: Levy Yes 873; Levy No 376.
 
 No modeled decision boundary: the race is uncontested, ignored by configuration, or has no more candidates than available top-two positions.
 
 ## Proposition No. 1 - Sno - Isle Library District
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 188,438. Valid votes: 181,735.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 189,411. Valid votes: 182,634.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Yes 104,270; No 77,465.
+Standings: Yes 104,824; No 77,810.
 
 ### Winner
 
-Yes leads No by 26,805 votes.
+Yes leads No by 27,014 votes.
 
-Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 36,107 estimated remaining decision votes; the change side needs 87.1%.
+Modeled change probability: <0.1%. Reliability: 66/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 19,481 estimated remaining decision votes; the change side needs 119.3%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 181,735 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 182,634 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: No received 42.70% of 8,463 decision votes.
+Latest comparable batch: No received 38.38% of 899 decision votes.
 
-Margin history: 2026-08-07T01:18 +25,570; 2026-08-08T00:18 +26,805.
+Margin history: 2026-08-07T01:18 +25,570; 2026-08-08T00:18 +26,805; 2026-10-14T11:00 +27,014.
 
 ## Proposition No. 1 Renewal of One-Year Special Levy
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 4,367. Valid votes: 4,230.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 4,634. Valid votes: 4,474.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Approved 2,737; Rejected 1,493.
+Standings: Approved 2,898; Rejected 1,576.
 
 ### Winner
 
-Approved leads Rejected by 1,244 votes.
+Approved leads Rejected by 1,322 votes.
 
-Modeled change probability: <0.1%. Reliability: 56/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 841 estimated remaining decision votes; the change side needs 124.0%.
+Modeled change probability: <0.1%. Reliability: 61/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 477 estimated remaining decision votes; the change side needs 188.7%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 4,230 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 4,474 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters.
 
-Latest comparable batch: Rejected received 34.80% of 1,589 decision votes.
+Latest comparable batch: Rejected received 34.02% of 244 decision votes.
 
-Margin history: 2026-08-07T01:18 +761; 2026-08-08T00:18 +1,244.
+Margin history: 2026-08-07T01:18 +761; 2026-08-08T00:18 +1,244; 2026-10-14T11:00 +1,322.
 
 ## Proposition No. 1 Emergency Medical Services Property Tax Levy
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 735. Valid votes: 719.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 814. Valid votes: 789.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Yes 495; No 224.
+Standings: Yes 548; No 241.
 
 ### Winner
 
-Yes leads No by 271 votes.
+Yes leads No by 307 votes.
 
-Modeled change probability: <0.1%. Reliability: 47/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 143 estimated remaining decision votes; the change side needs 145.5%.
+Modeled change probability: <0.1%. Reliability: 53/100 (Moderate). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 84 estimated remaining decision votes; the change side needs 233.3%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 719 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: limited decision-vote pool.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 789 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: limited decision-vote pool.
 
-Latest comparable batch: No received 32.76% of 290 decision votes.
+Latest comparable batch: No received 24.29% of 70 decision votes.
 
-Margin history: 2026-08-07T01:18 +171; 2026-08-08T00:18 +271.
+Margin history: 2026-08-07T01:18 +171; 2026-08-08T00:18 +271; 2026-10-14T11:00 +307.
 
 ## Two Year Maintenance and Operation Levy for Pool
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 345. Valid votes: 338.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 378. Valid votes: 371.
 
 Scope: This source is treated as controlling for the reported contest.
 
-Standings: Yes 220; No 118.
+Standings: Yes 245; No 126.
 
 ### Winner
 
-Yes leads No by 102 votes.
+Yes leads No by 119 votes.
 
-Modeled change probability: <0.1%. Reliability: 41/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 68 estimated remaining decision votes; the change side needs 126.5%.
+Modeled change probability: <0.1%. Reliability: 46/100 (Low). Exposure band: Very Low. The tempered beta-binomial model estimates a 0.0% chance of change across 39 estimated remaining decision votes; the change side needs 205.1%.
 
-Reliability basis: Forecast evidence 45/100; 2 compatible snapshot(s); 338 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: small decision-vote pool.
+Reliability basis: Forecast evidence 45/100; 3 compatible snapshot(s); 371 observed decision votes. Basis: Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters. Adjustments: small decision-vote pool.
 
-Latest comparable batch: No received 32.08% of 106 decision votes.
+Latest comparable batch: No received 24.24% of 33 decision votes.
 
-Margin history: 2026-08-07T01:18 +64; 2026-08-08T00:18 +102.
+Margin history: 2026-08-07T01:18 +64; 2026-08-08T00:18 +102; 2026-10-14T11:00 +119.
 
 ## Renewal and Increase of Emergency Medical Services Levy
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 0. Valid votes: 0.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 0. Valid votes: 0.
 
 Scope: This source is treated as controlling for the reported contest.
 
@@ -2514,7 +2562,7 @@ No modeled decision boundary: the race is uncontested, ignored by configuration,
 
 ## Emergency Medical Services Property Tax Levy
 
-Source: Washington State (washington), snapshot 2026-08-08T00:18. Ballots with contest: 0. Valid votes: 0.
+Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 0. Valid votes: 0.
 
 Scope: This source is treated as controlling for the reported contest.
 
