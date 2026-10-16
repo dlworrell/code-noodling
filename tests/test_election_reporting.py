@@ -5,6 +5,7 @@ import plistlib
 import tempfile
 import unittest
 import zipfile
+from unittest import mock
 from pathlib import Path
 from xml.sax.saxutils import escape
 
@@ -31,7 +32,11 @@ def result_rows(contest: str, contest_id: str, ballots: int, choices: list[tuple
     return HEADER + "\n".join(lines) + "\n"
 
 
-def write_summary_xlsx(path: Path, reported_ballots: int = 100) -> None:
+def write_summary_xlsx(
+    path: Path,
+    reported_ballots: int = 100,
+    extra_members: dict[str, str] | None = None,
+) -> None:
     rows = [
         ["Office Name", "Contest ID", "Ballot Name", "Choice ID", "Party", "Total"],
         [
@@ -87,6 +92,8 @@ def write_summary_xlsx(path: Path, reported_ballots: int = 100) -> None:
         archive.writestr("xl/workbook.xml", workbook)
         archive.writestr("xl/_rels/workbook.xml.rels", relationships)
         archive.writestr("xl/worksheets/sheet1.xml", worksheet)
+        for name, payload in (extra_members or {}).items():
+            archive.writestr(name, payload)
 
 
 class ElectionReportingTests(unittest.TestCase):
@@ -136,6 +143,31 @@ class ElectionReportingTests(unittest.TestCase):
                 [(choice.name, choice.votes) for choice in contest.choices],
                 [("First", 50), ("Second", 25), ("Third", 24)],
             )
+
+    def test_unread_precinct_sheet_does_not_count_toward_size_limit(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "2026-08-07-statewide.xlsx"
+            write_summary_xlsx(
+                path,
+                extra_members={"xl/worksheets/sheet2.xml": "<x/>" * 20_000},
+            )
+            with mock.patch(
+                "election_reporting.ingest.MAX_XLSX_UNCOMPRESSED_BYTES", 16_384
+            ):
+                snapshot = read_snapshot(path, "washington")
+            self.assertEqual(snapshot.contests["us-house:8"].ballots, 100)
+
+    def test_oversized_summary_sheet_is_still_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "2026-08-07-statewide.xlsx"
+            write_summary_xlsx(path)
+            with mock.patch(
+                "election_reporting.ingest.MAX_XLSX_UNCOMPRESSED_BYTES", 512
+            ):
+                with self.assertRaisesRegex(
+                    ElectionReportError, "uncompressed XLSX safety limit"
+                ):
+                    read_snapshot(path, "washington")
 
     def test_statewide_xlsx_reconciles_underreported_ballots(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
