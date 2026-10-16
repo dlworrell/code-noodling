@@ -17,11 +17,11 @@ flags=(-std=c11 "$optimization" -fno-lto -fPIC -Wall -Wextra)
 "$compiler" "${flags[@]}" -c crypto_montgomery_ct.c -o "$artifact_dir/candidate.o"
 objdump -drwC "$artifact_dir/candidate.o" > "$artifact_dir/candidate.asm"
 "$compiler" -shared "$artifact_dir/candidate.o" -o "$artifact_dir/libct.so"
-CT_LIBRARY="$artifact_dir/libct.so" python3 test_montgomery_ct.py > "$artifact_dir/oracle.log" 2>&1
-"$compiler" "${flags[@]}" -DCT_TAINT_TEST test_montgomery_ct.c "$artifact_dir/candidate.o" -o "$artifact_dir/taint"
+CT_LIBRARY="$artifact_dir/libct.so" python3 tests/test_montgomery_ct.py > "$artifact_dir/oracle.log" 2>&1
+"$compiler" "${flags[@]}" -I. -DCT_TAINT_TEST tests/test_montgomery_ct.c "$artifact_dir/candidate.o" -o "$artifact_dir/taint"
 valgrind --tool=memcheck --error-exitcode=99 --track-origins=yes \
   "$artifact_dir/taint" > "$artifact_dir/taint.log" 2>&1
-"$compiler" "${flags[@]}" -DCT_TAINT_TEST -DCT_NEGATIVE_CONTROL test_montgomery_ct.c \
+"$compiler" "${flags[@]}" -I. -DCT_TAINT_TEST -DCT_NEGATIVE_CONTROL tests/test_montgomery_ct.c \
   "$artifact_dir/candidate.o" -o "$artifact_dir/negative-control"
 if valgrind --tool=memcheck --error-exitcode=99 "$artifact_dir/negative-control" \
     > "$artifact_dir/negative-control.log" 2>&1; then
@@ -35,7 +35,7 @@ else
   fi
 fi
 "$compiler" -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined \
-  -fno-sanitize-recover=all crypto_montgomery_ct.c test_montgomery_ct.c -o "$artifact_dir/sanitized"
+  -fno-sanitize-recover=all -I. crypto_montgomery_ct.c tests/test_montgomery_ct.c -o "$artifact_dir/sanitized"
 "$artifact_dir/sanitized" > "$artifact_dir/sanitizer.log" 2>&1
 sha256sum crypto_montgomery_ct.c crypto_montgomery_ct.h "$artifact_dir/candidate.o" \
   "$artifact_dir/libct.so" "$artifact_dir/taint" > "$artifact_dir/sha256.txt"

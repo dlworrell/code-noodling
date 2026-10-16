@@ -56,7 +56,7 @@ multiplication or transform intermediates are erased; see the arithmetic notes.
 
 `make -C crypto_pipeline bounds-sanitize` runs ASan/UBSan with recovery disabled,
 invalid input/count checks, boundary lengths, output sentinels, and selected
-mathematical regressions. `python3 crypto_pipeline/test_arithmetic.py` compares
+mathematical regressions. `python3 crypto_pipeline/tests/test_arithmetic.py` compares
 products/reductions/inverses with independent Python integers, including maximum
 sizes. GitHub CI runs these alongside clang-tidy and Valgrind smoke execution.
 These checks complement the per-call invariants; they are not exhaustive proofs.

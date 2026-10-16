@@ -17,17 +17,16 @@ jobs:
         optimization: [O2, O3]
     steps:
       - uses: actions/checkout@v4
+      # Logic lives in the crypto_pipeline scope (Catylist ADR-0004).
       - name: Install validation tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc clang valgrind binutils python3
+        run: crypto_pipeline/ci/constant_flow.sh install-tools
       - name: Timing runner failure-handling tests
-        run: python3 -m unittest discover -s crypto_pipeline -p test_timing_runner.py
+        run: crypto_pipeline/ci/constant_flow.sh timing-runner-tests
       - name: Oracle, taint analysis, negative control, and sanitizers
         env:
           CT_CC: ${{ matrix.compiler }}
           CT_OPT: -${{ matrix.optimization }}
-        run: ./crypto_pipeline/run_constant_flow.sh
+        run: crypto_pipeline/ci/constant_flow.sh constant-flow
       - name: Retain assembly, environment, binary hashes, and test evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -53,7 +52,7 @@ jobs:
           ref: dc269651fb2567e46755cfb2a13d3875592968b5
           path: crypto_pipeline/vendor/dudect
       - name: Diagnose timing with a fixed control matrix
-        run: python3 crypto_pipeline/run_timing_diagnosis.py --optimization ${{ matrix.optimization }} --limbs ${{ matrix.limbs }} --output build/ct-timing
+        run: crypto_pipeline/ci/constant_flow.sh timing --optimization ${{ matrix.optimization }} --limbs ${{ matrix.limbs }} --output build/ct-timing
       - name: Retain timing evidence
         if: always()
         uses: actions/upload-artifact@v4

@@ -171,7 +171,7 @@ not a substitute for this controlled-hardware step.
 
 ## Scoped formal verification work
 
-The [16-limb proof package](../../crypto_pipeline/proof/README.md) adds direct
+The [16-limb proof package](../../proof/README.md) adds direct
 CBMC memory/undefined-operation checks on the production C, a conservative
 source information-flow checker with deliberate-leak controls, and 14
 SMT-checked arithmetic lemmas. These are proof fragments and source checks,

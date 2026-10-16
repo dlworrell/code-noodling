@@ -10,7 +10,7 @@ U=c.c_uint64
 P=c.POINTER(U)
 class Context(c.Structure):
     _fields_=[('limbs',c.c_size_t),('inverse',U),('modulus',U*1024)]
-lib=c.CDLL(os.environ.get('CT_LIBRARY',str(Path(__file__).with_name('libcryptomult.so'))),use_errno=True)
+lib=c.CDLL(os.environ.get('CT_LIBRARY',str(Path(__file__).resolve().parent.parent / 'libcryptomult.so')),use_errno=True)
 lib.crypto_montgomery_ctx_init.argtypes=[c.POINTER(Context),P,c.c_size_t]
 lib.crypto_montgomery_ctx_init.restype=c.c_int
 lib.crypto_montgomery_mul_ct.argtypes=[P,c.c_size_t,P,c.c_size_t,P,c.c_size_t,c.POINTER(Context)]
