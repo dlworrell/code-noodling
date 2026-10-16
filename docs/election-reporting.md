@@ -28,9 +28,10 @@ election-data/
 └── input/
     ├── king-county/              dated county snapshots
     └── washington/               dated controlling aggregate snapshots
-election_reporting/               Python implementation
+election_reporting/               Python implementation (ci/ holds the CI publisher)
 reports/elections/                generated JSON, EDOM, human summaries, and EDT checks
 tests/test_election_reporting.py  parser, analysis, and publication tests
+tests/test_publish_reports.py     automation pull-request publisher tests
 ```
 
 ## Add an update
@@ -43,9 +44,50 @@ tests/test_election_reporting.py  parser, analysis, and publication tests
 5. Run the GitHub Actions workflow named `Election Result Reports`.
 
 The workflow tests the analyzer, checks out the pinned EDT revision, generates the
-report, validates the generated EDOM, uploads the complete report directory as a CI
-artifact, and—on a push or when requested during manual dispatch—commits changed
-reports back to the current branch.
+report, validates the generated EDOM, and uploads the complete report directory as a
+CI artifact. When the regenerated reports differ from the committed ones on the
+default branch, it opens (or updates) a pull request with them; see
+[Automated report publication](#automated-report-publication). Reports reach `main`
+only when that pull request is reviewed and merged.
+
+## Automated report publication
+
+ADR-0006 (AES-DEV-001-R003 and R005) forbids automation from pushing to the default
+branch and requires automation-produced commits to be GitHub-verified. The workflow
+therefore never runs `git push`. Its behavior depends on the triggering event:
+
+| Event | Behavior |
+| --- | --- |
+| `pull_request` | Tests, generates, and uploads the `election-result-reports` artifact. Nothing is committed. Stale committed reports produce a warning, not a failure. |
+| `push` to the default branch, `schedule`, or `workflow_dispatch` on the default branch with `commit_reports` | If the reports changed, a second job commits them to the workflow-owned branch `automation/election-reports` and opens or updates a pull request to the default branch. |
+| `push` to any other branch, or dispatch from another branch | Tests, generates, and uploads the artifact only. |
+| Reports unchanged | Nothing is published. |
+
+The publishing job runs `python -m election_reporting.ci.publish_reports`. It
+creates `automation/election-reports` from the analyzed commit (or force-resets it
+there; this branch belongs to the workflow, so do not push to it by hand) and writes
+the commit through the GraphQL `createCommitOnBranch` mutation with the workflow's
+`GITHUB_TOKEN`. GitHub signs those commits, so they show **Verified** and satisfy a
+`required_signatures` ruleset. If the branch already contains exactly the same
+reports on top of the same commit, no new commit is made.
+
+The commit and pull request title omit `[skip ci]` so the pull request's checks are
+not suppressed. Note that GitHub does not start new workflow runs for events created
+with `GITHUB_TOKEN`, so checks on the automation pull request do not start on their
+own: a maintainer can start them by closing and reopening the pull request (or by
+pushing a commit to it). Merging it does not retrigger report generation, because
+`reports/elections/**` is not in the workflow's `push` path filter.
+
+Permissions are least privilege: the workflow default is `contents: read`; only the
+publishing job receives `contents: write` and `pull-requests: write`. The workflow
+never uses `pull_request_target`.
+
+> **Maintainer setting required.** The pull-request step only works when a repository
+> administrator enables **Settings → Actions → General → Workflow permissions →
+> "Allow GitHub Actions to create and approve pull requests"**. Without it, the
+> verified commit still lands on `automation/election-reports`, but the job fails
+> with a message naming this setting; open the pull request from that branch by hand
+> or enable the setting and re-run the workflow.
 
 ## Run locally
 
@@ -53,7 +95,7 @@ Python 3.11 or newer and EDT are required. From adjacent checkouts:
 
 ```bash
 PYTHONPATH=".:../engineering-docs-toolkit" \
-  python -m unittest discover -s tests -p 'test_election_reporting.py' -v
+  python -m unittest discover -s tests -v
 
 PYTHONPATH=".:../engineering-docs-toolkit" \
   python -m election_reporting \

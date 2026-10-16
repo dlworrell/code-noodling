@@ -62,7 +62,7 @@ section.
 | Cryptographic Wrapper Validation Pipeline | `crypto_pipeline/`: build, clang-tidy, Valgrind, sanitizers, differential tests |
 | Montgomery Constant-Flow Candidate | `crypto_pipeline/`: oracle, taint, negative control, timing (manual) |
 | Montgomery Scoped Formal Checks | `crypto_pipeline/proof/`: source checks, lemmas, CBMC contracts |
-| Election Result Reports | election data and reporting code |
+| Election Result Reports | election data and reporting code; report updates arrive as a verified automation pull request |
 | AES-SEC-001 Governance | repository-wide C/C++ secure-coding scan |
 
 ## Engineering Governance
