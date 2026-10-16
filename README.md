@@ -18,8 +18,9 @@ detailed documentation in its own directory.
 code-noodling/
 ├── README.md
 ├── .clang-tidy              repository C/C++ static-analysis policy
+├── aes-manifest.yaml        repository manifest and governed project scopes
 ├── .github/                 workflows and contribution templates
-├── crypto_pipeline/         integer multiplication experiments
+├── crypto_pipeline/         integer multiplication experiments (governed scope)
 ├── docs/                    engineering standards and election docs
 ├── election-data/           election configuration and source snapshots
 ├── election_reporting/      election-analysis Python package
@@ -58,7 +59,9 @@ section.
 | Dice Autotools | `prime-number-suite/dice/`: build, `make check`, `make distcheck` |
 | Prime Suite | rest of `prime-number-suite/`: CPU build and tests, CUDA 11.4 `sm_37` compile (required), CUDA 12 compile (informational) |
 | K80 Hardware Check | manual only, on a self-hosted K80 runner |
-| Cryptographic Wrapper Validation Pipeline | `crypto_pipeline/` |
+| Cryptographic Wrapper Validation Pipeline | `crypto_pipeline/`: build, clang-tidy, Valgrind, sanitizers, differential tests |
+| Montgomery Constant-Flow Candidate | `crypto_pipeline/`: oracle, taint, negative control, timing (manual) |
+| Montgomery Scoped Formal Checks | `crypto_pipeline/proof/`: source checks, lemmas, CBMC contracts |
 | Election Result Reports | election data and reporting code |
 | AES-SEC-001 Governance | repository-wide C/C++ secure-coding scan |
 
@@ -66,6 +69,19 @@ section.
 
 C and C++ changes inherit the AES-SEC-001 secure-coding profile. The profile,
 review dispositions, and waiver log are in [`docs/engineering/`](docs/engineering/).
+
+[`aes-manifest.yaml`](aes-manifest.yaml) declares governed project scopes
+(Catylist ADR-0004). Each scope keeps its own `README.md`, `ci/` scripts,
+`tests/` and adoption evidence under `<scope>/docs/engineering/`; the root
+workflows only choose triggers and call the scope's `ci/` scripts.
+
+| Scope | Path | Adoption evidence |
+|---|---|---|
+| crypto-pipeline | [`crypto_pipeline/`](crypto_pipeline/) | [`crypto_pipeline/docs/engineering/`](crypto_pipeline/docs/engineering/) |
+
+Everything else is the repository-level remainder until it is migrated. Until
+AEMS can scan scopes separately, the repository-wide AES-SEC-001 scan and
+ledger stay authoritative for every file.
 
 ---
 

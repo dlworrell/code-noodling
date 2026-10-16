@@ -9,6 +9,19 @@ algorithms and their practical crossover costs.
 Python integers, but no API is certified constant-time or side-channel resistant.
 Legacy `secure_`, `ct_`, and `is_constant_time` names do not establish those properties.
 
+## Scope layout
+
+This directory is the `crypto-pipeline` governed project scope declared in the
+repository's [`aes-manifest.yaml`](../aes-manifest.yaml) (Catylist ADR-0004).
+
+| Path | Contents |
+|---|---|
+| `*.c`, `*.h`, `*.py`, `makefile`, `run_*.sh` | Sources, harnesses and build |
+| [`tests/`](tests/) | C and Python tests |
+| [`proof/`](proof/) | Scoped formal checks |
+| [`ci/`](ci/) | Logic called by the root crypto workflows |
+| [`docs/engineering/`](docs/engineering/) | AES-SEC-001 profile, waivers, review ledger, engineering notes and [evidence](docs/engineering/evidence/) |
+
 ## Implemented algorithms
 
 - Comba: base-2^64 column multiplication with a three-limb accumulator.

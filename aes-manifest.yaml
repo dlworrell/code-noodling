@@ -1,0 +1,45 @@
+# Repository manifest (AES-003). Governance: dlworrell/Catylist.
+schema_version: 1
+repository:
+  name: code-noodling
+  full_name: dlworrell/code-noodling
+  ownership: project-owned
+  class: experimental
+  role: experimental-and-exploratory-engineering
+  lifecycle: active
+  default_branch: main
+  issue_tracker: https://github.com/dlworrell/code-noodling/issues
+  classification_authority: dlworrell/Catylist docs/adr/ADR-0001-catalyst-repository-tree.md
+authority:
+  documentation: local
+  engineering_paths:
+    - docs/engineering
+standards:
+  security:
+    id: AES-SEC-001
+    applicability: applicable
+    profile: docs/engineering/SECURE-C-CXX.md
+    waiver_log: docs/engineering/AES-SEC-001-waivers.md
+    review_dispositions: docs/engineering/AES-SEC-001-review-dispositions.json
+relationships:
+  governance_repository: dlworrell/Catylist
+  standards_repository: dlworrell/AES
+  enforcement_repository: dlworrell/AEMS
+
+# Governed project scopes (Catylist ADR-0004, AES-003 0.2.0). Every governed
+# file belongs to exactly one scope or to the repository-level remainder.
+# Further projects stay in the remainder until each is migrated in its own
+# change (dlworrell/Catylist#28).
+scopes:
+  - id: crypto-pipeline
+    path: crypto_pipeline/
+    owner: dlworrell
+    class: experimental
+    lifecycle: active
+    standards:
+      - id: AES-SEC-001
+        applicability: applicable
+        evidence:
+          profile: crypto_pipeline/docs/engineering/SECURE-C-CXX.md
+          waiver_log: crypto_pipeline/docs/engineering/AES-SEC-001-waivers.md
+          review_dispositions: crypto_pipeline/docs/engineering/AES-SEC-001-review-dispositions.json
