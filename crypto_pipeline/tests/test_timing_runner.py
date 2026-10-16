@@ -10,7 +10,8 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-import run_timing_diagnosis as runner
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+import run_timing_diagnosis as runner  # noqa: E402
 
 
 class RunnerTests(unittest.TestCase):

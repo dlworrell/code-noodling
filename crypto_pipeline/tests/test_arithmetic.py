@@ -4,12 +4,15 @@ import errno
 import math
 from pathlib import Path
 import random
+import sys
 import unittest
 
 U = c.c_uint64
 P = c.POINTER(U)
 MASK = (1 << 64) - 1
-LIB = c.CDLL(str(Path(__file__).with_name('libcryptomult.so')), use_errno=True)
+SCOPE_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(SCOPE_ROOT))  # linking_ctypes lives in the scope root
+LIB = c.CDLL(str(SCOPE_ROOT / 'libcryptomult.so'), use_errno=True)
 for name in ('secure_comba_multiply', 'karatsuba_multiply', 'ntt_polynomial_multiply',
              'ct_mod_inverse_multiprecision', 'crypto_mod_inverse'):
     f = getattr(LIB, name)

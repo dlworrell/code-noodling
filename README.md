@@ -94,7 +94,7 @@ Inputs are 1 to 1024 little-endian 64-bit limbs. A ctypes binding is in
 cd crypto_pipeline
 make clean && make shared all
 ./test_suite                 # functional smoke test
-python3 test_arithmetic.py   # differential tests against Python integers
+python3 tests/test_arithmetic.py   # differential tests against Python integers
 make bounds-sanitize         # boundary tests under ASan/UBSan
 python3 benchmark_multiply.py
 ```

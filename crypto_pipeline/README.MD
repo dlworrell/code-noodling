@@ -36,7 +36,7 @@ Run from `crypto_pipeline/` on Linux with GCC or Clang and Python 3:
 make clean
 make shared all
 ./test_suite
-python3 test_arithmetic.py
+python3 tests/test_arithmetic.py
 make bounds-sanitize
 python3 benchmark_multiply.py
 ```

@@ -24,7 +24,7 @@ jobs:
 
     - name: Step 1 - Static Analysis (Clang-Tidy)
       run: |
-        clang-tidy crypto_multiplier.c crypto_montgomery_ct.c test_montgomery_ct.c test_suite.c test_bounds.c -- -std=c11
+        clang-tidy crypto_multiplier.c crypto_montgomery_ct.c tests/test_montgomery_ct.c tests/test_suite.c tests/test_bounds.c -- -std=c11 -I.
 
     - name: Step 2 - Compile Binary Targets via Makefile
       run: |
@@ -48,5 +48,5 @@ jobs:
 
     - name: Differential arithmetic tests against Python integers
       run: |
-        python3 test_arithmetic.py
-        python3 test_montgomery_ct.py
+        python3 tests/test_arithmetic.py
+        python3 tests/test_montgomery_ct.py
