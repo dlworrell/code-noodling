@@ -9,7 +9,7 @@ detailed documentation in its own directory.
 | Codebase | Location | Purpose | Documentation |
 |---|---|---|---|
 | Prime Number and Dice Suite | [`prime-number-suite/`](prime-number-suite/) | CPU and multi-GPU (Tesla K80) prime sieves, an unbiased prime-seeded dice engine, and PhysX/Maya dice experiments | [`prime-number-suite/README.md`](prime-number-suite/README.md) |
-| Crypto Pipeline | [`crypto_pipeline/`](crypto_pipeline/) | Multi-precision integer multiplication experiments (research prototype) | [`crypto_pipeline/README.MD`](crypto_pipeline/README.MD) |
+| Crypto Pipeline | [`crypto_pipeline/`](crypto_pipeline/) | Multi-precision integer multiplication experiments (research prototype) | [`crypto_pipeline/README.md`](crypto_pipeline/README.md) |
 | Election Result Reporting | [`election_reporting/`](election_reporting/), [`election-data/`](election-data/) | Washington election snapshot comparison and change-probability reports | [`docs/election-reporting.md`](docs/election-reporting.md) |
 
 ## Repository Layout
@@ -109,7 +109,7 @@ A separate Montgomery constant-flow candidate is under review in PR #9. It is
 threshold. The scoped formal-verification scripts in `crypto_pipeline/proof/`
 target that candidate. They become runnable once PR #9 lands.
 
-See the [crypto pipeline README](crypto_pipeline/README.MD),
+See the [crypto pipeline README](crypto_pipeline/README.md),
 [mathematical notes](crypto_pipeline/docs/engineering/CRYPTO-ARITHMETIC.md) and
 [memory review](crypto_pipeline/docs/engineering/CRYPTO-MEMORY-REVIEW.md).
 
