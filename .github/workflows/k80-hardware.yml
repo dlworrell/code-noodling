@@ -1,63 +1,19 @@
 name: K80 Hardware Check
 
-# Inert until a self-hosted runner labeled `k80` is registered on the Tesla K80
-# machine (see prime-number-suite/README.md). Manual dispatch only: never add
-# push or pull_request triggers, because jobs from untrusted pull requests
-# must not run on self-hosted hardware.
+# This public repository must never have access to a lab self-hosted runner.
+# See docs/engineering/HARDWARE_EXECUTION_SECURITY.md.
 on:
   workflow_dispatch:
-    inputs:
-      limit:
-        description: Upper bound N for the prime comparison (primes <= N)
-        required: true
-        default: "10000000"
-      gpus:
-        description: Number of CUDA devices to use (a K80 board exposes 2)
-        required: true
-        default: "8"
 
 permissions:
   contents: read
 
 jobs:
-  sm37-sieve:
-    runs-on: [self-hosted, k80]
-    timeout-minutes: 30
+  hardware-unavailable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Report GPU and toolchain
+      - name: Hardware validation requires local operator execution
         run: |
-          nvidia-smi
-          nvcc --version
-          cmake --version
-
-      - name: Build sm_37 sieve and CPU reference
-        run: |
-          cmake -S prime-number-suite -B build-k80 \
-            -DBUILD_CUDA_SIEVE_MGPU=ON \
-            -DBUILD_PHYSX_DICE=OFF \
-            -DBUILD_TESTING=OFF \
-            -DCMAKE_CUDA_ARCHITECTURES=37 \
-            -DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets
-          cmake --build build-k80 --target cuda_sieve_mgpu ose_cpu --parallel
-
-      - name: Compare GPU primes against the CPU sieve
-        env:
-          LIMIT: ${{ inputs.limit }}
-          GPUS: ${{ inputs.gpus }}
-        run: |
-          ./build-k80/cuda_sieve_mgpu "$LIMIT" --gpus "$GPUS" --json gpu.json
-          ./build-k80/ose_cpu 1 "$LIMIT" --json cpu.json --no-list
-          python3 - <<'EOF'
-          import json
-          gpu = json.load(open("gpu.json"))["primes"]
-          cpu = json.load(open("cpu.json"))["primes"]
-          print(f"GPU primes: {len(gpu)}  CPU primes: {len(cpu)}")
-          if gpu != cpu:
-              first = next((i for i, (a, b) in enumerate(zip(gpu, cpu)) if a != b),
-                           min(len(gpu), len(cpu)))
-              raise SystemExit(f"Mismatch at index {first}")
-          print("GPU and CPU prime lists match.")
-          EOF
+          echo "::error::Public-repository lab execution is prohibited. Use the documented local validation procedure."
+          exit 1
