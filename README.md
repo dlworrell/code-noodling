@@ -58,7 +58,7 @@ section.
 |---|---|
 | Dice Autotools | `prime-number-suite/dice/`: build, `make check`, `make distcheck` |
 | Prime Suite | rest of `prime-number-suite/`: CPU build and tests, CUDA 11.4 `sm_37` compile (required), CUDA 12 compile (informational) |
-| K80 Hardware Check | manual only, on a self-hosted K80 runner |
+| K80 Hardware Check | blocked on GitHub-hosted infrastructure; use [local hardware validation](docs/engineering/HARDWARE_EXECUTION_SECURITY.md) |
 | Cryptographic Wrapper Validation Pipeline | `crypto_pipeline/`: build, clang-tidy, Valgrind, sanitizers, differential tests |
 | Montgomery Constant-Flow Candidate | `crypto_pipeline/`: oracle, taint, negative control, timing (manual) |
 | Montgomery Scoped Formal Checks | `crypto_pipeline/proof/`: source checks, lemmas, CBMC contracts |

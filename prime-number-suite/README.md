@@ -144,7 +144,7 @@ first to watch live):
 |---|---|---|
 | [`dice-autotools.yml`](../.github/workflows/dice-autotools.yml) | changes to `dice/` | `autoreconf`, `configure`, `make`, `make check`, `make distcheck` |
 | [`prime-suite.yml`](../.github/workflows/prime-suite.yml) | changes to this suite outside `dice/` | CPU build and CTest (also with ASan/UBSan); CUDA compile-only builds |
-| [`k80-hardware.yml`](../.github/workflows/k80-hardware.yml) | manual only | sm_37 build and GPU-vs-CPU prime comparison on a self-hosted K80 runner |
+| [`k80-hardware.yml`](../.github/workflows/k80-hardware.yml) | manual only, blocked | directs operators to local validation; never selects lab hardware |
 
 The CUDA job in `prime-suite.yml` has two compile-only builds, because hosted
 runners have no GPU:
@@ -173,36 +173,15 @@ a hard requirement: do not drop `sm_37` or require CUDA 12.
 - **Warnings:** CUDA 11.x warns that `sm_37` is deprecated. CI passes
   `-Wno-deprecated-gpu-targets` to silence it.
 
-## Self-hosted K80 runner
+## Local K80 hardware validation
 
-`k80-hardware.yml` stays inert until a runner labeled `k80` is registered on
-the K80 machine. To set one up:
+Do not enroll the K80 machine as a runner for this public repository. Fork PRs
+can add their own workflows; manual triggers on the existing workflow do not
+isolate the lab. The public hardware workflow fails explicitly on a hosted runner.
 
-1. Install the NVIDIA 470 driver, the CUDA 11.4 toolkit, GCC 10 or older,
-   CMake 3.20 or newer, `git`, and Python 3. Confirm that `nvidia-smi` lists
-   8 devices and that `nvcc --version` reports 11.4.
-2. On GitHub, open the repository's **Settings → Actions → Runners → New
-   self-hosted runner** and choose Linux x64. Follow the download steps shown
-   there, then register the runner with the extra label `k80`:
-
-   ```bash
-   ./config.sh --url https://github.com/dlworrell/code-noodling \
-     --token <TOKEN-FROM-THAT-PAGE> --labels k80
-   ```
-
-3. Install and start it as a service so it survives reboots:
-
-   ```bash
-   sudo ./svc.sh install
-   sudo ./svc.sh start
-   ```
-
-4. Run the workflow from **Actions → K80 Hardware Check → Run workflow**. It
-   builds `cuda_sieve_mgpu` for `sm_37`, sieves up to the requested limit on
-   the selected GPUs, and checks that the primes match `ose_cpu`.
-
-The workflow is `workflow_dispatch` only. Do not add `push` or `pull_request`
-triggers: jobs from pull requests must never run on self-hosted hardware.
+See [Hardware execution security](../docs/engineering/HARDWARE_EXECUTION_SECURITY.md)
+for the local build and GPU-vs-CPU comparison procedure and the required private
+control boundary before any future automated enrollment.
 
 ## Notes
 
