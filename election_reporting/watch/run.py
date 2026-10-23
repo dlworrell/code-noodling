@@ -13,7 +13,7 @@ from . import csvformat, sources
 from .config import WatchConfig
 from .http import Fetch
 from .schedule import Window, certification_date, election_kind, is_due, watch_window
-from .store import ElectionStore, SnapshotRecord, gzip_bytes, sha256
+from .store import SOURCES_FILE, ElectionStore, SnapshotRecord, gzip_bytes, sha256
 
 STATE_PRIORITY = 100
 COUNTY_PRIORITY = 10
@@ -325,27 +325,31 @@ def carry_forward(source_root: Path, target_root: Path, log: Callable[[str], Non
     copied = 0
     if not source_root.is_dir():
         return 0
-    for source_dir in sorted(p for p in source_root.iterdir() if p.is_dir()):
+    # Election directories are <state>/<date>/; find them by their records.
+    for source_dir in sorted(path.parent for path in source_root.rglob(SOURCES_FILE)):
+        relative = source_dir.relative_to(source_root)
+        if ".." in relative.parts:
+            continue
         carried = ElectionStore(source_dir)
         if not carried.records:
             continue
-        target = ElectionStore(target_root / source_dir.name)
+        target = ElectionStore(target_root / relative)
         before = copied
         if not target.election:
             target.election = carried.election
         for record in carried.records:
             if target.has_snapshot(record.place, record.snapshot):
                 continue
-            for relative, digest in ((record.input, record.input_sha256), (record.raw, record.raw_sha256)):
-                if not relative:
+            for stored, digest in ((record.input, record.input_sha256), (record.raw, record.raw_sha256)):
+                if not stored:
                     continue
-                data = (source_dir / relative).read_bytes()
+                data = (source_dir / stored).read_bytes()
                 if sha256(data) != digest:
-                    raise ElectionReportError(f"{source_dir / relative} does not match its recorded SHA-256")
-                target.write_file(relative, data)
+                    raise ElectionReportError(f"{source_dir / stored} does not match its recorded SHA-256")
+                target.write_file(stored, data)
             target.add(record)
             copied += 1
-            log(f"carried forward {source_dir.name} {record.place} {record.snapshot}")
+            log(f"carried forward {relative.as_posix()} {record.place} {record.snapshot}")
         if copied > before:
             target.save()
     return copied

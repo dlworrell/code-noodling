@@ -35,8 +35,8 @@ Add a standard-library Python subsystem that:
 Generated reports live under `reports/elections/`. Source exports live under
 `election-data/input/<source>/`. (Amended by
 [ADR-002](ADR-002-election-source-watcher.md): one directory per election,
-`election-data/elections/<election day>/input/<source>/`, and
-`reports/elections/<election day>/`.) The GitHub Actions workflow may commit regenerated
+`election-data/elections/<state>/<election day>/input/<source>/`, and
+`reports/elections/<state>/<election day>/`.) The GitHub Actions workflow may commit regenerated
 reports after a deliberate manual dispatch or a direct input-data push.
 
 ## Consequences

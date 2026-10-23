@@ -12,7 +12,7 @@ from election_reporting.config import load_config
 from election_reporting.ingest import read_snapshot
 from election_reporting.model import ElectionReportError, SourceConfig
 from election_reporting.watch import csvformat
-from election_reporting.watch.config import load_watch_config
+from election_reporting.watch.config import load_watch_settings
 from election_reporting.watch.http import Response, check_url
 from election_reporting.watch.run import carry_forward, fetch_snapshots
 from election_reporting.watch.schedule import is_due, watch_window
@@ -33,11 +33,15 @@ KC_FILE = (
 
 WATCH_TOML = """
 schema_version = 1
-[watch]
+[[watch]]
 state = "Washington"
 counties = ["King", "Pierce County"]
 election = "next"
 """
+
+
+def load_watch_config(path: Path):
+    return load_watch_settings(path).watches[0]
 
 
 def text(value: str) -> list[dict[str, str]]:
@@ -177,14 +181,23 @@ class WatchConfigTests(unittest.TestCase):
             self.assertEqual(config.counties, ("King", "Pierce County"))
             self.assertEqual(config.election_night_every_minutes, 30)
             self.assertEqual(config.every_minutes, 60)
-            self.assertEqual(config.elections_root, Path(directory) / "elections")
+            self.assertEqual(config.elections_root, Path(directory) / "elections" / "washington")
+            self.assertEqual(config.timezone.key, "America/Los_Angeles")
 
     def test_unsupported_state_is_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "watch.toml"
-            path.write_text('schema_version = 1\n[watch]\nstate = "Oregon"\n', encoding="utf-8")
-            with self.assertRaisesRegex(ElectionReportError, "watch.state"):
+            path.write_text('schema_version = 1\n[[watch]]\nstate = "Oregon"\n', encoding="utf-8")
+            with self.assertRaisesRegex(ElectionReportError, r"watch\[1\]\.state"):
                 load_watch_config(path)
+
+    def test_schedule_is_per_state_and_states_are_not_repeated(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = write_watch(Path(directory), '[watch.schedule]\nevery_minutes = 120\n')
+            self.assertEqual(load_watch_config(path).every_minutes, 120)
+            path.write_text(WATCH_TOML + WATCH_TOML.replace("schema_version = 1", ""), encoding="utf-8")
+            with self.assertRaisesRegex(ElectionReportError, "repeated: washington"):
+                load_watch_settings(path)
 
     def test_county_names_resolve_and_unknown_names_are_listed(self) -> None:
         places = resolve_places(jurisdiction(), "Washington", ("king", "Pierce County"), True)
@@ -286,7 +299,7 @@ class FetchTests(unittest.TestCase):
             result = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
             self.assertTrue(result.due)
             self.assertEqual(result.errors, [])
-            election = root / "elections" / "2026-11-03"
+            election = root / "elections" / "washington" / "2026-11-03"
             self.assertEqual(
                 sorted(str(p.relative_to(election)) for p in election.rglob("*") if p.is_file()),
                 [
@@ -359,7 +372,7 @@ class FetchTests(unittest.TestCase):
             self.assertIn("pierce-county: no votes reported yet", result.skipped)
             self.assertIn("washington: no votes reported yet", result.skipped)
             self.assertIn("king-county: no county results page yet", result.skipped)
-            election = root / "elections" / "2026-11-03"
+            election = root / "elections" / "washington" / "2026-11-03"
             self.assertTrue((election / "election.toml").exists())
             self.assertFalse((election / "SOURCES.json").exists())
 
@@ -385,13 +398,13 @@ class CarryForwardTests(unittest.TestCase):
                 config = load_watch_config(write_watch(target))
                 if target is pending:
                     fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
-            (main / "elections" / "2026-11-03").mkdir(parents=True)
-            edited = main / "elections" / "2026-11-03" / "election.toml"
+            (main / "elections" / "washington" / "2026-11-03").mkdir(parents=True)
+            edited = main / "elections" / "washington" / "2026-11-03" / "election.toml"
             edited.write_text("# hand edited\n", encoding="utf-8")
             copied = carry_forward(pending / "elections", main / "elections", log=lambda _: None)
             self.assertEqual(copied, 3)
             self.assertEqual(edited.read_text(encoding="utf-8"), "# hand edited\n")
-            self.assertEqual(len(ElectionStore(main / "elections" / "2026-11-03").records), 3)
+            self.assertEqual(len(ElectionStore(main / "elections" / "washington" / "2026-11-03").records), 3)
             self.assertEqual(carry_forward(pending / "elections", main / "elections", log=lambda _: None), 0)
 
     def test_tampered_snapshot_is_refused(self) -> None:

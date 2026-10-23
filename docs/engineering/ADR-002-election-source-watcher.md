@@ -22,8 +22,9 @@ Add a source watcher, `election_reporting.watch`, that acquires snapshots on a
 schedule and proposes them through a pull request. Builds still read only
 committed files.
 
-1. **Selection by name.** `election-data/watch.toml` names a state and counties.
-   The watcher resolves them against `results.votewa.gov`, picks the election
+1. **Selection by name.** `election-data/watch.toml` has one `[[watch]]` table per
+   state, naming the state, its counties and the state's schedule. A state may
+   appear only once. The watcher resolves them against `results.votewa.gov`, picks the election
    (`next` or a date), and derives the checking window from the statutory
    certification deadlines: every 30 minutes from polls closing until 02:00, then
    hourly until the last certification day ends.
@@ -31,11 +32,11 @@ committed files.
    `results.votewa.gov`, `kingcounty.gov` and `cdn.kingcounty.gov` over HTTPS. The
    state uses its `All Results Excel` report; King County uses its own nightly
    export, stored byte for byte; other counties use the results site's data API.
-3. **One election per directory.** `election-data/elections/<election day>/` holds
+3. **One election per directory.** `election-data/elections/<state>/<election day>/` holds
    `election.toml`, `input/` (plain-text CSV the analyzer reads), `raw/`
    (original downloads when they are not the input) and `SOURCES.json` (source URL,
    retrieval time, source timestamp and SHA-256 of every stored file). Reports go
-   to `reports/elections/<election day>/`.
+   to `reports/elections/<state>/<election day>/`.
 4. **One CSV layout.** Every non-county-export source is converted to the King
    County column layout plus optional contest overvote, undervote and county-span
    columns. Workbook conversion reuses the analyzer's own workbook parser, and a
@@ -63,7 +64,8 @@ committed files.
   counts, so those contests' denominators are vote totals.
 - Two watched counties' shares of a multi-county local contest are not summed;
   only the statewide source gives a combined total.
-- Another state needs its own source adapter.
+- Another state needs its own source adapter; the per-state directories and
+  `[[watch]]` tables mean adding one moves no existing data.
 - Maintainers merge snapshot pull requests during the window; merging is the human
   review step.
 

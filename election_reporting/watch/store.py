@@ -1,6 +1,6 @@
 """One election's acquired snapshots and their provenance record.
 
-Layout under ``election-data/elections/<YYYY-MM-DD>/``:
+Layout under ``election-data/elections/<state>/<YYYY-MM-DD>/``:
 
 - ``election.toml``: the analyzer configuration for this election;
 - ``input/<place>/<YYYY-MM-DD-HHMM>.csv``: plain-text CSV the analyzer reads;

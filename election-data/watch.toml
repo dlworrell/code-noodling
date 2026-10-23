@@ -1,8 +1,13 @@
 # Election source watcher: what to watch and when.
 # `python -m election_reporting.watch plan` shows what this resolves to.
+# One [[watch]] table per state; snapshots go to elections/<state>/<date>/.
 schema_version = 1
 
-[watch]
+[paths]
+# Relative to this file: election-data/elections/<state>/<YYYY-MM-DD>/
+elections = "elections"
+
+[[watch]]
 state = "Washington"
 # County names as on the Washington results site; "County" is optional.
 # King County and the counties bordering it.
@@ -10,12 +15,13 @@ counties = ["King", "Snohomish", "Pierce", "Kittitas", "Chelan"]
 # "next" is the soonest election whose checking window has not ended,
 # or set a date such as 2026-11-03.
 election = "next"
-timezone = "America/Los_Angeles"
+# Defaults to the state's own time zone (America/Los_Angeles).
+# timezone = "America/Los_Angeles"
 # Use King County's own nightly CSV export (with ballots, overvotes and
 # undervotes) instead of the state site's data for King County.
 prefer_county_files = true
 
-[schedule]
+[watch.schedule]
 # From polls closing on election day until the end of the last certification
 # day (state: 30 days after a general election, 17 after a primary).
 polls_close = "20:00"
@@ -25,7 +31,3 @@ every_minutes = 60
 # Optional fixed overrides:
 # start = 2026-11-03T20:00:00-08:00
 # end = 2026-12-04T00:00:00-08:00
-
-[paths]
-# Relative to this file: election-data/elections/<YYYY-MM-DD>/
-elections = "elections"

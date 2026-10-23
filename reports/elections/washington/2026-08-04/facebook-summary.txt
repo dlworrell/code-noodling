@@ -48,6 +48,6 @@ IMPORTANT
 These are conditional model estimates based on the remaining-ballot forecast and observed vote mix. Ballot batches are not random samples. This is not an official result, a race call, or a substitute for certification.
 
 Full race-by-race report and methodology:
-https://github.com/dlworrell/code-noodling/blob/main/reports/elections/2026-08-04/election-analysis.md
+https://github.com/dlworrell/code-noodling/blob/main/reports/elections/washington/2026-08-04/election-analysis.md
 
 #WashingtonElections #ElectionResults #ElectionData

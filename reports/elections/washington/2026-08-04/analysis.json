@@ -3,28 +3,28 @@
   "inputs": [
     {
       "contests": 151,
-      "path": "election-data/elections/2026-08-04/input/king-county/2026-08-06-1600.csv",
+      "path": "election-data/elections/washington/2026-08-04/input/king-county/2026-08-06-1600.csv",
       "sha256": "9a1572cc9655d088f2d36656867755f5268d8464d045f5f45d32c21d1406ec35",
       "source_id": "king-county",
       "timestamp": "2026-08-06T16:00"
     },
     {
       "contests": 75,
-      "path": "election-data/elections/2026-08-04/input/washington/2026-08-07-0118.csv",
+      "path": "election-data/elections/washington/2026-08-04/input/washington/2026-08-07-0118.csv",
       "sha256": "7a1112037e8edc7d9e1acb97dc63807a1c78c06b8dff7167d169a46d41d06c24",
       "source_id": "washington",
       "timestamp": "2026-08-07T01:18"
     },
     {
       "contests": 147,
-      "path": "election-data/elections/2026-08-04/input/washington/2026-08-08-0018.csv",
+      "path": "election-data/elections/washington/2026-08-04/input/washington/2026-08-08-0018.csv",
       "sha256": "18a0ff493c6b81339b615ff562961c6377b2aae83a45556c6fe0e0cf0266df03",
       "source_id": "washington",
       "timestamp": "2026-08-08T00:18"
     },
     {
       "contests": 147,
-      "path": "election-data/elections/2026-08-04/input/washington/2026-10-14-1100.csv",
+      "path": "election-data/elections/washington/2026-08-04/input/washington/2026-10-14-1100.csv",
       "sha256": "bdd7591803dc9ff69614d09a342ff27be3faa2281b4757e8034a0c1503edf3c1",
       "source_id": "washington",
       "timestamp": "2026-10-14T11:00"

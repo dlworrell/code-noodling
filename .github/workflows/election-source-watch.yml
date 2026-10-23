@@ -95,6 +95,9 @@ jobs:
         run: python -m election_reporting.watch fetch $FORCE
 
       - name: Publish verified commit and pull request
+        # Runs even when one state's fetch failed, so the other states'
+        # snapshots are still proposed.
+        if: ${{ !cancelled() }}
         env:
           GH_TOKEN: ${{ github.token }}
           PYTHONPATH: .

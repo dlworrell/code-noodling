@@ -19,13 +19,13 @@ def _parser() -> argparse.ArgumentParser:
         "--config",
         type=Path,
         required=True,
-        help="election configuration, e.g. election-data/elections/2026-08-04/election.toml",
+        help="election configuration, e.g. election-data/elections/washington/2026-08-04/election.toml",
     )
     parser.add_argument(
         "--output",
         type=Path,
         required=True,
-        help="generated report directory, e.g. reports/elections/2026-08-04",
+        help="generated report directory, e.g. reports/elections/washington/2026-08-04",
     )
     return parser
 

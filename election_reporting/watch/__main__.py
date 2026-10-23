@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Sequence
 
 from ..model import ElectionReportError
-from .config import load_watch_config
+from .config import load_watch_settings
 from .http import fetch as http_fetch
 from .run import carry_forward, fetch_snapshots, plan, write_election_config
 
@@ -36,40 +36,58 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--force", action="store_true", help="fetch even when not due")
     args = parser.parse_args(argv)
     try:
-        config = load_watch_config(args.config)
+        settings = load_watch_settings(args.config)
         now = _now(args.now)
         if args.command == "carry":
             if args.carry_from is None:
                 parser.error("carry needs --from")
-            count = carry_forward(args.carry_from, config.elections_root)
+            count = carry_forward(args.carry_from, settings.elections_root)
             print(f"carried forward {count} snapshot(s)")
             return 0
         if args.command == "plan":
-            election_plan = plan(config, http_fetch, now)
-            print(f"Election: {election_plan.election.day} {election_plan.election.name} ({election_plan.kind})")
-            for place in election_plan.places:
-                source = "King County export" if place.county_files else "results.votewa.gov"
-                print(f"  {place.place_id:<18} {place.name:<18} {place.scope:<6} {source}")
-            window = election_plan.window
-            print(
-                f"Window: {window.start:%Y-%m-%d %H:%M} to {window.end:%Y-%m-%d %H:%M}; "
-                f"every {config.election_night_every_minutes} min until "
-                f"{window.election_night_end:%Y-%m-%d %H:%M}, then every {config.every_minutes} min"
-            )
-            added = write_election_config(election_plan)
-            target = election_plan.directory / "election.toml"
-            print(f"{target}: " + (f"added {', '.join(added)}" if added else "up to date"))
+            for config in settings.watches:
+                _print_plan(config, plan(config, http_fetch, now))
             return 0
-        result = fetch_snapshots(config, http_fetch, now, force=args.force)
     except ElectionReportError as error:
         print(f"error: {error}", file=sys.stderr)
         return 1
+    added = 0
+    failed = False
+    for config in settings.watches:
+        print(f"== {config.state}")
+        try:
+            result = fetch_snapshots(config, http_fetch, now, force=args.force)
+        except ElectionReportError as error:
+            # One state's outage must not stop the others.
+            print(f"error: {config.state}: {error}", file=sys.stderr)
+            failed = True
+            continue
+        added += len(result.added)
+        if result.errors and not result.added and not result.skipped:
+            failed = True
     output = os.environ.get("GITHUB_OUTPUT")
     if output:
         with open(output, "a", encoding="utf-8") as handle:
-            handle.write(f"new_snapshots={len(result.added)}\n")
-    # Partial failures still publish what was fetched; fail only when nothing worked.
-    return 1 if result.errors and not result.added and not result.skipped else 0
+            handle.write(f"new_snapshots={added}\n")
+    # Partial failures still publish what was fetched; fail only when a state
+    # could not be checked at all.
+    return 1 if failed else 0
+
+
+def _print_plan(config, election_plan) -> None:
+    print(f"{config.state}: {election_plan.election.day} {election_plan.election.name} ({election_plan.kind})")
+    for place in election_plan.places:
+        source = "county export" if place.county_files else "results site"
+        print(f"  {place.place_id:<18} {place.name:<18} {place.scope:<6} {source}")
+    window = election_plan.window
+    print(
+        f"  Window: {window.start:%Y-%m-%d %H:%M} to {window.end:%Y-%m-%d %H:%M} {config.timezone.key}; "
+        f"every {config.election_night_every_minutes} min until "
+        f"{window.election_night_end:%Y-%m-%d %H:%M}, then every {config.every_minutes} min"
+    )
+    added = write_election_config(election_plan)
+    target = election_plan.directory / "election.toml"
+    print(f"  {target}: " + (f"added {', '.join(added)}" if added else "up to date"))
 
 
 if __name__ == "__main__":

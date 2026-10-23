@@ -86,15 +86,17 @@ jobs:
           PYTHONPATH: .:.tools/engineering-docs-toolkit
         shell: bash
         run: |
-          # One report directory per election: election-data/elections/<date>/
-          # builds into reports/elections/<date>/. An election without any
-          # snapshots yet (the watcher created only its election.toml) is skipped.
+          # One report directory per state and election:
+          # election-data/elections/<state>/<date>/ builds into
+          # reports/elections/<state>/<date>/. An election without any snapshots
+          # yet (the watcher created only its election.toml) is skipped.
           set -euo pipefail
           shopt -s nullglob
           built=0
-          for config in election-data/elections/*/election.toml; do
-            election="$(basename "$(dirname "$config")")"
-            if ! compgen -G "$(dirname "$config")/input/*/*" > /dev/null; then
+          for config in election-data/elections/*/*/election.toml; do
+            directory="$(dirname "$config")"
+            election="$(basename "$(dirname "$directory")")/$(basename "$directory")"
+            if ! compgen -G "$directory/input/*/*" > /dev/null; then
               echo "Skipping $election: no snapshots yet."
               continue
             fi

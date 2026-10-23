@@ -144,8 +144,8 @@ neighbors to start). From polls closing until certification, the **Election Sour
 Watch** workflow fetches each new official result snapshot, converts it to
 plain-text CSV, records its source and checksum, and opens a pull request. Merging it
 runs **Election Result Reports**, which uses the Engineering Documents Toolkit (EDT) to
-publish and validate each election's report under `reports/elections/<election day>/`.
-Snapshots can also be added by hand under `election-data/elections/<election day>/input/`.
+publish and validate each election's report under `reports/elections/<state>/<election day>/`.
+Snapshots can also be added by hand under `election-data/elections/<state>/<election day>/input/`.
 The generated `facebook-summary.txt` is a concise, copy-ready social post with the
 leading change probabilities, reliability scores, and an explicit model caveat.
 

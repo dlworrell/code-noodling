@@ -18,7 +18,7 @@ election-data/
             └── pierce-county/ 2026-11-03-2015.json.gz, …
 ```
 
-Reports for an election are generated into `reports/elections/<election day>/`.
+Reports for an election are generated into `reports/elections/<state>/<election day>/`.
 
 ## Automatic: the source watcher
 
@@ -39,7 +39,7 @@ model is disabled for a source without one.
 
 ## By hand
 
-Put official result exports in `elections/<election day>/input/<source>/`, then run
+Put official result exports in `elections/<state>/<election day>/input/<source>/`, then run
 the `Election Result Reports` workflow or the local command in
 [`docs/election-reporting.md`](../docs/election-reporting.md).
 
