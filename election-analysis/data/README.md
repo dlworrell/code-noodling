@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:877757c8-37a8-425a-b8dc-8c47cae2cf99
+-->
+
 # Election data
 
 Each election has its own directory, named by election day:

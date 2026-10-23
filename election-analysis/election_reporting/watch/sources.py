@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:ffdbb867-da9b-4d5d-9270-f5687cfd8a0e
+
 """Official result sources: the Washington results site and King County Elections.
 
 ``results.votewa.gov`` (Washington Secretary of State) serves the state and all

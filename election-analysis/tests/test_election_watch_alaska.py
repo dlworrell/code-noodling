@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:0532be65-a5dc-4449-81b2-cd721b45cc0c
+
 """Alaska source adapter, borough conversion and Alaska contest rules (offline)."""
 
 from __future__ import annotations

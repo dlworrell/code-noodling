@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:cfff55a1-ac9d-49b7-bc3c-2a85a33e2d4a
+
 """County and precinct results: conversion, loading, reconciliation and analysis.
 
 Washington publishes two workbooks per results update (issue #14):

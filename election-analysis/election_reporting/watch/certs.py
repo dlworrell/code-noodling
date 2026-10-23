@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:2d4d8c10-eaf0-47f1-9623-b7d49d10a1ad
+
 """Certificates the watcher adds to the system trust store for one host each.
 
 www.elections.alaska.gov serves a TLS chain with the wrong intermediate

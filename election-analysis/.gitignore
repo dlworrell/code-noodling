@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:5a98f77e-9ed9-49bf-ba9f-14635b6488c2
+
 # Election inputs, their provenance records (SOURCES.json) and EDT-generated
 # evidence are deliberately versioned, although the repository .gitignore
 # ignores *.json and *.csv. The source watcher's publisher stages with

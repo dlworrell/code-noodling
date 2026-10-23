@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:43fed3b6-0de8-4b6e-a106-b1b52d4e5ae1
+
 from __future__ import annotations
 
 import json

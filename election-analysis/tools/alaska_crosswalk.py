@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:8ab6fe53-3127-4c71-bac5-00deb9234760
+
 """Build the Alaska precinct -> borough/census area crosswalk.
 
 Alaska has no counties. Its county equivalents are 19 organized boroughs and

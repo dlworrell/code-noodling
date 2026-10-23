@@ -1,7 +1,7 @@
 LicenseRef-WA-SOS-PublicData
 
-Status: Draft (PRM-0011 Slice 0). Recorded licensing decision; REUSE headers
-and the remaining license files are added in Slice 1.
+Status: Draft. Recorded licensing decision (PRM-0011 Slice 0), applied to
+files by election-analysis/REUSE.toml (election slice, step 2).
 
 Copyright text: Washington Secretary of State
 
@@ -14,6 +14,10 @@ the election reports in this repository.
 
 Applies to: election-analysis/data/elections/washington/*/input/washington/ and
 election-analysis/data/elections/washington/*/raw/washington/
+and, as files derived from this public data (owner decision 2026-10-23),
+election-analysis/data/elections/washington/*/areas/washington/ (county and
+precinct breakdowns converted from the Summary and Precinct Results workbook,
+which is not stored; its URL, size and SHA-256 are in SOURCES.json)
 (formerly election-data/input/washington/)
 
 Files are listed below under the paths they were first committed at. Their

@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:6a2b429b-d08f-4ec3-9018-c75ea86c8559
+-->
+
 # Election Result Reporting
 
 ## Purpose

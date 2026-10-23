@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:e62041a0-1483-4c95-96d2-9372bd187709
+
 # Election source watcher: what to watch and when.
 # `python -m election_reporting.watch plan` shows what this resolves to.
 # One [[watch]] table per state; snapshots go to elections/<state>/<date>/.

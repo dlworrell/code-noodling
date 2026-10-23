@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:7e804b5a-0549-466e-954c-51390b3aa768
+
 """One election's acquired snapshots and their provenance record.
 
 Layout under ``election-analysis/data/elections/<state>/<YYYY-MM-DD>/``:

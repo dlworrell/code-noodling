@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:fb5eb709-45b6-415d-bde5-71a26d51b3c4
+
 """Load ``election-analysis/data/watch.toml``: which places to watch and when."""
 
 from __future__ import annotations

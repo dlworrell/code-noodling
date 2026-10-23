@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:5ae94741-2232-4bd8-bebf-bfc6f1d35d3e
+
 # Election Result Reports logic, run by
 # .github/workflows/election-result-reports.yml. The root workflow only picks
 # triggers, permissions and artifacts; the logic lives in the scope

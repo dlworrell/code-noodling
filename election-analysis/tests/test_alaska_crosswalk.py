@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:4787d5d8-febf-4a47-bb88-f4a8dcb2e025
+
 """Consistency checks on the committed Alaska precinct-borough crosswalk."""
 
 import collections

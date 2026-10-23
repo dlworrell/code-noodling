@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:1aadd8b5-f4aa-44fa-9cbb-97fa8077be45
+
 schema_version = 1
 
 [election]

@@ -1,0 +1,58 @@
+{
+  "schema": "catalyst-equivalence-evidence/draft-1",
+  "prompt": "Election slice step 2: prove the REUSE header change leaves behavior unchanged",
+  "base_commit": "3eb8b05957a2125e27d2fcfe0533b66717b10c9d",
+  "change": "SPDX headers (SPDX-FileCopyrightText: 2026 Donovan Worrell; SPDX-License-Identifier: Apache-2.0) and a Catalyst-File-ID on 45 authored files; election-analysis/REUSE.toml path annotations for data, reports and provenance records; election-analysis/LICENSES/ (Apache-2.0, CC-BY-4.0, the two existing LicenseRef texts moved from the repository root, six new LicenseRef drafts)",
+  "tools": {
+    "python": "3.12 / 3.13",
+    "reuse": "6.2.0",
+    "edt": "649981ec78c97aafe4374284ad7e8c57c11a4640"
+  },
+  "behavior": {
+    "method": "Fingerprint before and after: SHA-256 of ast.dump() for every .py, of the parsed value for every .toml, of non-comment lines for every .sh, of the bytes for every data/ and reports/ file.",
+    "files_compared": 64,
+    "by_method": {
+      "sh": 2,
+      "bytes": 26,
+      "toml": 5,
+      "ast": 31
+    },
+    "differences": [
+      "data/README.md",
+      "data/crosswalks/alaska/README.md"
+    ],
+    "difference_note": "data/README.md and data/crosswalks/alaska/README.md differ only by their added header comment (documentation, fingerprinted as bytes because they sit under data/)."
+  },
+  "tests": {
+    "command": "python3.12 -m unittest discover -s election-analysis/tests -v",
+    "before": "96 run, 96 ok",
+    "after": "96 run, 96 ok",
+    "per_test_results_identical": true
+  },
+  "reports": {
+    "command": "python -m election_reporting --config election-analysis/data/elections/washington/2026-08-04/election.toml",
+    "result": "byte-identical before and after (analysis.json, EDOM, Markdown, HTML, county-breakdown.csv, facebook-summary.txt, EDT evidence)"
+  },
+  "reuse_lint": {
+    "root": "election-analysis/",
+    "files_with_copyright": "69/69",
+    "files_with_license": "69/69",
+    "missing": 0,
+    "bad": 0,
+    "unused": [
+      "LicenseRef-ChelanCounty-PublicData",
+      "LicenseRef-KittitasCounty-PublicData",
+      "LicenseRef-ME-SOS-PublicData",
+      "LicenseRef-PierceCounty-PublicData",
+      "LicenseRef-SnohomishCounty-PublicData"
+    ],
+    "unused_note": "Texts for publishers whose data arrives from the 2026-11-03 election. A copy of the scope with a placeholder snapshot at every watcher path (all three states, every publisher, a new election.toml and SOURCES.json, a report) is compliant: 89/89 files, 0 unused, 0 missing."
+  },
+  "file_ids": {
+    "count": 45,
+    "unique": true,
+    "version_4": true,
+    "collides_with_crypto_pipeline": false,
+    "not_given": "Automation-written files (data snapshots, SOURCES.json, reports, area files) are licensed by REUSE.toml and identified by the SHA-256 recorded in SOURCES.json and analysis.json (baseline finding E2)."
+  }
+}

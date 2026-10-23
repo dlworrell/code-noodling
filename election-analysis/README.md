@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:8376ba33-0e6e-4a9e-b237-1d4a2a31b1a8
+-->
+
 # Election result reporting
 
 Watches official election results for Washington, Alaska and Maine, keeps every
@@ -28,6 +35,7 @@ artifacts, and call the scripts in [`ci/`](ci/).
 | [`ci/`](ci/) | Workflow logic: `reports.sh` (tests, report generation, change detection, publishing) and `watch.sh` (tests, carry-forward, fetch, publishing) |
 | [`tests/`](tests/) | Offline tests for every part |
 | [`tools/`](tools/) | One-off tools (the Alaska crosswalk generator) |
+| [`LICENSES/`](LICENSES/), [`REUSE.toml`](REUSE.toml) | License texts, and REUSE licensing for files that cannot carry a header (data, reports, provenance records); authored files carry SPDX headers and a `Catalyst-File-ID` |
 | [`.gitignore`](.gitignore) | Keeps data and report JSON/CSV versioned despite the repository-wide ignores |
 | [`docs/`](docs/) | [User guide](docs/election-reporting.md) and engineering records ([ADR-001](docs/engineering/ADR-001-election-result-reporting.md), [ADR-002](docs/engineering/ADR-002-election-source-watcher.md), [provenance baseline](docs/engineering/provenance-baseline.json)) |
 

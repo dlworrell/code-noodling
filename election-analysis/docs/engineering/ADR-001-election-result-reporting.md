@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:a68f1607-8609-4754-b776-2b5e322d24e8
+-->
+
 # ADR-001: Snapshot-Based Election Result Reporting with EDT
 
 Status: Accepted

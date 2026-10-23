@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:7ada800a-a70c-4816-8808-deb9f490eeb9
+
 """Minimal HTTPS GET client limited to official election-results hosts."""
 
 from __future__ import annotations

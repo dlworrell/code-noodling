@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:6ca79536-eca3-46eb-a5fb-8713ad071d45
+
 """Maine source adapter: results page, office workbooks and conversion (offline)."""
 
 from __future__ import annotations

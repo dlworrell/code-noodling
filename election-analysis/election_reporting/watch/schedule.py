@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:70fb394a-465b-467b-8323-b6b524b3b22a
+
 """When to check: from polls closing until certification.
 
 Washington certification deadlines (RCW 29A.60.190 for counties and

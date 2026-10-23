@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:4d8b27d1-c3d3-41dc-9571-8010dc5390e5
+
 """Normalized election-result CSV written by the source watcher.
 
 Every source the watcher acquires is converted to this one plain-text layout so

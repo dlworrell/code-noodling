@@ -1,0 +1,26 @@
+LicenseRef-ChelanCounty-PublicData
+
+Status: Draft. Recorded licensing decision (owner, 2026-10-23: data from a
+publisher takes a LicenseRef in the King County form), applied to files by
+election-analysis/REUSE.toml (election slice, step 2).
+
+Copyright text: Chelan County Auditor (Elections)
+
+The files this identifier covers are public election results published by the
+Chelan County Auditor's elections office (Chelan County, Washington),
+retrieved from the Washington results site https://results.votewa.gov/ (county
+results API). The publisher's terms of use are UNKNOWN: not reviewed, and no
+license is stated in the files or responses retrieved. Donovan Worrell claims
+no copyright in these files and grants no license to them. They are kept as
+source evidence for the election reports in this repository, unmodified except
+as each election's SOURCES.json notes (for example, API JSON trimmed to
+results and gzipped, or converted to plain-text CSV).
+
+Applies to: election-analysis/data/elections/washington/*/input/chelan-county/ and
+election-analysis/data/elections/washington/*/raw/chelan-county/
+
+Files
+-----
+
+Each snapshot's source URL, retrieval time, source timestamp and SHA-256 are
+recorded in its election's SOURCES.json.

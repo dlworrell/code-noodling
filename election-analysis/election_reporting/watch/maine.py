@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:b624b5ae-93ec-4ce0-9bf1-8174a21e86ba
+
 """Maine Bureau of Corporations, Elections and Commissions results.
 
 Maine posts no election-night state results. Official results arrive as one
