@@ -1,7 +1,7 @@
 name: Election Source Watch
 
-# Checks the official result sources selected in election-data/watch.toml and
-# proposes new snapshots as a pull request (docs/engineering/ADR-002).
+# Checks the official result sources selected in election-analysis/data/watch.toml and
+# proposes new snapshots as a pull request (election-analysis/docs/engineering/ADR-002).
 #
 # Runs every 30 minutes; `python -m election_reporting.watch fetch` decides
 # whether a run is due (every 30 minutes from polls closing until 02:00, then
@@ -57,8 +57,8 @@ jobs:
 
       - name: Test watcher (offline)
         env:
-          PYTHONPATH: .
-        run: python -m unittest discover -s tests -p 'test_election_watch*.py'
+          PYTHONPATH: election-analysis
+        run: python -m unittest discover -s election-analysis/tests -p 'test_election_watch*.py'
 
       - name: Find unmerged snapshots
         id: pending
@@ -83,14 +83,17 @@ jobs:
       - name: Carry forward unmerged snapshots
         if: steps.pending.outputs.exists == 'true'
         env:
-          PYTHONPATH: .
+          PYTHONPATH: election-analysis
         run: |
-          python -m election_reporting.watch carry --from .pending/election-data/elections
+          # A branch written before the move to election-analysis/ keeps the old layout.
+          pending=.pending/election-analysis/data/elections
+          [ -d "$pending" ] || pending=.pending/election-data/elections
+          python -m election_reporting.watch carry --from "$pending"
           rm -rf .pending
 
       - name: Fetch new snapshots
         env:
-          PYTHONPATH: .
+          PYTHONPATH: election-analysis
           FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.force && '--force' || '' }}
         run: python -m election_reporting.watch fetch $FORCE
 
@@ -100,7 +103,7 @@ jobs:
         if: ${{ !cancelled() }}
         env:
           GH_TOKEN: ${{ github.token }}
-          PYTHONPATH: .
+          PYTHONPATH: election-analysis
           BASE_BRANCH: ${{ github.event.repository.default_branch }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: >-
@@ -108,7 +111,7 @@ jobs:
           --base "$BASE_BRANCH"
           --base-sha "$GITHUB_SHA"
           --branch "$SNAPSHOT_BRANCH"
-          --path election-data/elections
+          --path election-analysis/data/elections
           --title "data: new official election result snapshots"
           --summary "New official result snapshots from the **Election Source Watch** workflow. See each election's SOURCES.json for source URLs, retrieval times and SHA-256 checksums. Merging regenerates the reports."
           --run-url "$RUN_URL"

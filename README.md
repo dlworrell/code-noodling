@@ -10,7 +10,7 @@ detailed documentation in its own directory.
 |---|---|---|---|
 | Prime Number and Dice Suite | [`prime-number-suite/`](prime-number-suite/) | CPU and multi-GPU (Tesla K80) prime sieves, an unbiased prime-seeded dice engine, and PhysX/Maya dice experiments | [`prime-number-suite/README.md`](prime-number-suite/README.md) |
 | Crypto Pipeline | [`crypto_pipeline/`](crypto_pipeline/) | Multi-precision integer multiplication experiments (research prototype) | [`crypto_pipeline/README.md`](crypto_pipeline/README.md) |
-| Election Result Reporting | [`election_reporting/`](election_reporting/), [`election-data/`](election-data/) | Washington, Alaska and Maine election result watching, snapshot comparison, and change-probability reports | [`docs/election-reporting.md`](docs/election-reporting.md) |
+| Election Result Reporting | [`election-analysis/`](election-analysis/) | Washington, Alaska and Maine election result watching, snapshot comparison, and change-probability reports | [`election-analysis/README.md`](election-analysis/README.md) |
 
 ## Repository Layout
 
@@ -21,12 +21,10 @@ code-noodling/
 ├── aes-manifest.yaml        repository manifest and governed project scopes
 ├── .github/                 workflows and contribution templates
 ├── crypto_pipeline/         integer multiplication experiments (governed scope)
-├── docs/                    engineering standards and election docs
-├── election-data/           watcher settings, per-election configuration and snapshots
-├── election_reporting/      election-analysis Python package
+├── docs/                    repository engineering standards
+├── election-analysis/       election result reporting: code, data, reports, tests, docs
 ├── prime-number-suite/      prime generators and dice programs
-├── reports/                 generated election reports
-└── tests/                   election-reporting tests
+├── scripts/, tests/         repository CI checks and their tests
 ```
 
 ## Quick Start
@@ -139,18 +137,18 @@ each current winner, top-two or top-four cutoff, judicial majority, or ranked-ch
 first-choice majority status changes before certification. Every probability carries a separate 0–100 evidence-reliability score.
 
 Pick the states and counties to follow in
-[`election-data/watch.toml`](election-data/watch.toml): Washington (King County and
+[`election-analysis/data/watch.toml`](election-analysis/data/watch.toml): Washington (King County and
 its neighbors), Alaska (statewide and every borough and census area) and Maine
 (statewide and every county). From polls closing until certification, the **Election Source
 Watch** workflow fetches each new official result snapshot, converts it to
 plain-text CSV, records its source and checksum, and opens a pull request. Merging it
 runs **Election Result Reports**, which uses the Engineering Documents Toolkit (EDT) to
-publish and validate each election's report under `reports/elections/<state>/<election day>/`.
-Snapshots can also be added by hand under `election-data/elections/<state>/<election day>/input/`.
+publish and validate each election's report under `election-analysis/reports/<state>/<election day>/`.
+Snapshots can also be added by hand under `election-analysis/data/elections/<state>/<election day>/input/`.
 The generated `facebook-summary.txt` is a concise, copy-ready social post with the
 leading change probabilities, reliability scores, and an explicit model caveat.
 
-See [Election Result Reporting](docs/election-reporting.md) for input requirements,
+See [Election Result Reporting](election-analysis/docs/election-reporting.md) for input requirements,
 formulas, risk-band definitions, scope controls, and local execution.
 
 ---
@@ -169,15 +167,15 @@ These decisions are recorded here because AES-003 does not yet define a
 | Path | Rights holder | Copyright text | SPDX identifier |
 |---|---|---|---|
 | Repository default (all code and documentation not listed below) | Donovan Worrell | `2026 Donovan Worrell` | `Apache-2.0` |
-| `election-data/input/king-county/` | King County Elections (third party) | `King County Elections` | `LicenseRef-KingCounty-PublicData` |
-| `election-data/input/washington/` | Washington Secretary of State (third party) | `Washington Secretary of State` | `LicenseRef-WA-SOS-PublicData` |
-| `reports/elections/` (generated election reports) | Donovan Worrell | `2026 Donovan Worrell` | `CC-BY-4.0` |
+| `election-analysis/data/elections/washington/*/input/king-county/` | King County Elections (third party) | `King County Elections` | `LicenseRef-KingCounty-PublicData` |
+| `election-analysis/data/elections/washington/*/{input,raw}/washington/` | Washington Secretary of State (third party) | `Washington Secretary of State` | `LicenseRef-WA-SOS-PublicData` |
+| `election-analysis/reports/` (generated election reports) | Donovan Worrell | `2026 Donovan Worrell` | `CC-BY-4.0` |
 
 - The two `LicenseRef-` identifiers cover public datasets published with no
   license stated. Their drafts in [`LICENSES/`](LICENSES/) list each file's
   source URL, retrieval date (UNKNOWN where none was recorded) and SHA-256.
-- Election source data moves to `election-analysis/data/input/` in a later
-  change; these rows move with it.
+- Election source data moved to `election-analysis/data/` (formerly `election-data/`);
+  these rows moved with it.
 - Data from other Washington counties added later takes the same form: the
   county elections office as rights holder and a matching `LicenseRef-`
   identifier.
