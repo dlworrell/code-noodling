@@ -113,6 +113,64 @@
       },
       {
         "children": [],
+        "id": "areas-heading",
+        "kind": "heading2",
+        "metadata": {
+          "level": 2
+        },
+        "source_regions": [],
+        "text": "Geography: county and precinct results"
+      },
+      {
+        "children": [],
+        "id": "areas-status",
+        "kind": "paragraph",
+        "metadata": {},
+        "source_regions": [],
+        "text": "County snapshots: 1; precinct snapshots: 1. Every race's per-county votes are in county-breakdown.csv; precinct rows are in the election's areas/ directory."
+      },
+      {
+        "children": [],
+        "id": "areas-reconciliation",
+        "kind": "paragraph",
+        "metadata": {},
+        "source_regions": [],
+        "text": "Reconciliation of the 2026-09-11T10:37 county snapshot: 974 contest-choice totals compared with the statewide Summary Results, 0 mismatches. Precincts against counties: 5,874 comparisons, 0 mismatches; 151 contest-county pairs have county votes but no precinct rows in the state file."
+      },
+      {
+        "children": [],
+        "id": "areas-precinct-missing",
+        "kind": "paragraph",
+        "metadata": {},
+        "source_regions": [],
+        "text": "Data-quality finding: the state precinct file has no precinct rows for 151 contest-county pairs in King County; their precinct-level changes cannot be shown from the state file."
+      },
+      {
+        "children": [],
+        "id": "areas-county-changes",
+        "kind": "paragraph",
+        "metadata": {},
+        "source_regions": [],
+        "text": "County changes: needs two county snapshots; only 2026-09-11T10:37 is available."
+      },
+      {
+        "children": [],
+        "id": "areas-precinct-changes",
+        "kind": "paragraph",
+        "metadata": {},
+        "source_regions": [],
+        "text": "Precinct changes: needs two precinct snapshots; only 2026-09-11T10:37 is available."
+      },
+      {
+        "children": [],
+        "id": "areas-note-1",
+        "kind": "paragraph",
+        "metadata": {},
+        "source_regions": [],
+        "text": "No county remaining-ballot counts are configured ([[remaining_ballots]] in election.toml), so no county can be assessed as able to change an outcome."
+      },
+      {
+        "children": [],
         "id": "races-heading",
         "kind": "heading2",
         "metadata": {

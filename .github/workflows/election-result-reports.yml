@@ -25,6 +25,7 @@ on:
       - "tests/test_election_watch_alaska.py"
       - "tests/test_election_watch_maine.py"
       - "tests/test_alaska_crosswalk.py"
+      - "tests/test_election_areas.py"
       - ".github/workflows/election-result-reports.yml"
   pull_request:
     paths:
@@ -37,6 +38,7 @@ on:
       - "tests/test_election_watch_alaska.py"
       - "tests/test_election_watch_maine.py"
       - "tests/test_alaska_crosswalk.py"
+      - "tests/test_election_areas.py"
       - ".github/workflows/election-result-reports.yml"
       - ".github/workflows/election-source-watch.yml"
 
@@ -91,6 +93,11 @@ jobs:
         env:
           PYTHONPATH: .
         run: python -m unittest discover -s tests -p 'test_alaska_crosswalk.py' -v
+
+      - name: Test county and precinct breakdowns
+        env:
+          PYTHONPATH: .
+        run: python -m unittest discover -s tests -p 'test_election_areas.py' -v
 
       - name: Generate and validate EDT reports
         env:

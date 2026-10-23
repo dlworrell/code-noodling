@@ -34,6 +34,9 @@ BROWSER_USER_AGENT = (
 )
 USER_AGENT_OVERRIDES = {"www.maine.gov": BROWSER_USER_AGENT}
 MAX_BYTES = 25 * 1024 * 1024
+# The statewide "Summary and Precinct Results" workbook was 21 MB for the 2026
+# primary; a general election has more contests. Callers opt in to this cap.
+LARGE_MAX_BYTES = 128 * 1024 * 1024
 TIMEOUT_SECONDS = 60
 
 
@@ -84,21 +87,21 @@ def _opener(host: str) -> urllib.request.OpenerDirector:
     return _OPENERS[host]
 
 
-def fetch(url: str) -> Response:
-    """GET ``url`` from an allowed host, refusing oversized bodies."""
+def fetch(url: str, max_bytes: int = MAX_BYTES) -> Response:
+    """GET ``url`` from an allowed host, refusing bodies over ``max_bytes``."""
     check_url(url)
     host = urllib.parse.urlsplit(url).hostname or ""
     agent = USER_AGENT_OVERRIDES.get(host, USER_AGENT)
     request = urllib.request.Request(url, headers={"User-Agent": agent})
     try:
         with _opener(host).open(request, timeout=TIMEOUT_SECONDS) as reply:
-            body = reply.read(MAX_BYTES + 1)
+            body = reply.read(max_bytes + 1)
             headers = {key.lower(): value for key, value in reply.headers.items()}
             final_url = reply.geturl()
     except urllib.error.HTTPError as exc:
         raise ElectionReportError(f"HTTP {exc.code} from {url}") from exc
     except (urllib.error.URLError, TimeoutError, OSError) as exc:
         raise ElectionReportError(f"could not fetch {url}: {exc}") from exc
-    if len(body) > MAX_BYTES:
-        raise ElectionReportError(f"{url} exceeds the {MAX_BYTES:,}-byte download limit")
+    if len(body) > max_bytes:
+        raise ElectionReportError(f"{url} exceeds the {max_bytes:,}-byte download limit")
     return Response(url=check_url(final_url), body=body, headers=headers)

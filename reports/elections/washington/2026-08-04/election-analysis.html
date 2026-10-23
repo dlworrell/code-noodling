@@ -270,6 +270,13 @@
 <p id="method-reliability" data-edt-kind="paragraph">Reliability is a 0–100 evidence score combining remaining-ballot forecast quality, compatible snapshot history, and observed decision-vote volume. Reconciled denominators reduce it; noncontrolling slices are capped at 25.</p>
 <p id="method-scope" data-edt-kind="paragraph">When the available file is only a county slice of a multicounty or statewide race, the report marks it noncontrolling and does not treat it as the official outcome forecast.</p>
 <p id="method-ballot-reconciliation" data-edt-kind="paragraph">For statewide XLSX inputs, the ballot denominator is the larger of the reported Ballots Cast value and the auditable sum of valid votes, overvotes, and undervotes. Any adjustment is disclosed on that race.</p>
+<p id="areas-heading" data-edt-kind="heading2">Geography: county and precinct results</p>
+<p id="areas-status" data-edt-kind="paragraph">County snapshots: 1; precinct snapshots: 1. Every race&#x27;s per-county votes are in county-breakdown.csv; precinct rows are in the election&#x27;s areas/ directory.</p>
+<p id="areas-reconciliation" data-edt-kind="paragraph">Reconciliation of the 2026-09-11T10:37 county snapshot: 974 contest-choice totals compared with the statewide Summary Results, 0 mismatches. Precincts against counties: 5,874 comparisons, 0 mismatches; 151 contest-county pairs have county votes but no precinct rows in the state file.</p>
+<p id="areas-precinct-missing" data-edt-kind="paragraph">Data-quality finding: the state precinct file has no precinct rows for 151 contest-county pairs in King County; their precinct-level changes cannot be shown from the state file.</p>
+<p id="areas-county-changes" data-edt-kind="paragraph">County changes: needs two county snapshots; only 2026-09-11T10:37 is available.</p>
+<p id="areas-precinct-changes" data-edt-kind="paragraph">Precinct changes: needs two precinct snapshots; only 2026-09-11T10:37 is available.</p>
+<p id="areas-note-1" data-edt-kind="paragraph">No county remaining-ballot counts are configured ([[remaining_ballots]] in election.toml), so no county can be assessed as able to change an outcome.</p>
 <p id="races-heading" data-edt-kind="heading2">Race-by-race analysis</p>
 <p id="race-001-u-s-representative-congressional-district-1-heading" data-edt-kind="heading2">U.S. Representative - Congressional District 1</p>
 <p id="race-001-u-s-representative-congressional-district-1-source" data-edt-kind="paragraph">Source: Washington State (washington), snapshot 2026-10-14T11:00. Ballots with contest: 163,014. Valid votes: 160,573.</p>

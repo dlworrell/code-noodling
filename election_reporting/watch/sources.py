@@ -31,6 +31,8 @@ from .http import Fetch
 VOTEWA_API = "https://results.votewa.gov/results/public/api"
 VOTEWA_CDN = "https://results.votewa.gov/cdn/results"
 STATE_REPORT_NAME = "All Results Excel"
+# County breakdown of every contest plus every precinct (issue #14).
+PRECINCT_REPORT_NAME = "Summary and Precinct Results Excel"
 KC_RESULTS = "https://kingcounty.gov/en/dept/elections/results"
 KC_FILE = re.compile(
     r'href="(?P<url>https://cdn\.kingcounty\.gov/[^"]*/webresults-(?P<date>\d{8})(?P<final>-final)?\.csv[^"]*)"',

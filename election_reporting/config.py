@@ -4,7 +4,7 @@ import tomllib
 from datetime import date
 from pathlib import Path
 
-from .model import ElectionConfig, ElectionReportError, SourceConfig
+from .model import AreaConfig, ElectionConfig, ElectionReportError, RemainingBallots, SourceConfig
 
 
 SUPPORTED_RULES = {
@@ -61,6 +61,63 @@ def _optional_string(value: object, location: str, default: str) -> str:
     if not isinstance(value, str) or not value.strip():
         raise ElectionReportError(f"{location} must be a non-empty string")
     return value.strip()
+
+
+AREA_LEVELS = ("county", "precinct")
+
+
+def _areas(raw: dict, base: Path, source_ids: set[str]) -> tuple[AreaConfig, ...]:
+    """[[areas]]: county and precinct breakdown snapshots, kept apart from inputs."""
+    rows = raw.get("areas", [])
+    if not isinstance(rows, list):
+        raise ElectionReportError("[[areas]] must be an array of tables")
+    areas = []
+    seen = set()
+    for index, row in enumerate(rows, start=1):
+        location = f"areas[{index}]"
+        if not isinstance(row, dict):
+            raise ElectionReportError(f"{location} must be a TOML table")
+        source_id = _required_string(row, "source", location)
+        if source_id not in source_ids:
+            raise ElectionReportError(f"{location}.source {source_id!r} is not a configured source")
+        level = _required_string(row, "level", location).lower()
+        if level not in AREA_LEVELS:
+            raise ElectionReportError(f"{location}.level must be one of: {', '.join(AREA_LEVELS)}")
+        if level in seen:
+            raise ElectionReportError(f"{location}: only one [[areas]] table per level")
+        seen.add(level)
+        relative = Path(_required_string(row, "path", location))
+        if relative.is_absolute() or ".." in relative.parts:
+            raise ElectionReportError(f"{location}.path must stay inside the election directory")
+        areas.append(AreaConfig(source_id=source_id, level=level, path=base / relative))
+    return tuple(areas)
+
+
+def _remaining_ballots(raw: dict) -> tuple[RemainingBallots, ...]:
+    """[[remaining_ballots]]: per-county ballots still to count, as published."""
+    rows = raw.get("remaining_ballots", [])
+    if not isinstance(rows, list):
+        raise ElectionReportError("[[remaining_ballots]] must be an array of tables")
+    counts = []
+    for index, row in enumerate(rows, start=1):
+        location = f"remaining_ballots[{index}]"
+        if not isinstance(row, dict):
+            raise ElectionReportError(f"{location} must be a TOML table")
+        ballots = row.get("ballots")
+        if type(ballots) is not int or ballots < 0:
+            raise ElectionReportError(f"{location}.ballots must be a non-negative whole number")
+        as_of = _optional_date(row.get("as_of"), f"{location}.as_of")
+        if as_of is None:
+            raise ElectionReportError(f"{location}.as_of is required")
+        counts.append(
+            RemainingBallots(
+                county=_required_string(row, "county", location),
+                ballots=ballots,
+                as_of=as_of,
+                basis=_required_string(row, "basis", location),
+            )
+        )
+    return tuple(counts)
 
 
 def load_config(path: Path) -> ElectionConfig:
@@ -172,9 +229,14 @@ def load_config(path: Path) -> ElectionConfig:
         source_id = str(row.get("source_id", "*")).strip() or "*"
         overrides[f"{source_id}:{contest_id}"] = rule
 
+    areas = _areas(raw, base, {source.source_id for source in sources})
+    remaining = _remaining_ballots(raw)
+
     return ElectionConfig(
         title=title,
         sources=tuple(sources),
+        areas=areas,
+        remaining_ballots=remaining,
         write_in_labels=write_in_labels,
         rule_overrides=overrides,
         default_rule=default_rule,
