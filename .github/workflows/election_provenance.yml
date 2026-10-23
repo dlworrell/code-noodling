@@ -1,0 +1,49 @@
+name: election-analysis Provenance (report-only)
+
+# Election slice step 3: REUSE, Catalyst-File-ID and scope-manifest checks for
+# election-analysis/. Report-only: results are published in the job summary
+# and as an artifact, and never fail the pull request. Read-only; no
+# attestations. Never add pull_request_target. Logic lives in the scope
+# (election-analysis/ci/provenance.sh, Catylist ADR-0004).
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "election-analysis/**"
+      - ".github/workflows/election_provenance.yml"
+  push:
+    branches: [main]
+    paths:
+      - "election-analysis/**"
+      - ".github/workflows/election_provenance.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Install pinned tools (reuse)
+        run: election-analysis/ci/provenance.sh install-tools
+      - name: Checker tests
+        run: election-analysis/ci/provenance.sh tests
+      - name: Provenance checks (report-only)
+        id: checks
+        run: election-analysis/ci/provenance.sh report build/provenance
+      - name: Publish results and scope manifest
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: election-analysis-provenance
+          path: build/provenance/
+          if-no-files-found: error

@@ -23,7 +23,7 @@ the repository's [`aes-manifest.yaml`](../aes-manifest.yaml) (Catylist
 ADR-0004). AES-SEC-001 is declared not applicable: the scope is Python only,
 with no C or C++ surface; the declaration is revisited if that changes.
 
-Everything for election reporting is in this directory. The two workflows in
+Everything for election reporting is in this directory. The workflows in
 [`.github/workflows/`](../.github/workflows/) only pick triggers, permissions and
 artifacts, and call the scripts in [`ci/`](ci/).
 
@@ -32,7 +32,7 @@ artifacts, and call the scripts in [`ci/`](ci/).
 | [`election_reporting/`](election_reporting/) | Python package: analyzer, EDT publisher, source watcher (`watch/`) and CI publisher (`ci/`) |
 | [`data/`](data/) | Watcher settings (`watch.toml`), the Alaska crosswalk, and one directory per state and election with its configuration, snapshots and `SOURCES.json` ([details](data/README.md)) |
 | [`reports/`](reports/) | Generated reports, one directory per state and election |
-| [`ci/`](ci/) | Workflow logic: `reports.sh` (tests, report generation, change detection, publishing) and `watch.sh` (tests, carry-forward, fetch, publishing) |
+| [`ci/`](ci/) | Workflow logic: `reports.sh` (tests, report generation, change detection, publishing), `watch.sh` (tests, carry-forward, fetch, publishing) and `provenance.sh`/`provenance.py` (report-only REUSE, File-ID and scope-manifest checks) |
 | [`tests/`](tests/) | Offline tests for every part |
 | [`tools/`](tools/) | One-off tools (the Alaska crosswalk generator) |
 | [`LICENSES/`](LICENSES/), [`REUSE.toml`](REUSE.toml) | License texts, and REUSE licensing for files that cannot carry a header (data, reports, provenance records); authored files carry SPDX headers and a `Catalyst-File-ID` |
@@ -43,6 +43,7 @@ artifacts, and call the scripts in [`ci/`](ci/).
 |---|---|
 | `election-source-watch.yml` | Every 30 minutes during a checking window, fetches new official snapshots into `data/` and opens a pull request |
 | `election-result-reports.yml` | Runs the tests, builds and validates every election's report into `reports/`, and opens a pull request when they change |
+| `election_provenance.yml` | Report-only: REUSE compliance, a version 4 `Catalyst-File-ID` on every authored file, and `scope-manifest.json` (path, kind, File-ID, SHA-256 of every file); results in the job summary and an artifact, never failing the pull request |
 
 ## Run
 
