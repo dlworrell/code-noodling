@@ -1,0 +1,5 @@
+# GitHub language statistics (Linguist): generated output and source data are
+# not code, so they do not count toward the repository's languages.
+election-analysis/reports/** linguist-generated
+election-analysis/data/** linguist-generated
+crypto_pipeline/docs/engineering/evidence/** linguist-generated
