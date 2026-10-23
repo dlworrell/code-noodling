@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:2c2f613e-b7d6-4d7f-865e-aeee3fa1b5e4
+
 """Source-bound modular lifting proof for the recognized setup implementation.
 
 Canonical AST matching is a trusted specialization boundary. Changes beyond the

@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:de70c562-b155-4715-a602-dcf7bda0075a
+
 """Check the scoped 16-limb proof package; fail on unknown/error/counterexample."""
 import argparse
 import hashlib

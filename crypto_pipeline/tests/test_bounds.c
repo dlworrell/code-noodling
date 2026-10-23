@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Donovan Worrell
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ * Catalyst-File-ID: urn:uuid:7b373942-a7d2-4080-9c56-44b6b169b947
+ */
+
 #include "crypto_multiplier.h"
 #include <assert.h>
 #include <errno.h>

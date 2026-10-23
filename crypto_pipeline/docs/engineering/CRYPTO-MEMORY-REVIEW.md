@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:84a0bc15-00dc-40d5-863a-2e7ee366420f
+-->
+
 # Cryptographic experiment memory review
 
 Reviewed 2026-10-13 by Codex (automated code review); owner: dlworrell.

@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:34da8801-0f0e-4b0f-8072-c33a085b4045
+
 """Differential arithmetic tests using Python integers as the independent oracle."""
 import ctypes as c
 import errno

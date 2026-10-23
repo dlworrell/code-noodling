@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Donovan Worrell
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ * Catalyst-File-ID: urn:uuid:958a37c9-4551-4452-9a41-9272cb852313
+ */
+
 #ifndef CRYPTO_MONTGOMERY_CT_H
 #define CRYPTO_MONTGOMERY_CT_H
 #include "crypto_multiplier.h"

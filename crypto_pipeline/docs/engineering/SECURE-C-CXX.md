@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:f1c5e354-da28-46d7-b0c8-bc97b86af739
+-->
+
 # Secure C/C++ Profile: crypto_pipeline scope
 
 Status: Adopted

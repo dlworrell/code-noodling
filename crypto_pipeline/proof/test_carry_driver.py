@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:46d40e88-b776-438c-8ad4-bf58ce91839d
+
 """Reject malformed/irrelevant solver evidence before it can become a proof."""
 import copy
 import contextlib

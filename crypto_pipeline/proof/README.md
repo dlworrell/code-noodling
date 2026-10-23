@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:d25da695-2ac0-4f8d-94e8-dbf5b0faebae
+-->
+
 # Scoped Montgomery proof work: 16 limbs
 
 **Status: proof fragments and source checks, not an end-to-end verified

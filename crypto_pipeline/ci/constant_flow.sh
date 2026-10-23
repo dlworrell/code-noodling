@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:0af20b28-7fa2-4907-8652-73462b581684
+
 # Montgomery constant-flow steps, run by .github/workflows/crypto_constant_flow.yml.
 # Usage: ci/constant_flow.sh <step>
 # The constant-flow step reads CT_CC and CT_OPT; the timing step takes

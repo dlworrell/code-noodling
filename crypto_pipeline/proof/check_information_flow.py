@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:6d8b8487-872d-4f2e-af73-9261f65551f4
+
 """Conservative source-level information-flow checker for this restricted kernel.
 
 Least fixed point over scalar dependencies. Input and scratch array contents are

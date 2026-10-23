@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:114fcf55-39e1-4e17-b930-50b9c4913252
+-->
+
 # Crypto pipeline evidence
 
 These records belong to the `crypto_pipeline` governed project scope

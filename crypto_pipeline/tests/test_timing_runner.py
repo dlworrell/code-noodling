@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:26b01fe7-b5f8-4a54-b1da-ffeaa5d31ef9
+
 """Fault-injection tests for orchestration; these are not timing measurements."""
 import contextlib
 import importlib.util

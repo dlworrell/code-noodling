@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:06a426d2-6802-4f47-a12b-e97fad910a8e
+
 """Field-level setup proof under explicit memset/memcpy word contracts.
 
 Exact setup AST matching binds this specialized model to the implementation.
