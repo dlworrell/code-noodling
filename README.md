@@ -1,8 +1,16 @@
 # Code Noodling
 
-`code-noodling` is an experimental monorepo for small engineering and analysis
-projects. Each codebase keeps its source, build configuration, tests, and
-detailed documentation in its own directory.
+`code-noodling` is an experimental monorepo with three codebases:
+
+- CPU and multi-GPU (Tesla K80) prime sieves and an unbiased dice engine;
+- multi-precision integer multiplication research for cryptography, with
+  constant-flow and formal checks;
+- Washington, Alaska and Maine election-result watching with
+  change-probability reports.
+
+Each codebase keeps its source, build configuration, tests, and detailed
+documentation in its own directory. The crypto and election codebases are
+governed scopes: REUSE-licensed, with Sigstore-attested provenance.
 
 ## Codebases
 
