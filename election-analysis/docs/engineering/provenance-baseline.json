@@ -1,0 +1,1979 @@
+{
+  "schema": "catalyst-provenance-baseline/draft-1",
+  "prompt": "Election slice step 1 (read-only baseline; mirrors PRM-0012 step 1)",
+  "repository": "dlworrell/code-noodling",
+  "scope": "election-analysis/",
+  "commit": "16a28b021e6a1a52bb3157ac069c4f75ef90e88c",
+  "scope_tree": "88349f93f5a160ae50f9a88e87e98dc59ef575bb",
+  "declared_license": {
+    "source": "README.md 'Licensing' (repository default plus path rows; Notion 'Declared licensing' decision record; AES-003 has no licensing field)",
+    "default": {
+      "spdx": "Apache-2.0",
+      "copyright": "2026 Donovan Worrell"
+    },
+    "paths": [
+      {
+        "pattern": "election-analysis/reports/**",
+        "spdx": "CC-BY-4.0",
+        "copyright": "2026 Donovan Worrell"
+      },
+      {
+        "pattern": "election-analysis/data/elections/washington/*/input/king-county/*",
+        "spdx": "LicenseRef-KingCounty-PublicData",
+        "copyright": "King County Elections"
+      },
+      {
+        "pattern": "election-analysis/data/elections/washington/*/input/washington/*",
+        "spdx": "LicenseRef-WA-SOS-PublicData",
+        "copyright": "Washington Secretary of State"
+      },
+      {
+        "pattern": "election-analysis/data/elections/washington/*/raw/washington/*",
+        "spdx": "LicenseRef-WA-SOS-PublicData",
+        "copyright": "Washington Secretary of State"
+      },
+      {
+        "pattern": "election-analysis/data/elections/washington/*/areas/washington/*/*",
+        "spdx": "LicenseRef-WA-SOS-PublicData",
+        "copyright": "Washington Secretary of State"
+      },
+      {
+        "pattern": "election-analysis/data/crosswalks/alaska/*.csv",
+        "spdx": "LicenseRef-AK-DOE-PublicData",
+        "copyright": "State of Alaska, Division of Elections"
+      }
+    ]
+  },
+  "notes": [
+    "No CLAUDE.md exists in the repository.",
+    "Unknown or missing items are counted under summary.unknown; summary.failures lists files that could not be read or carry conflicting notices.",
+    "Test coverage is by reference (a test naming the file or module), not line coverage.",
+    "Data and report files are not scanned for notices: their text is election content, not file notices."
+  ],
+  "summary": {
+    "files": 68,
+    "by_kind": {
+      "ci-script": 2,
+      "configuration": 5,
+      "derived-data": 4,
+      "documentation": 6,
+      "generated-report": 12,
+      "provenance-record": 1,
+      "source": 23,
+      "test": 7,
+      "third-party-data": 7,
+      "tool": 1
+    },
+    "by_license": {
+      "Apache-2.0": 45,
+      "CC-BY-4.0": 12,
+      "LicenseRef-AK-DOE-PublicData": 2,
+      "LicenseRef-KingCounty-PublicData": 1,
+      "LicenseRef-WA-SOS-PublicData": 8
+    },
+    "existing_license_notice": 0,
+    "missing_license_notice": 68,
+    "header_capable": 44,
+    "needs_sidecar_or_reuse_toml": 0,
+    "automation_written_reuse_toml": 24,
+    "unknown": {
+      "license_undecided": [],
+      "test_coverage_unknown": [
+        "ci/reports.sh",
+        "ci/watch.sh",
+        "election_reporting/__main__.py",
+        "election_reporting/cli.py",
+        "election_reporting/watch/__main__.py",
+        "tools/alaska_crosswalk.py"
+      ],
+      "doc_coverage_missing": [
+        "data/elections/washington/2026-08-04/areas/washington/county/2026-09-11-1037.csv",
+        "data/elections/washington/2026-08-04/areas/washington/precinct/2026-09-11-1037.csv.gz",
+        "election_reporting/__main__.py",
+        "election_reporting/analysis.py",
+        "election_reporting/areas.py",
+        "election_reporting/cli.py",
+        "election_reporting/config.py",
+        "election_reporting/ingest.py",
+        "election_reporting/model.py",
+        "election_reporting/publish.py",
+        "election_reporting/watch/__main__.py",
+        "election_reporting/watch/alaska.py",
+        "election_reporting/watch/config.py",
+        "election_reporting/watch/http.py",
+        "election_reporting/watch/maine.py",
+        "election_reporting/watch/run.py",
+        "election_reporting/watch/schedule.py",
+        "election_reporting/watch/sources.py",
+        "election_reporting/watch/store.py",
+        "tests/test_alaska_crosswalk.py",
+        "tests/test_election_areas.py",
+        "tests/test_election_reporting.py",
+        "tests/test_election_watch.py",
+        "tests/test_election_watch_alaska.py",
+        "tests/test_election_watch_maine.py",
+        "tests/test_publish_reports.py"
+      ],
+      "dependency_licenses_unknown": [
+        "pyshp, shapely 2, pyproj, numpy"
+      ]
+    },
+    "failures": []
+  },
+  "findings": [
+    {
+      "id": "E1",
+      "severity": "licensing",
+      "path": "data/elections/washington/*/areas/, data/crosswalks/alaska/*.csv",
+      "finding": "Four derived data files were not covered by the declared licensing table.",
+      "resolution": "Owner rule 2026-10-23: files derived from public data take their source's license. Area files: LicenseRef-WA-SOS-PublicData. Alaska crosswalk: new LicenseRef-AK-DOE-PublicData (text drafted in step 2; the Division's terms stay UNKNOWN in it)."
+    },
+    {
+      "id": "E2",
+      "severity": "tooling",
+      "path": "reports/, data/elections/**",
+      "finding": "24 files (and every snapshot from Nov 3) are written by the watcher or the report workflow, so hand-added headers or .license sidecars would be lost or missing on the next automated commit.",
+      "resolution": "Step 2 proposal: license them with REUSE.toml path annotations so new files are covered automatically; give Catalyst-File-IDs to the 44 authored files only. Data and reports stay identified by the SHA-256 recorded in SOURCES.json and analysis.json."
+    },
+    {
+      "id": "E3",
+      "severity": "licensing",
+      "path": "data/elections/** (Nov 3 sources)",
+      "finding": "The Nov 3 election adds sources with no LicenseRef yet: Snohomish, Pierce, Kittitas and Chelan counties (results.votewa.gov), the Alaska Division of Elections and the Maine Secretary of State.",
+      "resolution": "Owner rule 2026-10-23 and the README note on other Washington counties: one LicenseRef per publisher in the King County form, with UNKNOWN where terms are not stated. Drafted in step 2."
+    },
+    {
+      "id": "E4",
+      "severity": "tooling",
+      "path": "LICENSES/LicenseRef-*.txt (repository root)",
+      "finding": "The two election LicenseRef texts are at the repository root and list pre-move paths; a REUSE check rooted at election-analysis/ (as for crypto_pipeline) needs the texts in election-analysis/LICENSES/.",
+      "resolution": "Step 2: move them with git mv into election-analysis/LICENSES/, refresh their Applies-to paths, and add Apache-2.0 and CC-BY-4.0 texts."
+    },
+    {
+      "id": "E5",
+      "severity": "tooling",
+      "path": ".gitignore",
+      "finding": "This baseline is JSON under docs/engineering/, which the repository-wide *.json rule ignores (as crypto_pipeline F3).",
+      "resolution": "election-analysis/.gitignore keeps docs/engineering/*.json (PR #33)."
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "engineering-docs-toolkit (EDT)",
+      "how": "checked out by election-result-reports.yml for report generation; not vendored",
+      "pin": "git 649981ec78c97aafe4374284ad7e8c57c11a4640",
+      "license": "Apache-2.0 (its LICENSE file; dlworrell/engineering-docs-toolkit)"
+    },
+    {
+      "name": "pyshp, shapely 2, pyproj, numpy",
+      "how": "tools/alaska_crosswalk.py only (offline, one-off; not run by CI)",
+      "pin": "none",
+      "license": "UNKNOWN (not recorded in repository)"
+    }
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "e80826aeedc4db8a307c12fa3434ff67c3940302a38810f2b9b6d00a705857d5",
+      "bytes": 2857,
+      "kind": "documentation",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "first_commit": "e27c83f1b19a8381ba90a6c294450a9235db45ec",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ]
+    },
+    {
+      "path": "ci/reports.sh",
+      "sha256": "9ebe7590c1733da99e047414c468089087f98786c3067d6eeab5d5e2dc2193cb",
+      "bytes": 2692,
+      "kind": "ci-script",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "237a6cc4dda0aad6c52a8f4f8a2fb89e65b563a6",
+      "first_date": "2026-10-23",
+      "commit_count": 1,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [],
+        "status": "unknown"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "README.md",
+          "docs/election-reporting.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "ci/watch.sh",
+      "sha256": "b7f37b8594a081095ddbbc0c788c39a370c40b07c061a7b32b4ddbb6ff5ed655",
+      "bytes": 2222,
+      "kind": "ci-script",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "237a6cc4dda0aad6c52a8f4f8a2fb89e65b563a6",
+      "first_date": "2026-10-23",
+      "commit_count": 1,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [],
+        "status": "unknown"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "README.md",
+          "docs/election-reporting.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "data/README.md",
+      "sha256": "a6a0dfb8ac6a30fdb5ed1b28c1f00339f77c49d7c00ee67e48d2ca8f3b456e47",
+      "bytes": 7801,
+      "kind": "documentation",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 10,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "data/crosswalks/alaska/README.md",
+      "sha256": "a47fe347146f75695a05ac3a02d20a64fe7aab49ff3f5ee969c4a55de6f69309",
+      "bytes": 4067,
+      "kind": "documentation",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "first_commit": "69e07f4286fac49b0cb50506a92d54fa74e76187",
+      "first_date": "2026-10-23",
+      "commit_count": 4,
+      "git_authors": [
+        "Claude"
+      ]
+    },
+    {
+      "path": "data/crosswalks/alaska/house-district-borough.csv",
+      "sha256": "13710635cac2cb26865cc3594f795b0f8ce3494579b85b9989ab002eb5d259f4",
+      "bytes": 3246,
+      "kind": "derived-data",
+      "license": {
+        "spdx": "LicenseRef-AK-DOE-PublicData",
+        "copyright": "State of Alaska, Division of Elections",
+        "basis": "owner rule 2026-10-23: derived from public data, licensed as its source (Division of Elections 2023 precinct layer; the Census TIGER/Line input is a U.S. Government work)"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "69e07f4286fac49b0cb50506a92d54fa74e76187",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "data/crosswalks/alaska/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "data/crosswalks/alaska/precinct-borough.csv",
+      "sha256": "861e632c70f24ef45aa8a18c40f50e5d57874dcb39384656383449efe77d6e2f",
+      "bytes": 30845,
+      "kind": "derived-data",
+      "license": {
+        "spdx": "LicenseRef-AK-DOE-PublicData",
+        "copyright": "State of Alaska, Division of Elections",
+        "basis": "owner rule 2026-10-23: derived from public data, licensed as its source (Division of Elections 2023 precinct layer; the Census TIGER/Line input is a U.S. Government work)"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "69e07f4286fac49b0cb50506a92d54fa74e76187",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "data/crosswalks/alaska/README.md",
+          "docs/election-reporting.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "data/elections/alaska/2026-11-03/election.toml",
+      "sha256": "6bf39ecf5389f86583cac19e68405ea3b19fa7063ad37406b9cb2c6a54fe4258",
+      "bytes": 11280,
+      "kind": "configuration",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "e38b24d41ccde1009a65e556e55efcf0974095c6",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "README.md",
+          "data/README.md",
+          "docs/election-reporting.md",
+          "docs/engineering/ADR-002-election-source-watcher.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "data/elections/maine/2026-11-03/election.toml",
+      "sha256": "618d581ab79edc820d98633929c09fd968294b7d98eaef7591ae7998ecdbfa92",
+      "bytes": 6414,
+      "kind": "configuration",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "8398f6be1926a512e5c6ede43faf252781ed4b12",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "README.md",
+          "data/README.md",
+          "docs/election-reporting.md",
+          "docs/engineering/ADR-002-election-source-watcher.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "data/elections/washington/2026-08-04/SOURCES.json",
+      "sha256": "497a40cc05c3b56e9f5ed10fcd3b5a6de0b36f4e0a84abdedce67fb39979ab5e",
+      "bytes": 4812,
+      "kind": "provenance-record",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 5,
+      "git_authors": [
+        "Claude"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "README.md",
+          "data/README.md",
+          "docs/election-reporting.md",
+          "docs/engineering/ADR-002-election-source-watcher.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "data/elections/washington/2026-08-04/areas/washington/county/2026-09-11-1037.csv",
+      "sha256": "495d4c377ba429ec449c045005fb1e2bbb83c85216761b83143fc23802c0ab8c",
+      "bytes": 587028,
+      "kind": "derived-data",
+      "license": {
+        "spdx": "LicenseRef-WA-SOS-PublicData",
+        "copyright": "Washington Secretary of State",
+        "basis": "owner rule 2026-10-23: derived from public data, licensed as its source (Secretary of State Summary and Precinct Results workbook)"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "129952df1bffcc2c1369b8e1b8283949246ad378",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "data/elections/washington/2026-08-04/areas/washington/precinct/2026-09-11-1037.csv.gz",
+      "sha256": "c906d8fff03a0c29864b3cb91e2d41f5ac544604cbed4d525670f7a1d5dc8c88",
+      "bytes": 1829391,
+      "kind": "derived-data",
+      "license": {
+        "spdx": "LicenseRef-WA-SOS-PublicData",
+        "copyright": "Washington Secretary of State",
+        "basis": "owner rule 2026-10-23: derived from public data, licensed as its source (Secretary of State Summary and Precinct Results workbook)"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "129952df1bffcc2c1369b8e1b8283949246ad378",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "data/elections/washington/2026-08-04/election.toml",
+      "sha256": "7f7497766645392ed9b2be9808bbe5dd8d6a6dd965c586da1f63905ae8ce0d87",
+      "bytes": 1266,
+      "kind": "configuration",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 7,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "README.md",
+          "data/README.md",
+          "docs/election-reporting.md",
+          "docs/engineering/ADR-002-election-source-watcher.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "data/elections/washington/2026-08-04/input/king-county/2026-08-06-1600.csv",
+      "sha256": "9a1572cc9655d088f2d36656867755f5268d8464d045f5f45d32c21d1406ec35",
+      "bytes": 53236,
+      "kind": "third-party-data",
+      "license": {
+        "spdx": "LicenseRef-KingCounty-PublicData",
+        "copyright": "King County Elections",
+        "basis": "declared: King County source data"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 5,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "data/elections/washington/2026-08-04/input/washington/2026-08-07-0118.csv",
+      "sha256": "7a1112037e8edc7d9e1acb97dc63807a1c78c06b8dff7167d169a46d41d06c24",
+      "bytes": 38106,
+      "kind": "third-party-data",
+      "license": {
+        "spdx": "LicenseRef-WA-SOS-PublicData",
+        "copyright": "Washington Secretary of State",
+        "basis": "declared: Washington Secretary of State source data (converted CSV)"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 4,
+      "git_authors": [
+        "Claude"
+      ]
+    },
+    {
+      "path": "data/elections/washington/2026-08-04/input/washington/2026-08-08-0018.csv",
+      "sha256": "18a0ff493c6b81339b615ff562961c6377b2aae83a45556c6fe0e0cf0266df03",
+      "bytes": 68797,
+      "kind": "third-party-data",
+      "license": {
+        "spdx": "LicenseRef-WA-SOS-PublicData",
+        "copyright": "Washington Secretary of State",
+        "basis": "declared: Washington Secretary of State source data (converted CSV)"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 4,
+      "git_authors": [
+        "Claude"
+      ]
+    },
+    {
+      "path": "data/elections/washington/2026-08-04/input/washington/2026-10-14-1100.csv",
+      "sha256": "bdd7591803dc9ff69614d09a342ff27be3faa2281b4757e8034a0c1503edf3c1",
+      "bytes": 68577,
+      "kind": "third-party-data",
+      "license": {
+        "spdx": "LicenseRef-WA-SOS-PublicData",
+        "copyright": "Washington Secretary of State",
+        "basis": "declared: Washington Secretary of State source data (converted CSV)"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 4,
+      "git_authors": [
+        "Claude"
+      ]
+    },
+    {
+      "path": "data/elections/washington/2026-08-04/raw/washington/2026-08-07-0118.xlsx",
+      "sha256": "fd4d2a14a01d3945095e92cbb0d0a85b1c0fadc025882c73ed9348da1fbdf43a",
+      "bytes": 114411,
+      "kind": "third-party-data",
+      "license": {
+        "spdx": "LicenseRef-WA-SOS-PublicData",
+        "copyright": "Washington Secretary of State",
+        "basis": "declared: Washington Secretary of State source data (original workbook)"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "33c9a09eb5a7778fff967198e2ce05b9acf711ce",
+      "first_date": "2026-08-06",
+      "commit_count": 5,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "data/elections/washington/2026-08-04/raw/washington/2026-08-08-0018.xlsx",
+      "sha256": "0a6891a586429767a1c00a14b0d3127612e21a339f9f19351056dcb2e9d84718",
+      "bytes": 143759,
+      "kind": "third-party-data",
+      "license": {
+        "spdx": "LicenseRef-WA-SOS-PublicData",
+        "copyright": "Washington Secretary of State",
+        "basis": "declared: Washington Secretary of State source data (original workbook)"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "574e0f11f67e673b0a8eaddaf0aeaa5df3699658",
+      "first_date": "2026-10-13",
+      "commit_count": 5,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "data/elections/washington/2026-08-04/raw/washington/2026-10-14-1100.xlsx",
+      "sha256": "d580c91e84f5c534e3094b46558cd5e6ad9778ca6219546015af3f331b324f17",
+      "bytes": 143756,
+      "kind": "third-party-data",
+      "license": {
+        "spdx": "LicenseRef-WA-SOS-PublicData",
+        "copyright": "Washington Secretary of State",
+        "basis": "declared: Washington Secretary of State source data (original workbook)"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "e3e09236a8ba2475d09a04bc91478e26da700f22",
+      "first_date": "2026-10-16",
+      "commit_count": 6,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "data/elections/washington/2026-11-03/election.toml",
+      "sha256": "fd7840ec30b56c22282f8ec5a67285d01edb6ca6c7f171f803b611329f9fc5e0",
+      "bytes": 2539,
+      "kind": "configuration",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 5,
+      "git_authors": [
+        "Claude"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "README.md",
+          "data/README.md",
+          "docs/election-reporting.md",
+          "docs/engineering/ADR-002-election-source-watcher.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "data/watch.toml",
+      "sha256": "84e2d381eafb1b3c9a08070d200f6b6505c1d02d0bbf8c7fd06e1972558ac0f4",
+      "bytes": 2359,
+      "kind": "configuration",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 6,
+      "git_authors": [
+        "Claude"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "README.md",
+          "data/README.md",
+          "docs/election-reporting.md",
+          "docs/engineering/ADR-002-election-source-watcher.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "docs/election-reporting.md",
+      "sha256": "df57e478959b20724221ff0de6f85f42b281404f208e29298a90d8b44e497316",
+      "bytes": 28001,
+      "kind": "documentation",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 12,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "docs/engineering/ADR-001-election-result-reporting.md",
+      "sha256": "9f1d27d3e1dd11bf88e6a2e5be95a15061cb837ce6a09d7122753255195ff482",
+      "bytes": 3883,
+      "kind": "documentation",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 7,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "docs/engineering/ADR-002-election-source-watcher.md",
+      "sha256": "1f7441942bf9ae95ca221d8d5ccbe88a7620714e8b7f9f11e0d2b20560846e62",
+      "bytes": 6934,
+      "kind": "documentation",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 6,
+      "git_authors": [
+        "Claude"
+      ]
+    },
+    {
+      "path": "election_reporting/__init__.py",
+      "sha256": "369bf3c07491e7266a999adfea7155f5427f8bafa945cdea51655750e1c4caff",
+      "bytes": 125,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 5,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_areas.py",
+          "tests/test_election_reporting.py",
+          "tests/test_election_watch.py",
+          "tests/test_election_watch_alaska.py",
+          "tests/test_election_watch_maine.py",
+          "tests/test_publish_reports.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "README.md",
+          "data/README.md",
+          "docs/election-reporting.md",
+          "docs/engineering/ADR-002-election-source-watcher.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "election_reporting/__main__.py",
+      "sha256": "c2ee4ddb093c9af060cafaf68219907f8a6b7b301ed3f8bea75db7555adec987",
+      "bytes": 62,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [],
+        "status": "unknown"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "election_reporting/analysis.py",
+      "sha256": "7f7e26f914af198df0b5f128bf70e480f6da3cfefe1cdece8b71839ec4616ad3",
+      "bytes": 23935,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 8,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_areas.py",
+          "tests/test_election_reporting.py",
+          "tests/test_election_watch.py",
+          "tests/test_election_watch_alaska.py",
+          "tests/test_election_watch_maine.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "election_reporting/areas.py",
+      "sha256": "d3de629112e43527eb6281836aeccb95f109bc066b1b31bed48689eaa6f323bf",
+      "bytes": 25156,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "129952df1bffcc2c1369b8e1b8283949246ad378",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_areas.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "election_reporting/ci/__init__.py",
+      "sha256": "8c525199c042daaec9981ed42501f62ad0453371d051f5eaa5484837ec25dd9b",
+      "bytes": 54,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "103b114b05260ea7880f001fe514142f3913a9cf",
+      "first_date": "2026-10-16",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_publish_reports.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "docs/election-reporting.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "election_reporting/ci/publish_reports.py",
+      "sha256": "51dc0e5da41d8fe56ae94554858c56177c0337d97c922b93893517011fb7feae",
+      "bytes": 13974,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "103b114b05260ea7880f001fe514142f3913a9cf",
+      "first_date": "2026-10-16",
+      "commit_count": 4,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_publish_reports.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "docs/election-reporting.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "election_reporting/cli.py",
+      "sha256": "08dfb6373bab63ce05d567823d39c607e428db4e57c1ae86d8bb6a154c090130",
+      "bytes": 1327,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 6,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [],
+        "status": "unknown"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "election_reporting/config.py",
+      "sha256": "835c29338b0331d528db3b511a7713f1cd12681115ab6509d70f8ecbe0e037e5",
+      "bytes": 10011,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 6,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_areas.py",
+          "tests/test_election_reporting.py",
+          "tests/test_election_watch.py",
+          "tests/test_election_watch_alaska.py",
+          "tests/test_election_watch_maine.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "election_reporting/ingest.py",
+      "sha256": "7b309683256b4cab94b5dbf02f24fa94fa48be1df204221ad36b014356cb389b",
+      "bytes": 24246,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 9,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_areas.py",
+          "tests/test_election_reporting.py",
+          "tests/test_election_watch.py",
+          "tests/test_election_watch_alaska.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "election_reporting/model.py",
+      "sha256": "e74adaade2490b990d8ece3bb74b480e13e88d9cc25e5db4f44787f4b899c303",
+      "bytes": 3282,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 7,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_areas.py",
+          "tests/test_election_reporting.py",
+          "tests/test_election_watch.py",
+          "tests/test_election_watch_alaska.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "election_reporting/publish.py",
+      "sha256": "3c2ae8c80a1e54f8bfb5794ff9dafb682378ce44282520033265c7421317ae61",
+      "bytes": 29511,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 8,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_areas.py",
+          "tests/test_election_reporting.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "election_reporting/watch/__init__.py",
+      "sha256": "79b5c59d837ebef729adf9a519e7ee07005ef798f8379b4fff1e52659aba0510",
+      "bytes": 85,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_watch.py",
+          "tests/test_election_watch_alaska.py",
+          "tests/test_election_watch_maine.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "README.md",
+          "data/README.md",
+          "docs/election-reporting.md",
+          "docs/engineering/ADR-002-election-source-watcher.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "election_reporting/watch/__main__.py",
+      "sha256": "2a4663cdfbd74d5574a09a99351d11504400bdea9cba8481f3bbe8f02155a94b",
+      "bytes": 4104,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 6,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [],
+        "status": "unknown"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "election_reporting/watch/alaska.py",
+      "sha256": "8c1489249796cf57b295d6adcdd41b6433ea123825bdbf5915cb99c9e16b3dcf",
+      "bytes": 11839,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "e38b24d41ccde1009a65e556e55efcf0974095c6",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_watch_alaska.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "election_reporting/watch/certs.py",
+      "sha256": "b2bc02d6ff3a8502b6ff12a884967d123d738c5e5db3b2fcc3e392c593b78870",
+      "bytes": 3778,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "e38b24d41ccde1009a65e556e55efcf0974095c6",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_watch_alaska.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "docs/election-reporting.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "election_reporting/watch/config.py",
+      "sha256": "ff146cfc38c206a0c1ff62829429296a169d76e3ad5bd020348d93656186e970",
+      "bytes": 7746,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 7,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_watch.py",
+          "tests/test_election_watch_alaska.py",
+          "tests/test_election_watch_maine.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "election_reporting/watch/csvformat.py",
+      "sha256": "850e5a7e092f3c8a58db4e4dc246798e25c9b902eb0eacc048327b2b88fd13e5",
+      "bytes": 9110,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_watch.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "data/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "election_reporting/watch/http.py",
+      "sha256": "4b26a4d6a3f8d8d6d9a2dabf60ae2219561a8699a4d2a29a0312d6f9a3dfa998",
+      "bytes": 3871,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 6,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_watch.py",
+          "tests/test_election_watch_alaska.py",
+          "tests/test_election_watch_maine.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "election_reporting/watch/maine.py",
+      "sha256": "a629ad331b3b64ae1a1d174157282a6ff6e3d114a1e5276af1850d6152ef5d63",
+      "bytes": 20473,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "8398f6be1926a512e5c6ede43faf252781ed4b12",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_watch_maine.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "election_reporting/watch/run.py",
+      "sha256": "5b10325059b9e339301e2f63963018e05a85c8f1517047043580ab7f28bd3046",
+      "bytes": 27053,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 7,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_watch.py",
+          "tests/test_election_watch_alaska.py",
+          "tests/test_election_watch_maine.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "election_reporting/watch/schedule.py",
+      "sha256": "6d11d64a72436dbed00420fd2447d15b5d8725bbbffaf70b8c7544fb1ebb9a7e",
+      "bytes": 3888,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 5,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_watch.py",
+          "tests/test_election_watch_alaska.py",
+          "tests/test_election_watch_maine.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "election_reporting/watch/sources.py",
+      "sha256": "4a4b291aa02d0134a1a0b1594a79eb9de537544d5ae08f7eb187a9b44faae231",
+      "bytes": 7235,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 5,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_watch.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "election_reporting/watch/store.py",
+      "sha256": "330c4df519328365b5a77913afc31e1ec0f1dfa3b7ac6d72971a0ebe7ef6167f",
+      "bytes": 3224,
+      "kind": "source",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 4,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_election_watch.py"
+        ],
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "reports/washington/2026-08-04/analysis.json",
+      "sha256": "4cfb46bbdf6df5423ed178e20e98082c98d626a33c6140587da81036d9176a68",
+      "bytes": 708687,
+      "kind": "generated-report",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "declared: generated election reports"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 9,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell",
+        "github-actions[bot]"
+      ]
+    },
+    {
+      "path": "reports/washington/2026-08-04/canonical-document.edom.json",
+      "sha256": "12ab42958baf9bb0a594f98dd4689e059eb3452cc780a1018a070e4e37edeefb",
+      "bytes": 698452,
+      "kind": "generated-report",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "declared: generated election reports"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 9,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell",
+        "github-actions[bot]"
+      ]
+    },
+    {
+      "path": "reports/washington/2026-08-04/county-breakdown.csv",
+      "sha256": "6316166042407b18ff9ff8fcdd5dcfe6cd731a1edcf7a3abb58e22ec9c6aae37",
+      "bytes": 258222,
+      "kind": "generated-report",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "declared: generated election reports"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "129952df1bffcc2c1369b8e1b8283949246ad378",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ]
+    },
+    {
+      "path": "reports/washington/2026-08-04/edt/document/quality.json",
+      "sha256": "33477b9db62e70652f4513111ef5b1dc1328f0bf3952e2798cb51a45717fd660",
+      "bytes": 226,
+      "kind": "generated-report",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "declared: generated election reports"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 5,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "reports/washington/2026-08-04/edt/document/quality.md",
+      "sha256": "9a09bf7023626e6b2c08e07377068bd8617dbf28587aecd91aad3c71587c225d",
+      "bytes": 201,
+      "kind": "generated-report",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "declared: generated election reports"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 5,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "reports/washington/2026-08-04/edt/document/reference-graph.json",
+      "sha256": "82b3ae03e39ae9bef6ec1bde0d997d73baf05077970d9aa156f167423942cda7",
+      "bytes": 475033,
+      "kind": "generated-report",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "declared: generated election reports"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 9,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell",
+        "github-actions[bot]"
+      ]
+    },
+    {
+      "path": "reports/washington/2026-08-04/edt/document/reference-graph.md",
+      "sha256": "a04994769387832b6db4079a7acf63173cdb40c625f070cdd9ffd824bd11e438",
+      "bytes": 223763,
+      "kind": "generated-report",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "declared: generated election reports"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 9,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell",
+        "github-actions[bot]"
+      ]
+    },
+    {
+      "path": "reports/washington/2026-08-04/edt/document/validation.json",
+      "sha256": "8301b506e32084824bbdf2720e58c68fb177544fba09d3d6f9693fc2379b17fe",
+      "bytes": 110,
+      "kind": "generated-report",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "declared: generated election reports"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 5,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "reports/washington/2026-08-04/edt/document/validation.md",
+      "sha256": "4ff4a8c4ff9dc4651b8d9a6a555ffbc4b75cf0c5017759ddbfaefa78e1f783a1",
+      "bytes": 92,
+      "kind": "generated-report",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "declared: generated election reports"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 5,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "reports/washington/2026-08-04/election-analysis.html",
+      "sha256": "972042b65555d9cce1f66801b913d82d0c80a97fa7b9cd92b580de00ae4de328",
+      "bytes": 447165,
+      "kind": "generated-report",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "declared: generated election reports"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 9,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell",
+        "github-actions[bot]"
+      ]
+    },
+    {
+      "path": "reports/washington/2026-08-04/election-analysis.md",
+      "sha256": "3930da7990a9d42bf7f21df217c27903270d1b6ddc4db2d3fdde358e17e3769a",
+      "bytes": 227889,
+      "kind": "generated-report",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "declared: generated election reports"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 9,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell",
+        "github-actions[bot]"
+      ]
+    },
+    {
+      "path": "reports/washington/2026-08-04/facebook-summary.txt",
+      "sha256": "1302075c2344d512a77dd8016cc9313fb4073572616a7351ed14ef7309394ede",
+      "bytes": 3216,
+      "kind": "generated-report",
+      "license": {
+        "spdx": "CC-BY-4.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "declared: generated election reports"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "no (automation-written: REUSE.toml path annotation)",
+      "comment_style": null,
+      "first_commit": "574e0f11f67e673b0a8eaddaf0aeaa5df3699658",
+      "first_date": "2026-10-13",
+      "commit_count": 6,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell",
+        "github-actions[bot]"
+      ]
+    },
+    {
+      "path": "tests/test_alaska_crosswalk.py",
+      "sha256": "4c8408fa230b0325727eac2a115f7927deefcf4384ad27e9ad03e54674d10c6c",
+      "bytes": 2079,
+      "kind": "test",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "69e07f4286fac49b0cb50506a92d54fa74e76187",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "tests/test_election_areas.py",
+      "sha256": "24bd8008906870419167d479cd2a2b8d7785128a57a34d50bcb64ddda17d9986",
+      "bytes": 16184,
+      "kind": "test",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "129952df1bffcc2c1369b8e1b8283949246ad378",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "tests/test_election_reporting.py",
+      "sha256": "f09dad1ac79b124ed22243720a137b18ad584782e2444478f6078db05e5c587c",
+      "bytes": 20546,
+      "kind": "test",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "1ed1e6364497692f8b2a6c758b37b621c802e5c0",
+      "first_date": "2026-08-06",
+      "commit_count": 7,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "tests/test_election_watch.py",
+      "sha256": "641aea9d3ba4cf84746f2a56b426e9db1df75d35828010d64536b5e555f1d8dd",
+      "bytes": 25269,
+      "kind": "test",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "df908040ab39db2d91efbc919148fbd82da4ca61",
+      "first_date": "2026-10-23",
+      "commit_count": 5,
+      "git_authors": [
+        "Claude"
+      ],
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "tests/test_election_watch_alaska.py",
+      "sha256": "a8474d55b42460163976bd237286fea2e411a4b8f4c35fe2deccab22772c80e4",
+      "bytes": 15843,
+      "kind": "test",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "e38b24d41ccde1009a65e556e55efcf0974095c6",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "tests/test_election_watch_maine.py",
+      "sha256": "864d17116910b6199205824247fe7c1e422f60a94f60602f7bccc55e7bf17882",
+      "bytes": 18855,
+      "kind": "test",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "8398f6be1926a512e5c6ede43faf252781ed4b12",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "tests/test_publish_reports.py",
+      "sha256": "d82177c20f0dd7a2119e3604c46dbc3a47a11ce51da2ad8ac45ec80fcc12a6a9",
+      "bytes": 13119,
+      "kind": "test",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "103b114b05260ea7880f001fe514142f3913a9cf",
+      "first_date": "2026-10-16",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "tools/alaska_crosswalk.py",
+      "sha256": "a7a90d6caac03bc9213911221b7916a100575386611d7da2768397c9cb137088",
+      "bytes": 6088,
+      "kind": "tool",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "2026 Donovan Worrell",
+        "basis": "owner rule 2026-10-23: everything in public dlworrell repositories is Apache-2.0 unless otherwise noted"
+      },
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "first_commit": "69e07f4286fac49b0cb50506a92d54fa74e76187",
+      "first_date": "2026-10-23",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [],
+        "status": "unknown"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "data/crosswalks/alaska/README.md",
+          "docs/election-reporting.md"
+        ],
+        "status": "documented"
+      }
+    }
+  ]
+}
