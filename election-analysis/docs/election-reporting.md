@@ -137,7 +137,7 @@ PYTHONPATH="election-analysis:../engineering-docs-toolkit" \
     --output election-analysis/reports/washington/2026-08-04
 ```
 
-The CI pins EDT commit `649981ec78c97aafe4374284ad7e8c57c11a4640` so identical
+The CI pins EDT commit `bca66c1e2d2a9bf9c05f9429e618299216a17f27` so identical
 inputs use the same publication engine.
 
 ## Automatic source watching
