@@ -1,0 +1,32 @@
+LicenseRef-KingCounty-PublicData
+
+Status: Draft (PRM-0011 Slice 0). Recorded licensing decision; REUSE headers
+and the remaining license files are added in Slice 1.
+
+Copyright text: King County Elections
+
+The files this identifier covers are a public dataset published by King County
+Elections (King County, Washington). King County Elections states no license
+for the dataset. Donovan Worrell claims no copyright in these files and grants
+no license to them. They are kept unmodified, except as noted per file below,
+as source evidence for the election reports in this repository.
+
+Applies to: election-data/input/king-county/
+(election-analysis/data/input/king-county/ after the planned move)
+
+Files
+-----
+
+election-data/input/king-county/2026-08-06-1600.csv.xls
+  Source URL:   https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/08/webresults-20260806.csv
+                (linked from https://kingcounty.gov/en/dept/elections/results/2026/august-primary-election)
+  Retrieved:    UNKNOWN. Not recorded. The file was first committed to this
+                repository at 2026-08-06 17:55:48 -0700 (commit fece5eb),
+                so it was retrieved on or before that time.
+  Repo SHA-256: 9a1572cc9655d088f2d36656867755f5268d8464d045f5f45d32c21d1406ec35 (53,236 bytes)
+  Source match: Verified on 2026-10-23. The published file
+                (SHA-256 bf04a40a6ad305f86f770bb20f4b8b5438e4bf416651fcdaa011c9ef4d0911f1,
+                53,643 bytes) is byte-identical to the repository copy after
+                converting its CRLF line endings to LF. The content is otherwise
+                unchanged; the line-ending change happened during the original
+                download or commit.

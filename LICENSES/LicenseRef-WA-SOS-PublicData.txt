@@ -1,0 +1,52 @@
+LicenseRef-WA-SOS-PublicData
+
+Status: Draft (PRM-0011 Slice 0). Recorded licensing decision; REUSE headers
+and the remaining license files are added in Slice 1.
+
+Copyright text: Washington Secretary of State
+
+The files this identifier covers are a public dataset published by the
+Washington Secretary of State, Elections Division, through the official
+results site https://results.votewa.gov/. The Secretary of State states no
+license for the dataset. Donovan Worrell claims no copyright in these files
+and grants no license to them. They are kept unmodified as source evidence for
+the election reports in this repository.
+
+Applies to: election-data/input/washington/
+(election-analysis/data/input/washington/ after the planned move)
+
+The results site lists each election's downloadable reports through
+https://results.votewa.gov/results/public/api/elections/washington/<YYYYMMDD>
+and serves them from
+https://results.votewa.gov/cdn/results/<jurisdiction id>/<report file name>.
+The Washington jurisdiction id is 01000000-f977-1a83-1ed4-08ddd69e9e69. Report
+files are overwritten in place as results are updated, so an earlier snapshot
+cannot be re-downloaded after it is replaced.
+
+Files
+-----
+
+election-data/input/washington/2026-08-07-0118.xlsx
+  Source URL:   UNKNOWN. Not recorded. Probably an earlier version of the
+                2026 Primary "All Results Excel" report (URL below), which has
+                since been overwritten; that cannot now be verified.
+  Retrieved:    UNKNOWN. Not recorded. First committed at
+                2026-08-06 19:47:07 -0700 (commit 0f3067c).
+  Repo SHA-256: fd4d2a14a01d3945095e92cbb0d0a85b1c0fadc025882c73ed9348da1fbdf43a (114,411 bytes)
+
+election-data/input/washington/2026-08-08-0018.xlsx
+  Source URL:   UNKNOWN. Not recorded. Probably an earlier version of the same
+                report; cannot now be verified.
+  Retrieved:    UNKNOWN. Not recorded. First committed at
+                2026-08-07 18:18:40 -0700 (commit 386f044).
+  Repo SHA-256: 0a6891a586429767a1c00a14b0d3127612e21a339f9f19351056dcb2e9d84718 (143,759 bytes)
+
+election-data/input/washington/All Results_1bc1cf3c-e598-43bf-a569-3f7539add8dd-2026-10-14-1100.xlsx
+  Source URL:   https://results.votewa.gov/cdn/results/01000000-f977-1a83-1ed4-08ddd69e9e69/All%20Results_1bc1cf3c-e598-43bf-a569-3f7539add8dd.xlsx
+                ("All Results Excel", 2026 Primary, August 4, 2026)
+  Retrieved:    UNKNOWN. Not recorded. First committed at
+                2026-10-14 18:07:56 -0700 (commit 33299ff) under the source
+                file name; renamed later.
+  Repo SHA-256: d580c91e84f5c534e3094b46558cd5e6ad9778ca6219546015af3f331b324f17 (143,756 bytes)
+  Source match: Verified on 2026-10-23. Byte-identical to the published file
+                (server Last-Modified: Fri, 11 Sep 2026 17:37:08 GMT).
