@@ -38,3 +38,5 @@ capture time. The records are not rewritten to match later layouts.
 | `revision-review-20261014.json` | 2026-10-14 | Review of the 2026-10-13 submitted revisions |
 | `timing-runner-update-20261014.json` | 2026-10-14 | Timing runner and setup integration |
 | `carry-refinement-20261014.json` | 2026-10-14 | REDC suffix carry refinement at 16 limbs |
+| `header-equivalence-20261023.json` | 2026-10-23 | REUSE headers and File-IDs leave behavior unchanged (PRM-0012 step 2) |
+| `attestation-verification-20261023.json` | 2026-10-23 | Live attestation runs on main verified independently; pull requests cannot sign (PRM-0012 step 5) |
