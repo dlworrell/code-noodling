@@ -1,9 +1,12 @@
 name: crypto_pipeline Provenance (report-only)
 
-# PRM-0012 step 3: REUSE, Catalyst-File-ID and Doxygen checks plus the scope
-# manifest for crypto_pipeline/. Report-only: results are published in the job
-# summary and as an artifact, and never fail the pull request.
-# Logic lives in the crypto_pipeline scope (Catylist ADR-0004).
+# PRM-0012 steps 3-4: REUSE, Catalyst-File-ID and Doxygen checks, the scope
+# manifest and test results for crypto_pipeline/. Report-only: results are
+# published in the job summary and as an artifact, and never fail the pull
+# request. On pushes to main only, the attest job signs the scope manifest and
+# the test results (GitHub artifact attestations, Sigstore) and verifies them.
+# Never add pull_request_target; pull requests, including from forks, never
+# reach the signing job. Logic lives in the crypto_pipeline scope (ADR-0004).
 
 on:
   pull_request:
@@ -33,6 +36,9 @@ jobs:
       - name: Provenance checks (report-only)
         id: checks
         run: crypto_pipeline/ci/provenance.sh report build/provenance
+      - name: Test results (report-only)
+        id: tests
+        run: crypto_pipeline/ci/provenance.sh test-results build/provenance
       - name: Publish results and scope manifest
         if: always()
         uses: actions/upload-artifact@v4
@@ -40,3 +46,43 @@ jobs:
           name: crypto-pipeline-provenance
           path: build/provenance/
           if-no-files-found: error
+
+  attest:
+    # Commits on main only: never pull_request (fork or not), never
+    # pull_request_target, never workflow_dispatch.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: report
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          persist-credentials: false
+      - name: Download the report job's results
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: crypto-pipeline-provenance
+          path: build/provenance
+      - name: Attest the scope manifest (check results)
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        with:
+          subject-path: build/provenance/scope-manifest.json
+          predicate-type: https://catalyst.dlworrell.dev/attestation/check/v1
+          predicate-path: build/provenance/results.json
+          create-storage-record: false
+      - name: Attest the test results
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        with:
+          subject-path: build/provenance/test-results.json
+          predicate-type: https://catalyst.dlworrell.dev/attestation/test/v1
+          predicate-path: build/provenance/test-predicate.json
+          create-storage-record: false
+      - name: Verify the attestations; reject a changed copy and another commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OTHER_SHA: ${{ github.event.before }}
+        run: crypto_pipeline/ci/provenance.sh verify build/provenance

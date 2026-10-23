@@ -246,6 +246,8 @@ def main(argv: list[str] | None = None) -> int:
     statuses = [status for status, _ in results.values()]
     overall = VIOLATION if VIOLATION in statuses else INDETERMINATE if INDETERMINATE in statuses else PASS
     report["overall"] = overall
+    report["commit"] = commit(scope)
+    report["scope"] = "crypto_pipeline/"
     (args.output / "results.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     summary = write_summary(args.output, results, overall)
     print(summary)
