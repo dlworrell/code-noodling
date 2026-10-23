@@ -22,7 +22,8 @@ Reports for an election are generated into `reports/elections/<state>/<election 
 
 ## Automatic: the source watcher
 
-`watch.toml` names a state and the counties to follow; the watcher works out the
+`watch.toml` names each state and the counties (in Alaska, boroughs and census
+areas) to follow; the watcher works out the
 rest from the official results sites and adds new snapshots through a pull request
 during the checking window. See
 [Automatic source watching](../docs/election-reporting.md#automatic-source-watching).

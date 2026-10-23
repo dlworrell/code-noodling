@@ -7,7 +7,15 @@ from pathlib import Path
 from .model import ElectionConfig, ElectionReportError, SourceConfig
 
 
-SUPPORTED_RULES = {"winner", "top_two", "wa_judicial", "automatic", "ignore"}
+SUPPORTED_RULES = {
+    "winner",
+    "top_two",
+    "top_four",
+    "rcv",
+    "wa_judicial",
+    "automatic",
+    "ignore",
+}
 SUPPORTED_SCOPES = {"county", "state", "district", "local", "other"}
 
 
@@ -137,6 +145,15 @@ def load_config(path: Path) -> ElectionConfig:
     ):
         raise ElectionReportError("analysis.write_in_labels must be a string array")
     write_in_labels = frozenset(item.strip().casefold() for item in raw_labels)
+    # Rule for candidate contests that no [[contest_rules]] entry names. Unset
+    # keeps the Washington inference (top-two primaries, judicial majorities).
+    default_rule = analysis.get("default_rule")
+    if default_rule is not None:
+        if not isinstance(default_rule, str) or default_rule.strip().lower() not in SUPPORTED_RULES:
+            raise ElectionReportError(
+                f"analysis.default_rule must be one of: {', '.join(sorted(SUPPORTED_RULES))}"
+            )
+        default_rule = default_rule.strip().lower()
 
     overrides: dict[str, str] = {}
     override_rows = raw.get("contest_rules", [])
@@ -160,4 +177,5 @@ def load_config(path: Path) -> ElectionConfig:
         sources=tuple(sources),
         write_in_labels=write_in_labels,
         rule_overrides=overrides,
+        default_rule=default_rule,
     )

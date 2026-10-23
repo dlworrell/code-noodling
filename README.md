@@ -10,7 +10,7 @@ detailed documentation in its own directory.
 |---|---|---|---|
 | Prime Number and Dice Suite | [`prime-number-suite/`](prime-number-suite/) | CPU and multi-GPU (Tesla K80) prime sieves, an unbiased prime-seeded dice engine, and PhysX/Maya dice experiments | [`prime-number-suite/README.md`](prime-number-suite/README.md) |
 | Crypto Pipeline | [`crypto_pipeline/`](crypto_pipeline/) | Multi-precision integer multiplication experiments (research prototype) | [`crypto_pipeline/README.md`](crypto_pipeline/README.md) |
-| Election Result Reporting | [`election_reporting/`](election_reporting/), [`election-data/`](election-data/) | Washington election result watching, snapshot comparison, and change-probability reports | [`docs/election-reporting.md`](docs/election-reporting.md) |
+| Election Result Reporting | [`election_reporting/`](election_reporting/), [`election-data/`](election-data/) | Washington and Alaska election result watching, snapshot comparison, and change-probability reports | [`docs/election-reporting.md`](docs/election-reporting.md) |
 
 ## Repository Layout
 
@@ -134,13 +134,13 @@ See the [crypto pipeline README](crypto_pipeline/README.md),
 ## Election Result Reporting
 
 The repository also contains a standard-library Python workflow for comparing dated
-Washington election-result snapshots and estimating the statistical probability that
+Washington and Alaska election-result snapshots and estimating the statistical probability that
 each current winner, top-two cutoff, or judicial majority status changes before
 certification. Every probability carries a separate 0–100 evidence-reliability score.
 
-Pick the state and counties to follow in
-[`election-data/watch.toml`](election-data/watch.toml) (King County and its
-neighbors to start). From polls closing until certification, the **Election Source
+Pick the states and counties to follow in
+[`election-data/watch.toml`](election-data/watch.toml): Washington (King County and
+its neighbors) and Alaska (statewide and every borough and census area). From polls closing until certification, the **Election Source
 Watch** workflow fetches each new official result snapshot, converts it to
 plain-text CSV, records its source and checksum, and opens a pull request. Merging it
 runs **Election Result Reports**, which uses the Engineering Documents Toolkit (EDT) to

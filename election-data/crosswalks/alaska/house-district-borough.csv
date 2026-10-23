@@ -1,0 +1,68 @@
+house_district,borough_fips,borough,population_2020,population_share
+01,02130,Ketchikan Gateway Borough,13948,0.778305
+01,02275,Wrangell City and Borough,2127,0.118688
+01,02198,Prince of Wales-Hyder Census Area,1846,0.103008
+02,02220,Sitka City and Borough,8458,0.468639
+02,02198,Prince of Wales-Hyder Census Area,3907,0.216478
+02,02195,Petersburg Borough,3398,0.188276
+02,02105,Hoonah-Angoon Census Area,1623,0.089927
+02,02282,Yakutat City and Borough,662,0.036680
+03,02110,Juneau City and Borough,14133,0.776752
+03,02100,Haines Borough,2080,0.114317
+03,02230,Skagway Municipality,1240,0.068151
+03,02105,Hoonah-Angoon Census Area,742,0.040780
+04,02110,Juneau City and Borough,18122,1.000000
+05,02150,Kodiak Island Borough,13101,0.700326
+05,02122,Kenai Peninsula Borough,2806,0.149997
+05,02063,Chugach Census Area,2800,0.149677
+06,02122,Kenai Peninsula Borough,18434,1.000000
+07,02122,Kenai Peninsula Borough,18465,1.000000
+08,02122,Kenai Peninsula Borough,18471,1.000000
+09,02020,Anchorage Municipality,18012,0.985124
+09,02063,Chugach Census Area,272,0.014876
+10,02020,Anchorage Municipality,18523,1.000000
+11,02020,Anchorage Municipality,18103,1.000000
+12,02020,Anchorage Municipality,18217,1.000000
+13,02020,Anchorage Municipality,18185,1.000000
+14,02020,Anchorage Municipality,18213,1.000000
+15,02020,Anchorage Municipality,18168,1.000000
+16,02020,Anchorage Municipality,18182,1.000000
+17,02020,Anchorage Municipality,18203,1.000000
+18,02020,Anchorage Municipality,18023,1.000000
+19,02020,Anchorage Municipality,18243,1.000000
+20,02020,Anchorage Municipality,18239,1.000000
+21,02020,Anchorage Municipality,18414,1.000000
+22,02020,Anchorage Municipality,18285,1.000000
+23,02020,Anchorage Municipality,18205,1.000000
+24,02020,Anchorage Municipality,18032,1.000000
+25,02170,Matanuska-Susitna Borough,18822,1.000000
+26,02170,Matanuska-Susitna Borough,18807,1.000000
+27,02170,Matanuska-Susitna Borough,18799,1.000000
+28,02170,Matanuska-Susitna Borough,18793,1.000000
+29,02170,Matanuska-Susitna Borough,14743,0.785037
+29,02063,Chugach Census Area,4030,0.214590
+29,02066,Copper River Census Area,7,0.000373
+30,02170,Matanuska-Susitna Borough,17117,0.913589
+30,02068,Denali Borough,1619,0.086411
+31,02090,Fairbanks North Star Borough,18294,1.000000
+32,02090,Fairbanks North Star Borough,18522,1.000000
+33,02090,Fairbanks North Star Borough,18500,1.000000
+34,02090,Fairbanks North Star Borough,18382,1.000000
+35,02090,Fairbanks North Star Borough,18445,1.000000
+36,02240,Southeast Fairbanks Census Area,6808,0.372572
+36,02290,Yukon-Koyukuk Census Area,5343,0.292399
+36,02090,Fairbanks North Star Borough,3512,0.192196
+36,02066,Copper River Census Area,2610,0.142834
+37,02016,Aleutians West Census Area,5232,0.287062
+37,02070,Dillingham Census Area,4857,0.266487
+37,02013,Aleutians East Borough,3420,0.187644
+37,02050,Bethel Census Area,1774,0.097333
+37,02164,Lake and Peninsula Borough,1476,0.080983
+37,02060,Bristol Bay Borough,844,0.046307
+37,02122,Kenai Peninsula Borough,623,0.034182
+38,02050,Bethel Census Area,16892,0.946172
+38,02158,Kusilvak Census Area,961,0.053828
+39,02180,Nome Census Area,10046,0.575603
+39,02158,Kusilvak Census Area,7407,0.424397
+40,02185,North Slope Borough,11031,0.586007
+40,02188,Northwest Arctic Borough,7793,0.413993

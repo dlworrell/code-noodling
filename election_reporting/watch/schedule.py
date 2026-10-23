@@ -8,6 +8,12 @@ RCW 29A.60.250 for the Secretary of State), counted from election day:
 | General  | 21 days  | 30 days |
 | Primary  | 14 days  | 17 days |
 | Special  | 10 days  | 10 days (the state has no role; the county date is used) |
+
+Alaska has no counties and no county certification. The State Review Board
+certifies; the Division of Elections' 2026 calendar targets 13 days after the
+primary (2026-08-31) and 22 days after the general (2026-11-25), AS 15.15.450.
+These are target dates, not statutory deadlines; `[watch.schedule] end`
+extends the window if certification slips.
 """
 
 from __future__ import annotations
@@ -18,9 +24,16 @@ from datetime import date, datetime, timedelta
 from .config import WatchConfig
 
 CERTIFICATION_DAYS = {
-    "general": {"county": 21, "state": 30},
-    "primary": {"county": 14, "state": 17},
-    "special": {"county": 10, "state": 10},
+    "washington": {
+        "general": {"county": 21, "state": 30},
+        "primary": {"county": 14, "state": 17},
+        "special": {"county": 10, "state": 10},
+    },
+    "alaska": {
+        "general": {"county": 22, "state": 22},
+        "primary": {"county": 13, "state": 13},
+        "special": {"county": 22, "state": 22},
+    },
 }
 
 
@@ -33,8 +46,10 @@ def election_kind(name: str) -> str:
     return "special"
 
 
-def certification_date(election_day: date, kind: str, scope: str) -> date:
-    return election_day + timedelta(days=CERTIFICATION_DAYS[kind][scope])
+def certification_date(
+    election_day: date, kind: str, scope: str, state_id: str = "washington"
+) -> date:
+    return election_day + timedelta(days=CERTIFICATION_DAYS[state_id][kind][scope])
 
 
 @dataclass(frozen=True)
@@ -54,7 +69,9 @@ def watch_window(config: WatchConfig, election_day: date, kind: str, has_state: 
     night_end = datetime.combine(
         election_day + timedelta(days=1), config.election_night_until, zone
     )
-    last = certification_date(election_day, kind, "state" if has_state else "county")
+    last = certification_date(
+        election_day, kind, "state" if has_state else "county", config.state_id
+    )
     end = config.end or datetime.combine(last + timedelta(days=1), datetime.min.time(), zone)
     return Window(start=start, election_night_end=max(start, night_end), end=end)
 

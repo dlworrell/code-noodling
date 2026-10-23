@@ -52,6 +52,18 @@ committed files.
    into each run after their SHA-256 is checked. Nothing else on the default
    branch is changed by a run.
 
+7. **Alaska from one precinct file.** Alaska reports only by precinct and House
+   district, so the watcher reads the Division of Elections' statewide precinct
+   CSV and writes statewide totals plus one source per borough or census area
+   from a committed, population-weighted precinct crosswalk
+   (`election-data/crosswalks/alaska/`). Borough sources hold election-day
+   precinct votes only; district-level ballots are never apportioned by
+   estimate. Primaries use a `top_four` rule and general elections an `rcv`
+   rule that flags races without a first-choice majority.
+8. **Fix TLS by pinning, never by disabling.** `www.elections.alaska.gov` is on
+   the host allowlist with the correct published intermediate certificate added
+   to the system trust store for that host alone, SHA-256 checked at load.
+
 ## Consequences
 
 - Every new snapshot has recorded provenance and is reviewable before it is used.
@@ -65,7 +77,12 @@ committed files.
 - Two watched counties' shares of a multi-county local contest are not summed;
   only the statewide source gives a combined total.
 - Another state needs its own source adapter; the per-state directories and
-  `[[watch]]` tables mean adding one moves no existing data.
+  `[[watch]]` tables mean adding one moves no existing data. Alaska needed the
+  adapter, a crosswalk, two analysis rules and one pinned certificate.
+- Alaska borough totals exclude absentee, early and questioned ballots, so they
+  describe election-day voting, not final borough results.
+- If the Alaska certificate chain is fixed or the intermediate rotates, the pin
+  is harmless until it expires (2029-06-23) and is then removed.
 - Maintainers merge snapshot pull requests during the window; merging is the human
   review step.
 

@@ -77,7 +77,11 @@ def state_jurisdiction(fetch: Fetch) -> dict:
 
 
 def resolve_places(
-    jurisdiction: dict, state: str, counties: tuple[str, ...], prefer_county_files: bool
+    jurisdiction: dict,
+    state: str,
+    counties: tuple[str, ...],
+    prefer_county_files: bool,
+    all_counties: bool = False,
 ) -> list[Place]:
     """Map county names such as ``"King"`` to results-site jurisdictions."""
     known: dict[str, tuple[str, str]] = {}
@@ -89,6 +93,8 @@ def resolve_places(
             known[name.casefold().removesuffix(" county")] = (name, short)
     places = [Place("washington", state, "state", "washington")]
     unknown: list[str] = []
+    if all_counties:
+        counties = tuple(sorted({name for name, _ in known.values()}))
     for county in counties:
         match = known.get(county.casefold()) or known.get(county.casefold().removesuffix(" county"))
         if match is None:
