@@ -10,10 +10,15 @@ from .analysis import FLIP_BANDS, risk_counts
 from .model import DecisionAnalysis, ElectionAnalysis, ElectionReportError, RaceAnalysis
 
 
-PUBLIC_REPORT_URL = (
-    "https://github.com/dlworrell/code-noodling/blob/main/"
-    "reports/elections/election-analysis.md"
-)
+PUBLIC_REPORT_BASE = "https://github.com/dlworrell/code-noodling/blob/main/"
+PUBLIC_REPORT_URL = PUBLIC_REPORT_BASE + "reports/elections/election-analysis.md"
+
+
+def public_report_url(output_dir: Path) -> str:
+    """The published Markdown report's URL for a repository-relative output directory."""
+    if output_dir.is_absolute() or ".." in output_dir.parts:
+        return PUBLIC_REPORT_URL
+    return f"{PUBLIC_REPORT_BASE}{output_dir.as_posix().strip('/')}/election-analysis.md"
 
 
 def _risk_label(value: str) -> str:
@@ -237,7 +242,7 @@ def _facebook_decision_item(
     )
 
 
-def facebook_summary(analysis: ElectionAnalysis) -> str:
+def facebook_summary(analysis: ElectionAnalysis, report_url: str = PUBLIC_REPORT_URL) -> str:
     """Build a compact, plain-text report suitable for a Facebook post."""
     counts = risk_counts(analysis)
     controlling_races = [race for race in analysis.races if race.controlling]
@@ -364,7 +369,7 @@ def facebook_summary(analysis: ElectionAnalysis) -> str:
             ),
             "",
             "Full race-by-race report and methodology:",
-            PUBLIC_REPORT_URL,
+            report_url,
             "",
             "#WashingtonElections #ElectionResults #ElectionData",
         ]
@@ -607,7 +612,9 @@ def publish(analysis: ElectionAnalysis, output_dir: Path) -> None:
         json.dumps(edom, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
         encoding="utf-8",
     )
-    facebook_path.write_text(facebook_summary(analysis), encoding="utf-8")
+    facebook_path.write_text(
+        facebook_summary(analysis, public_report_url(output_dir)), encoding="utf-8"
+    )
     generate_document_reports(edom, output_dir / "edt" / "document")
     write_edom_markdown(edom_path, output_dir / "election-analysis.md")
     write_edom_html(

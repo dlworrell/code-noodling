@@ -1,0 +1,111 @@
+name: Election Source Watch
+
+# Checks the official result sources selected in election-data/watch.toml and
+# proposes new snapshots as a pull request (docs/engineering/ADR-002).
+#
+# Runs every 30 minutes; `python -m election_reporting.watch fetch` decides
+# whether a run is due (every 30 minutes from polls closing until 02:00, then
+# hourly until certification) and exits quickly otherwise.
+#
+# ADR-0006 (AES-DEV-001-R003/R005): this workflow never pushes to the default
+# branch. New snapshots go to the workflow-owned automation/election-sources
+# branch as a GitHub-verified commit (GraphQL createCommitOnBranch), with a
+# pull request to the default branch. Snapshots waiting in that pull request
+# are carried forward into each run, because report files the state overwrites
+# cannot be downloaded again.
+# Never add pull_request_target: this job holds a write token.
+
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Fetch now, even outside the checking window
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: election-source-watch
+  cancel-in-progress: false
+
+env:
+  SNAPSHOT_BRANCH: automation/election-sources
+
+jobs:
+  watch:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Check out default branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test watcher (offline)
+        env:
+          PYTHONPATH: .
+        run: python -m unittest discover -s tests -p 'test_election_watch.py'
+
+      - name: Find unmerged snapshots
+        id: pending
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          if gh api "repos/${GITHUB_REPOSITORY}/branches/${SNAPSHOT_BRANCH}" --silent 2>/dev/null; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check out unmerged snapshots
+        if: steps.pending.outputs.exists == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.SNAPSHOT_BRANCH }}
+          path: .pending
+          persist-credentials: false
+
+      - name: Carry forward unmerged snapshots
+        if: steps.pending.outputs.exists == 'true'
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m election_reporting.watch carry --from .pending/election-data/elections
+          rm -rf .pending
+
+      - name: Fetch new snapshots
+        env:
+          PYTHONPATH: .
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.force && '--force' || '' }}
+        run: python -m election_reporting.watch fetch $FORCE
+
+      - name: Publish verified commit and pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: .
+          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: >-
+          python -m election_reporting.ci.publish_reports
+          --base "$BASE_BRANCH"
+          --base-sha "$GITHUB_SHA"
+          --branch "$SNAPSHOT_BRANCH"
+          --path election-data/elections
+          --title "data: new official election result snapshots"
+          --summary "New official result snapshots from the **Election Source Watch** workflow. See each election's SOURCES.json for source URLs, retrieval times and SHA-256 checksums. Merging regenerates the reports."
+          --run-url "$RUN_URL"

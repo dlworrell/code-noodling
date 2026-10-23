@@ -21,6 +21,7 @@ on:
       - "election_reporting/**"
       - "tests/test_election_reporting.py"
       - "tests/test_publish_reports.py"
+      - "tests/test_election_watch.py"
       - ".github/workflows/election-result-reports.yml"
   pull_request:
     paths:
@@ -29,7 +30,9 @@ on:
       - "reports/elections/**"
       - "tests/test_election_reporting.py"
       - "tests/test_publish_reports.py"
+      - "tests/test_election_watch.py"
       - ".github/workflows/election-result-reports.yml"
+      - ".github/workflows/election-source-watch.yml"
 
 permissions:
   contents: read
@@ -73,13 +76,35 @@ jobs:
           PYTHONPATH: .
         run: python -m unittest discover -s tests -p 'test_publish_reports.py' -v
 
+      - name: Test election source watcher
+        env:
+          PYTHONPATH: .
+        run: python -m unittest discover -s tests -p 'test_election_watch.py' -v
+
       - name: Generate and validate EDT reports
         env:
           PYTHONPATH: .:.tools/engineering-docs-toolkit
-        run: >-
-          python -m election_reporting
-          --config election-data/election.toml
-          --output reports/elections
+        shell: bash
+        run: |
+          # One report directory per election: election-data/elections/<date>/
+          # builds into reports/elections/<date>/. An election without any
+          # snapshots yet (the watcher created only its election.toml) is skipped.
+          set -euo pipefail
+          shopt -s nullglob
+          built=0
+          for config in election-data/elections/*/election.toml; do
+            election="$(basename "$(dirname "$config")")"
+            if ! compgen -G "$(dirname "$config")/input/*/*" > /dev/null; then
+              echo "Skipping $election: no snapshots yet."
+              continue
+            fi
+            python -m election_reporting --config "$config" --output "reports/elections/$election"
+            built=$((built + 1))
+          done
+          if [ "$built" -eq 0 ]; then
+            echo "::error::No election has snapshots to report on."
+            exit 1
+          fi
 
       - name: Check generated patch formatting
         run: git diff --check
