@@ -11,8 +11,12 @@ for the dataset. Donovan Worrell claims no copyright in these files and grants
 no license to them. They are kept unmodified, except as noted per file below,
 as source evidence for the election reports in this repository.
 
-Applies to: election-data/input/king-county/
-(election-analysis/data/input/king-county/ after the planned move)
+Applies to: election/data/elections/washington/*/input/king-county/
+(formerly election-data/input/king-county/)
+
+Files are listed below under the paths they were first committed at. Their
+current paths, and every later snapshot, are recorded in each election's
+SOURCES.json.
 
 Files
 -----
