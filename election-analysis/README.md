@@ -37,7 +37,7 @@ artifacts, and call the scripts in [`ci/`](ci/).
 | [`tools/`](tools/) | One-off tools (the Alaska crosswalk generator) |
 | [`LICENSES/`](LICENSES/), [`REUSE.toml`](REUSE.toml) | License texts, and REUSE licensing for files that cannot carry a header (data, reports, provenance records); authored files carry SPDX headers and a `Catalyst-File-ID` |
 | [`.gitignore`](.gitignore) | Keeps data and report JSON/CSV versioned despite the repository-wide ignores |
-| [`docs/`](docs/) | [User guide](docs/election-reporting.md) and engineering records ([ADR-001](docs/engineering/ADR-001-election-result-reporting.md), [ADR-002](docs/engineering/ADR-002-election-source-watcher.md), [provenance baseline](docs/engineering/provenance-baseline.json)) |
+| [`docs/`](docs/) | [User guide](docs/election-reporting.md) and engineering records ([ADR-001](docs/engineering/ADR-001-election-result-reporting.md), [ADR-002](docs/engineering/ADR-002-election-source-watcher.md), [provenance baseline](docs/engineering/provenance-baseline.json), [header equivalence](docs/engineering/header-equivalence-20261023.json), [attestation verification](docs/engineering/attestation-verification-20261023.json)) |
 
 | Workflow | What it does |
 |---|---|

@@ -1,0 +1,125 @@
+{
+  "schema": "catalyst-attestation-evidence/draft-1",
+  "prompt": "Election slice step 5: verify the live attestation run on main; confirm pull requests, including forks, cannot sign",
+  "captured": "2026-10-23",
+  "workflow": ".github/workflows/election_provenance.yml (attest job: push to refs/heads/main only; permissions contents: read, id-token: write, attestations: write; actions pinned by SHA: checkout v7.0.1, download-artifact v8.0.2, attest v4.2.2)",
+  "main_run": {
+    "push": "PR #37 merge",
+    "commit": "63ab866c6dcb8aa2f5d415aa23f1838dcd8f1cd8",
+    "run": 39989219942,
+    "report_job": "success",
+    "attest_job": "success",
+    "attestations": {
+      "scope-manifest.json": {
+        "sha256": "b4c38256f7729a8d1a833a270091681d129c4049f75e6be0b4b5016f58f121ac",
+        "rekor_log_index": 3421018090
+      },
+      "test-results.json": {
+        "sha256": "f8d9ac8be78ecd1d8c2a24e5116a71561c237c8d86e43fa4399616a03acc0299",
+        "rekor_log_index": 3421018264,
+        "github_attestation": 59162528
+      }
+    },
+    "in_workflow_verification": {
+      "scope-manifest.json, check/v1, commit 63ab866c6dcb8aa2f5d415aa23f1838dcd8f1cd8": "pass (expected pass)",
+      "test-results.json, test/v1, commit 63ab866c6dcb8aa2f5d415aa23f1838dcd8f1cd8": "pass (expected pass)",
+      "scope-manifest.json with one byte changed": "fail (expected fail)",
+      "scope-manifest.json claimed for 16c2252e7953296a04e3dd27ba6fac3279b596a2": "fail (expected fail)"
+    }
+  },
+  "independent_verification": {
+    "description": "Outside GitHub Actions, with Sigstore's own client rather than gh attestation verify. Artifact downloaded from the run; bundles from the public GitHub attestations API.",
+    "tool": "sigstore-python 4.5.1 (sigstore verify github)",
+    "run": 39989219942,
+    "artifact": {
+      "name": "election-analysis-provenance",
+      "zip_sha256": "04f4723da16e695af910b02d2131ce31a960e7a95c4adba2367dd993381df4de",
+      "github_recorded_digest": "sha256:04f4723da16e695af910b02d2131ce31a960e7a95c4adba2367dd993381df4de"
+    },
+    "policy": {
+      "cert_identity": "https://github.com/dlworrell/code-noodling/.github/workflows/election_provenance.yml@refs/heads/main",
+      "trigger": "push",
+      "repository": "dlworrell/code-noodling",
+      "ref": "refs/heads/main",
+      "sha": "63ab866c6dcb8aa2f5d415aa23f1838dcd8f1cd8"
+    },
+    "attestations": {
+      "scope-manifest.json": {
+        "predicate_type": "https://catalyst.dlworrell.dev/attestation/check/v1",
+        "subject": "scope-manifest.json",
+        "subject_sha256": "b4c38256f7729a8d1a833a270091681d129c4049f75e6be0b4b5016f58f121ac",
+        "rekor_log_index": 3421018090
+      },
+      "test-results.json": {
+        "predicate_type": "https://catalyst.dlworrell.dev/attestation/test/v1",
+        "subject": "test-results.json",
+        "subject_sha256": "f8d9ac8be78ecd1d8c2a24e5116a71561c237c8d86e43fa4399616a03acc0299",
+        "rekor_log_index": 3421018264
+      }
+    },
+    "scope_manifest": {
+      "commit": "63ab866c6dcb8aa2f5d415aa23f1838dcd8f1cd8",
+      "files": 87
+    },
+    "test_results": {
+      "commit": "63ab866c6dcb8aa2f5d415aa23f1838dcd8f1cd8",
+      "totals": {
+        "run": 109,
+        "passed": 109
+      },
+      "passed": true
+    },
+    "cases": [
+      {
+        "case": "scope-manifest.json",
+        "expected": "pass",
+        "result": "pass"
+      },
+      {
+        "case": "test-results.json",
+        "expected": "pass",
+        "result": "pass"
+      },
+      {
+        "case": "scope-manifest.json with one byte appended",
+        "expected": "fail",
+        "result": "fail",
+        "reason": "in-toto statement has no subject for digest"
+      },
+      {
+        "case": "scope-manifest.json claimed for commit 16c2252e7953296a04e3dd27ba6fac3279b596a2",
+        "expected": "fail",
+        "result": "fail",
+        "reason": "Certificate's GitHubWorkflowSHA does not match"
+      },
+      {
+        "case": "scope-manifest.json claimed from a pull_request trigger",
+        "expected": "fail",
+        "result": "fail",
+        "reason": "Certificate's GitHubWorkflowTrigger does not match"
+      },
+      {
+        "case": "scope-manifest.json claimed as signed by crypto_provenance.yml",
+        "expected": "fail",
+        "result": "fail",
+        "reason": "Certificate's SANs do not match"
+      }
+    ]
+  },
+  "pull_requests": {
+    "attest_job_on_pr_runs": [
+      {
+        "run": 39989074001,
+        "pr": 37,
+        "attest_job": "skipped"
+      }
+    ],
+    "note": "The attest job first exists in #37; that PR's run of this workflow skipped it. #36's runs of this workflow had no attest job.",
+    "id_token_write_grants_in_repository": [
+      ".github/workflows/crypto_provenance.yml attest job",
+      ".github/workflows/election_provenance.yml attest job"
+    ],
+    "pull_request_target_uses": 0,
+    "fork_pull_request": "Not exercised: a fork PR needs a second GitHub account. Covered by the attest job's push-only condition, the report job's read-only token, GitHub withholding OIDC tokens from fork pull_request runs, and verifiers pinning trigger push and the election workflow identity (cases above)."
+  }
+}
