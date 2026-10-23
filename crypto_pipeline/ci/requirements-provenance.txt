@@ -1,0 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:8a511e5d-62e6-4cb4-a30f-a7efddc7f199
+
+reuse==6.2.0

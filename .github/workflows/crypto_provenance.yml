@@ -1,0 +1,42 @@
+name: crypto_pipeline Provenance (report-only)
+
+# PRM-0012 step 3: REUSE, Catalyst-File-ID and Doxygen checks plus the scope
+# manifest for crypto_pipeline/. Report-only: results are published in the job
+# summary and as an artifact, and never fail the pull request.
+# Logic lives in the crypto_pipeline scope (Catylist ADR-0004).
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned tools (reuse, doxygen)
+        run: crypto_pipeline/ci/provenance.sh install-tools
+      - name: Checker tests
+        run: crypto_pipeline/ci/provenance.sh tests
+      - name: Provenance checks (report-only)
+        id: checks
+        run: crypto_pipeline/ci/provenance.sh report build/provenance
+      - name: Publish results and scope manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: crypto-pipeline-provenance
+          path: build/provenance/
+          if-no-files-found: error
