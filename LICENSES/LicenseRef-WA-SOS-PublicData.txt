@@ -12,8 +12,8 @@ license for the dataset. Donovan Worrell claims no copyright in these files
 and grants no license to them. They are kept unmodified as source evidence for
 the election reports in this repository.
 
-Applies to: election/data/elections/washington/*/input/washington/ and
-election/data/elections/washington/*/raw/washington/
+Applies to: election-analysis/data/elections/washington/*/input/washington/ and
+election-analysis/data/elections/washington/*/raw/washington/
 (formerly election-data/input/washington/)
 
 Files are listed below under the paths they were first committed at. Their
