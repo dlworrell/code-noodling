@@ -11,14 +11,21 @@ certified results.**
 
 ## Layout
 
-Everything for election reporting is in this directory; only the two workflows
-live in [`.github/workflows/`](../.github/workflows/).
+This directory is the `election-analysis` governed project scope declared in
+the repository's [`aes-manifest.yaml`](../aes-manifest.yaml) (Catylist
+ADR-0004). AES-SEC-001 is declared not applicable: the scope is Python only,
+with no C or C++ surface; the declaration is revisited if that changes.
+
+Everything for election reporting is in this directory. The two workflows in
+[`.github/workflows/`](../.github/workflows/) only pick triggers, permissions and
+artifacts, and call the scripts in [`ci/`](ci/).
 
 | Path | Contents |
 |---|---|
 | [`election_reporting/`](election_reporting/) | Python package: analyzer, EDT publisher, source watcher (`watch/`) and CI publisher (`ci/`) |
 | [`data/`](data/) | Watcher settings (`watch.toml`), the Alaska crosswalk, and one directory per state and election with its configuration, snapshots and `SOURCES.json` ([details](data/README.md)) |
 | [`reports/`](reports/) | Generated reports, one directory per state and election |
+| [`ci/`](ci/) | Workflow logic: `reports.sh` (tests, report generation, change detection, publishing) and `watch.sh` (tests, carry-forward, fetch, publishing) |
 | [`tests/`](tests/) | Offline tests for every part |
 | [`tools/`](tools/) | One-off tools (the Alaska crosswalk generator) |
 | [`docs/`](docs/) | [User guide](docs/election-reporting.md) and engineering records ([ADR-001](docs/engineering/ADR-001-election-result-reporting.md), [ADR-002](docs/engineering/ADR-002-election-source-watcher.md)) |

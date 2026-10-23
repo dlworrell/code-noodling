@@ -22,8 +22,9 @@ for certified results.
 
 ## Repository layout
 
-Everything for election reporting is in `election-analysis/`; only the workflows live in
-`.github/workflows/`.
+Everything for election reporting is in `election-analysis/`, a governed project
+scope (Catylist ADR-0004). The workflows in `.github/workflows/` call
+`election-analysis/ci/` for their logic.
 
 ```text
 election-analysis/
@@ -40,6 +41,7 @@ election-analysis/
 │       ├── raw/<source>/         original downloads (XLSX, trimmed JSON)
 │       └── areas/<source>/       county and precinct breakdowns (Washington)
 ├── reports/<state>/<election day>/  generated JSON, EDOM, human summaries, EDT checks
+├── ci/                           workflow logic (reports.sh, watch.sh)
 ├── tests/                        parser, analysis, publication, watcher and
 │                                 breakdown tests (offline)
 ├── tools/alaska_crosswalk.py     regenerates the Alaska crosswalk

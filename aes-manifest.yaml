@@ -43,3 +43,14 @@ scopes:
           profile: crypto_pipeline/docs/engineering/SECURE-C-CXX.md
           waiver_log: crypto_pipeline/docs/engineering/AES-SEC-001-waivers.md
           review_dispositions: docs/engineering/AES-SEC-001-review-dispositions.json
+  - id: election-analysis
+    path: election-analysis/
+    owner: dlworrell
+    class: experimental
+    lifecycle: active
+    standards:
+      - id: AES-SEC-001
+        applicability: not-applicable
+        reason: >-
+          Python-only scope with no C or C++ surface. Revisit if the scope
+          adds C or C++ (Catylist ADR-0004 rule 8).

@@ -22,7 +22,7 @@ code-noodling/
 ├── .github/                 workflows and contribution templates
 ├── crypto_pipeline/         integer multiplication experiments (governed scope)
 ├── docs/                    repository engineering standards
-├── election-analysis/       election result reporting: code, data, reports, tests, docs
+├── election-analysis/       election result reporting (governed scope)
 ├── prime-number-suite/      prime generators and dice programs
 ├── scripts/, tests/         repository CI checks and their tests
 ```
@@ -76,6 +76,7 @@ workflows only choose triggers and call the scope's `ci/` scripts.
 | Scope | Path | Adoption evidence |
 |---|---|---|
 | crypto-pipeline | [`crypto_pipeline/`](crypto_pipeline/) | [`crypto_pipeline/docs/engineering/`](crypto_pipeline/docs/engineering/) |
+| election-analysis | [`election-analysis/`](election-analysis/) | None needed: AES-SEC-001 is declared not applicable (no C or C++) |
 
 Everything else is the repository-level remainder until it is migrated. Until
 AEMS can scan scopes separately, the repository-wide AES-SEC-001 scan and
