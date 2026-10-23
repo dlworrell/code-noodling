@@ -86,7 +86,9 @@ def main(argv: list[str] | None = None) -> int:
     for entry in (str(edt), str(SCOPE / "tests"), str(SCOPE)):
         if entry not in sys.path:
             sys.path.insert(0, entry)
-    suite = unittest.defaultTestLoader.discover(str(SCOPE / "tests"), pattern="test_*.py")
+    # A fresh loader: the shared defaultTestLoader keeps the top-level directory
+    # of an earlier discover() in the same process.
+    suite = unittest.TestLoader().discover(str(SCOPE / "tests"), pattern="test_*.py")
     runner = unittest.TextTestRunner(resultclass=RecordingResult, verbosity=1)
     result = runner.run(suite)
 
