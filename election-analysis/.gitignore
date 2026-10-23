@@ -8,3 +8,5 @@
 !data/**/*.json
 !reports/**/*.json
 !reports/**/county-breakdown.csv
+# Engineering records (provenance baseline, and later the scope manifest).
+!docs/engineering/*.json
