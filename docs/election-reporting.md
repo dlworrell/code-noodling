@@ -193,6 +193,32 @@ Report* for the 2026 primary, and the 2024 general election reproduces its known
 results (Ballot Measure 2 failing by 737 votes; U.S. Representative going to
 ranked-choice rounds with no first-choice majority).
 
+### Maine
+
+```toml
+[[watch]]
+state = "Maine"
+counties = "all"    # or names such as ["York", "Cumberland"]
+election = "next"
+
+[watch.schedule]
+election_night_every_minutes = 1440
+every_minutes = 1440
+```
+
+| Step | What it does |
+| --- | --- |
+| Election | June primaries (second Tuesday, even years) and November elections every year: general elections in even years, referendum elections in odd years. |
+| Window | Maine posts no election-night state results. Official results arrive as office workbooks over the following weeks (the 2026 primary's final files are dated 21 days after it, the 2024 general's corrected files 30 days after), so the watcher checks once a day for 35 days from 20:00 Eastern on election day. No certification date is published, so `election.toml` gets none. |
+| Source | Every `.xlsx` linked under the election's headings on `www.maine.gov/sos/elections-voting/election-results-data` (or the year's page for an earlier election). Cast vote record exports, candidate lists and the President-by-congressional-district view are skipped. Each snapshot keeps the workbooks in one reproducible ZIP with a `SOURCES.txt` of URLs, `Last-Modified` dates and SHA-256 checksums. |
+| Parsing | Workbook layouts vary by office and year: names above or below the column-header row, misspelled headers, `BLANK` and `TBC` columns, county subtotal rows, unlabeled total rows, referendum questions grouped across columns, precinct-level ranked-choice first choices. Every block is reconciled to the workbook's own total row; a block that does not reconcile, or has no total row, is left out and reported as an error, never guessed. |
+| Output | `input/maine/` holds statewide totals; each county gets `input/<county>-county/` from its municipal rows. `STATE UOCAVA` (military and overseas) rows have no municipality, so they are in statewide totals only. |
+| Rules | Plurality (`default_rule = "winner"`), except contests posted in a ranked-choice section of the page, which the watcher adds to `election.toml` as `[[contest_rules]]` with `rule = "rcv"`. |
+| HTTP | `www.maine.gov`'s firewall refuses every non-browser client, including honestly identified ones, so that host alone receives a browser User-Agent; every Maine snapshot's `SOURCES.json` note says so. The issue was reported to the Secretary of State's elections division on 2026-10-23. |
+
+Every workbook of the 2024 general election (14 files, 262 contests) and the
+2026 primary (29 files, 418 contests) parses and reconciles to its totals.
+
 Locally:
 
 ```bash

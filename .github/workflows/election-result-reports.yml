@@ -23,6 +23,7 @@ on:
       - "tests/test_publish_reports.py"
       - "tests/test_election_watch.py"
       - "tests/test_election_watch_alaska.py"
+      - "tests/test_election_watch_maine.py"
       - "tests/test_alaska_crosswalk.py"
       - ".github/workflows/election-result-reports.yml"
   pull_request:
@@ -34,6 +35,7 @@ on:
       - "tests/test_publish_reports.py"
       - "tests/test_election_watch.py"
       - "tests/test_election_watch_alaska.py"
+      - "tests/test_election_watch_maine.py"
       - "tests/test_alaska_crosswalk.py"
       - ".github/workflows/election-result-reports.yml"
       - ".github/workflows/election-source-watch.yml"

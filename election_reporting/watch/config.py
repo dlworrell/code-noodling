@@ -10,12 +10,13 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from ..model import ElectionReportError
 
-SUPPORTED_STATES = {"washington": "Washington", "alaska": "Alaska"}
+SUPPORTED_STATES = {"washington": "Washington", "alaska": "Alaska", "maine": "Maine"}
 # Per-state defaults; [[watch]] tables can override timezone and schedule.
 STATE_DEFAULTS = {
     "washington": {"timezone": "America/Los_Angeles", "polls_close": "20:00"},
     # Polls close at 20:00 Alaska time (AS 15.15.020); results post after 21:00.
     "alaska": {"timezone": "America/Anchorage", "polls_close": "20:00"},
+    "maine": {"timezone": "America/New_York", "polls_close": "20:00"},
 }
 
 

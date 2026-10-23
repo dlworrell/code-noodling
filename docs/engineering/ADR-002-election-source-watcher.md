@@ -64,6 +64,17 @@ committed files.
    the host allowlist with the correct published intermediate certificate added
    to the system trust store for that host alone, SHA-256 checked at load.
 
+9. **Maine from office workbooks, reconciled or refused.** Maine posts official
+   results only, as one workbook per office in layouts that vary between
+   offices and years. The watcher combines every workbook listed for the
+   election into one snapshot, checks each block against the workbook's own
+   total row, and leaves out and reports any block that does not reconcile.
+   It checks once a day for 35 days.
+10. **One host, one browser User-Agent, recorded.** `www.maine.gov` refuses all
+    non-browser clients. Requests to that host alone send a browser
+    User-Agent; every other host gets the watcher's own, and each Maine
+    snapshot records the exception.
+
 ## Consequences
 
 - Every new snapshot has recorded provenance and is reviewable before it is used.
@@ -83,6 +94,12 @@ committed files.
   describe election-day voting, not final borough results.
 - If the Alaska certificate chain is fixed or the intermediate rotates, the pin
   is harmless until it expires (2029-06-23) and is then removed.
+- A new Maine workbook layout fails loudly (a reconciliation error in the run
+  log) instead of producing wrong numbers; the parser then needs a fix.
+- Maine county totals exclude military and overseas ballots, which the state
+  reports statewide.
+- If Maine's firewall starts accepting the watcher's own User-Agent, the
+  override should be removed.
 - Maintainers merge snapshot pull requests during the window; merging is the human
   review step.
 

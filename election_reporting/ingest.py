@@ -140,7 +140,8 @@ def _xlsx_shared_strings(archive: zipfile.ZipFile) -> list[str]:
     ]
 
 
-def _xlsx_summary_path(archive: zipfile.ZipFile, path: Path) -> str:
+def _xlsx_sheet_paths(archive: zipfile.ZipFile, path: Path) -> list[tuple[str, str]]:
+    """Every worksheet as (sheet name, archive member), in workbook order."""
     try:
         workbook = ET.fromstring(archive.read("xl/workbook.xml"))
         relationships = ET.fromstring(
@@ -155,21 +156,27 @@ def _xlsx_summary_path(archive: zipfile.ZipFile, path: Path) -> str:
             f"{{{XLSX_PACKAGE_REL_NS}}}Relationship"
         )
     }
-    relation_id = ""
+    sheets = []
     for sheet in workbook.iter(_xlsx_name("sheet")):
-        if sheet.get("name") == "Summary Results":
-            relation_id = sheet.get(f"{{{XLSX_DOCUMENT_REL_NS}}}id", "")
-            break
-    target = relation_targets.get(relation_id, "")
-    if not target:
-        raise ElectionReportError(f"{path} has no Summary Results worksheet")
-    if target.startswith("/"):
-        worksheet_path = target.lstrip("/")
-    else:
-        worksheet_path = posixpath.normpath(posixpath.join("xl", target))
-    if not worksheet_path.startswith("xl/"):
-        raise ElectionReportError(f"{path} has an unsafe worksheet relationship")
-    return worksheet_path
+        relation_id = sheet.get(f"{{{XLSX_DOCUMENT_REL_NS}}}id", "")
+        target = relation_targets.get(relation_id, "")
+        if not target:
+            continue
+        if target.startswith("/"):
+            worksheet_path = target.lstrip("/")
+        else:
+            worksheet_path = posixpath.normpath(posixpath.join("xl", target))
+        if not worksheet_path.startswith("xl/"):
+            raise ElectionReportError(f"{path} has an unsafe worksheet relationship")
+        sheets.append((sheet.get("name", ""), worksheet_path))
+    return sheets
+
+
+def _xlsx_summary_path(archive: zipfile.ZipFile, path: Path) -> str:
+    for name, worksheet_path in _xlsx_sheet_paths(archive, path):
+        if name == "Summary Results":
+            return worksheet_path
+    raise ElectionReportError(f"{path} has no Summary Results worksheet")
 
 
 def _xlsx_cell_value(cell: ET.Element, shared_strings: list[str]) -> str:
@@ -202,18 +209,23 @@ def _xlsx_rows(
     archive: zipfile.ZipFile,
     worksheet_path: str,
     shared_strings: list[str],
+    width: int | None = 6,
 ) -> list[list[str]]:
+    """Worksheet rows as text; ``width=None`` keeps every column present."""
     try:
         root = ET.fromstring(archive.read(worksheet_path))
     except (KeyError, ET.ParseError) as exc:
-        raise ElectionReportError("Summary Results worksheet is missing or invalid") from exc
+        raise ElectionReportError(f"worksheet {worksheet_path} is missing or invalid") from exc
     rows: list[list[str]] = []
     for row in root.iter(_xlsx_name("row")):
-        values = [""] * 6
+        cells: dict[int, str] = {}
         for cell in row.iter(_xlsx_name("c")):
             column = _xlsx_column(cell.get("r", ""))
-            if 1 <= column <= len(values):
-                values[column - 1] = _xlsx_cell_value(cell, shared_strings)
+            if column >= 1 and (width is None or column <= width):
+                cells[column] = _xlsx_cell_value(cell, shared_strings)
+        values = [""] * (width if width is not None else max(cells, default=0))
+        for column, value in cells.items():
+            values[column - 1] = value
         rows.append(values)
     return rows
 
@@ -257,6 +269,26 @@ def xlsx_summary_rows(path: Path, raw_bytes: bytes) -> list[list[str]]:
     if not rows:
         raise ElectionReportError(f"{path} Summary Results worksheet is empty")
     return rows
+
+
+def xlsx_worksheets(path: Path, raw_bytes: bytes) -> list[tuple[str, list[list[str]]]]:
+    """Every worksheet of a workbook as (sheet name, rows of text), all columns kept."""
+    try:
+        with zipfile.ZipFile(io.BytesIO(raw_bytes)) as archive:
+            _check_xlsx_read_budget(archive, path, XLSX_METADATA_MEMBERS)
+            sheets = _xlsx_sheet_paths(archive, path)
+            _check_xlsx_read_budget(
+                archive,
+                path,
+                (*XLSX_METADATA_MEMBERS, XLSX_SHARED_STRINGS, *(member for _, member in sheets)),
+            )
+            shared_strings = _xlsx_shared_strings(archive)
+            return [
+                (name, _xlsx_rows(archive, member, shared_strings, width=None))
+                for name, member in sheets
+            ]
+    except zipfile.BadZipFile as exc:
+        raise ElectionReportError(f"{path} is not a valid XLSX archive") from exc
 
 
 def summary_rows_to_contests(

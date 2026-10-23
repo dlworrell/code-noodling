@@ -48,3 +48,18 @@ polls_close = "20:00"
 election_night_until = "02:00"
 election_night_every_minutes = 30
 every_minutes = 60
+
+[[watch]]
+state = "Maine"
+# Statewide plus each of the 16 counties, from the county code on every
+# municipal row of the Secretary of State's office workbooks.
+counties = "all"
+election = "next"
+# Defaults to America/New_York; polls close at 20:00.
+
+[watch.schedule]
+# Maine posts no election-night results; official office workbooks appear
+# over the following weeks, so check once a day for 35 days.
+polls_close = "20:00"
+election_night_every_minutes = 1440
+every_minutes = 1440

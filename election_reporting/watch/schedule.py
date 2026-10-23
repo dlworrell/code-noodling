@@ -14,6 +14,11 @@ certifies; the Division of Elections' 2026 calendar targets 13 days after the
 primary (2026-08-31) and 22 days after the general (2026-11-25), AS 15.15.450.
 These are target dates, not statutory deadlines; `[watch.schedule] end`
 extends the window if certification slips.
+
+Maine posts official results only, as office workbooks weeks after the
+election, and publishes no certification date. Its window is 35 days, a
+margin over what the posted files show (the 2026 primary's final files are
+dated 21 days after it, the 2024 general's corrected ones 30 days after).
 """
 
 from __future__ import annotations
@@ -34,7 +39,15 @@ CERTIFICATION_DAYS = {
         "primary": {"county": 13, "state": 13},
         "special": {"county": 22, "state": 22},
     },
+    "maine": {
+        "general": {"county": 35, "state": 35},
+        "primary": {"county": 35, "state": 35},
+        "special": {"county": 35, "state": 35},
+    },
 }
+# States whose window end is not a published certification date; their
+# election.toml gets no certification_date.
+NO_CERTIFICATION_DATE = frozenset({"maine"})
 
 
 def election_kind(name: str) -> str:
