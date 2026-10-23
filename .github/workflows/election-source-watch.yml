@@ -14,6 +14,9 @@ name: Election Source Watch
 # are carried forward into each run, because report files the state overwrites
 # cannot be downloaded again.
 # Never add pull_request_target: this job holds a write token.
+#
+# Logic lives in election-analysis/ci/watch.sh (governed scope, Catylist
+# ADR-0004); this file picks triggers, permissions and checkouts.
 
 on:
   schedule:
@@ -56,21 +59,13 @@ jobs:
           python-version: "3.12"
 
       - name: Test watcher (offline)
-        env:
-          PYTHONPATH: election-analysis
-        run: python -m unittest discover -s election-analysis/tests -p 'test_election_watch*.py'
+        run: election-analysis/ci/watch.sh test
 
       - name: Find unmerged snapshots
         id: pending
         env:
           GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          if gh api "repos/${GITHUB_REPOSITORY}/branches/${SNAPSHOT_BRANCH}" --silent 2>/dev/null; then
-            echo "exists=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "exists=false" >> "$GITHUB_OUTPUT"
-          fi
+        run: election-analysis/ci/watch.sh pending
 
       - name: Check out unmerged snapshots
         if: steps.pending.outputs.exists == 'true'
@@ -82,20 +77,12 @@ jobs:
 
       - name: Carry forward unmerged snapshots
         if: steps.pending.outputs.exists == 'true'
-        env:
-          PYTHONPATH: election-analysis
-        run: |
-          # A branch written before the move to election-analysis/ keeps the old layout.
-          pending=.pending/election-analysis/data/elections
-          [ -d "$pending" ] || pending=.pending/election-data/elections
-          python -m election_reporting.watch carry --from "$pending"
-          rm -rf .pending
+        run: election-analysis/ci/watch.sh carry .pending
 
       - name: Fetch new snapshots
         env:
-          PYTHONPATH: election-analysis
-          FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.force && '--force' || '' }}
-        run: python -m election_reporting.watch fetch $FORCE
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.force }}
+        run: election-analysis/ci/watch.sh fetch
 
       - name: Publish verified commit and pull request
         # Runs even when one state's fetch failed, so the other states'
@@ -103,15 +90,6 @@ jobs:
         if: ${{ !cancelled() }}
         env:
           GH_TOKEN: ${{ github.token }}
-          PYTHONPATH: election-analysis
           BASE_BRANCH: ${{ github.event.repository.default_branch }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: >-
-          python -m election_reporting.ci.publish_reports
-          --base "$BASE_BRANCH"
-          --base-sha "$GITHUB_SHA"
-          --branch "$SNAPSHOT_BRANCH"
-          --path election-analysis/data/elections
-          --title "data: new official election result snapshots"
-          --summary "New official result snapshots from the **Election Source Watch** workflow. See each election's SOURCES.json for source URLs, retrieval times and SHA-256 checksums. Merging regenerates the reports."
-          --run-url "$RUN_URL"
+        run: election-analysis/ci/watch.sh publish

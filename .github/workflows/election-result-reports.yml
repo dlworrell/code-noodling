@@ -6,6 +6,9 @@ name: Election Result Reports
 # createCommitOnBranch) to the workflow-owned automation/election-reports branch
 # and opens or updates a pull request to the default branch.
 # Never add pull_request_target: the publish job holds a write token.
+#
+# Logic lives in election-analysis/ci/reports.sh (governed scope, Catylist
+# ADR-0004); this file picks triggers, permissions and artifacts.
 
 on:
   workflow_dispatch:
@@ -61,56 +64,22 @@ jobs:
           python-version: "3.12"
 
       - name: Test election reporting
-        env:
-          PYTHONPATH: election-analysis:.tools/engineering-docs-toolkit
-        run: python -m unittest discover -s election-analysis/tests -p 'test_election_reporting.py' -v
+        run: election-analysis/ci/reports.sh test 'test_election_reporting.py'
 
       - name: Test report publisher
-        env:
-          PYTHONPATH: election-analysis
-        run: python -m unittest discover -s election-analysis/tests -p 'test_publish_reports.py' -v
+        run: election-analysis/ci/reports.sh test 'test_publish_reports.py'
 
       - name: Test election source watcher
-        env:
-          PYTHONPATH: election-analysis
-        run: python -m unittest discover -s election-analysis/tests -p 'test_election_watch*.py' -v
+        run: election-analysis/ci/reports.sh test 'test_election_watch*.py'
 
       - name: Test Alaska precinct crosswalk
-        env:
-          PYTHONPATH: election-analysis
-        run: python -m unittest discover -s election-analysis/tests -p 'test_alaska_crosswalk.py' -v
+        run: election-analysis/ci/reports.sh test 'test_alaska_crosswalk.py'
 
       - name: Test county and precinct breakdowns
-        env:
-          PYTHONPATH: election-analysis
-        run: python -m unittest discover -s election-analysis/tests -p 'test_election_areas.py' -v
+        run: election-analysis/ci/reports.sh test 'test_election_areas.py'
 
       - name: Generate and validate EDT reports
-        env:
-          PYTHONPATH: election-analysis:.tools/engineering-docs-toolkit
-        shell: bash
-        run: |
-          # One report directory per state and election:
-          # election-analysis/data/elections/<state>/<date>/ builds into
-          # election-analysis/reports/<state>/<date>/. An election without any snapshots
-          # yet (the watcher created only its election.toml) is skipped.
-          set -euo pipefail
-          shopt -s nullglob
-          built=0
-          for config in election-analysis/data/elections/*/*/election.toml; do
-            directory="$(dirname "$config")"
-            election="$(basename "$(dirname "$directory")")/$(basename "$directory")"
-            if ! compgen -G "$directory/input/*/*" > /dev/null; then
-              echo "Skipping $election: no snapshots yet."
-              continue
-            fi
-            python -m election_reporting --config "$config" --output "election-analysis/reports/$election"
-            built=$((built + 1))
-          done
-          if [ "$built" -eq 0 ]; then
-            echo "::error::No election has snapshots to report on."
-            exit 1
-          fi
+        run: election-analysis/ci/reports.sh generate
 
       - name: Check generated patch formatting
         run: git diff --check
@@ -124,19 +93,7 @@ jobs:
 
       - name: Detect report changes
         id: report_diff
-        shell: bash
-        run: |
-          git add -A -- election-analysis/reports
-          if git diff --cached --quiet -- election-analysis/reports; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "Reports are already current."
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            git diff --cached --stat -- election-analysis/reports
-            if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
-              echo "::warning::Committed reports differ from regenerated reports. Nothing is committed from pull requests; the regenerated reports are in the election-result-reports artifact and will arrive through an automation pull request after merge."
-            fi
-          fi
+        run: election-analysis/ci/reports.sh detect
 
   publish-pull-request:
     needs: analyze
@@ -163,7 +120,7 @@ jobs:
           python-version: "3.12"
 
       - name: Replace reports with regenerated evidence
-        run: rm -rf election-analysis/reports
+        run: election-analysis/ci/reports.sh clear
 
       - name: Download regenerated reports
         uses: actions/download-artifact@v4
@@ -174,13 +131,6 @@ jobs:
       - name: Publish verified commit and pull request
         env:
           GH_TOKEN: ${{ github.token }}
-          PYTHONPATH: election-analysis
           BASE_BRANCH: ${{ github.event.repository.default_branch }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: >-
-          python -m election_reporting.ci.publish_reports
-          --base "$BASE_BRANCH"
-          --base-sha "$GITHUB_SHA"
-          --branch automation/election-reports
-          --path election-analysis/reports
-          --run-url "$RUN_URL"
+        run: election-analysis/ci/reports.sh publish
