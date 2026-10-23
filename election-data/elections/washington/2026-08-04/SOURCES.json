@@ -62,6 +62,19 @@
       "raw": "raw/washington/2026-10-14-1100.xlsx",
       "raw_sha256": "d580c91e84f5c534e3094b46558cd5e6ad9778ca6219546015af3f331b324f17",
       "note": "First committed 2026-10-14T18:07:56-07:00 (33299ff) as \"All Results_1bc1cf3c-e598-43bf-a569-3f7539add8dd.xlsx\". Verified 2026-10-23: byte-identical to the published file (Last-Modified Fri, 11 Sep 2026 17:37:08 GMT). The CSV is converted from the workbook's Summary Results sheet."
+    },
+    {
+      "place": "washington-areas",
+      "snapshot": "2026-09-11-1037",
+      "kind": "state-area-xlsx",
+      "source_url": "https://results.votewa.gov/cdn/results/01000000-f977-1a83-1ed4-08ddd69e9e69/Results_b7cf2146-3e8f-4b8d-8494-9bc396e44418.xlsx",
+      "retrieved_at": "2026-10-23T10:51:30+00:00",
+      "source_timestamp": "Fri, 11 Sep 2026 17:37:51 GMT",
+      "input": "areas/washington/county/2026-09-11-1037.csv",
+      "input_sha256": "495d4c377ba429ec449c045005fb1e2bbb83c85216761b83143fc23802c0ab8c",
+      "raw": "areas/washington/precinct/2026-09-11-1037.csv.gz",
+      "raw_sha256": "c906d8fff03a0c29864b3cb91e2d41f5ac544604cbed4d525670f7a1d5dc8c88",
+      "note": "Derived from the Summary and Precinct Results workbook (21,417,794 bytes, SHA-256 7cbd90f7e3cda466cc6b8eb61eb52f948e32b2364e06685a1496b4a615ca60b9; not stored for its size): county breakdown of 403 contests in 39 counties, 5,204 precincts (non-zero rows), and statewide totals for 147 contests from the All Results workbook of the same run. The All Results workbook of that run is byte-identical to the 2026-10-14-1100 washington snapshot (SHA-256 d580c91e84f5c534e3094b46558cd5e6ad9778ca6219546015af3f331b324f17)."
     }
   ]
 }

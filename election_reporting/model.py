@@ -55,12 +55,33 @@ class SourceConfig:
 
 
 @dataclass(frozen=True)
+class AreaConfig:
+    """A directory of county or precinct breakdown snapshots for one source."""
+
+    source_id: str
+    level: str  # "county" or "precinct"
+    path: Path
+
+
+@dataclass(frozen=True)
+class RemainingBallots:
+    """Ballots a county still has to count, as published (e.g. a ballot status report)."""
+
+    county: str
+    ballots: int
+    as_of: date
+    basis: str
+
+
+@dataclass(frozen=True)
 class ElectionConfig:
     title: str
     sources: tuple[SourceConfig, ...]
     write_in_labels: frozenset[str]
     rule_overrides: dict[str, str] = field(default_factory=dict)
     default_rule: str | None = None
+    areas: tuple[AreaConfig, ...] = ()
+    remaining_ballots: tuple[RemainingBallots, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -118,3 +139,4 @@ class ElectionAnalysis:
     as_of: str
     races: tuple[RaceAnalysis, ...]
     snapshots: tuple[Snapshot, ...]
+    areas: object | None = None  # areas.AreaAnalysis

@@ -291,6 +291,88 @@ def xlsx_worksheets(path: Path, raw_bytes: bytes) -> list[tuple[str, list[list[s
         raise ElectionReportError(f"{path} is not a valid XLSX archive") from exc
 
 
+# A streamed sheet (the county or precinct breakdown in a Washington results
+# workbook unpacks to about 240 MB) is never held whole. Its own budgets bound
+# the bytes actually decompressed and the rows yielded, so a workbook that
+# misstates a member's size in its zip header cannot exceed them.
+MAX_STREAMED_SHEET_BYTES = 1024 * 1024 * 1024
+MAX_STREAMED_SHEET_ROWS = 5_000_000
+
+
+class _CountingReader(io.RawIOBase):
+    """Read-through wrapper that fails once more than ``limit`` bytes are read."""
+
+    def __init__(self, stream, limit: int, label: str) -> None:
+        self._stream = stream
+        self._limit = limit
+        self._label = label
+        self.consumed = 0
+
+    def readable(self) -> bool:
+        return True
+
+    def readinto(self, buffer) -> int:
+        data = self._stream.read(len(buffer))
+        self.consumed += len(data)
+        if self.consumed > self._limit:
+            raise ElectionReportError(
+                f"{self._label} exceeds the {self._limit:,}-byte streamed sheet budget"
+            )
+        buffer[: len(data)] = data
+        return len(data)
+
+
+def iter_xlsx_sheet_rows(
+    path: Path,
+    raw_bytes: bytes,
+    sheet_name: str,
+    *,
+    max_bytes: int = MAX_STREAMED_SHEET_BYTES,
+    max_rows: int = MAX_STREAMED_SHEET_ROWS,
+):
+    """Yield one worksheet's rows as lists of text, streaming the XML.
+
+    Only workbook metadata and shared strings are read whole (under the normal
+    XLSX budget); the sheet itself is parsed incrementally with ``iterparse``
+    and each row's elements are released after it is yielded.
+    """
+    try:
+        archive = zipfile.ZipFile(io.BytesIO(raw_bytes))
+    except zipfile.BadZipFile as exc:
+        raise ElectionReportError(f"{path} is not a valid XLSX archive") from exc
+    with archive:
+        _check_xlsx_read_budget(archive, path, (*XLSX_METADATA_MEMBERS, XLSX_SHARED_STRINGS))
+        member = dict(_xlsx_sheet_paths(archive, path)).get(sheet_name)
+        if member is None:
+            raise ElectionReportError(f"{path} has no {sheet_name} worksheet")
+        shared_strings = _xlsx_shared_strings(archive)
+        label = f"{path} {sheet_name} worksheet"
+        row_tag = _xlsx_name("row")
+        cell_tag = _xlsx_name("c")
+        rows = 0
+        try:
+            with archive.open(member) as stream:
+                counted = io.BufferedReader(_CountingReader(stream, max_bytes, label))
+                for _event, element in ET.iterparse(counted, events=("end",)):
+                    if element.tag != row_tag:
+                        continue
+                    rows += 1
+                    if rows > max_rows:
+                        raise ElectionReportError(f"{label} exceeds the {max_rows:,}-row budget")
+                    cells: dict[int, str] = {}
+                    for cell in element.iter(cell_tag):
+                        column = _xlsx_column(cell.get("r", ""))
+                        if column >= 1:
+                            cells[column] = _xlsx_cell_value(cell, shared_strings)
+                    values = [""] * max(cells, default=0)
+                    for column, value in cells.items():
+                        values[column - 1] = value
+                    element.clear()
+                    yield values
+        except ET.ParseError as exc:
+            raise ElectionReportError(f"{label} is not valid XML: {exc}") from exc
+
+
 def summary_rows_to_contests(
     path: Path, rows: list[list[str]]
 ) -> dict[str, ContestResult]:

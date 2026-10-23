@@ -1,6 +1,6 @@
 {
   "summary": {
-    "nodes": 1972,
+    "nodes": 1979,
     "edges": 0,
     "broken": 0,
     "orphans": 0
@@ -125,6 +125,69 @@
     },
     {
       "node_id": "method-ballot-reconciliation",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "areas-heading",
+      "kind": "heading2",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "areas-status",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "areas-reconciliation",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "areas-precinct-missing",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "areas-county-changes",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "areas-precinct-changes",
+      "kind": "paragraph",
+      "page": null,
+      "incoming": [],
+      "outgoing": [],
+      "broken": [],
+      "orphan": false
+    },
+    {
+      "node_id": "areas-note-1",
       "kind": "paragraph",
       "page": null,
       "incoming": [],

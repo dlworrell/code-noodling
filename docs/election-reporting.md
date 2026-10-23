@@ -29,12 +29,14 @@ election-data/
     ├── election.toml             source, forecast, and rule configuration
     ├── SOURCES.json              provenance of every snapshot
     ├── input/<source>/           dated plain-text CSV snapshots
-    └── raw/<source>/             original downloads (XLSX, trimmed JSON)
+    ├── raw/<source>/             original downloads (XLSX, trimmed JSON)
+    └── areas/<source>/           county and precinct breakdowns (Washington)
 election_reporting/               Python implementation (ci/ holds the CI publisher,
                                   watch/ the source watcher)
 reports/elections/<state>/<election day>/ generated JSON, EDOM, human summaries, EDT checks
 tests/test_election_reporting.py  parser, analysis, and publication tests
 tests/test_election_watch.py      source watcher tests (offline)
+tests/test_election_areas.py      county and precinct breakdown tests
 tests/test_publish_reports.py     automation pull-request publisher tests
 ```
 
@@ -148,7 +150,7 @@ polls_close = "20:00"
 | Places | Resolves county names against the Washington results site (`results.votewa.gov`), which serves the state and all 39 counties; an unknown name fails with the list of valid ones. |
 | Election | `next` is the soonest election on the site whose checking window has not ended; a date picks a specific one. |
 | Window | From polls closing (20:00) on election day until the end of the last certification day: state 30 days after a general election and 17 after a primary; counties 21 and 14 (RCW 29A.60.190 and 29A.60.250). Every 30 minutes until 02:00 after election night, then hourly. Each state's `[watch.schedule]` table can override any of these. |
-| Sources | State: the Secretary of State's `All Results Excel` report, which includes ballots cast, overvotes, and undervotes. King County: the county's own nightly `webresults-YYYYMMDD.csv` export, stored byte for byte. Other counties: the results site's data API. |
+| Sources | State: the Secretary of State's `All Results Excel` report, which includes ballots cast, overvotes, and undervotes, and the `Summary and Precinct Results Excel` report for county and precinct breakdowns (see [County and precinct results](#county-and-precinct-results)). King County: the county's own nightly `webresults-YYYYMMDD.csv` export, stored byte for byte. Other counties: the results site's data API. |
 | Output | A plain-text CSV per place and snapshot in `input/`, the original in `raw/` (workbooks as-is, API JSON trimmed to results and gzipped), and a `SOURCES.json` record with the source URL, retrieval time, source timestamp, and SHA-256 of each file. A snapshot is saved only when its content changed, and never before any votes are reported. |
 | States | Each state is planned and fetched on its own schedule and in its own directory; one state failing does not stop the others. |
 | Config | Creates `election.toml` for a new election (state priority 100, counties 10, certification dates filled in) and appends sources when places are added later. |
@@ -256,6 +258,9 @@ The analyzer deliberately separates the decision boundary from the displayed ran
 
 - Washington candidate primaries with three or more named candidates use the
   second-versus-third top-two cutoff.
+- Washington general elections set `[analysis] default_rule = "winner"` (the
+  watcher writes it into a new general election's `election.toml`), so every
+  candidate contest uses the first-versus-second boundary.
 - Candidate contests with no more than two named candidates have no modeled top-two
   qualification boundary because both named candidates advance under the default rule.
 - Binary ballot measures and precinct committee officer races use the first-versus-
@@ -312,6 +317,26 @@ of that remaining pool to reverse the boundary. The same algebra is applied to a
   applied to approximately 5.1 million current registered voters, producing 2,061,930
   expected final ballots with forecast evidence 45/100. This is a historical proxy,
   not an official 2026 turnout forecast.
+
+## County and precinct results
+
+Washington elections declare county and precinct breakdowns with `[[areas]]`
+tables in `election.toml`; the files and their columns are described in
+[`election-data/README.md`](../election-data/README.md#county-and-precinct-breakdowns).
+The report's **Geography: county and precinct results** section and
+`county-breakdown.csv` (contest, county, ballots, votes per choice and county
+leader for every controlling race) come from the latest county snapshot.
+
+| Part | What it shows |
+| --- | --- |
+| Reconciliation | County sums against the statewide totals and precinct sums against county totals, per contest and choice (labels compared without case). Differences are listed as data-quality findings and never adjusted. A county with county votes but no precinct rows is reported as missing precinct detail, not as a mismatch. |
+| County changes | Between the last two county snapshots: the counties that added the most ballots, and for the ten closest races the counties whose margin moved most. |
+| Precinct changes | The same between the last two precinct snapshots. |
+| Remaining ballots | For each close race, the county with the most remaining ballots declared in `[[remaining_ballots]]`. With margin \(m\) and \(R\) remaining ballots scaled to the county's share of ballots cast for the two sides, the trailing side needs \((m + R) / 2R\) of them; above 100% that county cannot change the outcome alone. The needed share is compared with the county's current split. |
+
+On the 2026 primary (certified data, Sep 11 2026), 974 county-versus-statewide and
+5,874 precinct-versus-county comparisons reconcile with no mismatches; the state's
+precinct sheet has no King County rows (151 contest-county pairs).
 
 ## Statistical change probability
 
@@ -416,6 +441,7 @@ reports/elections/<state>/<election day>/
 ├── election-analysis.md
 ├── election-analysis.html
 ├── facebook-summary.txt
+├── county-breakdown.csv          when the election declares [[areas]]
 └── edt/document/
     ├── validation.json
     ├── validation.md
@@ -432,7 +458,8 @@ reports/elections/<state>/<election day>/
 - Statistical probabilities are conditional on a fixed remaining-ballot estimate and
   a tempered exchangeability model; the reliability score exposes, but cannot remove,
   that model risk.
-- The tool does not infer unreported ballots by geography.
+- The tool does not infer unreported ballots by geography; county remaining-ballot
+  counts must be declared in `[[remaining_ballots]]`.
 - It does not automatically determine recount eligibility, adjudicate write-in
   candidates, or replace jurisdiction-specific election law review.
 - A missing controlling aggregate produces a scope warning rather than a false

@@ -47,6 +47,7 @@ __pycache__/
 !election-data/**/*.csv.xls
 !election-data/**/*.json
 !reports/elections/**/*.json
+!reports/elections/**/county-breakdown.csv
 
 # crypto_pipeline provenance and evidence records (provenance baseline, scope
 # manifest, proof and timing evidence) must be committed the same way

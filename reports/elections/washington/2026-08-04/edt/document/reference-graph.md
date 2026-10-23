@@ -1,6 +1,6 @@
 # EDT Reference Index
 
-Nodes: 1972
+Nodes: 1979
 Edges: 0
 Broken references: 0
 Orphans: 0
@@ -21,6 +21,13 @@ Orphans: 0
 | method-reliability | paragraph |  | 0 | 0 | 0 | False |
 | method-scope | paragraph |  | 0 | 0 | 0 | False |
 | method-ballot-reconciliation | paragraph |  | 0 | 0 | 0 | False |
+| areas-heading | heading2 |  | 0 | 0 | 0 | False |
+| areas-status | paragraph |  | 0 | 0 | 0 | False |
+| areas-reconciliation | paragraph |  | 0 | 0 | 0 | False |
+| areas-precinct-missing | paragraph |  | 0 | 0 | 0 | False |
+| areas-county-changes | paragraph |  | 0 | 0 | 0 | False |
+| areas-precinct-changes | paragraph |  | 0 | 0 | 0 | False |
+| areas-note-1 | paragraph |  | 0 | 0 | 0 | False |
 | races-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-001-u-s-representative-congressional-district-1-heading | heading2 |  | 0 | 0 | 0 | False |
 | race-001-u-s-representative-congressional-district-1-source | paragraph |  | 0 | 0 | 0 | False |

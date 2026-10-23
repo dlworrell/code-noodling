@@ -8,6 +8,8 @@ title = "2026 General (November 3, 2026)"
 
 [analysis]
 write_in_labels = ["write-in", "write in"]
+# General election: the top vote-getter wins (the top-two rule is for primaries).
+default_rule = "winner"
 
 [[sources]]
 id = "washington"
@@ -74,3 +76,13 @@ certification_date = 2026-11-24
 # expected_final_ballots = 0       # add a turnout forecast to enable
 # forecast_reliability = 50        # remaining-ballot estimates
 # forecast_basis = "..."
+
+[[areas]]
+source = "washington"
+level = "county"
+path = "areas/washington/county"
+
+[[areas]]
+source = "washington"
+level = "precinct"
+path = "areas/washington/precinct"

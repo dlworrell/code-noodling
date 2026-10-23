@@ -13,17 +13,19 @@ from election_reporting.ingest import read_snapshot
 from election_reporting.model import ElectionReportError, SourceConfig
 from election_reporting.watch import csvformat
 from election_reporting.watch.config import load_watch_settings
-from election_reporting.watch.http import Response, check_url
+from election_reporting.watch.http import LARGE_MAX_BYTES, Response, check_url
 from election_reporting.watch.run import carry_forward, fetch_snapshots
 from election_reporting.watch.schedule import is_due, watch_window
 from election_reporting.watch.sources import resolve_places
 from election_reporting.watch.store import ElectionStore
+from test_election_areas import full_workbook
 from test_election_reporting import write_summary_xlsx
 
 PACIFIC = ZoneInfo("America/Los_Angeles")
 API = "https://results.votewa.gov/results/public/api"
 STATE_ID = "01000000-f977-1a83-1ed4-08ddd69e9e69"
 REPORT = f"https://results.votewa.gov/cdn/results/{STATE_ID}/All%20Results_abc.xlsx"
+PRECINCT_REPORT = f"https://results.votewa.gov/cdn/results/{STATE_ID}/Results_abc.xlsx"
 KC_YEAR = "https://kingcounty.gov/en/dept/elections/results/2026"
 KC_PAGE = "https://kingcounty.gov/en/dept/elections/results/2026/november-general"
 KC_FILE = (
@@ -114,9 +116,11 @@ class FakeWeb:
     def __init__(self, routes: dict[str, Response]) -> None:
         self.routes = routes
         self.requests: list[str] = []
+        self.caps: dict[str, int | None] = {}
 
-    def __call__(self, url: str) -> Response:
+    def __call__(self, url: str, max_bytes: int | None = None) -> Response:
         self.requests.append(url)
+        self.caps[url] = max_bytes
         check_url(url)
         if url not in self.routes:
             raise ElectionReportError(f"HTTP 404 from {url}")
@@ -387,6 +391,58 @@ class FetchTests(unittest.TestCase):
             self.assertTrue(result.errors[0].startswith("pierce-county: HTTP 404"))
 
 
+class AreaFetchTests(unittest.TestCase):
+    def with_precinct_report(self, root: Path) -> FakeWeb:
+        fake = web(root)
+        metadata = json.loads(fake.routes[f"{API}/elections/washington/20261103"].body)
+        metadata["publicReportCategories"][0]["reports"].append(
+            {"reportName": "Summary and Precinct Results Excel", "blobName": "Results_abc.xlsx"}
+        )
+        fake.routes[f"{API}/elections/washington/20261103"] = json_response("x", metadata)
+        fake.routes[PRECINCT_REPORT] = Response(
+            PRECINCT_REPORT, full_workbook(), {"last-modified": "Wed, 04 Nov 2026 04:25:00 GMT"}
+        )
+        return fake
+
+    def test_area_files_records_and_config(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fake = self.with_precinct_report(root)
+            result = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
+            self.assertEqual(result.errors, [])
+            self.assertEqual(fake.caps[PRECINCT_REPORT], LARGE_MAX_BYTES)
+            election = root / "elections" / "washington" / "2026-11-03"
+            self.assertTrue((election / "areas/washington/county/2026-11-03-2025.csv").exists())
+            self.assertTrue((election / "areas/washington/precinct/2026-11-03-2025.csv.gz").exists())
+            self.assertFalse(any(p.suffix == ".xlsx" and "Results_abc" in p.name for p in election.rglob("*")))
+            [record] = [r for r in ElectionStore(election).records if r.place == "washington-areas"]
+            self.assertEqual(record.kind, "state-area-xlsx")
+            self.assertIn("3 precincts", record.note)
+            toml = (election / "election.toml").read_text(encoding="utf-8")
+            self.assertIn('level = "precinct"', toml)
+            self.assertIn('default_rule = "winner"', toml)  # a general election
+            analysis = analyze_election(load_config(election / "election.toml"))
+            self.assertEqual(analysis.areas.reconciliation["precinct_vs_county"]["mismatches"], [])
+            again = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
+            self.assertIn("washington-areas: unchanged", again.skipped)
+            # Carried forward and verified like any other snapshot.
+            main = root / "main"
+            self.assertEqual(carry_forward(root / "elections", main, log=lambda _: None), 4)
+            self.assertTrue((main / "washington/2026-11-03/areas/washington/precinct/2026-11-03-2025.csv.gz").exists())
+
+    def test_a_failing_area_fetch_does_not_stop_the_statewide_snapshot(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fake = self.with_precinct_report(root)
+            fake.routes[PRECINCT_REPORT] = Response(PRECINCT_REPORT, b"not a workbook")
+            result = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
+            self.assertEqual(len(result.added), 3)
+            self.assertEqual(len(result.errors), 1)
+            self.assertTrue(result.errors[0].startswith("washington-areas: "))
+
+
 class CarryForwardTests(unittest.TestCase):
     def test_carries_only_missing_snapshots_and_keeps_local_config(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -432,6 +488,9 @@ class RepositoryTests(unittest.TestCase):
             "election-data/elections/2026-11-03/raw/washington/2026-11-03-2015.xlsx",
             "election-data/elections/2026-11-03/raw/pierce-county/2026-11-03-2015.json.gz",
             "reports/elections/2026-11-03/analysis.json",
+            "election-data/elections/washington/2026-11-03/areas/washington/county/2026-11-03-2025.csv",
+            "election-data/elections/washington/2026-11-03/areas/washington/precinct/2026-11-03-2025.csv.gz",
+            "reports/elections/washington/2026-11-03/county-breakdown.csv",
         ):
             ignored = subprocess.run(
                 ["git", "check-ignore", "-q", "--no-index", path], cwd=repo

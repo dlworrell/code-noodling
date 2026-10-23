@@ -274,6 +274,20 @@ When the available file is only a county slice of a multicounty or statewide rac
 
 For statewide XLSX inputs, the ballot denominator is the larger of the reported Ballots Cast value and the auditable sum of valid votes, overvotes, and undervotes. Any adjustment is disclosed on that race.
 
+## Geography: county and precinct results
+
+County snapshots: 1; precinct snapshots: 1. Every race's per-county votes are in county-breakdown.csv; precinct rows are in the election's areas/ directory.
+
+Reconciliation of the 2026-09-11T10:37 county snapshot: 974 contest-choice totals compared with the statewide Summary Results, 0 mismatches. Precincts against counties: 5,874 comparisons, 0 mismatches; 151 contest-county pairs have county votes but no precinct rows in the state file.
+
+Data-quality finding: the state precinct file has no precinct rows for 151 contest-county pairs in King County; their precinct-level changes cannot be shown from the state file.
+
+County changes: needs two county snapshots; only 2026-09-11T10:37 is available.
+
+Precinct changes: needs two precinct snapshots; only 2026-09-11T10:37 is available.
+
+No county remaining-ballot counts are configured ([[remaining_ballots]] in election.toml), so no county can be assessed as able to change an outcome.
+
 ## Race-by-race analysis
 
 ## U.S. Representative - Congressional District 1

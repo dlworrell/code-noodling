@@ -56,6 +56,135 @@ def _decision_payload(decision: object) -> dict[str, object]:
 
 
 def analysis_payload(analysis: ElectionAnalysis) -> dict[str, object]:
+    payload = _base_payload(analysis)
+    if analysis.areas is not None:
+        payload["areas"] = _areas_payload(analysis.areas)
+    return payload
+
+
+def _areas_payload(areas) -> dict[str, object]:
+    return {
+        "source_id": areas.source_id,
+        "snapshots": areas.snapshots,
+        "reconciliation": areas.reconciliation,
+        "county_breakdown": areas.breakdown,
+        "county_changes": areas.county_changes,
+        "precinct_changes": areas.precinct_changes,
+        "remaining_ballot_flags": areas.remaining,
+        "notes": areas.notes,
+    }
+
+
+def county_breakdown_csv(analysis: ElectionAnalysis) -> str | None:
+    """Every race's per-county votes: one row per race, county and choice."""
+    if analysis.areas is None or not analysis.areas.breakdown:
+        return None
+    import csv
+    import io
+
+    buffer = io.StringIO()
+    writer = csv.writer(buffer, lineterminator="\n")
+    writer.writerow(["Contest", "Contest ID", "Snapshot", "County", "Ballots", "Choice", "Votes", "County leader"])
+    for race in analysis.areas.breakdown:
+        for row in race["counties"]:
+            for choice in race["choices"]:
+                writer.writerow([race["contest"], race["contest_id"], race["snapshot"], row["county"],
+                                 row["ballots"], choice, row["votes"][choice], row["leader"]])
+    return buffer.getvalue()
+
+
+def _area_table(header: tuple[str, ...], rows: list[tuple[object, ...]]) -> str:
+    lines = ["| " + " | ".join(header) + " |", "|" + "---|" * len(header)]
+    lines += ["| " + " | ".join(_table_text(str(cell)) for cell in row) + " |" for row in rows]
+    return "\n".join(lines)
+
+
+def _signed(value: int) -> str:
+    return f"{value:+,}"
+
+
+def _area_nodes(areas) -> list[dict[str, object]]:
+    nodes = [_node("areas-heading", "heading2", "Geography: county and precinct results", level=2)]
+    snapshots = areas.snapshots
+    nodes.append(_node(
+        "areas-status", "paragraph",
+        f"County snapshots: {len(snapshots.get('county', []))}; precinct snapshots: "
+        f"{len(snapshots.get('precinct', []))}. Every race's per-county votes are in county-breakdown.csv; "
+        "precinct rows are in the election's areas/ directory.",
+    ))
+    rec = areas.reconciliation
+    if rec:
+        county = rec.get("county_vs_statewide", {})
+        precinct = rec.get("precinct_vs_county", {})
+        text = (
+            f"Reconciliation of the {rec.get('county_snapshot')} county snapshot: "
+            f"{county.get('checked', 0):,} contest-choice totals compared with the statewide Summary Results, "
+            f"{len(county.get('mismatches', [])):,} mismatches."
+        )
+        if "checked" in precinct:
+            text += (
+                f" Precincts against counties: {precinct['checked']:,} comparisons, "
+                f"{len(precinct['mismatches']):,} mismatches; "
+                f"{len(precinct.get('precinct_detail_missing', [])):,} contest-county pairs have county votes but no "
+                "precinct rows in the state file."
+            )
+        else:
+            text += f" Precincts: {precinct.get('status', 'not checked')}."
+        nodes.append(_node("areas-reconciliation", "paragraph", text))
+        mismatches = county.get("mismatches", []) + precinct.get("mismatches", [])
+        if mismatches:
+            nodes.append(_node("areas-mismatches", "paragraph", _area_table(
+                ("Contest", "Area", "Choice", "Difference"),
+                [(m["contest"], m.get("area", ""), m.get("choice", ""), _signed(m["difference"] or 0))
+                 for m in mismatches[:25]],
+            )))
+        missing = precinct.get("precinct_detail_missing", [])
+        if missing:
+            counties = sorted({m["county"] for m in missing})
+            nodes.append(_node(
+                "areas-precinct-missing", "paragraph",
+                f"Data-quality finding: the state precinct file has no precinct rows for {len(missing)} "
+                f"contest-county pairs in {', '.join(counties)}; their precinct-level changes "
+                "cannot be shown from the state file.",
+            ))
+    for level, changes in (("county", areas.county_changes), ("precinct", areas.precinct_changes)):
+        title = "County" if level == "county" else "Precinct"
+        if "status" in changes:
+            nodes.append(_node(f"areas-{level}-changes", "paragraph", f"{title} changes: {changes['status']}."))
+            continue
+        nodes.append(_node(
+            f"areas-{level}-changes-heading", "heading3",
+            f"{title}s with the largest change, {changes['from']} to {changes['to']}", level=3,
+        ))
+        nodes.append(_node(f"areas-{level}-new-ballots", "paragraph", _area_table(
+            (title, "New ballots"),
+            [(item["area"], f"{item['new_ballots']:,}") for item in changes["largest_new_ballots"]],
+        )))
+        rows = []
+        for race in changes["close_races"]:
+            for swing in race["swings"]:
+                rows.append((race["contest"], f"{race['current_side']} vs {race['change_side']}",
+                             swing["area"], f"{swing['new_ballots']:,}", _signed(swing["margin_change"])))
+        if rows:
+            nodes.append(_node(f"areas-{level}-swings", "paragraph", _area_table(
+                ("Contest", "Decision", title, "New ballots", "Margin change"), rows,
+            )))
+    if areas.remaining:
+        nodes.append(_node("areas-remaining-heading", "heading3",
+                           "Could the county with the most remaining ballots change the outcome?", level=3))
+        nodes.append(_node("areas-remaining", "paragraph", _area_table(
+            ("Contest", "County", "Remaining ballots", "Needed share", "County's current share", "Assessment"),
+            [(f["contest"], f.get("county", ""), f"{f['remaining_ballots']:,}" if "remaining_ballots" in f else "",
+              f"{f['needed_share']:.1%}" if "needed_share" in f else "",
+              f"{f['county_change_side_share']:.1%}" if "county_change_side_share" in f else "",
+              f["status"]) for f in areas.remaining],
+        )))
+    for index, note in enumerate(areas.notes, start=1):
+        nodes.append(_node(f"areas-note-{index}", "paragraph", note))
+    return nodes
+
+
+def _base_payload(analysis: ElectionAnalysis) -> dict[str, object]:
     return {
         "schema_version": 2,
         "tool_version": __version__,
@@ -566,6 +695,10 @@ def build_edom(analysis: ElectionAnalysis) -> dict[str, object]:
             "reported Ballots Cast value and the auditable sum of valid votes, "
             "overvotes, and undervotes. Any adjustment is disclosed on that race.",
         ),
+    ]
+    if analysis.areas is not None:
+        children.extend(_area_nodes(analysis.areas))
+    children += [
         _node("races-heading", "heading2", "Race-by-race analysis", level=2),
     ]
     for index, race in enumerate(analysis.races, start=1):
@@ -615,6 +748,9 @@ def publish(analysis: ElectionAnalysis, output_dir: Path) -> None:
     facebook_path.write_text(
         facebook_summary(analysis, public_report_url(output_dir)), encoding="utf-8"
     )
+    breakdown = county_breakdown_csv(analysis)
+    if breakdown is not None:
+        (output_dir / "county-breakdown.csv").write_text(breakdown, encoding="utf-8")
     generate_document_reports(edom, output_dir / "edt" / "document")
     write_edom_markdown(edom_path, output_dir / "election-analysis.md")
     write_edom_html(

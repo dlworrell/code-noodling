@@ -672,10 +672,14 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
     as_of = max(snapshot.timestamp for snapshot in all_snapshots).isoformat(
         timespec="minutes"
     )
+    from .areas import analyze_areas
+
+    race_tuple = tuple(races)
     return ElectionAnalysis(
         title=config.title,
         as_of=as_of,
-        races=tuple(races),
+        races=race_tuple,
+        areas=analyze_areas(config, race_tuple),
         snapshots=tuple(
             sorted(all_snapshots, key=lambda item: (item.timestamp, item.source_id))
         ),

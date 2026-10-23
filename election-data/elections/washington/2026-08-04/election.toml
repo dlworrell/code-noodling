@@ -33,3 +33,15 @@ forecast_basis = "Official 2022 statewide primary turnout of 40.43% times about 
 # source_id = "king-county"
 # contest_id = "123"
 # rule = "winner"
+
+# County and precinct breakdowns from the state's "Summary and Precinct
+# Results Excel" workbook (issue #14). See election-data/README.md.
+[[areas]]
+source = "washington"
+level = "county"
+path = "areas/washington/county"
+
+[[areas]]
+source = "washington"
+level = "precinct"
+path = "areas/washington/precinct"

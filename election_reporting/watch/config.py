@@ -36,6 +36,7 @@ class WatchConfig:
     prefer_county_files: bool
     elections_root: Path
     all_counties: bool = False  # counties = "all"
+    precinct_results: bool = False  # Washington: county and precinct breakdowns
 
 
 def _time(value: object, location: str, default: str) -> time:
@@ -109,6 +110,11 @@ def _parse_watch(watch: dict, location: str, elections_root: Path) -> WatchConfi
     prefer = watch.get("prefer_county_files", True)
     if type(prefer) is not bool:
         raise ElectionReportError(f"{location}.prefer_county_files must be true or false")
+    precinct_results = watch.get("precinct_results", state_id == "washington")
+    if type(precinct_results) is not bool:
+        raise ElectionReportError(f"{location}.precinct_results must be true or false")
+    if precinct_results and state_id != "washington":
+        raise ElectionReportError(f"{location}.precinct_results is only available for Washington")
     schedule = watch.get("schedule", {})
     if not isinstance(schedule, dict):
         raise ElectionReportError(f"{location}.schedule must be a TOML table")
@@ -143,6 +149,7 @@ def _parse_watch(watch: dict, location: str, elections_root: Path) -> WatchConfi
         prefer_county_files=prefer,
         elections_root=elections_root / state_id,
         all_counties=all_counties,
+        precinct_results=precinct_results,
     )
 
 
