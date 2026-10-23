@@ -95,6 +95,12 @@ def _parse_int(value: str, location: str) -> int:
     return result
 
 
+def _parse_optional_int(value: str, location: str) -> int | None:
+    if not value.replace(",", "").strip():
+        return None
+    return _parse_int(value, location)
+
+
 def _parse_float(value: str, location: str) -> float:
     try:
         return float(value.strip())
@@ -228,12 +234,8 @@ def _check_xlsx_read_budget(
         )
 
 
-def _read_statewide_xlsx(
-    path: Path,
-    source_id: str,
-    raw_bytes: bytes,
-    digest: str,
-) -> Snapshot:
+def xlsx_summary_rows(path: Path, raw_bytes: bytes) -> list[list[str]]:
+    """Return the Summary Results worksheet rows of a Washington results workbook."""
     try:
         with zipfile.ZipFile(io.BytesIO(raw_bytes)) as archive:
             _check_xlsx_read_budget(archive, path, XLSX_METADATA_MEMBERS)
@@ -254,7 +256,13 @@ def _read_statewide_xlsx(
         raise ElectionReportError(f"{path} is not a valid XLSX archive") from exc
     if not rows:
         raise ElectionReportError(f"{path} Summary Results worksheet is empty")
+    return rows
 
+
+def summary_rows_to_contests(
+    path: Path, rows: list[list[str]]
+) -> dict[str, ContestResult]:
+    """Group Summary Results rows into contests, reconciling ballot denominators."""
     header_map = {_header_key(value): index for index, value in enumerate(rows[0])}
     required = {"officename", "contestid", "ballotname", "choiceid", "total"}
     missing = sorted(required - header_map.keys())
@@ -324,12 +332,21 @@ def _read_statewide_xlsx(
         )
     if not contests:
         raise ElectionReportError(f"{path} contains no statewide result contests")
+    return contests
+
+
+def _read_statewide_xlsx(
+    path: Path,
+    source_id: str,
+    raw_bytes: bytes,
+    digest: str,
+) -> Snapshot:
     return Snapshot(
         source_id=source_id,
         path=path,
         timestamp=_snapshot_timestamp(path),
         sha256=digest,
-        contests=contests,
+        contests=summary_rows_to_contests(path, xlsx_summary_rows(path, raw_bytes)),
     )
 
 
@@ -374,8 +391,14 @@ def read_snapshot(path: Path, source_id: str) -> Snapshot:
             f"{path} is missing required columns: {', '.join(missing)}"
         )
 
+    # Contest-level overvote/undervote columns are optional. They are written by
+    # the source watcher's normalized CSV (election_reporting.watch.csvformat);
+    # official county exports omit them. A blank cell means "not reported".
+    has_contest_tallies = {"contestovervotes", "contestundervotes"} <= header_map.keys()
     grouped: dict[tuple[str, str], list[ChoiceResult]] = defaultdict(list)
     metadata: dict[tuple[str, str], tuple[float, int]] = {}
+    tallies: dict[tuple[str, str], tuple[int | None, int | None]] = {}
+    spans: dict[tuple[str, str], tuple[str, ...]] = {}
     for line_number, row in enumerate(reader, start=2):
         contest_id = _clean_text(row[header_map["contestid"]])
         contest_name = _clean_text(row[header_map["contest"]])
@@ -403,6 +426,32 @@ def read_snapshot(path: Path, source_id: str) -> Snapshot:
                 f"{location} disagrees with another row for contest {contest_id}"
             )
         grouped[group_key].append(ChoiceResult(choice_name, votes, choice_order))
+        if has_contest_tallies:
+            contest_tally = (
+                _parse_optional_int(
+                    row[header_map["contestovervotes"]], f"{location} Contest Overvotes"
+                ),
+                _parse_optional_int(
+                    row[header_map["contestundervotes"]],
+                    f"{location} Contest Undervotes",
+                ),
+            )
+            if tallies.setdefault(group_key, contest_tally) != contest_tally:
+                raise ElectionReportError(
+                    f"{location} disagrees with another row for contest {contest_id}"
+                )
+        if "counties" in header_map:
+            span = tuple(
+                part
+                for part in (
+                    _clean_text(item) for item in row[header_map["counties"]].split(";")
+                )
+                if part
+            )
+            if spans.setdefault(group_key, span) != span:
+                raise ElectionReportError(
+                    f"{location} disagrees with another row for contest {contest_id}"
+                )
 
     if not grouped:
         raise ElectionReportError(f"{path} contains no result rows")
@@ -415,16 +464,26 @@ def read_snapshot(path: Path, source_id: str) -> Snapshot:
             raise ElectionReportError(
                 f"{path} contains duplicate normalized contest name: {contest_name}"
             )
+        overvotes, undervotes = tallies.get((contest_id, contest_name), (None, None))
+        reconciled_ballots = ballots
+        if overvotes is not None and undervotes is not None:
+            # Same reconciliation as the statewide XLSX reader: a ballot count that
+            # lags the detailed tally never shrinks the denominator below it.
+            reconciled_ballots = max(
+                ballots,
+                sum(choice.votes for choice in choices) + overvotes + undervotes,
+            )
         contests[key] = ContestResult(
             contest_id=contest_id,
             name=contest_name,
             order=contest_order,
-            ballots=ballots,
+            ballots=reconciled_ballots,
             reported_ballots=ballots,
-            overvotes=None,
-            undervotes=None,
+            overvotes=overvotes,
+            undervotes=undervotes,
             choices=tuple(sorted(choices, key=lambda item: item.order)),
             key=key,
+            counties=spans.get((contest_id, contest_name), ()),
         )
 
     return Snapshot(

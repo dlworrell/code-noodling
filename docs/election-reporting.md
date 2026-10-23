@@ -10,7 +10,7 @@ It ingests dated VoteWA county CSV exports and Washington `All Results` XLSX
 workbooks, preserves source hashes, compares successive snapshots, estimates the
 remaining contest-level vote pool, and creates a race-by-race canonical EDOM document.
 The Engineering Documents Toolkit (EDT) validates that document and publishes
-Markdown and HTML under `reports/elections/`. The same build also writes a compact
+Markdown and HTML under `reports/elections/<state>/<election day>/`. The same build also writes a compact
 plain-text summary that can be pasted directly into Facebook.
 
 Each modeled boundary has a conditional statistical change probability and a separate
@@ -24,24 +24,38 @@ for certified results.
 
 ```text
 election-data/
-├── election.toml                 source, forecast, and rule configuration
-└── input/
-    ├── king-county/              dated county snapshots
-    └── washington/               dated controlling aggregate snapshots
-election_reporting/               Python implementation (ci/ holds the CI publisher)
-reports/elections/                generated JSON, EDOM, human summaries, and EDT checks
+├── watch.toml                    source watcher: state, counties, schedule
+└── elections/<state>/<election day>/
+    ├── election.toml             source, forecast, and rule configuration
+    ├── SOURCES.json              provenance of every snapshot
+    ├── input/<source>/           dated plain-text CSV snapshots
+    └── raw/<source>/             original downloads (XLSX, trimmed JSON)
+election_reporting/               Python implementation (ci/ holds the CI publisher,
+                                  watch/ the source watcher)
+reports/elections/<state>/<election day>/ generated JSON, EDOM, human summaries, EDT checks
 tests/test_election_reporting.py  parser, analysis, and publication tests
+tests/test_election_watch.py      source watcher tests (offline)
 tests/test_publish_reports.py     automation pull-request publisher tests
 ```
 
+See [`election-data/README.md`](../election-data/README.md) for the directory
+details and input columns.
+
 ## Add an update
 
+During an election's checking window the
+[source watcher](#automatic-source-watching) adds updates on its own; merge its pull
+request. To add one by hand:
+
 1. Download the official result export.
-2. Put it in the appropriate source directory.
+2. Put it in `election-data/elections/<state>/<election day>/input/<source>/`.
 3. Rename it so the filename contains the report timestamp, for example
-   `2026-08-07-1600.csv.xls` or `2026-08-08-0018.xlsx`.
-4. Keep all older files.
+   `2026-08-07-1600.csv`.
+4. Keep all older files, and record the source in that election's `SOURCES.json`.
 5. Run the GitHub Actions workflow named `Election Result Reports`.
+
+Each election directory is built into `reports/elections/<state>/<election day>/`; an
+election with no snapshots yet is skipped.
 
 The workflow tests the analyzer, checks out the pinned EDT revision, generates the
 report, validates the generated EDOM, and uploads the complete report directory as a
@@ -99,17 +113,77 @@ PYTHONPATH=".:../engineering-docs-toolkit" \
 
 PYTHONPATH=".:../engineering-docs-toolkit" \
   python -m election_reporting \
-    --config election-data/election.toml \
-    --output reports/elections
+    --config election-data/elections/washington/2026-08-04/election.toml \
+    --output reports/elections/washington/2026-08-04
 ```
 
 The CI pins EDT commit `649981ec78c97aafe4374284ad7e8c57c11a4640` so identical
 inputs use the same publication engine.
 
+## Automatic source watching
+
+`election-data/watch.toml` selects states and counties by name, one `[[watch]]`
+table per state:
+
+```toml
+schema_version = 1
+
+[paths]
+elections = "elections"   # election-data/elections/<state>/<election day>/
+
+[[watch]]
+state = "Washington"
+counties = ["King", "Snohomish", "Pierce", "Kittitas", "Chelan"]
+election = "next"
+
+[watch.schedule]
+polls_close = "20:00"
+```
+
+`python -m election_reporting.watch` (see
+[ADR-002](engineering/ADR-002-election-source-watcher.md)) works out the rest:
+
+| Step | What it does |
+| --- | --- |
+| Places | Resolves county names against the Washington results site (`results.votewa.gov`), which serves the state and all 39 counties; an unknown name fails with the list of valid ones. |
+| Election | `next` is the soonest election on the site whose checking window has not ended; a date picks a specific one. |
+| Window | From polls closing (20:00) on election day until the end of the last certification day: state 30 days after a general election and 17 after a primary; counties 21 and 14 (RCW 29A.60.190 and 29A.60.250). Every 30 minutes until 02:00 after election night, then hourly. Each state's `[watch.schedule]` table can override any of these. |
+| Sources | State: the Secretary of State's `All Results Excel` report, which includes ballots cast, overvotes, and undervotes. King County: the county's own nightly `webresults-YYYYMMDD.csv` export, stored byte for byte. Other counties: the results site's data API. |
+| Output | A plain-text CSV per place and snapshot in `input/`, the original in `raw/` (workbooks as-is, API JSON trimmed to results and gzipped), and a `SOURCES.json` record with the source URL, retrieval time, source timestamp, and SHA-256 of each file. A snapshot is saved only when its content changed, and never before any votes are reported. |
+| States | Each state is planned and fetched on its own schedule and in its own directory; one state failing does not stop the others. |
+| Config | Creates `election.toml` for a new election (state priority 100, counties 10, certification dates filled in) and appends sources when places are added later. |
+
+The **Election Source Watch** workflow runs every 30 minutes, exits early when a run
+is not due, and publishes new snapshots as a GitHub-verified commit on the
+workflow-owned `automation/election-sources` branch with a pull request to the
+default branch, using the same publisher as the reports. Snapshots waiting in an
+unmerged pull request are carried forward into each run (only files recorded in
+that branch's `SOURCES.json`, each checked against its SHA-256), because the state
+overwrites its report files and an earlier version cannot be downloaded again.
+Merging the pull request triggers report generation. Run it by hand with
+**Run workflow → force** to fetch outside the window.
+
+The results API reports valid votes but not ballots cast, overvotes, or undervotes
+for county data, so for those counties the contest denominator is the vote total.
+Every contest from the API also carries the counties it spans; a county source's
+share of a multi-county contest is reported as not controlling, and the statewide
+totals control when the state reports the contest.
+
+Locally:
+
+```bash
+python -m election_reporting.watch plan              # resolve, show, and write election.toml
+python -m election_reporting.watch fetch --force     # fetch now, ignoring the window
+```
+
 ## Supported source formats
 
 King County CSV-shaped exports require `ContestOrder`, `Contest`, `Contest ID`,
 `Choice Order`, `Choice`, `BallotsWith Contest`, and `Votes`.
+
+The watcher's normalized CSV adds optional `Contest Overvotes`, `Contest
+Undervotes`, and `Counties` columns, which the analyzer reads (see
+[`election-data/README.md`](../election-data/README.md#input-columns)).
 
 The official Washington `All Results` XLSX workbook is read directly without
 third-party spreadsheet dependencies. Only `Summary Results` is ingested. Rows with a
@@ -268,14 +342,14 @@ outcome forecast.
 
 ## Generated evidence
 
-`reports/elections/analysis.json` is the version-2 machine-readable analysis and
+`reports/elections/<state>/<election day>/analysis.json` is the version-2 machine-readable analysis and
 includes every input SHA-256 digest, probability, model identifier, reliability score,
 and reliability rationale. `canonical-document.edom.json` is the semantic publication
 source. EDT writes the human report plus validation, reference-graph, and quality
 evidence:
 
 ```text
-reports/elections/
+reports/elections/<state>/<election day>/
 ├── analysis.json
 ├── canonical-document.edom.json
 ├── election-analysis.md
@@ -302,5 +376,7 @@ reports/elections/
   candidates, or replace jurisdiction-specific election law review.
 - A missing controlling aggregate produces a scope warning rather than a false
   statewide conclusion.
-- Certification dates are documentation metadata; the report does not fetch or verify
-  schedules from the network.
+- Certification dates are documentation metadata for the report; the watcher derives
+  its checking window from the statutory deadlines, not from a published schedule.
+- Contests that span counties are summed only through the statewide source; two
+  watched counties' shares of a multi-county local contest are not combined.

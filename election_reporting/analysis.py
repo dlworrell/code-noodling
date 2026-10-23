@@ -530,6 +530,13 @@ def _majority_decision(
 
 
 def _scope_status(source: SourceConfig, contest: ContestResult) -> tuple[bool, str]:
+    if source.scope == "county" and len(contest.counties) > 1:
+        return (
+            False,
+            f"This contest spans {', '.join(contest.counties)}; this source reports "
+            "only its own county's share. Add the controlling district or statewide "
+            "results before treating the risk as an outcome forecast.",
+        )
     name = contest.name.casefold()
     if source.scope == "county" and any(
         marker in name for marker in BROADER_THAN_COUNTY_MARKERS

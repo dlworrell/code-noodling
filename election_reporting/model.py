@@ -27,6 +27,9 @@ class ContestResult:
     undervotes: int | None
     choices: tuple[ChoiceResult, ...]
     key: str
+    # Counties the contest spans, when the source reports them (the source
+    # watcher's normalized CSV does; official exports do not).
+    counties: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)

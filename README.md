@@ -10,7 +10,7 @@ detailed documentation in its own directory.
 |---|---|---|---|
 | Prime Number and Dice Suite | [`prime-number-suite/`](prime-number-suite/) | CPU and multi-GPU (Tesla K80) prime sieves, an unbiased prime-seeded dice engine, and PhysX/Maya dice experiments | [`prime-number-suite/README.md`](prime-number-suite/README.md) |
 | Crypto Pipeline | [`crypto_pipeline/`](crypto_pipeline/) | Multi-precision integer multiplication experiments (research prototype) | [`crypto_pipeline/README.md`](crypto_pipeline/README.md) |
-| Election Result Reporting | [`election_reporting/`](election_reporting/), [`election-data/`](election-data/) | Washington election snapshot comparison and change-probability reports | [`docs/election-reporting.md`](docs/election-reporting.md) |
+| Election Result Reporting | [`election_reporting/`](election_reporting/), [`election-data/`](election-data/) | Washington election result watching, snapshot comparison, and change-probability reports | [`docs/election-reporting.md`](docs/election-reporting.md) |
 
 ## Repository Layout
 
@@ -22,7 +22,7 @@ code-noodling/
 ├── .github/                 workflows and contribution templates
 ├── crypto_pipeline/         integer multiplication experiments (governed scope)
 ├── docs/                    engineering standards and election docs
-├── election-data/           election configuration and source snapshots
+├── election-data/           watcher settings, per-election configuration and snapshots
 ├── election_reporting/      election-analysis Python package
 ├── prime-number-suite/      prime generators and dice programs
 ├── reports/                 generated election reports
@@ -138,10 +138,14 @@ Washington election-result snapshots and estimating the statistical probability 
 each current winner, top-two cutoff, or judicial majority status changes before
 certification. Every probability carries a separate 0–100 evidence-reliability score.
 
-Drop official county CSV exports or Washington `All Results` XLSX workbooks into
-`election-data/input/<source>/` with a date in each filename, then run the GitHub
-Actions workflow named **Election Result Reports**. It uses the Engineering Documents
-Toolkit (EDT) to publish and validate the report under `reports/elections/`.
+Pick the state and counties to follow in
+[`election-data/watch.toml`](election-data/watch.toml) (King County and its
+neighbors to start). From polls closing until certification, the **Election Source
+Watch** workflow fetches each new official result snapshot, converts it to
+plain-text CSV, records its source and checksum, and opens a pull request. Merging it
+runs **Election Result Reports**, which uses the Engineering Documents Toolkit (EDT) to
+publish and validate each election's report under `reports/elections/<state>/<election day>/`.
+Snapshots can also be added by hand under `election-data/elections/<state>/<election day>/input/`.
 The generated `facebook-summary.txt` is a concise, copy-ready social post with the
 leading change probabilities, reliability scores, and an explicit model caveat.
 

@@ -140,10 +140,17 @@ def build_graphql_request(commit_input: dict) -> dict:
     return {"query": CREATE_COMMIT_MUTATION, "variables": {"input": commit_input}}
 
 
-def pull_request_body(changes: ReportChanges, base_sha: str, run_url: str) -> str:
+DEFAULT_SUMMARY = (
+    "Automated regeneration of `reports/elections` by the "
+    "**Election Result Reports** workflow."
+)
+
+
+def pull_request_body(
+    changes: ReportChanges, base_sha: str, run_url: str, summary: str = DEFAULT_SUMMARY
+) -> str:
     lines = [
-        "Automated regeneration of `reports/elections` by the "
-        "**Election Result Reports** workflow.",
+        summary,
         "",
         f"- Generated from commit `{base_sha}`.",
     ]
@@ -158,7 +165,7 @@ def pull_request_body(changes: ReportChanges, base_sha: str, run_url: str) -> st
         "the workflow and is force-reset on each run; do not push to it by hand.",
         "",
         "Per ADR-0006, automation never pushes to the default branch; review and "
-        "merge this pull request to publish the reports.",
+        "merge this pull request to publish the changes.",
     ]
     return "\n".join(lines) + "\n"
 
@@ -291,6 +298,7 @@ def publish(
     base_sha: str,
     title: str,
     run_url: str,
+    summary: str = DEFAULT_SUMMARY,
     log: Callable[[str], None] = print,
 ) -> str | None:
     changes, tree = detect_changes(repo_root, report_path)
@@ -298,7 +306,7 @@ def publish(
         log("Reports are already current; nothing to publish.")
         return None
     log(f"{len(changes.additions)} file(s) to add/update, {len(changes.deletions)} to delete.")
-    body = pull_request_body(changes, base_sha, run_url)
+    body = pull_request_body(changes, base_sha, run_url, summary)
 
     head = github.branch_head(branch)
     if head is not None:
@@ -334,6 +342,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--path", default=DEFAULT_PATH)
     parser.add_argument("--title", default=DEFAULT_TITLE)
     parser.add_argument("--run-url", default="")
+    parser.add_argument("--summary", default=DEFAULT_SUMMARY, help="first line of the PR body")
     parser.add_argument("--repo-root", type=Path, default=Path.cwd())
     args = parser.parse_args(argv)
     if not args.repository:
@@ -350,6 +359,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             base_sha=args.base_sha,
             title=args.title,
             run_url=args.run_url,
+            summary=args.summary,
         )
     except PublishError as error:
         print(f"::error::{error}", file=sys.stderr)

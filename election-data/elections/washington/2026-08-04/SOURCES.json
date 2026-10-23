@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "election": {
+    "date": "2026-08-04",
+    "name": "2026 Primary",
+    "kind": "primary",
+    "places": [
+      "king-county",
+      "washington"
+    ],
+    "note": "Acquired by hand before the source watcher existed. Retrieval times were not recorded; each first-commit time is an upper bound."
+  },
+  "snapshots": [
+    {
+      "place": "king-county",
+      "snapshot": "2026-08-06-1600",
+      "kind": "county-csv",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/08/webresults-20260806.csv",
+      "retrieved_at": "UNKNOWN",
+      "source_timestamp": "",
+      "input": "input/king-county/2026-08-06-1600.csv",
+      "input_sha256": "9a1572cc9655d088f2d36656867755f5268d8464d045f5f45d32c21d1406ec35",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "First committed 2026-08-06T17:55:48-07:00 (fece5eb) as election-data/input/king-county/2026-08-06-1600.csv.xls. Verified 2026-10-23: identical to the published file after converting its CRLF line endings to LF (published SHA-256 bf04a40a6ad305f86f770bb20f4b8b5438e4bf416651fcdaa011c9ef4d0911f1)."
+    },
+    {
+      "place": "washington",
+      "snapshot": "2026-08-07-0118",
+      "kind": "state-xlsx",
+      "source_url": "UNKNOWN",
+      "retrieved_at": "UNKNOWN",
+      "source_timestamp": "",
+      "input": "input/washington/2026-08-07-0118.csv",
+      "input_sha256": "7a1112037e8edc7d9e1acb97dc63807a1c78c06b8dff7167d169a46d41d06c24",
+      "raw": "raw/washington/2026-08-07-0118.xlsx",
+      "raw_sha256": "fd4d2a14a01d3945095e92cbb0d0a85b1c0fadc025882c73ed9348da1fbdf43a",
+      "note": "First committed 2026-08-06T19:47:07-07:00 (0f3067c) as election-data/input/washington/2026-08-07-0118.xlsx. Source URL not recorded; probably an earlier version of the 2026 Primary \"All Results Excel\" report, since overwritten. The CSV is converted from the workbook's Summary Results sheet."
+    },
+    {
+      "place": "washington",
+      "snapshot": "2026-08-08-0018",
+      "kind": "state-xlsx",
+      "source_url": "UNKNOWN",
+      "retrieved_at": "UNKNOWN",
+      "source_timestamp": "",
+      "input": "input/washington/2026-08-08-0018.csv",
+      "input_sha256": "18a0ff493c6b81339b615ff562961c6377b2aae83a45556c6fe0e0cf0266df03",
+      "raw": "raw/washington/2026-08-08-0018.xlsx",
+      "raw_sha256": "0a6891a586429767a1c00a14b0d3127612e21a339f9f19351056dcb2e9d84718",
+      "note": "First committed 2026-08-07T18:18:40-07:00 (386f044) as election-data/input/washington/2026-08-08-0018.xlsx. Source URL not recorded; probably an earlier version of the same report. The CSV is converted from the workbook's Summary Results sheet."
+    },
+    {
+      "place": "washington",
+      "snapshot": "2026-10-14-1100",
+      "kind": "state-xlsx",
+      "source_url": "https://results.votewa.gov/cdn/results/01000000-f977-1a83-1ed4-08ddd69e9e69/All%20Results_1bc1cf3c-e598-43bf-a569-3f7539add8dd.xlsx",
+      "retrieved_at": "UNKNOWN",
+      "source_timestamp": "",
+      "input": "input/washington/2026-10-14-1100.csv",
+      "input_sha256": "bdd7591803dc9ff69614d09a342ff27be3faa2281b4757e8034a0c1503edf3c1",
+      "raw": "raw/washington/2026-10-14-1100.xlsx",
+      "raw_sha256": "d580c91e84f5c534e3094b46558cd5e6ad9778ca6219546015af3f331b324f17",
+      "note": "First committed 2026-10-14T18:07:56-07:00 (33299ff) as \"All Results_1bc1cf3c-e598-43bf-a569-3f7539add8dd.xlsx\". Verified 2026-10-23: byte-identical to the published file (Last-Modified Fri, 11 Sep 2026 17:37:08 GMT). The CSV is converted from the workbook's Summary Results sheet."
+    }
+  ]
+}
