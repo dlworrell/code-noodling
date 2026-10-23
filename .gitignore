@@ -39,15 +39,7 @@ __pycache__/
 *.csv
 *.log
 
-# Election inputs, their provenance records (SOURCES.json) and EDT-generated
-# evidence are deliberately versioned. The source watcher's publisher stages
-# with `git add`, so anything ignored here would silently never be published
-# (election-analysis/tests/test_election_watch.py checks these paths).
-!election-analysis/data/**/*.csv
-!election-analysis/data/**/*.csv.xls
-!election-analysis/data/**/*.json
-!election-analysis/reports/**/*.json
-!election-analysis/reports/**/county-breakdown.csv
+# Election data and reports: see election-analysis/.gitignore.
 
 # crypto_pipeline provenance and evidence records (provenance baseline, scope
 # manifest, proof and timing evidence) must be committed the same way

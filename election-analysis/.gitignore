@@ -1,0 +1,10 @@
+# Election inputs, their provenance records (SOURCES.json) and EDT-generated
+# evidence are deliberately versioned, although the repository .gitignore
+# ignores *.json and *.csv. The source watcher's publisher stages with
+# `git add`, so anything ignored here would silently never be published
+# (tests/test_election_watch.py checks these paths).
+!data/**/*.csv
+!data/**/*.csv.xls
+!data/**/*.json
+!reports/**/*.json
+!reports/**/county-breakdown.csv
