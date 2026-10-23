@@ -33,6 +33,7 @@ case "${1:-}" in
   differential)
     python3 tests/test_arithmetic.py
     python3 tests/test_montgomery_ct.py
+    python3 tests/test_repository_files.py
     ;;
   *)
     echo "usage: $0 {install-tools|static-analysis|build|memcheck|smoke|bounds|differential}" >&2
