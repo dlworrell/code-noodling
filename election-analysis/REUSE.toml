@@ -1,0 +1,75 @@
+# REUSE annotations for files that cannot carry their own header: data
+# snapshots, provenance records and reports written by the source watcher and
+# the report workflow, and other files with no comment syntax. Path patterns
+# cover files that automation adds later. Authored files carry SPDX headers
+# and a Catalyst-File-ID instead. Licensing decisions: root README "Licensing".
+version = 1
+
+# Generated election reports (election-result-reports.yml).
+[[annotations]]
+path = "reports/**"
+SPDX-FileCopyrightText = "2026 Donovan Worrell"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# Provenance records and engineering records written as JSON.
+[[annotations]]
+path = ["data/elections/*/*/SOURCES.json", "docs/engineering/*.json"]
+SPDX-FileCopyrightText = "2026 Donovan Worrell"
+SPDX-License-Identifier = "Apache-2.0"
+
+# election.toml files the watcher creates for a new election. Existing ones
+# carry their own header, which takes precedence.
+[[annotations]]
+path = "data/elections/*/*/election.toml"
+SPDX-FileCopyrightText = "2026 Donovan Worrell"
+SPDX-License-Identifier = "Apache-2.0"
+
+# Washington: Secretary of State, including the county and precinct breakdowns
+# derived from its workbook.
+[[annotations]]
+path = [
+  "data/elections/washington/*/input/washington/**",
+  "data/elections/washington/*/raw/washington/**",
+  "data/elections/washington/*/areas/washington/**",
+]
+SPDX-FileCopyrightText = "Washington Secretary of State"
+SPDX-License-Identifier = "LicenseRef-WA-SOS-PublicData"
+
+# Washington counties.
+[[annotations]]
+path = ["data/elections/washington/*/input/king-county/**", "data/elections/washington/*/raw/king-county/**"]
+SPDX-FileCopyrightText = "King County Elections"
+SPDX-License-Identifier = "LicenseRef-KingCounty-PublicData"
+
+[[annotations]]
+path = ["data/elections/washington/*/input/snohomish-county/**", "data/elections/washington/*/raw/snohomish-county/**"]
+SPDX-FileCopyrightText = "Snohomish County Auditor (Elections)"
+SPDX-License-Identifier = "LicenseRef-SnohomishCounty-PublicData"
+
+[[annotations]]
+path = ["data/elections/washington/*/input/pierce-county/**", "data/elections/washington/*/raw/pierce-county/**"]
+SPDX-FileCopyrightText = "Pierce County Auditor (Elections)"
+SPDX-License-Identifier = "LicenseRef-PierceCounty-PublicData"
+
+[[annotations]]
+path = ["data/elections/washington/*/input/kittitas-county/**", "data/elections/washington/*/raw/kittitas-county/**"]
+SPDX-FileCopyrightText = "Kittitas County Auditor (Elections)"
+SPDX-License-Identifier = "LicenseRef-KittitasCounty-PublicData"
+
+[[annotations]]
+path = ["data/elections/washington/*/input/chelan-county/**", "data/elections/washington/*/raw/chelan-county/**"]
+SPDX-FileCopyrightText = "Chelan County Auditor (Elections)"
+SPDX-License-Identifier = "LicenseRef-ChelanCounty-PublicData"
+
+# Alaska: Division of Elections (statewide and every borough and census area),
+# and the precinct-to-borough crosswalk derived from its precinct layer.
+[[annotations]]
+path = ["data/elections/alaska/*/input/**", "data/elections/alaska/*/raw/**", "data/crosswalks/alaska/*.csv"]
+SPDX-FileCopyrightText = "State of Alaska, Division of Elections"
+SPDX-License-Identifier = "LicenseRef-AK-DOE-PublicData"
+
+# Maine: Secretary of State (statewide and every county).
+[[annotations]]
+path = ["data/elections/maine/*/input/**", "data/elections/maine/*/raw/**"]
+SPDX-FileCopyrightText = "Maine Secretary of State"
+SPDX-License-Identifier = "LicenseRef-ME-SOS-PublicData"

@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:c69ecc04-eaca-416b-8e66-14a62e5e38e2
+
 """Alaska Division of Elections results: elections, places and conversion.
 
 Alaska has no counties. Its county equivalents are 19 boroughs and 11 census

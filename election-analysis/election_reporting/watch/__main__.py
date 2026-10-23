@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:b3a2dd04-0435-4a05-8c13-54f98c980e21
+
 """Command line: ``python -m election_reporting.watch {plan,fetch} --config ...``."""
 
 from __future__ import annotations

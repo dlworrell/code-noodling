@@ -1,7 +1,7 @@
 LicenseRef-KingCounty-PublicData
 
-Status: Draft (PRM-0011 Slice 0). Recorded licensing decision; REUSE headers
-and the remaining license files are added in Slice 1.
+Status: Draft. Recorded licensing decision (PRM-0011 Slice 0), applied to
+files by election-analysis/REUSE.toml (election slice, step 2).
 
 Copyright text: King County Elections
 

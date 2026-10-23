@@ -1,0 +1,36 @@
+LicenseRef-AK-DOE-PublicData
+
+Status: Draft. Recorded licensing decision (owner, 2026-10-23: data from a
+publisher takes a LicenseRef in the King County form), applied to files by
+election-analysis/REUSE.toml (election slice, step 2).
+
+Copyright text: State of Alaska, Division of Elections
+
+The files this identifier covers are public election results published by the
+State of Alaska, Division of Elections, retrieved from
+https://www.elections.alaska.gov/. The publisher's terms of use are UNKNOWN:
+not reviewed, and no license is stated in the files or responses retrieved.
+Donovan Worrell claims no copyright in these files and grants no license to
+them. They are kept as source evidence for the election reports in this
+repository, unmodified except as each election's SOURCES.json notes (for
+example, API JSON trimmed to results and gzipped, or converted to plain-text
+CSV).
+
+The precinct-to-borough crosswalk (data/crosswalks/alaska/) is derived from
+the Division's 2023 election precinct layer and from 2020 Census TIGER/Line
+blocks. The Census input is a U.S. Government work; only derived precinct
+identifiers and population counts are stored, not the precinct geometry. As a
+file derived from public data it takes this identifier (owner decision
+2026-10-23). Sources and SHA-256 of the downloads are in
+data/crosswalks/alaska/README.md.
+
+Applies to: election-analysis/data/elections/alaska/*/input/ and
+election-analysis/data/elections/alaska/*/raw/ (statewide and every borough
+and census area, all derived from the Division's precinct results), and
+election-analysis/data/crosswalks/alaska/*.csv
+
+Files
+-----
+
+Each snapshot's source URL, retrieval time, source timestamp and SHA-256 are
+recorded in its election's SOURCES.json.

@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:88acb08e-2587-4c56-83a3-82f7410521f9
+
 # Election Source Watch logic, run by .github/workflows/election-source-watch.yml.
 # The root workflow only picks triggers, permissions and checkouts; the logic
 # lives in the scope (Catylist ADR-0004). Paths are relative to the repository

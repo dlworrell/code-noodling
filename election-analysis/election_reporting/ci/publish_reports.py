@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:36965492-6fe1-4558-a200-4c29467ca581
+
 """Publish regenerated election reports as a GitHub-verified commit on a pull request.
 
 ADR-0006 (AES-DEV-001-R003/R005) forbids automation from pushing to the default

@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:a29cbeca-d927-4615-a4f1-0a6b3848eaad
+-->
+
 # Alaska precinct to borough crosswalk
 
 Alaska has no counties. Its county equivalents are 19 organized **boroughs** and

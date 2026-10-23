@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:c7d6364c-e0fe-4597-b941-eab09dea4086
+-->
+
 # ADR-002: Scheduled Acquisition of Official Election Result Snapshots
 
 Status: Proposed

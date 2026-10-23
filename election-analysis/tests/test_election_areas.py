@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:7fd4c21f-f965-413f-a1bd-55f0d8859c4e
+
 """County and precinct breakdowns: parsing, streaming budgets, reconciliation, analysis (#14)."""
 
 from __future__ import annotations

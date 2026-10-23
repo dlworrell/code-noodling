@@ -156,10 +156,12 @@ formulas, risk-band definitions, scope controls, and local execution.
 
 ## Licensing
 
-Status: decided, not yet applied (PRM-0011 Slice 0). No license files or file
-headers have been added yet; Slice 1 adds them following the REUSE
-Specification (Catylist ADR-0007 §2.4). Until then, the [License](#license)
-notice below still applies.
+Status: decided (PRM-0011 Slice 0) and applied, following the REUSE
+Specification (Catylist ADR-0007 §2.4), to the governed scopes
+`crypto_pipeline/` and `election-analysis/`: each has its own `LICENSES/`, and
+every file carries an SPDX header or is covered by the scope's `REUSE.toml`.
+Elsewhere in the repository the [License](#license) notice below still
+applies until each project adopts it.
 
 These decisions are recorded here because AES-003 does not yet define a
 `licensing` field for `aes-manifest.yaml`. A proposal to add one is pending in
@@ -169,14 +171,19 @@ These decisions are recorded here because AES-003 does not yet define a
 |---|---|---|---|
 | Repository default (everything not listed below; as for all public `dlworrell` repositories unless otherwise noted) | Donovan Worrell | `2026 Donovan Worrell` | `Apache-2.0` |
 | `election-analysis/data/elections/washington/*/input/king-county/` | King County Elections (third party) | `King County Elections` | `LicenseRef-KingCounty-PublicData` |
+| `election-analysis/data/elections/washington/*/{input,raw}/{snohomish,pierce,kittitas,chelan}-county/` | Each county's Auditor (Elections) (third party) | `<County> County Auditor (Elections)` | `LicenseRef-<County>County-PublicData` |
 | `election-analysis/data/elections/washington/*/{input,raw}/washington/` | Washington Secretary of State (third party) | `Washington Secretary of State` | `LicenseRef-WA-SOS-PublicData` |
 | `election-analysis/data/elections/washington/*/areas/washington/` (derived from the Secretary of State's precinct workbook) | Washington Secretary of State (third party) | `Washington Secretary of State` | `LicenseRef-WA-SOS-PublicData` |
-| `election-analysis/data/crosswalks/alaska/*.csv` (derived from the Division of Elections precinct layer and Census blocks) | State of Alaska, Division of Elections (third party) | `State of Alaska, Division of Elections` | `LicenseRef-AK-DOE-PublicData` (text pending) |
+| `election-analysis/data/elections/alaska/*/{input,raw}/` and `election-analysis/data/crosswalks/alaska/*.csv` (the crosswalk derived from the Division's precinct layer and Census blocks) | State of Alaska, Division of Elections (third party) | `State of Alaska, Division of Elections` | `LicenseRef-AK-DOE-PublicData` |
+| `election-analysis/data/elections/maine/*/{input,raw}/` | Maine Secretary of State (third party) | `Maine Secretary of State` | `LicenseRef-ME-SOS-PublicData` |
 | `election-analysis/reports/` (generated election reports) | Donovan Worrell | `2026 Donovan Worrell` | `CC-BY-4.0` |
 
-- The two `LicenseRef-` identifiers cover public datasets published with no
-  license stated. Their drafts in [`LICENSES/`](LICENSES/) list each file's
-  source URL, retrieval date (UNKNOWN where none was recorded) and SHA-256.
+- The `LicenseRef-` identifiers cover public datasets whose publishers state no
+  license (terms UNKNOWN where not reviewed). Their texts are in
+  [`election-analysis/LICENSES/`](election-analysis/LICENSES/); per-snapshot
+  source URLs, retrieval times and SHA-256 are in each election's
+  `SOURCES.json`. The county, Alaska and Maine texts cover data arriving from
+  the 2026-11-03 election on.
 - Election source data moved to `election-analysis/data/` (formerly `election-data/`);
   these rows moved with it.
 - Files derived from public data take the license of their source documents

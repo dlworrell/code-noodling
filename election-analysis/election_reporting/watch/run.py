@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:d0ff893a-36e7-426f-be43-7f04e8d24141
+
 """Plan an election from ``watch.toml`` and fetch new result snapshots."""
 
 from __future__ import annotations

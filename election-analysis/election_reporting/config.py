@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:e828ccbe-b036-442b-8472-4dfd1a6ab4c0
+
 from __future__ import annotations
 
 import tomllib
