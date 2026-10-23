@@ -10,10 +10,12 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from ..model import ElectionReportError
 
-SUPPORTED_STATES = {"washington": "Washington"}
+SUPPORTED_STATES = {"washington": "Washington", "alaska": "Alaska"}
 # Per-state defaults; [[watch]] tables can override timezone and schedule.
 STATE_DEFAULTS = {
     "washington": {"timezone": "America/Los_Angeles", "polls_close": "20:00"},
+    # Polls close at 20:00 Alaska time (AS 15.15.020); results post after 21:00.
+    "alaska": {"timezone": "America/Anchorage", "polls_close": "20:00"},
 }
 
 
@@ -21,7 +23,7 @@ STATE_DEFAULTS = {
 class WatchConfig:
     state: str
     state_id: str  # directory name under the elections root, e.g. "washington"
-    counties: tuple[str, ...]
+    counties: tuple[str, ...]  # county (Alaska: borough or census area) names
     election: str  # "next" or an ISO date
     timezone: ZoneInfo
     polls_close: time
@@ -32,6 +34,7 @@ class WatchConfig:
     end: datetime | None
     prefer_county_files: bool
     elections_root: Path
+    all_counties: bool = False  # counties = "all"
 
 
 def _time(value: object, location: str, default: str) -> time:
@@ -84,10 +87,13 @@ def _parse_watch(watch: dict, location: str, elections_root: Path) -> WatchConfi
     state_id = state_name.strip().casefold()
     defaults = STATE_DEFAULTS[state_id]
     counties = watch.get("counties", [])
+    all_counties = isinstance(counties, str) and counties.strip().casefold() == "all"
+    if all_counties:
+        counties = []
     if not isinstance(counties, list) or not all(
         isinstance(item, str) and item.strip() for item in counties
     ):
-        raise ElectionReportError(f"{location}.counties must be a list of county names")
+        raise ElectionReportError(f'{location}.counties must be a list of county names or "all"')
     election = watch.get("election", "next")
     if isinstance(election, date):
         election = election.isoformat()
@@ -135,6 +141,7 @@ def _parse_watch(watch: dict, location: str, elections_root: Path) -> WatchConfi
         end=_moment(schedule.get("end"), f"{where}.end", zone),
         prefer_county_files=prefer,
         elections_root=elections_root / state_id,
+        all_counties=all_counties,
     )
 
 

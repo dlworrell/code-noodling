@@ -169,6 +169,30 @@ Every contest from the API also carries the counties it spans; a county source's
 share of a multi-county contest is reported as not controlling, and the statewide
 totals control when the state reports the contest.
 
+### Alaska
+
+```toml
+[[watch]]
+state = "Alaska"
+counties = "all"    # or names such as ["Anchorage", "Bethel", "Kenai Peninsula"]
+election = "next"
+```
+
+| Step | What it does |
+| --- | --- |
+| Places | Alaska has no counties. Its county equivalents are 19 boroughs and 11 census areas; names resolve against [`crosswalks/alaska/precinct-borough.csv`](../election-data/crosswalks/alaska/README.md), with or without "Borough" or "Census Area". |
+| Election | The primary is the third Tuesday in August (AS 15.25.020) and the general the Tuesday after the first Monday in November of even years (AS 15.15.020); election IDs follow the Division of Elections (`26genr`). |
+| Window | 20:00 Alaska time (polls close; results post after 21:00) until the State Review Board's target certification day: 22 days after a general election and 13 after a primary, from the Division's 2026 calendar. |
+| Source | The precinct results CSV linked from `www.elections.alaska.gov/election-results/e/?id=<election>`, kept gzipped in `raw/alaska/`. A file last modified before polls closed is skipped, because the Division reuses one path a year and the link can still serve the previous election's file. |
+| Output | `input/alaska/` holds statewide totals from every row. Each borough or census area gets `input/<borough>/` from its election-day precincts only: absentee, early, questioned and remote ballots are reported per House district, and federal-only overseas ballots statewide, so they appear only in the statewide totals. |
+| Rules | `election.toml` sets `default_rule = "top_four"` for a primary and `"rcv"` for a general election; ballot measures and judicial retention questions stay `winner`. |
+| TLS | `www.elections.alaska.gov` serves the wrong intermediate certificate. The watcher adds the published GlobalSign GCC R46 OV TLS CA 2025 intermediate for that host only (`watch/certs.py`, SHA-256 checked); verification is never turned off. |
+
+Statewide totals from the watcher match the Division's own *Election Summary
+Report* for the 2026 primary, and the 2024 general election reproduces its known
+results (Ballot Measure 2 failing by 737 votes; U.S. Representative going to
+ranked-choice rounds with no first-choice majority).
+
 Locally:
 
 ```bash
@@ -217,9 +241,20 @@ The analyzer deliberately separates the decision boundary from the displayed ran
   available.
 - Generic `Write-in` totals are excluded from named-candidate ranking but remain in the
   judicial majority denominator.
+- `[analysis] default_rule` replaces the Washington inference for every candidate
+  contest that no `[[contest_rules]]` entry names; binary measures stay `winner`.
+  Alaska elections use it:
+  - `top_four` (Alaska primaries) models the fourth-versus-fifth cutoff, because the
+    top four candidates advance to the general election.
+  - `rcv` (Alaska general elections) evaluates whether the first-choice leader is
+    above 50 percent. Without a first-choice majority the race is flagged: later
+    ranked-choice rounds decide it, the first-choice leader is not necessarily the
+    winner, and Alaska tabulates rounds only after the final count on the 15th day.
+    Round-by-round tabulation from cast vote records is not modeled yet.
 
 Use `[[contest_rules]]` in `election.toml` to override a contest with `winner`,
-`top_two`, `wa_judicial`, `automatic`, or `ignore` when the inference is not correct.
+`top_two`, `top_four`, `rcv`, `wa_judicial`, `automatic`, or `ignore` when the
+inference is not correct.
 
 ## Remaining-vote calculation
 

@@ -10,7 +10,7 @@ each borough or census area, then House district and Senate district.
 | File | One row per | Use |
 | --- | --- | --- |
 | `precinct-borough.csv` | precinct and borough it overlaps | Election-day precinct results → borough |
-| `house-district-borough.csv` | House district and borough it overlaps | Absentee, early and questioned ballots, which Alaska reports only per House district → **estimated** borough share |
+| `house-district-borough.csv` | House district and borough it overlaps | Reference only: how each House district's residents divide among boroughs, for anyone estimating where district-level ballots came from |
 
 `population_share` is the share of the precinct's (or district's) 2020 Census
 population living in that borough or census area.
@@ -57,8 +57,12 @@ Five precincts cross a borough line. Only South Tongass does so by more than 2%:
 ## Limits
 
 - Borough totals are exact only for election-day precinct votes. Absentee,
-  early and questioned ballots are reported per House district, and their
-  borough share is an estimate from population, which is not turnout. In
-  rural districts the estimate is spread across up to seven census areas.
+  early and questioned ballots are reported per House district, so the watcher
+  leaves them in the statewide totals and never apportions them. Any borough
+  share of them would be an estimate from population, which is not turnout,
+  spread in rural districts across up to seven census areas.
+- The watcher counts each split precinct wholly in its main borough, so counts
+  stay exact integers; South Tongass (3.2% Prince of Wales-Hyder) is the only
+  one where this moves more than 2% of a precinct's residents.
 - Precinct boundaries are those in force from 2023. Rebuild this file if the
   Division of Elections redraws precincts.

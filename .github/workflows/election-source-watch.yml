@@ -58,7 +58,7 @@ jobs:
       - name: Test watcher (offline)
         env:
           PYTHONPATH: .
-        run: python -m unittest discover -s tests -p 'test_election_watch.py'
+        run: python -m unittest discover -s tests -p 'test_election_watch*.py'
 
       - name: Find unmerged snapshots
         id: pending

@@ -60,6 +60,7 @@ class ElectionConfig:
     sources: tuple[SourceConfig, ...]
     write_in_labels: frozenset[str]
     rule_overrides: dict[str, str] = field(default_factory=dict)
+    default_rule: str | None = None
 
 
 @dataclass(frozen=True)

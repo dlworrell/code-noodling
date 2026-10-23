@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Callable
 
 from ..model import ElectionReportError
-from . import csvformat, sources
+from . import alaska, csvformat, sources
 from .config import WatchConfig
 from .http import Fetch
 from .schedule import Window, certification_date, election_kind, is_due, watch_window
@@ -26,15 +26,27 @@ class Plan:
     places: tuple[sources.Place, ...]
     directory: Path
     window: Window
+    state: str = "Washington"
+    state_id: str = "washington"
 
 
 def plan(config: WatchConfig, fetch: Fetch, now: datetime) -> Plan:
     """Resolve the selected places and election, and the checking window."""
-    jurisdiction = sources.state_jurisdiction(fetch)
-    places = sources.resolve_places(
-        jurisdiction, config.state, config.counties, config.prefer_county_files
-    )
-    elections = sources.list_elections(jurisdiction)
+    if config.state_id == "alaska":
+        # election-data/elections/alaska -> election-data
+        crosswalk = alaska.load_crosswalk(config.elections_root.parents[1])
+        places = alaska.resolve_places(crosswalk, config.counties, config.all_counties)
+        elections = alaska.list_elections(now.astimezone(config.timezone).date())
+    else:
+        jurisdiction = sources.state_jurisdiction(fetch)
+        places = sources.resolve_places(
+            jurisdiction,
+            config.state,
+            config.counties,
+            config.prefer_county_files,
+            config.all_counties,
+        )
+        elections = sources.list_elections(jurisdiction)
     if not elections:
         raise ElectionReportError("the results site lists no elections")
     chosen = None
@@ -54,7 +66,7 @@ def plan(config: WatchConfig, fetch: Fetch, now: datetime) -> Plan:
         raise ElectionReportError(f"no election found for {wanted}; listed: {listed}")
     election, kind, window = chosen
     directory = config.elections_root / election.day.isoformat()
-    return Plan(election, kind, tuple(places), directory, window)
+    return Plan(election, kind, tuple(places), directory, window, config.state, config.state_id)
 
 
 def _toml_string(value: str) -> str:
@@ -63,8 +75,10 @@ def _toml_string(value: str) -> str:
 
 def source_block(place: sources.Place, election_plan: Plan) -> str:
     scope = place.scope
-    certified = certification_date(election_plan.election.day, election_plan.kind, scope)
-    jurisdiction = f"{place.name} State" if scope == "state" else f"{place.name}, Washington"
+    certified = certification_date(
+        election_plan.election.day, election_plan.kind, scope, election_plan.state_id
+    )
+    jurisdiction = f"{place.name} State" if scope == "state" else f"{place.name}, {election_plan.state}"
     return (
         "[[sources]]\n"
         f"id = {_toml_string(place.place_id)}\n"
@@ -109,6 +123,11 @@ def write_election_config(election_plan: Plan) -> list[str]:
         "[analysis]\n"
         'write_in_labels = ["write-in", "write in"]\n'
     )
+    if election_plan.state_id == "alaska":
+        header += (
+            "# Alaska: primaries advance the top four; general elections are ranked choice.\n"
+            f'default_rule = "{alaska.DEFAULT_RULES[election_plan.kind]}"\n'
+        )
     path.parent.mkdir(parents=True, exist_ok=True)
     blocks = "".join("\n" + source_block(place, election_plan) for place in election_plan.places)
     path.write_text(header + blocks, encoding="utf-8")
@@ -257,6 +276,47 @@ def _fetch_king_county(store, config, place, plan_, fetch, now, result) -> None:
         )
 
 
+def _fetch_alaska(store, config, plan_, fetch, now, result) -> None:
+    """One statewide precinct file, converted to statewide and borough inputs."""
+    url = alaska.results_file_url(fetch, plan_.election)
+    if url is None:
+        result.skipped.append("alaska: no precinct results file posted yet")
+        return
+    response = fetch(url)
+    modified = response.last_modified
+    # The Division reuses one results path per year, so before new results are
+    # posted the link can still serve an earlier election's file (or the
+    # election day's zero report, posted before polls close).
+    if modified is not None and modified < plan_.window.start:
+        result.skipped.append(
+            f"alaska: results file last modified {modified:%Y-%m-%d %H:%M %Z}, "
+            "before polls closed; no results for this election yet"
+        )
+        return
+    crosswalk = alaska.load_crosswalk(config.elections_root.parents[1])
+    outputs = alaska.convert(response.body, crosswalk, list(plan_.places))
+    if not _has_votes(outputs.get("alaska", "ContestOrder,Votes\n")):
+        result.skipped.append("alaska: no votes reported yet")
+        return
+    moment = modified or now
+    raw = gzip_bytes(response.body)
+    for place in plan_.places:
+        text = outputs.get(place.place_id)
+        if text is None:
+            result.skipped.append(f"{place.place_id}: no precincts in the results file")
+            continue
+        state = place.scope == "state"
+        _record(
+            store, config, place,
+            kind="alaska-precinct-csv", moment=moment, retrieved=now, source_url=url,
+            source_timestamp=response.headers.get("last-modified", ""),
+            input_bytes=text.encode("utf-8"),
+            raw_bytes=raw if state else None, raw_ext="csv.gz" if state else "",
+            result=result,
+            note="" if state else alaska.DISTRICT_LEVEL_NOTE,
+        )
+
+
 def fetch_snapshots(
     config: WatchConfig,
     fetch: Fetch,
@@ -286,7 +346,12 @@ def fetch_snapshots(
         "kind": election_plan.kind,
         "places": [p.place_id for p in election_plan.places],
     }
-    for place in election_plan.places:
+    if config.state_id == "alaska":
+        try:
+            _fetch_alaska(store, config, election_plan, fetch, now, result)
+        except ElectionReportError as error:
+            result.errors.append(f"alaska: {error}")
+    for place in election_plan.places if config.state_id != "alaska" else ():
         try:
             if place.county_files:
                 _fetch_king_county(store, config, place, election_plan, fetch, now, result)

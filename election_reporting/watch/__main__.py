@@ -77,7 +77,10 @@ def main(argv: Sequence[str] | None = None) -> int:
 def _print_plan(config, election_plan) -> None:
     print(f"{config.state}: {election_plan.election.day} {election_plan.election.name} ({election_plan.kind})")
     for place in election_plan.places:
-        source = "county export" if place.county_files else "results site"
+        if config.state_id == "alaska":
+            source = "precinct file" if place.scope == "state" else "precinct file, election-day precincts"
+        else:
+            source = "county export" if place.county_files else "results site"
         print(f"  {place.place_id:<18} {place.name:<18} {place.scope:<6} {source}")
     window = election_plan.window
     print(

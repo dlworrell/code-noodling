@@ -61,6 +61,11 @@ JUDICIAL_MARKERS = (
     "electoral district judge",
     "superintendent of public instruction",
 )
+RCV_PENDING_NOTE = (
+    "Ranked-choice contest with no first-choice majority: later rounds decide it, "
+    "so the first-choice leader is not necessarily the winner. Rounds are tabulated "
+    "only after the final count."
+)
 BROADER_THAN_COUNTY_MARKERS = (
     "u.s. representative",
     "united states representative",
@@ -107,6 +112,8 @@ def _infer_rule(
         return "winner"
     if choice_names and choice_names <= MEASURE_CHOICES:
         return "winner"
+    if config.default_rule is not None:
+        return config.default_rule
     if any(marker in name for marker in JUDICIAL_MARKERS):
         return "wa_judicial"
     return "top_two"
@@ -602,6 +609,19 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
                     controlling,
                 )
             )
+        elif rule == "top_four" and len(ranked) >= 5:
+            decisions.append(
+                _pair_decision(
+                    "top_four_cutoff",
+                    ranked[3],
+                    ranked[4],
+                    contest,
+                    source,
+                    latest,
+                    history,
+                    controlling,
+                )
+            )
         elif rule in {"top_two", "wa_judicial"} and len(ranked) >= 3:
             decisions.append(
                 _pair_decision(
@@ -615,12 +635,16 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
                     controlling,
                 )
             )
-        if rule == "wa_judicial" and ranked:
+        if rule in {"wa_judicial", "rcv"} and ranked:
             decisions.append(
                 _majority_decision(
                     ranked[0], contest, source, latest, history, controlling
                 )
             )
+        if rule == "rcv" and ranked and 2 * ranked[0].votes <= sum(
+            choice.votes for choice in contest.choices
+        ):
+            scope_note = f"{scope_note} {RCV_PENDING_NOTE}"
 
         races.append(
             RaceAnalysis(

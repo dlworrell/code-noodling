@@ -22,6 +22,8 @@ on:
       - "tests/test_election_reporting.py"
       - "tests/test_publish_reports.py"
       - "tests/test_election_watch.py"
+      - "tests/test_election_watch_alaska.py"
+      - "tests/test_alaska_crosswalk.py"
       - ".github/workflows/election-result-reports.yml"
   pull_request:
     paths:
@@ -31,6 +33,8 @@ on:
       - "tests/test_election_reporting.py"
       - "tests/test_publish_reports.py"
       - "tests/test_election_watch.py"
+      - "tests/test_election_watch_alaska.py"
+      - "tests/test_alaska_crosswalk.py"
       - ".github/workflows/election-result-reports.yml"
       - ".github/workflows/election-source-watch.yml"
 
@@ -79,7 +83,12 @@ jobs:
       - name: Test election source watcher
         env:
           PYTHONPATH: .
-        run: python -m unittest discover -s tests -p 'test_election_watch.py' -v
+        run: python -m unittest discover -s tests -p 'test_election_watch*.py' -v
+
+      - name: Test Alaska precinct crosswalk
+        env:
+          PYTHONPATH: .
+        run: python -m unittest discover -s tests -p 'test_alaska_crosswalk.py' -v
 
       - name: Generate and validate EDT reports
         env:

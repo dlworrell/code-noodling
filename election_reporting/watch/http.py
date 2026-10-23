@@ -11,12 +11,14 @@ from datetime import datetime
 from typing import Callable
 
 from ..model import ElectionReportError
+from .certs import context_for
 
 ALLOWED_HOSTS = frozenset(
     {
         "results.votewa.gov",
         "kingcounty.gov",
         "cdn.kingcounty.gov",
+        "www.elections.alaska.gov",
     }
 )
 USER_AGENT = (
@@ -59,7 +61,18 @@ class _NoRedirect(urllib.request.HTTPRedirectHandler):
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
-_OPENER = urllib.request.build_opener(_NoRedirect)
+_OPENERS: dict[str, urllib.request.OpenerDirector] = {}
+
+
+def _opener(host: str) -> urllib.request.OpenerDirector:
+    """One opener per host, so a pinned intermediate applies to its host only."""
+    if host not in _OPENERS:
+        handlers: list[urllib.request.BaseHandler] = [_NoRedirect]
+        context = context_for(host)
+        if context is not None:
+            handlers.append(urllib.request.HTTPSHandler(context=context))
+        _OPENERS[host] = urllib.request.build_opener(*handlers)
+    return _OPENERS[host]
 
 
 def fetch(url: str) -> Response:
@@ -67,7 +80,8 @@ def fetch(url: str) -> Response:
     check_url(url)
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     try:
-        with _OPENER.open(request, timeout=TIMEOUT_SECONDS) as reply:
+        host = urllib.parse.urlsplit(url).hostname or ""
+        with _opener(host).open(request, timeout=TIMEOUT_SECONDS) as reply:
             body = reply.read(MAX_BYTES + 1)
             headers = {key.lower(): value for key, value in reply.headers.items()}
             final_url = reply.geturl()

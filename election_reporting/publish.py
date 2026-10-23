@@ -220,7 +220,7 @@ def _facebook_decision_item(
 ) -> str:
     boundary = decision.kind.replace("_", " ").title()
     current_state = decision.current_state
-    if decision.kind in {"winner", "top_two_cutoff"}:
+    if decision.kind in {"winner", "top_two_cutoff", "top_four_cutoff"}:
         if decision.margin == 0:
             current_state = (
                 f"{decision.current_side} and {decision.change_side} are tied at "
