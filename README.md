@@ -135,8 +135,8 @@ See the [crypto pipeline README](crypto_pipeline/README.md),
 
 The repository also contains a standard-library Python workflow for comparing dated
 Washington, Alaska and Maine election-result snapshots and estimating the statistical probability that
-each current winner, top-two cutoff, or judicial majority status changes before
-certification. Every probability carries a separate 0–100 evidence-reliability score.
+each current winner, top-two or top-four cutoff, judicial majority, or ranked-choice
+first-choice majority status changes before certification. Every probability carries a separate 0–100 evidence-reliability score.
 
 Pick the states and counties to follow in
 [`election-data/watch.toml`](election-data/watch.toml): Washington (King County and
