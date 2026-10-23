@@ -47,3 +47,8 @@ __pycache__/
 !election-data/**/*.csv.xls
 !election-data/**/*.json
 !reports/elections/**/*.json
+
+# crypto_pipeline provenance and evidence records (provenance baseline, scope
+# manifest, proof and timing evidence) must be committed the same way
+# (crypto_pipeline/tests/test_repository_files.py checks these paths).
+!crypto_pipeline/**/*.json

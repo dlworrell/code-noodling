@@ -42,4 +42,4 @@ scopes:
         evidence:
           profile: crypto_pipeline/docs/engineering/SECURE-C-CXX.md
           waiver_log: crypto_pipeline/docs/engineering/AES-SEC-001-waivers.md
-          review_dispositions: crypto_pipeline/docs/engineering/AES-SEC-001-review-dispositions.json
+          review_dispositions: docs/engineering/AES-SEC-001-review-dispositions.json

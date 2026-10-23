@@ -1,0 +1,1460 @@
+{
+  "schema": "catalyst-provenance-baseline/draft-1",
+  "prompt": "PRM-0012 step 1 (read-only baseline)",
+  "repository": "dlworrell/code-noodling",
+  "scope": "crypto_pipeline/",
+  "commit": "2a8f5f7f27a9c8a681eadb122a549999e393f35a",
+  "scope_tree": "e6da01a34e3320fe7b08902ee8fe479c503bca32",
+  "declared_license": {
+    "source": "README.md 'Licensing' (repository default; no crypto_pipeline scope entry; AES-003 has no licensing field)",
+    "spdx": "Apache-2.0",
+    "copyright": "2026 Donovan Worrell"
+  },
+  "notes": [
+    "No CLAUDE.md exists in the repository.",
+    "Unknown or missing items are counted under summary.unknown; summary.failures lists files that could not be read or carry conflicting notices.",
+    "Test coverage is by reference (a test or proof script naming the file), not line coverage."
+  ],
+  "summary": {
+    "files": 56,
+    "by_kind": {
+      "documentation": 11,
+      "generated-evidence": 9,
+      "other": 1,
+      "source": 6,
+      "test": 7,
+      "third-party-text": 1,
+      "tool-or-script": 3,
+      "verification-tool": 18
+    },
+    "existing_license_notice": 0,
+    "missing_license_notice": 56,
+    "header_capable": 47,
+    "needs_sidecar_or_reuse_toml": 8,
+    "third_party_excluded": 1,
+    "unknown": {
+      "test_coverage_unknown": [
+        "benchmark_multiply.py",
+        "makefile",
+        "proof/memory16.c"
+      ],
+      "doc_coverage_missing": [
+        "SA_ Mathematicians_still_dont_know_the_fastest_way_to_multiply_numbers.txt",
+        "ci/formal.sh",
+        "ci/validate.sh",
+        "compile_check.py",
+        "linking_ctypes.py",
+        "proof/check_information_flow.py",
+        "proof/prove_arithmetic.py",
+        "proof/restricted_c.py",
+        "tests/test_suite.c",
+        "tests/test_timing_runner.py"
+      ],
+      "dependency_licenses_unknown": [
+        "dudect (src/dudect.h)",
+        "CBMC 6.8.0",
+        "pycparser",
+        "z3-solver"
+      ]
+    },
+    "failures": []
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "licensing",
+      "path": "SA_ Mathematicians_still_dont_know_the_fastest_way_to_multiply_numbers.txt",
+      "finding": "Third-party article text (Jack Murtagh, October 2026). It is not covered by the Apache-2.0 repository default and must not receive a header in step 2.",
+      "decision_needed": "Remove it from the repository, or keep it with its own LicenseRef and the publisher's terms (UNKNOWN).",
+      "resolution": "Resolved in the same change: removed from the repository; the user keeps a copy (emailed 2026-10-23). It remains in git history (df6adc6)."
+    },
+    {
+      "id": "F2",
+      "severity": "governance",
+      "path": "aes-manifest.yaml (crypto-pipeline review_dispositions)",
+      "finding": "The manifest's review_dispositions path crypto_pipeline/docs/engineering/AES-SEC-001-review-dispositions.json is not in the repository at this commit: the repository-wide '*.json' ignore rule kept it out. The tracked file is docs/engineering/AES-SEC-001-review-dispositions.json (22 dispositions: 19 crypto_pipeline, 3 prime-number-suite).",
+      "decision_needed": "Point the manifest at the tracked file, or move the crypto_pipeline dispositions into the scope with a .gitignore exception.",
+      "resolution": "Resolved in the same change: aes-manifest.yaml now points at docs/engineering/AES-SEC-001-review-dispositions.json."
+    },
+    {
+      "id": "F3",
+      "severity": "tooling",
+      "path": ".gitignore",
+      "finding": "'*.json' is ignored repository-wide; the nine tracked evidence JSON files were force-added, and this baseline file and step 3's scope-manifest.json would be silently dropped the same way.",
+      "decision_needed": "Add '!crypto_pipeline/**/*.json' (as was done for election-data/).",
+      "resolution": "Resolved in the same change: .gitignore adds '!crypto_pipeline/**/*.json'; crypto_pipeline/tests/test_repository_files.py guards it."
+    },
+    {
+      "id": "F4",
+      "severity": "licensing",
+      "path": "dependencies",
+      "finding": "Four external tools are pinned (dudect, CBMC 6.8.0, pycparser, z3-solver) but none is vendored, and their licenses are not recorded. None needs a header; they belong in the provenance record only.",
+      "decision_needed": "None for step 2."
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "dudect (src/dudect.h)",
+      "how": "not vendored; run_dudect.sh requires a checkout at vendor/dudect",
+      "pin": "git dc269651fb2567e46755cfb2a13d3875592968b5",
+      "license": "UNKNOWN (not recorded in repository)"
+    },
+    {
+      "name": "CBMC 6.8.0",
+      "how": "proof/install_cbmc.sh downloads the Ubuntu 22.04 .deb",
+      "pin": "sha256 6d8d9736764052d55198be0a96d2d888fb5686c0f4d97b9aa242f50850d6d1f5",
+      "license": "UNKNOWN (not recorded in repository)"
+    },
+    {
+      "name": "pycparser",
+      "how": "proof/requirements.txt",
+      "pin": "==2.23",
+      "license": "UNKNOWN (not recorded in repository)"
+    },
+    {
+      "name": "z3-solver",
+      "how": "proof/requirements.txt",
+      "pin": "==4.15.4.0",
+      "license": "UNKNOWN (not recorded in repository)"
+    }
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "43b89f329d301ef6eaf00f5cb1283bdfb0c25d23331a705048678a2f4cda15c9",
+      "bytes": 5428,
+      "kind": "documentation",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "df6adc6a22e79d29fb3bdbd4520b7509ed9118de",
+      "first_date": "2026-10-13",
+      "commit_count": 9,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "SA_ Mathematicians_still_dont_know_the_fastest_way_to_multiply_numbers.txt",
+      "sha256": "dc6faf613508ea2eed23fe3b31fbbb9f9101ee1cde04f9fba7a995841ddf8377",
+      "bytes": 10026,
+      "kind": "third-party-text",
+      "existing_license_or_copyright": null,
+      "header_capable": "no",
+      "comment_style": null,
+      "provenance": "third-party: article by Jack Murtagh, October 2026 (publisher not stated in file); rights holder not Donovan Worrell",
+      "first_commit": "df6adc6a22e79d29fb3bdbd4520b7509ed9118de",
+      "first_date": "2026-10-13",
+      "commit_count": 1,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "benchmark_multiply.py",
+      "sha256": "5a9cc685ba67510937f0e653067db370c17128aa4ed9439abebc5fc7ca53170e",
+      "bytes": 1050,
+      "kind": "tool-or-script",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "28d74a554e40c2dc461514f292176c692785639b",
+      "first_date": "2026-10-15",
+      "commit_count": 1,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [],
+        "in_makefile": false,
+        "status": "unknown"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "README.md",
+          "docs/engineering/CRYPTO-ARITHMETIC.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "ci/constant_flow.sh",
+      "sha256": "34daab9a105b612f8b3ad5cf8f8767970b3d4981a1f0373e32c6d2bab8541f36",
+      "bytes": 937,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "9a6ec5581347346971ce691cb175a059a38208b7",
+      "first_date": "2026-10-16",
+      "commit_count": 1,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": []
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/CRYPTO-CONSTANT-FLOW.md",
+          "docs/engineering/SECURE-C-CXX.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "ci/formal.sh",
+      "sha256": "7febd5c029c78a72c918bd7a6a077aac90fb984359e4b1cbf37ff4a3fbd4ab76",
+      "bytes": 835,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "9a6ec5581347346971ce691cb175a059a38208b7",
+      "first_date": "2026-10-16",
+      "commit_count": 1,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": []
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "ci/validate.sh",
+      "sha256": "651216f7103016e152f91e089d89701b48af67b0700eba892497d82cc9f93938",
+      "bytes": 1179,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "9a6ec5581347346971ce691cb175a059a38208b7",
+      "first_date": "2026-10-16",
+      "commit_count": 1,
+      "git_authors": [
+        "Claude"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": []
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "compile_check.py",
+      "sha256": "4518b883c8eec483a28f784f38b22d18152a81d38e4dc4f723142d1a5daeba7d",
+      "bytes": 1112,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "df6adc6a22e79d29fb3bdbd4520b7509ed9118de",
+      "first_date": "2026-10-13",
+      "commit_count": 1,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": []
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "crypto_montgomery_ct.c",
+      "sha256": "dad3e200fc9f56d2d850e67f1ae2ffc995306242276c51490600a4213bf212ae",
+      "bytes": 3348,
+      "kind": "source",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "c-block",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "c2743f5a9e5730707aa2fb1d98e1be84d5039aa3",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "proof/test_carry_driver.py",
+          "tests/test_montgomery_ct.c",
+          "tests/test_timing_runner.py"
+        ],
+        "in_makefile": true,
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/REVISION-REVIEW-20261014.md",
+          "docs/engineering/SECURE-C-CXX.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "crypto_montgomery_ct.h",
+      "sha256": "061c4a4b118986af898b41637ac9dc728f6815838ef8e8d2ca0d2538dc318c65",
+      "bytes": 1686,
+      "kind": "source",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "c-block",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "c2743f5a9e5730707aa2fb1d98e1be84d5039aa3",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "proof/test_carry_driver.py",
+          "tests/test_montgomery_ct.c",
+          "tests/test_timing_runner.py"
+        ],
+        "in_makefile": true,
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "README.md",
+          "docs/engineering/REVISION-REVIEW-20261014.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "crypto_multiplier.c",
+      "sha256": "7a29ed2c96ad169d39d9b6792f8331e6dc1fdc7557a7be867fd24bbfe7d131e6",
+      "bytes": 16516,
+      "kind": "source",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "c-block",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "28d74a554e40c2dc461514f292176c692785639b",
+      "first_date": "2026-10-15",
+      "commit_count": 5,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_bounds.c",
+          "tests/test_suite.c",
+          "tests/test_timing_runner.py"
+        ],
+        "in_makefile": true,
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+          "docs/engineering/SECURE-C-CXX.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "crypto_multiplier.h",
+      "sha256": "746bc602578d9e8bc9af45088f3db34d59d705a43e6d45f719fc45a024efedff",
+      "bytes": 4042,
+      "kind": "source",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "c-block",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "df6adc6a22e79d29fb3bdbd4520b7509ed9118de",
+      "first_date": "2026-10-13",
+      "commit_count": 4,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_bounds.c",
+          "tests/test_suite.c",
+          "tests/test_timing_runner.py"
+        ],
+        "in_makefile": true,
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "README.md",
+          "docs/engineering/REVISION-REVIEW-20261014.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "docs/engineering/AES-SEC-001-waivers.md",
+      "sha256": "f59444c8710d7f46f995dde27052d35493a9089ec08ab8ac7cef761f0099fce6",
+      "bytes": 719,
+      "kind": "documentation",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "e0dfa2c259525ba0e9e59181003e3e4902dd0c8d",
+      "first_date": "2026-10-16",
+      "commit_count": 1,
+      "git_authors": [
+        "Claude"
+      ]
+    },
+    {
+      "path": "docs/engineering/CARRY-REFINEMENT-20261014.md",
+      "sha256": "16f6ae0c91dc8da1e21434677f5ee63aad37f65ace4bf2562584c2599ec184c9",
+      "bytes": 2289,
+      "kind": "documentation",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "a08f353d20191550430265fc8b6b198c7c76c6db",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "docs/engineering/CRYPTO-ARITHMETIC.md",
+      "sha256": "26717052dc1080713b9dd7a7eb2eebc79858f485abeb4154d71ce2166f9350c6",
+      "bytes": 5423,
+      "kind": "documentation",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "28d74a554e40c2dc461514f292176c692785639b",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude"
+      ]
+    },
+    {
+      "path": "docs/engineering/CRYPTO-CONSTANT-FLOW.md",
+      "sha256": "90d1c413d2e9d7fbeb840d4a396f1dff51587dd8ee05f6a28a99c20f92f029c3",
+      "bytes": 11955,
+      "kind": "documentation",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "c2743f5a9e5730707aa2fb1d98e1be84d5039aa3",
+      "first_date": "2026-10-15",
+      "commit_count": 6,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+      "sha256": "ee98cd3c198d903e78a8e39ea572e708fd8ccd92cb15976fbc77fcde16ba0974",
+      "bytes": 4451,
+      "kind": "documentation",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "28d74a554e40c2dc461514f292176c692785639b",
+      "first_date": "2026-10-15",
+      "commit_count": 5,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "docs/engineering/REVISION-REVIEW-20261014.md",
+      "sha256": "14171034cc47c0d58b7d22f4eb13646d79c77296a35e206621ff276c3035693a",
+      "bytes": 12994,
+      "kind": "documentation",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "3affc415cb0e3b07a770fe1df93bdcab9ad2da01",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "docs/engineering/SECURE-C-CXX.md",
+      "sha256": "e68236031360836d7e2800f722f51a1cd9ea0d50ca4e283f25fe982fb660d3e6",
+      "bytes": 2402,
+      "kind": "documentation",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "e0dfa2c259525ba0e9e59181003e3e4902dd0c8d",
+      "first_date": "2026-10-16",
+      "commit_count": 1,
+      "git_authors": [
+        "Claude"
+      ]
+    },
+    {
+      "path": "docs/engineering/TIMING-RUNNER-UPDATE-20261014.md",
+      "sha256": "7efd2346ed4ffad04d3c4cf6d08f6eab517ed377dcf590c2ebc0116f8c205199",
+      "bytes": 2443,
+      "kind": "documentation",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "bdfc2b5e573e283da9a56c3d6030bbfc2fe74960",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "docs/engineering/evidence/README.md",
+      "sha256": "d4ad97e8057f22f0ff7132ecd0670ab3e743d72a56c0dbc4a93f10f0d2dfff6b",
+      "bytes": 1951,
+      "kind": "documentation",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "83c075be89a108a1d0207afb40b2e26a349199c4",
+      "first_date": "2026-10-16",
+      "commit_count": 1,
+      "git_authors": [
+        "Claude"
+      ]
+    },
+    {
+      "path": "docs/engineering/evidence/carry-refinement-20261014.json",
+      "sha256": "cc24320fa485d7e87832e5b4cd0f79fe7723254eabc7399e910f998d4dbcc9a7",
+      "bytes": 25306,
+      "kind": "generated-evidence",
+      "existing_license_or_copyright": null,
+      "header_capable": "no (needs .license sidecar or REUSE.toml)",
+      "comment_style": null,
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "a08f353d20191550430265fc8b6b198c7c76c6db",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/CARRY-REFINEMENT-20261014.md",
+          "docs/engineering/evidence/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "docs/engineering/evidence/montgomery-diagnosis-20261013.json",
+      "sha256": "aff7707e2a7183ee6db9010933488d326aac0de07688c7d227f080d6789937d2",
+      "bytes": 91286,
+      "kind": "generated-evidence",
+      "existing_license_or_copyright": null,
+      "header_capable": "no (needs .license sidecar or REUSE.toml)",
+      "comment_style": null,
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "08f56061d4b4af68eb90f03b529b3c3a32caf90b",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/CRYPTO-CONSTANT-FLOW.md",
+          "docs/engineering/evidence/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "docs/engineering/evidence/montgomery-formal-20261013.json",
+      "sha256": "1d8991727d3116593757908dc22ff13d3d18c710984f2e7631ce390dc8df4215",
+      "bytes": 57373,
+      "kind": "generated-evidence",
+      "existing_license_or_copyright": null,
+      "header_capable": "no (needs .license sidecar or REUSE.toml)",
+      "comment_style": null,
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "48cc7e31ab21a40d32009a3fc1a506f9fe4a96e2",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/evidence/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "docs/engineering/evidence/montgomery-formal-phase2-20261013.json",
+      "sha256": "5055ee8b23628bedd215d186f8e3aa64a26cbd025e01e2e062b7aabc84d9d4ae",
+      "bytes": 160092,
+      "kind": "generated-evidence",
+      "existing_license_or_copyright": null,
+      "header_capable": "no (needs .license sidecar or REUSE.toml)",
+      "comment_style": null,
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "7dba2ab9d7c111decd6fd84e2c4f64aef38c7c5a",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/evidence/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "docs/engineering/evidence/montgomery-formal-phase3-20261013.json",
+      "sha256": "e3d455824b7a94afc8d4ca9d6ca2a4b367284660638acd2dfc97214212338149",
+      "bytes": 456282,
+      "kind": "generated-evidence",
+      "existing_license_or_copyright": null,
+      "header_capable": "no (needs .license sidecar or REUSE.toml)",
+      "comment_style": null,
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "a3c485cf6cb74bddb5d0bb56ef53d357deaed67a",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/evidence/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "docs/engineering/evidence/montgomery-gcc13-O2.asm",
+      "sha256": "22ba9dd215191456a4fa2289332f2c4df039e8498085fd5d0227a02d723c928a",
+      "bytes": 17261,
+      "kind": "generated-evidence",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "semicolon",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "c2743f5a9e5730707aa2fb1d98e1be84d5039aa3",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/CRYPTO-CONSTANT-FLOW.md",
+          "docs/engineering/evidence/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "docs/engineering/evidence/montgomery-local-20261013.json",
+      "sha256": "38547f1403f4521659948da143872e68d92b5ad49b753ff01e245cc8360255fb",
+      "bytes": 48759,
+      "kind": "generated-evidence",
+      "existing_license_or_copyright": null,
+      "header_capable": "no (needs .license sidecar or REUSE.toml)",
+      "comment_style": null,
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "c2743f5a9e5730707aa2fb1d98e1be84d5039aa3",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/CRYPTO-CONSTANT-FLOW.md",
+          "docs/engineering/evidence/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "docs/engineering/evidence/revision-review-20261014.json",
+      "sha256": "990d6eaaf53137983af35e7a902f6c82e48ce4f099ee63a52606d231d651f952",
+      "bytes": 50255,
+      "kind": "generated-evidence",
+      "existing_license_or_copyright": null,
+      "header_capable": "no (needs .license sidecar or REUSE.toml)",
+      "comment_style": null,
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "3affc415cb0e3b07a770fe1df93bdcab9ad2da01",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/evidence/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "docs/engineering/evidence/timing-runner-update-20261014.json",
+      "sha256": "85c3e30557227c0a2401ea9293e1163c523b255793d3b4155a65afbaf5df188f",
+      "bytes": 51402,
+      "kind": "generated-evidence",
+      "existing_license_or_copyright": null,
+      "header_capable": "no (needs .license sidecar or REUSE.toml)",
+      "comment_style": null,
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "bdfc2b5e573e283da9a56c3d6030bbfc2fe74960",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/evidence/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "dudect_montgomery.c",
+      "sha256": "6c8f8de0226f734f35811d96eed57a240927c09b4729d7d2ae73996ef1bddb7f",
+      "bytes": 3179,
+      "kind": "source",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "c-block",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "c2743f5a9e5730707aa2fb1d98e1be84d5039aa3",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_timing_runner.py"
+        ],
+        "in_makefile": false,
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/CRYPTO-CONSTANT-FLOW.md",
+          "docs/engineering/SECURE-C-CXX.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "linking_ctypes.py",
+      "sha256": "4bdfb3ec1425ddfe1ae75eb5230ccd4168de341cd2aa44deb4b81758422e1ef3",
+      "bytes": 1335,
+      "kind": "tool-or-script",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "df6adc6a22e79d29fb3bdbd4520b7509ed9118de",
+      "first_date": "2026-10-13",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [
+          "tests/test_arithmetic.py"
+        ],
+        "in_makefile": false,
+        "status": "covered"
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "makefile",
+      "sha256": "227c2afbc31ccf416e6447d72f523b095b2463ec8cbfcc6861990a2b237d5c3c",
+      "bytes": 1167,
+      "kind": "tool-or-script",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "df6adc6a22e79d29fb3bdbd4520b7509ed9118de",
+      "first_date": "2026-10-13",
+      "commit_count": 6,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [],
+        "in_makefile": false,
+        "status": "unknown"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "README.md",
+          "docs/engineering/REVISION-REVIEW-20261014.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "proof/README.md",
+      "sha256": "f0d06688c2322a20daf2ccf3a60124d1f3d22d10d44f619a02d57e9fa8194139",
+      "bytes": 16698,
+      "kind": "documentation",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "html",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "98a1e0e7fb48bcce9b524a5edb38e028c13dc96b",
+      "first_date": "2026-10-14",
+      "commit_count": 7,
+      "git_authors": [
+        "Donovan Worrell"
+      ]
+    },
+    {
+      "path": "proof/check_information_flow.py",
+      "sha256": "85213ab26fe1e21607ddb9154b7b34eb6205635146238bfc2db4a1a73b2d39bb",
+      "bytes": 8111,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "98a1e0e7fb48bcce9b524a5edb38e028c13dc96b",
+      "first_date": "2026-10-14",
+      "commit_count": 2,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": []
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "proof/check_initialization.py",
+      "sha256": "be336270b2ca3a23c39c88b9b9d87a8d5b8338e1dfa28ca2b45c613557536522",
+      "bytes": 9708,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "98a1e0e7fb48bcce9b524a5edb38e028c13dc96b",
+      "first_date": "2026-10-14",
+      "commit_count": 2,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": []
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/REVISION-REVIEW-20261014.md",
+          "proof/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "proof/install_cbmc.sh",
+      "sha256": "d648f210f9ebfb849c964bf98bca426e1f8bd1e1fea92b0df7be5247108eb2b6",
+      "bytes": 572,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "98a1e0e7fb48bcce9b524a5edb38e028c13dc96b",
+      "first_date": "2026-10-14",
+      "commit_count": 2,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": []
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "proof/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "proof/memory16.c",
+      "sha256": "dc583642a75e8ae6e6d8024f9eb390113ee94dddbaa7aaaf515c3aa24036b51d",
+      "bytes": 992,
+      "kind": "source",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "c-block",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "98a1e0e7fb48bcce9b524a5edb38e028c13dc96b",
+      "first_date": "2026-10-14",
+      "commit_count": 2,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "referenced_by_tests": [],
+        "in_makefile": false,
+        "status": "unknown"
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/REVISION-REVIEW-20261014.md",
+          "docs/engineering/SECURE-C-CXX.md",
+          "proof/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "proof/prove_arithmetic.py",
+      "sha256": "fa941e71eeaae780a0e2b7cb3f22c56b06d845c5a5a7d6f49cc49e98db671f09",
+      "bytes": 5010,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "98a1e0e7fb48bcce9b524a5edb38e028c13dc96b",
+      "first_date": "2026-10-14",
+      "commit_count": 2,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": []
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "proof/prove_c_steps.py",
+      "sha256": "d01828cbe9936e59a2ee48ddf288891ca4e767f9cba480758dabe93e40ea098f",
+      "bytes": 4433,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "98a1e0e7fb48bcce9b524a5edb38e028c13dc96b",
+      "first_date": "2026-10-14",
+      "commit_count": 2,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": []
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "proof/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "proof/prove_context_contract.py",
+      "sha256": "8afc6743c5e1bfe64d93854dbb2b98f52b432ad8af853be13f0a1bce0a5109a1",
+      "bytes": 5673,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "98a1e0e7fb48bcce9b524a5edb38e028c13dc96b",
+      "first_date": "2026-10-14",
+      "commit_count": 4,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": []
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "proof/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "proof/prove_loop_composition.py",
+      "sha256": "f9c31d1b8716c292d6b46d0fd9b18678639e5efcbebf7fe63152c37e46f58aa3",
+      "bytes": 11317,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "98a1e0e7fb48bcce9b524a5edb38e028c13dc96b",
+      "first_date": "2026-10-14",
+      "commit_count": 5,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": []
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/REVISION-REVIEW-20261014.md",
+          "proof/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "proof/prove_setup_inverse.py",
+      "sha256": "242cd1b4e515d64348fcc972a546f86c860a72edef7353d74faf1e7dd53d0b31",
+      "bytes": 5372,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "98a1e0e7fb48bcce9b524a5edb38e028c13dc96b",
+      "first_date": "2026-10-14",
+      "commit_count": 4,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": []
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/REVISION-REVIEW-20261014.md",
+          "proof/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "proof/requirements.txt",
+      "sha256": "856a12f7a6cde614c592c3b42ad42f3ed3474d877ad5696d6d273fa5e2378a29",
+      "bytes": 36,
+      "kind": "other",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "98a1e0e7fb48bcce9b524a5edb38e028c13dc96b",
+      "first_date": "2026-10-14",
+      "commit_count": 2,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "proof/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "proof/restricted_c.py",
+      "sha256": "a6d6b2deaf424cff0ca7b5e1843dbfe800efa58c5561470104d1d7755a0f2c85",
+      "bytes": 3857,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "98a1e0e7fb48bcce9b524a5edb38e028c13dc96b",
+      "first_date": "2026-10-14",
+      "commit_count": 4,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": []
+      },
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "proof/run_proofs.py",
+      "sha256": "f6399b484877891569ea998ecd85c64e887598ceed7559229e12084ebe97f7c5",
+      "bytes": 5521,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "98a1e0e7fb48bcce9b524a5edb38e028c13dc96b",
+      "first_date": "2026-10-14",
+      "commit_count": 7,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": []
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/REVISION-REVIEW-20261014.md",
+          "docs/engineering/evidence/README.md",
+          "proof/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "proof/test_carry_driver.py",
+      "sha256": "e5db2167628a3479abdeab89c3c3f39d34e1786d33955cda179ee3fe4d09bfc5",
+      "bytes": 6054,
+      "kind": "test",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "98a1e0e7fb48bcce9b524a5edb38e028c13dc96b",
+      "first_date": "2026-10-14",
+      "commit_count": 2,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "proof/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "proof/verify_carry_loop.py",
+      "sha256": "7b514f8ec19097d95de473018a75421d4d4819d88e0fe2572d3a8d63ee63a95b",
+      "bytes": 12059,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "98a1e0e7fb48bcce9b524a5edb38e028c13dc96b",
+      "first_date": "2026-10-14",
+      "commit_count": 2,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": [
+          "proof/test_carry_driver.py"
+        ]
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "proof/README.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "run_constant_flow.sh",
+      "sha256": "21ffe657e11f26b1015eb659a09f50531e7e73dd461f338d5e66eeef204d07f3",
+      "bytes": 2187,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "c2743f5a9e5730707aa2fb1d98e1be84d5039aa3",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": []
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/CRYPTO-CONSTANT-FLOW.md",
+          "docs/engineering/SECURE-C-CXX.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "run_dudect.sh",
+      "sha256": "6377a12c5a64d7a00c079316e640af5ccbe3b4002b75c8ffe85b45d4dbbf89e4",
+      "bytes": 2366,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "c2743f5a9e5730707aa2fb1d98e1be84d5039aa3",
+      "first_date": "2026-10-15",
+      "commit_count": 1,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": []
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/CRYPTO-CONSTANT-FLOW.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "run_timing_diagnosis.py",
+      "sha256": "443e5cdb69b21b678991b9ef6a5dcec41d7dda92301a39f41a4dd84e2fb47494",
+      "bytes": 8494,
+      "kind": "verification-tool",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "08f56061d4b4af68eb90f03b529b3c3a32caf90b",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Donovan Worrell"
+      ],
+      "test_coverage": {
+        "status": "n/a: is itself a check",
+        "referenced_by_tests": [
+          "tests/test_timing_runner.py"
+        ]
+      },
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/CRYPTO-CONSTANT-FLOW.md",
+          "docs/engineering/TIMING-RUNNER-UPDATE-20261014.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "tests/test_arithmetic.py",
+      "sha256": "3d97a93864c2b327bc70ba9c1ef82f7daddbbf0005d816fe2117b64f1c247b07",
+      "bytes": 7720,
+      "kind": "test",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "28d74a554e40c2dc461514f292176c692785639b",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "README.md",
+          "docs/engineering/CRYPTO-ARITHMETIC.md",
+          "docs/engineering/CRYPTO-MEMORY-REVIEW.md",
+          "docs/engineering/REVISION-REVIEW-20261014.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "tests/test_bounds.c",
+      "sha256": "ad70ef3be1f85fee37575458aedc63fe2eff011394ef6691b5f4fff036ae2be8",
+      "bytes": 5103,
+      "kind": "test",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "c-block",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "28d74a554e40c2dc461514f292176c692785639b",
+      "first_date": "2026-10-15",
+      "commit_count": 4,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/CRYPTO-ARITHMETIC.md",
+          "docs/engineering/REVISION-REVIEW-20261014.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "tests/test_montgomery_ct.c",
+      "sha256": "d0924a7b13c42ad0fcbf14a62e22034f79f954450ff45e89e2065fcbe6b5cd3a",
+      "bytes": 3534,
+      "kind": "test",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "c-block",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "c2743f5a9e5730707aa2fb1d98e1be84d5039aa3",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/CRYPTO-CONSTANT-FLOW.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "tests/test_montgomery_ct.py",
+      "sha256": "f78280a62ee78b71926cef5d1d3a3ea09c21914679f85afd010ba956c74f6b37",
+      "bytes": 3716,
+      "kind": "test",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "c2743f5a9e5730707aa2fb1d98e1be84d5039aa3",
+      "first_date": "2026-10-15",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [
+          "docs/engineering/CRYPTO-CONSTANT-FLOW.md"
+        ],
+        "status": "documented"
+      }
+    },
+    {
+      "path": "tests/test_suite.c",
+      "sha256": "4a5da5cf5b20a97ef76d21ae9dde6e4063ffb8de4efaadaac22fb23fb4726d2c",
+      "bytes": 2912,
+      "kind": "test",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "c-block",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "df6adc6a22e79d29fb3bdbd4520b7509ed9118de",
+      "first_date": "2026-10-13",
+      "commit_count": 3,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    },
+    {
+      "path": "tests/test_timing_runner.py",
+      "sha256": "71e2f16cbc055dc831713a7259decd618a86c962365fc8d77966a8477730e5b6",
+      "bytes": 4686,
+      "kind": "test",
+      "existing_license_or_copyright": null,
+      "header_capable": "yes",
+      "comment_style": "hash",
+      "provenance": "authored in this repository (git history)",
+      "first_commit": "bdfc2b5e573e283da9a56c3d6030bbfc2fe74960",
+      "first_date": "2026-10-15",
+      "commit_count": 2,
+      "git_authors": [
+        "Claude",
+        "Donovan Worrell"
+      ],
+      "doc_coverage": {
+        "documented_in": [],
+        "status": "missing"
+      }
+    }
+  ]
+}
