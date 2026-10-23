@@ -61,7 +61,7 @@ section.
 | Montgomery Constant-Flow Candidate | `crypto_pipeline/`: oracle, taint, negative control, timing (manual) |
 | Montgomery Scoped Formal Checks | `crypto_pipeline/proof/`: source checks, lemmas, CBMC contracts |
 | Election Result Reports | election data and reporting code; report updates arrive as a verified automation pull request |
-| election-analysis Provenance (report-only) | `election-analysis/`: REUSE, Catalyst-File-ID and scope-manifest checks; never fails the pull request |
+| election-analysis Provenance (report-only) | `election-analysis/`: REUSE, Catalyst-File-ID and scope-manifest checks and test results, never failing the pull request; on pushes to main, signs and verifies the scope manifest and test results |
 | AES-SEC-001 Governance | repository-wide C/C++ secure-coding scan |
 
 ## Engineering Governance

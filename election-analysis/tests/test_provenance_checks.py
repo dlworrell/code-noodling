@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Catalyst-File-ID: urn:uuid:3f1b6d28-b0fb-49ad-9c44-8095a952fced
 
-"""Tests for ci/provenance.py: File-ID rules and exemptions, pending licenses, manifest, exit codes."""
+"""Tests for ci/provenance.py, ci/test_results.py and provenance.sh verify (election slice, steps 3-4)."""
 
 # Fixtures below contain SPDX and File-ID text that is test data, not this
 # file's own licensing; REUSE must not read it.
@@ -169,6 +169,81 @@ class ManifestAndRunTests(ScopeTest):
                 mock.patch.dict("os.environ", {"GITHUB_SHA": "abc123", "GITHUB_STEP_SUMMARY": ""}):
             overall = provenance.main(["all", "--scope", str(self.scope), "--output", str(output)])
         self.assertEqual(overall, provenance.INDETERMINATE)
+
+
+TEST_RESULTS = Path(__file__).resolve().parents[1] / "ci" / "test_results.py"
+PROVENANCE_SH = Path(__file__).resolve().parents[1] / "ci" / "provenance.sh"
+
+
+class TestResultsTests(ScopeTest):
+    def test_outcomes_totals_predicate_and_exit_code(self) -> None:
+        spec = importlib.util.spec_from_file_location("test_results", TEST_RESULTS)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        self.write(
+            "tests/test_sample.py",
+            "import unittest\n"
+            "class Sample(unittest.TestCase):\n"
+            "    def test_ok(self):\n        pass\n"
+            "    def test_bad(self):\n        self.fail('x')\n",
+        )
+        self.write("manifest.json", "{}\n")
+        output = self.scope / "out"
+        cwd = Path.cwd()
+        try:
+            with mock.patch.object(module, "SCOPE", self.scope), mock.patch.dict("os.environ", {"GITHUB_SHA": "abc123"}):
+                status = module.main(["--output", str(output), "--manifest", str(self.scope / "manifest.json")])
+        finally:
+            import os
+            os.chdir(cwd)
+        results = json.loads((output / "test-results.json").read_text())
+        predicate = json.loads((output / "test-predicate.json").read_text())
+        self.assertEqual(status, 1)
+        self.assertEqual(results["totals"], {"run": 2, "passed": 1, "failed": 1})
+        self.assertFalse(predicate["passed"])
+        self.assertEqual(predicate["commit"], "abc123")
+        self.assertEqual(predicate["test_results_sha256"], hashlib.sha256((output / "test-results.json").read_bytes()).hexdigest())
+        self.assertEqual(predicate["scope_manifest_sha256"], hashlib.sha256(b"{}\n").hexdigest())
+
+
+class VerifyScriptTests(ScopeTest):
+    """provenance.sh verify, with a stub `gh` standing in for GitHub's verifier."""
+
+    def run_verify(self, honest: bool):
+        import subprocess
+
+        out = self.scope / "out"
+        out.mkdir()
+        (out / "scope-manifest.json").write_text('{"files": []}\n')
+        (out / "test-results.json").write_text('{"tests": []}\n')
+        stub = self.scope / "bin" / "gh"
+        stub.parent.mkdir()
+        rule = (
+            'case "$3" in */out/scope-manifest.json|*/out/test-results.json) '
+            '[[ "$*" == *"--source-digest aaaa "* ]] && exit 0;; esac; exit 1'
+            if honest else "exit 0"
+        )
+        stub.write_text("#!/usr/bin/env bash\n" + rule + "\n")
+        stub.chmod(0o755)
+        env = {
+            "PATH": f"{stub.parent}:/usr/bin:/bin",
+            "GITHUB_REPOSITORY": "dlworrell/code-noodling",
+            "GITHUB_SHA": "aaaa",
+            "GITHUB_REF": "refs/heads/main",
+            "OTHER_SHA": "bbbb",
+        }
+        return subprocess.run(["bash", str(PROVENANCE_SH), "verify", str(out)], env=env, capture_output=True, text=True)
+
+    def test_genuine_attestations_pass_and_forgeries_fail(self) -> None:
+        run = self.run_verify(honest=True)
+        self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
+        self.assertIn("one byte changed | expected fail | fail", run.stdout)
+        self.assertIn("commit bbbb | expected fail | fail", run.stdout)
+
+    def test_a_verifier_that_accepts_everything_is_caught(self) -> None:
+        run = self.run_verify(honest=False)
+        self.assertEqual(run.returncode, 1)
+        self.assertIn("one byte changed | expected fail | pass", run.stdout)
 
 
 if __name__ == "__main__":
