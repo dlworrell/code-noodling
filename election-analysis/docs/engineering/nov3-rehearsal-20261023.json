@@ -1,0 +1,38 @@
+{
+  "record": "election-analysis November 3 rehearsal",
+  "date": "2026-10-23",
+  "commit": "26c4eb38cf0d59ace2d59070d22c52b31c45980d",
+  "edt": "649981ec78c97aafe4374284ad7e8c57c11a4640",
+  "live_sources": {
+    "method": "python -m election_reporting.watch plan|fetch --now <election night> against the real sites",
+    "plan": "resolved all three states: Washington 6 sources, Alaska 31, Maine 17",
+    "fetch": [
+      {"now": "2026-11-04T04:30:00Z", "washington": "every source skipped: no votes reported yet", "alaska": "not due (polls close 05:00Z)", "maine": "not due"},
+      {"now": "2026-11-04T06:00:00Z", "alaska": "skipped: no precinct results file posted yet"},
+      {"now": "2026-11-04T01:10:00Z", "maine": "skipped: no results posted for this election yet (daily check, first 30 minutes after 20:00 Eastern)"}
+    ],
+    "result": "exit 0; no files written; every pre-results state handled without error"
+  },
+  "simulated_results": {
+    "method": "the real watcher CLI over data/watch.toml, with the test suites' result files (votewa, King County CSV, Alaska precinct CSV, Maine office workbooks) served instead of the network",
+    "snapshots": {
+      "washington": ["washington", "king-county", "snohomish-county", "pierce-county", "kittitas-county", "chelan-county"],
+      "alaska": ["alaska", "kenai-peninsula-borough", "ketchikan-gateway-borough"],
+      "maine": ["maine", "androscoggin-county", "aroostook-county", "penobscot-county", "york-county"]
+    },
+    "second_fetch": "no new snapshots (unchanged files are not stored twice)",
+    "maine_rcv": "election.toml gained ranked-choice rules for rep-to-congress-district-2",
+    "generate": "reports for alaska, maine and washington 2026-11-03; washington 2026-08-04 reports unchanged",
+    "reuse": "compliant, 134/134 files; all five pending LicenseRefs (Snohomish, Pierce, Kittitas, Chelan, ME-SOS) used, 0 unused",
+    "provenance": "reuse pass, file-ids pass (50 authored, 95 exempt), manifest 145 files",
+    "tests": "109/109"
+  },
+  "findings": [
+    {
+      "id": "R1",
+      "summary": "ci/test_results.py used unittest.defaultTestLoader, which keeps the top-level directory of an earlier discover() in the same process; running the whole suite in one process failed TestResultsTests on main",
+      "fix": "a fresh unittest.TestLoader() (this change)"
+    }
+  ],
+  "after_data_arrives": "remove the five IDs from PENDING_LICENSES in ci/provenance.py once their data is on main"
+}
