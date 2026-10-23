@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:4fce1025-5495-4e5d-ba36-0912a1c3d961
+-->
+
 # REDC suffix carry refinement at 16 limbs
 
 The proof package now checks the actual AST-extracted suffix carry loop and

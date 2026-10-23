@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Donovan Worrell
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ * Catalyst-File-ID: urn:uuid:3f17c387-b909-45d9-b692-6d508207bb14
+ */
+
 /* Build against pinned upstream dudect; run n=4,16,32 and both fixed classes. */
 #include "crypto_montgomery_ct.h"
 #include <stdio.h>

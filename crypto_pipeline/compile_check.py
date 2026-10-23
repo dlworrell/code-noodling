@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:235356e6-1102-49df-a934-5549c3dde6e6
+
 import subprocess
 import os
 

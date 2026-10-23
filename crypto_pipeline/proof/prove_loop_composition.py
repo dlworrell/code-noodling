@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:fae0cae4-a2b5-489e-879b-3bd1afd8a9d0
+
 """16-limb packed-state composition for the exact recognized C kernel.
 
 Source-to-equation specialization and lemma composition are trusted proof glue.

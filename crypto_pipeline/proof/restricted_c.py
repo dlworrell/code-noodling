@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:90aa8281-88f8-469e-bf84-5ae0c02a1fb9
+
 """Fail-closed syntax restrictions for the source information-flow checker.
 
 This parser/model is trusted verification code, not a verified C frontend.

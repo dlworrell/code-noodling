@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:a7f02f68-415f-45e4-bad0-86dfcafd2a17
+
 """CBMC checks of the AST-extracted REDC suffix carry block at n=16.
 
 The parser, extractor, harness construction and C-to-model boundary are trusted.

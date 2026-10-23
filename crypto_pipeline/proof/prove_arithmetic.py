@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:268ee6ae-ef9d-4559-923f-2589a2de98d7
+
 """SMT-checked arithmetic lemmas, not a completed refinement proof of the C.
 
 Each claim is universal over its free integer variables. A claim passes only

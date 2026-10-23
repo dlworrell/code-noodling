@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Donovan Worrell
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ * Catalyst-File-ID: urn:uuid:f3c94ad3-116e-4b63-88ce-b43591ad9a48
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>

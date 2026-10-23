@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:b397d269-f6e3-4058-a59b-9bb7ae9e3d10
+-->
+
 # Integer multiplication experiments
 
 Inspired by Jack Murtagh's Scientific American article, *Mathematicians still

@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Donovan Worrell
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ * Catalyst-File-ID: urn:uuid:9102f67e-a9fe-48c4-b4e5-0a854345ad98
+ */
+
 /* Verify the actual C, with arbitrary operand/modulus bits and public n=16.
  * Arithmetic reducedness is not needed for memory safety. */
 #include "../crypto_montgomery_ct.c"

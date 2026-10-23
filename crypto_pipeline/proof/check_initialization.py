@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:58c48e7e-5484-4c12-ab02-6ffd525734af
+
 """Definite-initialization abstract execution of the actual 16-limb C AST.
 
 All secret data is TOP (initialized but unknown). Unknown control/index values

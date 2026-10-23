@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:618e9235-100d-4880-aa54-16f46f984afc
+-->
+
 # Timing runner and setup integration, 2026-10-14
 
 The existing run_timing_diagnosis.py remains the authoritative runner. It now

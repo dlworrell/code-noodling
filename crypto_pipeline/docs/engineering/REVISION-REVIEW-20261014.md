@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:a81e81d3-394d-48ef-a5f6-559033acbec1
+-->
+
 # Review of the October 13 submitted revisions
 
 The latest non-withdrawn submissions were reviewed together against PR #9 at

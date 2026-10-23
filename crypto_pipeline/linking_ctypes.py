@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:a3dfe3d0-f2e1-45a5-931c-287c22671d1d
+
 """Ordinary modular multiplication binding; experimental, variable-time code."""
 import ctypes
 from pathlib import Path

@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:51e2ffe8-9f15-461d-acf2-a9f1f98570e9
+
 """Retain a predeclared timing/control matrix, including failures. Linux/x86 only."""
 import argparse
 import hashlib

@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Donovan Worrell
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ * Catalyst-File-ID: urn:uuid:a8fac82e-95fa-437b-ba93-5a4378c4f1dc
+ */
+
 #include "crypto_montgomery_ct.h"
 #include <errno.h>
 #include <string.h>

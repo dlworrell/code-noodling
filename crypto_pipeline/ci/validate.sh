@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:9d322d83-f3f4-4602-bf28-0265680f5f33
+
 # Cryptographic wrapper validation steps, run by .github/workflows/crypto_ci.yml.
 # Usage: ci/validate.sh <step>
 set -euo pipefail

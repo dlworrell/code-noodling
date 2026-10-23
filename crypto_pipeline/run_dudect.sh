@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:8636b788-f4cd-48e4-abdc-bb874ff24a29
+
 set -euo pipefail
 cd "$(dirname "$0")"
 compiler=${CT_CC:-gcc}

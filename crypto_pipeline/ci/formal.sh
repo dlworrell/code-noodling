@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:999f7fb2-a359-45ef-a451-23d5d5f4d194
+
 # Montgomery scoped formal checks, run by .github/workflows/crypto_formal.yml.
 # Usage: ci/formal.sh <step>
 # Run from the repository root: tool and output paths (.tools/, build/formal)

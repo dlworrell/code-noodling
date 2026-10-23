@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:31311d3a-3e35-4aa5-8607-4ba2b24b21cd
+
 """Independent mathematical tests for the public-context Montgomery candidate."""
 import ctypes as c
 import errno

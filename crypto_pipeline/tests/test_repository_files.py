@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:51e197ca-5f13-4fd3-be15-222e874ebd61
+
 """Checks that crypto_pipeline's evidence and provenance records reach git."""
 
 import subprocess

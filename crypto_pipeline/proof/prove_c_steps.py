@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:6c626be9-95d9-4c43-a087-83a296d4354c
+
 """Local arithmetic refinements tied to the exact current C kernel AST.
 
 A trusted specialization maps recognized C statements to integer/bit-vector

@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Donovan Worrell
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ * Catalyst-File-ID: urn:uuid:fe6476e5-4e82-4469-80a8-2d21181e8637
+ */
+
 #ifndef CRYPTO_MULTIPLIER_H
 #define CRYPTO_MULTIPLIER_H
 #include <stdint.h>

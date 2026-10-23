@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:7ac90a59-51e0-454e-b55d-bb413b538b78
+-->
+
 # Montgomery constant-flow candidate: scope and evidence
 
 Status: experimental candidate; NOT cleared for secret use. A local extended

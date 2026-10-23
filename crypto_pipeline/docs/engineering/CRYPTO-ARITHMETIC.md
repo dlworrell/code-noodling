@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:12da95c1-99a4-4f61-b062-624fd990dc24
+-->
+
 # Multiplication experiment: mathematical contracts and validation
 
 ## Motivation

@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Donovan Worrell
+
+SPDX-License-Identifier: Apache-2.0
+Catalyst-File-ID: urn:uuid:9a400fed-5625-4864-a450-763224dfab81
+-->
+
 # AES-SEC-001 Waiver Log: crypto_pipeline scope
 
 Status: Active

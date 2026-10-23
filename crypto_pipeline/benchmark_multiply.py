@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:a1436158-ff0f-452a-8d73-c4b5f360a45f
+
 """Compare full-product algorithms locally; build with make shared first."""
 import ctypes as c
 from pathlib import Path
