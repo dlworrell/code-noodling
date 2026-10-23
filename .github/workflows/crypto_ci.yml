@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - name: Check out Repository Code
-      uses: actions/checkout@v4
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
     # Logic lives in the crypto_pipeline scope (Catylist ADR-0004).
     - name: Install Defensive Auditing Tools
