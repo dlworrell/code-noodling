@@ -167,9 +167,11 @@ These decisions are recorded here because AES-003 does not yet define a
 
 | Path | Rights holder | Copyright text | SPDX identifier |
 |---|---|---|---|
-| Repository default (all code and documentation not listed below) | Donovan Worrell | `2026 Donovan Worrell` | `Apache-2.0` |
+| Repository default (everything not listed below; as for all public `dlworrell` repositories unless otherwise noted) | Donovan Worrell | `2026 Donovan Worrell` | `Apache-2.0` |
 | `election-analysis/data/elections/washington/*/input/king-county/` | King County Elections (third party) | `King County Elections` | `LicenseRef-KingCounty-PublicData` |
 | `election-analysis/data/elections/washington/*/{input,raw}/washington/` | Washington Secretary of State (third party) | `Washington Secretary of State` | `LicenseRef-WA-SOS-PublicData` |
+| `election-analysis/data/elections/washington/*/areas/washington/` (derived from the Secretary of State's precinct workbook) | Washington Secretary of State (third party) | `Washington Secretary of State` | `LicenseRef-WA-SOS-PublicData` |
+| `election-analysis/data/crosswalks/alaska/*.csv` (derived from the Division of Elections precinct layer and Census blocks) | State of Alaska, Division of Elections (third party) | `State of Alaska, Division of Elections` | `LicenseRef-AK-DOE-PublicData` (text pending) |
 | `election-analysis/reports/` (generated election reports) | Donovan Worrell | `2026 Donovan Worrell` | `CC-BY-4.0` |
 
 - The two `LicenseRef-` identifiers cover public datasets published with no
@@ -177,8 +179,11 @@ These decisions are recorded here because AES-003 does not yet define a
   source URL, retrieval date (UNKNOWN where none was recorded) and SHA-256.
 - Election source data moved to `election-analysis/data/` (formerly `election-data/`);
   these rows moved with it.
-- Data from other Washington counties added later takes the same form: the
-  county elections office as rights holder and a matching `LicenseRef-`
+- Files derived from public data take the license of their source documents
+  (decided 2026-10-23).
+- Data from other publishers added later (other Washington counties, the
+  Alaska Division of Elections, the Maine Secretary of State) takes the same
+  form: the publisher as rights holder and a matching `LicenseRef-`
   identifier.
 
 ---
