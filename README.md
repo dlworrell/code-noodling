@@ -150,6 +150,35 @@ formulas, risk-band definitions, scope controls, and local execution.
 
 ---
 
+## Licensing
+
+Status: decided, not yet applied (PRM-0011 Slice 0). No license files or file
+headers have been added yet; Slice 1 adds them following the REUSE
+Specification (Catylist ADR-0007 §2.4). Until then, the [License](#license)
+notice below still applies.
+
+These decisions are recorded here because AES-003 does not yet define a
+`licensing` field for `aes-manifest.yaml`. A proposal to add one is pending in
+`dlworrell/AES`. When it is adopted, this table moves into the manifest.
+
+| Path | Rights holder | Copyright text | SPDX identifier |
+|---|---|---|---|
+| Repository default (all code and documentation not listed below) | Donovan Worrell | `2026 Donovan Worrell` | `Apache-2.0` |
+| `election-data/input/king-county/` | King County Elections (third party) | `King County Elections` | `LicenseRef-KingCounty-PublicData` |
+| `election-data/input/washington/` | Washington Secretary of State (third party) | `Washington Secretary of State` | `LicenseRef-WA-SOS-PublicData` |
+| `reports/elections/` (generated election reports) | Donovan Worrell | `2026 Donovan Worrell` | `CC-BY-4.0` |
+
+- The two `LicenseRef-` identifiers cover public datasets published with no
+  license stated. Their drafts in [`LICENSES/`](LICENSES/) list each file's
+  source URL, retrieval date (UNKNOWN where none was recorded) and SHA-256.
+- Election source data moves to `election-analysis/data/input/` in a later
+  change; these rows move with it.
+- Data from other Washington counties added later takes the same form: the
+  county elections office as rights holder and a matching `LicenseRef-`
+  identifier.
+
+---
+
 ## Author
 
 **Donovan Worrell**  
@@ -160,5 +189,9 @@ donovan.worrell@gmail.com
 
 ## License
 
-MIT License ยฉ 2025 Donovan Worrell  
+MIT License © 2025 Donovan Worrell  
 Permission is granted to use, modify, and distribute this software with attribution.
+
+This MIT notice remains the stated license until the license files and headers
+recorded under [Licensing](#licensing) are added. The repository default then
+becomes Apache-2.0.
