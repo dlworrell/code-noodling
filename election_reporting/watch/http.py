@@ -19,11 +19,20 @@ ALLOWED_HOSTS = frozenset(
         "kingcounty.gov",
         "cdn.kingcounty.gov",
         "www.elections.alaska.gov",
+        "www.maine.gov",
     }
 )
 USER_AGENT = (
     "code-noodling-election-watcher/1 (+https://github.com/dlworrell/code-noodling)"
 )
+# www.maine.gov's firewall (AWS CloudFront) refuses every non-browser client,
+# honestly identified ones included, so that host alone gets a browser
+# User-Agent. Maine snapshots record this in SOURCES.json.
+BROWSER_USER_AGENT = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 "
+    "(KHTML, like Gecko) Version/17.6 Safari/605.1.15"
+)
+USER_AGENT_OVERRIDES = {"www.maine.gov": BROWSER_USER_AGENT}
 MAX_BYTES = 25 * 1024 * 1024
 TIMEOUT_SECONDS = 60
 
@@ -78,9 +87,10 @@ def _opener(host: str) -> urllib.request.OpenerDirector:
 def fetch(url: str) -> Response:
     """GET ``url`` from an allowed host, refusing oversized bodies."""
     check_url(url)
-    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    host = urllib.parse.urlsplit(url).hostname or ""
+    agent = USER_AGENT_OVERRIDES.get(host, USER_AGENT)
+    request = urllib.request.Request(url, headers={"User-Agent": agent})
     try:
-        host = urllib.parse.urlsplit(url).hostname or ""
         with _opener(host).open(request, timeout=TIMEOUT_SECONDS) as reply:
             body = reply.read(MAX_BYTES + 1)
             headers = {key.lower(): value for key, value in reply.headers.items()}

@@ -79,6 +79,8 @@ def _print_plan(config, election_plan) -> None:
     for place in election_plan.places:
         if config.state_id == "alaska":
             source = "precinct file" if place.scope == "state" else "precinct file, election-day precincts"
+        elif config.state_id == "maine":
+            source = "office workbooks" if place.scope == "state" else "office workbooks, municipal rows"
         else:
             source = "county export" if place.county_files else "results site"
         print(f"  {place.place_id:<18} {place.name:<18} {place.scope:<6} {source}")

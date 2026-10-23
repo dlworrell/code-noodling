@@ -9,10 +9,17 @@ from pathlib import Path
 from typing import Callable
 
 from ..model import ElectionReportError
-from . import alaska, csvformat, sources
+from . import alaska, csvformat, maine, sources
 from .config import WatchConfig
 from .http import Fetch
-from .schedule import Window, certification_date, election_kind, is_due, watch_window
+from .schedule import (
+    NO_CERTIFICATION_DATE,
+    Window,
+    certification_date,
+    election_kind,
+    is_due,
+    watch_window,
+)
 from .store import SOURCES_FILE, ElectionStore, SnapshotRecord, gzip_bytes, sha256
 
 STATE_PRIORITY = 100
@@ -37,6 +44,9 @@ def plan(config: WatchConfig, fetch: Fetch, now: datetime) -> Plan:
         crosswalk = alaska.load_crosswalk(config.elections_root.parents[1])
         places = alaska.resolve_places(crosswalk, config.counties, config.all_counties)
         elections = alaska.list_elections(now.astimezone(config.timezone).date())
+    elif config.state_id == "maine":
+        places = maine.resolve_places(config.counties, config.all_counties)
+        elections = maine.list_elections(now.astimezone(config.timezone).date())
     else:
         jurisdiction = sources.state_jurisdiction(fetch)
         places = sources.resolve_places(
@@ -79,6 +89,10 @@ def source_block(place: sources.Place, election_plan: Plan) -> str:
         election_plan.election.day, election_plan.kind, scope, election_plan.state_id
     )
     jurisdiction = f"{place.name} State" if scope == "state" else f"{place.name}, {election_plan.state}"
+    if election_plan.state_id in NO_CERTIFICATION_DATE:
+        certification = "# certification_date: not published; add it when known\n"
+    else:
+        certification = f"certification_date = {certified.isoformat()}\n"
     return (
         "[[sources]]\n"
         f"id = {_toml_string(place.place_id)}\n"
@@ -86,7 +100,7 @@ def source_block(place: sources.Place, election_plan: Plan) -> str:
         f"jurisdiction = {_toml_string(jurisdiction)}\n"
         f'scope = "{scope}"\n'
         f"priority = {STATE_PRIORITY if scope == 'state' else COUNTY_PRIORITY}\n"
-        f"certification_date = {certified.isoformat()}\n"
+        + certification +
         "# expected_final_ballots = 0       # add a turnout forecast to enable\n"
         "# forecast_reliability = 50        # remaining-ballot estimates\n"
         '# forecast_basis = "..."\n'
@@ -127,6 +141,12 @@ def write_election_config(election_plan: Plan) -> list[str]:
         header += (
             "# Alaska: primaries advance the top four; general elections are ranked choice.\n"
             f'default_rule = "{alaska.DEFAULT_RULES[election_plan.kind]}"\n'
+        )
+    elif election_plan.state_id == "maine":
+        header += (
+            "# Maine: plurality, except contests posted as ranked choice, which the\n"
+            "# watcher adds below as [[contest_rules]] with rule \"rcv\".\n"
+            'default_rule = "winner"\n'
         )
     path.parent.mkdir(parents=True, exist_ok=True)
     blocks = "".join("\n" + source_block(place, election_plan) for place in election_plan.places)
@@ -317,6 +337,101 @@ def _fetch_alaska(store, config, plan_, fetch, now, result) -> None:
         )
 
 
+def append_contest_rules(directory: Path, rules: dict[str, str]) -> list[str]:
+    """Append [[contest_rules]] for contests that election.toml does not name yet."""
+    import tomllib
+
+    path = directory / "election.toml"
+    with path.open("rb") as stream:
+        named = {row.get("contest_id") for row in tomllib.load(stream).get("contest_rules", [])}
+    missing = [contest_id for contest_id in sorted(rules) if contest_id not in named]
+    if missing:
+        with path.open("a", encoding="utf-8") as stream:
+            for contest_id in missing:
+                stream.write(
+                    f"\n[[contest_rules]]\ncontest_id = {_toml_string(contest_id)}\n"
+                    f'rule = "{rules[contest_id]}"\n'
+                )
+    return missing
+
+
+def _zip_workbooks(files: list[tuple[str, str, bytes]]) -> bytes:
+    """A reproducible ZIP of the source workbooks plus a SOURCES.txt manifest."""
+    import io
+    import zipfile
+
+    buffer = io.BytesIO()
+    manifest = ["url\tlast-modified\tsha256"]
+    with zipfile.ZipFile(buffer, "w", zipfile.ZIP_DEFLATED) as archive:
+        def entry(name: str) -> zipfile.ZipInfo:
+            info = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            return info
+
+        for index, (url, modified, body) in enumerate(files, start=1):
+            name = f"{index:02d}-" + url.rsplit("/", 1)[-1].replace("%20", "_")
+            archive.writestr(entry(name), body)
+            manifest.append(f"{url}\t{modified}\t{sha256(body)}")
+        archive.writestr(entry("SOURCES.txt"), "\n".join(manifest) + "\n")
+    return buffer.getvalue()
+
+
+def _fetch_maine(store, config, plan_, fetch, now, result) -> None:
+    """Every office workbook posted for the election, combined into one snapshot."""
+    links = maine.result_links(fetch, plan_.election)
+    if not links:
+        result.skipped.append("maine: no results posted for this election yet")
+        return
+    contests: list[maine.Contest] = []
+    files: list[tuple[str, str, bytes]] = []
+    newest = None
+    for link in links:
+        try:
+            response = fetch(link.url)
+            found, problems = maine.parse_workbook(
+                response.body, label=link.label, rcv=link.rcv, url=link.url
+            )
+        except ElectionReportError as error:
+            result.errors.append(f"maine: {link.label}: {error}")
+            continue
+        result.errors.extend(f"maine: {problem}" for problem in problems)
+        contests.extend(found)
+        files.append((link.url, response.headers.get("last-modified", ""), response.body))
+        if response.last_modified and (newest is None or response.last_modified > newest):
+            newest = response.last_modified
+    seen: set[str] = set()
+    unique = []
+    for contest in contests:
+        if contest.contest_id in seen:
+            result.errors.append(f"maine: contest {contest.name!r} is in more than one workbook; first kept")
+            continue
+        seen.add(contest.contest_id)
+        unique.append(contest)
+    outputs = maine.convert(unique, list(plan_.places))
+    if "maine" not in outputs:
+        result.skipped.append("maine: no readable results yet")
+        return
+    added = append_contest_rules(plan_.directory, {c.contest_id: "rcv" for c in unique if c.rcv})
+    if added:
+        result.skipped.append(f"maine: election.toml: ranked-choice rules added for {', '.join(added)}")
+    raw = _zip_workbooks(files)
+    for place in plan_.places:
+        text = outputs.get(place.place_id)
+        if text is None:
+            result.skipped.append(f"{place.place_id}: no results for this county yet")
+            continue
+        state = place.scope == "state"
+        _record(
+            store, config, place,
+            kind="maine-office-workbooks", moment=newest or now, retrieved=now,
+            source_url=maine.RESULTS_PAGE, source_timestamp=newest.isoformat() if newest else "",
+            input_bytes=text.encode("utf-8"),
+            raw_bytes=raw if state else None, raw_ext="zip" if state else "",
+            result=result,
+            note=maine.STATE_NOTE if state else maine.NOTE,
+        )
+
+
 def fetch_snapshots(
     config: WatchConfig,
     fetch: Fetch,
@@ -346,12 +461,13 @@ def fetch_snapshots(
         "kind": election_plan.kind,
         "places": [p.place_id for p in election_plan.places],
     }
-    if config.state_id == "alaska":
+    adapters = {"alaska": _fetch_alaska, "maine": _fetch_maine}
+    if config.state_id in adapters:
         try:
-            _fetch_alaska(store, config, election_plan, fetch, now, result)
+            adapters[config.state_id](store, config, election_plan, fetch, now, result)
         except ElectionReportError as error:
-            result.errors.append(f"alaska: {error}")
-    for place in election_plan.places if config.state_id != "alaska" else ():
+            result.errors.append(f"{config.state_id}: {error}")
+    for place in election_plan.places if config.state_id not in adapters else ():
         try:
             if place.county_files:
                 _fetch_king_county(store, config, place, election_plan, fetch, now, result)
