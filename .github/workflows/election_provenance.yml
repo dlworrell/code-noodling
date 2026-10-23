@@ -1,10 +1,13 @@
 name: election-analysis Provenance (report-only)
 
-# Election slice step 3: REUSE, Catalyst-File-ID and scope-manifest checks for
-# election-analysis/. Report-only: results are published in the job summary
-# and as an artifact, and never fail the pull request. Read-only; no
-# attestations. Never add pull_request_target. Logic lives in the scope
-# (election-analysis/ci/provenance.sh, Catylist ADR-0004).
+# Election slice steps 3-4: REUSE, Catalyst-File-ID and scope-manifest checks
+# and test results for election-analysis/. Report-only: results are published
+# in the job summary and as an artifact, and never fail the pull request. On
+# pushes to main only, the attest job signs the scope manifest and the test
+# results (GitHub artifact attestations, Sigstore) and verifies them. Never add
+# pull_request_target; pull requests, including from forks, never reach the
+# signing job. Logic lives in the scope (election-analysis/ci/provenance.sh,
+# Catylist ADR-0004).
 
 on:
   pull_request:
@@ -30,6 +33,13 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      - name: Check out pinned EDT (report tests)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: dlworrell/engineering-docs-toolkit
+          ref: 649981ec78c97aafe4374284ad7e8c57c11a4640
+          path: .tools/engineering-docs-toolkit
+          persist-credentials: false
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
@@ -40,6 +50,9 @@ jobs:
       - name: Provenance checks (report-only)
         id: checks
         run: election-analysis/ci/provenance.sh report build/provenance
+      - name: Test results (report-only)
+        id: tests
+        run: election-analysis/ci/provenance.sh test-results build/provenance
       - name: Publish results and scope manifest
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -47,3 +60,43 @@ jobs:
           name: election-analysis-provenance
           path: build/provenance/
           if-no-files-found: error
+
+  attest:
+    # Commits on main only: never pull_request (fork or not), never
+    # pull_request_target, never workflow_dispatch.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: report
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Download the report job's results
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: election-analysis-provenance
+          path: build/provenance
+      - name: Attest the scope manifest (check results)
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        with:
+          subject-path: build/provenance/scope-manifest.json
+          predicate-type: https://catalyst.dlworrell.dev/attestation/check/v1
+          predicate-path: build/provenance/results.json
+          create-storage-record: false
+      - name: Attest the test results
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        with:
+          subject-path: build/provenance/test-results.json
+          predicate-type: https://catalyst.dlworrell.dev/attestation/test/v1
+          predicate-path: build/provenance/test-predicate.json
+          create-storage-record: false
+      - name: Verify the attestations; reject a changed copy and another commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OTHER_SHA: ${{ github.event.before }}
+        run: election-analysis/ci/provenance.sh verify build/provenance
