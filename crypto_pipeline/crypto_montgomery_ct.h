@@ -11,13 +11,16 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-/* Public, immutable after initialization. Not for secret RSA factors/moduli.
+/** Montgomery context for one public modulus.
+ *
+ * Public, immutable after initialization. Not for secret RSA factors/moduli.
  * Do not construct or alter by hand; initialize with the function below.
  */
 typedef struct {
-    size_t limbs;
-    limb_t inverse;
-    limb_t modulus[CRYPTO_MAX_LIMBS];
+    size_t limbs;   /**< Modulus length n in limbs; 1 <= n <= CRYPTO_MAX_LIMBS. */
+    limb_t inverse; /**< -m^-1 mod 2^64, from the modulus's least significant limb. */
+    limb_t modulus[CRYPTO_MAX_LIMBS]; /**< Odd modulus m > 1, least significant limb
+                                           first; limbs n and above are zero. */
 } crypto_montgomery_ctx;
 
 /* Public setup: modulus is n limbs, odd and >1; 1<=n<=1024.
