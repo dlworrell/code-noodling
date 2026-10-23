@@ -16,7 +16,7 @@ jobs:
         compiler: [gcc, clang]
         optimization: [O2, O3]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       # Logic lives in the crypto_pipeline scope (Catylist ADR-0004).
       - name: Install validation tools
         run: crypto_pipeline/ci/constant_flow.sh install-tools
@@ -29,7 +29,7 @@ jobs:
         run: crypto_pipeline/ci/constant_flow.sh constant-flow
       - name: Retain assembly, environment, binary hashes, and test evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: montgomery-${{ matrix.compiler }}-${{ matrix.optimization }}
           path: build/constant-flow/
@@ -45,8 +45,8 @@ jobs:
         optimization: [O2, O3]
         limbs: [4, 16, 32]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: oreparaz/dudect
           ref: dc269651fb2567e46755cfb2a13d3875592968b5
@@ -55,7 +55,7 @@ jobs:
         run: crypto_pipeline/ci/constant_flow.sh timing --optimization ${{ matrix.optimization }} --limbs ${{ matrix.limbs }} --output build/ct-timing
       - name: Retain timing evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: montgomery-timing-${{ matrix.optimization }}-${{ matrix.limbs }}
           path: build/ct-timing/
