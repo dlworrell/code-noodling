@@ -150,7 +150,12 @@ independent of it. Licensing retains publisher rights in a dedicated LicenseRef.
 
 ## Reproduce
 
-From the repository root, with pinned EDT available:
+Historical note: the commands below describe the original source/runtime. After
+PR #67 advanced pypdf to 6.21.2, current main correctly rejects the old protocol's
+changed dependency file. Use the exact-source runner in [ADR-008](ADR-008-frozen-runtime-reproduction.md)
+with a matching historical interpreter; do not edit the first protocol or seal.
+
+From the original frozen repository root, with pinned EDT available:
 
 ```bash
 python -m pip install -r election-analysis/ci/requirements-provenance.txt
