@@ -37,3 +37,17 @@ Historical-byte authenticity, correction partitions, contest geographic queue
 shares and countable/accepted pools remain unsupported. The format readers do
 not silently promote parsed values to those meanings. See ADR-007 and
 [INVESTIGATION.md](INVESTIGATION.md) for the next evidence contract.
+
+
+## Additional official RLA inventory
+
+The separate `oc-ballot-manifest-2024.csv` matches the publisher-displayed
+SHA-256. Fixed fields are Container, Tabulator, Batch Name, Number of Ballots.
+The bounded reader accepts UTF-8/BOM, <=2 MB, <=100,000 rows, positive batch
+counts <=10,000, bounded nonempty labels and unique composite identities. Batch
+Name alone repeats across tabulators. The actual 10,208 rows sum to 2,757,630 in
+the source count column. The ballot-sheet/card-versus-voter-ballot distinction
+remains explicit; no inferred count clock, candidate tally or correction
+partition is emitted. This file is never automatically eligible for a new-ballot
+likelihood. Its exact source/hash/actual retrieval and qualification are in the
+neighboring `oc-ballot-manifest-2024-source.json` fixture record.

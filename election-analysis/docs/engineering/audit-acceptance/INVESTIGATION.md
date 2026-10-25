@@ -133,3 +133,33 @@ A fresh review of the two open child contracts after the run still finds those
 requirements unmet. Further arithmetic iterations over the same files cannot
 supply the missing source assertions, independent geographic groups or reviewer.
 No issue is closed merely to make the issue count zero.
+
+
+## Dependency and manifest continuation
+
+Current base is `7018e9d229a316687365fd1192d161ff82e9e283`. PR #67 advanced
+pypdf to 6.21.2 after the first OC run. The original protocol remains frozen;
+current direct execution correctly fails on that changed pin. The new exact-Git
+snapshot runner restores an operable reproduction path and verifies the actual
+installed historical runtime. All 159 predictions, scores and exclusions match
+the first run after only computation-clock/seal normalization. Current pypdf
+6.21.2 independently reproduces the original qualification report byte-for-byte.
+Two real negative controls reject changed-source and changed-installed-runtime
+cases. The first seals, model and source bytes are preserved.
+
+F-003 acquisition now includes the publisher-hash-verified RLA manifest: 10,208
+unique container/tabulator/batch identities, sum 2,757,630 in its Number of
+Ballots column. The associated official report calls it a ballot-sheet manifest;
+it is not the 1,417,397 counted-voter-ballot denominator. It supplies no dated
+candidate counts or correction partition, so the new reader explicitly rejects
+forecast-batch eligibility. [DATA-REQUEST.md](DATA-REQUEST.md) narrows the missing
+records to those concrete batch keys and units; it is an unsent draft.
+
+The candidate SF historical CVR archive returns HTTP 403 in this browser on the
+first request and one reload. No raw records were acquired or treated as absent.
+Alameda policy text is not a substituted dataset. No external person was
+contacted. F-001–F-005 remain classified according to their actual evidence.
+[INDEPENDENT-REVIEW.md](INDEPENDENT-REVIEW.md) is a concrete review packet, not
+an independent review. A reviewer should distinguish the original acceptance
+criteria from later stronger acquisition requests and assess permitted
+unvalidated outcomes without manufacturing data or calibration claims.

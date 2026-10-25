@@ -212,3 +212,25 @@ comparisons. It is insufficient to clear every remaining audit requirement.
 #55/#58 and parent #45 remain open; 12/14 child issues remain resolved. The
 current next-data contract in INVESTIGATION.md replaces the earlier blanket
 statement that no official queue source had been acquired.
+
+
+## Continuation: dependency drift and a publisher-hash-verified inventory
+
+| Case | Captured evidence and actual comparison | Disposition |
+| --- | --- | --- |
+| Current dependency drift | PR #67 changes pypdf 6.10.0 to 6.21.2; current-source old-protocol execution rejects the changed manifest | Intended rejection; no first protocol rewritten |
+| Exact-source/runtime runner | Original 37 files and package inventory verified; Python 3.12.14 / pypdf 6.10.0 / reuse 6.2.0; 159 predictions and complete scores/exclusions match | MATCH after computation clocks and the new score seal only |
+| Real negative controls | Changed source pin and mismatching installed interpreter both exit 1 before prediction | MATCH |
+| Current parser qualification | pypdf 6.21.2 regenerates the original PDF/CSV/TSV qualification byte-for-byte | MATCH, extraction/accounting only |
+| Official RLA manifest | Original bytes equal the publisher's displayed SHA-256; 10,208 composite batch keys and source total 2,757,630 | MATCH for final inventory; units not equated to voter ballots |
+| Dated batch likelihood | Manifest lacks clocks, candidate totals and correction/recount/transfer partitions | NOT RUN; explicitly ineligible, not an inferred zero |
+| SF CVR archive | First browser request and one reload return HTTP 403 | NOT ACQUIRED; source absence not asserted |
+| Independent final review | Review packet prepared with original criteria and closure questions | NOT RUN |
+
+Nine new regression tests cover runtime/source drift, package inventory, safe
+extraction, incidental normalization and malformed/duplicate batch inventory.
+The complete modern-runtime suite passes 173 tests. Final exact-tree provenance,
+source/blob/signature and CI verification are required at acceptance. Full new
+reproduction outputs, seal and logs are preserved in the hash-bound runtime ZIP;
+they do not replace the original first run. The original missing-science limits
+remain explicit and no implementing-agent self-review substitutes for #45.
