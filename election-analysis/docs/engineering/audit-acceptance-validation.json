@@ -1,0 +1,807 @@
+{
+  "schema_version": 1,
+  "executed_at": "2026-10-25T06:04:58.488938+00:00",
+  "base_commit": "6f9fd06aaf5b6fb825ece8f3757e869c30f0bca4",
+  "subject": "Working tree changes on fix/election-audit-acceptance, bound by file hashes below; this is not a claim that these changes are in the base commit.",
+  "tool_version": "0.5.1",
+  "tests": {
+    "totals": {
+      "run": 146,
+      "passed": 146
+    },
+    "python": "3.12.14",
+    "test_results_sha256": "acbadfeac9de3e3250de5d874540bdf5683d77c96929abc0a95e9fe8ff85f220",
+    "tests": [
+      {
+        "id": "test_alaska_crosswalk.AlaskaCrosswalkTests.test_house_districts_agree_with_precincts",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_alaska_crosswalk.AlaskaCrosswalkTests.test_precincts_cover_the_whole_state",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_areas.AnalysisTests.test_area_config_validation",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_areas.AnalysisTests.test_breakdown_changes_and_report",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_areas.AnalysisTests.test_remaining_ballot_flags",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_areas.ConversionTests.test_all_results_precinct_sheet_is_a_county_breakdown",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_areas.ConversionTests.test_bad_counts_and_missing_columns_are_errors",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_areas.ConversionTests.test_precinct_workbook_with_statewide_totals",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_areas.ReconciliationTests.test_a_county_without_precinct_rows_is_missing_detail",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_areas.ReconciliationTests.test_consistent_files_reconcile",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_areas.ReconciliationTests.test_mismatches_are_reported_not_accepted",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_areas.StreamingTests.test_missing_sheet",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_areas.StreamingTests.test_rows_stream_with_row_and_byte_budgets",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ElectionReportingTests.test_abbreviated_justice_contest_uses_judicial_rule",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ElectionReportingTests.test_apple_binary_plist_is_rejected_with_clear_message",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ElectionReportingTests.test_county_and_statewide_names_share_canonical_keys",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ElectionReportingTests.test_county_slice_is_not_marked_controlling",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ElectionReportingTests.test_csv_text_with_xls_name_is_accepted",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ElectionReportingTests.test_edt_publication_writes_human_and_quality_reports",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ElectionReportingTests.test_history_records_a_lead_change",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ElectionReportingTests.test_oversized_summary_sheet_is_still_rejected",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ElectionReportingTests.test_statewide_summary_xlsx_is_accepted",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ElectionReportingTests.test_statewide_xlsx_reconciles_underreported_ballots",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ElectionReportingTests.test_three_vote_margin_has_statistical_probability",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ElectionReportingTests.test_top_two_cutoff_uses_second_and_third",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ElectionReportingTests.test_unchanged_tie_is_symmetric_without_false_lead_change",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ElectionReportingTests.test_unread_precinct_sheet_does_not_count_toward_size_limit",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ResultStageTests.test_actual_ld42_completed_recount_keeps_four_vote_margin",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ResultStageTests.test_completed_election_blocks_counting_contest",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ResultStageTests.test_distinct_stages_rounds_and_versions_are_not_batches",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ResultStageTests.test_historical_publication_agrees_in_all_formats",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ResultStageTests.test_information_time_and_target_are_required",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ResultStageTests.test_legacy_and_elapsed_deadline_remain_unknown",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ResultStageTests.test_lifecycle_matrix_only_counting_runs_count_model",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ResultStageTests.test_metadata_cannot_silently_follow_changed_bytes",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ResultStageTests.test_raw_rcv_majority_is_descriptive_and_never_a_final_winner",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting.ResultStageTests.test_schema_two_parses_dated_hash_bound_metadata",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_archives.ArchiveTests.test_frozen_king_archives_have_hash_bound_descriptive_coverage",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_archives.ArchiveTests.test_king_identity_units_encoding_and_malformed_rows",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_archives.ArchiveTests.test_medsl_all_modes_once_and_district_rows_never_become_borough_votes",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.NumericalAuditTests.test_1080_integer_thresholds_and_rational_distribution_oracles",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.NumericalAuditTests.test_audited_assessor_and_ld42_sensitivities_are_reconstructed",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.NumericalAuditTests.test_large_skewed_and_boundary_tails_against_independent_oracle",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.NumericalAuditTests.test_latest_batch_is_not_reused_as_historical_likelihood",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.RcvAuditTests.test_all_six_maine_exports_conserve_and_reproduce_final_totals",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.RcvAuditTests.test_authoritative_selection_preserves_partial_accounting_and_lineage",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.RcvAuditTests.test_official_versions_keep_recount_and_missing_coverage_separate",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.RcvAuditTests.test_skips_duplicates_overvotes_and_unknown_eligibility",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.SourceAuditTests.test_corrections_identical_counts_and_negative_deltas_are_not_new_batches",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.SourceAuditTests.test_detail_only_candidate_is_a_contradiction",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.SourceAuditTests.test_frozen_539_record_replay_is_descriptive_ingestion",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.SourceAuditTests.test_gate_matrix_retains_tallies_and_withholds_unqualified_scenarios",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.SourceAuditTests.test_judicial_tie_is_unresolved_and_duplicate_crosswalks_are_refused",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.SourceAuditTests.test_maine_office_rule_does_not_follow_page_group",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.SourceAuditTests.test_named_actual_washington_findings_are_preserved",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.SourceAuditTests.test_office_and_election_rule_mismatches_withhold_scenarios",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.SourceAuditTests.test_pool_sensitivity_zero_unknown_tie_and_staleness",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.SourceAuditTests.test_selected_pair_cannot_represent_all_multi_candidate_outcomes",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.SourceAuditTests.test_short_summary_carries_clocks_coverage_and_pool_sensitivity",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.SourceAuditTests.test_stage_aware_full_replay_withholds_every_forecast",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.SourceAuditTests.test_unknown_times_and_duplicate_retrieval_cannot_freshen_count",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.ValidationAuditTests.test_empty_and_final_only_data_cannot_claim_a_backtest",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_reporting_audit.ValidationAuditTests.test_grouped_scores_and_leakage_refusal",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.AreaFetchTests.test_a_failing_area_fetch_does_not_stop_the_statewide_snapshot",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.AreaFetchTests.test_area_files_records_and_config",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.CarryForwardTests.test_carries_only_missing_snapshots_and_keeps_local_config",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.CarryForwardTests.test_tampered_snapshot_is_refused",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.CsvFormatTests.test_repeated_contest_names_stay_distinct",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.CsvFormatTests.test_results_data_keeps_tallies_parties_and_county_spans",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.CsvFormatTests.test_trimmed_data_drops_display_text_and_precinct_list",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.CsvFormatTests.test_workbook_csv_matches_workbook_analysis_input",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.FetchTests.test_fetch_writes_inputs_raw_files_provenance_and_config",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.FetchTests.test_not_due_fetches_nothing",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.FetchTests.test_one_failing_source_does_not_stop_the_others",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.FetchTests.test_unchanged_sources_add_nothing_and_changes_add_a_snapshot",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.FetchTests.test_zero_vote_results_are_not_saved",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.HttpTests.test_only_official_https_hosts_are_fetched",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.RepositoryTests.test_snapshot_files_are_not_git_ignored",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.ScheduleTests.test_due_every_half_hour_on_election_night_then_hourly",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.ScheduleTests.test_general_election_window_runs_to_state_certification",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.ScheduleTests.test_primary_window_uses_primary_certification",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.ScopeTests.test_single_county_contest_from_a_county_source_stays_controlling",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.WatchConfigTests.test_county_names_resolve_and_unknown_names_are_listed",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.WatchConfigTests.test_defaults_and_county_names",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.WatchConfigTests.test_schedule_is_per_state_and_states_are_not_repeated",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch.WatchConfigTests.test_unsupported_state_is_rejected",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaConversionTests.test_boroughs_hold_their_election_day_precincts_only",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaConversionTests.test_csv_is_readable_by_the_analyzer",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaConversionTests.test_duplicate_category_candidate_rows_are_rejected",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaConversionTests.test_missing_columns_are_reported",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaConversionTests.test_statewide_includes_district_level_and_overseas_ballots",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaConversionTests.test_unknown_precinct_in_a_house_district_is_an_error",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaFetchTests.test_fetch_writes_statewide_and_borough_snapshots",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaFetchTests.test_file_from_an_earlier_election_is_not_saved",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaFetchTests.test_no_results_link_yet",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaFetchTests.test_window_uses_alaska_time_and_certification_target",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaHttpTests.test_alaska_host_is_allowed_and_has_its_pinned_intermediate",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaPlacesTests.test_all_and_unknown_names",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaPlacesTests.test_borough_names_resolve_without_their_suffix",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaPlacesTests.test_election_days_follow_statute",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaPlacesTests.test_split_precinct_goes_to_its_main_borough",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaRuleTests.test_rcv_with_a_first_choice_majority_is_not_flagged",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaRuleTests.test_rcv_without_a_first_choice_majority_is_flagged",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaRuleTests.test_top_four_compares_fourth_and_fifth",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_alaska.AlaskaRuleTests.test_unknown_default_rule_is_rejected",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_maine.MaineElectionTests.test_county_names",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_maine.MaineElectionTests.test_election_days",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_maine.MaineElectionTests.test_page_links_for_the_election_only",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_maine.MaineFetchTests.test_fetch_combines_workbooks_into_one_snapshot",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_maine.MaineFetchTests.test_nothing_posted_yet",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_maine.MaineFetchTests.test_window_is_daily_for_35_days",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_maine.MaineHttpTests.test_browser_user_agent_is_sent_to_maine_only",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_maine.MaineWorkbookTests.test_block_that_does_not_reconcile_is_left_out",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_maine.MaineWorkbookTests.test_conversion_keeps_uocava_statewide_only",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_maine.MaineWorkbookTests.test_county_offices_carry_the_county_name",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_maine.MaineWorkbookTests.test_district_blocks_with_names_above_the_header",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_maine.MaineWorkbookTests.test_ranked_choice_precinct_workbook",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_maine.MaineWorkbookTests.test_referendum_questions",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_election_watch_maine.MaineWorkbookTests.test_statewide_office_with_county_subtotals",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_provenance_checks.FileIdTests.test_authored_files_need_ids_and_automation_files_do_not",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_provenance_checks.FileIdTests.test_every_rule_is_a_violation",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_provenance_checks.FileIdTests.test_ids_below_the_header_are_ignored",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_provenance_checks.KindTests.test_automation_written_paths_are_exempt_kinds",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_provenance_checks.ManifestAndRunTests.test_manifest_lists_every_file_with_kind_id_and_hash",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_provenance_checks.ManifestAndRunTests.test_missing_reuse_is_indeterminate_and_violations_win",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_provenance_checks.ManifestAndRunTests.test_only_indeterminate_gives_two",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_provenance_checks.ReuseTests.test_other_unused_or_missing_licenses_are_violations",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_provenance_checks.ReuseTests.test_pending_publishers_unused_licenses_pass",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_provenance_checks.ReuseTests.test_unreadable_output_is_indeterminate",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_provenance_checks.TestResultsTests.test_outcomes_totals_predicate_and_exit_code",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_provenance_checks.VerifyScriptTests.test_a_verifier_that_accepts_everything_is_caught",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_provenance_checks.VerifyScriptTests.test_genuine_attestations_pass_and_forgeries_fail",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_publish_reports.ParseNameStatusTests.test_classifies_statuses",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_publish_reports.ParseNameStatusTests.test_empty_output_is_no_change",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_publish_reports.ParseNameStatusTests.test_paths_with_spaces_and_unicode",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_publish_reports.ParseNameStatusTests.test_rejects_rename_and_malformed",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_publish_reports.ParseNameStatusTests.test_restrict_to_rejects_outside_paths",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_publish_reports.PayloadTests.test_binary_safe_base64_and_deletions",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_publish_reports.PayloadTests.test_many_files_and_no_skip_ci",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_publish_reports.PublishFlowTests.test_creates_branch_commit_and_pull_request",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_publish_reports.PublishFlowTests.test_detect_changes_does_not_touch_real_index",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_publish_reports.PublishFlowTests.test_existing_branch_is_force_reset_and_pr_updated",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_publish_reports.PublishFlowTests.test_graphql_errors_fail",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_publish_reports.PublishFlowTests.test_identical_branch_content_skips_commit",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_publish_reports.PublishFlowTests.test_no_changes_makes_no_api_calls",
+        "outcome": "passed"
+      },
+      {
+        "id": "test_publish_reports.PublishFlowTests.test_pull_request_failure_names_required_setting",
+        "outcome": "passed"
+      }
+    ],
+    "expected_inner_harness_failure": "Provenance regression deliberately executes a failing sample; the outer 146-test suite passes."
+  },
+  "provenance": {
+    "reuse": {
+      "status": 0,
+      "reuse_version": "6.2.0",
+      "spec_version": "3.3",
+      "compliant": false,
+      "files_total": 111,
+      "files_with_copyright_info": 111,
+      "files_with_licensing_info": 111,
+      "pending_licenses": [
+        "LicenseRef-ChelanCounty-PublicData",
+        "LicenseRef-KittitasCounty-PublicData",
+        "LicenseRef-PierceCounty-PublicData",
+        "LicenseRef-SnohomishCounty-PublicData"
+      ],
+      "non_compliant": {}
+    },
+    "file-ids": {
+      "status": 0,
+      "files_with_id": 67,
+      "exempt": 55,
+      "violations": []
+    },
+    "manifest": {
+      "status": 0,
+      "commit": "6f9fd06aaf5b6fb825ece8f3757e869c30f0bca4",
+      "files": 122
+    },
+    "overall": 0,
+    "commit": "6f9fd06aaf5b6fb825ece8f3757e869c30f0bca4",
+    "scope": "election-analysis/"
+  },
+  "patch_formatting": "git diff --check HEAD passed",
+  "base_acceptance": {
+    "pr": 61,
+    "merged_at": "2026-10-25T05:39:11Z",
+    "merged_tree_tests": 136,
+    "merged_tree_suite": "passed",
+    "adversarial_checks": {
+      "reused_ids_and_generic_titles": {
+        "status": "MATCH",
+        "records": 2,
+        "controlling": 0
+      },
+      "missing_maine_supplement": {
+        "status": "MATCH",
+        "error": "Complete Maine CD2 validation requires all six distinct exports"
+      }
+    },
+    "accepted_children": [
+      46,
+      48,
+      49,
+      50,
+      57
+    ]
+  },
+  "prompts": [
+    {
+      "path": "/prompt/PRM-0030.txt",
+      "role": "comparison/acceptance primary",
+      "retrieved_utf8_text_sha256": "aad242eb6c04b034acba8bdad60f75ac683ee3dc055bd49e30c041a82a6c41d2",
+      "utf8_bytes": 4789,
+      "qualification": "Hash of connector-retrieved text, not a claim about original Dropbox binary bytes."
+    },
+    {
+      "path": "/prompt/PRM-0029.txt",
+      "role": "focused implementation",
+      "retrieved_utf8_text_sha256": "1ed27941aac6ee20d12937651e328e1e7bbb1fb565cec388cba24b43f6b1a554",
+      "utf8_bytes": 5159,
+      "qualification": "Hash of connector-retrieved text, not a claim about original Dropbox binary bytes."
+    },
+    {
+      "path": "/prompt/PRM-0026.txt",
+      "role": "archive format recovery",
+      "retrieved_utf8_text_sha256": "34feb643df1aa0668019b3edd2761dab9d5d2d5838ffea9292f42ba1a9e3d878",
+      "utf8_bytes": 5025,
+      "qualification": "Hash of connector-retrieved text, not a claim about original Dropbox binary bytes."
+    },
+    {
+      "path": "/prompt/PRM-0068.txt",
+      "role": "static missing-evidence reconciliation",
+      "retrieved_utf8_text_sha256": "c806626954cb8b298327a81fa40a70bf7000320443ea71c7ace1279e1f4a0513",
+      "utf8_bytes": 5246,
+      "qualification": "Hash of connector-retrieved text, not a claim about original Dropbox binary bytes."
+    }
+  ],
+  "changed_files": [
+    {
+      "path": "election-analysis/REUSE.toml",
+      "sha256": "85749a896aa0b90bf8def3adbc910f437a79ffeb362e5c59c80bb34e6b8600a3"
+    },
+    {
+      "path": "election-analysis/ci/provenance.py",
+      "sha256": "1f7e207a6fa9466032ed61638a5e92e44b45b7578ae68345aad35c435544188f"
+    },
+    {
+      "path": "election-analysis/data/elections/washington/2026-08-04/election.toml",
+      "sha256": "f9a2e1d2a7eef40f2cede1bd780827bdd80f2cdf29890b6dab82258c55dd009a"
+    },
+    {
+      "path": "election-analysis/docs/election-reporting.md",
+      "sha256": "4779a850814aebd4d999dad5757543013357b13897808060b39196f9225f1219"
+    },
+    {
+      "path": "election-analysis/docs/engineering/ADR-005-audit-acceptance-and-archive-evidence.md",
+      "sha256": "2342e1717fd57871e30d467c2341a774b4667d41ce9a9795e80a72272d0a3907"
+    },
+    {
+      "path": "election-analysis/docs/engineering/alaska-archive-reproduction-20261025.json",
+      "sha256": "47cfc7c29d74528c243fa6daea20fd787ae87e1e4479467c1283a67bdb303ff1"
+    },
+    {
+      "path": "election-analysis/docs/engineering/audit-acceptance/RECONSTRUCTION-VALIDATION.md",
+      "sha256": "dacfdc2652952c801dd95e262f4088368139f85198a03203ffe8865e6b3c05f2"
+    },
+    {
+      "path": "election-analysis/docs/engineering/audit-sensitivity-20261025.json",
+      "sha256": "30291fae3204fa199eaaee324c6b53f75e2e547385bec4e248111b53cbb49cdf"
+    },
+    {
+      "path": "election-analysis/election_reporting/__init__.py",
+      "sha256": "7b2f5e2b60804eeb6a718a941d270e95f2c638e3abdcbec397de574ee9730222"
+    },
+    {
+      "path": "election-analysis/election_reporting/analysis.py",
+      "sha256": "a97b31f04b7912115c0cc1dcebc0338468fbaf20208eec46858140ab2d3c15e1"
+    },
+    {
+      "path": "election-analysis/election_reporting/archives.py",
+      "sha256": "76f4742c5d7f82d7a43cfce70f6864dd2adc312e98e6cb8c2b4150fbd1605a1c"
+    },
+    {
+      "path": "election-analysis/election_reporting/audit_sensitivity.py",
+      "sha256": "744f354e68fac74fc44bc9442e85d64a4175e9bc38106f85c405c44e921b5e13"
+    },
+    {
+      "path": "election-analysis/election_reporting/evidence.py",
+      "sha256": "4ddd5cb98a2c7aaaffb9a872f3c8e86690e72f200838ab305be4cdb59ea82c61"
+    },
+    {
+      "path": "election-analysis/election_reporting/numerics.py",
+      "sha256": "bf190b8a8defc5c5af52be781db973eb8fe3214c285f3715b9071f75ffd1882e"
+    },
+    {
+      "path": "election-analysis/election_reporting/publish.py",
+      "sha256": "5d7c2252a0332d0cfaad0bda67a9236048883a1b7d10f1d78ba4cb7783ff7c4e"
+    },
+    {
+      "path": "election-analysis/election_reporting/versions.py",
+      "sha256": "50cce64562636d0eda5d12a0a3f605819c85e0a23d55ab3ac0e9a72821ded9c5"
+    },
+    {
+      "path": "election-analysis/reports/washington/2026-08-04/analysis.json",
+      "sha256": "ae1508e07b3a69208cfb8e19e25a5ee0c6d63d92173f3a0dac1b17777e57b2d9"
+    },
+    {
+      "path": "election-analysis/reports/washington/2026-08-04/canonical-document.edom.json",
+      "sha256": "3d05105d96687f1ca66263fd8f9a911461e4c1dc1f056cc6616ef9a1c7b238b2"
+    },
+    {
+      "path": "election-analysis/reports/washington/2026-08-04/election-analysis.html",
+      "sha256": "bcfda2ba2564cd8dc7be5a4da254953aaff43d2527eefbba14e16b2744c845b7"
+    },
+    {
+      "path": "election-analysis/reports/washington/2026-08-04/election-analysis.md",
+      "sha256": "5a8be58521c175b9c4e8dbe4bf504cc3afd08b73d4782c17adc53a2369276586"
+    },
+    {
+      "path": "election-analysis/reports/washington/2026-08-04/facebook-summary.txt",
+      "sha256": "121db93ae07ff15cb1ec11bd4fcf1bb038f06938a1c078c7e67e63e8d8fac62d"
+    },
+    {
+      "path": "election-analysis/tests/fixtures/king-archives-manifest.json",
+      "sha256": "fa02b84ccf845f5419020173befbebd16a821db1437077729370c4f657ee8ade"
+    },
+    {
+      "path": "election-analysis/tests/fixtures/king-archives.zip",
+      "sha256": "5b5a48204c376131806ff471e93251215f72bc19aad085653e566f62a55c9a89"
+    },
+    {
+      "path": "election-analysis/tests/fixtures/official-result-versions.json",
+      "sha256": "a9f0ff13103a241207aca37357b860dbc241b97b8b5cf84c864ee3146d4fa3f6"
+    },
+    {
+      "path": "election-analysis/tests/test_election_reporting.py",
+      "sha256": "2352aefb13b7ac3e9ba50498157d6c46a85a33d610797b660aa565fb3749427b"
+    },
+    {
+      "path": "election-analysis/tests/test_election_reporting_archives.py",
+      "sha256": "a7662e971ed84f66a4920cb1b3808271473cd62828f89e685b05600095bb4c37"
+    },
+    {
+      "path": "election-analysis/tests/test_election_reporting_audit.py",
+      "sha256": "3e3f4547aae0f1e585a63d0f531bb0e26e65e3173b946b69fb6ea436908da689"
+    }
+  ],
+  "self_hash_exclusion": "election-analysis/docs/engineering/audit-acceptance-validation.json",
+  "original_inputs": "No files under data/elections/*/*/input or data/crosswalks were changed.",
+  "remote_acceptance": "Verified commit signatures, exact uploaded file blobs, CI and review disposition are recorded in the PR and GitHub #45 after upload.",
+  "limitations": [
+    "No eligible held-out forecast records or predictive calibration acquired.",
+    "Official indexed Alaska references are not independently hash-verified PDF binaries.",
+    "Independent final re-audit remains outstanding."
+  ]
+}
