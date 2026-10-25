@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "package_sha256": "06d150c885e9f95aa3235dc4ceaab09f34379bc27f8de66864c00e85af67f73e",
+  "purpose": "539 descriptive ingestion records; not held-out forecast validation",
+  "inputs": [
+    {
+      "state": "washington",
+      "records": 204,
+      "path": "washington.csv",
+      "sha256": "e1437da58c1dd8552598f60e86437ddfe8a6a593c359ab67c5bde2e68ff8720f",
+      "source_stage": "plurality_count",
+      "remaining_pool": "unavailable; no contemporaneous forecast supplied"
+    },
+    {
+      "state": "alaska",
+      "records": 73,
+      "path": "alaska.csv",
+      "sha256": "58f7d392c6c81b547bafda5b6cb9b03bc4d621e5f772af57c9c21a5e8565fdbf",
+      "source_stage": "raw_first_rankings",
+      "remaining_pool": "unavailable; no contemporaneous forecast supplied"
+    },
+    {
+      "state": "maine",
+      "records": 262,
+      "path": "maine.csv",
+      "sha256": "8cfe06a98a7a2225ff80d4c1a582179d7c24cda2d5da12f5c9278234d882c091",
+      "source_stage": "raw_first_rankings",
+      "remaining_pool": "unavailable; no contemporaneous forecast supplied"
+    }
+  ],
+  "evidence_observed_at": "2026-10-25T05:15:04+00:00"
+}
