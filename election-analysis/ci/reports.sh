@@ -20,7 +20,9 @@ cd "$root"
 case "${1:-}" in
   test)
     # test PATTERN: one group of the scope's offline tests.
-    python3 -m unittest discover -s "$rel/tests" -p "${2:?usage: reports.sh test PATTERN}" -v
+    pattern=${2:?usage: reports.sh test PATTERN}
+    if [[ "$pattern" == test_election_reporting.py ]]; then pattern="test_election_reporting*.py"; fi
+    python3 -m unittest discover -s "$rel/tests" -p "$pattern" -v
     ;;
   generate)
     # One report directory per state and election:
