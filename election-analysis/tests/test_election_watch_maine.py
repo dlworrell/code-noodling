@@ -341,7 +341,7 @@ class MaineFetchTests(unittest.TestCase):
             analysis = analyze_election(load_config(directory / "election.toml"))
             rules = {race.contest: race.rule for race in analysis.races}
             self.assertEqual(rules["Rep. to Congress District 2"], "rcv")
-            self.assertEqual(rules["United States Senator"], "winner")
+            self.assertEqual(rules["United States Senator"], "rcv")
             self.assertEqual(rules["State Referendum Question 1"], "winner")
 
             again = fetch_snapshots(config, maine_web(), now, log=lambda _: None)
