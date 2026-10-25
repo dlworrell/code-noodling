@@ -17,6 +17,12 @@ path = ["data/elections/*/*/SOURCES.json", "docs/engineering/*.json"]
 SPDX-FileCopyrightText = "2026 Donovan Worrell"
 SPDX-License-Identifier = "Apache-2.0"
 
+# Regenerable diagnostic from the hash-bound retrospective scenario experiment.
+[[annotations]]
+path = "docs/engineering/king-retrospective-diagnostic-v2.png"
+SPDX-FileCopyrightText = "2026 Donovan Worrell"
+SPDX-License-Identifier = "Apache-2.0"
+
 # election.toml files the watcher creates for a new election. Existing ones
 # carry their own header, which takes precedence.
 [[annotations]]
