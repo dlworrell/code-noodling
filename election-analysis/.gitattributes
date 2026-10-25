@@ -1,0 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:a5db0d4a-7df9-43cd-af9a-8d7ea9747e90
+
+# Preserve the publisher-hashed CRLF CSV; accept CR as part of its line ending.
+# Keep the normal trailing-blank/EOF/tab checks for this captured source.
+tests/fixtures/oc-ballot-manifest-2024.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol linguist-generated=true

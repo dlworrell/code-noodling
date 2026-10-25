@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "source_url": "https://ocvote.gov/sites/default/files/elections/gen2024/audits/manifest.csv",
+  "publisher_page": "https://ocvote.gov/results/risk-limiting-audit-and-1-manual-tally-files-for-download-2024-presidential-general-election",
+  "publisher_sha256": "36b6c0079cc3882e601dc7ef7024d987973e3a17bceb9263dabbc433c6e78cff",
+  "download_sha256": "36b6c0079cc3882e601dc7ef7024d987973e3a17bceb9263dabbc433c6e78cff",
+  "retrieved_at": "2026-10-25T08:31:31.251Z",
+  "retrieval": "Official browser download; no source editing or PDF-to-CSV conversion",
+  "bytes": 261387,
+  "rla_report_url": "https://ocvote.gov/sites/default/files/elections/gen2024/RLA%20GEN%202024%20Report.pdf",
+  "rla_report_reference": "Report text calls this a ballot sheet manifest; 751 ballot cards audited, 1417397 ballots cast, audit November25\u201326. Only indexed official text inspected; report binary not acquired in this iteration. Election-count audit is not forecast calibration.",
+  "qualification": {
+    "schema_version": 1,
+    "sha256": "36b6c0079cc3882e601dc7ef7024d987973e3a17bceb9263dabbc433c6e78cff",
+    "source_columns": [
+      "Container",
+      "Tabulator",
+      "Batch Name",
+      "Number of Ballots"
+    ],
+    "rows": 10208,
+    "unique_composite_batch_ids": 10208,
+    "tabulators": [
+      "POD1-in-person",
+      "POD2-in-person",
+      "POD3-in-person",
+      "POD4-in-person",
+      "POD5-in-person",
+      "pod1-vbm",
+      "pod2-vbm",
+      "pod3-vbm",
+      "pod4-vbm",
+      "pod5-vbm"
+    ],
+    "source_count_column": "Number of Ballots",
+    "source_count_sum": 2757630,
+    "counts_by_container": {
+      "in-person": 578577,
+      "mail": 2179053
+    },
+    "source_unit_qualification": "The associated official RLA report calls this a ballot-sheet manifest and describes ballot cards audited. Its row sum must not be substituted for unique voters, counted voter ballots or contest pair votes.",
+    "publication_or_count_clock": null,
+    "candidate_votes": null,
+    "correction_partition": null,
+    "new_ballot_likelihood_eligible": false,
+    "missing_fields": [
+      "historical snapshot/publication time",
+      "per-candidate and contest vote totals",
+      "new-ballot versus correction/recount/transfer lineage",
+      "outstanding acceptance/geographic categories"
+    ],
+    "qualification": "Publisher-hash-verified final audit inventory. Batch identifiers alone do not establish dated new-ballot increments or forecast eligibility."
+  }
+}

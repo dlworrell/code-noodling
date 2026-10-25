@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "base_commit": "7018e9d229a316687365fd1192d161ff82e9e283",
+  "runner_sha256": "020cecf9d4cdb210ea98fd93e96d106162ef086e925f5a139808249eda511e7b",
+  "reproduction_archive_sha256": "cc72251697d5e64b1e5d19674a82c4ea315d09b78a6f6586b71009f3030abebd",
+  "reproduction": {
+    "schema_version": 1,
+    "status": "MATCH",
+    "source_commit": "09d825d81083049903bd544e550adacd915a2c4a",
+    "source_tree": "abeb1364644c127c00eec927345d384f6ba71d19",
+    "caller_checkout_commit": "7018e9d229a316687365fd1192d161ff82e9e283",
+    "protocol_file_sha256": "1b50c31396d783bd7dab653fb53f5d758e99acbe7c0e80b5cfac29ddd8447511",
+    "model_files_verified": {
+      "ci/requirements-provenance.txt": "de5b1823f945dd675ad3667f5595763e80fd7ee31605c127d61caa8bc555f80f",
+      "election_reporting/__init__.py": "7b2f5e2b60804eeb6a718a941d270e95f2c638e3abdcbec397de574ee9730222",
+      "election_reporting/__main__.py": "51aa9a0808a7013b386092a35ea764d4e65da4ba2a6e123681435c29eb7411ad",
+      "election_reporting/analysis.py": "a97b31f04b7912115c0cc1dcebc0338468fbaf20208eec46858140ab2d3c15e1",
+      "election_reporting/archives.py": "76f4742c5d7f82d7a43cfce70f6864dd2adc312e98e6cb8c2b4150fbd1605a1c",
+      "election_reporting/areas.py": "0d8632de4110c95b506fc49533590d2cedc4558509c1fd5e013c86ef4d8cc1a9",
+      "election_reporting/audit_sensitivity.py": "744f354e68fac74fc44bc9442e85d64a4175e9bc38106f85c405c44e921b5e13",
+      "election_reporting/ci/__init__.py": "a61299dcbe45c3abf4526b8279aba7195f93b3305e554501b7e72c3c3fb7db10",
+      "election_reporting/ci/publish_reports.py": "808a055d320ca57840a469b419fc0b7424f7753f540f204a741250d48314596b",
+      "election_reporting/cli.py": "e755ff423417be58e0c8448d617230654dcdb003c8cfc66523cb94fa89becf56",
+      "election_reporting/config.py": "a04d806acce057582022327b22f9f15d3c7f3ac520aa01c93861ea71d49a93cf",
+      "election_reporting/evidence.py": "4ddd5cb98a2c7aaaffb9a872f3c8e86690e72f200838ab305be4cdb59ea82c61",
+      "election_reporting/ingest.py": "de35633ed3edfcdcfcc35a817a116f0069d14896579c72e154df5cc730a30591",
+      "election_reporting/model.py": "7e2b707b00f02a1fb7facc5d5906f5f7cba64b4d77475b22b50a68fd82c0b53e",
+      "election_reporting/numerics.py": "bf190b8a8defc5c5af52be781db973eb8fe3214c285f3715b9071f75ffd1882e",
+      "election_reporting/official_archives.py": "86fd53f671613de44ce016e9eef4f7b62f15babaa5e33cb9a05b71cd182f75a1",
+      "election_reporting/official_qualification.py": "68a80995d3c37abda976cb6e0dafdab4d4893bd37378f50b72ae6cfb3b3be3bf",
+      "election_reporting/official_validation.py": "893f12eefa0dece553e9674bdc1f72e80f0600cff922231ae2a2b0d0af06d9bd",
+      "election_reporting/publish.py": "5d7c2252a0332d0cfaad0bda67a9236048883a1b7d10f1d78ba4cb7783ff7c4e",
+      "election_reporting/rcv.py": "8881f37769127d70ce96d962a269e1c09e3807117ed7e8152822b0ed2a475dc3",
+      "election_reporting/replay.py": "1e9fc42347a50d2348b36dfcaf40bc5f2227ea7e5c708a656a492b20cf07dc34",
+      "election_reporting/retrospective.py": "53ebfd34ee551b17f095deeec4834150888d2d588cbbc0923f3cdee07f921527",
+      "election_reporting/stages.py": "a503c4df7c470082db5ce9ae0ef6bd05ca58ba23d9ec2832ad18fca85b8cf57c",
+      "election_reporting/validation.py": "2c69a629c90a96c706df2e91026481349d877dfdd2a10044442bcd4a6815bf79",
+      "election_reporting/versions.py": "50cce64562636d0eda5d12a0a3f605819c85e0a23d55ab3ac0e9a72821ded9c5",
+      "election_reporting/watch/__init__.py": "36c58694abe366c3849c6c7599ab57c125333d6160da854ba1270720c0774f3b",
+      "election_reporting/watch/__main__.py": "064d944d8351c5315287a39b948a98d4f3ebef32a63a436a0564f077cf24dd06",
+      "election_reporting/watch/alaska.py": "a775accc2acb13afb3f022ac1590e0dc07a11a44e0c31bfe086e86e2a4b56889",
+      "election_reporting/watch/certs.py": "c089ae5f492ba648e4e6bec2274a18b7be11e4c31615759225c61ec203d95176",
+      "election_reporting/watch/config.py": "50dc77f2f6354b9da70a46b91df571a0ab32e4fc5f9811d1860eb845e8e519c4",
+      "election_reporting/watch/csvformat.py": "c35930487eee4fd5b9f6fce89a40e63b8be8f2279842e2f4bf511e0bae020242",
+      "election_reporting/watch/http.py": "bf3ed9ec02452f59641cc6950409a21ae9a71ed75faa5b03c519b096a7650f30",
+      "election_reporting/watch/maine.py": "9530d2bb5e1f56c6ef79b086c828ee961e9ea1b9eab5ffb0a7bc8879112b2e48",
+      "election_reporting/watch/run.py": "b6191ae114183276910e2019199fd9e0a6d5aa40e62f05e001dac669bd95db70",
+      "election_reporting/watch/schedule.py": "2558b49df83a7a8ef9d648699c7a78525a9a7e26b9bd739851c3d0016c2134fb",
+      "election_reporting/watch/sources.py": "bed0a6e1fb6c399f1b26319a98db0fde0b1e075040194fd376c7a99ea548414b",
+      "election_reporting/watch/store.py": "3e60ba2bd54914a127f3e16a2f9c840517ad31d6bb60caeae77ee3fb0f3f1d00"
+    },
+    "runtime": {
+      "python": "3.12.14",
+      "packages": {
+        "reuse": "6.2.0",
+        "pypdf": "6.10.0"
+      }
+    },
+    "frozen_runtime_pins": {
+      "reuse": "6.2.0",
+      "pypdf": "6.10.0"
+    },
+    "prediction_rows": 159,
+    "base_contests": 53,
+    "reserved_outcomes_read_in_prediction": [],
+    "original_first_seal_preserved": true,
+    "prediction_semantics_match": true,
+    "score_and_ledger_semantics_match": true,
+    "normalized_keys": [
+      "generated_at",
+      "prediction_generated_at",
+      "scoring-only sealed_predictions_sha256"
+    ],
+    "output_sha256": {
+      "predict.log": "bba82f4a63dfe0c44bcd499501b7f9d6e91311ed0494a5aefa8c3d6ea65090c0",
+      "predictions.json": "02de4ffc94e0db3edbe23ba23774c27b94bc6c8302ce837db22f498531244565",
+      "reproduction-seal.json": "58e2bb8a05afd0e5ae7bedd623a085e4bcd5789772e03f96f49335f81c038d2a",
+      "score.log": "79110c531ce899f9cfb27c543465dc87c89e3eab9d22766af6c91788a72af04e",
+      "scores.json": "166f7515d03af9b9f663f49fc636db3a73171e2fec0842308df1f6625df0382c"
+    },
+    "qualification": "Reproduces the original conditional experiment from its frozen code/runtime. No new data, cap tuning, historical-publication authentication, calibrated forecast or independent final re-audit is inferred."
+  },
+  "negative_controls": {
+    "changed_source_dependency": {
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "stderr": "source differs from frozen protocol: ci/requirements-provenance.txt"
+    },
+    "changed_installed_runtime": {
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "stderr": "installed runtime differs from frozen pins: expected {'reuse': '6.2.0', 'pypdf': '6.10.0'}, observed {'reuse': None, 'pypdf': '6.21.2'}; use a separate matching interpreter; no packages were installed"
+    }
+  },
+  "current_parser_comparison": {
+    "pypdf": "6.21.2",
+    "command": "PYTHONPATH=election-analysis CURRENT_PYTHON -m election_reporting.official_qualification --fixtures election-analysis/tests/fixtures --output MODERN_QUALIFICATION.json",
+    "qualification_sha256": "374b4d9d3dcdf5dc2df638b628436421f5b01ffb19206450f0be0130b7e47090",
+    "original_qualification_sha256": "374b4d9d3dcdf5dc2df638b628436421f5b01ffb19206450f0be0130b7e47090",
+    "byte_identical": true,
+    "scope": "PDF/CSV/TSV extraction and accounting only, not new scoring under a changed frozen runtime."
+  },
+  "local_tests": {
+    "run": 173,
+    "passed": 173
+  },
+  "local_test_runtime": {
+    "python": "3.12.14",
+    "pypdf": "6.21.2"
+  },
+  "new_source": {
+    "fixture": "tests/fixtures/oc-ballot-manifest-2024.csv",
+    "source_record": "tests/fixtures/oc-ballot-manifest-2024-source.json",
+    "publisher_hash_matches": true,
+    "sha256": "36b6c0079cc3882e601dc7ef7024d987973e3a17bceb9263dabbc433c6e78cff",
+    "batch_rows": 10208,
+    "source_count_sum": 2757630,
+    "forecast_batch_eligible": false
+  },
+  "source_candidates": [
+    {
+      "url": "https://sfelections.org/results/20241105w/detail.html",
+      "observed_date_utc": "2026-10-25",
+      "status": "HTTP 403 in browser on first request and one reload; raw CVRs not acquired",
+      "qualification": "Search metadata is not source bytes or proof of source absence; no alternate route or fingerprint workaround attempted."
+    },
+    {
+      "url": "https://alamedacountyca.gov/board/com_calendar/documents/Mar20%2C2025ACECAgenda.pdf",
+      "status": "Official policy text located",
+      "qualification": "A release policy does not by itself provide actual dated CVR snapshots, source hashes or stable ballot lineage."
+    }
+  ],
+  "prompt_sources": [
+    {
+      "path": "/prompt/PRM-0030.txt",
+      "revision": "65e8ddd46f4da01b90224",
+      "role": "primary acceptance and comparison"
+    },
+    {
+      "path": "/prompt/PRM-0026.txt",
+      "revision": "65e8ddc5cd6b901b90224",
+      "role": "bounded manifest-format recovery"
+    },
+    {
+      "path": "/prompt/PRM-0068.txt",
+      "revision": "65e8de701257001b90224",
+      "role": "static residual reconciliation"
+    }
+  ],
+  "prompt_inventory_note": "Fresh complete nonrecursive listing also found PRM-0069, absent from the older index. Its content is a tagged-LaTeX/PDF-UA-2 build workflow, so it is not selected for the election audit.",
+  "scientific_limits": "Original first seals and model unchanged. Runtime reproducibility and a hash-verified inventory do not replace correction-separated new-ballot evidence, historical publication/version records or independent final review.",
+  "changed_file_sha256": {
+    "election-analysis/.gitattributes": "eab8d7742f7aa620afa6afeea90b54b532da563f604bf73fa0638c79897b0685",
+    "election-analysis/README.md": "bdc7bb2e00356584cbd2aa91d61c2c39a505e1522d1490013ddafc5def283096",
+    "election-analysis/REUSE.toml": "853f55ff6c17de8ddb0e62ec6dbcc08f59309c13682bfedd6408fabae72aeeca",
+    "election-analysis/ci/provenance.py": "549ed40a47f60dac1bc4d76a242e69846d1abe22065769436a1690d6ef3c3de3",
+    "election-analysis/ci/reproduce_official_experiment.py": "020cecf9d4cdb210ea98fd93e96d106162ef086e925f5a139808249eda511e7b",
+    "election-analysis/docs/engineering/ADR-007-official-queue-and-batch-evidence.md": "cc4672abdf3fef9bf3163e5044ab5af9197f05b097af7215389a4bef5a106fad",
+    "election-analysis/docs/engineering/ADR-008-frozen-runtime-reproduction.md": "7aef152622818aa449831bad5b0003525797cafe4eab44d5ff0676e2a477aa7e",
+    "election-analysis/docs/engineering/audit-acceptance/DATA-REQUEST.md": "dfd32b63d4e2f3c794740a4c381d40758aac2a36a551fbd9dc0ae9b70d1f7602",
+    "election-analysis/docs/engineering/audit-acceptance/FILE-FORMAT.md": "634c72ffcc8ec852a0fa821a296979f9bf445e12143cedc4670e546e21007cbe",
+    "election-analysis/docs/engineering/audit-acceptance/INDEPENDENT-REVIEW.md": "fc7f9f8dfe4c1d7715e49a5e6d4e1ae9032cca9888a63f231ab63621767dd3f7",
+    "election-analysis/docs/engineering/audit-acceptance/INVESTIGATION.md": "7306b49debfc3b8dc60cd78635a46e193b0c42b2f73741eec4168110ef1fe3c2",
+    "election-analysis/docs/engineering/audit-acceptance/RECONSTRUCTION-VALIDATION.md": "33910e1739f54b853a593323c08550713f902be9fe933261c6da3ecd4d904391",
+    "election-analysis/docs/engineering/oc-runtime-reproduction-v1.zip": "cc72251697d5e64b1e5d19674a82c4ea315d09b78a6f6586b71009f3030abebd",
+    "election-analysis/election_reporting/ballot_manifest.py": "c9278a74835ffeffbae6eb4910a6f2485dcda87ab4661e28e82040581b0df07e",
+    "election-analysis/tests/fixtures/oc-ballot-manifest-2024-source.json": "1ce6016b8db17bb33f394e9091e04ca071b45b2377410fe60b01dfb28c938b1c",
+    "election-analysis/tests/fixtures/oc-ballot-manifest-2024.csv": "36b6c0079cc3882e601dc7ef7024d987973e3a17bceb9263dabbc433c6e78cff",
+    "election-analysis/tests/test_ballot_manifest.py": "f70cf22c237587e263f0f7995099cf2813261ca1f7d6731edeab7b7a918cb6f4",
+    "election-analysis/tests/test_frozen_runtime_reproduction.py": "dbcafc51f8bc1378dfaab42207ffcd76dd4b053c4b6966b39bd849d0e33858a6"
+  },
+  "self_digest_excluded": true,
+  "local_provenance": {
+    "reuse": {
+      "status": 0,
+      "reuse_version": "6.2.0",
+      "spec_version": "3.3",
+      "compliant": false,
+      "files_total": 151,
+      "files_with_copyright_info": 151,
+      "files_with_licensing_info": 151,
+      "pending_licenses": [
+        "LicenseRef-ChelanCounty-PublicData",
+        "LicenseRef-KittitasCounty-PublicData",
+        "LicenseRef-PierceCounty-PublicData",
+        "LicenseRef-SnohomishCounty-PublicData"
+      ],
+      "non_compliant": {}
+    },
+    "file-ids": {
+      "status": 0,
+      "files_with_id": 86,
+      "exempt": 77,
+      "violations": []
+    },
+    "manifest": {
+      "status": 0,
+      "commit": "7018e9d229a316687365fd1192d161ff82e9e283",
+      "files": 163
+    },
+    "overall": 0,
+    "commit": "7018e9d229a316687365fd1192d161ff82e9e283",
+    "scope": "election-analysis/"
+  },
+  "patch_check": {
+    "exit": 0,
+    "source_crlf_preserved": true,
+    "source_git_attribute": "-text; whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol; no global whitespace settings changed"
+  }
+}

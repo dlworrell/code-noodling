@@ -59,6 +59,8 @@ AUTOMATION = [
     ("tests/fixtures/*.json", "regression-evidence"),
     ("tests/fixtures/king-archives.zip", "hash-bound-official-source-archive"),
     ("tests/fixtures/oc-official-2024.zip", "hash-bound-official-source-archive"),
+    ("tests/fixtures/oc-ballot-manifest-2024.csv", "hash-bound-official-source-data"),
+    ("docs/engineering/oc-runtime-reproduction-v1.zip", "generated-frozen-runtime-evidence"),
     ("docs/engineering/oc-official-diagnostic-v1.png", "generated-scenario-diagnostic"),
     ("tests/fixtures/replay-2024/*", "frozen-source-regression"),
 ]
