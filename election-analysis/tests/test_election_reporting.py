@@ -74,7 +74,7 @@ def counting_config(path: Path):
                 coverage_complete=not partial,authority_url='https://example.test/synthetic-crosswalk'))
             declared = config.rule_overrides.get(source.source_id+':'+contest.contest_id,
                 'winner' if contest.contest_id=='9' else 'wa_judicial' if contest.contest_id=='117' else 'top_two')
-            contract['rules'].append(dict(canonical_id=canonical,rule=declared,positions=2 if declared=="top_two" else 4 if declared=="top_four" else 1,
+            contract['rules'].append(dict(canonical_id=canonical,rule=declared,office=contest.name,election_type="primary",positions=2 if declared=="top_two" else 4 if declared=="top_four" else 1,
                 authority_url='https://example.test/synthetic-rule',tie_policy='unresolved'))
             if source.expected_final_ballots:
                 ballots = round(contest.ballots*(source.expected_final_ballots/maximum-1)) if maximum else 0
@@ -85,6 +85,7 @@ def counting_config(path: Path):
                     low=max(0,ballots),base=max(0,ballots),high=max(0,ballots),
                     as_of=stamp.isoformat(),jurisdictions=[source.jurisdiction],coverage_complete=True,
                     basis='Explicit synthetic fixed pool preserving the arithmetic regression oracle.',
+                    category_basis='Synthetic pool assumes all potentially countable ballot categories; no real acceptance or cure evidence is implied.',
                     contest_fraction=1,pair_fraction=pair_fraction,participation_basis="Explicit synthetic participation for the regression oracle, not an inferred future-ballot mix."))
     return replace(config, report_mode="current", forecast_target="outstanding_ballots",
                    information_time=stamp, election_status=status, result_statuses=records,audit_contract=contract)
