@@ -1,0 +1,116 @@
+{
+  "schema_version": 2,
+  "mode": "retrospective_conditional_scenarios",
+  "frozen_at": "2026-10-25T06:40:41.360400+00:00",
+  "used_for_tuning": false,
+  "model_id": "disjoint_tempered_beta_binomial_v2",
+  "event_scope": "selected_pair_strict_reversal",
+  "base_commit": "df8499f1bb336c64967d506953b7532d3bac61da",
+  "model_files": {
+    "election_reporting/__init__.py": "7b2f5e2b60804eeb6a718a941d270e95f2c638e3abdcbec397de574ee9730222",
+    "election_reporting/__main__.py": "51aa9a0808a7013b386092a35ea764d4e65da4ba2a6e123681435c29eb7411ad",
+    "election_reporting/analysis.py": "a97b31f04b7912115c0cc1dcebc0338468fbaf20208eec46858140ab2d3c15e1",
+    "election_reporting/archives.py": "76f4742c5d7f82d7a43cfce70f6864dd2adc312e98e6cb8c2b4150fbd1605a1c",
+    "election_reporting/areas.py": "0d8632de4110c95b506fc49533590d2cedc4558509c1fd5e013c86ef4d8cc1a9",
+    "election_reporting/audit_sensitivity.py": "744f354e68fac74fc44bc9442e85d64a4175e9bc38106f85c405c44e921b5e13",
+    "election_reporting/ci/__init__.py": "a61299dcbe45c3abf4526b8279aba7195f93b3305e554501b7e72c3c3fb7db10",
+    "election_reporting/ci/publish_reports.py": "808a055d320ca57840a469b419fc0b7424f7753f540f204a741250d48314596b",
+    "election_reporting/cli.py": "e755ff423417be58e0c8448d617230654dcdb003c8cfc66523cb94fa89becf56",
+    "election_reporting/config.py": "a04d806acce057582022327b22f9f15d3c7f3ac520aa01c93861ea71d49a93cf",
+    "election_reporting/evidence.py": "4ddd5cb98a2c7aaaffb9a872f3c8e86690e72f200838ab305be4cdb59ea82c61",
+    "election_reporting/ingest.py": "de35633ed3edfcdcfcc35a817a116f0069d14896579c72e154df5cc730a30591",
+    "election_reporting/model.py": "7e2b707b00f02a1fb7facc5d5906f5f7cba64b4d77475b22b50a68fd82c0b53e",
+    "election_reporting/numerics.py": "bf190b8a8defc5c5af52be781db973eb8fe3214c285f3715b9071f75ffd1882e",
+    "election_reporting/publish.py": "5d7c2252a0332d0cfaad0bda67a9236048883a1b7d10f1d78ba4cb7783ff7c4e",
+    "election_reporting/rcv.py": "8881f37769127d70ce96d962a269e1c09e3807117ed7e8152822b0ed2a475dc3",
+    "election_reporting/replay.py": "1e9fc42347a50d2348b36dfcaf40bc5f2227ea7e5c708a656a492b20cf07dc34",
+    "election_reporting/retrospective.py": "53ebfd34ee551b17f095deeec4834150888d2d588cbbc0923f3cdee07f921527",
+    "election_reporting/stages.py": "a503c4df7c470082db5ce9ae0ef6bd05ca58ba23d9ec2832ad18fca85b8cf57c",
+    "election_reporting/validation.py": "2c69a629c90a96c706df2e91026481349d877dfdd2a10044442bcd4a6815bf79",
+    "election_reporting/versions.py": "50cce64562636d0eda5d12a0a3f605819c85e0a23d55ab3ac0e9a72821ded9c5",
+    "election_reporting/watch/__init__.py": "36c58694abe366c3849c6c7599ab57c125333d6160da854ba1270720c0774f3b",
+    "election_reporting/watch/__main__.py": "064d944d8351c5315287a39b948a98d4f3ebef32a63a436a0564f077cf24dd06",
+    "election_reporting/watch/alaska.py": "a775accc2acb13afb3f022ac1590e0dc07a11a44e0c31bfe086e86e2a4b56889",
+    "election_reporting/watch/certs.py": "c089ae5f492ba648e4e6bec2274a18b7be11e4c31615759225c61ec203d95176",
+    "election_reporting/watch/config.py": "50dc77f2f6354b9da70a46b91df571a0ab32e4fc5f9811d1860eb845e8e519c4",
+    "election_reporting/watch/csvformat.py": "c35930487eee4fd5b9f6fce89a40e63b8be8f2279842e2f4bf511e0bae020242",
+    "election_reporting/watch/http.py": "bf3ed9ec02452f59641cc6950409a21ae9a71ed75faa5b03c519b096a7650f30",
+    "election_reporting/watch/maine.py": "9530d2bb5e1f56c6ef79b086c828ee961e9ea1b9eab5ffb0a7bc8879112b2e48",
+    "election_reporting/watch/run.py": "b6191ae114183276910e2019199fd9e0a6d5aa40e62f05e001dac669bd95db70",
+    "election_reporting/watch/schedule.py": "2558b49df83a7a8ef9d648699c7a78525a9a7e26b9bd739851c3d0016c2134fb",
+    "election_reporting/watch/sources.py": "bed0a6e1fb6c399f1b26319a98db0fde0b1e075040194fd376c7a99ea548414b",
+    "election_reporting/watch/store.py": "3e60ba2bd54914a127f3e16a2f9c840517ad31d6bb60caeae77ee3fb0f3f1d00"
+  },
+  "corpus_manifest_sha256": "fa02b84ccf845f5419020173befbebd16a821db1437077729370c4f657ee8ade",
+  "forecast_sources_sha256": "d4c1e70fbb25cc3dd194a5edd4e01702dc6b56f98609b239c25acb4c0ee3fef5",
+  "training_elections": [],
+  "training_jurisdictions": [],
+  "split_policy": "No fitting. All King County 2023-2025 elections and related contests/snapshots stay in the held-out reconstruction group. Historical outcomes are public and have previously been inspected; this is computational phase separation, not blind preregistration.",
+  "max_archive_age_hours": 48,
+  "turnout_offsets": {
+    "low": -0.05,
+    "base": 0,
+    "high": 0.05
+  },
+  "pool_recipe": "round(as-of maximum district registered voters * dated county turnout projection plus offset) minus as-of maximum district ballots. If <=0, withhold: reaching a projection is not official zero. This is an assumed pool of countable ballots, with no verified acceptance/category accounting.",
+  "pair_mapping": "round(positive source pool * as-of named selected-pair votes / as-of county ballots). Assumes future participation like as-of participation. Generic write-ins excluded; no whole-contest legal-winner assertion.",
+  "batch_policy": "Every daily tally delta remains unknown. No positive/monotone delta is automatically a new-ballot batch; latest-batch likelihood and baseline are unavailable.",
+  "parameters": {
+    "history_cap": 300,
+    "latest_cap": 200,
+    "prior_alpha": 1,
+    "prior_beta": 1,
+    "tuned": false,
+    "latest_verified_votes_used": 0
+  },
+  "baselines": [
+    "fixed_half",
+    "cumulative_share",
+    "untempered_beta_binomial",
+    "scenario_margin_lock",
+    "verified_latest_batch_only",
+    "official_pool_margin_lock"
+  ],
+  "loss_clip": 1e-12,
+  "scored_scenario": "base; low/high sensitivity separate, not independent additional observations",
+  "weights": "Equal elections, equal contests within election, equal snapshots within contest.",
+  "uncertainty": "One geographic dependence cluster. Do not bootstrap fictitious independent jurisdictions or interpret the three years as geographic replication; interval unavailable.",
+  "scope": "King County, County Council districts 1-9 under both archive naming conventions, City of Seattle and Seattle council districts 1-7. Candidate tallies only, exclude measure keywords, tied/unopposed as-of pairs. Scope selected from as-of archive identities before any experiment scoring, without selecting final outcomes or margins.",
+  "outcome_definition": "Strict reversal of the as-of top two named candidates in the specified original certified CSV. Ties yield no strict reversal. No adjudication of write-ins, legal winner or later recounts.",
+  "availability": "Max(archive report day plus one day 16:30 America/Los_Angeles, HTTP Last-Modified). A conservative publisher-metadata reconstruction, not authenticated then-captured bytes, a count-update timestamp or proof the archive was never revised.",
+  "elections": [
+    {
+      "election_id": "wa:king:2023-general",
+      "election_day": "2023-11-07",
+      "outcome_file": "webresults-20231127-final.csv",
+      "certification_time_lower_bound": "2023-11-28T00:00:00-08:00",
+      "outcome_authority": "https://kingcounty.gov/en/dept/elections/results/2023/november-general",
+      "archive_deadline_authority": "https://kingcounty.gov/en/dept/elections/results/2023/november-general"
+    },
+    {
+      "election_id": "wa:king:2024-general",
+      "election_day": "2024-11-05",
+      "outcome_file": "webresults-20241126.csv",
+      "certification_time_lower_bound": "2024-11-26T00:00:00-08:00",
+      "outcome_authority": "https://kingcounty.gov/en/dept/elections/results/2024/november-general",
+      "archive_deadline_authority": "https://kingcounty.gov/en/dept/elections/results/2024/november-general"
+    },
+    {
+      "election_id": "wa:king:2025-general",
+      "election_day": "2025-11-04",
+      "outcome_file": "webresults-11252025-final.csv",
+      "certification_time_lower_bound": "2025-11-25T00:00:00-08:00",
+      "outcome_authority": "https://kingcounty.gov/en/dept/elections/results/2025/november-general",
+      "archive_deadline_authority": "https://kingcounty.gov/en/dept/elections/results/2025/november-general"
+    }
+  ],
+  "exclusions": "All 2022 inputs (late migration timestamps), reserved/final/certification-day archives, stale >48h, identical byte snapshots, unreviewed jurisdictions/rules, unopposed/tied/no-data pairs, nonpositive assumed remainder, unsupported numerical pool.",
+  "promotion_policy": "No operational eligibility or calibration established. Original prospective schema-1 evaluator remains unchanged and original EA-10/EA-13 scientific criteria remain open.",
+  "pre_run_revisions": [
+    {
+      "previous_frozen_at": "2026-10-25T06:40:08.926178+00:00",
+      "previous_protocol_sha256": "5fd79c35650d1ea2c26cdf690dfb815c255a2b576830f7536789a28fe242abf9",
+      "reason": "Corrected archive ordering for extra hyphens and added a synthetic regression before the first real prediction or scoring run. No outcome-informed tuning."
+    }
+  ]
+}

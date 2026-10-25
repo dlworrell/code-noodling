@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "election_id": "wa:king:2023-general",
+      "forecast_turnout_fraction": 0.45,
+      "authority_url": "https://content.govdelivery.com/accounts/WAKING/bulletins/3794e07",
+      "publisher": "King County, Washington",
+      "source_published_at": "2023-11-03T14:34:00-07:00",
+      "retrieved_at": "2026-10-25T06:31:39.147290+00:00",
+      "source_html_sha256": "465f2aff8846b0e0b588df037104090f0892b6a821c0353caeaf44b0ad895b43",
+      "evidence_type": "Pre-election government bulletin; explicit projected voter turnout.",
+      "qualification": "A turnout assumption, not an official outstanding/accepted ballot count or category partition."
+    },
+    {
+      "election_id": "wa:king:2024-general",
+      "forecast_turnout_fraction": 0.82,
+      "authority_url": "https://content.govdelivery.com/accounts/WAKING/bulletins/3be1634",
+      "publisher": "King County, Washington",
+      "source_published_at": "2024-10-24T15:01:00-07:00",
+      "retrieved_at": "2026-10-25T06:31:42.968726+00:00",
+      "source_html_sha256": "b9b0855b282917205aaa65ed4f003a071d6e1df40b7aca4459d9eb1ad6a812f8",
+      "evidence_type": "Pre-election government bulletin; explicit projected voter turnout.",
+      "qualification": "A turnout assumption, not an official outstanding/accepted ballot count or category partition."
+    },
+    {
+      "election_id": "wa:king:2025-general",
+      "forecast_turnout_fraction": 0.45,
+      "authority_url": "https://content.govdelivery.com/accounts/WAKING/bulletins/3f74675",
+      "publisher": "King County, Washington",
+      "source_published_at": "2025-10-15T14:27:00-07:00",
+      "retrieved_at": "2026-10-25T06:31:46.157317+00:00",
+      "source_html_sha256": "051a7fcc9da82f7a54e8ac11c9586d81bf09bd7ebe3d5b97320f783dd7a878ba",
+      "evidence_type": "Pre-election government bulletin; explicit projected voter turnout.",
+      "qualification": "A turnout assumption, not an official outstanding/accepted ballot count or category partition."
+    }
+  ],
+  "additional_context": [
+    {
+      "election_id": "wa:king:2022-general",
+      "authority_url": "https://content.govdelivery.com/accounts/WAKING/bulletins/33756db",
+      "source_published_at": "2022-11-10T16:42:00-08:00",
+      "prior_projection": 0.72,
+      "revised_rough_projection": 0.62,
+      "qualification": "Post-election revision. The 2022 count archives have later migration timestamps and are excluded from the new experiment."
+    }
+  ],
+  "interpretation": "Historical source facts only. Any later scenario evaluation must retain the prospective evaluator and freeze its separate reconstruction protocol before scoring."
+}
