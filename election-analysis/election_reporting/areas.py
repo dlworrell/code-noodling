@@ -230,15 +230,8 @@ class AreaSnapshot:
         return self.timestamp.isoformat(timespec="minutes")
 
     def find(self, contest_id: str, name: str) -> AreaContest | None:
-        """By contest ID and name; else a unique ID; else a unique canonical name."""
-        if (contest_id, name) in self.contests:
-            return self.contests[(contest_id, name)]
-        same_id = [c for (cid, _), c in self.contests.items() if cid == contest_id]
-        if len(same_id) == 1:
-            return same_id[0]
-        key = normalize_contest_key(name)
-        matches = [c for c in self.contests.values() if normalize_contest_key(c.name) == key]
-        return matches[0] if len(matches) == 1 else None
+        """EA-03: exact ID AND office; aliases require a reviewed jurisdiction crosswalk."""
+        return self.contests.get((contest_id, name))
 
 
 def _words(name: str) -> frozenset[str]:
@@ -275,17 +268,8 @@ def read_area_file(path: Path, source_id: str, level: str) -> AreaSnapshot:
                 target[choice] = target.get(choice, 0) + votes
     except (OSError, EOFError, gzip.BadGzipFile, UnicodeDecodeError) as exc:
         raise ElectionReportError(f"could not read {path}: {exc}") from exc
-    # The statewide sheet and the breakdown word some names differently
-    # ("State Representative Pos. 1 - Legislative District 3" against
-    # "Legislative District 3 - State Representative Pos. 1"). Statewide
-    # contest IDs are unique, but small local IDs repeat (7209 is both a
-    # statewide EMS levy and a Mason County fire authority), so attach
-    # statewide totals by ID only to a breakdown contest with the same words.
-    for key in [k for k, c in contests.items() if c.summary and not c.areas]:
-        matches = [c for k, c in contests.items()
-                   if k[0] == key[0] and c.areas and _words(k[1]) == _words(key[1])]
-        if len(matches) == 1 and not matches[0].summary:
-            matches[0].summary = contests.pop(key).summary
+    # ID/name permutations do not establish jurisdiction identity. Keep unmatched
+    # summary rows separate; joins require the reviewed audit area aliases.
     return AreaSnapshot(source_id, level, path, _snapshot_timestamp(path), contests, county_of)
 
 
@@ -316,7 +300,7 @@ def reconcile(county: AreaSnapshot, precinct: AreaSnapshot | None) -> dict:
     mismatches = []
     without_statewide = 0
     for contest in county.contests.values():
-        if not contest.summary:
+        if not contest.summary or not contest.areas:
             without_statewide += 1
             continue
         sums = _sum_areas(contest)
@@ -413,8 +397,8 @@ def _changes(latest: AreaSnapshot, previous: AreaSnapshot | None, close, level: 
     top = sorted(new_ballots.items(), key=lambda item: (-item[1], item[0]))[:TOP_AREAS]
     races = []
     for race, decision in close:
-        now = latest.find(race.contest_id, race.contest)
-        before = previous.find(race.contest_id, race.contest)
+        now = _reviewed_area(latest, race)
+        before = _reviewed_area(previous, race)
         if now is None or before is None:
             continue
         current, change = choice_key(decision.current_side), choice_key(decision.change_side)
@@ -431,6 +415,7 @@ def _changes(latest: AreaSnapshot, previous: AreaSnapshot | None, close, level: 
         races.append({"contest": race.contest, "current_side": decision.current_side,
                       "change_side": decision.change_side, "swings": swings[:5]})
     return {"from": previous.stamp, "to": latest.stamp,
+            "delta_classification": "unknown_reported_tally_change; not an independent new-ballot batch",
             "largest_new_ballots": [{"area": area, "new_ballots": count} for area, count in top],
             "close_races": races}
 
@@ -444,43 +429,9 @@ def _remaining_flags(config: ElectionConfig, county: AreaSnapshot, close) -> tup
     stale = [r.county for r in config.remaining_ballots if r.as_of < latest_date]
     if stale:
         notes.append(f"Remaining-ballot counts older than the {latest_date} county snapshot: {', '.join(sorted(stale))}.")
-    flags = []
-    for race, decision in close:
-        contest = county.find(race.contest_id, race.contest)
-        if contest is None:
-            continue
-        declared = [r for r in config.remaining_ballots if r.county in contest.areas]
-        if not declared:
-            flags.append({"contest": race.contest, "status": "no remaining-ballot count for this race's counties"})
-            continue
-        top = max(declared, key=lambda r: (r.ballots, r.county))
-        choices = contest.areas[top.county]
-        current = choices.get(choice_key(decision.current_side), 0)
-        change = choices.get(choice_key(decision.change_side), 0)
-        ballots = choices.get(BALLOTS, 0)
-        entry = {"contest": race.contest, "county": top.county, "remaining_ballots": top.ballots,
-                 "as_of": top.as_of.isoformat(), "current_side": decision.current_side,
-                 "change_side": decision.change_side, "margin": decision.margin}
-        if not ballots or not current + change:
-            entry["status"] = "the county has no counted votes for this pair yet"
-            flags.append(entry)
-            continue
-        remaining_pair = round(top.ballots * (current + change) / ballots)
-        if remaining_pair <= 0:
-            entry["status"] = "no remaining decision votes"
-            flags.append(entry)
-            continue
-        needed = (decision.margin + remaining_pair) / (2 * remaining_pair)
-        share = change / (current + change)
-        entry.update({"remaining_decision_votes": remaining_pair, "needed_share": round(needed, 4),
-                      "county_change_side_share": round(share, 4)})
-        if needed > 1:
-            entry["status"] = "cannot change the outcome alone"
-        elif share >= needed:
-            entry["status"] = "would change the outcome at the county's current split"
-        else:
-            entry["status"] = "could change the outcome, but only at a larger share than its current split"
-        flags.append(entry)
+    flags = [{"contest": race.contest,
+              "status": "forecast withheld: legacy county counts lack a timezone-aware publication/category/participation contract; no reviewed county-pool allocation is available"}
+             for race, decision in close]
     return flags, notes
 
 
@@ -510,7 +461,7 @@ def analyze_areas(config: ElectionConfig, races: tuple[RaceAnalysis, ...]) -> Ar
     for race in races:
         if not race.controlling:
             continue
-        contest = latest_county.find(race.contest_id, race.contest)
+        contest = _reviewed_area(latest_county, race)
         if contest is None:
             continue
         names = [choice.name for choice in race.choices]
@@ -533,3 +484,22 @@ def analyze_areas(config: ElectionConfig, races: tuple[RaceAnalysis, ...]) -> Ar
     notes.extend(remaining_notes)
     return AreaAnalysis(source_id, snapshots, reconciliation, breakdown, county_changes,
                         precinct_changes, remaining, notes)
+
+
+def _reviewed_area(snapshot: AreaSnapshot, race: RaceAnalysis) -> AreaContest | None:
+    """Only reviewed source IDs, office aliases and jurisdiction membership join."""
+    identity = race.evidence.get("identity", {})
+    if not identity.get("reviewed"):
+        return None
+    result = AreaContest(race.contest_id, race.contest)
+    for alias in identity.get("area_aliases", []):
+        match = snapshot.contests.get((alias.get("contest_id"), alias.get("name")))
+        if match is None:
+            continue
+        for area, votes in match.areas.items():
+            jurisdiction = snapshot.county_of.get(area, area)
+            if jurisdiction == alias.get("jurisdiction"):
+                if area in result.areas:
+                    raise ElectionReportError("reviewed area aliases would count the same geography twice")
+                result.areas[area] = votes
+    return result if result.areas else None

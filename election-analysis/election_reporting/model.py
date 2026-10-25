@@ -56,6 +56,7 @@ class ContestResult:
     # watcher's normalized CSV does; official exports do not).
     counties: tuple[str, ...] = ()
     result_status: ResultStatus = field(default_factory=ResultStatus)
+    metadata: dict[str, object] = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -65,6 +66,7 @@ class Snapshot:
     timestamp: datetime
     sha256: str
     contests: dict[str, ContestResult]
+    source_metadata: dict[str, object] = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -113,6 +115,8 @@ class ElectionConfig:
     information_time: datetime | None = None
     election_status: ResultStatus = field(default_factory=ResultStatus)
     result_statuses: tuple[ResultStatusRecord, ...] = ()
+    directory: Path | None = None
+    audit_contract: dict[str, object] = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -141,6 +145,10 @@ class DecisionAnalysis:
     margin: int
     risk: RiskAssessment
     margin_history: tuple[tuple[str, int], ...]
+    event: dict[str, object] = field(default_factory=dict)
+    remaining_pool: dict[str, object] = field(default_factory=dict)
+    numerical_evidence: dict[str, object] = field(default_factory=dict)
+    batch_evidence: dict[str, object] = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -166,6 +174,10 @@ class RaceAnalysis:
     forecast_eligible: bool = False
     forecast_reason: str = "Lifecycle and tabulation stage have not been established."
     excluded_history: tuple[str, ...] = ()
+    canonical_id: str = ""
+    data_status: str = "unknown"
+    evidence: dict[str, object] = field(default_factory=dict)
+    scientific_eligibility: dict[str, object] = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -179,3 +191,7 @@ class ElectionAnalysis:
     forecast_target: str = "none"
     information_time: str | None = None
     election_status: ResultStatus = field(default_factory=ResultStatus)
+    official_versions: tuple[dict, ...] = ()
+    generated_at: str = ""
+    source_summary: dict[str, object] = field(default_factory=dict)
+    coverage_summary: dict[str, object] = field(default_factory=dict)

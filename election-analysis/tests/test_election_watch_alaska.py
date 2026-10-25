@@ -172,6 +172,21 @@ class AlaskaConversionTests(unittest.TestCase):
             snapshot = read_snapshot(path, "ketchikan")
         governor_contest = next(c for c in snapshot.contests.values() if c.contest_id == "5")
         self.assertEqual(governor_contest.counties, ("Kenai Peninsula", "Ketchikan Gateway"))
+        metadata = governor_contest.metadata["geography"]
+        self.assertTrue(metadata["approximate"])
+        self.assertFalse(metadata["whole_contest_coverage"])
+        self.assertEqual(metadata["geometry_year"], 2023)
+        self.assertEqual(metadata["census_year"], 2020)
+        self.assertIn("01-670", metadata["split_precincts"])
+        self.assertIn("district absentee", metadata["excluded_categories"])
+
+    def test_duplicate_category_candidate_rows_are_rejected(self):
+        crosswalk = alaska.load_crosswalk(ELECTION / "data")
+        places = alaska.resolve_places(crosswalk, (), False)
+        lines = SAMPLE.decode("utf-8-sig").splitlines()
+        duplicate = ("\n".join(lines+[lines[1]])+"\n").encode()
+        with self.assertRaisesRegex(ElectionReportError, "duplicate"):
+            alaska.convert(duplicate,crosswalk,places)
 
     def test_unknown_precinct_in_a_house_district_is_an_error(self) -> None:
         crosswalk = alaska.load_crosswalk(ELECTION / "data")
@@ -298,13 +313,13 @@ class AlaskaRuleTests(unittest.TestCase):
     def test_rcv_without_a_first_choice_majority_is_flagged(self) -> None:
         race = self.analyze("rcv", [("A", 48), ("B", 45), ("C", 7)])
         [decision] = race.decisions
-        self.assertEqual(decision.kind, "majority_status")
-        self.assertIn("no candidate is above 50%", decision.current_state)
+        self.assertEqual(decision.kind, "raw_ranking_diagnostic")
+        self.assertIn("not an interpreted Round-1 majority", decision.current_state)
         self.assertIn("first-choice leader is not necessarily the winner", race.scope_note)
 
     def test_rcv_with_a_first_choice_majority_is_not_flagged(self) -> None:
         race = self.analyze("rcv", [("A", 55), ("B", 45)])
-        self.assertIn("above 50%", race.decisions[0].current_state)
+        self.assertIn("55.00% of reported nonblank raw first rankings", race.decisions[0].current_state)
         self.assertNotIn("not necessarily the winner", race.scope_note)
 
     def test_unknown_default_rule_is_rejected(self) -> None:

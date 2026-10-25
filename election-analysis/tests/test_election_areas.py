@@ -98,7 +98,7 @@ def county_rows(counts: dict[str, tuple[int, int, int]]) -> list[list[object]]:
 
 def statewide(ballots: int, alpha: int, beta: int) -> bytes:
     """An All Results workbook; the statewide sheet words the office differently."""
-    office = "Congressional District 3 - U.S. Representative"
+    office = GOV[0]
     return workbook({"Summary Results": [
         ["Office Name", "Contest ID", "Ballot Name", "Choice ID", "Party", "Total"],
         [office, GOV[1], "Ballots Cast", "", "", ballots],
@@ -239,9 +239,20 @@ class AnalysisTests(unittest.TestCase):
         election.areas("2026-11-05-1700", later_counties, later_precincts, (195, 100, 95))
         return Path(tmp.name)
 
+    def reviewed(self, path):
+        from dataclasses import replace
+        config = load_config(path)
+        return replace(config, audit_contract={"schema_version": 1, "election_id": "synthetic:areas", "identities": [
+            {"source_id": "washington", "contest_id": GOV[1], "source_contest_name": GOV[0],
+             "canonical_id": "synthetic:cd3", "jurisdiction_id": "synthetic-district", "office": GOV[0],
+             "authority_url": "https://example.test/reviewed-crosswalk", "reviewed": True,
+             "jurisdictions": ["Clark County", "Cowlitz County"], "coverage_complete": True, "role": "controlling",
+             "area_aliases": [{"contest_id": GOV[1], "name": GOV[0], "jurisdiction": county}
+                              for county in ["Clark County", "Cowlitz County"]]}]})
+
     def test_breakdown_changes_and_report(self) -> None:
         root = self.election()
-        analysis = analyze_election(load_config(root / "election.toml"))
+        analysis = analyze_election(self.reviewed(root / "election.toml"))
         result = analysis.areas
         self.assertEqual(result.reconciliation["county_vs_statewide"]["mismatches"], [])
         [race] = result.breakdown
@@ -263,15 +274,10 @@ class AnalysisTests(unittest.TestCase):
             '[[remaining_ballots]]\ncounty = "Clark County"\nballots = 40\nas_of = 2026-11-05\nbasis = "test"\n'
             '[[remaining_ballots]]\ncounty = "Cowlitz County"\nballots = 10\nas_of = 2026-11-04\nbasis = "test"\n'
         )
-        analysis = analyze_election(load_config(self.election(remaining) / "election.toml"))
+        analysis = analyze_election(self.reviewed(self.election(remaining) / "election.toml"))
         [flag] = analysis.areas.remaining
-        self.assertEqual(flag["county"], "Clark County")  # the most remaining ballots
-        self.assertEqual((flag["current_side"], flag["change_side"], flag["margin"]), ("Alpha", "Beta", 5))
-        # Clark: 130 Alpha+Beta of 130 ballots, so all 40 remaining are decision votes;
-        # Beta needs (5 + 40) / 80 = 56.25%, against 60/130 = 46.2% now.
-        self.assertEqual(flag["remaining_decision_votes"], 40)
-        self.assertEqual(flag["needed_share"], 0.5625)
-        self.assertEqual(flag["status"], "could change the outcome, but only at a larger share than its current split")
+        self.assertIn("forecast withheld", flag["status"])
+        self.assertNotIn("needed_share", flag)
         self.assertTrue(any("Cowlitz County" in note for note in analysis.areas.notes))  # stale count
 
     def test_area_config_validation(self) -> None:

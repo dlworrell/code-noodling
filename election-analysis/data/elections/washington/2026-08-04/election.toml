@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Catalyst-File-ID: urn:uuid:1aadd8b5-f4aa-44fa-9cbb-97fa8077be45
 
-schema_version = 2
+schema_version = 3
 
 [election]
 title = "2026 Washington Primary Historical Results — EA-01 Audit Correction"
@@ -75,3 +75,167 @@ path = "areas/washington/county"
 source = "washington"
 level = "precinct"
 path = "areas/washington/precinct"
+
+
+# EA-02/03/04: reviewed identities and immutable source-version evidence.
+[audit]
+schema_version = 1
+election_id = "wa:2026-08-04:primary"
+election_type = "primary"
+max_source_age_hours = 48
+
+[[audit.source_versions]]
+source_id = "washington"
+snapshot_sha256 = "7a1112037e8edc7d9e1acb97dc63807a1c78c06b8dff7167d169a46d41d06c24"
+coverage_complete = true
+coverage_findings = []
+coverage_basis = "All rows of this archived export; not proof of complete ballot counting or all Washington local contests."
+
+[[audit.source_versions]]
+source_id = "washington"
+snapshot_sha256 = "18a0ff493c6b81339b615ff562961c6377b2aae83a45556c6fe0e0cf0266df03"
+coverage_complete = true
+coverage_findings = []
+coverage_basis = "All rows of this archived export; not proof of complete ballot counting or all Washington local contests."
+
+[[audit.source_versions]]
+source_id = "washington"
+snapshot_sha256 = "bdd7591803dc9ff69614d09a342ff27be3faa2281b4757e8034a0c1503edf3c1"
+coverage_complete = true
+coverage_findings = []
+coverage_basis = "All rows of this archived export; not proof of complete ballot counting or all Washington local contests."
+source_published_at = "2026-09-11T17:37:08Z"
+timestamp_kind = "server_last_modified"
+publication_id = "wa-primary-20260911-workbook-pair"
+authority_url = "https://results.votewa.gov/cdn/results/01000000-f977-1a83-1ed4-08ddd69e9e69/All%20Results_1bc1cf3c-e598-43bf-a569-3f7539add8dd.xlsx"
+
+[[audit.source_versions]]
+source_id = "king-county"
+snapshot_sha256 = "9a1572cc9655d088f2d36656867755f5268d8464d045f5f45d32c21d1406ec35"
+coverage_complete = true
+coverage_findings = []
+coverage_basis = "All rows of this archived export; not proof of complete ballot counting or all Washington local contests."
+
+[[audit.area_versions]]
+source_id = "washington"
+snapshot_sha256 = "495d4c377ba429ec449c045005fb1e2bbb83c85216761b83143fc23802c0ab8c"
+publication_id = "wa-primary-20260911-workbook-pair"
+source_published_at = "2026-09-11T17:37:51Z"
+
+[[audit.identities]]
+source_contest_name = "State Senator - Legislative District 42"
+source_id = "washington"
+contest_id = "169896"
+canonical_id = "wa:2026-primary:ld42-senator"
+jurisdiction_id = "Legislative District 42"
+office = "State Senator"
+jurisdictions = ["Whatcom County"]
+coverage_complete = true
+role = "controlling"
+authority_url = "https://results.vote.wa.gov/results/20260804/export.html"
+area_aliases = [{ contest_id = "169896", name = "Legislative District 42 - State Senator", jurisdiction = "Whatcom County" }]
+
+[[audit.identities]]
+source_contest_name = "Snoqualmie Pass Fire & Rescue Intent to Continue Voter Authorized Benefit Charge"
+source_id = "washington"
+contest_id = "7166"
+canonical_id = "wa:2026-primary:snoqualmie-pass-benefit-charge"
+jurisdiction_id = "Snoqualmie Pass Fire and Rescue"
+office = "Benefit charge"
+jurisdictions = ["King County", "Kittitas County"]
+coverage_complete = true
+role = "controlling"
+authority_url = "https://results.vote.wa.gov/results/20260804/export.html"
+area_aliases = [{ contest_id = "7166", name = "Snoqualmie Pass Fire & Rescue Intent to Continue Voter Authorized Benefit Charge", jurisdiction = "King County" }, { contest_id = "7166", name = "Snoqualmie Pass Fire & Rescue Intent to Continue Voter Authorized Benefit Charge", jurisdiction = "Kittitas County" }]
+
+[[audit.identities]]
+source_contest_name = "Snoqualmie Pass Fire and Rescue Proposition No. 1 (Vote for 1)"
+source_id = "king-county"
+contest_id = "148"
+canonical_id = "wa:2026-primary:snoqualmie-pass-benefit-charge"
+jurisdiction_id = "Snoqualmie Pass Fire and Rescue"
+office = "Benefit charge"
+jurisdictions = ["King County", "Kittitas County"]
+coverage_complete = false
+role = "partial"
+authority_url = "https://results.vote.wa.gov/results/20260804/export.html"
+area_aliases = [{ contest_id = "7166", name = "Snoqualmie Pass Fire & Rescue Intent to Continue Voter Authorized Benefit Charge", jurisdiction = "King County" }]
+
+[[audit.identities]]
+source_contest_name = "South Beach Regional Fire Authority - Bonds Issue"
+source_id = "washington"
+contest_id = "7154"
+canonical_id = "wa:2026-primary:south-beach-bonds"
+jurisdiction_id = "South Beach Regional Fire Authority"
+office = "Bonds issue"
+jurisdictions = ["Grays Harbor County", "Pacific County"]
+coverage_complete = true
+role = "controlling"
+authority_url = "https://results.vote.wa.gov/results/20260804/export.html"
+area_aliases = [{ contest_id = "23", name = "South Beach Regional Fire Authority - Bonds Issue", jurisdiction = "Grays Harbor County" }, { contest_id = "91", name = "South Beach Regional Fire Authority - Bonds Issue", jurisdiction = "Pacific County" }]
+
+[[audit.identities]]
+source_contest_name = "Assessor (Vote for 1)"
+source_id = "king-county"
+contest_id = "17"
+canonical_id = "wa:2026-primary:king-assessor"
+jurisdiction_id = "King County"
+office = "Assessor"
+jurisdictions = ["King County"]
+coverage_complete = true
+role = "controlling"
+authority_url = "https://results.vote.wa.gov/results/20260804/export.html"
+area_aliases = [{ contest_id = "17", name = "Assessor", jurisdiction = "King County" }]
+
+[[audit.identities]]
+source_contest_name = "Skykomish School District No. 404 Proposition No. 1 (Vote for 1)"
+source_id = "king-county"
+contest_id = "152"
+canonical_id = "wa:2026-primary:skykomish-prop1"
+jurisdiction_id = "Skykomish School District 404"
+office = "Proposition 1"
+jurisdictions = ["King County"]
+coverage_complete = true
+role = "controlling"
+authority_url = "https://results.vote.wa.gov/results/20260804/export.html"
+area_aliases = [{ contest_id = "152", name = "Skykomish School District No. 404 - Proposition No. 1", jurisdiction = "King County" }]
+
+[[audit.rules]]
+canonical_id = "wa:2026-primary:ld42-senator"
+rule = "top_two"
+positions = 2
+election_type = "primary"
+tie_policy = "unresolved"
+authority_url = "https://www.sos.wa.gov/elections/data-research/election-data-and-maps/election-results-and-voters-pamphlets/2026-primary-election"
+
+[[audit.rules]]
+canonical_id = "wa:2026-primary:king-assessor"
+rule = "top_two"
+positions = 2
+election_type = "primary"
+tie_policy = "unresolved"
+authority_url = "https://www.sos.wa.gov/elections/data-research/election-data-and-maps/election-results-and-voters-pamphlets/2026-primary-election"
+
+[[audit.rules]]
+canonical_id = "wa:2026-primary:snoqualmie-pass-benefit-charge"
+rule = "unsupported_measure"
+positions = 0
+tie_policy = "unresolved"
+authority_url = "https://results.vote.wa.gov/results/20260804/export.html"
+validation_requirements = ["Passage threshold and any turnout/validation requirements require an office-specific authority."]
+
+[[audit.rules]]
+canonical_id = "wa:2026-primary:south-beach-bonds"
+rule = "unsupported_measure"
+positions = 0
+tie_policy = "unresolved"
+authority_url = "https://results.vote.wa.gov/results/20260804/export.html"
+validation_requirements = ["Passage threshold and any turnout/validation requirements require an office-specific authority."]
+
+[[audit.rules]]
+canonical_id = "wa:2026-primary:skykomish-prop1"
+rule = "unsupported_measure"
+positions = 0
+tie_policy = "unresolved"
+authority_url = "https://results.vote.wa.gov/results/20260804/export.html"
+validation_requirements = ["Passage threshold and any turnout/validation requirements require an office-specific authority."]

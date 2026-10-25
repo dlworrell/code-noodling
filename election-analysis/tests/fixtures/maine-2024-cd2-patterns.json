@@ -1,0 +1,904 @@
+{
+  "ballots": 402936,
+  "duplicate_keys": 0,
+  "files": [
+    {
+      "ballots": 99999,
+      "file": "Nov24_CVR_1.xlsx"
+    },
+    {
+      "ballots": 99999,
+      "file": "Nov24_CVR_2.xlsx"
+    },
+    {
+      "ballots": 98669,
+      "file": "Nov24_CVR_3.xlsx"
+    },
+    {
+      "ballots": 99999,
+      "file": "Nov24_CVR_4.xlsx"
+    },
+    {
+      "ballots": 2786,
+      "file": "maine-rcv-uocava.xlsx"
+    },
+    {
+      "ballots": 1484,
+      "file": "maine-rcv-handcount.xlsx"
+    }
+  ],
+  "first_ranks": {
+    "Golden, Jared Forrest": 196349,
+    "Theriault, Austin": 194064,
+    "Write-in": 2021,
+    "overvote": 251,
+    "undervote": 10251
+  },
+  "machine_ballots": 398666,
+  "patterns": [
+    {
+      "count": 135922,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "undervote",
+        "undervote"
+      ]
+    },
+    {
+      "count": 27699,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "Theriault, Austin",
+        "undervote"
+      ]
+    },
+    {
+      "count": 81358,
+      "ranks": [
+        "Theriault, Austin",
+        "Theriault, Austin",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 17942,
+      "ranks": [
+        "Theriault, Austin",
+        "Golden, Jared Forrest",
+        "undervote"
+      ]
+    },
+    {
+      "count": 20684,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "Golden, Jared Forrest",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 404,
+      "ranks": [
+        "Theriault, Austin",
+        "Golden, Jared Forrest",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 86123,
+      "ranks": [
+        "Theriault, Austin",
+        "undervote",
+        "undervote"
+      ]
+    },
+    {
+      "count": 3118,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "Write-in",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 1,
+      "ranks": [
+        "undervote",
+        "Golden, Jared Forrest",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 1899,
+      "ranks": [
+        "Theriault, Austin",
+        "Write-in",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 9473,
+      "ranks": [
+        "undervote",
+        "undervote",
+        "undervote"
+      ]
+    },
+    {
+      "count": 953,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "Write-in",
+        "undervote"
+      ]
+    },
+    {
+      "count": 224,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "Theriault, Austin",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 3732,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "undervote",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 469,
+      "ranks": [
+        "Theriault, Austin",
+        "Theriault, Austin",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 2171,
+      "ranks": [
+        "Theriault, Austin",
+        "Theriault, Austin",
+        "undervote"
+      ]
+    },
+    {
+      "count": 1686,
+      "ranks": [
+        "Theriault, Austin",
+        "undervote",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 26,
+      "ranks": [
+        "Theriault, Austin",
+        "Write-in",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 1818,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "Golden, Jared Forrest",
+        "undervote"
+      ]
+    },
+    {
+      "count": 1247,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "Theriault, Austin",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 139,
+      "ranks": [
+        "Write-in",
+        "Theriault, Austin",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 42,
+      "ranks": [
+        "Theriault, Austin",
+        "undervote",
+        "overvote"
+      ]
+    },
+    {
+      "count": 988,
+      "ranks": [
+        "Theriault, Austin",
+        "Golden, Jared Forrest",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 818,
+      "ranks": [
+        "Write-in",
+        "undervote",
+        "undervote"
+      ]
+    },
+    {
+      "count": 377,
+      "ranks": [
+        "Write-in",
+        "Write-in",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 416,
+      "ranks": [
+        "Write-in",
+        "Golden, Jared Forrest",
+        "undervote"
+      ]
+    },
+    {
+      "count": 313,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "Golden, Jared Forrest",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 34,
+      "ranks": [
+        "Theriault, Austin",
+        "undervote",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 52,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "undervote",
+        "overvote"
+      ]
+    },
+    {
+      "count": 507,
+      "ranks": [
+        "Theriault, Austin",
+        "Write-in",
+        "undervote"
+      ]
+    },
+    {
+      "count": 200,
+      "ranks": [
+        "Theriault, Austin",
+        "Write-in",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 32,
+      "ranks": [
+        "Write-in",
+        "Theriault, Austin",
+        "undervote"
+      ]
+    },
+    {
+      "count": 120,
+      "ranks": [
+        "overvote",
+        "undervote",
+        "undervote"
+      ]
+    },
+    {
+      "count": 288,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "Theriault, Austin",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 16,
+      "ranks": [
+        "overvote",
+        "overvote",
+        "overvote"
+      ]
+    },
+    {
+      "count": 94,
+      "ranks": [
+        "undervote",
+        "Golden, Jared Forrest",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 34,
+      "ranks": [
+        "Theriault, Austin",
+        "Theriault, Austin",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 87,
+      "ranks": [
+        "undervote",
+        "undervote",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 19,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "Write-in",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 4,
+      "ranks": [
+        "Theriault, Austin",
+        "Write-in",
+        "overvote"
+      ]
+    },
+    {
+      "count": 62,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "undervote",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 126,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "Write-in",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 4,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "overvote",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 79,
+      "ranks": [
+        "undervote",
+        "Golden, Jared Forrest",
+        "undervote"
+      ]
+    },
+    {
+      "count": 130,
+      "ranks": [
+        "Theriault, Austin",
+        "Golden, Jared Forrest",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 177,
+      "ranks": [
+        "Write-in",
+        "Golden, Jared Forrest",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 189,
+      "ranks": [
+        "undervote",
+        "undervote",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 80,
+      "ranks": [
+        "undervote",
+        "Theriault, Austin",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 16,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "overvote",
+        "undervote"
+      ]
+    },
+    {
+      "count": 7,
+      "ranks": [
+        "undervote",
+        "Theriault, Austin",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 8,
+      "ranks": [
+        "Write-in",
+        "Golden, Jared Forrest",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 32,
+      "ranks": [
+        "overvote",
+        "Golden, Jared Forrest",
+        "undervote"
+      ]
+    },
+    {
+      "count": 22,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "undervote",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 26,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "Golden, Jared Forrest",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 6,
+      "ranks": [
+        "Write-in",
+        "undervote",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 16,
+      "ranks": [
+        "Theriault, Austin",
+        "undervote",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 6,
+      "ranks": [
+        "Theriault, Austin",
+        "overvote",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 12,
+      "ranks": [
+        "Write-in",
+        "undervote",
+        "overvote"
+      ]
+    },
+    {
+      "count": 8,
+      "ranks": [
+        "Write-in",
+        "Write-in",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 4,
+      "ranks": [
+        "Write-in",
+        "Golden, Jared Forrest",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 73,
+      "ranks": [
+        "undervote",
+        "undervote",
+        "overvote"
+      ]
+    },
+    {
+      "count": 2,
+      "ranks": [
+        "overvote",
+        "Write-in",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 12,
+      "ranks": [
+        "undervote",
+        "overvote",
+        "undervote"
+      ]
+    },
+    {
+      "count": 105,
+      "ranks": [
+        "undervote",
+        "Theriault, Austin",
+        "undervote"
+      ]
+    },
+    {
+      "count": 12,
+      "ranks": [
+        "Theriault, Austin",
+        "overvote",
+        "undervote"
+      ]
+    },
+    {
+      "count": 22,
+      "ranks": [
+        "overvote",
+        "Theriault, Austin",
+        "undervote"
+      ]
+    },
+    {
+      "count": 5,
+      "ranks": [
+        "Write-in",
+        "Write-in",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 11,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "Write-in",
+        "overvote"
+      ]
+    },
+    {
+      "count": 4,
+      "ranks": [
+        "overvote",
+        "Write-in",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 8,
+      "ranks": [
+        "Write-in",
+        "Write-in",
+        "undervote"
+      ]
+    },
+    {
+      "count": 2,
+      "ranks": [
+        "undervote",
+        "Write-in",
+        "undervote"
+      ]
+    },
+    {
+      "count": 33,
+      "ranks": [
+        "undervote",
+        "undervote",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 11,
+      "ranks": [
+        "overvote",
+        "undervote",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 6,
+      "ranks": [
+        "overvote",
+        "undervote",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 13,
+      "ranks": [
+        "overvote",
+        "Theriault, Austin",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 5,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "Theriault, Austin",
+        "overvote"
+      ]
+    },
+    {
+      "count": 3,
+      "ranks": [
+        "Theriault, Austin",
+        "Theriault, Austin",
+        "overvote"
+      ]
+    },
+    {
+      "count": 1,
+      "ranks": [
+        "Write-in",
+        "Theriault, Austin",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 5,
+      "ranks": [
+        "overvote",
+        "Golden, Jared Forrest",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 2,
+      "ranks": [
+        "overvote",
+        "Theriault, Austin",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 5,
+      "ranks": [
+        "overvote",
+        "Write-in",
+        "undervote"
+      ]
+    },
+    {
+      "count": 5,
+      "ranks": [
+        "Theriault, Austin",
+        "overvote",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 3,
+      "ranks": [
+        "overvote",
+        "Theriault, Austin",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 8,
+      "ranks": [
+        "undervote",
+        "Golden, Jared Forrest",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 3,
+      "ranks": [
+        "Theriault, Austin",
+        "Golden, Jared Forrest",
+        "overvote"
+      ]
+    },
+    {
+      "count": 2,
+      "ranks": [
+        "undervote",
+        "Theriault, Austin",
+        "overvote"
+      ]
+    },
+    {
+      "count": 1,
+      "ranks": [
+        "undervote",
+        "Write-in",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 2,
+      "ranks": [
+        "Theriault, Austin",
+        "overvote",
+        "overvote"
+      ]
+    },
+    {
+      "count": 4,
+      "ranks": [
+        "Write-in",
+        "Theriault, Austin",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 2,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "overvote",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 3,
+      "ranks": [
+        "Write-in",
+        "overvote",
+        "undervote"
+      ]
+    },
+    {
+      "count": 3,
+      "ranks": [
+        "overvote",
+        "Golden, Jared Forrest",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 1,
+      "ranks": [
+        "undervote",
+        "Write-in",
+        "Golden, Jared Forrest"
+      ]
+    },
+    {
+      "count": 1,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "overvote",
+        "overvote"
+      ]
+    },
+    {
+      "count": 1,
+      "ranks": [
+        "overvote",
+        "undervote",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 1,
+      "ranks": [
+        "Write-in",
+        "Golden, Jared Forrest",
+        "overvote"
+      ]
+    },
+    {
+      "count": 2,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "overvote",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 1,
+      "ranks": [
+        "overvote",
+        "overvote",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 1,
+      "ranks": [
+        "undervote",
+        "Write-in",
+        "overvote"
+      ]
+    },
+    {
+      "count": 1,
+      "ranks": [
+        "undervote",
+        "Theriault, Austin",
+        "Write-in"
+      ]
+    },
+    {
+      "count": 1,
+      "ranks": [
+        "overvote",
+        "overvote",
+        "undervote"
+      ]
+    },
+    {
+      "count": 1,
+      "ranks": [
+        "overvote",
+        "Write-in",
+        "overvote"
+      ]
+    },
+    {
+      "count": 3,
+      "ranks": [
+        "Golden, Jared Forrest",
+        "Golden, Jared Forrest",
+        "overvote"
+      ]
+    },
+    {
+      "count": 1,
+      "ranks": [
+        "overvote",
+        "Golden, Jared Forrest",
+        "overvote"
+      ]
+    },
+    {
+      "count": 2,
+      "ranks": [
+        "undervote",
+        "Golden, Jared Forrest",
+        "overvote"
+      ]
+    },
+    {
+      "count": 2,
+      "ranks": [
+        "Write-in",
+        "undervote",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 1,
+      "ranks": [
+        "overvote",
+        "Golden, Jared Forrest",
+        "Theriault, Austin"
+      ]
+    },
+    {
+      "count": 1,
+      "ranks": [
+        "overvote",
+        "Write-in",
+        "Golden, Jared Forrest"
+      ]
+    }
+  ]
+}

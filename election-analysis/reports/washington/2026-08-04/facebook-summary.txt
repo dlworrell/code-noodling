@@ -1,18 +1,18 @@
 🗳️ HISTORICAL ELECTION RESULTS — FORECASTS WITHHELD
 
 2026 Washington Primary Historical Results — EA-01 Audit Correction
-Report mode: historical. Forecast target: none. Information time: 2026-10-25T04:27:06+00:00. Election lifecycle: certified. Experimental and uncalibrated. Lifecycle/stage eligibility is only one prerequisite; it does not validate source freshness, coverage, contest identity or predictive accuracy.
+Report mode: historical. Forecast target: none. Information time: 2026-10-25T04:27:06+00:00. Election lifecycle: certified. Experimental and uncalibrated. A versioned evidence gate checks lifecycle, source freshness, coverage, provenance, contest identity, rules and remaining-pool basis. No held-out calibration has validated predictive accuracy.
 Latest input label: 2026-10-14T11:00; individual sources may be older.
 Lifecycle: certified; tabulation stage: unknown. Authority: https://www.sos.wa.gov/about-office/news/2026/secretary-state-certifies-candidates-and-measures-november-general-election; evidence as of 2026-10-25T04:27:06+00:00.
 
-Reviewed 244 reported contests. Unestimated probabilities are not numerical zero; no numerical risk ranking is published.
+Reviewed 298 reported contests. Unestimated probabilities are not numerical zero; no numerical risk ranking is published.
 
 DESCRIPTIVE MARGINS WITH DATED STATUS EVIDENCE
 • State Senator - Legislative District 42: Michael Alvarez Shepard leads Eamonn Collins by 4 votes.
 Lifecycle: recount_completed; tabulation stage: plurality_count. Result version: wa-2026-primary-summary-20260911; round: not applicable. Authority: https://www.sos.wa.gov/elections/data-research/election-data-and-maps/election-results-and-voters-pamphlets/2026-primary-election; evidence as of 2026-10-25T04:27:06+00:00.
 
 WITHHOLDING REASONS
-• 161 contest(s): Historical report: outstanding-ballot forecasts are withheld.
+• 1 contest(s): lifecycle_and_stage; source_time; provenance; remaining_pool; Historical report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 This audit correction supersedes earlier prospective summaries. Original inputs and the audited publication remain in repository history (audit #45).
 

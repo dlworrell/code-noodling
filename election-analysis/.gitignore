@@ -15,3 +15,8 @@
 !reports/**/county-breakdown.csv
 # Engineering records (provenance baseline, and later the scope manifest).
 !docs/engineering/*.json
+
+# Hash-bound audit regressions and their source/reference manifests.
+!tests/fixtures/**/*.json
+!tests/fixtures/**/*.csv
+!tests/fixtures/*.json

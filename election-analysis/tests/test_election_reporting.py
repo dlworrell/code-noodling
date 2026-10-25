@@ -46,15 +46,48 @@ def counting_config(path: Path):
     Lifecycle migration is tested separately against the actual schema-1 loader.
     """
     config = load_config(path)
-    stamp = datetime.fromisoformat("2026-08-06T23:00:00+00:00")
+    snapshots = {s.source_id: [read_snapshot(f, s.source_id) for f in sorted(s.path.glob('*.csv'))]
+                 for s in config.sources}
+    stamp = max(s.timestamp for rows in snapshots.values() for s in rows).replace(hour=23, minute=0, tzinfo=__import__('datetime').timezone.utc)
     status = ResultStatus("counting", "plurality_count", "https://example.test/counting",
                           stamp, "synthetic-original-count-v1")
     records = tuple(
         ResultStatusRecord(source.source_id, read_snapshot(file, source.source_id).sha256, "*", status)
         for source in config.sources for file in sorted(source.path.glob("*.csv"))
     )
+    contract = {"schema_version": 1, "election_id": "synthetic:regression", "election_type": "primary",
+                "max_source_age_hours": 48, "identities": [], "source_versions": [], "rules": [], "remaining_pools": []}
+    for source in config.sources:
+        rows = snapshots[source.source_id]
+        for snap in {s.sha256:s for s in rows}.values():
+            contract['source_versions'].append(dict(source_id=source.source_id,snapshot_sha256=snap.sha256,
+                source_published_at=snap.timestamp.replace(tzinfo=stamp.tzinfo).isoformat(),
+                source_url="https://example.test/source",retrieved_at=stamp.isoformat(),coverage_complete=True,coverage_findings=[],delta_kind="new_ballots",publication_id=snap.path.name))
+        latest = rows[-1]
+        maximum = max(c.ballots for c in latest.contests.values())
+        for contest in latest.contests.values():
+            canonical = 'synthetic:'+source.source_id+':'+contest.contest_id
+            partial = source.scope == 'county' and contest.contest_id in {'83','117'}
+            contract['identities'].append(dict(source_id=source.source_id,contest_id=contest.contest_id,
+                canonical_id=canonical,jurisdiction_id=source.jurisdiction,office=contest.name,source_contest_name=contest.name,
+                jurisdictions=[source.jurisdiction],role='partial' if partial else 'controlling',
+                coverage_complete=not partial,authority_url='https://example.test/synthetic-crosswalk'))
+            declared = config.rule_overrides.get(source.source_id+':'+contest.contest_id,
+                'winner' if contest.contest_id=='9' else 'wa_judicial' if contest.contest_id=='117' else 'top_two')
+            contract['rules'].append(dict(canonical_id=canonical,rule=declared,positions=2 if declared=="top_two" else 4 if declared=="top_four" else 1,
+                authority_url='https://example.test/synthetic-rule',tie_policy='unresolved'))
+            if source.expected_final_ballots:
+                ballots = round(contest.ballots*(source.expected_final_ballots/maximum-1)) if maximum else 0
+                ranked = sorted((c for c in contest.choices if c.name.lower() not in config.write_in_labels),key=lambda c:-c.votes)
+                selected = ranked[:2] if declared=='winner' else ranked[1:3]
+                pair_fraction = sum(c.votes for c in selected)/contest.ballots if contest.ballots else 0
+                contract['remaining_pools'].append(dict(canonical_id=canonical,kind='scenario',
+                    low=max(0,ballots),base=max(0,ballots),high=max(0,ballots),
+                    as_of=stamp.isoformat(),jurisdictions=[source.jurisdiction],coverage_complete=True,
+                    basis='Explicit synthetic fixed pool preserving the arithmetic regression oracle.',
+                    contest_fraction=1,pair_fraction=pair_fraction,participation_basis="Explicit synthetic participation for the regression oracle, not an inferred future-ballot mix."))
     return replace(config, report_mode="current", forecast_target="outstanding_ballots",
-                   information_time=stamp, election_status=status, result_statuses=records)
+                   information_time=stamp, election_status=status, result_statuses=records,audit_contract=contract)
 
 
 def write_summary_xlsx(
@@ -312,7 +345,7 @@ class ElectionReportingTests(unittest.TestCase):
             self.assertTrue(decision.risk.lead_changed)
             self.assertEqual(decision.risk.level, "high")
             self.assertGreater(decision.risk.change_probability or 0.0, 0.25)
-            self.assertEqual(decision.risk.reliability_grade, "Low")
+            self.assertEqual(decision.risk.reliability_grade, "Insufficient")
 
     def test_county_slice_is_not_marked_controlling(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -447,15 +480,12 @@ class ElectionReportingTests(unittest.TestCase):
             )
             analysis = analyze_election(counting_config(config_path))
             risk = analysis.races[0].decisions[0].risk
-            self.assertAlmostEqual(
-                risk.change_probability or 0.0,
-                0.45405,
-                places=5,
-            )
+            self.assertIsNone(risk.change_probability)  # an unresolved tie is not adjudicated by sort order
+            self.assertEqual(analysis.races[0].data_status, "unresolved_tie")
             self.assertFalse(risk.lead_changed)
-            self.assertEqual(analysis.races[0].decisions[0].current_state, "Yes and No are tied.")
+            self.assertEqual(analysis.races[0].decisions[0].current_state, "Yes and No are tied; the outcome is unresolved.")
             social_report = facebook_summary(analysis)
-            self.assertIn("Yes and No are tied at this boundary.", social_report)
+            self.assertIn("FORECASTS WITHHELD", social_report)
             self.assertNotIn("leads No by 0 votes", social_report)
 
     def test_edt_publication_writes_human_and_quality_reports(self) -> None:
@@ -497,12 +527,12 @@ class ElectionReportingTests(unittest.TestCase):
             self.assertGreater(risk["reliability_score"], 0)
             markdown = (output / "election-analysis.md").read_text(encoding="utf-8")
             self.assertIn("## At-a-glance decisions", markdown)
-            self.assertIn("| Change probability | Reliability |", markdown)
+            self.assertIn("| Experimental conditional probability (uncalibrated) | Unvalidated rubric |", markdown)
             facebook = (output / "facebook-summary.txt").read_text(encoding="utf-8")
             self.assertIn("ELECTION RESULTS: WHAT COULD STILL CHANGE", facebook)
             self.assertIn("Local Proposition 1", facebook)
-            self.assertIn("Modeled change probability:", facebook)
-            self.assertIn("Reliability:", facebook)
+            self.assertIn("Experimental, uncalibrated conditional probability:", facebook)
+            self.assertIn("Unvalidated evidence rubric:", facebook)
             self.assertIn("not an official result, a race call", facebook)
             self.assertIn("Full race-by-race report and methodology:", facebook)
             self.assertNotIn("| Change probability |", facebook)
@@ -616,9 +646,11 @@ class ResultStageTests(unittest.TestCase):
         latest.write_text(result_rows("Maine CD2", "9", 402936,
             [("Golden", 196388), ("Theriault", 194130), ("Write-in", 421)]), encoding="utf-8")
         config = counting_config(self.path)
+        config.audit_contract["rules"] = [dict(r, rule="rcv") for r in config.audit_contract["rules"]]
+        (self.root / "inputs" / "2026-08-05.csv").unlink()
         config = replace(config, default_rule="rcv", result_statuses=tuple(
             replace(record, status=replace(record.status, tabulation_stage="raw_first_rankings"))
-            for record in config.result_statuses
+            for record in config.result_statuses if record.snapshot_sha256 == __import__("hashlib").sha256(latest.read_bytes()).hexdigest()
         ))
         analysis = self.assert_withheld(config)
         race = analysis.races[0]
@@ -664,7 +696,7 @@ class ResultStageTests(unittest.TestCase):
         output = self.root / "reports"
         publish(analysis, output)
         payload = json.loads((output / "analysis.json").read_text())
-        self.assertEqual(payload["schema_version"], 3)
+        self.assertEqual(payload["schema_version"], 4)
         self.assertEqual(payload["report_mode"], "historical")
         self.assertIsNone(payload["races"][0]["decisions"][0]["risk"]["change_probability"])
         for filename in ("election-analysis.md", "election-analysis.html", "facebook-summary.txt"):
@@ -681,8 +713,7 @@ class ResultStageTests(unittest.TestCase):
     def test_actual_ld42_completed_recount_keeps_four_vote_margin(self) -> None:
         path = Path(__file__).resolve().parents[1] / "data/elections/washington/2026-08-04/election.toml"
         analysis = self.assert_withheld(load_config(path))
-        self.assertEqual(len(analysis.races), 244)
-        self.assertEqual(sum(len(race.decisions) for race in analysis.races), 166)
+        self.assertEqual(len(analysis.races), 298)  # 147 state + 151 county representations; no name-based collapse
         race = next(race for race in analysis.races if race.contest_id == "169896")
         self.assertEqual(race.result_status.lifecycle, "recount_completed")
         self.assertEqual(race.decisions[0].margin, 4)

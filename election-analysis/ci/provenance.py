@@ -55,6 +55,8 @@ AUTOMATION = [
     ("data/elections/*/*/SOURCES.json", "provenance-record"),
     ("data/crosswalks/*/*.csv", "derived-data"),
     ("docs/engineering/*.json", "engineering-record"),
+    ("tests/fixtures/*.json", "regression-evidence"),
+    ("tests/fixtures/replay-2024/*", "frozen-source-regression"),
 ]
 
 # LicenseRef texts drafted for publishers whose snapshots arrive from the

@@ -56,9 +56,13 @@ class ElectionStore:
         self.path = directory / SOURCES_FILE
         self.records: list[SnapshotRecord] = []
         self.election: dict = {}
+        self.observations: list[dict] = []
+        self.coverage: dict = {}
         if self.path.exists():
             data = json.loads(self.path.read_text(encoding="utf-8"))
             self.election = data.get("election", {})
+            self.observations = data.get("observations", [])
+            self.coverage = data.get("coverage", {})
             self.records = [SnapshotRecord(**item) for item in data.get("snapshots", [])]
 
     def latest(self, place: str) -> SnapshotRecord | None:
@@ -83,7 +87,9 @@ class ElectionStore:
     def save(self) -> None:
         self.directory.mkdir(parents=True, exist_ok=True)
         payload = {
-            "schema_version": 1,
+            "schema_version": 2,
+            "observations": self.observations,
+            "coverage": self.coverage,
             "election": self.election,
             "snapshots": [
                 asdict(record)

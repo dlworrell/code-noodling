@@ -1,0 +1,412 @@
+{
+  "artifacts": [
+    {
+      "path": "election-analysis/tests/fixtures/maine-2024-cd2-manifest.json",
+      "sha256": "f62c6740dcf7d7a012fc26f0b2d7637015a0905a3c459138344b23e2a5728b76"
+    },
+    {
+      "path": "election-analysis/tests/fixtures/maine-2024-cd2-patterns.json",
+      "sha256": "9371d0335d95c3efa1d4c9001389ac0abb03608040062d5be9cb6a98ef0dfc35"
+    },
+    {
+      "path": "election-analysis/tests/fixtures/official-result-versions.json",
+      "sha256": "aa66d6eabb85939abd0914feeb9d9fd95e9b17515fb0c23d345b36d4ee778303"
+    },
+    {
+      "path": "election-analysis/tests/fixtures/beta-binomial-oracles.json",
+      "sha256": "633792a6a744b1a1469c9faa65172988eacb94b2b158de5d98dfa7b98d4c7572"
+    },
+    {
+      "path": "election-analysis/tests/fixtures/replay-2024/manifest.json",
+      "sha256": "8374b963dd30148a921151ae36d72f9407508fe501742170d009a6135e0d3704"
+    },
+    {
+      "path": "election-analysis/tests/fixtures/validation-protocol-v1.json",
+      "sha256": "cde412fca9f6215375e636c0ad4f490963179f8ffd2d61542e442a0f99c91241"
+    },
+    {
+      "path": "election-analysis/reports/washington/2026-08-04/analysis.json",
+      "sha256": "c4d03f126ae19634e7285a6e0aa3bcb004910cb96ae7112954dacac820b2a757"
+    }
+  ],
+  "base_commit": "9d34651be0f07785793caedee6c05a8246e7aef5",
+  "branch": "fix/election-audit-iteration",
+  "checks": [
+    {
+      "command": "PYTHONPATH=election-analysis:<pinned-edt> python3 -m unittest discover -s election-analysis/tests -q",
+      "log_sha256": "086f8b4831e3877dc4961ab24e423b24bd07e783649d1524d66c7ff907b81811",
+      "result": "pass",
+      "tests": 134
+    },
+    {
+      "command": "PYTHONPATH=election-analysis:<pinned-edt> python3 -m unittest discover -s election-analysis/tests -p test_election_watch*.py -q",
+      "log_sha256": "f66d87ba7c2d2f33fe8a2fb65d2486656a77d25718251f5977a577c043c6d2f2",
+      "result": "pass after raw-version preservation change",
+      "tests": 56
+    },
+    {
+      "command": "EDT_DIR=<pinned-edt> election-analysis/ci/reports.sh generate",
+      "numeric_probabilities": 0,
+      "primary_races": 298,
+      "result": "pass"
+    },
+    {
+      "command": "python3 -m election_reporting.replay --fixtures election-analysis/tests/fixtures --output <scratch>",
+      "numeric_probabilities": 0,
+      "result": "pass",
+      "scope": "descriptive stage-aware ingestion, not forecast validation",
+      "state_records": {
+        "alaska": 73,
+        "maine": 262,
+        "washington": 204
+      }
+    },
+    {
+      "allocation": {
+        "ballots": 402936,
+        "continuing": 391596,
+        "exhausted": {
+          "no_continuing_choice": 388,
+          "overvote": 279,
+          "skipped_ranks": 10673
+        },
+        "finalists_source": "supplied official summary",
+        "independent_eligibility_engine": false,
+        "margin": 2706,
+        "rule_version": "Maine-2024-CD2-official-finalists; two-skipped-rank/overvote exhaustion; no independent eligibility adjudication",
+        "schema_version": 1,
+        "stage": "final_allocation_to_official_finalists",
+        "totals": {
+          "Golden, Jared Forrest": 197151,
+          "Theriault, Austin": 194445
+        }
+      },
+      "ballots": 402936,
+      "command": "python3 -m election_reporting.rcv --source-root <unpacked archive> --manifest election-analysis/tests/fixtures/maine-2024-cd2-manifest.json --output <scratch>",
+      "duplicate_machine_keys": 0,
+      "output_sha256": "a750e9ca63f2b66686830b6f48de909b32514d6f107df5ff202afbe887cdc370",
+      "pattern_groups": 108,
+      "patterns_match_committed_fixture": true,
+      "result": "pass",
+      "source_files": [
+        {
+          "ballots": 99999,
+          "path": "historical-2024/maine-cvr/Nov24_CVR_1.xlsx",
+          "sha256": "62f3e7116f89553db38c54bf353d3b41912f359686f6c2bcd39cb1898c47abdd"
+        },
+        {
+          "ballots": 99999,
+          "path": "historical-2024/maine-cvr/Nov24_CVR_2.xlsx",
+          "sha256": "b4d533ebcb985ddd276ab8a97d69efcf8c4c93e377b479dce7bfc884eac2c1de"
+        },
+        {
+          "ballots": 98669,
+          "path": "historical-2024/maine-cvr/Nov24_CVR_3.xlsx",
+          "sha256": "147b1ca3620e88cb18831a3e9b60b1be156a9cddd2ad0d4ea302e36f43a7e7ae"
+        },
+        {
+          "ballots": 99999,
+          "path": "historical-2024/maine-cvr/Nov24_CVR_4.xlsx",
+          "sha256": "8cca7708d2afac2a08949380fced080292927de8d7d258ca8064785b99e95203"
+        },
+        {
+          "ballots": 2786,
+          "path": "historical-2024/maine-rcv-uocava.xlsx",
+          "sha256": "35e71938df989346df5dd8899c2a31d1f24a56e4304a131ec48925eebe2c5c0c"
+        },
+        {
+          "ballots": 1484,
+          "path": "historical-2024/maine-rcv-handcount.xlsx",
+          "sha256": "6f2cea48e701d4f652f6af3f2b875c7187e6c8729f16a441cceec9ef050d4f0e"
+        }
+      ]
+    },
+    {
+      "command": "python3 election-analysis/ci/provenance.py all --output <scratch>",
+      "detail": {
+        "commit": "9d34651be0f07785793caedee6c05a8246e7aef5",
+        "file-ids": {
+          "exempt": 49,
+          "files_with_id": 62,
+          "status": 0,
+          "violations": []
+        },
+        "manifest": {
+          "commit": "9d34651be0f07785793caedee6c05a8246e7aef5",
+          "files": 111,
+          "status": 0
+        },
+        "overall": 0,
+        "reuse": {
+          "compliant": false,
+          "files_total": 100,
+          "files_with_copyright_info": 100,
+          "files_with_licensing_info": 100,
+          "non_compliant": {},
+          "pending_licenses": [
+            "LicenseRef-ChelanCounty-PublicData",
+            "LicenseRef-KittitasCounty-PublicData",
+            "LicenseRef-PierceCounty-PublicData",
+            "LicenseRef-SnohomishCounty-PublicData"
+          ],
+          "reuse_version": "6.2.0",
+          "spec_version": "3.3",
+          "status": 0
+        },
+        "scope": "election-analysis/"
+      },
+      "note": "working-tree check; manifest base commit is not a claim that modified files were already committed",
+      "result": "pass"
+    },
+    {
+      "command": "git diff --check",
+      "result": "pass"
+    },
+    {
+      "command": "PYTHONPATH=election-analysis:<pinned-edt> python3 -m unittest discover -s election-analysis/tests -q",
+      "log_sha256": "0c11319b8c18c5217fe3bc1d7bfa2de29ff3abd0d7223ddf260fd9794ac4e602",
+      "regressions": [
+        "judicial leader tie remains unresolved",
+        "detail-only candidate flags contradiction",
+        "duplicate area aliases refused",
+        "one reviewed controlling identity per canonical contest"
+      ],
+      "result": "pass after final review fixes",
+      "tests": 136
+    },
+    {
+      "command": "compare fresh actual primary analysis_payload with generated analysis.json excluding generated_at",
+      "result": "identical; final edge-case fixes preserve the published actual-input behavior"
+    }
+  ],
+  "final_offline_test_count": 136,
+  "numerical_checks": {
+    "error_policy": {
+      "absolute_tolerance": 1e-08,
+      "max_remaining": 200000,
+      "method": "normalized_full_support_log_recurrence_v1",
+      "relative_tolerance": 1e-06,
+      "relative_tolerance_floor": 1e-10,
+      "validation": "independent SciPy beta-binomial and rational small-case oracles; numerical only"
+    },
+    "former_5001_skew_error": "stable exact finite-support recurrence replaces normal approximation",
+    "not_calibration": true,
+    "rational_small_cases": 1080,
+    "scipy_reference_cases": 16
+  },
+  "prompts": {
+    "REA_engine": "not available; no REA calls claimed",
+    "implementation": {
+      "path": "/prompt/PRM-0029.txt",
+      "revision": "65e8ddd0d60b201b90224"
+    },
+    "missing_evidence": {
+      "mode": "static evidence reconciliation; new implementation tests separately authorized",
+      "path": "/prompt/PRM-0068.txt",
+      "server_modified": "2026-10-24T03:43:39Z"
+    }
+  },
+  "residual_unknowns": {
+    "forecast_backtest": "no eligible real pre-outcome prediction/outstanding series acquired; remains unvalidated",
+    "independent_rcv_eligibility": "not implemented or claimed; official finalists supplied",
+    "independent_reaudit": "pending; parent remains open",
+    "official_binaries": "Alaska downloads HTTP 503/timeouts; indexed text labeled without binary hashes",
+    "unresolved_versions": [
+      {
+        "canonical_id": "ak:2024-general:HD28",
+        "finding": "Official report located in Division index, but complete final-round accounting not retrieved. Direct binary returned HTTP 503/timeouts; partial indexed snippets are insufficient to verify conservation.",
+        "version": "ak-original-20241130"
+      },
+      {
+        "canonical_id": "ak:2024-general:HD40",
+        "finding": "Official report located in Division index, but complete final-round accounting not retrieved. Direct binary returned HTTP 503/timeouts; partial indexed snippets are insufficient to verify conservation.",
+        "version": "ak-original-20241130"
+      },
+      {
+        "canonical_id": "ak:2024-general:measure2",
+        "finding": "Recount candidate totals officially announced, margin 743; complete blank/overvote/ballot accounting unavailable, so complete-stage coverage remains unresolved.",
+        "version": "recount-20241209"
+      }
+    ]
+  },
+  "schema_version": 1,
+  "source_file_hashes": [
+    {
+      "path": "election-analysis/ci/provenance.py",
+      "sha256": "48b75a7c17953f4b9df7d72945813a5762ea3cd8d8b16d7761466777f5ec3054"
+    },
+    {
+      "path": "election-analysis/ci/test_results.py",
+      "sha256": "b53966fc89cbf8f1358b62b484ed6616354637354dfed6ecfba1e2ea47dcb880"
+    },
+    {
+      "path": "election-analysis/election_reporting/__init__.py",
+      "sha256": "ea4c91d8f5668d1d7bc4d22a613dc5366c0c7a9ead704845e090e2032c17d9ce"
+    },
+    {
+      "path": "election-analysis/election_reporting/__main__.py",
+      "sha256": "51aa9a0808a7013b386092a35ea764d4e65da4ba2a6e123681435c29eb7411ad"
+    },
+    {
+      "path": "election-analysis/election_reporting/analysis.py",
+      "sha256": "1fb4637be3380527971cbca753adb675a02d5d23d5857bcd0f025be022f9e92a"
+    },
+    {
+      "path": "election-analysis/election_reporting/areas.py",
+      "sha256": "0d8632de4110c95b506fc49533590d2cedc4558509c1fd5e013c86ef4d8cc1a9"
+    },
+    {
+      "path": "election-analysis/election_reporting/ci/__init__.py",
+      "sha256": "a61299dcbe45c3abf4526b8279aba7195f93b3305e554501b7e72c3c3fb7db10"
+    },
+    {
+      "path": "election-analysis/election_reporting/ci/publish_reports.py",
+      "sha256": "808a055d320ca57840a469b419fc0b7424f7753f540f204a741250d48314596b"
+    },
+    {
+      "path": "election-analysis/election_reporting/cli.py",
+      "sha256": "e755ff423417be58e0c8448d617230654dcdb003c8cfc66523cb94fa89becf56"
+    },
+    {
+      "path": "election-analysis/election_reporting/config.py",
+      "sha256": "a04d806acce057582022327b22f9f15d3c7f3ac520aa01c93861ea71d49a93cf"
+    },
+    {
+      "path": "election-analysis/election_reporting/evidence.py",
+      "sha256": "30aa1b3371aa7f9d63b131e931b05f36466e2f481075e8dbdc93579bf0113c81"
+    },
+    {
+      "path": "election-analysis/election_reporting/ingest.py",
+      "sha256": "de35633ed3edfcdcfcc35a817a116f0069d14896579c72e154df5cc730a30591"
+    },
+    {
+      "path": "election-analysis/election_reporting/model.py",
+      "sha256": "7e2b707b00f02a1fb7facc5d5906f5f7cba64b4d77475b22b50a68fd82c0b53e"
+    },
+    {
+      "path": "election-analysis/election_reporting/numerics.py",
+      "sha256": "a589bcfedde600af4b724a9013c7325f0ab8243e31136008af5d0b2a55452fe0"
+    },
+    {
+      "path": "election-analysis/election_reporting/publish.py",
+      "sha256": "b292a58003a80b8ee57cc22704e9b6ab2304d523ea0c668256ce9b268ca249f6"
+    },
+    {
+      "path": "election-analysis/election_reporting/rcv.py",
+      "sha256": "8881f37769127d70ce96d962a269e1c09e3807117ed7e8152822b0ed2a475dc3"
+    },
+    {
+      "path": "election-analysis/election_reporting/replay.py",
+      "sha256": "1e9fc42347a50d2348b36dfcaf40bc5f2227ea7e5c708a656a492b20cf07dc34"
+    },
+    {
+      "path": "election-analysis/election_reporting/stages.py",
+      "sha256": "a503c4df7c470082db5ce9ae0ef6bd05ca58ba23d9ec2832ad18fca85b8cf57c"
+    },
+    {
+      "path": "election-analysis/election_reporting/validation.py",
+      "sha256": "2c69a629c90a96c706df2e91026481349d877dfdd2a10044442bcd4a6815bf79"
+    },
+    {
+      "path": "election-analysis/election_reporting/versions.py",
+      "sha256": "901c37f4b83d1d1192c7f69f53cac093ec7ee468809f969e76d4900ceae70e16"
+    },
+    {
+      "path": "election-analysis/election_reporting/watch/__init__.py",
+      "sha256": "36c58694abe366c3849c6c7599ab57c125333d6160da854ba1270720c0774f3b"
+    },
+    {
+      "path": "election-analysis/election_reporting/watch/__main__.py",
+      "sha256": "064d944d8351c5315287a39b948a98d4f3ebef32a63a436a0564f077cf24dd06"
+    },
+    {
+      "path": "election-analysis/election_reporting/watch/alaska.py",
+      "sha256": "a775accc2acb13afb3f022ac1590e0dc07a11a44e0c31bfe086e86e2a4b56889"
+    },
+    {
+      "path": "election-analysis/election_reporting/watch/certs.py",
+      "sha256": "c089ae5f492ba648e4e6bec2274a18b7be11e4c31615759225c61ec203d95176"
+    },
+    {
+      "path": "election-analysis/election_reporting/watch/config.py",
+      "sha256": "50dc77f2f6354b9da70a46b91df571a0ab32e4fc5f9811d1860eb845e8e519c4"
+    },
+    {
+      "path": "election-analysis/election_reporting/watch/csvformat.py",
+      "sha256": "c35930487eee4fd5b9f6fce89a40e63b8be8f2279842e2f4bf511e0bae020242"
+    },
+    {
+      "path": "election-analysis/election_reporting/watch/http.py",
+      "sha256": "bf3ed9ec02452f59641cc6950409a21ae9a71ed75faa5b03c519b096a7650f30"
+    },
+    {
+      "path": "election-analysis/election_reporting/watch/maine.py",
+      "sha256": "9530d2bb5e1f56c6ef79b086c828ee961e9ea1b9eab5ffb0a7bc8879112b2e48"
+    },
+    {
+      "path": "election-analysis/election_reporting/watch/run.py",
+      "sha256": "b6191ae114183276910e2019199fd9e0a6d5aa40e62f05e001dac669bd95db70"
+    },
+    {
+      "path": "election-analysis/election_reporting/watch/schedule.py",
+      "sha256": "2558b49df83a7a8ef9d648699c7a78525a9a7e26b9bd739851c3d0016c2134fb"
+    },
+    {
+      "path": "election-analysis/election_reporting/watch/sources.py",
+      "sha256": "bed0a6e1fb6c399f1b26319a98db0fde0b1e075040194fd376c7a99ea548414b"
+    },
+    {
+      "path": "election-analysis/election_reporting/watch/store.py",
+      "sha256": "3e60ba2bd54914a127f3e16a2f9c840517ad31d6bb60caeae77ee3fb0f3f1d00"
+    },
+    {
+      "path": "election-analysis/tests/test_alaska_crosswalk.py",
+      "sha256": "733cda9a21d831b65184e815786c0214048e4d21fb594dddbb18a359ae64fedb"
+    },
+    {
+      "path": "election-analysis/tests/test_election_areas.py",
+      "sha256": "4b2472d4c455dde33038eceef22ade6b9105f52943326e011ffa999ce4bb6ab3"
+    },
+    {
+      "path": "election-analysis/tests/test_election_reporting.py",
+      "sha256": "a7dddc3de43c5aa20e28c0d6e3de22159e299bc888c69917136d2d9211b2cd0a"
+    },
+    {
+      "path": "election-analysis/tests/test_election_reporting_audit.py",
+      "sha256": "6f07f90923da85a32807cf7fc4106a91932243ed48e78752ca7202d43d92a1ed"
+    },
+    {
+      "path": "election-analysis/tests/test_election_watch.py",
+      "sha256": "ccad19fd542ccc916b82616057eba6348273d3b31efc62fb16a2864b28b62f89"
+    },
+    {
+      "path": "election-analysis/tests/test_election_watch_alaska.py",
+      "sha256": "79127862989b1b9950a520d352661bacc71a46f1d4bdef8fe3cb2f327925797b"
+    },
+    {
+      "path": "election-analysis/tests/test_election_watch_maine.py",
+      "sha256": "d6a6cab390078e7977348f0f88798a8dd089f62e3ad3bfc85b8fb9d20d6413e2"
+    },
+    {
+      "path": "election-analysis/tests/test_provenance_checks.py",
+      "sha256": "40ae106e689be67489a6439e714e8f4a5c77bd4f77c30ed89db4ccaead0ba740"
+    },
+    {
+      "path": "election-analysis/tests/test_publish_reports.py",
+      "sha256": "30db928e787c54a3a29959f4f91ca128b03a769188b62f5a7ad376e53b5288b0"
+    },
+    {
+      "path": "election-analysis/tools/alaska_crosswalk.py",
+      "sha256": "5505702665373bf5dd59a93e7fd1663ea8302952ab178f14c42e2df0ccb78197"
+    }
+  ],
+  "status": "implemented, locally checked; PR review/merge and scientific validation pending",
+  "subject": "working tree identified by per-file SHA-256; post-upload commit binding belongs to GitHub CI and parent ledger",
+  "tool_versions": {
+    "edt_commit": "bca66c1e2d2a9bf9c05f9429e618299216a17f27",
+    "numerical_reference": "1.17.0",
+    "python": "3.12.14",
+    "reuse": "6.2.0",
+    "tool": "0.5.0"
+  }
+}

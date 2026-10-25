@@ -111,8 +111,8 @@ def source_block(place: sources.Place, election_plan: Plan) -> str:
         f'scope = "{scope}"\n'
         f"priority = {STATE_PRIORITY if scope == 'state' else COUNTY_PRIORITY}\n"
         + certification +
-        "# expected_final_ballots = 0       # add a turnout forecast to enable\n"
-        "# forecast_reliability = 50        # remaining-ballot estimates\n"
+        "# expected_final_ballots = 0       # legacy descriptive field; does not enable forecasts\n"
+        "# forecast_reliability = 50        # unvalidated source rubric only\n"
         '# forecast_basis = "..."\n'
     )
 
@@ -173,7 +173,7 @@ def write_election_config(election_plan: Plan) -> list[str]:
         )
     elif election_plan.state_id == "maine":
         header += (
-            "# Maine: plurality, except contests posted as ranked choice, which the\n"
+            "# Maine: governing RCV scope follows office and election type; the\n"
             "# watcher adds below as [[contest_rules]] with rule \"rcv\".\n"
             'default_rule = "winner"\n'
         )
@@ -234,7 +234,12 @@ def _record(
     note: str = "",
 ) -> None:
     digest = sha256(input_bytes)
-    if any(r.place == place.place_id and r.input_sha256 == digest for r in store.records):
+    store.observations.append({"place": place.place_id, "input_sha256": digest,
+        "retrieved_at": retrieved.astimezone(timezone.utc).isoformat(timespec="seconds"),
+        "source_published_at": source_timestamp or None, "source_url": source_url,
+        "raw_sha256": sha256(raw_bytes) if raw_bytes else None,
+        "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"})
+    if any(r.place == place.place_id and r.input_sha256 == digest and (raw_bytes is None or r.raw_sha256 == sha256(raw_bytes)) for r in store.records):
         result.skipped.append(f"{place.place_id}: unchanged")
         return
     stamp = _free_stamp(store, place.place_id, _stamp(moment, config))
@@ -482,7 +487,13 @@ def _zip_workbooks(files: list[tuple[str, str, bytes]]) -> bytes:
 def _fetch_maine(store, config, plan_, fetch, now, result) -> None:
     """Every office workbook posted for the election, combined into one snapshot."""
     links = maine.result_links(fetch, plan_.election)
+    store.coverage["maine"] = {"status": "incomplete_or_unreviewed", "observed_at": now.isoformat(),
+        "discovered_workbooks": [link.url for link in links], "failed_workbooks": [],
+        "expected_offices": maine.expected_offices(plan_.election.day),
+        "missing_expected_offices": [], "coverage_complete": False,
+        "finding": "Discovery does not establish every office/district/municipality; full expected inventory needs review."}
     if not links:
+        store.coverage["maine"]["missing_expected_offices"] = maine.expected_offices(plan_.election.day)
         result.skipped.append("maine: no results posted for this election yet")
         return
     contests: list[maine.Contest] = []
@@ -495,10 +506,24 @@ def _fetch_maine(store, config, plan_, fetch, now, result) -> None:
                 response.body, label=link.label, rcv=link.rcv, url=link.url
             )
         except ElectionReportError as error:
+            store.coverage["maine"]["failed_workbooks"].append({"url": link.url, "error": str(error)})
             result.errors.append(f"maine: {link.label}: {error}")
             continue
         result.errors.extend(f"maine: {problem}" for problem in problems)
+        for contest in found:
+            contest.rcv = maine.governing_rcv(contest.name, plan_.election.day)
+            contest.metadata = {"source_evidence": {"source_url": link.url,
+                "source_published_at": response.last_modified.isoformat() if response.last_modified else None,
+                "count_updated_at": None,
+                "workbook_sha256": sha256(response.body), "publication_id": sha256(response.body),
+                "coverage_complete": False,
+                "coverage_findings": problems or ["Workbook block reconciled; complete election coverage has not been reviewed."]},
+                "tabulation": {"stage": "raw_first_rankings" if contest.rcv else "plurality_count",
+                    "governing_rule_basis": "office/election type, not webpage section",
+                    "raw_blank_ballots": sum(r[2] for r in contest.rows),
+                    "interpreted_round_1": "not supplied by raw summary", "continuing_denominator": None}}
         contests.extend(found)
+        store.coverage["maine"].setdefault("workbook_observations", []).append({"url": link.url, "sha256": sha256(response.body), "retrieved_at": now.isoformat(), "source_published_at": response.last_modified.isoformat() if response.last_modified else None, "parsed_blocks": [c.name for c in found], "findings": problems})
         files.append((link.url, response.headers.get("last-modified", ""), response.body))
         if response.last_modified and (newest is None or response.last_modified > newest):
             newest = response.last_modified
@@ -510,6 +535,9 @@ def _fetch_maine(store, config, plan_, fetch, now, result) -> None:
             continue
         seen.add(contest.contest_id)
         unique.append(contest)
+    store.coverage["maine"]["parsed_contests"] = [c.name for c in unique]
+    store.coverage["maine"]["missing_expected_offices"] = [office for office in maine.expected_offices(plan_.election.day)
+        if not any(office.casefold() in c.name.casefold() for c in unique)]
     outputs = maine.convert(unique, list(plan_.places))
     if "maine" not in outputs:
         result.skipped.append("maine: no readable results yet")
@@ -591,7 +619,7 @@ def fetch_snapshots(
                 _fetch_votewa_json(store, config, place, election_plan, fetch, now, result)
         except ElectionReportError as error:
             result.errors.append(f"{place.place_id}: {error}")
-    if result.added or store.path.exists():
+    if result.added or store.path.exists() or store.observations or store.coverage:
         store.save()
     for record in result.added:
         log(f"new snapshot {record.place} {record.snapshot} ({record.kind})")

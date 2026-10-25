@@ -1,0 +1,555 @@
+ContestOrder,Contest,Contest ID,Choice Order,Choice,BallotsWith Contest,Votes,Contest Overvotes,Contest Undervotes,Party,Jurisdiction,County,Counties,Write-in
+1.00,Initiative Measure No. 2066,initiative-measure-no-2066,1,Yes,3754643,1941474,,, ,Historical archive,,,
+1.00,Initiative Measure No. 2066,initiative-measure-no-2066,2,No,3754643,1813169,,, ,Historical archive,,,
+2.00,Initiative Measure No. 2109,initiative-measure-no-2109,1,Yes,3801929,1364510,,, ,Historical archive,,,
+2.00,Initiative Measure No. 2109,initiative-measure-no-2109,2,No,3801929,2437419,,, ,Historical archive,,,
+3.00,Initiative Measure No. 2117,initiative-measure-no-2117,1,Yes,3777180,1437103,,, ,Historical archive,,,
+3.00,Initiative Measure No. 2117,initiative-measure-no-2117,2,No,3777180,2340077,,, ,Historical archive,,,
+4.00,Initiative Measure No. 2124,initiative-measure-no-2124,1,Yes,3745651,1668435,,, ,Historical archive,,,
+4.00,Initiative Measure No. 2124,initiative-measure-no-2124,2,No,3745651,2077216,,, ,Historical archive,,,
+5.00,President/Vice President,president-vice-president,1,Kamala D. Harris / Tim Walz,3924243,2245849,,,Democratic Party Nominees,Historical archive,,,
+5.00,President/Vice President,president-vice-president,2,Donald J. Trump / JD Vance,3924243,1530923,,,Republican Party Nominees,Historical archive,,,
+5.00,President/Vice President,president-vice-president,3,Robert F. Kennedy Jr. / Nicole Shanahan,3924243,54868,,,We The People Party Nominees,Historical archive,,,
+5.00,President/Vice President,president-vice-president,4,Jill Stein / Rudolph Ware,3924243,29754,,,Green Party Nominees,Historical archive,,,
+5.00,President/Vice President,president-vice-president,5,Claudia De la Cruz / Karina Garcia,3924243,8695,,,Socialism and Liberation Party Nominees,Historical archive,,,
+5.00,President/Vice President,president-vice-president,6,Rachele Fruit / Dennis Richter,3924243,824,,,Socialist Workers Party Nominees,Historical archive,,,
+5.00,President/Vice President,president-vice-president,7,Joseph Kishore / Jerry White,3924243,917,,,Socialist Equality Party Nominees,Historical archive,,,
+5.00,President/Vice President,president-vice-president,8,Chase Oliver / Mike ter Maat,3924243,16428,,,Libertarian Party Nominees,Historical archive,,,
+5.00,President/Vice President,president-vice-president,9,Cornel West / Melina Abdullah,3924243,7254,,,Justice For All Party Nominees,Historical archive,,,
+5.00,President/Vice President,president-vice-president,10,Shiva Ayyadurai / Crystal Ellis,3924243,3323,,,Independent Candidates,Historical archive,,,
+5.00,President/Vice President,president-vice-president,11,WRITE-IN,3924243,25408,,, ,Historical archive,,,yes
+6.00,U.S. Senator,u-s-senator,1,Maria Cantwell,3812391,2252577,,,(Prefers Democratic Party),Historical archive,,,
+6.00,U.S. Senator,u-s-senator,2,Dr Raul Garcia,3812391,1549187,,,(Prefers GOP Party),Historical archive,,,
+6.00,U.S. Senator,u-s-senator,3,WRITE-IN,3812391,10627,,, ,Historical archive,,,yes
+7.00,Congressional District 1 - U.S. Representative,congressional-district-1-u-s-representative,1,Suzan DelBene,360658,227213,,,(Prefers Democratic Party),Historical archive,,,
+7.00,Congressional District 1 - U.S. Representative,congressional-district-1-u-s-representative,2,Jeb Brewer,360658,132538,,,(Prefers Republican Party),Historical archive,,,
+7.00,Congressional District 1 - U.S. Representative,congressional-district-1-u-s-representative,3,WRITE-IN,360658,907,,, ,Historical archive,,,yes
+8.00,Congressional District 2 - U.S. Representative,congressional-district-2-u-s-representative,1,Rick Larsen,413220,263750,,,(Prefers Democratic Party),Historical archive,,,
+8.00,Congressional District 2 - U.S. Representative,congressional-district-2-u-s-representative,2,Cody Hart,413220,148167,,,(Prefers MAGA Republican Party),Historical archive,,,
+8.00,Congressional District 2 - U.S. Representative,congressional-district-2-u-s-representative,3,WRITE-IN,413220,1303,,, ,Historical archive,,,yes
+9.00,CONGRESSIONAL DISTRICT 3 - U.S. Representative,congressional-district-3-u-s-representative,1,Marie Gluesenkamp Perez,415904,215177,,,(Prefers Democratic Party),Historical archive,,,
+9.00,CONGRESSIONAL DISTRICT 3 - U.S. Representative,congressional-district-3-u-s-representative,2,Joe Kent,415904,199054,,,(Prefers Republican Party),Historical archive,,,
+9.00,CONGRESSIONAL DISTRICT 3 - U.S. Representative,congressional-district-3-u-s-representative,3,WRITE-IN,415904,1673,,, ,Historical archive,,,yes
+10.00,Congressional District 4 - U.S. Representative,congressional-district-4-u-s-representative,1,Jerrod Sessler,295052,136175,,,(Prefers Republican Party),Historical archive,,,
+10.00,Congressional District 4 - U.S. Representative,congressional-district-4-u-s-representative,2,Dan Newhouse,295052,153477,,,(Prefers Republican Party),Historical archive,,,
+10.00,Congressional District 4 - U.S. Representative,congressional-district-4-u-s-representative,3,WRITE-IN,295052,5400,,, ,Historical archive,,,yes
+11.00,CONGRESSIONAL DISTRICT 5 - U.S. Representative,congressional-district-5-u-s-representative,1,Michael Baumgartner,397286,240619,,,(Prefers Republican Party),Historical archive,,,
+11.00,CONGRESSIONAL DISTRICT 5 - U.S. Representative,congressional-district-5-u-s-representative,2,Carmela Conroy,397286,156074,,,(Prefers Democratic Party),Historical archive,,,
+11.00,CONGRESSIONAL DISTRICT 5 - U.S. Representative,congressional-district-5-u-s-representative,3,WRITE-IN,397286,593,,, ,Historical archive,,,yes
+12.00,CONGRESSIONAL DISTRICT 6 - U.S. Representative,congressional-district-6-u-s-representative,1,Emily Randall,422622,239687,,,(Prefers Democratic Party),Historical archive,,,
+12.00,CONGRESSIONAL DISTRICT 6 - U.S. Representative,congressional-district-6-u-s-representative,2,Drew C MacEwen,422622,182182,,,(Prefers Republican Party),Historical archive,,,
+12.00,CONGRESSIONAL DISTRICT 6 - U.S. Representative,congressional-district-6-u-s-representative,3,WRITE-IN,422622,753,,, ,Historical archive,,,yes
+13.00,Congressional District 7 - U.S. Representative,congressional-district-7-u-s-representative,1,Pramila Jayapal,419819,352286,,,(Prefers Democratic Party),Historical archive,,,
+13.00,Congressional District 7 - U.S. Representative,congressional-district-7-u-s-representative,2,Dan Alexander,419819,66220,,,(Prefers Republican Party),Historical archive,,,
+13.00,Congressional District 7 - U.S. Representative,congressional-district-7-u-s-representative,3,WRITE-IN,419819,1313,,, ,Historical archive,,,yes
+14.00,CONGRESSIONAL DISTRICT 8 - U.S. Representative,congressional-district-8-u-s-representative,1,Kim Schrier,416277,224607,,,(Prefers Democratic Party),Historical archive,,,
+14.00,CONGRESSIONAL DISTRICT 8 - U.S. Representative,congressional-district-8-u-s-representative,2,Carmen Goers,416277,190675,,,(Prefers Republican Party),Historical archive,,,
+14.00,CONGRESSIONAL DISTRICT 8 - U.S. Representative,congressional-district-8-u-s-representative,3,WRITE-IN,416277,995,,, ,Historical archive,,,yes
+15.00,Congressional District 9 - U.S. Representative,congressional-district-9-u-s-representative,1,Adam Smith,279298,182780,,,(Prefers Democratic Party),Historical archive,,,
+15.00,Congressional District 9 - U.S. Representative,congressional-district-9-u-s-representative,2,Melissa Chaudhry,279298,90601,,,(Prefers Democratic Party),Historical archive,,,
+15.00,Congressional District 9 - U.S. Representative,congressional-district-9-u-s-representative,3,WRITE-IN,279298,5917,,, ,Historical archive,,,yes
+16.00,Congressional District 10 - U.S. Representative,congressional-district-10-u-s-representative,1,Marilyn Strickland,348044,203732,,,(Prefers Democratic Party),Historical archive,,,
+16.00,Congressional District 10 - U.S. Representative,congressional-district-10-u-s-representative,2,Don Hewett,348044,143492,,,(Prefers Republican Party),Historical archive,,,
+16.00,Congressional District 10 - U.S. Representative,congressional-district-10-u-s-representative,3,WRITE-IN,348044,820,,, ,Historical archive,,,yes
+17.00,Governor,governor,1,Bob Ferguson,3861388,2143368,,,(Prefers Democratic Party),Historical archive,,,
+17.00,Governor,governor,2,Dave Reichert,3861388,1709818,,,(Prefers Republican Party),Historical archive,,,
+17.00,Governor,governor,3,WRITE-IN,3861388,8202,,, ,Historical archive,,,yes
+18.00,Lt. Governor,lt-governor,1,Denny Heck,3790533,2112132,,,(Prefers Democratic Party),Historical archive,,,
+18.00,Lt. Governor,lt-governor,2,Dan Matthews,3790533,1674025,,,(Prefers Republican Party),Historical archive,,,
+18.00,Lt. Governor,lt-governor,3,WRITE-IN,3790533,4376,,, ,Historical archive,,,yes
+19.00,Secretary of State,secretary-of-state,1,Steve Hobbs,3774355,2234420,,,(Prefers Democratic Party),Historical archive,,,
+19.00,Secretary of State,secretary-of-state,2,Dale Whitaker,3774355,1535977,,,(Prefers Republican Party),Historical archive,,,
+19.00,Secretary of State,secretary-of-state,3,WRITE-IN,3774355,3958,,, ,Historical archive,,,yes
+20.00,State Treasurer,state-treasurer,1,Mike Pellicciotti,3752395,2148764,,,(Prefers Democratic Party),Historical archive,,,
+20.00,State Treasurer,state-treasurer,2,Sharon Hanek,3752395,1600370,,,(Prefers Republican Party),Historical archive,,,
+20.00,State Treasurer,state-treasurer,3,WRITE-IN,3752395,3261,,, ,Historical archive,,,yes
+21.00,State Auditor,state-auditor,1,Pat (Patrice) McCarthy,3742318,2170306,,,(Prefers Democratic Party),Historical archive,,,
+21.00,State Auditor,state-auditor,2,Matt Hawkins,3742318,1568750,,,(Prefers Republican Party),Historical archive,,,
+21.00,State Auditor,state-auditor,3,WRITE-IN,3742318,3262,,, ,Historical archive,,,yes
+22.00,Attorney General,attorney-general,1,Pete Serrano,3767070,1669884,,,(Prefers Republican Party),Historical archive,,,
+22.00,Attorney General,attorney-general,2,Nick Brown,3767070,2093570,,,(Prefers Democratic Party),Historical archive,,,
+22.00,Attorney General,attorney-general,3,WRITE-IN,3767070,3616,,, ,Historical archive,,,yes
+23.00,Commissioner of Public Lands,commissioner-of-public-lands,1,Jaime Herrera Beutler,3743451,1765121,,,(Prefers Republican Party),Historical archive,,,
+23.00,Commissioner of Public Lands,commissioner-of-public-lands,2,Dave Upthegrove,3743451,1969936,,,(Prefers Democratic Party),Historical archive,,,
+23.00,Commissioner of Public Lands,commissioner-of-public-lands,3,WRITE-IN,3743451,8394,,, ,Historical archive,,,yes
+24.00,Superintendent of Public Instruction,superintendent-of-public-instruction,1,Chris Reykdal,3310330,1746848,,,,Historical archive,,,
+24.00,Superintendent of Public Instruction,superintendent-of-public-instruction,2,David Olson,3310330,1543550,,,,Historical archive,,,
+24.00,Superintendent of Public Instruction,superintendent-of-public-instruction,3,WRITE-IN,3310330,19932,,, ,Historical archive,,,yes
+25.00,Insurance Commissioner,insurance-commissioner,1,Patty Kuderer,3694431,2091969,,,(Prefers Democratic Party),Historical archive,,,
+25.00,Insurance Commissioner,insurance-commissioner,2,Phil Fortunato,3694431,1598032,,,(Prefers Republican Party),Historical archive,,,
+25.00,Insurance Commissioner,insurance-commissioner,3,WRITE-IN,3694431,4430,,, ,Historical archive,,,yes
+26.00,LEGISLATIVE DISTRICT 1 - State Senator,legislative-district-1-state-senator,1,Derek Stanford,63081,60591,,,(Prefers Democratic Party),Historical archive,,,
+26.00,LEGISLATIVE DISTRICT 1 - State Senator,legislative-district-1-state-senator,2,WRITE-IN,63081,2490,,, ,Historical archive,,,yes
+27.00,LEGISLATIVE DISTRICT 1 - State Representative Pos. 1,legislative-district-1-state-representative-pos-1,1,Davina Duerr,79741,55168,,,(Prefers Democratic Party),Historical archive,,,
+27.00,LEGISLATIVE DISTRICT 1 - State Representative Pos. 1,legislative-district-1-state-representative-pos-1,2,Mark Davies,79741,24467,,,(Prefers Republican Party),Historical archive,,,
+27.00,LEGISLATIVE DISTRICT 1 - State Representative Pos. 1,legislative-district-1-state-representative-pos-1,3,WRITE-IN,79741,106,,, ,Historical archive,,,yes
+28.00,Legislative District 1 - State Representative Pos. 2,legislative-district-1-state-representative-pos-2,1,Shelley Kloba,61975,59587,,,(Prefers Democratic Party),Historical archive,,,
+28.00,Legislative District 1 - State Representative Pos. 2,legislative-district-1-state-representative-pos-2,2,WRITE-IN,61975,2388,,, ,Historical archive,,,yes
+29.00,LEGISLATIVE DISTRICT 2 - State Senator,legislative-district-2-state-senator,1,Jim McCune,76131,47997,,,(Prefers Republican Party),Historical archive,,,
+29.00,LEGISLATIVE DISTRICT 2 - State Senator,legislative-district-2-state-senator,2,Erasmo Ruiz Gonzalez,76131,28016,,,(Prefers Democratic Party),Historical archive,,,
+29.00,LEGISLATIVE DISTRICT 2 - State Senator,legislative-district-2-state-senator,3,WRITE-IN,76131,118,,, ,Historical archive,,,yes
+30.00,LEGISLATIVE DISTRICT 2 - State Representative Pos. 1,legislative-district-2-state-representative-pos-1,1,Andrew Barkis,62137,59179,,,(Prefers Republican Party),Historical archive,,,
+30.00,LEGISLATIVE DISTRICT 2 - State Representative Pos. 1,legislative-district-2-state-representative-pos-1,2,WRITE-IN,62137,2958,,, ,Historical archive,,,yes
+31.00,LEGISLATIVE DISTRICT 2 - State Representative Pos. 2,legislative-district-2-state-representative-pos-2,1,Matt Marshall,67274,37267,,,(Prefers Republican Party),Historical archive,,,
+31.00,LEGISLATIVE DISTRICT 2 - State Representative Pos. 2,legislative-district-2-state-representative-pos-2,2,John Snaza,67274,27928,,,(Prefers Republican Party),Historical archive,,,
+31.00,LEGISLATIVE DISTRICT 2 - State Representative Pos. 2,legislative-district-2-state-representative-pos-2,3,WRITE-IN,67274,2079,,, ,Historical archive,,,yes
+32.00,Legislative District 3 - State Senator,legislative-district-3-state-senator,1,Marcus Riccelli,75147,45497,,,(Prefers Democratic Party),Historical archive,,,
+32.00,Legislative District 3 - State Senator,legislative-district-3-state-senator,2,Jim Wilson,75147,29555,,,(Prefers Republican Party),Historical archive,,,
+32.00,Legislative District 3 - State Senator,legislative-district-3-state-senator,3,WRITE-IN,75147,95,,, ,Historical archive,,,yes
+33.00,Legislative District 3 - State Representative Pos. 1,legislative-district-3-state-representative-pos-1,1,Tony Kiepe,74583,30658,,,(Prefers Republican Party),Historical archive,,,
+33.00,Legislative District 3 - State Representative Pos. 1,legislative-district-3-state-representative-pos-1,2,Natasha Hill,74583,43735,,,(Prefers Democratic Party),Historical archive,,,
+33.00,Legislative District 3 - State Representative Pos. 1,legislative-district-3-state-representative-pos-1,3,WRITE-IN,74583,190,,, ,Historical archive,,,yes
+34.00,Legislative District 3 - State Representative Pos. 2,legislative-district-3-state-representative-pos-2,1,Timm Ormsby,57857,53667,,,(Prefers Democratic Party),Historical archive,,,
+34.00,Legislative District 3 - State Representative Pos. 2,legislative-district-3-state-representative-pos-2,2,WRITE-IN,57857,4190,,, ,Historical archive,,,yes
+35.00,Legislative District 4 - State Senator,legislative-district-4-state-senator,1,Miguel Valencia,83457,29666,,,(Prefers Democratic Party),Historical archive,,,
+35.00,Legislative District 4 - State Senator,legislative-district-4-state-senator,2,Leonard Christian,83457,53660,,,(Prefers Republican Party),Historical archive,,,
+35.00,Legislative District 4 - State Senator,legislative-district-4-state-senator,3,WRITE-IN,83457,131,,, ,Historical archive,,,yes
+36.00,Legislative District 4 - State Representative Pos. 1,legislative-district-4-state-representative-pos-1,1,Suzanne Schmidt,80154,54792,,,(Prefers Republican Party),Historical archive,,,
+36.00,Legislative District 4 - State Representative Pos. 1,legislative-district-4-state-representative-pos-1,2,Kristopher Pockell,80154,24817,,,(States No Party Preference),Historical archive,,,
+36.00,Legislative District 4 - State Representative Pos. 1,legislative-district-4-state-representative-pos-1,3,WRITE-IN,80154,545,,, ,Historical archive,,,yes
+37.00,Legislative District 4 - State Representative Pos. 2,legislative-district-4-state-representative-pos-2,1,Rob Chase,83258,52902,,,(Prefers Republican Party),Historical archive,,,
+37.00,Legislative District 4 - State Representative Pos. 2,legislative-district-4-state-representative-pos-2,2,Ted Cummings,83258,30208,,,(Prefers Democratic Party),Historical archive,,,
+37.00,Legislative District 4 - State Representative Pos. 2,legislative-district-4-state-representative-pos-2,3,WRITE-IN,83258,148,,, ,Historical archive,,,yes
+38.00,LEGISLATIVE DISTRICT 5 - State Senator,legislative-district-5-state-senator,1,Bill Ramos,85425,44393,,,(Prefers Democratic Party),Historical archive,,,
+38.00,LEGISLATIVE DISTRICT 5 - State Senator,legislative-district-5-state-senator,2,Chad Magendanz,85425,40966,,,(Prefers Republican Party),Historical archive,,,
+38.00,LEGISLATIVE DISTRICT 5 - State Senator,legislative-district-5-state-senator,3,WRITE-IN,85425,66,,, ,Historical archive,,,yes
+39.00,LEGISLATIVE DISTRICT 5 - State Representative Pos. 1,legislative-district-5-state-representative-pos-1,1,Victoria Hunt,85102,45999,,,(Prefers Democratic Party),Historical archive,,,
+39.00,LEGISLATIVE DISTRICT 5 - State Representative Pos. 1,legislative-district-5-state-representative-pos-1,2,Mark Hargrove,85102,39039,,,(Prefers Republican Party),Historical archive,,,
+39.00,LEGISLATIVE DISTRICT 5 - State Representative Pos. 1,legislative-district-5-state-representative-pos-1,3,WRITE-IN,85102,64,,, ,Historical archive,,,yes
+40.00,LEGISLATIVE DISTRICT 5 - State Representative Pos. 2,legislative-district-5-state-representative-pos-2,1,Lisa Callan,84936,47392,,,(Prefers Democratic Party),Historical archive,,,
+40.00,LEGISLATIVE DISTRICT 5 - State Representative Pos. 2,legislative-district-5-state-representative-pos-2,2,Patrick Peacock,84936,37474,,,(Prefers Republican Party),Historical archive,,,
+40.00,LEGISLATIVE DISTRICT 5 - State Representative Pos. 2,legislative-district-5-state-representative-pos-2,3,WRITE-IN,84936,70,,, ,Historical archive,,,yes
+41.00,Legislative District 6 - State Representative Pos. 1,legislative-district-6-state-representative-pos-1,1,Mike Volz,76279,47492,,,(Prefers Republican Party),Historical archive,,,
+41.00,Legislative District 6 - State Representative Pos. 1,legislative-district-6-state-representative-pos-1,2,Steven McCray II,76279,28657,,,(Prefers Democratic Party),Historical archive,,,
+41.00,Legislative District 6 - State Representative Pos. 1,legislative-district-6-state-representative-pos-1,3,WRITE-IN,76279,130,,, ,Historical archive,,,yes
+42.00,Legislative District 6 - State Representative Pos. 2,legislative-district-6-state-representative-pos-2,1,Jenny Graham,76183,45958,,,(Prefers Republican Party),Historical archive,,,
+42.00,Legislative District 6 - State Representative Pos. 2,legislative-district-6-state-representative-pos-2,2,Michaela Kelso,76183,30093,,,(Prefers Democratic Party),Historical archive,,,
+42.00,Legislative District 6 - State Representative Pos. 2,legislative-district-6-state-representative-pos-2,3,WRITE-IN,76183,132,,, ,Historical archive,,,yes
+43.00,Legislative District 7 - State Representative Pos. 1,legislative-district-7-state-representative-pos-1,1,Andrew Engell,76996,48785,,,(Prefers Republican Party),Historical archive,,,
+43.00,Legislative District 7 - State Representative Pos. 1,legislative-district-7-state-representative-pos-1,2,Soo Ing-Moody,76996,27496,,,(Prefers Republican Party),Historical archive,,,
+43.00,Legislative District 7 - State Representative Pos. 1,legislative-district-7-state-representative-pos-1,3,WRITE-IN,76996,715,,, ,Historical archive,,,yes
+44.00,Legislative District 7 - State Representative Pos. 2,legislative-district-7-state-representative-pos-2,1,Hunter Abell,82119,58071,,,(Prefers Republican Party),Historical archive,,,
+44.00,Legislative District 7 - State Representative Pos. 2,legislative-district-7-state-representative-pos-2,2,Paul &quot;Rocky&quot; Dean,82119,23929,,,(Prefers Democratic Party),Historical archive,,,
+44.00,Legislative District 7 - State Representative Pos. 2,legislative-district-7-state-representative-pos-2,3,WRITE-IN,82119,119,,, ,Historical archive,,,yes
+45.00,Legislative District 8 - State Representative Pos. 1,legislative-district-8-state-representative-pos-1,1,Stephanie Barnard,59807,58288,,,(Prefers Republican Party),Historical archive,,,
+45.00,Legislative District 8 - State Representative Pos. 1,legislative-district-8-state-representative-pos-1,2,WRITE-IN,59807,1519,,, ,Historical archive,,,yes
+46.00,Legislative District 8 - State Representative Pos. 2,legislative-district-8-state-representative-pos-2,1,April Connors,72638,51164,,,(Prefers Republican Party),Historical archive,,,
+46.00,Legislative District 8 - State Representative Pos. 2,legislative-district-8-state-representative-pos-2,2,John Christenson,72638,21360,,,(Prefers Democratic Party),Historical archive,,,
+46.00,Legislative District 8 - State Representative Pos. 2,legislative-district-8-state-representative-pos-2,3,WRITE-IN,72638,114,,, ,Historical archive,,,yes
+47.00,Legislative District 9 - State Senator,legislative-district-9-state-senator,1,Mark G. Schoesler,60941,57974,,,(Prefers GOP Party),Historical archive,,,
+47.00,Legislative District 9 - State Senator,legislative-district-9-state-senator,2,WRITE-IN,60941,2967,,, ,Historical archive,,,yes
+48.00,Legislative District 9 - State Representative Pos. 1,legislative-district-9-state-representative-pos-1,1,Mary Dye,77785,50468,,,(Prefers GOP Party),Historical archive,,,
+48.00,Legislative District 9 - State Representative Pos. 1,legislative-district-9-state-representative-pos-1,2,Patrick Miller,77785,27092,,,(Prefers Democratic Party),Historical archive,,,
+48.00,Legislative District 9 - State Representative Pos. 1,legislative-district-9-state-representative-pos-1,3,WRITE-IN,77785,225,,, ,Historical archive,,,yes
+49.00,LEGISLATIVE DISTRICT 9 - State Representative Pos. 2,legislative-district-9-state-representative-pos-2,1,Joe Schmick,78556,50211,,,(Prefers Republican Party),Historical archive,,,
+49.00,LEGISLATIVE DISTRICT 9 - State Representative Pos. 2,legislative-district-9-state-representative-pos-2,2,Pam Kohlmeier,78556,28236,,,(Prefers Democratic Party),Historical archive,,,
+49.00,LEGISLATIVE DISTRICT 9 - State Representative Pos. 2,legislative-district-9-state-representative-pos-2,3,WRITE-IN,78556,109,,, ,Historical archive,,,yes
+50.00,Legislative District 10 - State Senator,legislative-district-10-state-senator,1,Ron Muzzall,90134,45889,,,(Prefers Republican Party),Historical archive,,,
+50.00,Legislative District 10 - State Senator,legislative-district-10-state-senator,2,Janet St Clair,90134,44105,,,(Prefers Democratic Party),Historical archive,,,
+50.00,Legislative District 10 - State Senator,legislative-district-10-state-senator,3,WRITE-IN,90134,140,,, ,Historical archive,,,yes
+51.00,Legislative District 10 - State Representative Pos. 1,legislative-district-10-state-representative-pos-1,1,Clyde Shavers,89223,47473,,,(Prefers Democratic Party),Historical archive,,,
+51.00,Legislative District 10 - State Representative Pos. 1,legislative-district-10-state-representative-pos-1,2,Carrie R. Kennedy,89223,41578,,,(Prefers Republican Party),Historical archive,,,
+51.00,Legislative District 10 - State Representative Pos. 1,legislative-district-10-state-representative-pos-1,3,WRITE-IN,89223,172,,, ,Historical archive,,,yes
+52.00,LEGISLATIVE DISTRICT 10 - State Representative Pos. 2,legislative-district-10-state-representative-pos-2,1,Dave Paul,89081,47826,,,(Prefers Democratic Party),Historical archive,,,
+52.00,LEGISLATIVE DISTRICT 10 - State Representative Pos. 2,legislative-district-10-state-representative-pos-2,2,Gary Wray,89081,41137,,,(Prefers Republican Party),Historical archive,,,
+52.00,LEGISLATIVE DISTRICT 10 - State Representative Pos. 2,legislative-district-10-state-representative-pos-2,3,WRITE-IN,89081,118,,, ,Historical archive,,,yes
+53.00,LEGISLATIVE DISTRICT 11 - State Senator,legislative-district-11-state-senator,1,Bob Hasegawa,49380,47344,,,(Prefers Democratic Party),Historical archive,,,
+53.00,LEGISLATIVE DISTRICT 11 - State Senator,legislative-district-11-state-senator,2,WRITE-IN,49380,2036,,, ,Historical archive,,,yes
+54.00,LEGISLATIVE DISTRICT 11 - State Representative Pos. 1,legislative-district-11-state-representative-pos-1,1,David Hackney,48416,46438,,,(Prefers Democratic Party),Historical archive,,,
+54.00,LEGISLATIVE DISTRICT 11 - State Representative Pos. 1,legislative-district-11-state-representative-pos-1,2,WRITE-IN,48416,1978,,, ,Historical archive,,,yes
+55.00,LEGISLATIVE DISTRICT 11 - State Representative Pos. 2,legislative-district-11-state-representative-pos-2,1,Steve Bergquist,56438,43389,,,(Prefers Democratic Party),Historical archive,,,
+55.00,LEGISLATIVE DISTRICT 11 - State Representative Pos. 2,legislative-district-11-state-representative-pos-2,2,Justin Greywolf,56438,12508,,,(Prefers Libertarian Party),Historical archive,,,
+55.00,LEGISLATIVE DISTRICT 11 - State Representative Pos. 2,legislative-district-11-state-representative-pos-2,3,WRITE-IN,56438,541,,, ,Historical archive,,,yes
+56.00,LEGISLATIVE DISTRICT 12 - State Senator,legislative-district-12-state-senator,1,Keith W. Goehner,83424,46550,,,(Prefers Republican Party),Historical archive,,,
+56.00,LEGISLATIVE DISTRICT 12 - State Senator,legislative-district-12-state-senator,2,Jim Mayhew,83424,36824,,,(Prefers Democratic Party),Historical archive,,,
+56.00,LEGISLATIVE DISTRICT 12 - State Senator,legislative-district-12-state-senator,3,WRITE-IN,83424,50,,, ,Historical archive,,,yes
+57.00,Legislative District 12 - State Representative Pos. 1,legislative-district-12-state-representative-pos-1,1,Heather Koellen,83210,38800,,,(Prefers Democratic Party),Historical archive,,,
+57.00,Legislative District 12 - State Representative Pos. 1,legislative-district-12-state-representative-pos-1,2,Brian Burnett,83210,44318,,,(Prefers Republican Party),Historical archive,,,
+57.00,Legislative District 12 - State Representative Pos. 1,legislative-district-12-state-representative-pos-1,3,WRITE-IN,83210,92,,, ,Historical archive,,,yes
+58.00,Legislative District 12 - State Representative Pos. 2,legislative-district-12-state-representative-pos-2,1,Mike Steele,71912,44400,,,(Prefers Republican Party),Historical archive,,,
+58.00,Legislative District 12 - State Representative Pos. 2,legislative-district-12-state-representative-pos-2,2,Daniel Scott,71912,25741,,,(Prefers Republican Party),Historical archive,,,
+58.00,Legislative District 12 - State Representative Pos. 2,legislative-district-12-state-representative-pos-2,3,WRITE-IN,71912,1771,,, ,Historical archive,,,yes
+59.00,LEGISLATIVE DISTRICT 13 - State Representative Pos. 1,legislative-district-13-state-representative-pos-1,1,Tom Dent,52899,51493,,,(Prefers Republican Party),Historical archive,,,
+59.00,LEGISLATIVE DISTRICT 13 - State Representative Pos. 1,legislative-district-13-state-representative-pos-1,2,WRITE-IN,52899,1406,,, ,Historical archive,,,yes
+60.00,LEGISLATIVE DISTRICT 13 - State Representative Pos. 2,legislative-district-13-state-representative-pos-2,1,Alex Ybarra,52222,51012,,,(Prefers Republican Party),Historical archive,,,
+60.00,LEGISLATIVE DISTRICT 13 - State Representative Pos. 2,legislative-district-13-state-representative-pos-2,2,WRITE-IN,52222,1210,,, ,Historical archive,,,yes
+61.00,LEGISLATIVE DISTRICT 14 - State Senator,legislative-district-14-state-senator,1,Curtis King,34395,17762,,,(Prefers Republican Party),Historical archive,,,
+61.00,LEGISLATIVE DISTRICT 14 - State Senator,legislative-district-14-state-senator,2,Maria Beltran,34395,16543,,,(Prefers Democratic Party),Historical archive,,,
+61.00,LEGISLATIVE DISTRICT 14 - State Senator,legislative-district-14-state-senator,3,WRITE-IN,34395,90,,, ,Historical archive,,,yes
+62.00,LEGISLATIVE DISTRICT 14 - State Representative Pos. 1,legislative-district-14-state-representative-pos-1,1,Chelsea Dimas,33870,15418,,,(Prefers Democratic Party),Historical archive,,,
+62.00,LEGISLATIVE DISTRICT 14 - State Representative Pos. 1,legislative-district-14-state-representative-pos-1,2,Gloria Mendoza,33870,18263,,,(Prefers Republican Party),Historical archive,,,
+62.00,LEGISLATIVE DISTRICT 14 - State Representative Pos. 1,legislative-district-14-state-representative-pos-1,3,WRITE-IN,33870,189,,, ,Historical archive,,,yes
+63.00,LEGISLATIVE DISTRICT 14 - State Representative Pos. 2,legislative-district-14-state-representative-pos-2,1,Deb Manjarrez,33921,17188,,,(Prefers Republican Party),Historical archive,,,
+63.00,LEGISLATIVE DISTRICT 14 - State Representative Pos. 2,legislative-district-14-state-representative-pos-2,2,Ana Ruiz Kennedy,33921,16620,,,(Prefers Democratic Party),Historical archive,,,
+63.00,LEGISLATIVE DISTRICT 14 - State Representative Pos. 2,legislative-district-14-state-representative-pos-2,3,WRITE-IN,33921,113,,, ,Historical archive,,,yes
+64.00,LEGISLATIVE DISTRICT 15 - State Representative Pos. 1,legislative-district-15-state-representative-pos-1,1,Chris Corry,65727,46438,,,(Prefers Republican Party),Historical archive,,,
+64.00,LEGISLATIVE DISTRICT 15 - State Representative Pos. 1,legislative-district-15-state-representative-pos-1,2,Chase Foster,65727,18736,,,(States No Party Preference),Historical archive,,,
+64.00,LEGISLATIVE DISTRICT 15 - State Representative Pos. 1,legislative-district-15-state-representative-pos-1,3,WRITE-IN,65727,553,,, ,Historical archive,,,yes
+65.00,LEGISLATIVE DISTRICT 15 - State Representative Pos. 2,legislative-district-15-state-representative-pos-2,1,Jeremie Dufault,62940,44514,,,(Prefers Republican Party),Historical archive,,,
+65.00,LEGISLATIVE DISTRICT 15 - State Representative Pos. 2,legislative-district-15-state-representative-pos-2,2,Rich Bright,62940,17035,,,(Prefers Republican Party),Historical archive,,,
+65.00,LEGISLATIVE DISTRICT 15 - State Representative Pos. 2,legislative-district-15-state-representative-pos-2,3,WRITE-IN,62940,1391,,, ,Historical archive,,,yes
+66.00,LEGISLATIVE DISTRICT 16 - State Senator,legislative-district-16-state-senator,1,Perry Dozier,71106,45054,,,(Prefers Republican Party),Historical archive,,,
+66.00,LEGISLATIVE DISTRICT 16 - State Senator,legislative-district-16-state-senator,2,Kari Isaacson,71106,25998,,,(Prefers Democratic Party),Historical archive,,,
+66.00,LEGISLATIVE DISTRICT 16 - State Senator,legislative-district-16-state-senator,3,WRITE-IN,71106,54,,, ,Historical archive,,,yes
+67.00,LEGISLATIVE DISTRICT 16 - State Representative Pos. 1,legislative-district-16-state-representative-pos-1,1,Mark Klicker,71157,45890,,,(Prefers Republican Party),Historical archive,,,
+67.00,LEGISLATIVE DISTRICT 16 - State Representative Pos. 1,legislative-district-16-state-representative-pos-1,2,Linda Gunshefski,71157,25232,,,(Prefers Democratic Party),Historical archive,,,
+67.00,LEGISLATIVE DISTRICT 16 - State Representative Pos. 1,legislative-district-16-state-representative-pos-1,3,WRITE-IN,71157,35,,, ,Historical archive,,,yes
+68.00,LEGISLATIVE DISTRICT 16 - State Representative Pos. 2,legislative-district-16-state-representative-pos-2,1,Skyler Rude,70781,46596,,,(Prefers Republican Party),Historical archive,,,
+68.00,LEGISLATIVE DISTRICT 16 - State Representative Pos. 2,legislative-district-16-state-representative-pos-2,2,Craig R Woodard,70781,24145,,,(Prefers Democratic Party),Historical archive,,,
+68.00,LEGISLATIVE DISTRICT 16 - State Representative Pos. 2,legislative-district-16-state-representative-pos-2,3,WRITE-IN,70781,40,,, ,Historical archive,,,yes
+69.00,LEGISLATIVE DISTRICT 17 - State Senator,legislative-district-17-state-senator,1,Paul Harris,86188,44034,,,(Prefers Republican Party),Historical archive,,,
+69.00,LEGISLATIVE DISTRICT 17 - State Senator,legislative-district-17-state-senator,2,Marla Keethler,86188,42019,,,(Prefers Democratic Party),Historical archive,,,
+69.00,LEGISLATIVE DISTRICT 17 - State Senator,legislative-district-17-state-senator,3,WRITE-IN,86188,135,,, ,Historical archive,,,yes
+70.00,LEGISLATIVE DISTRICT 17 - State Representative Pos. 1,legislative-district-17-state-representative-pos-1,1,Kevin Waters,59997,55952,,,(Prefers Republican Party),Historical archive,,,
+70.00,LEGISLATIVE DISTRICT 17 - State Representative Pos. 1,legislative-district-17-state-representative-pos-1,2,WRITE-IN,59997,4045,,, ,Historical archive,,,yes
+71.00,LEGISLATIVE DISTRICT 17 - State Representative Pos. 2,legislative-district-17-state-representative-pos-2,1,Terri Niles,85365,42195,,,(Prefers Democratic Party),Historical archive,,,
+71.00,LEGISLATIVE DISTRICT 17 - State Representative Pos. 2,legislative-district-17-state-representative-pos-2,2,David Stuebe,85365,43022,,,(Prefers Republican Party),Historical archive,,,
+71.00,LEGISLATIVE DISTRICT 17 - State Representative Pos. 2,legislative-district-17-state-representative-pos-2,3,WRITE-IN,85365,148,,, ,Historical archive,,,yes
+72.00,LEGISLATIVE DISTRICT 18 - State Senator,legislative-district-18-state-senator,1,Adrian Cortes,84123,42053,,,(Prefers Democratic Party),Historical archive,,,
+72.00,LEGISLATIVE DISTRICT 18 - State Senator,legislative-district-18-state-senator,2,Brad Benton,84123,41881,,,(Prefers Republican Party),Historical archive,,,
+72.00,LEGISLATIVE DISTRICT 18 - State Senator,legislative-district-18-state-senator,3,WRITE-IN,84123,189,,, ,Historical archive,,,yes
+73.00,LEGISLATIVE DISTRICT 18 - State Representative Pos. 1,legislative-district-18-state-representative-pos-1,1,Stephanie McClintock,83775,46622,,,(Prefers Republican Party),Historical archive,,,
+73.00,LEGISLATIVE DISTRICT 18 - State Representative Pos. 1,legislative-district-18-state-representative-pos-1,2,Deken Letinich,83775,37053,,,(Prefers Democratic Party),Historical archive,,,
+73.00,LEGISLATIVE DISTRICT 18 - State Representative Pos. 1,legislative-district-18-state-representative-pos-1,3,WRITE-IN,83775,100,,, ,Historical archive,,,yes
+74.00,LEGISLATIVE DISTRICT 18 - State Representative Pos. 2,legislative-district-18-state-representative-pos-2,1,John Zingale,83748,40995,,,(Prefers Democratic Party),Historical archive,,,
+74.00,LEGISLATIVE DISTRICT 18 - State Representative Pos. 2,legislative-district-18-state-representative-pos-2,2,John Ley,83748,42603,,,(Prefers Republican Party),Historical archive,,,
+74.00,LEGISLATIVE DISTRICT 18 - State Representative Pos. 2,legislative-district-18-state-representative-pos-2,3,WRITE-IN,83748,150,,, ,Historical archive,,,yes
+75.00,Legislative District 19 - State Senator,legislative-district-19-state-senator,1,Jeff Wilson,79905,48920,,,(Prefers Republican Party),Historical archive,,,
+75.00,Legislative District 19 - State Senator,legislative-district-19-state-senator,2,Andi Day,79905,30911,,,(Prefers Democratic Party),Historical archive,,,
+75.00,Legislative District 19 - State Senator,legislative-district-19-state-senator,3,WRITE-IN,79905,74,,, ,Historical archive,,,yes
+76.00,Legislative District 19 - State Representative Pos. 1,legislative-district-19-state-representative-pos-1,1,Jim Walsh,80714,48544,,,(Prefers Republican Party),Historical archive,,,
+76.00,Legislative District 19 - State Representative Pos. 1,legislative-district-19-state-representative-pos-1,2,Mike Coverdale,80714,32094,,,(Prefers Democratic Party),Historical archive,,,
+76.00,Legislative District 19 - State Representative Pos. 1,legislative-district-19-state-representative-pos-1,3,WRITE-IN,80714,76,,, ,Historical archive,,,yes
+77.00,LEGISLATIVE DISTRICT 19 - State Representative Pos. 2,legislative-district-19-state-representative-pos-2,1,Joel McEntire,79883,49665,,,(Prefers Republican Party),Historical archive,,,
+77.00,LEGISLATIVE DISTRICT 19 - State Representative Pos. 2,legislative-district-19-state-representative-pos-2,2,Terry Carlson,79883,30141,,,(Prefers Democratic Party),Historical archive,,,
+77.00,LEGISLATIVE DISTRICT 19 - State Representative Pos. 2,legislative-district-19-state-representative-pos-2,3,WRITE-IN,79883,77,,, ,Historical archive,,,yes
+78.00,LEGISLATIVE DISTRICT 20 - State Senator,legislative-district-20-state-senator,1,John Braun,71662,69172,,,(Prefers Republican Party),Historical archive,,,
+78.00,LEGISLATIVE DISTRICT 20 - State Senator,legislative-district-20-state-senator,2,WRITE-IN,71662,2490,,, ,Historical archive,,,yes
+79.00,LEGISLATIVE DISTRICT 20 - State Representative Pos. 1,legislative-district-20-state-representative-pos-1,1,Peter Abbarno,77727,67633,,,(Prefers Republican Party),Historical archive,,,
+79.00,LEGISLATIVE DISTRICT 20 - State Representative Pos. 1,legislative-district-20-state-representative-pos-1,2,Melvin Kaleolani Apana,77727,8295,,,(Prefers Culture Republican Party),Historical archive,,,
+79.00,LEGISLATIVE DISTRICT 20 - State Representative Pos. 1,legislative-district-20-state-representative-pos-1,3,WRITE-IN,77727,1799,,, ,Historical archive,,,yes
+80.00,LEGISLATIVE DISTRICT 20 - State Representative Pos. 2,legislative-district-20-state-representative-pos-2,1,Ed Orcutt,68463,66170,,,(Prefers GOP Party),Historical archive,,,
+80.00,LEGISLATIVE DISTRICT 20 - State Representative Pos. 2,legislative-district-20-state-representative-pos-2,2,WRITE-IN,68463,2293,,, ,Historical archive,,,yes
+81.00,Legislative District 21 - State Representative Pos. 1,legislative-district-21-state-representative-pos-1,1,Strom Peterson,70030,46705,,,(Prefers Democratic Party),Historical archive,,,
+81.00,Legislative District 21 - State Representative Pos. 1,legislative-district-21-state-representative-pos-1,2,Riaz Khan,70030,23156,,,(Prefers Republican Party),Historical archive,,,
+81.00,Legislative District 21 - State Representative Pos. 1,legislative-district-21-state-representative-pos-1,3,WRITE-IN,70030,169,,, ,Historical archive,,,yes
+82.00,Legislative District 21 - State Representative Pos. 2,legislative-district-21-state-representative-pos-2,1,Lillian Ortiz-Self,69157,46422,,,(Prefers Democratic Party),Historical archive,,,
+82.00,Legislative District 21 - State Representative Pos. 2,legislative-district-21-state-representative-pos-2,2,Kristina Mitchell,69157,22579,,,(Prefers Conservative Party),Historical archive,,,
+82.00,Legislative District 21 - State Representative Pos. 2,legislative-district-21-state-representative-pos-2,3,WRITE-IN,69157,156,,, ,Historical archive,,,yes
+83.00,Legislative District 22 - State Senator,legislative-district-22-state-senator,1,Jessica Bateman,77816,54904,,,(Prefers Democratic Party),Historical archive,,,
+83.00,Legislative District 22 - State Senator,legislative-district-22-state-senator,2,Bob Iyall,77816,21294,,,(Prefers Democratic Party),Historical archive,,,
+83.00,Legislative District 22 - State Senator,legislative-district-22-state-senator,3,WRITE-IN,77816,1618,,, ,Historical archive,,,yes
+84.00,Legislative District 22 - State Representative Pos. 1,legislative-district-22-state-representative-pos-1,1,Beth Doglio,81385,56646,,,(Prefers Democratic Party),Historical archive,,,
+84.00,Legislative District 22 - State Representative Pos. 1,legislative-district-22-state-representative-pos-1,2,Steve Owens,81385,24229,,,(States No Party Preference),Historical archive,,,
+84.00,Legislative District 22 - State Representative Pos. 1,legislative-district-22-state-representative-pos-1,3,WRITE-IN,81385,510,,, ,Historical archive,,,yes
+85.00,Legislative District 22 - State Representative Pos. 2,legislative-district-22-state-representative-pos-2,1,Lisa Parshley,75205,46932,,,(Prefers Democratic Party),Historical archive,,,
+85.00,Legislative District 22 - State Representative Pos. 2,legislative-district-22-state-representative-pos-2,2,Syd Locke,75205,26183,,,(Prefers Democratic Party),Historical archive,,,
+85.00,Legislative District 22 - State Representative Pos. 2,legislative-district-22-state-representative-pos-2,3,WRITE-IN,75205,2090,,, ,Historical archive,,,yes
+86.00,Legislative District 23 - State Senator,legislative-district-23-state-senator,1,Drew Hansen,86219,55388,,,(Prefers Democratic Party),Historical archive,,,
+86.00,Legislative District 23 - State Senator,legislative-district-23-state-senator,2,Lance Byrd,86219,30742,,,(Prefers Republican Party),Historical archive,,,
+86.00,Legislative District 23 - State Senator,legislative-district-23-state-senator,3,WRITE-IN,86219,89,,, ,Historical archive,,,yes
+87.00,Legislative District 23 - State Representative Pos. 1,legislative-district-23-state-representative-pos-1,1,Tarra Simmons,85672,53928,,,(Prefers Democratic Party),Historical archive,,,
+87.00,Legislative District 23 - State Representative Pos. 1,legislative-district-23-state-representative-pos-1,2,Kurt Robertson,85672,31609,,,(Prefers Republican Party),Historical archive,,,
+87.00,Legislative District 23 - State Representative Pos. 1,legislative-district-23-state-representative-pos-1,3,WRITE-IN,85672,135,,, ,Historical archive,,,yes
+88.00,Legislative District 23 - State Representative Pos. 2,legislative-district-23-state-representative-pos-2,1,Greg Nance,86449,56894,,,(Prefers Democratic Party),Historical archive,,,
+88.00,Legislative District 23 - State Representative Pos. 2,legislative-district-23-state-representative-pos-2,2,Jamie Miles,86449,29439,,,(Prefers Republican Party),Historical archive,,,
+88.00,Legislative District 23 - State Representative Pos. 2,legislative-district-23-state-representative-pos-2,3,WRITE-IN,86449,116,,, ,Historical archive,,,yes
+89.00,LEGISLATIVE DISTRICT 24 - State Senator,legislative-district-24-state-senator,1,Mike Chapman,95123,52108,,,(Prefers Democratic Party),Historical archive,,,
+89.00,LEGISLATIVE DISTRICT 24 - State Senator,legislative-district-24-state-senator,2,Marcia Kelbon,95123,42895,,,(Prefers Republican Party),Historical archive,,,
+89.00,LEGISLATIVE DISTRICT 24 - State Senator,legislative-district-24-state-senator,3,WRITE-IN,95123,120,,, ,Historical archive,,,yes
+90.00,LEGISLATIVE DISTRICT 24 - State Representative Pos. 1,legislative-district-24-state-representative-pos-1,1,Adam Bernbaum,94694,52007,,,(Prefers Democratic Party),Historical archive,,,
+90.00,LEGISLATIVE DISTRICT 24 - State Representative Pos. 1,legislative-district-24-state-representative-pos-1,2,Matthew (Matt) Roberson,94694,42555,,,(Prefers Republican Party),Historical archive,,,
+90.00,LEGISLATIVE DISTRICT 24 - State Representative Pos. 1,legislative-district-24-state-representative-pos-1,3,WRITE-IN,94694,132,,, ,Historical archive,,,yes
+91.00,LEGISLATIVE DISTRICT 24 - State Representative Pos. 2,legislative-district-24-state-representative-pos-2,1,Steve Tharinger,94854,52481,,,(Prefers Democratic Party),Historical archive,,,
+91.00,LEGISLATIVE DISTRICT 24 - State Representative Pos. 2,legislative-district-24-state-representative-pos-2,2,Terry Roberts,94854,42265,,,(Prefers Republican Party),Historical archive,,,
+91.00,LEGISLATIVE DISTRICT 24 - State Representative Pos. 2,legislative-district-24-state-representative-pos-2,3,WRITE-IN,94854,108,,, ,Historical archive,,,yes
+92.00,LEGISLATIVE DISTRICT 25 - State Senator,legislative-district-25-state-senator,1,Chris Gildon,72521,41862,,,(Prefers Republican Party),Historical archive,,,
+92.00,LEGISLATIVE DISTRICT 25 - State Senator,legislative-district-25-state-senator,2,Kenneth King,72521,30595,,,(Prefers Democratic Party),Historical archive,,,
+92.00,LEGISLATIVE DISTRICT 25 - State Senator,legislative-district-25-state-senator,3,WRITE-IN,72521,64,,, ,Historical archive,,,yes
+93.00,LEGISLATIVE DISTRICT 25 - State Representative Pos. 1,legislative-district-25-state-representative-pos-1,1,Michael Keaton,72332,40458,,,(Prefers Republican Party),Historical archive,,,
+93.00,LEGISLATIVE DISTRICT 25 - State Representative Pos. 1,legislative-district-25-state-representative-pos-1,2,Cameron Severns,72332,31833,,,(Prefers Democratic Party),Historical archive,,,
+93.00,LEGISLATIVE DISTRICT 25 - State Representative Pos. 1,legislative-district-25-state-representative-pos-1,3,WRITE-IN,72332,41,,, ,Historical archive,,,yes
+94.00,LEGISLATIVE DISTRICT 25 - State Representative Pos. 2,legislative-district-25-state-representative-pos-2,1,Cyndy Jacobsen,72138,40199,,,(Prefers Republican Party),Historical archive,,,
+94.00,LEGISLATIVE DISTRICT 25 - State Representative Pos. 2,legislative-district-25-state-representative-pos-2,2,Shellie Willis,72138,31888,,,(Prefers Democratic Party),Historical archive,,,
+94.00,LEGISLATIVE DISTRICT 25 - State Representative Pos. 2,legislative-district-25-state-representative-pos-2,3,WRITE-IN,72138,51,,, ,Historical archive,,,yes
+95.00,LEGISLATIVE DISTRICT 26 - State Representative Pos. 1,legislative-district-26-state-representative-pos-1,1,Adison Richards,90465,46833,,,(Prefers Democratic Party),Historical archive,,,
+95.00,LEGISLATIVE DISTRICT 26 - State Representative Pos. 1,legislative-district-26-state-representative-pos-1,2,Jesse L. Young,90465,43503,,,(Prefers Republican Party),Historical archive,,,
+95.00,LEGISLATIVE DISTRICT 26 - State Representative Pos. 1,legislative-district-26-state-representative-pos-1,3,WRITE-IN,90465,129,,, ,Historical archive,,,yes
+96.00,LEGISLATIVE DISTRICT 26 - State Representative Pos. 2,legislative-district-26-state-representative-pos-2,1,Michelle Caldier,89909,49086,,,(Prefers Republican Party),Historical archive,,,
+96.00,LEGISLATIVE DISTRICT 26 - State Representative Pos. 2,legislative-district-26-state-representative-pos-2,2,Tiffiny Mitchell,89909,40636,,,(Prefers Democratic Party),Historical archive,,,
+96.00,LEGISLATIVE DISTRICT 26 - State Representative Pos. 2,legislative-district-26-state-representative-pos-2,3,WRITE-IN,89909,187,,, ,Historical archive,,,yes
+97.00,Legislative District 27 - State Senator,legislative-district-27-state-senator,1,Yasmin Trudeau,72394,51943,,,(Prefers Democratic Party),Historical archive,,,
+97.00,Legislative District 27 - State Senator,legislative-district-27-state-senator,2,Carole Sue Braaten,72394,20327,,,(Prefers Republican Party),Historical archive,,,
+97.00,Legislative District 27 - State Senator,legislative-district-27-state-senator,3,WRITE-IN,72394,124,,, ,Historical archive,,,yes
+98.00,Legislative District 27 - State Representative Pos. 1,legislative-district-27-state-representative-pos-1,1,Laurie Jinkins,72051,51628,,,(Prefers Democratic Party),Historical archive,,,
+98.00,Legislative District 27 - State Representative Pos. 1,legislative-district-27-state-representative-pos-1,2,Ken Paulson,72051,20301,,,(Prefers Republican Party),Historical archive,,,
+98.00,Legislative District 27 - State Representative Pos. 1,legislative-district-27-state-representative-pos-1,3,WRITE-IN,72051,122,,, ,Historical archive,,,yes
+99.00,Legislative District 27 - State Representative Pos. 2,legislative-district-27-state-representative-pos-2,1,Jake Fey,65346,49311,,,(Prefers Democratic Party),Historical archive,,,
+99.00,Legislative District 27 - State Representative Pos. 2,legislative-district-27-state-representative-pos-2,2,Devin Rydel Kelly,65346,14825,,,(Prefers Democratic Party),Historical archive,,,
+99.00,Legislative District 27 - State Representative Pos. 2,legislative-district-27-state-representative-pos-2,3,WRITE-IN,65346,1210,,, ,Historical archive,,,yes
+100.00,LEGISLATIVE DISTRICT 28 - State Senator,legislative-district-28-state-senator,1,T'wina Nobles,59887,32194,,,(Prefers Democratic Party),Historical archive,,,
+100.00,LEGISLATIVE DISTRICT 28 - State Senator,legislative-district-28-state-senator,2,Maia Espinoza,59887,27605,,,(Prefers Republican Party),Historical archive,,,
+100.00,LEGISLATIVE DISTRICT 28 - State Senator,legislative-district-28-state-senator,3,WRITE-IN,59887,88,,, ,Historical archive,,,yes
+101.00,LEGISLATIVE DISTRICT 28 - State Representative Pos. 1,legislative-district-28-state-representative-pos-1,1,Mari Leavitt,59253,34629,,,(Prefers Democratic Party),Historical archive,,,
+101.00,LEGISLATIVE DISTRICT 28 - State Representative Pos. 1,legislative-district-28-state-representative-pos-1,2,Gabe Sachwitz,59253,24549,,,(Prefers Republican Party),Historical archive,,,
+101.00,LEGISLATIVE DISTRICT 28 - State Representative Pos. 1,legislative-district-28-state-representative-pos-1,3,WRITE-IN,59253,75,,, ,Historical archive,,,yes
+102.00,LEGISLATIVE DISTRICT 28 - State Representative Pos. 2,legislative-district-28-state-representative-pos-2,1,Dan Bronoske,58967,34129,,,(Prefers Democratic Party),Historical archive,,,
+102.00,LEGISLATIVE DISTRICT 28 - State Representative Pos. 2,legislative-district-28-state-representative-pos-2,2,Mark Herr,58967,24772,,,(Prefers Republican Party),Historical archive,,,
+102.00,LEGISLATIVE DISTRICT 28 - State Representative Pos. 2,legislative-district-28-state-representative-pos-2,3,WRITE-IN,58967,66,,, ,Historical archive,,,yes
+103.00,LEGISLATIVE DISTRICT 29 - State Representative Pos. 1,legislative-district-29-state-representative-pos-1,1,Melanie Morgan,46623,31993,,,(Prefers Democratic Party),Historical archive,,,
+103.00,LEGISLATIVE DISTRICT 29 - State Representative Pos. 1,legislative-district-29-state-representative-pos-1,2,Richard Miller,46623,13152,,,(Prefers Democratic Party),Historical archive,,,
+103.00,LEGISLATIVE DISTRICT 29 - State Representative Pos. 1,legislative-district-29-state-representative-pos-1,3,WRITE-IN,46623,1478,,, ,Historical archive,,,yes
+104.00,LEGISLATIVE DISTRICT 29 - State Representative Pos. 2,legislative-district-29-state-representative-pos-2,1,Sharlett Mena,41937,39333,,,(Prefers Democratic Party),Historical archive,,,
+104.00,LEGISLATIVE DISTRICT 29 - State Representative Pos. 2,legislative-district-29-state-representative-pos-2,2,WRITE-IN,41937,2604,,, ,Historical archive,,,yes
+105.00,Legislative District 30 - State Representative Pos. 1,legislative-district-30-state-representative-pos-1,1,Jamila E. Taylor,54714,30723,,,(Prefers Democratic Party),Historical archive,,,
+105.00,Legislative District 30 - State Representative Pos. 1,legislative-district-30-state-representative-pos-1,2,Melissa Hamilton,54714,23924,,,(Prefers Republican Party),Historical archive,,,
+105.00,Legislative District 30 - State Representative Pos. 1,legislative-district-30-state-representative-pos-1,3,WRITE-IN,54714,67,,, ,Historical archive,,,yes
+106.00,Legislative District 30 - State Representative Pos. 2,legislative-district-30-state-representative-pos-2,1,Kristine M. Reeves,54590,32043,,,(Prefers Democratic Party),Historical archive,,,
+106.00,Legislative District 30 - State Representative Pos. 2,legislative-district-30-state-representative-pos-2,2,Quentin Morris,54590,22491,,,(Prefers Republican Party),Historical archive,,,
+106.00,Legislative District 30 - State Representative Pos. 2,legislative-district-30-state-representative-pos-2,3,WRITE-IN,54590,56,,, ,Historical archive,,,yes
+107.00,LEGISLATIVE DISTRICT 31 - State Representative Pos. 1,legislative-district-31-state-representative-pos-1,1,Drew Stokesbary,81181,51651,,,(Prefers Republican Party),Historical archive,,,
+107.00,LEGISLATIVE DISTRICT 31 - State Representative Pos. 1,legislative-district-31-state-representative-pos-1,2,Sara Sutterfield,81181,29451,,,(Prefers Democratic Party),Historical archive,,,
+107.00,LEGISLATIVE DISTRICT 31 - State Representative Pos. 1,legislative-district-31-state-representative-pos-1,3,WRITE-IN,81181,79,,, ,Historical archive,,,yes
+108.00,LEGISLATIVE DISTRICT 31 - State Representative Pos. 2,legislative-district-31-state-representative-pos-2,1,Joshua Penner,80769,49335,,,(Prefers Republican Party),Historical archive,,,
+108.00,LEGISLATIVE DISTRICT 31 - State Representative Pos. 2,legislative-district-31-state-representative-pos-2,2,Brian L. Gunn,80769,31338,,,(Prefers Democratic Party),Historical archive,,,
+108.00,LEGISLATIVE DISTRICT 31 - State Representative Pos. 2,legislative-district-31-state-representative-pos-2,3,WRITE-IN,80769,96,,, ,Historical archive,,,yes
+109.00,LEGISLATIVE DISTRICT 32 - State Representative Pos. 1,legislative-district-32-state-representative-pos-1,1,Cindy Ryu,78233,58021,,,(Prefers Democratic Party),Historical archive,,,
+109.00,LEGISLATIVE DISTRICT 32 - State Representative Pos. 1,legislative-district-32-state-representative-pos-1,2,Lisa Rezac,78233,20084,,,(Prefers Republican Party),Historical archive,,,
+109.00,LEGISLATIVE DISTRICT 32 - State Representative Pos. 1,legislative-district-32-state-representative-pos-1,3,WRITE-IN,78233,128,,, ,Historical archive,,,yes
+110.00,LEGISLATIVE DISTRICT 32 - State Representative Pos. 2,legislative-district-32-state-representative-pos-2,1,Lauren Davis,77940,58169,,,(Prefers Democratic Party),Historical archive,,,
+110.00,LEGISLATIVE DISTRICT 32 - State Representative Pos. 2,legislative-district-32-state-representative-pos-2,2,Lori Theis,77940,19661,,,(Prefers Republican Party),Historical archive,,,
+110.00,LEGISLATIVE DISTRICT 32 - State Representative Pos. 2,legislative-district-32-state-representative-pos-2,3,WRITE-IN,77940,110,,, ,Historical archive,,,yes
+111.00,Legislative District 33 - State Representative Pos. 1,legislative-district-33-state-representative-pos-1,1,Tina L. Orwall,56381,38898,,,(Prefers Democratic Party),Historical archive,,,
+111.00,Legislative District 33 - State Representative Pos. 1,legislative-district-33-state-representative-pos-1,2,George Richter,56381,17423,,,(Prefers Republican Party),Historical archive,,,
+111.00,Legislative District 33 - State Representative Pos. 1,legislative-district-33-state-representative-pos-1,3,WRITE-IN,56381,60,,, ,Historical archive,,,yes
+112.00,Legislative District 33 - State Representative Pos. 2,legislative-district-33-state-representative-pos-2,1,Mia Su-Ling Gregerson,53916,38152,,,(Prefers Democratic Party),Historical archive,,,
+112.00,Legislative District 33 - State Representative Pos. 2,legislative-district-33-state-representative-pos-2,2,Casey Esmond,53916,15454,,,(States No Party Preference),Historical archive,,,
+112.00,Legislative District 33 - State Representative Pos. 2,legislative-district-33-state-representative-pos-2,3,WRITE-IN,53916,310,,, ,Historical archive,,,yes
+113.00,LEGISLATIVE DISTRICT 34 - State Representative Pos. 1,legislative-district-34-state-representative-pos-1,1,Emily Alvarado,82723,70218,,,(Prefers Democratic Party),Historical archive,,,
+113.00,LEGISLATIVE DISTRICT 34 - State Representative Pos. 1,legislative-district-34-state-representative-pos-1,2,Kimberly M. Cloud,82723,12362,,,(Prefers Republican Party),Historical archive,,,
+113.00,LEGISLATIVE DISTRICT 34 - State Representative Pos. 1,legislative-district-34-state-representative-pos-1,3,WRITE-IN,82723,143,,, ,Historical archive,,,yes
+114.00,LEGISLATIVE DISTRICT 34 - State Representative Pos. 2,legislative-district-34-state-representative-pos-2,1,Joe Fitzgibbon,82882,69340,,,(Prefers Democratic Party),Historical archive,,,
+114.00,LEGISLATIVE DISTRICT 34 - State Representative Pos. 2,legislative-district-34-state-representative-pos-2,2,Jolie Lansdowne,82882,13446,,,(Prefers Republican Party),Historical archive,,,
+114.00,LEGISLATIVE DISTRICT 34 - State Representative Pos. 2,legislative-district-34-state-representative-pos-2,3,WRITE-IN,82882,96,,, ,Historical archive,,,yes
+115.00,LEGISLATIVE DISTRICT 35 - State Representative Pos. 1,legislative-district-35-state-representative-pos-1,1,Dan Griffey,68631,65027,,,(Prefers Republican Party),Historical archive,,,
+115.00,LEGISLATIVE DISTRICT 35 - State Representative Pos. 1,legislative-district-35-state-representative-pos-1,2,WRITE-IN,68631,3604,,, ,Historical archive,,,yes
+116.00,LEGISLATIVE DISTRICT 35 - State Representative Pos. 2,legislative-district-35-state-representative-pos-2,1,Travis Couture,88760,51999,,,(Prefers Republican Party),Historical archive,,,
+116.00,LEGISLATIVE DISTRICT 35 - State Representative Pos. 2,legislative-district-35-state-representative-pos-2,2,James DeHart,88760,36664,,,(Prefers Democratic Party),Historical archive,,,
+116.00,LEGISLATIVE DISTRICT 35 - State Representative Pos. 2,legislative-district-35-state-representative-pos-2,3,WRITE-IN,88760,97,,, ,Historical archive,,,yes
+117.00,Legislative District 36 - State Representative Pos. 1,legislative-district-36-state-representative-pos-1,1,Julia Grant Reed,78773,77616,,,(Prefers Democratic Party),Historical archive,,,
+117.00,Legislative District 36 - State Representative Pos. 1,legislative-district-36-state-representative-pos-1,2,WRITE-IN,78773,1157,,, ,Historical archive,,,yes
+118.00,Legislative District 36 - State Representative Pos. 2,legislative-district-36-state-representative-pos-2,1,Liz Berry,92591,82201,,,(Prefers Democratic Party),Historical archive,,,
+118.00,Legislative District 36 - State Representative Pos. 2,legislative-district-36-state-representative-pos-2,2,Victoria Palmer,92591,10277,,,(Prefers Republican Party),Historical archive,,,
+118.00,Legislative District 36 - State Representative Pos. 2,legislative-district-36-state-representative-pos-2,3,WRITE-IN,92591,113,,, ,Historical archive,,,yes
+119.00,Legislative District 37 - State Representative Pos. 1,legislative-district-37-state-representative-pos-1,1,Sharon Tomiko Santos,64175,63074,,,(Prefers Democratic Party),Historical archive,,,
+119.00,Legislative District 37 - State Representative Pos. 1,legislative-district-37-state-representative-pos-1,2,WRITE-IN,64175,1101,,, ,Historical archive,,,yes
+120.00,Legislative District 37 - State Representative Pos. 2,legislative-district-37-state-representative-pos-2,1,Chipalo Street,71833,65363,,,(Prefers Democratic Party),Historical archive,,,
+120.00,Legislative District 37 - State Representative Pos. 2,legislative-district-37-state-representative-pos-2,2,Matt McCally,71833,6115,,,(Prefers Libertarian Party),Historical archive,,,
+120.00,Legislative District 37 - State Representative Pos. 2,legislative-district-37-state-representative-pos-2,3,WRITE-IN,71833,355,,, ,Historical archive,,,yes
+121.00,LEGISLATIVE DISTRICT 38 - State Representative Pos. 1,legislative-district-38-state-representative-pos-1,1,Julio Cortes,58120,41335,,,(Prefers Democratic Party),Historical archive,,,
+121.00,LEGISLATIVE DISTRICT 38 - State Representative Pos. 1,legislative-district-38-state-representative-pos-1,2,Annie Fitzgerald,58120,14810,,,(Prefers Democratic Party),Historical archive,,,
+121.00,LEGISLATIVE DISTRICT 38 - State Representative Pos. 1,legislative-district-38-state-representative-pos-1,3,WRITE-IN,58120,1975,,, ,Historical archive,,,yes
+122.00,LEGISLATIVE DISTRICT 38 - State Representative Pos. 2,legislative-district-38-state-representative-pos-2,1,Mary Fosse,65942,39209,,,(Prefers Democratic Party),Historical archive,,,
+122.00,LEGISLATIVE DISTRICT 38 - State Representative Pos. 2,legislative-district-38-state-representative-pos-2,2,Marnie Claywell,65942,26627,,,(Prefers Republican Party),Historical archive,,,
+122.00,LEGISLATIVE DISTRICT 38 - State Representative Pos. 2,legislative-district-38-state-representative-pos-2,3,WRITE-IN,65942,106,,, ,Historical archive,,,yes
+123.00,LEGISLATIVE DISTRICT 39 - State Senator,legislative-district-39-state-senator,1,Keith L. Wagoner,82397,49809,,,(Prefers Republican Party),Historical archive,,,
+123.00,LEGISLATIVE DISTRICT 39 - State Senator,legislative-district-39-state-senator,2,John Snow,82397,32505,,,(Prefers Democratic Party),Historical archive,,,
+123.00,LEGISLATIVE DISTRICT 39 - State Senator,legislative-district-39-state-senator,3,WRITE-IN,82397,83,,, ,Historical archive,,,yes
+124.00,LEGISLATIVE DISTRICT 39 - State Representative Pos. 1,legislative-district-39-state-representative-pos-1,1,Sam Low,75571,44515,,,(Prefers Republican Party),Historical archive,,,
+124.00,LEGISLATIVE DISTRICT 39 - State Representative Pos. 1,legislative-district-39-state-representative-pos-1,2,Robert J. Sutherland,75571,29909,,,(Prefers Republican Party),Historical archive,,,
+124.00,LEGISLATIVE DISTRICT 39 - State Representative Pos. 1,legislative-district-39-state-representative-pos-1,3,WRITE-IN,75571,1147,,, ,Historical archive,,,yes
+125.00,LEGISLATIVE DISTRICT 39 - State Representative Pos. 2,legislative-district-39-state-representative-pos-2,1,Carolyn Eslick,72893,45612,,,(Prefers Republican Party),Historical archive,,,
+125.00,LEGISLATIVE DISTRICT 39 - State Representative Pos. 2,legislative-district-39-state-representative-pos-2,2,Jackie Huey,72893,25802,,,(Prefers Republican Party),Historical archive,,,
+125.00,LEGISLATIVE DISTRICT 39 - State Representative Pos. 2,legislative-district-39-state-representative-pos-2,3,WRITE-IN,72893,1479,,, ,Historical archive,,,yes
+126.00,LEGISLATIVE DISTRICT 40 - State Senator,legislative-district-40-state-senator,1,Elizabeth (Liz) Lovelett,89273,62064,,,(Prefers Democratic Party),Historical archive,,,
+126.00,LEGISLATIVE DISTRICT 40 - State Senator,legislative-district-40-state-senator,2,Charles Carrell,89273,27091,,,(Prefers Republican Party),Historical archive,,,
+126.00,LEGISLATIVE DISTRICT 40 - State Senator,legislative-district-40-state-senator,3,WRITE-IN,89273,118,,, ,Historical archive,,,yes
+127.00,LEGISLATIVE DISTRICT 40 - State Representative Pos. 1,legislative-district-40-state-representative-pos-1,1,Debra Lekanoff,66558,63993,,,(Prefers Democratic Party),Historical archive,,,
+127.00,LEGISLATIVE DISTRICT 40 - State Representative Pos. 1,legislative-district-40-state-representative-pos-1,2,WRITE-IN,66558,2565,,, ,Historical archive,,,yes
+128.00,LEGISLATIVE DISTRICT 40 - State Representative Pos. 2,legislative-district-40-state-representative-pos-2,1,Alex Ramel,66043,63215,,,(Prefers Democratic Party),Historical archive,,,
+128.00,LEGISLATIVE DISTRICT 40 - State Representative Pos. 2,legislative-district-40-state-representative-pos-2,2,WRITE-IN,66043,2828,,, ,Historical archive,,,yes
+129.00,LEGISLATIVE DISTRICT 41 - State Senator,legislative-district-41-state-senator,1,Lisa Wellman,75160,51903,,,(Prefers Democratic Party),Historical archive,,,
+129.00,LEGISLATIVE DISTRICT 41 - State Senator,legislative-district-41-state-senator,2,Jaskaran Singh Sarao,75160,23102,,,(Prefers Republican Party),Historical archive,,,
+129.00,LEGISLATIVE DISTRICT 41 - State Senator,legislative-district-41-state-senator,3,WRITE-IN,75160,155,,, ,Historical archive,,,yes
+130.00,LEGISLATIVE DISTRICT 41 - State Representative Pos. 1,legislative-district-41-state-representative-pos-1,1,Tana Senn,75252,50823,,,(Prefers Democratic Party),Historical archive,,,
+130.00,LEGISLATIVE DISTRICT 41 - State Representative Pos. 1,legislative-district-41-state-representative-pos-1,2,Emily Tadlock,75252,24305,,,(Prefers Republican Party),Historical archive,,,
+130.00,LEGISLATIVE DISTRICT 41 - State Representative Pos. 1,legislative-district-41-state-representative-pos-1,3,WRITE-IN,75252,124,,, ,Historical archive,,,yes
+131.00,LEGISLATIVE DISTRICT 41 - State Representative Pos. 2,legislative-district-41-state-representative-pos-2,1,My-Linh Thai,75470,49577,,,(Prefers Democratic Party),Historical archive,,,
+131.00,LEGISLATIVE DISTRICT 41 - State Representative Pos. 2,legislative-district-41-state-representative-pos-2,2,Al Rosenthal,75470,25821,,,(Prefers Republican Party),Historical archive,,,
+131.00,LEGISLATIVE DISTRICT 41 - State Representative Pos. 2,legislative-district-41-state-representative-pos-2,3,WRITE-IN,75470,72,,, ,Historical archive,,,yes
+132.00,LEGISLATIVE DISTRICT 42 - State Representative Pos. 1,legislative-district-42-state-representative-pos-1,1,Alicia Rule,89978,49802,,,(Prefers Democratic Party),Historical archive,,,
+132.00,LEGISLATIVE DISTRICT 42 - State Representative Pos. 1,legislative-district-42-state-representative-pos-1,2,Raymond Pelletti,89978,40090,,,(Prefers Republican Party),Historical archive,,,
+132.00,LEGISLATIVE DISTRICT 42 - State Representative Pos. 1,legislative-district-42-state-representative-pos-1,3,WRITE-IN,89978,86,,, ,Historical archive,,,yes
+133.00,LEGISLATIVE DISTRICT 42 - State Representative Pos. 2,legislative-district-42-state-representative-pos-2,1,Joe Timmons,89913,47947,,,(Prefers Democratic Party),Historical archive,,,
+133.00,LEGISLATIVE DISTRICT 42 - State Representative Pos. 2,legislative-district-42-state-representative-pos-2,2,Kamal Bhachu,89913,41894,,,(Prefers Republican Party),Historical archive,,,
+133.00,LEGISLATIVE DISTRICT 42 - State Representative Pos. 2,legislative-district-42-state-representative-pos-2,3,WRITE-IN,89913,72,,, ,Historical archive,,,yes
+134.00,Legislative District 43 - State Representative Pos. 1,legislative-district-43-state-representative-pos-1,1,Nicole Macri,66611,65596,,,(Prefers Democratic Party),Historical archive,,,
+134.00,Legislative District 43 - State Representative Pos. 1,legislative-district-43-state-representative-pos-1,2,WRITE-IN,66611,1015,,, ,Historical archive,,,yes
+135.00,Legislative District 43 - State Representative Pos. 2,legislative-district-43-state-representative-pos-2,1,Shaun Scott,73050,49990,,,(Prefers Democratic Party),Historical archive,,,
+135.00,Legislative District 43 - State Representative Pos. 2,legislative-district-43-state-representative-pos-2,2,Andrea Suarez,73050,22506,,,(Prefers Democratic Party),Historical archive,,,
+135.00,Legislative District 43 - State Representative Pos. 2,legislative-district-43-state-representative-pos-2,3,WRITE-IN,73050,554,,, ,Historical archive,,,yes
+136.00,Legislative District 44 - State Representative Pos. 1,legislative-district-44-state-representative-pos-1,1,Brandy Donaghy,55088,51557,,,(Prefers Democratic Party),Historical archive,,,
+136.00,Legislative District 44 - State Representative Pos. 1,legislative-district-44-state-representative-pos-1,2,WRITE-IN,55088,3531,,, ,Historical archive,,,yes
+137.00,Legislative District 44 - State Representative Pos. 2,legislative-district-44-state-representative-pos-2,1,April Berg,74931,43155,,,(Prefers Democratic Party),Historical archive,,,
+137.00,Legislative District 44 - State Representative Pos. 2,legislative-district-44-state-representative-pos-2,2,Sam Sim,74931,31714,,,(Prefers Republican Party),Historical archive,,,
+137.00,Legislative District 44 - State Representative Pos. 2,legislative-district-44-state-representative-pos-2,3,WRITE-IN,74931,62,,, ,Historical archive,,,yes
+138.00,Legislative District 45 - State Representative Pos. 1,legislative-district-45-state-representative-pos-1,1,Roger Goodman,60792,58368,,,(Prefers Democratic Party),Historical archive,,,
+138.00,Legislative District 45 - State Representative Pos. 1,legislative-district-45-state-representative-pos-1,2,WRITE-IN,60792,2424,,, ,Historical archive,,,yes
+139.00,Legislative District 45 - State Representative Pos. 2,legislative-district-45-state-representative-pos-2,1,Larry Springer,69016,38347,,,(Prefers Democratic Party),Historical archive,,,
+139.00,Legislative District 45 - State Representative Pos. 2,legislative-district-45-state-representative-pos-2,2,Melissa Demyan,69016,29191,,,(Prefers Democratic Party),Historical archive,,,
+139.00,Legislative District 45 - State Representative Pos. 2,legislative-district-45-state-representative-pos-2,3,WRITE-IN,69016,1478,,, ,Historical archive,,,yes
+140.00,Legislative District 46 - State Representative Pos. 1,legislative-district-46-state-representative-pos-1,1,Gerry Pollet,83197,72727,,,(Prefers Democratic Party),Historical archive,,,
+140.00,Legislative District 46 - State Representative Pos. 1,legislative-district-46-state-representative-pos-1,2,Beth Daranciang,83197,10353,,,(Prefers Republican Party),Historical archive,,,
+140.00,Legislative District 46 - State Representative Pos. 1,legislative-district-46-state-representative-pos-1,3,WRITE-IN,83197,117,,, ,Historical archive,,,yes
+141.00,Legislative District 46 - State Representative Pos. 2,legislative-district-46-state-representative-pos-2,1,Darya Farivar,82032,70952,,,(Prefers Democratic Party),Historical archive,,,
+141.00,Legislative District 46 - State Representative Pos. 2,legislative-district-46-state-representative-pos-2,2,Simone Barron,82032,10832,,,(Prefers Republican Party),Historical archive,,,
+141.00,Legislative District 46 - State Representative Pos. 2,legislative-district-46-state-representative-pos-2,3,WRITE-IN,82032,248,,, ,Historical archive,,,yes
+142.00,Legislative District 47 - State Representative Pos. 1,legislative-district-47-state-representative-pos-1,1,Debra Jean Entenman,63147,35528,,,(Prefers Democratic Party),Historical archive,,,
+142.00,Legislative District 47 - State Representative Pos. 1,legislative-district-47-state-representative-pos-1,2,Kyle Lyebyedyev,63147,27513,,,(Prefers Republican Party),Historical archive,,,
+142.00,Legislative District 47 - State Representative Pos. 1,legislative-district-47-state-representative-pos-1,3,WRITE-IN,63147,106,,, ,Historical archive,,,yes
+143.00,Legislative District 47 - State Representative Pos. 2,legislative-district-47-state-representative-pos-2,1,Chris Stearns,63056,35085,,,(Prefers Democratic Party),Historical archive,,,
+143.00,Legislative District 47 - State Representative Pos. 2,legislative-district-47-state-representative-pos-2,2,Ted Cooke,63056,27870,,,(Prefers Republican Party),Historical archive,,,
+143.00,Legislative District 47 - State Representative Pos. 2,legislative-district-47-state-representative-pos-2,3,WRITE-IN,63056,101,,, ,Historical archive,,,yes
+144.00,Legislative District 48 - State Representative Pos. 1,legislative-district-48-state-representative-pos-1,1,Vandana Slatter,58069,39645,,,(Prefers Democratic Party),Historical archive,,,
+144.00,Legislative District 48 - State Representative Pos. 1,legislative-district-48-state-representative-pos-1,2,Lynn Trinh,58069,18330,,,(Prefers Republican Party),Historical archive,,,
+144.00,Legislative District 48 - State Representative Pos. 1,legislative-district-48-state-representative-pos-1,3,WRITE-IN,58069,94,,, ,Historical archive,,,yes
+145.00,Legislative District 48 - State Representative Pos. 2,legislative-district-48-state-representative-pos-2,1,Amy Walen,45609,43664,,,(Prefers Democratic Party),Historical archive,,,
+145.00,Legislative District 48 - State Representative Pos. 2,legislative-district-48-state-representative-pos-2,2,WRITE-IN,45609,1945,,, ,Historical archive,,,yes
+146.00,LEGISLATIVE DISTRICT 49 - State Senator,legislative-district-49-state-senator,1,Annette Cleveland,68267,42161,,,(Prefers Democratic Party),Historical archive,,,
+146.00,LEGISLATIVE DISTRICT 49 - State Senator,legislative-district-49-state-senator,2,Lucia Worthington,68267,25936,,,(Prefers Republican Party),Historical archive,,,
+146.00,LEGISLATIVE DISTRICT 49 - State Senator,legislative-district-49-state-senator,3,WRITE-IN,68267,170,,, ,Historical archive,,,yes
+147.00,LEGISLATIVE DISTRICT 49 - State Representative Pos. 1,legislative-district-49-state-representative-pos-1,1,Sharon Wylie,68114,43234,,,(Prefers Democratic Party),Historical archive,,,
+147.00,LEGISLATIVE DISTRICT 49 - State Representative Pos. 1,legislative-district-49-state-representative-pos-1,2,Brett Graham,68114,24741,,,(Prefers Republican Party),Historical archive,,,
+147.00,LEGISLATIVE DISTRICT 49 - State Representative Pos. 1,legislative-district-49-state-representative-pos-1,3,WRITE-IN,68114,139,,, ,Historical archive,,,yes
+148.00,LEGISLATIVE DISTRICT 49 - State Representative Pos. 2,legislative-district-49-state-representative-pos-2,1,Monica Jurado Stonier,68099,42950,,,(Prefers Democratic Party),Historical archive,,,
+148.00,LEGISLATIVE DISTRICT 49 - State Representative Pos. 2,legislative-district-49-state-representative-pos-2,2,Russell Barber,68099,24997,,,(Prefers Republican Party),Historical archive,,,
+148.00,LEGISLATIVE DISTRICT 49 - State Representative Pos. 2,legislative-district-49-state-representative-pos-2,3,WRITE-IN,68099,152,,, ,Historical archive,,,yes
+149.00,SUPREME COURT - Justice Position #02,supreme-court-justice-position-02,1,Sal Mungia,3285216,1644253,,,,Historical archive,,,
+149.00,SUPREME COURT - Justice Position #02,supreme-court-justice-position-02,2,Dave Larson,3285216,1624309,,,,Historical archive,,,
+149.00,SUPREME COURT - Justice Position #02,supreme-court-justice-position-02,3,WRITE-IN,3285216,16654,,, ,Historical archive,,,yes
+150.00,SUPREME COURT - Justice Position #08,supreme-court-justice-position-08,1,Steve Gonzalez,2626238,2564372,,,,Historical archive,,,
+150.00,SUPREME COURT - Justice Position #08,supreme-court-justice-position-08,2,WRITE-IN,2626238,61866,,, ,Historical archive,,,yes
+151.00,SUPREME COURT - Justice Position #09,supreme-court-justice-position-09,1,Sheryl Gordon McCloud,2600262,2534783,,,,Historical archive,,,
+151.00,SUPREME COURT - Justice Position #09,supreme-court-justice-position-09,2,WRITE-IN,2600262,65479,,, ,Historical archive,,,yes
+152.00,"Court of Appeals, Division 1, District 1 - Judge Position 4",court-of-appeals-division-1-district-1-judge-position-4,1,Leonard J. Feldman,743183,728029,,,,Historical archive,,,
+152.00,"Court of Appeals, Division 1, District 1 - Judge Position 4",court-of-appeals-division-1-district-1-judge-position-4,2,WRITE-IN,743183,15154,,, ,Historical archive,,,yes
+153.00,"Court of Appeals, Division 1, District 1 - Judge Position 7",court-of-appeals-division-1-district-1-judge-position-7,1,Janet S. Chung,739818,724336,,,,Historical archive,,,
+153.00,"Court of Appeals, Division 1, District 1 - Judge Position 7",court-of-appeals-division-1-district-1-judge-position-7,2,WRITE-IN,739818,15482,,, ,Historical archive,,,yes
+154.00,"Court of Appeals, Division 1, District 3 - Judge Position 1",court-of-appeals-division-1-district-3-judge-position-1,1,Cecily C. Hazelrigg,167009,163845,,,,Historical archive,,,
+154.00,"Court of Appeals, Division 1, District 3 - Judge Position 1",court-of-appeals-division-1-district-3-judge-position-1,2,WRITE-IN,167009,3164,,, ,Historical archive,,,yes
+155.00,"COURT OF APPEALS, DIVISION 2, DISTRICT 1 - Judge Position 3",court-of-appeals-division-2-district-1-judge-position-3,1,Linda Lee,296592,289862,,,,Historical archive,,,
+155.00,"COURT OF APPEALS, DIVISION 2, DISTRICT 1 - Judge Position 3",court-of-appeals-division-2-district-1-judge-position-3,2,WRITE-IN,296592,6730,,, ,Historical archive,,,yes
+156.00,"COURT OF APPEALS, DIVISION 2, DISTRICT 2 - Judge Position 2",court-of-appeals-division-2-district-2-judge-position-2,1,Rebecca Glasgow,308158,300669,,,,Historical archive,,,
+156.00,"COURT OF APPEALS, DIVISION 2, DISTRICT 2 - Judge Position 2",court-of-appeals-division-2-district-2-judge-position-2,2,WRITE-IN,308158,7489,,, ,Historical archive,,,yes
+157.00,"COURT OF APPEALS, DIVISION 2, DISTRICT 3 - Judge Position 1",court-of-appeals-division-2-district-3-judge-position-1,1,Bernard F. Veljacic,254302,247867,,,,Historical archive,,,
+157.00,"COURT OF APPEALS, DIVISION 2, DISTRICT 3 - Judge Position 1",court-of-appeals-division-2-district-3-judge-position-1,2,WRITE-IN,254302,6435,,, ,Historical archive,,,yes
+158.00,"Court of Appeals, Division 3, District 1 - Judge Position 1",court-of-appeals-division-3-district-1-judge-position-1,1,John O. Cooney,238777,233475,,,,Historical archive,,,
+158.00,"Court of Appeals, Division 3, District 1 - Judge Position 1",court-of-appeals-division-3-district-1-judge-position-1,2,WRITE-IN,238777,5302,,, ,Historical archive,,,yes
+159.00,"Court of Appeals, Division 3, District 3 - Judge Position 2",court-of-appeals-division-3-district-3-judge-position-2,1,Rob Lawrence-Berrey,126495,123415,,,,Historical archive,,,
+159.00,"Court of Appeals, Division 3, District 3 - Judge Position 2",court-of-appeals-division-3-district-3-judge-position-2,2,WRITE-IN,126495,3080,,, ,Historical archive,,,yes
+160.00,Adams Superior Court  - Judge Position 1,adams-superior-court-judge-position-1,1,K. Peter Palubicki,4003,3882,,,,Historical archive,,,
+160.00,Adams Superior Court  - Judge Position 1,adams-superior-court-judge-position-1,2,WRITE-IN,4003,121,,, ,Historical archive,,,yes
+161.00,"Asotin, Columbia, Garfield Superior Court - Judge Position 1",asotin-columbia-garfield-superior-court-judge-position-1,1,Brooke J. Burns,11402,11163,,,,Historical archive,,,
+161.00,"Asotin, Columbia, Garfield Superior Court - Judge Position 1",asotin-columbia-garfield-superior-court-judge-position-1,2,WRITE-IN,11402,239,,, ,Historical archive,,,yes
+162.00,"Benton, Franklin Superior Court - Judge Position 5",benton-franklin-superior-court-judge-position-5,1,Bronson J. Brown,113941,57880,,,,Historical archive,,,
+162.00,"Benton, Franklin Superior Court - Judge Position 5",benton-franklin-superior-court-judge-position-5,2,Shawn P. Sant,113941,55586,,,,Historical archive,,,
+162.00,"Benton, Franklin Superior Court - Judge Position 5",benton-franklin-superior-court-judge-position-5,3,WRITE-IN,113941,475,,, ,Historical archive,,,yes
+163.00,Chelan Superior Court - Judge Position 1,chelan-superior-court-judge-position-1,1,Robert E. Jourdan,25313,25026,,,,Historical archive,,,
+163.00,Chelan Superior Court - Judge Position 1,chelan-superior-court-judge-position-1,2,WRITE-IN,25313,287,,, ,Historical archive,,,yes
+164.00,Chelan Superior Court - Judge Position 2,chelan-superior-court-judge-position-2,1,Travis Brandt,26213,25943,,,,Historical archive,,,
+164.00,Chelan Superior Court - Judge Position 2,chelan-superior-court-judge-position-2,2,WRITE-IN,26213,270,,, ,Historical archive,,,yes
+165.00,Chelan Superior Court - Judge Position 3,chelan-superior-court-judge-position-3,1,Kristin Ferrera,26441,26144,,,,Historical archive,,,
+165.00,Chelan Superior Court - Judge Position 3,chelan-superior-court-judge-position-3,2,WRITE-IN,26441,297,,, ,Historical archive,,,yes
+166.00,Clallam Superior Court - Judge Position 1,clallam-superior-court-judge-position-1,1,Elizabeth Stanley,28906,28482,,,,Historical archive,,,
+166.00,Clallam Superior Court - Judge Position 1,clallam-superior-court-judge-position-1,2,WRITE-IN,28906,424,,, ,Historical archive,,,yes
+167.00,Clallam Superior Court - Judge Position 2,clallam-superior-court-judge-position-2,1,Simon Barnhart,27688,27121,,,,Historical archive,,,
+167.00,Clallam Superior Court - Judge Position 2,clallam-superior-court-judge-position-2,2,WRITE-IN,27688,567,,, ,Historical archive,,,yes
+168.00,Clallam Superior Court - Judge Position 3,clallam-superior-court-judge-position-3,1,Brent Basden,29298,28769,,,,Historical archive,,,
+168.00,Clallam Superior Court - Judge Position 3,clallam-superior-court-judge-position-3,2,WRITE-IN,29298,529,,, ,Historical archive,,,yes
+169.00,Douglas Superior Court  - Judge Position 1,douglas-superior-court-judge-position-1,1,Brian C. Huber,14378,14025,,,,Historical archive,,,
+169.00,Douglas Superior Court  - Judge Position 1,douglas-superior-court-judge-position-1,2,WRITE-IN,14378,353,,, ,Historical archive,,,yes
+170.00,"Ferry, Pend Oreille, Stevens Superior Court - Judge Position 1",ferry-pend-oreille-stevens-superior-court-judge-position-1,1,Lisa Malpass Childress,34404,20790,,,,Historical archive,,,
+170.00,"Ferry, Pend Oreille, Stevens Superior Court - Judge Position 1",ferry-pend-oreille-stevens-superior-court-judge-position-1,2,N. Smith &quot;Smitty&quot; Hagopian,34404,13437,,,,Historical archive,,,
+170.00,"Ferry, Pend Oreille, Stevens Superior Court - Judge Position 1",ferry-pend-oreille-stevens-superior-court-judge-position-1,3,WRITE-IN,34404,177,,, ,Historical archive,,,yes
+171.00,"Ferry, Pend Oreille, Stevens Superior Court - Judge Position 2",ferry-pend-oreille-stevens-superior-court-judge-position-2,1,Jessica Taylor Reeves,26603,26106,,,,Historical archive,,,
+171.00,"Ferry, Pend Oreille, Stevens Superior Court - Judge Position 2",ferry-pend-oreille-stevens-superior-court-judge-position-2,2,WRITE-IN,26603,497,,, ,Historical archive,,,yes
+172.00,"Ferry, Pend Oreille, Stevens Superior Court - Judge Position 3",ferry-pend-oreille-stevens-superior-court-judge-position-3,1,Lech J. Radzimski,26717,26234,,,,Historical archive,,,
+172.00,"Ferry, Pend Oreille, Stevens Superior Court - Judge Position 3",ferry-pend-oreille-stevens-superior-court-judge-position-3,2,WRITE-IN,26717,483,,, ,Historical archive,,,yes
+173.00,GRAYS HARBOR SUPERIOR COURT - Judge Position 1,grays-harbor-superior-court-judge-position-1,1,Katie Svoboda,25492,24922,,,,Historical archive,,,
+173.00,GRAYS HARBOR SUPERIOR COURT - Judge Position 1,grays-harbor-superior-court-judge-position-1,2,WRITE-IN,25492,570,,, ,Historical archive,,,yes
+174.00,GRAYS HARBOR SUPERIOR COURT - Judge Position 2,grays-harbor-superior-court-judge-position-2,1,Vini Samuel,24861,24174,,,,Historical archive,,,
+174.00,GRAYS HARBOR SUPERIOR COURT - Judge Position 2,grays-harbor-superior-court-judge-position-2,2,WRITE-IN,24861,687,,, ,Historical archive,,,yes
+175.00,GRAYS HARBOR SUPERIOR COURT - Judge Position 3,grays-harbor-superior-court-judge-position-3,1,David Mistachkin,31054,14734,,,,Historical archive,,,
+175.00,GRAYS HARBOR SUPERIOR COURT - Judge Position 3,grays-harbor-superior-court-judge-position-3,2,Steve Jackson,31054,16119,,,,Historical archive,,,
+175.00,GRAYS HARBOR SUPERIOR COURT - Judge Position 3,grays-harbor-superior-court-judge-position-3,3,WRITE-IN,31054,201,,, ,Historical archive,,,yes
+176.00,Island Superior Court - Judge Position 1,island-superior-court-judge-position-1,1,Christon C. Skinner,31316,30613,,,,Historical archive,,,
+176.00,Island Superior Court - Judge Position 1,island-superior-court-judge-position-1,2,WRITE-IN,31316,703,,, ,Historical archive,,,yes
+177.00,Island Superior Court - Judge Position 2,island-superior-court-judge-position-2,1,Carolyn Cliff,32124,31397,,,,Historical archive,,,
+177.00,Island Superior Court - Judge Position 2,island-superior-court-judge-position-2,2,WRITE-IN,32124,727,,, ,Historical archive,,,yes
+178.00,Jefferson Superior Court - Judge Position 1,jefferson-superior-court-judge-position-1,1,Brandon Mack,16966,16743,,,,Historical archive,,,
+178.00,Jefferson Superior Court - Judge Position 1,jefferson-superior-court-judge-position-1,2,WRITE-IN,16966,223,,, ,Historical archive,,,yes
+179.00,KING COUNTY SUPERIOR COURT - Judge Position 41,king-county-superior-court-judge-position-41,1,Paul M. Crisalli,897359,658950,,,,Historical archive,,,
+179.00,KING COUNTY SUPERIOR COURT - Judge Position 41,king-county-superior-court-judge-position-41,2,Andrew C. Schach,897359,231765,,,,Historical archive,,,
+179.00,KING COUNTY SUPERIOR COURT - Judge Position 41,king-county-superior-court-judge-position-41,3,WRITE-IN,897359,6644,,, ,Historical archive,,,yes
+180.00,Kittitas Superior Court - Judge Position 1,kittitas-superior-court-judge-position-1,1,Chris Herion,22030,11228,,,,Historical archive,,,
+180.00,Kittitas Superior Court - Judge Position 1,kittitas-superior-court-judge-position-1,2,Matt Mills,22030,10675,,,,Historical archive,,,
+180.00,Kittitas Superior Court - Judge Position 1,kittitas-superior-court-judge-position-1,3,WRITE-IN,22030,127,,, ,Historical archive,,,yes
+181.00,Kittitas Superior Court - Judge Position 2,kittitas-superior-court-judge-position-2,1,James Kirkham,22453,11594,,,,Historical archive,,,
+181.00,Kittitas Superior Court - Judge Position 2,kittitas-superior-court-judge-position-2,2,Patricia Todd,22453,10765,,,,Historical archive,,,
+181.00,Kittitas Superior Court - Judge Position 2,kittitas-superior-court-judge-position-2,3,WRITE-IN,22453,94,,, ,Historical archive,,,yes
+182.00,"Klickitat, Skamania Superior Court - Judge Position 1",klickitat-skamania-superior-court-judge-position-1,1,Randall Krog,12557,12336,,,,Historical archive,,,
+182.00,"Klickitat, Skamania Superior Court - Judge Position 1",klickitat-skamania-superior-court-judge-position-1,2,WRITE-IN,12557,221,,, ,Historical archive,,,yes
+183.00,LEWIS SUPERIOR COURT - Judge Position 1,lewis-superior-court-judge-position-1,1,J Andrew Toynbee,29190,28770,,,,Historical archive,,,
+183.00,LEWIS SUPERIOR COURT - Judge Position 1,lewis-superior-court-judge-position-1,2,WRITE-IN,29190,420,,, ,Historical archive,,,yes
+184.00,LEWIS SUPERIOR COURT - Judge Position 2,lewis-superior-court-judge-position-2,1,Paul A. Strophy,28623,28166,,,,Historical archive,,,
+184.00,LEWIS SUPERIOR COURT - Judge Position 2,lewis-superior-court-judge-position-2,2,WRITE-IN,28623,457,,, ,Historical archive,,,yes
+185.00,LEWIS SUPERIOR COURT - Judge Position 3,lewis-superior-court-judge-position-3,1,Joely Yeager,28872,28481,,,,Historical archive,,,
+185.00,LEWIS SUPERIOR COURT - Judge Position 3,lewis-superior-court-judge-position-3,2,WRITE-IN,28872,391,,, ,Historical archive,,,yes
+186.00,Lincoln Superior Court - SUPERIOR COURT JUDGE,lincoln-superior-court-superior-court-judge,1,Adam Walser,6391,4410,,,,Historical archive,,,
+186.00,Lincoln Superior Court - SUPERIOR COURT JUDGE,lincoln-superior-court-superior-court-judge,2,Victoria S Iverson,6391,1954,,,,Historical archive,,,
+186.00,Lincoln Superior Court - SUPERIOR COURT JUDGE,lincoln-superior-court-superior-court-judge,3,WRITE-IN,6391,27,,, ,Historical archive,,,yes
+187.00,Mason Superior Court - Judge Position 1,mason-superior-court-judge-position-1,1,David Stevens,23085,22538,,,,Historical archive,,,
+187.00,Mason Superior Court - Judge Position 1,mason-superior-court-judge-position-1,2,WRITE-IN,23085,547,,, ,Historical archive,,,yes
+188.00,Mason Superior Court - Judge Position 2,mason-superior-court-judge-position-2,1,Monty D Cobb,22325,21567,,,,Historical archive,,,
+188.00,Mason Superior Court - Judge Position 2,mason-superior-court-judge-position-2,2,WRITE-IN,22325,758,,, ,Historical archive,,,yes
+189.00,Mason Superior Court - Judge Position 3,mason-superior-court-judge-position-3,1,Tirsa Butler,23071,22521,,,,Historical archive,,,
+189.00,Mason Superior Court - Judge Position 3,mason-superior-court-judge-position-3,2,WRITE-IN,23071,550,,, ,Historical archive,,,yes
+190.00,Okanogan Superior Court - Judge Position 1,okanogan-superior-court-judge-position-1,1,Kathryn I. Burke,12723,12514,,,,Historical archive,,,
+190.00,Okanogan Superior Court - Judge Position 1,okanogan-superior-court-judge-position-1,2,WRITE-IN,12723,209,,, ,Historical archive,,,yes
+191.00,Okanogan Superior Court - Judge Position 2,okanogan-superior-court-judge-position-2,1,Robert W. Grim,13059,12899,,,,Historical archive,,,
+191.00,Okanogan Superior Court - Judge Position 2,okanogan-superior-court-judge-position-2,2,WRITE-IN,13059,160,,, ,Historical archive,,,yes
+192.00,"Pacific, Wahkiakum Superior Court - Judge Position 1",pacific-wahkiakum-superior-court-judge-position-1,1,Donald J. Richter,11475,11264,,,,Historical archive,,,
+192.00,"Pacific, Wahkiakum Superior Court - Judge Position 1",pacific-wahkiakum-superior-court-judge-position-1,2,WRITE-IN,11475,211,,, ,Historical archive,,,yes
+193.00,PIERCE SUPERIOR COURT - Judge Position 01,pierce-superior-court-judge-position-01,1,TaTeasha Davis,361902,184968,,,,Historical archive,,,
+193.00,PIERCE SUPERIOR COURT - Judge Position 01,pierce-superior-court-judge-position-01,2,Paul Robson,361902,175205,,,,Historical archive,,,
+193.00,PIERCE SUPERIOR COURT - Judge Position 01,pierce-superior-court-judge-position-01,3,WRITE-IN,361902,1729,,, ,Historical archive,,,yes
+194.00,PIERCE SUPERIOR COURT - Judge Position 04,pierce-superior-court-judge-position-04,1,John Cummings,364167,163630,,,,Historical archive,,,
+194.00,PIERCE SUPERIOR COURT - Judge Position 04,pierce-superior-court-judge-position-04,2,Rebecca K. Reeder,364167,198997,,,,Historical archive,,,
+194.00,PIERCE SUPERIOR COURT - Judge Position 04,pierce-superior-court-judge-position-04,3,WRITE-IN,364167,1540,,, ,Historical archive,,,yes
+195.00,PIERCE SUPERIOR COURT - Judge Position 09,pierce-superior-court-judge-position-09,1,Doris Walkins,361399,166420,,,,Historical archive,,,
+195.00,PIERCE SUPERIOR COURT - Judge Position 09,pierce-superior-court-judge-position-09,2,Scott Peters,361399,193209,,,,Historical archive,,,
+195.00,PIERCE SUPERIOR COURT - Judge Position 09,pierce-superior-court-judge-position-09,3,WRITE-IN,361399,1770,,, ,Historical archive,,,yes
+196.00,PIERCE SUPERIOR COURT - Judge Position 10,pierce-superior-court-judge-position-10,1,Camille Schaefer,361148,167405,,,,Historical archive,,,
+196.00,PIERCE SUPERIOR COURT - Judge Position 10,pierce-superior-court-judge-position-10,2,Philip Thornton,361148,192050,,,,Historical archive,,,
+196.00,PIERCE SUPERIOR COURT - Judge Position 10,pierce-superior-court-judge-position-10,3,WRITE-IN,361148,1693,,, ,Historical archive,,,yes
+197.00,PIERCE SUPERIOR COURT - Judge Position 15,pierce-superior-court-judge-position-15,1,Ingrid McLeod,362415,194874,,,,Historical archive,,,
+197.00,PIERCE SUPERIOR COURT - Judge Position 15,pierce-superior-court-judge-position-15,2,Brian Wasankari,362415,165833,,,,Historical archive,,,
+197.00,PIERCE SUPERIOR COURT - Judge Position 15,pierce-superior-court-judge-position-15,3,WRITE-IN,362415,1708,,, ,Historical archive,,,yes
+198.00,San Juan Superior Court - Judge Position 1,san-juan-superior-court-judge-position-1,1,Kathryn C. Loring,7888,7673,,,,Historical archive,,,
+198.00,San Juan Superior Court - Judge Position 1,san-juan-superior-court-judge-position-1,2,WRITE-IN,7888,215,,, ,Historical archive,,,yes
+199.00,SNOHOMISH SUPERIOR COURT - Judge Position 12,snohomish-superior-court-judge-position-12,1,Whitney Rivera,340316,212397,,,,Historical archive,,,
+199.00,SNOHOMISH SUPERIOR COURT - Judge Position 12,snohomish-superior-court-judge-position-12,2,Mary Anderson,340316,125825,,,,Historical archive,,,
+199.00,SNOHOMISH SUPERIOR COURT - Judge Position 12,snohomish-superior-court-judge-position-12,3,WRITE-IN,340316,2094,,, ,Historical archive,,,yes
+200.00,Spokane Superior Court - Judge Position 8,spokane-superior-court-judge-position-8,1,Marla L. Polin,241019,129899,,,,Historical archive,,,
+200.00,Spokane Superior Court - Judge Position 8,spokane-superior-court-judge-position-8,2,Brandon Casey,241019,109552,,,,Historical archive,,,
+200.00,Spokane Superior Court - Judge Position 8,spokane-superior-court-judge-position-8,3,WRITE-IN,241019,1568,,, ,Historical archive,,,yes
+201.00,Spokane Superior Court - Judge Position 11,spokane-superior-court-judge-position-11,1,Timothy B Fennessy,236568,110457,,,,Historical archive,,,
+201.00,Spokane Superior Court - Judge Position 11,spokane-superior-court-judge-position-11,2,Andrew B. Van Winkle,236568,124312,,,,Historical archive,,,
+201.00,Spokane Superior Court - Judge Position 11,spokane-superior-court-judge-position-11,3,WRITE-IN,236568,1799,,, ,Historical archive,,,yes
+202.00,Walla Walla  Superior Court - Judge Position 1,walla-walla-superior-court-judge-position-1,1,Brandon L Johnson,20946,20559,,,,Historical archive,,,
+202.00,Walla Walla  Superior Court - Judge Position 1,walla-walla-superior-court-judge-position-1,2,WRITE-IN,20946,387,,, ,Historical archive,,,yes
+203.00,Walla Walla  Superior Court - Judge Position 2,walla-walla-superior-court-judge-position-2,1,Patricia Fulton,20826,20521,,,,Historical archive,,,
+203.00,Walla Walla  Superior Court - Judge Position 2,walla-walla-superior-court-judge-position-2,2,WRITE-IN,20826,305,,, ,Historical archive,,,yes
+204.00,Whitman Superior Court - Judge Position 1,whitman-superior-court-judge-position-1,1,Roger Sandberg,18184,10550,,,,Historical archive,,,
+204.00,Whitman Superior Court - Judge Position 1,whitman-superior-court-judge-position-1,2,Jenna Brozik,18184,7561,,,,Historical archive,,,
+204.00,Whitman Superior Court - Judge Position 1,whitman-superior-court-judge-position-1,3,WRITE-IN,18184,73,,, ,Historical archive,,,yes

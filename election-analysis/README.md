@@ -12,7 +12,12 @@ dated snapshots with their provenance. Reports preserve descriptive tallies and
 explicit election/contest lifecycle and tabulation stages. Prospective count
 scenarios require dated counting evidence and an explicit target/information time;
 legacy, historical, completed and unsupported RCV states withhold probabilities.
-See [ADR-003](docs/engineering/ADR-003-result-lifecycle-and-stages.md) for migration.
+See [ADR-003](docs/engineering/ADR-003-result-lifecycle-and-stages.md) and
+[ADR-004](docs/engineering/ADR-004-scientific-evidence-contract.md) for migration.
+Configuration schema 3 and analysis schema 4 require reviewed time, identity,
+coverage, rules and remaining-pool evidence for any experimental conditional
+scenario. Missing evidence withholds numbers while retaining descriptive tallies.
+The [iteration ledger](docs/engineering/audit-iteration-20261024.md) records implementation, numerical checks, source gaps and calibration blockers.
 
 **Experimental and uncalibrated.** The Washington primary report is a historical
 audit correction. The remaining audit issues are tracked in

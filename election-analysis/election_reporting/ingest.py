@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import csv
+import json
 import hashlib
 import io
 import posixpath
@@ -518,6 +519,7 @@ def read_snapshot(path: Path, source_id: str) -> Snapshot:
     metadata: dict[tuple[str, str], tuple[float, int]] = {}
     tallies: dict[tuple[str, str], tuple[int | None, int | None]] = {}
     spans: dict[tuple[str, str], tuple[str, ...]] = {}
+    supplemental: dict[tuple[str, str], dict] = {}
     for line_number, row in enumerate(reader, start=2):
         contest_id = _clean_text(row[header_map["contestid"]])
         contest_name = _clean_text(row[header_map["contest"]])
@@ -545,6 +547,18 @@ def read_snapshot(path: Path, source_id: str) -> Snapshot:
                 f"{location} disagrees with another row for contest {contest_id}"
             )
         grouped[group_key].append(ChoiceResult(choice_name, votes, choice_order))
+        if "resultmetadata" in header_map:
+            text_metadata = row[header_map["resultmetadata"]] or "{}"
+            if len(text_metadata) > 65536:
+                raise ElectionReportError(f"{location}: result metadata exceeds size budget")
+            try:
+                extra = json.loads(text_metadata)
+            except json.JSONDecodeError as exc:
+                raise ElectionReportError(f"{location}: invalid result metadata JSON") from exc
+            if isinstance(extra, dict) and any(k in extra and not isinstance(extra[k], dict) for k in ("source_evidence", "geography", "tabulation")):
+                raise ElectionReportError(f"{location}: metadata evidence sections must be objects")
+            if not isinstance(extra, dict) or supplemental.setdefault(group_key, extra) != extra:
+                raise ElectionReportError(f"{location}: inconsistent result metadata")
         if has_contest_tallies:
             contest_tally = (
                 _parse_optional_int(
@@ -603,6 +617,7 @@ def read_snapshot(path: Path, source_id: str) -> Snapshot:
             choices=tuple(sorted(choices, key=lambda item: item.order)),
             key=key,
             counties=spans.get((contest_id, contest_name), ()),
+            metadata=supplemental.get((contest_id, contest_name), {}),
         )
 
     return Snapshot(
