@@ -326,6 +326,82 @@ def _sensitivity(pool, change, current, margin, batch_share, batch_votes, tie_ch
     return rows
 
 
+def _new_ballot_transition(contest, latest, source_history):
+    """Qualify the complete immediate transition, never a filtered predecessor.
+
+    EA-10 / ADR-009: a publisher annotation cannot override contradictory counts.
+    Unknown counters remain unknown, rather than becoming observed zero votes.
+    """
+    declared = latest.source_metadata.get("delta_kind", contest.metadata.get("delta_kind"))
+    evidence = {"schema_version": 1, "declared_kind": declared or "unknown",
+                "classification": "unknown_or_not_new", "contradictory": False,
+                "current_snapshot_sha256": latest.sha256, "previous_snapshot_sha256": None,
+                "choice_deltas": {}, "reasons": []}
+    if declared != "new_ballots":
+        evidence["reasons"].append("No explicit new-ballot classification.")
+        return evidence
+    if len(source_history) < 2 or source_history[-1] is not latest:
+        evidence["reasons"].append("No immediately preceding current source transition.")
+        return evidence
+    prior_snapshot = source_history[-2]
+    evidence["previous_snapshot_sha256"] = prior_snapshot.sha256
+    if prior_snapshot.sha256 == latest.sha256:
+        evidence["reasons"].append("Identical source bytes contain no new votes.")
+        return evidence
+    previous = prior_snapshot.contests.get(contest.key)
+    if previous is None:
+        evidence["reasons"].append("Contest missing from the immediately preceding source.")
+        return evidence
+    if (prior_snapshot.source_id != latest.source_id or previous.contest_id != contest.contest_id
+            or previous.name != contest.name or previous.result_status.tabulation_stage == "unknown"
+            or stage_identity(previous.result_status) != stage_identity(contest.result_status)):
+        evidence["reasons"].append("Immediate source contest/stage/version is incompatible.")
+        return evidence
+    facts = [source_facts(s, c, None) for s, c in ((prior_snapshot, previous), (latest, contest))]
+    if any(f.get("coverage_complete") is not True for f in facts):
+        evidence["reasons"].append("Both source versions need complete contest coverage.")
+        return evidence
+    clocks = [timestamp(f.get("count_updated_at") or f.get("source_published_at")) for f in facts]
+    if None in clocks or clocks[0] >= clocks[1]:
+        evidence["reasons"].append("New votes lack increasing dated source/count evidence.")
+        return evidence
+    old = {c.name: c.votes for c in previous.choices}
+    new = {c.name: c.votes for c in contest.choices}
+    if len(old) != len(previous.choices) or len(new) != len(contest.choices) or old.keys() != new.keys():
+        evidence["reasons"].append("Candidate inventory changed or contains duplicate identities.")
+    else:
+        deltas = {name: new[name] - old[name] for name in old}
+        if any(value < 0 for value in deltas.values()):
+            evidence["reasons"].append("A candidate tally decreased.")
+        ballot_delta = contest.reported_ballots - previous.reported_ballots
+        if ballot_delta < 0 or contest.ballots < previous.ballots:
+            evidence["reasons"].append("A ballot denominator decreased.")
+        observed_delta = sum(deltas.values())
+        for field in ("overvotes", "undervotes"):
+            before, after = getattr(previous, field), getattr(contest, field)
+            if (before is None) != (after is None):
+                evidence["reasons"].append(f"{field} availability changed.")
+            elif before is not None:
+                if after < before:
+                    evidence["reasons"].append(f"{field} decreased.")
+                observed_delta += after - before
+        for endpoint in (previous, contest):
+            accounted = sum(c.votes for c in endpoint.choices) + (endpoint.overvotes or 0) + (endpoint.undervotes or 0)
+            if accounted > endpoint.reported_ballots:
+                evidence["reasons"].append("An endpoint has inconsistent ballot accounting.")
+        if observed_delta > ballot_delta:
+            evidence["reasons"].append("Observed count increments exceed the reported ballot increment.")
+        if not evidence["reasons"]:
+            if sum(deltas.values()) > 0:
+                evidence.update(classification="new_ballots", choice_deltas=deltas,
+                                reported_ballot_delta=ballot_delta)
+            else:
+                evidence["reasons"].append("No positive valid-vote increment.")
+            return evidence
+    evidence["contradictory"] = True
+    return evidence
+
+
 def _pair_decision(
     kind: str,
     current: ChoiceResult,
@@ -336,6 +412,7 @@ def _pair_decision(
     history: tuple[Snapshot, ...],
     controlling: bool,
     pool: dict | None = None,
+    batch: dict | None = None,
 ) -> DecisionAnalysis:
     margin = current.votes - challenger.votes
     remaining_pair = (round(pool["ballots"] * pool.get("contest_fraction", 1) * pool.get("pair_fraction", 1))
@@ -360,18 +437,13 @@ def _pair_decision(
 
     latest_batch_share = None
     latest_batch_votes = None
-    if len(history) >= 2 and latest.source_metadata.get("delta_kind", contest.metadata.get("delta_kind")) == "new_ballots":
-        previous = _contest_in_snapshot(history[-2], contest.key)
-        if previous is not None:
-            previous_current = _choice_votes(previous, current.name)
-            previous_challenger = _choice_votes(previous, challenger.name)
-            if previous_current is not None and previous_challenger is not None:
-                current_delta = current.votes - previous_current
-                challenger_delta = challenger.votes - previous_challenger
-                pair_delta = current_delta + challenger_delta
-                if current_delta >= 0 and challenger_delta >= 0 and pair_delta > 0:
-                    latest_batch_votes = pair_delta
-                    latest_batch_share = challenger_delta / pair_delta
+    if batch and batch["classification"] == "new_ballots":
+        current_delta = batch["choice_deltas"][current.name]
+        challenger_delta = batch["choice_deltas"][challenger.name]
+        pair_delta = current_delta + challenger_delta
+        if pair_delta > 0:
+            latest_batch_votes = pair_delta
+            latest_batch_share = challenger_delta / pair_delta
 
     risk = _risk_from_requirement(
         margin,
@@ -409,6 +481,7 @@ def _pair_decision(
                "threshold_formula": "floor((M+R)/2)+1", "tie_changes": False},
         numerical_evidence={**ERROR_POLICY,"remaining_pool_sensitivity":_sensitivity(pool,challenger.votes,current.votes,margin,latest_batch_share,latest_batch_votes)},
         batch_evidence={**posterior_details(challenger.votes,current.votes,latest_batch_share,latest_batch_votes),
+                        "transition": batch or {},
                         "classification": "new_ballots" if latest_batch_votes is not None else "unknown_or_not_new",
                         "likelihood": "disjoint_history_and_latest_v2", "cumulative_cap": CUMULATIVE_EFFECTIVE_SAMPLE_CAP,
                         "latest_cap": LATEST_BATCH_EFFECTIVE_SAMPLE_CAP, "calibration": "hand-set; not tuned or validated"},
@@ -423,6 +496,7 @@ def _majority_decision(
     history: tuple[Snapshot, ...],
     controlling: bool,
     pool: dict | None = None,
+    batch: dict | None = None,
 ) -> DecisionAnalysis:
     total_votes = sum(choice.votes for choice in contest.choices)
     signed_margin = 2 * leader.votes - total_votes
@@ -447,21 +521,12 @@ def _majority_decision(
 
     latest_batch_share = None
     latest_batch_votes = None
-    if len(history) >= 2 and latest.source_metadata.get("delta_kind", contest.metadata.get("delta_kind")) == "new_ballots":
-        previous = _contest_in_snapshot(history[-2], contest.key)
-        if previous is not None:
-            previous_leader = _choice_votes(previous, leader.name)
-            if previous_leader is not None:
-                previous_total = sum(choice.votes for choice in previous.choices)
-                leader_delta = leader.votes - previous_leader
-                total_delta = total_votes - previous_total
-                if leader_delta >= 0 and total_delta > 0 and leader_delta <= total_delta:
-                    latest_batch_votes = total_delta
-                    latest_batch_share = (
-                        (total_delta - leader_delta) / total_delta
-                        if has_majority
-                        else leader_delta / total_delta
-                    )
+    if batch and batch["classification"] == "new_ballots":
+        leader_delta = batch["choice_deltas"][leader.name]
+        total_delta = sum(batch["choice_deltas"].values())
+        latest_batch_votes = total_delta
+        latest_batch_share = ((total_delta - leader_delta) / total_delta
+                              if has_majority else leader_delta / total_delta)
 
     change_side = "all other choices" if has_majority else leader.name
     current_side = leader.name if has_majority else "no majority"
@@ -490,6 +555,7 @@ def _majority_decision(
         kind="majority_status",
         numerical_evidence={**ERROR_POLICY,"remaining_pool_sensitivity":_sensitivity(pool,total_votes-leader.votes if has_majority else leader.votes,leader.votes if has_majority else total_votes-leader.votes,margin,latest_batch_share,latest_batch_votes,has_majority,False)},
         batch_evidence={**posterior_details(total_votes-leader.votes if has_majority else leader.votes,leader.votes if has_majority else total_votes-leader.votes,latest_batch_share,latest_batch_votes),
+                        "transition": batch or {},
                         "classification": "new_ballots" if latest_batch_votes else "unknown_or_not_new",
                         "likelihood": "disjoint_history_and_latest_v2", "calibration": "unvalidated hand-set caps"},
         current_state=state,
@@ -575,6 +641,7 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
         rule_spec = reviewed_rule(config, ident["canonical_id"], _infer_rule(source, contest, config))
         rule = rule_spec["rule"]
         source_history = history_map[source.source_id]
+        batch = _new_ballot_transition(contest, latest, source_history)
         # Preserve every source version, but never derive a batch by subtracting
         # first rankings from an RCV round, or one result version from another.
         history = tuple(
@@ -617,8 +684,9 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
             if data_status == "reported": data_status = "unresolved_tie"
         pool = remaining_pool(config, ident["canonical_id"], ident.get("jurisdictions", []), timestamp(facts.get("count_updated_at") or facts.get("source_published_at")))
         context = {"source": facts, "identity": ident, "rule": rule_spec, "remaining_pool": pool,
+                   "batch_transition": batch,
                    "geography_comparison": comparison, "data_status": data_status,
-                   "quarantined": data_status in {"contradictory", "source_vintage_conflict", "inconsistent_ballot_accounting"},
+                   "quarantined": batch["contradictory"] or data_status in {"contradictory", "source_vintage_conflict", "inconsistent_ballot_accounting"},
                    "calibration_status": "unvalidated", "rubric_status": "unvalidated_heuristic"}
         lifecycle_ok, lifecycle_reason = forecast_eligibility(config, contest.result_status, rule)
         gate = scientific_gate(config, context, lifecycle_ok, lifecycle_reason)
@@ -645,6 +713,7 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
                     history,
                     controlling,
                     pool if eligible else None,
+                    batch,
                 )
             )
         elif rule == "top_four" and len(ranked) >= 5:
@@ -659,6 +728,7 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
                     history,
                     controlling,
                     pool if eligible else None,
+                    batch,
                 )
             )
         elif rule in {"top_two", "wa_judicial"} and len(ranked) >= 3:
@@ -673,19 +743,20 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
                     history,
                     controlling,
                     pool if eligible else None,
+                    batch,
                 )
             )
         if rule in {"wa_judicial", "rcv"} and ranked:
             decisions.append(
                 _majority_decision(
-                    ranked[0], contest, forecast_source, latest, history, controlling, pool if eligible else None
+                    ranked[0], contest, forecast_source, latest, history, controlling, pool if eligible else None, batch
                 )
             )
         if rule == "rcv" and ranked:
             # This ratio is a diagnostic of selected raw nonblank rankings, never
             # a statutory Round-1 majority or a final result.
             total = sum(choice.votes for choice in contest.choices)
-            diagnostic = _majority_decision(ranked[0], contest, forecast_source, latest, history, False)
+            diagnostic = _majority_decision(ranked[0], contest, forecast_source, latest, history, False, batch=batch)
             diagnostic = replace(diagnostic, kind="raw_ranking_diagnostic",
                 current_state=f"{ranked[0].name} has {ranked[0].votes / total:.2%} of reported nonblank raw first rankings; this is not an interpreted Round-1 majority or final winner." if total else "No raw rankings reported.",
                 event={"scope": "raw_first_ranking_diagnostic", "whole_outcome_probability": False,
