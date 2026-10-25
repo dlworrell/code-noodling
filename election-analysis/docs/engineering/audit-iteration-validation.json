@@ -161,8 +161,25 @@
     {
       "command": "git diff --check",
       "result": "pass"
+    },
+    {
+      "command": "PYTHONPATH=election-analysis:<pinned-edt> python3 -m unittest discover -s election-analysis/tests -q",
+      "log_sha256": "0c11319b8c18c5217fe3bc1d7bfa2de29ff3abd0d7223ddf260fd9794ac4e602",
+      "regressions": [
+        "judicial leader tie remains unresolved",
+        "detail-only candidate flags contradiction",
+        "duplicate area aliases refused",
+        "one reviewed controlling identity per canonical contest"
+      ],
+      "result": "pass after final review fixes",
+      "tests": 136
+    },
+    {
+      "command": "compare fresh actual primary analysis_payload with generated analysis.json excluding generated_at",
+      "result": "identical; final edge-case fixes preserve the published actual-input behavior"
     }
   ],
+  "final_offline_test_count": 136,
   "numerical_checks": {
     "error_policy": {
       "absolute_tolerance": 1e-08,
@@ -232,7 +249,7 @@
     },
     {
       "path": "election-analysis/election_reporting/analysis.py",
-      "sha256": "d7e13c5f6b828f2d31360fce7d5a563128297c29330658a04e437a0efbfe5081"
+      "sha256": "1fb4637be3380527971cbca753adb675a02d5d23d5857bcd0f025be022f9e92a"
     },
     {
       "path": "election-analysis/election_reporting/areas.py",
@@ -256,7 +273,7 @@
     },
     {
       "path": "election-analysis/election_reporting/evidence.py",
-      "sha256": "05eba2db67438bbc0dd36a40dcb668bff8406e5b6e82f837e5b7cca3bc88fe27"
+      "sha256": "30aa1b3371aa7f9d63b131e931b05f36466e2f481075e8dbdc93579bf0113c81"
     },
     {
       "path": "election-analysis/election_reporting/ingest.py",
@@ -356,7 +373,7 @@
     },
     {
       "path": "election-analysis/tests/test_election_reporting_audit.py",
-      "sha256": "64ab38fa13d1d0ee0bbf1afcc228ff62c2d1e864a3174aa748b7c124f1e2cedf"
+      "sha256": "6f07f90923da85a32807cf7fc4106a91932243ed48e78752ca7202d43d92a1ed"
     },
     {
       "path": "election-analysis/tests/test_election_watch.py",
