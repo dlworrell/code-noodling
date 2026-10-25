@@ -20,8 +20,10 @@ scenario. Missing evidence withholds numbers while retaining descriptive tallies
 The [iteration ledger](docs/engineering/audit-iteration-20261024.md) records implementation, numerical checks, source gaps and calibration blockers.
 
 **Experimental and uncalibrated.** The Washington primary report is a historical
-audit correction. The remaining audit issues are tracked in
-[EA-AUD-2026-10-23 #45](https://github.com/dlworrell/code-noodling/issues/45).
+audit correction. The [independent AI review and acceptance](docs/engineering/audit-acceptance/INDEPENDENT-REVIEW-ACCEPTANCE.md)
+record the repaired implementation and documented-unvalidated evaluation outcome.
+[EA-AUD-2026-10-23 #45](https://github.com/dlworrell/code-noodling/issues/45)
+records the final work-item dispositions and residual scientific limits.
 
 **A triage report, not a call by an election authority and not a substitute for
 certified results.**
@@ -77,7 +79,8 @@ The optional [Orange County official-evidence experiment](docs/engineering/ADR-0
 adds bounded PDF/CSV readers, original source files and a frozen conditional
 comparison. Its official queue estimates still require acceptance/geographic
 assumptions; a reported tally increment is not a verified correction-free batch.
-It does not establish forecast calibration or close the remaining scientific audit.
+It does not establish forecast calibration. Its source and validation limits
+remain explicit in the independent review and accepted unvalidated outcome.
 
 
 Frozen OC v1 must be reproduced from its original source and runtime, using
