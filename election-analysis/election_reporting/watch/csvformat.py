@@ -46,6 +46,7 @@ COLUMNS = (
     "County",
     "Counties",
     "Write-in",
+    "Result Metadata",
 )
 
 
@@ -65,6 +66,7 @@ class Row:
     county: str
     counties: tuple[str, ...]
     write_in: bool
+    metadata: dict | None = None
 
 
 def _number(value: int | None) -> str:
@@ -94,6 +96,7 @@ def render(rows: Iterable[Row]) -> str:
                 row.county,
                 "; ".join(row.counties),
                 "yes" if row.write_in else "",
+                json.dumps(row.metadata, sort_keys=True, separators=(",", ":")) if row.metadata else "",
             )
         )
         count += 1

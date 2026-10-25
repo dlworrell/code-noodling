@@ -27,7 +27,7 @@ import csv
 import io
 import re
 import urllib.parse
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -116,13 +116,15 @@ class Crosswalk:
 
     precincts: dict[str, str]  # precinct ID -> borough name
     boroughs: tuple[str, ...]
+    split_precincts: tuple[str, ...] = ()
+    vintage: dict = field(default_factory=lambda: {"geometry_year": 2023, "census_year": 2020, "assignment_method": "largest resident-population share; not measured votes"})
 
 
 def load_crosswalk(data_root: Path) -> Crosswalk:
     """Read the committed crosswalk; a split precinct goes to its main borough.
 
     Five precincts cross a borough line, four of them by under 2% of residents;
-    assigning each wholly to its main borough keeps counts exact integers.
+    assigning each wholly to its main borough is approximate even with integer counts.
     """
     path = data_root / CROSSWALK
     try:
@@ -139,6 +141,7 @@ def load_crosswalk(data_root: Path) -> Crosswalk:
     return Crosswalk(
         precincts={precinct: borough for precinct, (_, borough) in best.items()},
         boroughs=tuple(sorted({row["borough"] for row in rows})),
+        split_precincts=tuple(sorted(p for p in best if sum(r["precinct_id"] == p for r in rows) > 1)),
     )
 
 
@@ -215,6 +218,7 @@ def convert(raw: bytes, crosswalk: Crosswalk, places: list[Place]) -> dict[str, 
     spans: dict[str, set[str]] = {}
     seen: set[tuple[str, str]] = set()
     unknown_precincts: set[str] = set()
+    seen_choices = set()
     for line, row in enumerate(reader, start=2):
         precinct_id = (row["Pct_Id"] or "").strip()
         contest_id = row["Contest_Id"].strip()
@@ -233,8 +237,13 @@ def convert(raw: bytes, crosswalk: Crosswalk, places: list[Place]) -> dict[str, 
         targets = [state_place.place_id]
         if borough in borough_place:
             targets.append(borough_place[borough].place_id)
-        first_row = (row["Precinct_name"], contest_id) not in seen
-        seen.add((row["Precinct_name"], contest_id))
+        ballot_key = (precinct_id, row["Precinct_name"], contest_id)
+        choice_key = (*ballot_key, row["cand_seq_nbr"], row["candidate_name"])
+        if choice_key in seen_choices:
+            raise ElectionReportError(f"line {line}: duplicate Alaska precinct/category candidate row")
+        seen_choices.add(choice_key)
+        first_row = ballot_key not in seen
+        seen.add(ballot_key)
         for target in targets:
             contest = areas[target].setdefault(
                 contest_id, _Contest(order=float(_count(row, "Contest_seq_nbr", line)), title=title)
@@ -281,6 +290,13 @@ def convert(raw: bytes, crosswalk: Crosswalk, places: list[Place]) -> dict[str, 
                     if place.scope == "state"
                     else tuple(sorted(_short_name(b) for b in spans.get(contest_id, ()))),
                     write_in="write-in" in name.casefold() or "write in" in name.casefold(),
+                    metadata={"geography": {**crosswalk.vintage,
+                        "label": "all supplied statewide categories" if place.scope == "state" else "election-day precinct subset / approximate borough assignment",
+                        "approximate": place.scope != "state", "whole_contest_coverage": place.scope == "state",
+                        "split_precincts": list(crosswalk.split_precincts),
+                        "included_categories": ["all supplied election-day, absentee, early, questioned, remote and federal-only overseas categories"] if place.scope == "state" else ["mapped election-day precincts"],
+                        "excluded_categories": [] if place.scope == "state" else ["district absentee", "district early", "district questioned", "district remote", "federal-only overseas"],
+                        "counting_policy": "each precinct/category candidate row once; repeated ballot denominator once"}},
                 )
             )
         if rows:

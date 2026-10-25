@@ -234,6 +234,7 @@ class Contest:
     choices: list[tuple[str, str, bool]]  # (name, party, write-in)
     # (county code or "" for UOCAVA, votes per choice, blank, ballots)
     rows: list[tuple[str, list[int], int, int]] = field(default_factory=list)
+    metadata: dict = field(default_factory=dict)
 
 
 def _number(value: str, where: str) -> int:
@@ -498,8 +499,35 @@ def convert(contests: list[Contest], places: list[Place]) -> dict[str, str]:
                         county=place.name if place.scope == "county" else "",
                         counties=() if place.scope == "state" else tuple(spans),
                         write_in=write_in,
+                        metadata=contest.metadata,
                     )
                 )
         if rows:
             outputs[place.place_id] = csvformat.render(rows)
     return outputs
+
+
+def governing_rcv(office: str, election_day: date) -> bool:
+    """Reviewed post-2020 federal general / state and federal primary scope.
+
+    Maine Constitution plurality provisions leave state general contests outside
+    this rule. Unknown office/election types remain descriptive through the gate.
+    Authority: Maine SOS RCV resources; historical rules must be pinned for replay.
+    """
+    name = office.casefold()
+    federal = any(x in name for x in ("president", "united states senator", "u.s. senator", "united states representative", "u.s. representative", "representative to congress", "rep. to congress"))
+    state = any(x in name for x in ("governor", "state senator", "state representative"))
+    if election_day.year < 2020:
+        return False  # outside the reviewed adapter version
+    if election_day.month == 6:
+        return federal or state
+    return election_day.month == 11 and federal
+
+
+def expected_offices(election_day: date) -> list[str]:
+    # A minimal expected inventory, not a completeness certification. Districts,
+    # county offices and referendum questions require the reviewed full inventory.
+    offices = ["United States Representative", "State Senator", "State Representative"] if election_day.year % 2 == 0 else ["Question"]
+    if election_day.month == 11 and election_day.year % 4 == 0:
+        offices.append("President")
+    return offices
