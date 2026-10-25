@@ -98,6 +98,39 @@ class SourceAuditTests(unittest.TestCase):
             self.assertEqual(race.data_status,"no_reported_results")
             self.assertIsNone(race.decisions[0].risk.change_probability)
 
+    def test_judicial_tie_is_unresolved_and_duplicate_crosswalks_are_refused(self):
+        from election_reporting.evidence import validate_contract
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); (root/"inputs").mkdir()
+            (root/"inputs/2026-08-06.csv").write_text(result_rows("Justice Position 1","117",100,[("A",50),("B",50)]))
+            cfg=root/"election.toml"
+            cfg.write_text('schema_version=1\n[election]\ntitle="t"\n[[sources]]\nid="local"\npath="inputs"\njurisdiction="Local"\nscope="state"\npriority=1\nexpected_final_ballots=120\n')
+            config=counting_config(cfg)
+            race=analyze_election(config).races[0]
+            self.assertEqual(race.data_status,"unresolved_tie")
+            self.assertIsNone(race.decisions[0].risk.change_probability)
+            contract=config.audit_contract
+            ident=contract["identities"][0]
+            ident["area_aliases"]=[{"contest_id":"117","name":"Justice Position 1","jurisdiction":"Local"}]*2
+            with self.assertRaisesRegex(ElectionReportError,"duplicate reviewed area alias"):
+                validate_contract(contract,{"local"})
+            ident["area_aliases"]=[]
+            contract["identities"].append(dict(ident,contest_id="118"))
+            with self.assertRaisesRegex(ElectionReportError,"only one reviewed controlling"):
+                validate_contract(contract,{"local"})
+
+    def test_detail_only_candidate_is_a_contradiction(self):
+        from election_reporting.evidence import geographic_comparison
+        from election_reporting.areas import AreaContest,AreaSnapshot
+        from election_reporting.model import ContestResult,ChoiceResult
+        contest=ContestResult("1","Reviewed contest",1,100,100,0,0,(ChoiceResult("A",60,1),ChoiceResult("B",40,2)),"reviewed")
+        detail=AreaContest("1","Reviewed contest",areas={"County":{"A":60,"B":40,"C":5}})
+        snapshot=AreaSnapshot("state","county",Path("2026-08-06.csv"),datetime(2026,8,6),{("1","Reviewed contest"):detail})
+        ident={"reviewed":True,"jurisdictions":["County"],"area_aliases":[{"contest_id":"1","name":"Reviewed contest","jurisdiction":"County"}]}
+        result=geographic_comparison(contest,ident,{"publication_id":"same"},[(snapshot,{"publication_id":"same"})])
+        self.assertEqual(result["status"],"contradictory")
+        self.assertEqual(result["differences"]["c"],{"headline":0,"geography":5})
+
     def test_named_actual_washington_findings_are_preserved(self):
         analysis = analyze_election(load_config(SCOPE/"data/elections/washington/2026-08-04/election.toml"))
         by_source = {(r.source_id,r.contest_id):r for r in analysis.races}
