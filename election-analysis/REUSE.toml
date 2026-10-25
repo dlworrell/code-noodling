@@ -82,7 +82,7 @@ SPDX-License-Identifier = "LicenseRef-ME-SOS-PublicData"
 
 # Hash-bound audit regression data and independent numerical references.
 [[annotations]]
-path = ["tests/fixtures/maine-2024-cd2-manifest.json", "tests/fixtures/official-result-versions.json", "tests/fixtures/beta-binomial-oracles.json", "tests/fixtures/validation-protocol-v1.json", "tests/fixtures/king-archives-manifest.json"]
+path = ["tests/fixtures/maine-2024-cd2-manifest.json", "tests/fixtures/official-result-versions.json", "tests/fixtures/beta-binomial-oracles.json", "tests/fixtures/validation-protocol-v1.json", "tests/fixtures/king-archives-manifest.json", "tests/fixtures/oc-official-2024-manifest.json"]
 SPDX-FileCopyrightText = "2026 Donovan Worrell"
 SPDX-License-Identifier = "Apache-2.0"
 
@@ -115,3 +115,14 @@ SPDX-License-Identifier = "LicenseRef-ME-SOS-PublicData"
 path = "tests/fixtures/king-archives.zip"
 SPDX-FileCopyrightText = "King County Elections"
 SPDX-License-Identifier = "LicenseRef-KingCounty-PublicData"
+
+# Original official evidence retained without relicensing the publisher's data.
+[[annotations]]
+path = "tests/fixtures/oc-official-2024.zip"
+SPDX-FileCopyrightText = "Orange County Registrar of Voters; County of Orange"
+SPDX-License-Identifier = "LicenseRef-OCROV-PublicData"
+
+[[annotations]]
+path = "docs/engineering/oc-official-diagnostic-v1.png"
+SPDX-FileCopyrightText = "2026 Donovan Worrell"
+SPDX-License-Identifier = "Apache-2.0"

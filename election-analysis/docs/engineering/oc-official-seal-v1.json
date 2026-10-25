@@ -1,0 +1,12 @@
+{
+  "schema_version": 3,
+  "mode": "retrospective_official_queue_scenarios",
+  "protocol_sha256": "8d81cb300d1602bad20d19eb17611adf76624e1bda7db24440f14139f7307eea",
+  "predictions_sha256": "98b0437b03bb082dad87d3fa948c3f5fe70e4b0108ba2592432ca9d3ce3378eb",
+  "protocol_frozen_at": "2026-10-25T07:53:06.147159+00:00",
+  "predictions_generated_at": "2026-10-25T07:53:06.243430+00:00",
+  "sealed_at": "2026-10-25T07:53:23.196040+00:00",
+  "rows": 159,
+  "reserved_outcomes_read": [],
+  "qualification": "Seal made before the first scoring command. Prior public outcome/identity qualification is disclosed in the protocol; no blind preregistration or historical publication is claimed."
+}

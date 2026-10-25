@@ -60,6 +60,7 @@ artifacts, and call the scripts in [`ci/`](ci/).
 From the repository root (EDT checked out next to it):
 
 ```bash
+python -m pip install -r election-analysis/ci/requirements-provenance.txt
 export PYTHONPATH="election-analysis:../engineering-docs-toolkit"
 python -m unittest discover -s election-analysis/tests
 python -m election_reporting \
@@ -70,3 +71,10 @@ python -m election_reporting.watch plan
 
 See the [user guide](docs/election-reporting.md) for inputs, formulas, risk
 bands, scope controls and the watcher.
+
+
+The optional [Orange County official-evidence experiment](docs/engineering/ADR-007-official-queue-and-batch-evidence.md)
+adds bounded PDF/CSV readers, original source files and a frozen conditional
+comparison. Its official queue estimates still require acceptance/geographic
+assumptions; a reported tally increment is not a verified correction-free batch.
+It does not establish forecast calibration or close the remaining scientific audit.

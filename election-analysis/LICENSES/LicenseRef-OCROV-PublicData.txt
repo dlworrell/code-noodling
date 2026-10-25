@@ -1,0 +1,10 @@
+Original public election records published by the Orange County Registrar of Voters
+and its officially linked results vendor. Copyright and other applicable rights
+remain with their respective publishers. Public availability is not represented
+as an open license or a grant of rights by this project. These unmodified records
+are retained as attributed, hash-bound factual audit evidence. Reusers must assess
+applicable permissions themselves. Project-authored readers and metadata have
+separate Apache-2.0 notices. No voter-level records are included.
+
+Source: https://ocvote.gov/data/election-results-archives
+Source: https://ocvote.gov/data/election-results-archives/archived-statement-of-votes

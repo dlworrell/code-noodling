@@ -1,0 +1,1773 @@
+{
+  "schema_version": 1,
+  "archive_sha256": "5bb32ca7a50cb24049511afe770d7abe7b378cc725bc692065f0cb0356b188af",
+  "manifest_sha256": "c2984b27d24c848207eb70f7a6a4c32c82f33b5a48fcb870c0ad2e605ae10e79",
+  "qualification_only_not_scoring": true,
+  "original_files": 8,
+  "pdf_numeric_oracles": [
+    {
+      "file": "gen2024-run12.pdf",
+      "candidate_and_cast_rows": 707,
+      "contests": 212,
+      "poppler_agrees": true
+    },
+    {
+      "file": "gen2024-run12-canonical.pdf",
+      "candidate_and_cast_rows": 707,
+      "contests": 212,
+      "poppler_agrees": true
+    },
+    {
+      "file": "gen2024-run13.pdf",
+      "candidate_and_cast_rows": 707,
+      "contests": 212,
+      "poppler_agrees": true
+    }
+  ],
+  "nov8_semantically_equal_despite_different_bytes": true,
+  "final_summary_contests": 212,
+  "final_summary_choice_rows": 496,
+  "precinct_export_rows": 119664,
+  "precinct_contests": 212,
+  "exact_title_matches": 172,
+  "exact_choices_reconciled_all_three_vote_columns": 412,
+  "unmatched_summary_names": [
+    {
+      "title": "LA HABRA CITY SCHOOL DISTRICT Governing Board Member, Short Term",
+      "choice": "MINERVA S. G\u00d3MEZ",
+      "reason": "exact source name unavailable; no fuzzy/accent repair"
+    },
+    {
+      "title": "SANTA MARGARITA WATER DISTRICT Director, Division 3",
+      "choice": "GRETHA SOL\u00d3RZANO",
+      "reason": "exact source name unavailable; no fuzzy/accent repair"
+    },
+    {
+      "title": "TUSTIN UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "choice": "ALLYSON MU\u00d1IZ DAMIKOLAS",
+      "reason": "exact source name unavailable; no fuzzy/accent repair"
+    },
+    {
+      "title": "UNITED STATES REPRESENTATIVE 38th District",
+      "choice": "LINDA T. S\u00c1NCHEZ",
+      "reason": "exact source name unavailable; no fuzzy/accent repair"
+    }
+  ],
+  "unmatched_summary_titles": [
+    "AA - City of Orange, Fireworks Ordinance",
+    "BB - City of San Clemente, Beach Protection, Restoration, Clean Ocean Measure",
+    "CC - City of Santa Ana, Rent Stabilization and Just Cause Eviction Ordinance",
+    "DD - City of Santa Ana, Proposed Amendment to Section 1203 of the Santa Ana City Charter",
+    "EE - City of Santa Ana, Proposed Amendments to Sections 401.05, 611, 702, 703, 1002, and 1103 of the Santa Ana City Charter",
+    "FF - City of Santa Ana, Proposed Amendment to Section 402 of the Santa Ana City Charter",
+    "G - Rancho Santiago Community College District, Affordable Education, Career, Repair, Safety Measure",
+    "GG - City of Seal Beach, Services Measure",
+    "H - Brea Olinda Unified School District, Brea Olinda Unified School District Improvement Measure",
+    "HH - City of Stanton, Mayoral Term Limits",
+    "I - Santa Ana Unified School District, Classroom Improvement Measure",
+    "II - City of Tustin, Term Limits Revisions",
+    "J - Tustin Unified School District, Classroom Repair/Safety/Quality Education Measure",
+    "JJ - City of Yorba Linda, Local Control, Residential Neighborhood, Open Space Protection Measure",
+    "K - Anaheim Union High School District, Classroom/School Repair, Quality Education, Career Readiness Measure",
+    "KK - City of Yorba Linda, Bryant Ranch Shopping Center High Density Residential and Mixed-Use Measure",
+    "L - Fullerton Joint Union High School District, Local High School Improvement Measure",
+    "M - Buena Park School District, School Safety, Renovation and Construction Measure",
+    "N - Fullerton School District, Fullerton Elementary School District Repair, Upgrade and Safe Educational Facilities Measure",
+    "O - La Habra City School District, Bond Measure",
+    "P - Lowell Joint School District, Safe and Modern Schools Measure",
+    "Proposition 2 - Authorizes Bonds for Public School and Community College Facilities.",
+    "Proposition 3 - Constitutional Right to Marriage.",
+    "Proposition 32 - Raises Minimum Wage.",
+    "Proposition 33 - Expands Local Governments' Authority to Enact Rent Control on Residential Property.",
+    "Proposition 34 - Restricts Spending of Prescription Drug Revenues by Certain Health Care Providers.",
+    "Proposition 35 - Provides Permanent Funding for Medi-Cal Health Care Services.",
+    "Proposition 36 - Allows Felony Charges and Increases Sentences for Certain Drug and Theft Crimes.",
+    "Proposition 4 - Authorizes Bonds for Safe Drinking Water, Wildfire Prevention, and Protecting Communities and Natural Lands From Climate Risks.",
+    "Proposition 5 - Allows Local Bonds for Affordable Housing and Public Infrastructure With 55% Voter Approval.",
+    "Proposition 6 - Eliminates Constitutional Provision Allowing Involuntary Servitude for Incarcerated Persons.",
+    "R - City of Buena Park, Public Safety/Essential Services Measure",
+    "S - City of Cypress, Cypress Housing Element Implementation",
+    "T - City of Dana Point, An Initiative to Repeal and Replace the City\u2019s Existing Short Term Rental Ordinance",
+    "U - City of Huntington Beach, Charter Amendment Measure - Environmental Protection",
+    "V - City of La Habra, Emergency Services/Neighborhood Safety/Community Protection Measure",
+    "W - City of La Palma, Election Reform and Voter Choice Measure",
+    "X - City of Los Alamitos, Los Alamitos City Government Accountability, Transparency, Charter Reform Measure",
+    "Y - City of Mission Viejo, Transient Occupancy Tax Increase",
+    "Z - City of Orange, Public Safety/City Services Measure"
+  ],
+  "unmatched_precinct_titles": [
+    "AA-City of Orange",
+    "BB-City of San Clemente",
+    "CC-City of Santa Ana",
+    "DD-City of Santa Ana",
+    "EE-City of Santa Ana",
+    "FF-City of Santa Ana",
+    "G-Rancho Santiago Community College District",
+    "GG-City of Seal Beach",
+    "H-Brea Olinda Unified School District",
+    "HH-City of Stanton",
+    "I-Santa Ana Unified School District",
+    "II-City of Tustin",
+    "J-Tustin Unified School District",
+    "JJ-City of Yorba Linda",
+    "K-Anaheim Union High School District",
+    "KK-City of Yorba Linda",
+    "L-Fullerton Joint Union High School District",
+    "M-Buena Park School District",
+    "N-Fullerton School District",
+    "O-La Habra City School District",
+    "P-Lowell Joint School District",
+    "Proposition 2",
+    "Proposition 3",
+    "Proposition 32",
+    "Proposition 33",
+    "Proposition 34",
+    "Proposition 35",
+    "Proposition 36",
+    "Proposition 4",
+    "Proposition 5",
+    "Proposition 6",
+    "R-City of Buena Park",
+    "S-City of Cypress",
+    "T-City of Dana Point",
+    "U-City of Huntington Beach",
+    "V-City of La Habra",
+    "W-City of La Palma",
+    "X-City of Los Alamitos",
+    "Y-City of Mission Viejo",
+    "Z-City of Orange"
+  ],
+  "extra_precinct_names": [
+    {
+      "title": "ANAHEIM ELEMENTARY SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "ANAHEIM ELEMENTARY SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 70
+    },
+    {
+      "title": "ANAHEIM ELEMENTARY SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "ANAHEIM ELEMENTARY SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 93
+    },
+    {
+      "title": "ANAHEIM UNION HIGH SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "ANAHEIM UNION HIGH SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 216
+    },
+    {
+      "title": "ANAHEIM UNION HIGH SCHOOL DISTRICT Governing Board Member, Trustee Area 4",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "ANAHEIM UNION HIGH SCHOOL DISTRICT Governing Board Member, Trustee Area 4",
+      "source_name": "Unassigned write-ins",
+      "votes": 293
+    },
+    {
+      "title": "ANAHEIM UNION HIGH SCHOOL DISTRICT Governing Board Member, Trustee Area 5, Short Term",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "ANAHEIM UNION HIGH SCHOOL DISTRICT Governing Board Member, Trustee Area 5, Short Term",
+      "source_name": "Unassigned write-ins",
+      "votes": 220
+    },
+    {
+      "title": "BUENA PARK SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "BUENA PARK SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 26
+    },
+    {
+      "title": "CAPISTRANO UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CAPISTRANO UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 155
+    },
+    {
+      "title": "CAPISTRANO UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CAPISTRANO UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 97
+    },
+    {
+      "title": "CAPISTRANO UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CAPISTRANO UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 129
+    },
+    {
+      "title": "CAPISTRANO UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 5",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CAPISTRANO UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 5",
+      "source_name": "Unassigned write-ins",
+      "votes": 74
+    },
+    {
+      "title": "CENTRALIA SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CENTRALIA SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 37
+    },
+    {
+      "title": "CITY OF ALISO VIEJO Member, City Council, District 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF ALISO VIEJO Member, City Council, District 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 24
+    },
+    {
+      "title": "CITY OF ALISO VIEJO Member, City Council, District 5",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF ALISO VIEJO Member, City Council, District 5",
+      "source_name": "Unassigned write-ins",
+      "votes": 13
+    },
+    {
+      "title": "CITY OF ANAHEIM Member, City Council, District 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF ANAHEIM Member, City Council, District 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 138
+    },
+    {
+      "title": "CITY OF ANAHEIM Member, City Council, District 4",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF ANAHEIM Member, City Council, District 4",
+      "source_name": "Unassigned write-ins",
+      "votes": 113
+    },
+    {
+      "title": "CITY OF ANAHEIM Member, City Council, District 5",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF ANAHEIM Member, City Council, District 5",
+      "source_name": "Unassigned write-ins",
+      "votes": 103
+    },
+    {
+      "title": "CITY OF BREA City Treasurer",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF BREA City Treasurer",
+      "source_name": "Unassigned write-ins",
+      "votes": 99
+    },
+    {
+      "title": "CITY OF BREA Member, City Council",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF BREA Member, City Council",
+      "source_name": "Unassigned write-ins",
+      "votes": 128
+    },
+    {
+      "title": "CITY OF BUENA PARK Member, City Council, District 2, Short Term",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF BUENA PARK Member, City Council, District 2, Short Term",
+      "source_name": "Unassigned write-ins",
+      "votes": 21
+    },
+    {
+      "title": "CITY OF BUENA PARK Member, City Council, District 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF BUENA PARK Member, City Council, District 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 35
+    },
+    {
+      "title": "CITY OF BUENA PARK Member, City Council, District 4",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF BUENA PARK Member, City Council, District 4",
+      "source_name": "Unassigned write-ins",
+      "votes": 45
+    },
+    {
+      "title": "CITY OF COSTA MESA Mayor",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF COSTA MESA Mayor",
+      "source_name": "Unassigned write-ins",
+      "votes": 213
+    },
+    {
+      "title": "CITY OF COSTA MESA Member, City Council, District 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF COSTA MESA Member, City Council, District 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 26
+    },
+    {
+      "title": "CITY OF COSTA MESA Member, City Council, District 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF COSTA MESA Member, City Council, District 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 288
+    },
+    {
+      "title": "CITY OF COSTA MESA Member, City Council, District 6",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF COSTA MESA Member, City Council, District 6",
+      "source_name": "Unassigned write-ins",
+      "votes": 30
+    },
+    {
+      "title": "CITY OF CYPRESS Member, City Council, District 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF CYPRESS Member, City Council, District 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 10
+    },
+    {
+      "title": "CITY OF CYPRESS Member, City Council, District 4",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF CYPRESS Member, City Council, District 4",
+      "source_name": "Unassigned write-ins",
+      "votes": 23
+    },
+    {
+      "title": "CITY OF DANA POINT Member, City Council, District 4",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF DANA POINT Member, City Council, District 4",
+      "source_name": "Unassigned write-ins",
+      "votes": 84
+    },
+    {
+      "title": "CITY OF DANA POINT Member, City Council, District 5",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF DANA POINT Member, City Council, District 5",
+      "source_name": "Unassigned write-ins",
+      "votes": 107
+    },
+    {
+      "title": "CITY OF FOUNTAIN VALLEY Member, City Council",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF FOUNTAIN VALLEY Member, City Council",
+      "source_name": "Unassigned write-ins",
+      "votes": 156
+    },
+    {
+      "title": "CITY OF FULLERTON Member, City Council, District 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF FULLERTON Member, City Council, District 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 63
+    },
+    {
+      "title": "CITY OF FULLERTON Member, City Council, District 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF FULLERTON Member, City Council, District 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 95
+    },
+    {
+      "title": "CITY OF FULLERTON Member, City Council, District 4",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF FULLERTON Member, City Council, District 4",
+      "source_name": "Unassigned write-ins",
+      "votes": 63
+    },
+    {
+      "title": "CITY OF GARDEN GROVE Mayor",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF GARDEN GROVE Mayor",
+      "source_name": "Unassigned write-ins",
+      "votes": 272
+    },
+    {
+      "title": "CITY OF GARDEN GROVE Member, City Council, District 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF GARDEN GROVE Member, City Council, District 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 84
+    },
+    {
+      "title": "CITY OF GARDEN GROVE Member, City Council, District 5",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF GARDEN GROVE Member, City Council, District 5",
+      "source_name": "Unassigned write-ins",
+      "votes": 88
+    },
+    {
+      "title": "CITY OF GARDEN GROVE Member, City Council, District 6",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF GARDEN GROVE Member, City Council, District 6",
+      "source_name": "Unassigned write-ins",
+      "votes": 48
+    },
+    {
+      "title": "CITY OF HUNTINGTON BEACH City Clerk",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF HUNTINGTON BEACH City Clerk",
+      "source_name": "Unassigned write-ins",
+      "votes": 330
+    },
+    {
+      "title": "CITY OF HUNTINGTON BEACH City Treasurer",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF HUNTINGTON BEACH City Treasurer",
+      "source_name": "Unassigned write-ins",
+      "votes": 1352
+    },
+    {
+      "title": "CITY OF HUNTINGTON BEACH Member, City Council",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF HUNTINGTON BEACH Member, City Council",
+      "source_name": "Unassigned write-ins",
+      "votes": 445
+    },
+    {
+      "title": "CITY OF IRVINE Mayor",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF IRVINE Mayor",
+      "source_name": "Unassigned write-ins",
+      "votes": 434
+    },
+    {
+      "title": "CITY OF IRVINE Member, City Council, District 1, Short Term - Two (2) Years",
+      "source_name": "Rejected write-ins",
+      "votes": 81
+    },
+    {
+      "title": "CITY OF IRVINE Member, City Council, District 1, Short Term - Two (2) Years",
+      "source_name": "Unassigned write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF IRVINE Member, City Council, District 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF IRVINE Member, City Council, District 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 89
+    },
+    {
+      "title": "CITY OF IRVINE Member, City Council, District 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF IRVINE Member, City Council, District 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 117
+    },
+    {
+      "title": "CITY OF IRVINE Member, City Council, District 4",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF IRVINE Member, City Council, District 4",
+      "source_name": "Unassigned write-ins",
+      "votes": 94
+    },
+    {
+      "title": "CITY OF LA HABRA Member, City Council",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF LA HABRA Member, City Council",
+      "source_name": "Unassigned write-ins",
+      "votes": 186
+    },
+    {
+      "title": "CITY OF LA PALMA Member, City Council, District 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF LA PALMA Member, City Council, District 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 38
+    },
+    {
+      "title": "CITY OF LA PALMA Member, City Council, District 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF LA PALMA Member, City Council, District 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 41
+    },
+    {
+      "title": "CITY OF LA PALMA Member, City Council, District 5",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF LA PALMA Member, City Council, District 5",
+      "source_name": "Unassigned write-ins",
+      "votes": 32
+    },
+    {
+      "title": "CITY OF LAGUNA BEACH City Clerk",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF LAGUNA BEACH City Clerk",
+      "source_name": "Unassigned write-ins",
+      "votes": 178
+    },
+    {
+      "title": "CITY OF LAGUNA BEACH City Treasurer",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF LAGUNA BEACH City Treasurer",
+      "source_name": "Unassigned write-ins",
+      "votes": 188
+    },
+    {
+      "title": "CITY OF LAGUNA BEACH Member, City Council",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF LAGUNA BEACH Member, City Council",
+      "source_name": "Unassigned write-ins",
+      "votes": 103
+    },
+    {
+      "title": "CITY OF LAGUNA HILLS Member, City Council",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF LAGUNA HILLS Member, City Council",
+      "source_name": "Unassigned write-ins",
+      "votes": 105
+    },
+    {
+      "title": "CITY OF LAGUNA WOODS Member, City Council",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF LAGUNA WOODS Member, City Council",
+      "source_name": "Unassigned write-ins",
+      "votes": 107
+    },
+    {
+      "title": "CITY OF LAKE FOREST Member, City Council, District 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF LAKE FOREST Member, City Council, District 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 231
+    },
+    {
+      "title": "CITY OF LAKE FOREST Member, City Council, District 5",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF LAKE FOREST Member, City Council, District 5",
+      "source_name": "Unassigned write-ins",
+      "votes": 159
+    },
+    {
+      "title": "CITY OF LOS ALAMITOS Member, City Council, District 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF LOS ALAMITOS Member, City Council, District 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 5
+    },
+    {
+      "title": "CITY OF LOS ALAMITOS Member, City Council, District 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF LOS ALAMITOS Member, City Council, District 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 4
+    },
+    {
+      "title": "CITY OF LOS ALAMITOS Member, City Council, District 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF LOS ALAMITOS Member, City Council, District 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 32
+    },
+    {
+      "title": "CITY OF NEWPORT BEACH Member, City Council, District 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF NEWPORT BEACH Member, City Council, District 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 196
+    },
+    {
+      "title": "CITY OF NEWPORT BEACH Member, City Council, District 5",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF NEWPORT BEACH Member, City Council, District 5",
+      "source_name": "Unassigned write-ins",
+      "votes": 254
+    },
+    {
+      "title": "CITY OF NEWPORT BEACH Member, City Council, District 7",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF NEWPORT BEACH Member, City Council, District 7",
+      "source_name": "Unassigned write-ins",
+      "votes": 212
+    },
+    {
+      "title": "CITY OF ORANGE City Clerk",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF ORANGE City Clerk",
+      "source_name": "Unassigned write-ins",
+      "votes": 826
+    },
+    {
+      "title": "CITY OF ORANGE City Treasurer",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF ORANGE City Treasurer",
+      "source_name": "Unassigned write-ins",
+      "votes": 352
+    },
+    {
+      "title": "CITY OF ORANGE Mayor",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF ORANGE Mayor",
+      "source_name": "Unassigned write-ins",
+      "votes": 1802
+    },
+    {
+      "title": "CITY OF ORANGE Member, City Council, District 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF ORANGE Member, City Council, District 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 142
+    },
+    {
+      "title": "CITY OF ORANGE Member, City Council, District 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF ORANGE Member, City Council, District 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 198
+    },
+    {
+      "title": "CITY OF ORANGE Member, City Council, District 5",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF ORANGE Member, City Council, District 5",
+      "source_name": "Unassigned write-ins",
+      "votes": 136
+    },
+    {
+      "title": "CITY OF PLACENTIA City Treasurer",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF PLACENTIA City Treasurer",
+      "source_name": "Unassigned write-ins",
+      "votes": 407
+    },
+    {
+      "title": "CITY OF PLACENTIA Member, City Council, District 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF PLACENTIA Member, City Council, District 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 16
+    },
+    {
+      "title": "CITY OF PLACENTIA Member, City Council, District 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF PLACENTIA Member, City Council, District 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 27
+    },
+    {
+      "title": "CITY OF PLACENTIA Member, City Council, District 5",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF PLACENTIA Member, City Council, District 5",
+      "source_name": "Unassigned write-ins",
+      "votes": 21
+    },
+    {
+      "title": "CITY OF RANCHO SANTA MARGARITA Mayor",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF RANCHO SANTA MARGARITA Mayor",
+      "source_name": "Unassigned write-ins",
+      "votes": 304
+    },
+    {
+      "title": "CITY OF RANCHO SANTA MARGARITA Member, City Council, District 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF RANCHO SANTA MARGARITA Member, City Council, District 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 34
+    },
+    {
+      "title": "CITY OF SAN CLEMENTE Member, City Council, District 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF SAN CLEMENTE Member, City Council, District 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 61
+    },
+    {
+      "title": "CITY OF SAN CLEMENTE Member, City Council, District 4",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF SAN CLEMENTE Member, City Council, District 4",
+      "source_name": "Unassigned write-ins",
+      "votes": 58
+    },
+    {
+      "title": "CITY OF SAN JUAN CAPISTRANO Member, City Council, District 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF SAN JUAN CAPISTRANO Member, City Council, District 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 13
+    },
+    {
+      "title": "CITY OF SANTA ANA Mayor",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF SANTA ANA Mayor",
+      "source_name": "Unassigned write-ins",
+      "votes": 556
+    },
+    {
+      "title": "CITY OF SANTA ANA Member, City Council, Ward 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF SANTA ANA Member, City Council, Ward 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 129
+    },
+    {
+      "title": "CITY OF SANTA ANA Member, City Council, Ward 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF SANTA ANA Member, City Council, Ward 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 76
+    },
+    {
+      "title": "CITY OF SANTA ANA Member, City Council, Ward 5",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF SANTA ANA Member, City Council, Ward 5",
+      "source_name": "Unassigned write-ins",
+      "votes": 51
+    },
+    {
+      "title": "CITY OF SEAL BEACH Member, City Council, District 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF SEAL BEACH Member, City Council, District 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 43
+    },
+    {
+      "title": "CITY OF SEAL BEACH Member, City Council, District 4",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF SEAL BEACH Member, City Council, District 4",
+      "source_name": "Unassigned write-ins",
+      "votes": 60
+    },
+    {
+      "title": "CITY OF STANTON Member, City Council, District 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF STANTON Member, City Council, District 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 12
+    },
+    {
+      "title": "CITY OF STANTON Member, City Council, District 4",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF STANTON Member, City Council, District 4",
+      "source_name": "Unassigned write-ins",
+      "votes": 30
+    },
+    {
+      "title": "CITY OF TUSTIN Member, City Council, District 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF TUSTIN Member, City Council, District 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 42
+    },
+    {
+      "title": "CITY OF TUSTIN Member, City Council, District 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF TUSTIN Member, City Council, District 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 38
+    },
+    {
+      "title": "CITY OF TUSTIN Member, City Council, District 4",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF TUSTIN Member, City Council, District 4",
+      "source_name": "Unassigned write-ins",
+      "votes": 54
+    },
+    {
+      "title": "CITY OF VILLA PARK Member, City Council",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF VILLA PARK Member, City Council",
+      "source_name": "Unassigned write-ins",
+      "votes": 14
+    },
+    {
+      "title": "CITY OF WESTMINSTER Member, City Council, District 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF WESTMINSTER Member, City Council, District 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 43
+    },
+    {
+      "title": "CITY OF WESTMINSTER Member, City Council, District 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CITY OF WESTMINSTER Member, City Council, District 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 74
+    },
+    {
+      "title": "CITY OF YORBA LINDA Member, City Council",
+      "source_name": "Rejected write-ins",
+      "votes": 613
+    },
+    {
+      "title": "CITY OF YORBA LINDA Member, City Council",
+      "source_name": "Unassigned write-ins",
+      "votes": 0
+    },
+    {
+      "title": "COAST COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "COAST COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 325
+    },
+    {
+      "title": "COSTA MESA SANITARY DISTRICT Director, Division 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "COSTA MESA SANITARY DISTRICT Director, Division 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 71
+    },
+    {
+      "title": "CYPRESS SCHOOL DISTRICT Governing Board Member, Trustee Area A",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CYPRESS SCHOOL DISTRICT Governing Board Member, Trustee Area A",
+      "source_name": "Unassigned write-ins",
+      "votes": 22
+    },
+    {
+      "title": "CYPRESS SCHOOL DISTRICT Governing Board Member, Trustee Area E",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "CYPRESS SCHOOL DISTRICT Governing Board Member, Trustee Area E",
+      "source_name": "Unassigned write-ins",
+      "votes": 20
+    },
+    {
+      "title": "County Supervisor 1st District",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "County Supervisor 1st District",
+      "source_name": "Unassigned write-ins",
+      "votes": 994
+    },
+    {
+      "title": "EAST ORANGE COUNTY WATER DISTRICT Director, Division 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "EAST ORANGE COUNTY WATER DISTRICT Director, Division 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 32
+    },
+    {
+      "title": "FOUNTAIN VALLEY SCHOOL DISTRICT Governing Board Member",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "FOUNTAIN VALLEY SCHOOL DISTRICT Governing Board Member",
+      "source_name": "Unassigned write-ins",
+      "votes": 164
+    },
+    {
+      "title": "FULLERTON SCHOOL DISTRICT Governing Board Member, Trustee Area 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "FULLERTON SCHOOL DISTRICT Governing Board Member, Trustee Area 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 44
+    },
+    {
+      "title": "FULLERTON SCHOOL DISTRICT Governing Board Member, Trustee Area 5",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "FULLERTON SCHOOL DISTRICT Governing Board Member, Trustee Area 5",
+      "source_name": "Unassigned write-ins",
+      "votes": 59
+    },
+    {
+      "title": "GARDEN GROVE UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "GARDEN GROVE UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 138
+    },
+    {
+      "title": "GARDEN GROVE UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 5",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "GARDEN GROVE UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 5",
+      "source_name": "Unassigned write-ins",
+      "votes": 228
+    },
+    {
+      "title": "HUNTINGTON BEACH CITY SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "HUNTINGTON BEACH CITY SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 48
+    },
+    {
+      "title": "HUNTINGTON BEACH UNION HIGH SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "HUNTINGTON BEACH UNION HIGH SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 285
+    },
+    {
+      "title": "IRVINE RANCH WATER DISTRICT Director, Division 4",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "IRVINE RANCH WATER DISTRICT Director, Division 4",
+      "source_name": "Unassigned write-ins",
+      "votes": 117
+    },
+    {
+      "title": "LA HABRA CITY SCHOOL DISTRICT Governing Board Member, Full Term",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "LA HABRA CITY SCHOOL DISTRICT Governing Board Member, Full Term",
+      "source_name": "Unassigned write-ins",
+      "votes": 149
+    },
+    {
+      "title": "LA HABRA CITY SCHOOL DISTRICT Governing Board Member, Short Term",
+      "source_name": "MINERVA S. G+MEZ",
+      "votes": 8445
+    },
+    {
+      "title": "LA HABRA CITY SCHOOL DISTRICT Governing Board Member, Short Term",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "LA HABRA CITY SCHOOL DISTRICT Governing Board Member, Short Term",
+      "source_name": "Unassigned write-ins",
+      "votes": 105
+    },
+    {
+      "title": "LAGUNA BEACH UNIFIED SCHOOL DISTRICT Governing Board Member",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "LAGUNA BEACH UNIFIED SCHOOL DISTRICT Governing Board Member",
+      "source_name": "Unassigned write-ins",
+      "votes": 77
+    },
+    {
+      "title": "LOS ALAMITOS UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 4",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "LOS ALAMITOS UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 4",
+      "source_name": "Unassigned write-ins",
+      "votes": 20
+    },
+    {
+      "title": "LOS ALAMITOS UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 5",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "LOS ALAMITOS UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 5",
+      "source_name": "Unassigned write-ins",
+      "votes": 33
+    },
+    {
+      "title": "MIDWAY CITY SANITARY DISTRICT Director",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "MIDWAY CITY SANITARY DISTRICT Director",
+      "source_name": "Unassigned write-ins",
+      "votes": 404
+    },
+    {
+      "title": "MOULTON NIGUEL WATER DISTRICT Director",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "MOULTON NIGUEL WATER DISTRICT Director",
+      "source_name": "Unassigned write-ins",
+      "votes": 812
+    },
+    {
+      "title": "MUNICIPAL WATER DISTRICT OF ORANGE COUNTY Director, Division 4",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "MUNICIPAL WATER DISTRICT OF ORANGE COUNTY Director, Division 4",
+      "source_name": "Unassigned write-ins",
+      "votes": 811
+    },
+    {
+      "title": "MUNICIPAL WATER DISTRICT OF ORANGE COUNTY Director, Division 6",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "MUNICIPAL WATER DISTRICT OF ORANGE COUNTY Director, Division 6",
+      "source_name": "Unassigned write-ins",
+      "votes": 604
+    },
+    {
+      "title": "NEWPORT-MESA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "NEWPORT-MESA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 59
+    },
+    {
+      "title": "NEWPORT-MESA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "NEWPORT-MESA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 60
+    },
+    {
+      "title": "NEWPORT-MESA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 6",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "NEWPORT-MESA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 6",
+      "source_name": "Unassigned write-ins",
+      "votes": 49
+    },
+    {
+      "title": "NORTH ORANGE COUNTY COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "NORTH ORANGE COUNTY COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 382
+    },
+    {
+      "title": "NORTH ORANGE COUNTY COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 5",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "NORTH ORANGE COUNTY COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 5",
+      "source_name": "Unassigned write-ins",
+      "votes": 240
+    },
+    {
+      "title": "NORTH ORANGE COUNTY COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 7",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "NORTH ORANGE COUNTY COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 7",
+      "source_name": "Unassigned write-ins",
+      "votes": 382
+    },
+    {
+      "title": "OCEAN VIEW SCHOOL DISTRICT Governing Board Member",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "OCEAN VIEW SCHOOL DISTRICT Governing Board Member",
+      "source_name": "Unassigned write-ins",
+      "votes": 180
+    },
+    {
+      "title": "ORANGE COUNTY WATER DISTRICT Director, Division 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "ORANGE COUNTY WATER DISTRICT Director, Division 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 690
+    },
+    {
+      "title": "ORANGE COUNTY WATER DISTRICT Director, Division 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "ORANGE COUNTY WATER DISTRICT Director, Division 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 585
+    },
+    {
+      "title": "ORANGE COUNTY WATER DISTRICT Director, Division 6",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "ORANGE COUNTY WATER DISTRICT Director, Division 6",
+      "source_name": "Unassigned write-ins",
+      "votes": 582
+    },
+    {
+      "title": "ORANGE COUNTY WATER DISTRICT Director, Division 7, Short Term",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "ORANGE COUNTY WATER DISTRICT Director, Division 7, Short Term",
+      "source_name": "Unassigned write-ins",
+      "votes": 493
+    },
+    {
+      "title": "ORANGE UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "ORANGE UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 605
+    },
+    {
+      "title": "ORANGE UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 4, Short Term",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "ORANGE UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 4, Short Term",
+      "source_name": "Unassigned write-ins",
+      "votes": 1199
+    },
+    {
+      "title": "ORANGE UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 7, Short Term",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "ORANGE UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 7, Short Term",
+      "source_name": "Unassigned write-ins",
+      "votes": 1034
+    },
+    {
+      "title": "PLACENTIA-YORBA LINDA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "PLACENTIA-YORBA LINDA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 56
+    },
+    {
+      "title": "PLACENTIA-YORBA LINDA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "PLACENTIA-YORBA LINDA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 46
+    },
+    {
+      "title": "PLACENTIA-YORBA LINDA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "PLACENTIA-YORBA LINDA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 50
+    },
+    {
+      "title": "PRESIDENT AND VICE PRESIDENT",
+      "source_name": "Rejected write-ins",
+      "votes": 8565
+    },
+    {
+      "title": "PRESIDENT AND VICE PRESIDENT",
+      "source_name": "Unassigned write-ins",
+      "votes": 0
+    },
+    {
+      "title": "RANCHO SANTIAGO COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "RANCHO SANTIAGO COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 127
+    },
+    {
+      "title": "RANCHO SANTIAGO COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 5",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "RANCHO SANTIAGO COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 5",
+      "source_name": "Unassigned write-ins",
+      "votes": 138
+    },
+    {
+      "title": "RANCHO SANTIAGO COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 7",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "RANCHO SANTIAGO COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 7",
+      "source_name": "Unassigned write-ins",
+      "votes": 283
+    },
+    {
+      "title": "ROSSMOOR COMMUNITY SERVICES DISTRICT Director",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "ROSSMOOR COMMUNITY SERVICES DISTRICT Director",
+      "source_name": "Unassigned write-ins",
+      "votes": 80
+    },
+    {
+      "title": "SADDLEBACK VALLEY UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "SADDLEBACK VALLEY UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 94
+    },
+    {
+      "title": "SADDLEBACK VALLEY UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "SADDLEBACK VALLEY UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 124
+    },
+    {
+      "title": "SADDLEBACK VALLEY UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 4",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "SADDLEBACK VALLEY UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 4",
+      "source_name": "Unassigned write-ins",
+      "votes": 107
+    },
+    {
+      "title": "SANTA ANA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "SANTA ANA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 76
+    },
+    {
+      "title": "SANTA ANA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "SANTA ANA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 37
+    },
+    {
+      "title": "SANTA ANA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "SANTA ANA UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 52
+    },
+    {
+      "title": "SANTA MARGARITA WATER DISTRICT Director, Division 3",
+      "source_name": "GRETHA SOL+RZANO",
+      "votes": 5352
+    },
+    {
+      "title": "SANTA MARGARITA WATER DISTRICT Director, Division 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "SANTA MARGARITA WATER DISTRICT Director, Division 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 88
+    },
+    {
+      "title": "SERRANO WATER DISTRICT Director, Division 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "SERRANO WATER DISTRICT Director, Division 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 5
+    },
+    {
+      "title": "SOUTH ORANGE COUNTY COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "SOUTH ORANGE COUNTY COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 290
+    },
+    {
+      "title": "SOUTH ORANGE COUNTY COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "SOUTH ORANGE COUNTY COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 3",
+      "source_name": "Unassigned write-ins",
+      "votes": 271
+    },
+    {
+      "title": "SOUTH ORANGE COUNTY COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 6",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "SOUTH ORANGE COUNTY COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 6",
+      "source_name": "Unassigned write-ins",
+      "votes": 486
+    },
+    {
+      "title": "SOUTH ORANGE COUNTY COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 7",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "SOUTH ORANGE COUNTY COMMUNITY COLLEGE DISTRICT Governing Board Member, Trustee Area 7",
+      "source_name": "Unassigned write-ins",
+      "votes": 467
+    },
+    {
+      "title": "SUNSET BEACH SANITARY DISTRICT Director",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "SUNSET BEACH SANITARY DISTRICT Director",
+      "source_name": "Unassigned write-ins",
+      "votes": 15
+    },
+    {
+      "title": "TRABUCO CANYON WATER DISTRICT Director",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "TRABUCO CANYON WATER DISTRICT Director",
+      "source_name": "Unassigned write-ins",
+      "votes": 30
+    },
+    {
+      "title": "TUSTIN UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "ALLYSON MU-IZ DAMIKOLAS",
+      "votes": 7418
+    },
+    {
+      "title": "TUSTIN UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "TUSTIN UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 1",
+      "source_name": "Unassigned write-ins",
+      "votes": 48
+    },
+    {
+      "title": "TUSTIN UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 2",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "TUSTIN UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 2",
+      "source_name": "Unassigned write-ins",
+      "votes": 51
+    },
+    {
+      "title": "TUSTIN UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 4",
+      "source_name": "Rejected write-ins",
+      "votes": 0
+    },
+    {
+      "title": "TUSTIN UNIFIED SCHOOL DISTRICT Governing Board Member, Trustee Area 4",
+      "source_name": "Unassigned write-ins",
+      "votes": 47
+    },
+    {
+      "title": "UNITED STATES REPRESENTATIVE 38th District",
+      "source_name": "LINDA T. S-NCHEZ",
+      "votes": 12612
+    }
+  ],
+  "pool_forms": [
+    {
+      "schema_version": 1,
+      "format": "ca_unprocessed_form_oc_2024_v1",
+      "county": "Orange",
+      "reported_at": "2024-11-08T17:00:00-08:00",
+      "amended": true,
+      "source_timestamp_label": "November 8, 2024 5:00 pm AMENDED",
+      "processed_ballots": 1148043,
+      "source_field_2": 140894,
+      "source_field_2_label": "Total number of processed ballots from the last report",
+      "source_field_2_interpretation": "Ambiguous label; never automatically a latest-batch count. Reconcile with publisher's dated release.",
+      "unprocessed_categories": {
+        "voting_location": 0,
+        "mail_received_by_election_day": 216006,
+        "mail_received_after_election_day": 16424,
+        "provisional": 0,
+        "conditional_registration_provisional": 40631,
+        "other": 2359
+      },
+      "estimated_unprocessed": 275420,
+      "challenged_left_to_cure": 9462,
+      "challenged_overlap_with_total": "unknown; reported separately, never silently added",
+      "next_results_expected": "2024-11-11T17:00:00-08:00",
+      "qualification": "Unprocessed estimates include eligibility/acceptance uncertainty and omit not-yet-received ballots. Not a guaranteed final countable pool.",
+      "sha256": "d9542b18721ac75c8a6c109df9edf423a56c35211daa8406cb963297a559a840",
+      "metadata": {
+        "created": "D:20241017150105-07'00'",
+        "modified": "D:20241108182637-08'00'",
+        "producer": "Adobe PDF Library 24.3.212",
+        "qualification": "Embedded producer metadata, not an authenticated publication clock."
+      }
+    },
+    {
+      "schema_version": 1,
+      "format": "ca_unprocessed_form_oc_2024_v1",
+      "county": "Orange",
+      "reported_at": "2024-11-09T17:00:00-08:00",
+      "amended": false,
+      "source_timestamp_label": "November 9, 2024 5:00 pm",
+      "processed_ballots": 1212226,
+      "source_field_2": 205077,
+      "source_field_2_label": "Total number of processed ballots from the last report",
+      "source_field_2_interpretation": "Ambiguous label; never automatically a latest-batch count. Reconcile with publisher's dated release.",
+      "unprocessed_categories": {
+        "voting_location": 0,
+        "mail_received_by_election_day": 151823,
+        "mail_received_after_election_day": 17339,
+        "provisional": 0,
+        "conditional_registration_provisional": 40631,
+        "other": 2359
+      },
+      "estimated_unprocessed": 212152,
+      "challenged_left_to_cure": 9512,
+      "challenged_overlap_with_total": "unknown; reported separately, never silently added",
+      "next_results_expected": "2024-11-11T17:00:00-08:00",
+      "qualification": "Unprocessed estimates include eligibility/acceptance uncertainty and omit not-yet-received ballots. Not a guaranteed final countable pool.",
+      "sha256": "2205f472fa1b7a0a9cdda71a9f6e1a666509f47de696e8ff9056dbf01d7e0b79",
+      "metadata": {
+        "created": "D:20241017150105-07'00'",
+        "modified": "D:20241109181754-08'00'",
+        "producer": "Adobe PDF Library 24.3.212",
+        "qualification": "Embedded producer metadata, not an authenticated publication clock."
+      }
+    }
+  ],
+  "independent_oracles": {
+    "pdf": "pdftotext -layout terminal-column triples in original source order",
+    "csv_and_tsv": "Pandas typed exact-name group sums; no fuzzy joining"
+  },
+  "qualification": "Verifies extraction/accounting, not historical-byte authenticity, correction-free increments, countable pool assumptions or forecast accuracy."
+}

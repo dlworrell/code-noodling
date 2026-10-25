@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "independent_exact_precinct_outcomes": 159,
+  "unique_base_contests": 53,
+  "losses": {
+    "model": {
+      "brier": 0.033682658867824955,
+      "log_loss": 0.09501048405582255
+    },
+    "fixed_half": {
+      "brier": 0.25,
+      "log_loss": 0.6931471805599453
+    },
+    "cumulative_share": {
+      "brier": 0.03777126945246742,
+      "log_loss": 0.1364518748643742
+    },
+    "untempered_beta_binomial": {
+      "brier": 0.03725110006773637,
+      "log_loss": 0.12758257550007404
+    },
+    "official_queue_margin_rule": {
+      "brier": 0.1320754716981132,
+      "log_loss": 0.36619096331515977
+    },
+    "reported_increment_only_conditional": {
+      "brier": 0.03869495031848734,
+      "log_loss": 0.13811864515365976
+    },
+    "disjoint_increment_conditional": {
+      "brier": 0.028870579480398947,
+      "log_loss": 0.08424815476530102
+    }
+  },
+  "maximum_scipy_absolute_error": 9.648304377662953e-11,
+  "scipy_comparisons": 636,
+  "pandas": "2.2.3",
+  "scipy": "1.17.0",
+  "scope": "Independent extraction/event aggregation and numerical distribution checks only. Not independent final scientific re-audit or calibration."
+}

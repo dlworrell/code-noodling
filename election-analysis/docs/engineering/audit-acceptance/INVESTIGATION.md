@@ -79,3 +79,57 @@ parent closure additionally requires F-005.
   was weakened and no historical publication was fabricated.
 - Replaced a general data request with the aggregate evidence contract above;
   no message or request was sent to another person.
+
+
+## Current continuation — Orange County official evidence
+
+Base PR #64 is merged at `69db5f7e96bff0c4cd0ca8a987f3d284fb4a0802`.
+The earlier King-only missing-pool statements above are historical: this
+continuation acquired eight original Orange County 2024 files, including dated
+official unprocessed estimates with categories. The closest matched evidence
+now supports the bounded schema-3 experiment in [ADR-007](../ADR-007-official-queue-and-batch-evidence.md).
+The authoritative child ledger remains **12/14**; #55/#58 and parent #45 stay open.
+
+- F-001: internal count clocks, amended form values and producer metadata are
+  preserved. A common later reconstruction time prevents backdating the amended
+  form. UNKNOWN remains historical content/version authenticity; original
+  contemporaneous capture or publisher version history is still required.
+- F-002: a dated official estimate now exists (212,152), closing that acquisition
+  gap for this county. Countable acceptance, geographic/pair allocation, challenge
+  overlap and future arrivals remain assumptions. Need an as-of anonymous ledger
+  distinguishing counted, unprocessed, accepted, challenged/cure, rejected and
+  later-arriving categories with units, scope and overlap rules.
+- F-003: the registrar reports 64,183 added ballots, reconciled to both cumulative
+  PDFs and processed-count forms. The last-report field actually reconciles to
+  election-night additions. NOT SUPPLIED: separately identified candidate
+  corrections/recount/transfer changes. All operational deltas remain unknown;
+  increment-only/disjoint comparisons are conditional sensitivities, not verified
+  new-batch likelihood. Need candidate/method increments reconciled to a dated
+  ballot-addition ledger with the correction partition identified, including zero
+  explicitly if publisher evidence establishes it.
+- F-004: 53 contests, two selected-pair reversals, one county/election. All
+  snapshots/scenarios stay in one held-out group; no cap/weight fitting. The King
+  and OC experiments have different pool evidence and cannot be pooled as
+  interchangeable replications. Need additional whole jurisdictions with the same
+  evidence contract, predeclared training/held-out groups and dependency-aware
+  uncertainty before selecting parameters or claiming geographic generalization.
+- F-005: NOT RUN. Independent extraction/numerical checks completed here remain
+  self-executed verification. Parent #45 still requires a qualified reviewer
+  independent of implementation. This report does not self-certify that review.
+
+### Concrete next instruction
+
+Start from this exact accepted source/recipe, retain both first prediction seals,
+and seek an anonymous aggregate publisher batch/revision ledger matching
+November 8–9, 2024 in Orange County. Match the 64,183 processed-ballot increase;
+identify candidate corrections separately, outstanding eligibility/categories,
+contest geography and historical version/publication evidence. Apply PRM-0026
+to any new format and PRM-0030 to captured-original comparisons; PRM-0068 records
+remaining unknowns. Only matching, verified fields may replace the explicit
+conditions. Do not retune caps on these 53 observed outcomes or silently treat
+unknown corrections as zero. No external message/request was sent.
+
+A fresh review of the two open child contracts after the run still finds those
+requirements unmet. Further arithmetic iterations over the same files cannot
+supply the missing source assertions, independent geographic groups or reviewer.
+No issue is closed merely to make the issue count zero.
