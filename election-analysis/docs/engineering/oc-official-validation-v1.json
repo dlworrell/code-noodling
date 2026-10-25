@@ -1,0 +1,170 @@
+{
+  "schema_version": 3,
+  "base_commit": "69db5f7e96bff0c4cd0ca8a987f3d284fb4a0802",
+  "evidence_date_utc": "2026-10-25",
+  "local_tests": {
+    "run": 164,
+    "passed": 164
+  },
+  "local_test_passed": true,
+  "local_provenance": {
+    "reuse": {
+      "status": 0,
+      "reuse_version": "6.2.0",
+      "spec_version": "3.3",
+      "compliant": false,
+      "files_total": 138,
+      "files_with_copyright_info": 138,
+      "files_with_licensing_info": 138,
+      "pending_licenses": [
+        "LicenseRef-ChelanCounty-PublicData",
+        "LicenseRef-KittitasCounty-PublicData",
+        "LicenseRef-PierceCounty-PublicData",
+        "LicenseRef-SnohomishCounty-PublicData"
+      ],
+      "non_compliant": {}
+    },
+    "file-ids": {
+      "status": 0,
+      "files_with_id": 78,
+      "exempt": 72,
+      "violations": []
+    },
+    "manifest": {
+      "status": 0,
+      "commit": "69db5f7e96bff0c4cd0ca8a987f3d284fb4a0802",
+      "files": 150
+    },
+    "overall": 0,
+    "commit": "69db5f7e96bff0c4cd0ca8a987f3d284fb4a0802",
+    "scope": "election-analysis/"
+  },
+  "provenance_record_note": "Recorded before this summary file was added; final exact-tree provenance is required at merge. Existing four unused license texts are explicitly permitted by the checker, not silently described as full REUSE compliance.",
+  "runtime": {
+    "python": "3.12.14",
+    "pypdf": "6.10.0",
+    "EDT": "bca66c1e2d2a9bf9c05f9429e618299216a17f27"
+  },
+  "commands": [
+    "EDT_DIR=/path/to/edt python election-analysis/ci/test_results.py --output CHECKS",
+    "PYTHONPATH=election-analysis python -m election_reporting.official_qualification --fixtures election-analysis/tests/fixtures --output QUALIFICATION",
+    "python election-analysis/ci/verify_official_experiment.py --scope election-analysis --output CHECK",
+    "PATH=/root/.local/bin:$PATH python election-analysis/ci/provenance.py all --output PROVENANCE",
+    "git diff --cached --check"
+  ],
+  "first_seal": {
+    "schema_version": 3,
+    "mode": "retrospective_official_queue_scenarios",
+    "protocol_sha256": "8d81cb300d1602bad20d19eb17611adf76624e1bda7db24440f14139f7307eea",
+    "predictions_sha256": "98b0437b03bb082dad87d3fa948c3f5fe70e4b0108ba2592432ca9d3ce3378eb",
+    "protocol_frozen_at": "2026-10-25T07:53:06.147159+00:00",
+    "predictions_generated_at": "2026-10-25T07:53:06.243430+00:00",
+    "sealed_at": "2026-10-25T07:53:23.196040+00:00",
+    "rows": 159,
+    "reserved_outcomes_read": [],
+    "qualification": "Seal made before the first scoring command. Prior public outcome/identity qualification is disclosed in the protocol; no blind preregistration or historical publication is claimed."
+  },
+  "independent_numerical_check": {
+    "schema_version": 1,
+    "status": "pass",
+    "independent_exact_precinct_outcomes": 159,
+    "unique_base_contests": 53,
+    "losses": {
+      "model": {
+        "brier": 0.033682658867824955,
+        "log_loss": 0.09501048405582255
+      },
+      "fixed_half": {
+        "brier": 0.25,
+        "log_loss": 0.6931471805599453
+      },
+      "cumulative_share": {
+        "brier": 0.03777126945246742,
+        "log_loss": 0.1364518748643742
+      },
+      "untempered_beta_binomial": {
+        "brier": 0.03725110006773637,
+        "log_loss": 0.12758257550007404
+      },
+      "official_queue_margin_rule": {
+        "brier": 0.1320754716981132,
+        "log_loss": 0.36619096331515977
+      },
+      "reported_increment_only_conditional": {
+        "brier": 0.03869495031848734,
+        "log_loss": 0.13811864515365976
+      },
+      "disjoint_increment_conditional": {
+        "brier": 0.028870579480398947,
+        "log_loss": 0.08424815476530102
+      }
+    },
+    "maximum_scipy_absolute_error": 9.648304377662953e-11,
+    "scipy_comparisons": 636,
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scope": "Independent extraction/event aggregation and numerical distribution checks only. Not independent final scientific re-audit or calibration."
+  },
+  "prompt_sources": [
+    {
+      "path": "/prompt/PRM-0030.txt",
+      "dropbox_revision": "65e8ddd46f4da01b90224",
+      "role": "primary comparison/acceptance"
+    },
+    {
+      "path": "/prompt/PRM-0026.txt",
+      "dropbox_revision": "65e8ddc5cd6b901b90224",
+      "role": "new source format recovery"
+    },
+    {
+      "path": "/prompt/PRM-0068.txt",
+      "dropbox_revision": "65e8de701257001b90224",
+      "role": "static residual and missing-data contract"
+    }
+  ],
+  "changed_file_sha256": {
+    "election-analysis/LICENSES/LicenseRef-OCROV-PublicData.txt": "36cef9f4aa6e9a857492e3adf0052d78183d761de7f2fdbc692809a7eb5ce311",
+    "election-analysis/README.md": "72c0a15bdadf34a494335fb995a26bb787569c4edb99c3e132f55b639d8e56d4",
+    "election-analysis/REUSE.toml": "dfbbb0dc8682bbdfee57eb81f2ec76d081eab04940db4c5779e69615a1f57d12",
+    "election-analysis/ci/provenance.py": "5d095da06ea870d8259d5de955712cc85a2a098b1a9d5570e51ac5794405e488",
+    "election-analysis/ci/requirements-provenance.txt": "de5b1823f945dd675ad3667f5595763e80fd7ee31605c127d61caa8bc555f80f",
+    "election-analysis/ci/verify_official_experiment.py": "04b2307a8b99527787ca0a314cbaf535daa0512ba2e69e975761f329094d2400",
+    "election-analysis/docs/engineering/ADR-007-official-queue-and-batch-evidence.md": "3a161a900ec4b9c3aad3061873a75d6a1f727335fd185041e0aabbd233455d19",
+    "election-analysis/docs/engineering/audit-acceptance/FILE-FORMAT.md": "ba3f78b225dba0cdc3d11fb0d89971e9e6449c3e693dffdb66ff9be00b9bedf3",
+    "election-analysis/docs/engineering/audit-acceptance/INVESTIGATION.md": "17d713a617e622b96929936f89cd167847072af20a8f99535937704d87e3d2e9",
+    "election-analysis/docs/engineering/audit-acceptance/RECONSTRUCTION-VALIDATION.md": "1c45028f34b97c285c21a6aae605b9910842ae463afd794411b85136d91359df",
+    "election-analysis/docs/engineering/oc-official-diagnostic-v1.png": "0343ed9665a20aea165ff9f6fde3c107d7ffb1b2ca0cb3b2607ea7a2b9655785",
+    "election-analysis/docs/engineering/oc-official-independent-check-v1.json": "a4c3e03984a176af091579688b0a9a3d6e4f3094c03a9e4a59fcfddf755c6b3c",
+    "election-analysis/docs/engineering/oc-official-predictions-v1.json": "98b0437b03bb082dad87d3fa948c3f5fe70e4b0108ba2592432ca9d3ce3378eb",
+    "election-analysis/docs/engineering/oc-official-protocol-v1.json": "1b50c31396d783bd7dab653fb53f5d758e99acbe7c0e80b5cfac29ddd8447511",
+    "election-analysis/docs/engineering/oc-official-qualification-v1.json": "374b4d9d3dcdf5dc2df638b628436421f5b01ffb19206450f0be0130b7e47090",
+    "election-analysis/docs/engineering/oc-official-scores-v1.json": "5a85b9e5e4d4365221bc8b0a53b4df23d4eea3b0c544dd385ad76d0336e7ba94",
+    "election-analysis/docs/engineering/oc-official-seal-v1.json": "de3db7b610188ca84ba63164f58d1373247e03c74b8ef0653c8915cf02d0accd",
+    "election-analysis/election_reporting/official_archives.py": "86fd53f671613de44ce016e9eef4f7b62f15babaa5e33cb9a05b71cd182f75a1",
+    "election-analysis/election_reporting/official_qualification.py": "68a80995d3c37abda976cb6e0dafdab4d4893bd37378f50b72ae6cfb3b3be3bf",
+    "election-analysis/election_reporting/official_validation.py": "893f12eefa0dece553e9674bdc1f72e80f0600cff922231ae2a2b0d0af06d9bd",
+    "election-analysis/tests/fixtures/oc-official-2024-manifest.json": "c2984b27d24c848207eb70f7a6a4c32c82f33b5a48fcb870c0ad2e605ae10e79",
+    "election-analysis/tests/fixtures/oc-official-2024.zip": "5bb32ca7a50cb24049511afe770d7abe7b378cc725bc692065f0cb0356b188af",
+    "election-analysis/tests/test_election_official_validation.py": "896e8f147e84a163048f1cc1d138ae4da525d8cabd992e49c818d533ea1e3f70"
+  },
+  "generated_record_exclusion": "This file excludes its own digest to avoid circular hashing. Final Git tree, source blobs and CI run bind the whole artifact.",
+  "scientific_acceptance": {
+    "audit_children_resolved": 12,
+    "audit_children_total": 14,
+    "open_children": [
+      55,
+      58
+    ],
+    "parent_issue": 45,
+    "calibration_established": false,
+    "production_eligible": false,
+    "independent_final_reaudit": "NOT RUN",
+    "missing": [
+      "publisher correction-separated new-ballot lineage",
+      "authenticated historical versions",
+      "contest-specific countable outstanding categories/geography/arrivals",
+      "independent whole jurisdiction/election train and held-out replication"
+    ]
+  },
+  "git_workflow": "Upload through GitHub verified signed commits, compare all remote changed blobs to this tested worktree, inspect actual CI provenance status, then normal PR acceptance. No settings weakened."
+}
