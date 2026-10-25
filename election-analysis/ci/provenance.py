@@ -55,6 +55,7 @@ AUTOMATION = [
     ("data/elections/*/*/SOURCES.json", "provenance-record"),
     ("data/crosswalks/*/*.csv", "derived-data"),
     ("docs/engineering/*.json", "engineering-record"),
+    ("docs/engineering/king-retrospective-diagnostic-v2.png", "generated-scenario-diagnostic"),
     ("tests/fixtures/*.json", "regression-evidence"),
     ("tests/fixtures/king-archives.zip", "hash-bound-official-source-archive"),
     ("tests/fixtures/replay-2024/*", "frozen-source-regression"),
