@@ -1,0 +1,191 @@
+{
+  "LD42": {
+    "margin_after": 4,
+    "margin_before": 4,
+    "probability_after": null,
+    "probability_before": 0.5628235201535775,
+    "result_status": {
+      "authority_url": "https://www.sos.wa.gov/elections/data-research/election-data-and-maps/election-results-and-voters-pamphlets/2026-primary-election",
+      "evidence_as_of": "2026-10-25T04:27:06+00:00",
+      "lifecycle": "recount_completed",
+      "result_version": "wa-2026-primary-summary-20260911",
+      "round_id": null,
+      "tabulation_stage": "plurality_count"
+    }
+  },
+  "base_commit": "99c03904a7258994bcbc25c2e73ede722d00c461",
+  "classification": "experimental_uncalibrated",
+  "files": {
+    "README.md": {
+      "bytes": 12366,
+      "sha256": "86e32cff5e1e16d22683b91bda2678e76ed1601e8d7bc5f0f9d5120f183291c5"
+    },
+    "election-analysis/README.md": {
+      "bytes": 4516,
+      "sha256": "caf4a087fef891a3219a105f87a0e9f13debf630d964cb0294d97e93999db75d"
+    },
+    "election-analysis/data/elections/washington/2026-08-04/election.toml": {
+      "bytes": 2761,
+      "sha256": "7009fe99f91178257ef390519aa677aa028911189a7c14b99ccab0397903addf"
+    },
+    "election-analysis/docs/election-reporting.md": {
+      "bytes": 30816,
+      "sha256": "309a098bb8beb45cbf3877dd65995910cd8ec788c3cb5fd4bc50eaab6852f4d5"
+    },
+    "election-analysis/docs/engineering/ADR-003-result-lifecycle-and-stages.md": {
+      "bytes": 6037,
+      "sha256": "7f3a2bc22e328283f7e0e3a3479086064a98d9b77e405fec756a32b0926992d4"
+    },
+    "election-analysis/docs/engineering/audit-ea01/FEATURE-REBUILD.md": {
+      "bytes": 7783,
+      "sha256": "5fc3c64cadc6f5d1ec163030b8626332fcfcda9cd011fb6dc14fb5b58901f2f8"
+    },
+    "election-analysis/election_reporting/__init__.py": {
+      "bytes": 279,
+      "sha256": "ef3950caaea815ea2a0f2428e19a1fc3ccb9ecb2ae0dd013c486d1eccfff4c66"
+    },
+    "election-analysis/election_reporting/analysis.py": {
+      "bytes": 26980,
+      "sha256": "d20ce088cbf58847a34c97cb6ae21299b06a419104b24b2c71959dd1474c72d3"
+    },
+    "election-analysis/election_reporting/config.py": {
+      "bytes": 11427,
+      "sha256": "4eb1362b3a917b6468446f3b3d5055095c6940e2f7b5261e66e6241d719f7d5f"
+    },
+    "election-analysis/election_reporting/model.py": {
+      "bytes": 4632,
+      "sha256": "470a3820b22302d270b989c56e8bfd43a71b0ac805ff1c670377c86596b9ffeb"
+    },
+    "election-analysis/election_reporting/publish.py": {
+      "bytes": 35238,
+      "sha256": "18040ae1ac4fccf5257827fe919187d6848b4c95c92c5a3c79ae08026bde67fe"
+    },
+    "election-analysis/election_reporting/stages.py": {
+      "bytes": 7482,
+      "sha256": "a503c4df7c470082db5ce9ae0ef6bd05ca58ba23d9ec2832ad18fca85b8cf57c"
+    },
+    "election-analysis/reports/washington/2026-08-04/analysis.json": {
+      "bytes": 934142,
+      "sha256": "1581555d1f5bbc76ef9962e28652e39895e1b0536eab18755b83abd73a09fa71"
+    },
+    "election-analysis/reports/washington/2026-08-04/canonical-document.edom.json": {
+      "bytes": 860879,
+      "sha256": "a6a6804af6296ae57e6be3e6e389634cd10b2ad7d847dd2e7cc27786f00888a8"
+    },
+    "election-analysis/reports/washington/2026-08-04/edt/document/reference-graph.json": {
+      "bytes": 612688,
+      "sha256": "e587d399ea2307b5f26528426fae4fbe409e3672f431227ebc92b79c02ac8e2e"
+    },
+    "election-analysis/reports/washington/2026-08-04/edt/document/reference-graph.md": {
+      "bytes": 289155,
+      "sha256": "c71db345a4e235c785a04bc6a188dc2c5d45a254b9ef6839d4bd55ab37bc5bbb"
+    },
+    "election-analysis/reports/washington/2026-08-04/election-analysis.html": {
+      "bytes": 540012,
+      "sha256": "466b18c047996c9557942b828a30eef63605eb5e616e04e36e226de98a5492b4"
+    },
+    "election-analysis/reports/washington/2026-08-04/election-analysis.md": {
+      "bytes": 257200,
+      "sha256": "f1a6479fe03d527fa996cf1935319f2f2d0d4ad068f15291d6ecbd93435cfd78"
+    },
+    "election-analysis/reports/washington/2026-08-04/facebook-summary.txt": {
+      "bytes": 1911,
+      "sha256": "58ec958a9152bce3a90507407d85d46e9042016344e224e5a694940dc6c86deb"
+    },
+    "election-analysis/tests/test_election_reporting.py": {
+      "bytes": 32276,
+      "sha256": "fa7d2c0dbd910b7063283d630ba0c356bfdee82206e7533ea0ae37e12b924e98"
+    }
+  },
+  "generated": {
+    "EDT_publication_ready": true,
+    "analysis_schema": 3,
+    "config_schema": 2,
+    "decisions": 166,
+    "numeric_probabilities": 0,
+    "races": 244,
+    "skipped_empty": [
+      "alaska/2026-11-03",
+      "maine/2026-11-03",
+      "washington/2026-11-03"
+    ],
+    "tool_version": "0.4.0"
+  },
+  "hash_scope": "working-tree source/docs/report files before this evidence file was created; hashes are not attestations",
+  "prompt": {
+    "modified": "2026-10-24T03:40:52Z",
+    "path": "Dropbox /prompt/PRM-0029.txt",
+    "revision": "65e8ddd0d60b201b90224"
+  },
+  "provenance_checks": {
+    "commit": "99c03904a7258994bcbc25c2e73ede722d00c461",
+    "file-ids": {
+      "exempt": 39,
+      "files_with_id": 53,
+      "status": 0,
+      "violations": []
+    },
+    "manifest": {
+      "commit": "99c03904a7258994bcbc25c2e73ede722d00c461",
+      "files": 92,
+      "status": 0
+    },
+    "overall": 0,
+    "reuse": {
+      "compliant": false,
+      "files_total": 81,
+      "files_with_copyright_info": 81,
+      "files_with_licensing_info": 81,
+      "non_compliant": {},
+      "pending_licenses": [
+        "LicenseRef-ChelanCounty-PublicData",
+        "LicenseRef-KittitasCounty-PublicData",
+        "LicenseRef-ME-SOS-PublicData",
+        "LicenseRef-PierceCounty-PublicData",
+        "LicenseRef-SnohomishCounty-PublicData"
+      ],
+      "reuse_version": "6.2.0",
+      "spec_version": "3.3",
+      "status": 0
+    },
+    "scope": "election-analysis/"
+  },
+  "record": "EA-01 working-tree validation",
+  "remaining": "EA-02 through EA-14 remain open; no independent re-audit or forecast backtest performed",
+  "review_status": "implementation tested; PR/merge/audit acceptance pending",
+  "sources": [
+    {
+      "kind": "primary authority; recount table read",
+      "observed_at": "2026-10-25T04:27:06Z",
+      "url": "https://www.sos.wa.gov/elections/data-research/election-data-and-maps/election-results-and-voters-pamphlets/2026-primary-election"
+    },
+    {
+      "kind": "primary authority; announcement read",
+      "observed_at": "2026-10-25T04:27:06Z",
+      "url": "https://www.sos.wa.gov/about-office/news/2026/secretary-state-certifies-candidates-and-measures-november-general-election"
+    },
+    {
+      "kind": "linked scanned certificate; not used as an event-time oracle",
+      "observed_at": "2026-10-25T04:27:06Z",
+      "url": "https://www.sos.wa.gov/sites/default/files/2026-10/2026_Primary_LD42_Recount_Certification_9.1.26_.pdf"
+    }
+  ],
+  "tests": {
+    "focused": 24,
+    "full": 119,
+    "note": "expected failing child fixture in test_provenance_checks is exercised; outer suite passes",
+    "result": "pass",
+    "skipped": 0
+  },
+  "tools": {
+    "REA": "not exposed; not run",
+    "edt": "bca66c1e2d2a9bf9c05f9429e618299216a17f27",
+    "git": "git version 2.51.1",
+    "python": "3.12.14",
+    "reuse": "6.2.0"
+  },
+  "unchanged": {
+    "beta_binomial_function": true,
+    "original_inputs_raw_areas_and_provenance": true
+  }
+}

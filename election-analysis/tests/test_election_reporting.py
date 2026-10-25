@@ -10,6 +10,8 @@ import plistlib
 import tempfile
 import unittest
 import zipfile
+from dataclasses import replace
+from datetime import datetime
 from unittest import mock
 from pathlib import Path
 from xml.sax.saxutils import escape
@@ -17,8 +19,8 @@ from xml.sax.saxutils import escape
 from election_reporting.analysis import analyze_election
 from election_reporting.config import load_config
 from election_reporting.ingest import normalize_contest_key, read_snapshot
-from election_reporting.model import ElectionReportError
-from election_reporting.publish import facebook_summary, publish
+from election_reporting.model import ElectionReportError, ResultStatus, ResultStatusRecord
+from election_reporting.publish import analysis_payload, facebook_summary, publish
 
 
 HEADER = (
@@ -35,6 +37,24 @@ def result_rows(contest: str, contest_id: str, ballots: int, choices: list[tuple
             f'"{choice}","{ballots:,}","{votes:,}"'
         )
     return HEADER + "\n".join(lines) + "\n"
+
+
+def counting_config(path: Path):
+    """Explicit synthetic counting evidence for the pre-existing arithmetic cases.
+
+    This is test data, not an inference from filenames or a certification date.
+    Lifecycle migration is tested separately against the actual schema-1 loader.
+    """
+    config = load_config(path)
+    stamp = datetime.fromisoformat("2026-08-06T23:00:00+00:00")
+    status = ResultStatus("counting", "plurality_count", "https://example.test/counting",
+                          stamp, "synthetic-original-count-v1")
+    records = tuple(
+        ResultStatusRecord(source.source_id, read_snapshot(file, source.source_id).sha256, "*", status)
+        for source in config.sources for file in sorted(source.path.glob("*.csv"))
+    )
+    return replace(config, report_mode="current", forecast_target="outstanding_ballots",
+                   information_time=stamp, election_status=status, result_statuses=records)
 
 
 def write_summary_xlsx(
@@ -236,7 +256,7 @@ class ElectionReportingTests(unittest.TestCase):
                 "expected_final_ballots = 2000\n",
                 encoding="utf-8",
             )
-            analysis = analyze_election(load_config(config_path))
+            analysis = analyze_election(counting_config(config_path))
             decision = analysis.races[0].decisions[0]
             self.assertEqual(decision.kind, "top_two_cutoff")
             self.assertEqual(decision.current_side, "Second")
@@ -288,7 +308,7 @@ class ElectionReportingTests(unittest.TestCase):
                 "expected_final_ballots = 150\n",
                 encoding="utf-8",
             )
-            decision = analyze_election(load_config(config_path)).races[0].decisions[0]
+            decision = analyze_election(counting_config(config_path)).races[0].decisions[0]
             self.assertTrue(decision.risk.lead_changed)
             self.assertEqual(decision.risk.level, "high")
             self.assertGreater(decision.risk.change_probability or 0.0, 0.25)
@@ -321,7 +341,7 @@ class ElectionReportingTests(unittest.TestCase):
                 "priority = 10\n",
                 encoding="utf-8",
             )
-            race = analyze_election(load_config(config_path)).races[0]
+            race = analyze_election(counting_config(config_path)).races[0]
             self.assertFalse(race.controlling)
             self.assertIn("county-only slice", race.scope_note)
             self.assertIsNone(race.decisions[0].risk.change_probability)
@@ -355,7 +375,7 @@ class ElectionReportingTests(unittest.TestCase):
                 "expected_final_ballots = 150\n",
                 encoding="utf-8",
             )
-            race = analyze_election(load_config(config_path)).races[0]
+            race = analyze_election(counting_config(config_path)).races[0]
             self.assertEqual(race.rule, "wa_judicial")
             self.assertFalse(race.controlling)
             self.assertEqual(
@@ -391,7 +411,7 @@ class ElectionReportingTests(unittest.TestCase):
                 "expected_final_ballots = 136\n",
                 encoding="utf-8",
             )
-            decision = analyze_election(load_config(config_path)).races[0].decisions[0]
+            decision = analyze_election(counting_config(config_path)).races[0].decisions[0]
             self.assertEqual(decision.risk.level, "high")
             self.assertGreater(decision.risk.change_probability or 0.0, 0.25)
             self.assertLess(decision.risk.change_probability or 0.0, 0.40)
@@ -425,7 +445,7 @@ class ElectionReportingTests(unittest.TestCase):
                 "expected_final_ballots = 150\n",
                 encoding="utf-8",
             )
-            analysis = analyze_election(load_config(config_path))
+            analysis = analyze_election(counting_config(config_path))
             risk = analysis.races[0].decisions[0].risk
             self.assertAlmostEqual(
                 risk.change_probability or 0.0,
@@ -467,7 +487,7 @@ class ElectionReportingTests(unittest.TestCase):
                 encoding="utf-8",
             )
             output = root / "reports"
-            publish(analyze_election(load_config(config_path)), output)
+            publish(analyze_election(counting_config(config_path)), output)
             self.assertTrue((output / "election-analysis.md").exists())
             self.assertTrue((output / "election-analysis.html").exists())
             self.assertTrue((output / "facebook-summary.txt").exists())
@@ -489,6 +509,187 @@ class ElectionReportingTests(unittest.TestCase):
             quality_path = output / "edt" / "document" / "quality.json"
             quality = json.loads(quality_path.read_text(encoding="utf-8"))
             self.assertTrue(quality["publication_ready"])
+
+
+class ResultStageTests(unittest.TestCase):
+    """EA-01 acceptance cases use independently stated lifecycle expectations."""
+
+    def setUp(self) -> None:
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        self.root = Path(self.temporary.name)
+        inputs = self.root / "inputs"
+        inputs.mkdir()
+        for day, yes, no in (("05", 45, 47), ("06", 58, 57)):
+            (inputs / f"2026-08-{day}.csv").write_text(
+                result_rows("Local Proposition 1", "9", yes + no, [("Yes", yes), ("No", no)]),
+                encoding="utf-8",
+            )
+        self.path = self.root / "election.toml"
+        self.path.write_text(
+            'schema_version = 1\n[election]\ntitle = "Stage fixture"\n'
+            '[[sources]]\nid = "local"\npath = "inputs"\njurisdiction = "Local"\n'
+            'scope = "local"\npriority = 1\ncertification_date = 2026-08-01\n'
+            'expected_final_ballots = 150\n', encoding="utf-8",
+        )
+        self.active = counting_config(self.path)
+
+    def with_latest_status(self, **changes):
+        records = self.active.result_statuses
+        return replace(self.active, result_statuses=(
+            records[0], replace(records[1], status=replace(records[1].status, **changes)),
+        ))
+
+    def assert_withheld(self, config):
+        with mock.patch("election_reporting.analysis._tempered_beta_binomial_probability",
+                        side_effect=AssertionError("withheld forecasts must not execute the model")):
+            analysis = analyze_election(config)
+        race = analysis.races[0]
+        risk = race.decisions[0].risk
+        self.assertFalse(race.forecast_eligible)
+        self.assertIsNone(risk.change_probability)
+        self.assertIsNone(risk.estimated_remaining_votes)
+        self.assertEqual(risk.reliability_score, 0)
+        self.assertEqual(risk.level, "unknown")
+        return analysis
+
+    def test_legacy_and_elapsed_deadline_remain_unknown(self) -> None:
+        legacy = load_config(self.path)
+        analysis = self.assert_withheld(legacy)
+        self.assertEqual(analysis.election_status.lifecycle, "unknown")
+        self.assertEqual(analysis.races[0].result_status.lifecycle, "unknown")
+        self.assertEqual(analysis.report_mode, "descriptive")
+        # Adding a target/time cannot turn the passed August 1 deadline into evidence.
+        current = replace(legacy, report_mode="current", forecast_target="outstanding_ballots",
+                          information_time=self.active.information_time)
+        self.assertIn("unknown", self.assert_withheld(current).races[0].forecast_reason)
+
+    def test_lifecycle_matrix_only_counting_runs_count_model(self) -> None:
+        for lifecycle in ("awaiting_results", "unknown", "final_tabulation", "certified",
+                          "recount_pending", "recount_completed"):
+            with self.subTest(lifecycle=lifecycle):
+                analysis = self.assert_withheld(self.with_latest_status(lifecycle=lifecycle))
+                self.assertIn(lifecycle, analysis.races[0].forecast_reason)
+        active = analyze_election(self.active)
+        self.assertTrue(active.races[0].forecast_eligible)
+        self.assertIsInstance(active.races[0].decisions[0].risk.change_probability, float)
+
+    def test_completed_election_blocks_counting_contest(self) -> None:
+        config = replace(self.active, election_status=replace(self.active.election_status, lifecycle="certified"))
+        self.assertIn("Election lifecycle is certified", self.assert_withheld(config).races[0].forecast_reason)
+
+    def test_information_time_and_target_are_required(self) -> None:
+        for target in ("none", "recount", "litigation"):
+            with self.subTest(target=target):
+                self.assert_withheld(replace(self.active, forecast_target=target))
+        self.assert_withheld(replace(self.active, information_time=None))
+        future = datetime.fromisoformat("2026-08-07T00:00:00+00:00")
+        self.assertIn("postdates", self.assert_withheld(
+            self.with_latest_status(evidence_as_of=future)
+        ).races[0].forecast_reason)
+
+    def test_distinct_stages_rounds_and_versions_are_not_batches(self) -> None:
+        cases = [
+            {"tabulation_stage": "raw_first_rankings"},
+            {"tabulation_stage": "rcv_round", "round_id": "2"},
+            {"tabulation_stage": "final_round", "lifecycle": "final_tabulation"},
+            {"tabulation_stage": "recount", "lifecycle": "recount_completed"},
+            {"result_version": "a-corrected-publication"},
+        ]
+        for changes in cases:
+            with self.subTest(changes=changes):
+                analysis = analyze_election(self.with_latest_status(**changes))
+                race = analysis.races[0]
+                self.assertEqual(len(race.decisions[0].margin_history), 1)
+                self.assertIsNone(race.decisions[0].risk.latest_batch_votes)
+                self.assertEqual(len(race.excluded_history), 1)
+                self.assertEqual(len(analysis_payload(analysis)["inputs"]), 2)
+        # Same RCV stage/version with different round identifiers is incompatible too.
+        records = self.active.result_statuses
+        statuses = tuple(replace(record, status=replace(record.status,
+            tabulation_stage="rcv_round", round_id=str(index))) for index, record in enumerate(records, 1))
+        race = analyze_election(replace(self.active, result_statuses=statuses)).races[0]
+        self.assertEqual(len(race.decisions[0].margin_history), 1)
+
+    def test_raw_rcv_majority_is_descriptive_and_never_a_final_winner(self) -> None:
+        latest = self.root / "inputs" / "2026-08-06.csv"
+        latest.write_text(result_rows("Maine CD2", "9", 402936,
+            [("Golden", 196388), ("Theriault", 194130), ("Write-in", 421)]), encoding="utf-8")
+        config = counting_config(self.path)
+        config = replace(config, default_rule="rcv", result_statuses=tuple(
+            replace(record, status=replace(record.status, tabulation_stage="raw_first_rankings"))
+            for record in config.result_statuses
+        ))
+        analysis = self.assert_withheld(config)
+        race = analysis.races[0]
+        self.assertIn("50.23%", race.decisions[0].current_state)
+        self.assertIn("not a final winner", race.scope_note)
+        self.assertIn("raw_first_rankings", str(analysis_payload(analysis)))
+
+    def test_metadata_cannot_silently_follow_changed_bytes(self) -> None:
+        latest = self.root / "inputs" / "2026-08-06.csv"
+        latest.write_text(latest.read_text() + "\n", encoding="utf-8")
+        with self.assertRaisesRegex(ElectionReportError, "matches no input"):
+            analyze_election(self.active)
+
+    def test_schema_two_parses_dated_hash_bound_metadata(self) -> None:
+        digest = self.active.result_statuses[-1].snapshot_sha256
+        text = self.path.read_text().replace("schema_version = 1", "schema_version = 2")
+        text += (
+            '\n[[result_status]]\nsource_id = "local"\ncontest_id = "9"\n'
+            f'snapshot_sha256 = "{digest}"\n'
+            'lifecycle = "recount_completed"\ntabulation_stage = "recount"\n'
+            'result_version = "official-recount"\nauthority_url = "https://example.test/recount"\n'
+            'evidence_as_of = 2026-08-06T23:00:00Z\n'
+        )
+        self.path.write_text(text)
+        config = load_config(self.path)
+        self.assertEqual(config.result_statuses[0].status.lifecycle, "recount_completed")
+        for invalid, message in (
+            (text.replace('lifecycle = "recount_completed"', 'lifecycle = "finished"'), "lifecycle"),
+            (text.replace('tabulation_stage = "recount"', 'tabulation_stage = "rcv_round"'), "round_id"),
+            (text.replace('evidence_as_of = 2026-08-06T23:00:00Z', 'evidence_as_of = 2026-08-06T23:00:00'), "time zone"),
+            (text.replace('https://example.test/recount', 'http://example.test/recount'), "HTTPS"),
+            (text + text[text.index('[[result_status]]'):], "duplicates"),
+        ):
+            with self.subTest(message=message):
+                self.path.write_text(invalid)
+                with self.assertRaisesRegex(ElectionReportError, message):
+                    load_config(self.path)
+
+    def test_historical_publication_agrees_in_all_formats(self) -> None:
+        config = replace(self.with_latest_status(lifecycle="recount_completed", tabulation_stage="recount"),
+                         report_mode="historical", forecast_target="none")
+        analysis = self.assert_withheld(config)
+        output = self.root / "reports"
+        publish(analysis, output)
+        payload = json.loads((output / "analysis.json").read_text())
+        self.assertEqual(payload["schema_version"], 3)
+        self.assertEqual(payload["report_mode"], "historical")
+        self.assertIsNone(payload["races"][0]["decisions"][0]["risk"]["change_probability"])
+        for filename in ("election-analysis.md", "election-analysis.html", "facebook-summary.txt"):
+            text = (output / filename).read_text()
+            self.assertIn("Report mode: historical", text)
+            self.assertIn("recount_completed", text)
+            self.assertIn("Forecast target: none", text)
+            self.assertNotIn("WHAT COULD STILL CHANGE", text)
+        social = (output / "facebook-summary.txt").read_text()
+        self.assertIn("Unestimated probabilities are not numerical zero", social)
+        self.assertNotIn("Modeled change probability: 0", social)
+        self.assertNotIn("Very low", social)
+
+    def test_actual_ld42_completed_recount_keeps_four_vote_margin(self) -> None:
+        path = Path(__file__).resolve().parents[1] / "data/elections/washington/2026-08-04/election.toml"
+        analysis = self.assert_withheld(load_config(path))
+        self.assertEqual(len(analysis.races), 244)
+        self.assertEqual(sum(len(race.decisions) for race in analysis.races), 166)
+        race = next(race for race in analysis.races if race.contest_id == "169896")
+        self.assertEqual(race.result_status.lifecycle, "recount_completed")
+        self.assertEqual(race.decisions[0].margin, 4)
+        self.assertIsNone(race.decisions[0].risk.change_probability)
+        self.assertIn("leads Eamonn Collins by 4 votes", facebook_summary(analysis))
+        self.assertTrue(all(decision.risk.change_probability is None
+                            for item in analysis.races for decision in item.decisions))
 
 
 if __name__ == "__main__":

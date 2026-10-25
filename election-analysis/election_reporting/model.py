@@ -22,6 +22,26 @@ class ChoiceResult:
 
 
 @dataclass(frozen=True)
+class ResultStatus:
+    """Dated authority evidence, separate from a scheduled certification date."""
+
+    lifecycle: str = "unknown"
+    tabulation_stage: str = "unknown"
+    authority_url: str = ""
+    evidence_as_of: datetime | None = None
+    result_version: str = ""
+    round_id: str = ""
+
+
+@dataclass(frozen=True)
+class ResultStatusRecord:
+    source_id: str
+    snapshot_sha256: str
+    contest_id: str
+    status: ResultStatus
+
+
+@dataclass(frozen=True)
 class ContestResult:
     contest_id: str
     name: str
@@ -35,6 +55,7 @@ class ContestResult:
     # Counties the contest spans, when the source reports them (the source
     # watcher's normalized CSV does; official exports do not).
     counties: tuple[str, ...] = ()
+    result_status: ResultStatus = field(default_factory=ResultStatus)
 
 
 @dataclass(frozen=True)
@@ -87,6 +108,11 @@ class ElectionConfig:
     default_rule: str | None = None
     areas: tuple[AreaConfig, ...] = ()
     remaining_ballots: tuple[RemainingBallots, ...] = ()
+    report_mode: str = "descriptive"
+    forecast_target: str = "none"
+    information_time: datetime | None = None
+    election_status: ResultStatus = field(default_factory=ResultStatus)
+    result_statuses: tuple[ResultStatusRecord, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -136,6 +162,10 @@ class RaceAnalysis:
     choices: tuple[ChoiceResult, ...]
     decisions: tuple[DecisionAnalysis, ...]
     overall_risk: str
+    result_status: ResultStatus = field(default_factory=ResultStatus)
+    forecast_eligible: bool = False
+    forecast_reason: str = "Lifecycle and tabulation stage have not been established."
+    excluded_history: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -145,3 +175,7 @@ class ElectionAnalysis:
     races: tuple[RaceAnalysis, ...]
     snapshots: tuple[Snapshot, ...]
     areas: object | None = None  # areas.AreaAnalysis
+    report_mode: str = "descriptive"
+    forecast_target: str = "none"
+    information_time: str | None = None
+    election_status: ResultStatus = field(default_factory=ResultStatus)

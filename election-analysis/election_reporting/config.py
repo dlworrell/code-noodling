@@ -10,6 +10,7 @@ from datetime import date
 from pathlib import Path
 
 from .model import AreaConfig, ElectionConfig, ElectionReportError, RemainingBallots, SourceConfig
+from .stages import aware_time, parse_status, parse_status_records
 
 
 SUPPORTED_RULES = {
@@ -134,13 +135,26 @@ def load_config(path: Path) -> ElectionConfig:
     except tomllib.TOMLDecodeError as exc:
         raise ElectionReportError(f"invalid TOML in {path}: {exc}") from exc
 
-    if raw.get("schema_version") != 1:
-        raise ElectionReportError("schema_version must be 1")
+    schema = raw.get("schema_version")
+    if type(schema) is not int or schema not in {1, 2}:
+        raise ElectionReportError("schema_version must be 1 or 2")
 
     election = raw.get("election")
     if not isinstance(election, dict):
         raise ElectionReportError("[election] is required")
     title = _required_string(election, "title", "election")
+    if schema == 1 and (raw.get("result_status") or any(
+        key in election for key in ("status", "report_mode", "forecast_target", "information_time")
+    )):
+        raise ElectionReportError("lifecycle/stage fields require schema_version = 2")
+    report_mode = election.get("report_mode", "descriptive")
+    forecast_target = election.get("forecast_target", "none")
+    if report_mode not in ("descriptive", "historical", "current"):
+        raise ElectionReportError("election.report_mode must be descriptive, historical or current")
+    if forecast_target not in ("none", "outstanding_ballots", "recount", "litigation"):
+        raise ElectionReportError("election.forecast_target is unsupported")
+    information_time = aware_time(election.get("information_time"), "election.information_time")
+    election_status = parse_status(election.get("status", {}), "election.status")
 
     source_rows = raw.get("sources")
     if not isinstance(source_rows, list) or not source_rows:
@@ -245,4 +259,9 @@ def load_config(path: Path) -> ElectionConfig:
         write_in_labels=write_in_labels,
         rule_overrides=overrides,
         default_rule=default_rule,
+        report_mode=report_mode,
+        forecast_target=forecast_target,
+        information_time=information_time,
+        election_status=election_status,
+        result_statuses=parse_status_records(raw.get("result_status", []), source_ids),
     )

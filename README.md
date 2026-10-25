@@ -142,9 +142,12 @@ See the [crypto pipeline README](crypto_pipeline/README.md),
 ## Election Result Reporting
 
 The repository also contains a standard-library Python workflow for comparing dated
-Washington, Alaska and Maine election-result snapshots and estimating the statistical probability that
-each current winner, top-two or top-four cutoff, judicial majority, or ranked-choice
-first-choice majority status changes before certification. Every probability carries a separate 0–100 evidence-reliability score.
+Washington, Alaska and Maine election-result snapshots. The experimental analyzer
+preserves descriptive tallies and separate lifecycle/tabulation stages. Conditional
+count scenarios require dated counting evidence and an explicit target and
+information time; historical, legacy and unsupported RCV records withhold forecasts.
+Predictive calibration remains unestablished; see the
+[election audit tracker](https://github.com/dlworrell/code-noodling/issues/45).
 
 Pick the states and counties to follow in
 [`election-analysis/data/watch.toml`](election-analysis/data/watch.toml): Washington (King County and

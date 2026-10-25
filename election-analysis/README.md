@@ -7,11 +7,16 @@ Catalyst-File-ID: urn:uuid:8376ba33-0e6e-4a9e-b237-1d4a2a31b1a8
 
 # Election result reporting
 
-Watches official election results for Washington, Alaska and Maine, keeps every
-dated snapshot with its provenance, and publishes reports estimating how likely
-each current winner, top-two or top-four cutoff, judicial majority, or
-ranked-choice first-choice majority is to change before certification. Every
-probability carries a separate 0–100 evidence-reliability score.
+Watches official election results for Washington, Alaska and Maine and keeps
+dated snapshots with their provenance. Reports preserve descriptive tallies and
+explicit election/contest lifecycle and tabulation stages. Prospective count
+scenarios require dated counting evidence and an explicit target/information time;
+legacy, historical, completed and unsupported RCV states withhold probabilities.
+See [ADR-003](docs/engineering/ADR-003-result-lifecycle-and-stages.md) for migration.
+
+**Experimental and uncalibrated.** The Washington primary report is a historical
+audit correction. The remaining audit issues are tracked in
+[EA-AUD-2026-10-23 #45](https://github.com/dlworrell/code-noodling/issues/45).
 
 **A triage report, not a call by an election authority and not a substitute for
 certified results.**

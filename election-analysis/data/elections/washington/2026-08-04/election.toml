@@ -3,10 +3,20 @@
 # SPDX-License-Identifier: Apache-2.0
 # Catalyst-File-ID: urn:uuid:1aadd8b5-f4aa-44fa-9cbb-97fa8077be45
 
-schema_version = 1
+schema_version = 2
 
 [election]
-title = "2026 Washington Primary Election Outcome-Change Analysis"
+title = "2026 Washington Primary Historical Results — EA-01 Audit Correction"
+report_mode = "historical"
+forecast_target = "none"
+information_time = 2026-10-25T04:27:06Z
+
+# EA-01 (#46): authority evidence, not the scheduled certification deadline.
+# This is the evidence observation time, not a backdated forecast input.
+[election.status]
+lifecycle = "certified"
+authority_url = "https://www.sos.wa.gov/about-office/news/2026/secretary-state-certifies-candidates-and-measures-november-general-election"
+evidence_as_of = 2026-10-25T04:27:06Z
 
 [analysis]
 write_in_labels = ["write-in", "write in"]
@@ -32,6 +42,21 @@ certification_date = 2026-08-21
 expected_final_ballots = 2061930
 forecast_reliability = 45
 forecast_basis = "Official 2022 statewide primary turnout of 40.43% times about 5.1 million current voters."
+
+# Only this immutable snapshot/contest is annotated. Other legacy versions stay
+# unknown, including old county snapshots. Source: the official primary page's
+# completed-recount table (initial and recount: Shepard 13,125; Collins 13,121).
+[[result_status]]
+source_id = "washington"
+snapshot_sha256 = "bdd7591803dc9ff69614d09a342ff27be3faa2281b4757e8034a0c1503edf3c1"
+contest_id = "169896"
+lifecycle = "recount_completed"
+tabulation_stage = "plurality_count"
+# The source remains the published count summary. The separate authority confirms
+# recount completion; this annotation does not turn the summary into a recount file.
+result_version = "wa-2026-primary-summary-20260911"
+authority_url = "https://www.sos.wa.gov/elections/data-research/election-data-and-maps/election-results-and-voters-pamphlets/2026-primary-election"
+evidence_as_of = 2026-10-25T04:27:06Z
 
 # Add an override only when the inferred rule is wrong for a specific export.
 # [[contest_rules]]
