@@ -1,0 +1,1064 @@
+{
+  "schema_version": 1,
+  "review_id": "ISR-EA-20261025-initial",
+  "created_at": "2026-10-25T14:28:51.910143+00:00",
+  "reviewer_independence": "Separate agentic AI from implementation agent within same authorized task/shared workspace;not human,external certification,or blind preregistration.",
+  "repository": "dlworrell/code-noodling",
+  "snapshot_commit": "3e9ae3bee1c657c91629b133f379a5b73e41781a",
+  "snapshot_tree": "2ccd8e0a0a08d610e61e0e51938794d57dddecd8",
+  "implementation_modified": false,
+  "github_mutated": false,
+  "external_contacts": false,
+  "dispositions": {
+    "45": {
+      "disposition": "BLOCKED",
+      "recommendation": "Remain open until ISR001/002 repaired and independently delta-reviewed;attach independent review;retain scientific unvalidated findings."
+    },
+    "55": {
+      "disposition": "BLOCKED",
+      "recommendation": "Fix whole actual-predecessor transition qualification and duplicate latest;criterion1 fails at this snapshot;keep caps empirically unvalidated."
+    },
+    "58": {
+      "disposition": "PARTIAL",
+      "permitted_resolution": "documented_unvalidated",
+      "recommendation": "May resolve under original insufficient-input failure clause with explicit incomplete validation/availability/baseline/calibration disposition;do not check unchanged scientific claims as proven."
+    }
+  },
+  "child_criteria": [
+    {
+      "issue": 46,
+      "url": "https://github.com/dlworrell/code-noodling/issues/46",
+      "title": "Election audit EA-01: Represent election and tabulation stages; stop completed-count forecasts",
+      "tracker_state_at_capture": "closed",
+      "disposition": "PASS",
+      "criteria": [
+        {
+          "ordinal": 1,
+          "original_text": "LD42's completed-count fixture has no active prospective outstanding-ballot probability; the four-vote result and dated recount evidence remain visible.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "LD42 actual output and stage/deadline regressions; PR60/ADR003."
+        },
+        {
+          "ordinal": 2,
+          "original_text": "A past certification deadline with no confirmation remains status-unknown rather than becoming certified automatically.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "LD42 actual output and stage/deadline regressions; PR60/ADR003."
+        },
+        {
+          "ordinal": 3,
+          "original_text": "Counting, raw-first-ranking, final-round, certified and recount records cannot silently replace or be summed with one another.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "LD42 actual output and stage/deadline regressions; PR60/ADR003."
+        },
+        {
+          "ordinal": 4,
+          "original_text": "JSON, Markdown, HTML and Facebook outputs agree about historical/current status and the event being modeled.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "LD42 actual output and stage/deadline regressions; PR60/ADR003."
+        },
+        {
+          "ordinal": 5,
+          "original_text": "Documentation and source/fixture provenance are updated in the same change series.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "LD42 actual output and stage/deadline regressions; PR60/ADR003."
+        },
+        {
+          "ordinal": 6,
+          "original_text": "The parent audit record links the resolving PR, exact checks/artifacts and any residual limitations; no forecast-calibration claim is inferred solely from passing tests.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "LD42 actual output and stage/deadline regressions; PR60/ADR003."
+        }
+      ],
+      "evidence": "LD42 actual output and stage/deadline regressions; PR60/ADR003."
+    },
+    {
+      "issue": 47,
+      "url": "https://github.com/dlworrell/code-noodling/issues/47",
+      "title": "Election audit EA-02: Track per-contest source times and expose stale or missing coverage",
+      "tracker_state_at_capture": "closed",
+      "disposition": "PASS",
+      "criteria": [
+        {
+          "ordinal": 1,
+          "original_text": "The mixed Washington fixture exposes the 147/97 source-vintage split and does not date all records October 14.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Explicit per-source clocks/coverage and Assessor/Skykomish/Maine regressions; PR63/ADR004/005."
+        },
+        {
+          "ordinal": 2,
+          "original_text": "Assessor and Skykomish mismatches are either reconciled to the same authoritative publication or flagged as stale/conflicting; incompatible tallies are never summed.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Explicit per-source clocks/coverage and Assessor/Skykomish/Maine regressions; PR63/ADR004/005."
+        },
+        {
+          "ordinal": 3,
+          "original_text": "Re-retrieving identical bytes changes retrieval metadata without advancing the source count-update time.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Explicit per-source clocks/coverage and Assessor/Skykomish/Maine regressions; PR63/ADR004/005."
+        },
+        {
+          "ordinal": 4,
+          "original_text": "A missing Maine office workbook and a failed block remain visible as missing coverage even while other offices publish successfully.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Explicit per-source clocks/coverage and Assessor/Skykomish/Maine regressions; PR63/ADR004/005."
+        },
+        {
+          "ordinal": 5,
+          "original_text": "Documentation and source/fixture provenance are updated in the same change series.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Explicit per-source clocks/coverage and Assessor/Skykomish/Maine regressions; PR63/ADR004/005."
+        },
+        {
+          "ordinal": 6,
+          "original_text": "The parent audit record links the resolving PR, exact checks/artifacts and any residual limitations; no forecast-calibration claim is inferred solely from passing tests.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Explicit per-source clocks/coverage and Assessor/Skykomish/Maine regressions; PR63/ADR004/005."
+        }
+      ],
+      "evidence": "Explicit per-source clocks/coverage and Assessor/Skykomish/Maine regressions; PR63/ADR004/005."
+    },
+    {
+      "issue": 48,
+      "url": "https://github.com/dlworrell/code-noodling/issues/48",
+      "title": "Election audit EA-03: Use reviewed contest identities and jurisdiction scope for controlling results",
+      "tracker_state_at_capture": "closed",
+      "disposition": "PASS",
+      "criteria": [
+        {
+          "ordinal": 1,
+          "original_text": "The Snoqualmie fixture produces one controlling contest at 161/45; King County remains a noncontrolling slice.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Reviewed Snoqualmie161/45 controller and collision/membership regressions; PR61/63."
+        },
+        {
+          "ordinal": 2,
+          "original_text": "Repeated Proposition No. 1 titles and reused local IDs in different counties remain distinct.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Reviewed Snoqualmie161/45 controller and collision/membership regressions; PR61/63."
+        },
+        {
+          "ordinal": 3,
+          "original_text": "Missing jurisdiction membership cannot produce an asserted complete aggregate.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Reviewed Snoqualmie161/45 controller and collision/membership regressions; PR61/63."
+        },
+        {
+          "ordinal": 4,
+          "original_text": "Crosswalk additions preserve unrelated contest keys and historical source lineage.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Reviewed Snoqualmie161/45 controller and collision/membership regressions; PR61/63."
+        },
+        {
+          "ordinal": 5,
+          "original_text": "Documentation and source/fixture provenance are updated in the same change series.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Reviewed Snoqualmie161/45 controller and collision/membership regressions; PR61/63."
+        },
+        {
+          "ordinal": 6,
+          "original_text": "The parent audit record links the resolving PR, exact checks/artifacts and any residual limitations; no forecast-calibration claim is inferred solely from passing tests.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Reviewed Snoqualmie161/45 controller and collision/membership regressions; PR61/63."
+        }
+      ],
+      "evidence": "Reviewed Snoqualmie161/45 controller and collision/membership regressions; PR61/63."
+    },
+    {
+      "issue": 49,
+      "url": "https://github.com/dlworrell/code-noodling/issues/49",
+      "title": "Election audit EA-04: Separate missing results, unresolved ties and unknown remaining ballots from zero risk",
+      "tracker_state_at_capture": "closed",
+      "disposition": "PASS",
+      "criteria": [
+        {
+          "ordinal": 1,
+          "original_text": "The South Beach fixture flags the zero-summary versus 982/613 detail contradiction and publishes no 0% forecast.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "SouthBeach contradiction; zero/unknown/tie/denominator regressions; PR61."
+        },
+        {
+          "ordinal": 2,
+          "original_text": "Zero reported ballots and a met/exceeded turnout forecast both yield unknown/inconsistent eligibility unless independent evidence confirms zero outstanding.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "SouthBeach contradiction; zero/unknown/tie/denominator regressions; PR61."
+        },
+        {
+          "ordinal": 3,
+          "original_text": "Confirmed zero outstanding ballots retains a valid, precisely defined future-count result; an unresolved tie still remains unresolved.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "SouthBeach contradiction; zero/unknown/tie/denominator regressions; PR61."
+        },
+        {
+          "ordinal": 4,
+          "original_text": "Every output format distinguishes unestimated probability from numerical zero.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "SouthBeach contradiction; zero/unknown/tie/denominator regressions; PR61."
+        },
+        {
+          "ordinal": 5,
+          "original_text": "Documentation and source/fixture provenance are updated in the same change series.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "SouthBeach contradiction; zero/unknown/tie/denominator regressions; PR61."
+        },
+        {
+          "ordinal": 6,
+          "original_text": "The parent audit record links the resolving PR, exact checks/artifacts and any residual limitations; no forecast-calibration claim is inferred solely from passing tests.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "SouthBeach contradiction; zero/unknown/tie/denominator regressions; PR61."
+        }
+      ],
+      "evidence": "SouthBeach contradiction; zero/unknown/tie/denominator regressions; PR61."
+    },
+    {
+      "issue": 50,
+      "url": "https://github.com/dlworrell/code-noodling/issues/50",
+      "title": "Election audit EA-05: Repair Maine RCV eligibility, blank ranks and ballot accounting",
+      "tracker_state_at_capture": "closed",
+      "disposition": "PASS",
+      "criteria": [
+        {
+          "ordinal": 1,
+          "original_text": "The 50.2349% raw-first-ranking fixture cannot announce a final majority or suppress a required RCV warning.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent six-export OpenPyXL oracle; supplied finalists scope; PR61."
+        },
+        {
+          "ordinal": 2,
+          "original_text": "The six-export regression yields 402,936 total, 391,596 continuing, 11,340 exhausted, 197,151/194,445 finalist totals and margin 2,706.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent six-export OpenPyXL oracle; supplied finalists scope; PR61."
+        },
+        {
+          "ordinal": 3,
+          "original_text": "Exhaustion accounting reconciles 10,673 skipped-rank stops + 388 with no continuing choice + 279 overvote stops = 11,340 for the audited allocation.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent six-export OpenPyXL oracle; supplied finalists scope; PR61."
+        },
+        {
+          "ordinal": 4,
+          "original_text": "Fixtures cover blank first ranks with later choices, skipped ranks, duplicate candidates, overvotes, missing supplemental files and ineligible/unknown write-ins.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent six-export OpenPyXL oracle; supplied finalists scope; PR61."
+        },
+        {
+          "ordinal": 5,
+          "original_text": "Documentation and source/fixture provenance are updated in the same change series.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent six-export OpenPyXL oracle; supplied finalists scope; PR61."
+        },
+        {
+          "ordinal": 6,
+          "original_text": "The parent audit record links the resolving PR, exact checks/artifacts and any residual limitations; no forecast-calibration claim is inferred solely from passing tests.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent six-export OpenPyXL oracle; supplied finalists scope; PR61."
+        }
+      ],
+      "evidence": "Independent six-export OpenPyXL oracle; supplied finalists scope; PR61."
+    },
+    {
+      "issue": 51,
+      "url": "https://github.com/dlworrell/code-noodling/issues/51",
+      "title": "Election audit EA-06: Ingest official RCV rounds and recounts as separate result versions",
+      "tracker_state_at_capture": "closed",
+      "disposition": "PASS",
+      "criteria": [
+        {
+          "ordinal": 1,
+          "original_text": "Alaska U.S. House official final is 164,861/156,985, margin 7,876, with 321,846 continuing + 5,788 blanks + 7,595 exhausted + 624 overvotes accounted for.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Structured nine-contest final/recount/unresolved ledger, Maine accounting,737/743 lineage; guide clarification ISR003."
+        },
+        {
+          "ordinal": 2,
+          "original_text": "Alaska Measure 2 retains both 737-margin archive and 743-margin recount records, and selects the authoritative later stage with visible lineage.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Structured nine-contest final/recount/unresolved ledger, Maine accounting,737/743 lineage; guide clarification ISR003."
+        },
+        {
+          "ordinal": 3,
+          "original_text": "All nine Alaska contests have a verified final stage or an explicit unresolved coverage finding; first-choice majorities are not relabeled final outcomes.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Structured nine-contest final/recount/unresolved ledger, Maine accounting,737/743 lineage; guide clarification ISR003."
+        },
+        {
+          "ordinal": 4,
+          "original_text": "Maine's official final 197,151/194,445 and 11,340 exhausted are preserved with their actual source stage; transfers/recounts do not enter latest-new-ballot statistics.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Structured nine-contest final/recount/unresolved ledger, Maine accounting,737/743 lineage; guide clarification ISR003."
+        },
+        {
+          "ordinal": 5,
+          "original_text": "Documentation and source/fixture provenance are updated in the same change series.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Structured nine-contest final/recount/unresolved ledger, Maine accounting,737/743 lineage; guide clarification ISR003."
+        },
+        {
+          "ordinal": 6,
+          "original_text": "The parent audit record links the resolving PR, exact checks/artifacts and any residual limitations; no forecast-calibration claim is inferred solely from passing tests.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Structured nine-contest final/recount/unresolved ledger, Maine accounting,737/743 lineage; guide clarification ISR003."
+        }
+      ],
+      "evidence": "Structured nine-contest final/recount/unresolved ledger, Maine accounting,737/743 lineage; guide clarification ISR003."
+    },
+    {
+      "issue": 52,
+      "url": "https://github.com/dlworrell/code-noodling/issues/52",
+      "title": "Election audit EA-07: Disclose Alaska geographic exclusions and approximate borough assignments",
+      "tracker_state_at_capture": "closed",
+      "disposition": "PASS",
+      "criteria": [
+        {
+          "ordinal": 1,
+          "original_text": "Statewide 2024 first-choice totals retain all archived modes while borough summaries report their excluded categories.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent full MEDSL aggregation and all73 frozen tallies; approximate geography explicit."
+        },
+        {
+          "ordinal": 2,
+          "original_text": "A split-precinct fixture exposes approximate assignment and cannot acquire complete/controlling status by rounding to integers.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent full MEDSL aggregation and all73 frozen tallies; approximate geography explicit."
+        },
+        {
+          "ordinal": 3,
+          "original_text": "Coverage and approximation markers survive normalized output, analysis JSON and human summaries.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent full MEDSL aggregation and all73 frozen tallies; approximate geography explicit."
+        },
+        {
+          "ordinal": 4,
+          "original_text": "Reconciliation distinguishes an expected geographic subset difference from an unexplained arithmetic mismatch.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent full MEDSL aggregation and all73 frozen tallies; approximate geography explicit."
+        },
+        {
+          "ordinal": 5,
+          "original_text": "Documentation and source/fixture provenance are updated in the same change series.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent full MEDSL aggregation and all73 frozen tallies; approximate geography explicit."
+        },
+        {
+          "ordinal": 6,
+          "original_text": "The parent audit record links the resolving PR, exact checks/artifacts and any residual limitations; no forecast-calibration claim is inferred solely from passing tests.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent full MEDSL aggregation and all73 frozen tallies; approximate geography explicit."
+        }
+      ],
+      "evidence": "Independent full MEDSL aggregation and all73 frozen tallies; approximate geography explicit."
+    },
+    {
+      "issue": 53,
+      "url": "https://github.com/dlworrell/code-noodling/issues/53",
+      "title": "Election audit EA-08: Use dated outstanding-ballot evidence or explicit remaining-pool scenarios",
+      "tracker_state_at_capture": "closed",
+      "disposition": "PASS",
+      "criteria": [
+        {
+          "ordinal": 1,
+          "original_text": "An official zero is distinguishable from no estimate, while stale or wrong-jurisdiction outstanding counts cannot control.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Fixed Assessor scenarios and dated scope/category/participation gates; empirical pools unvalidated."
+        },
+        {
+          "ordinal": 2,
+          "original_text": "The audited Assessor sensitivity is reproducible as labeled scenarios with fixed information time, not a confidence interval or operational forecast.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Fixed Assessor scenarios and dated scope/category/participation gates; empirical pools unvalidated."
+        },
+        {
+          "ordinal": 3,
+          "original_text": "Geographic/ballot-category coverage and contest-participation assumptions are reported beside the estimate.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Fixed Assessor scenarios and dated scope/category/participation gates; empirical pools unvalidated."
+        },
+        {
+          "ordinal": 4,
+          "original_text": "The 2024 final-source replays retain unestimated probabilities when no contemporaneous remaining-ballot evidence exists.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Fixed Assessor scenarios and dated scope/category/participation gates; empirical pools unvalidated."
+        },
+        {
+          "ordinal": 5,
+          "original_text": "Documentation and source/fixture provenance are updated in the same change series.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Fixed Assessor scenarios and dated scope/category/participation gates; empirical pools unvalidated."
+        },
+        {
+          "ordinal": 6,
+          "original_text": "The parent audit record links the resolving PR, exact checks/artifacts and any residual limitations; no forecast-calibration claim is inferred solely from passing tests.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Fixed Assessor scenarios and dated scope/category/participation gates; empirical pools unvalidated."
+        }
+      ],
+      "evidence": "Fixed Assessor scenarios and dated scope/category/participation gates; empirical pools unvalidated."
+    },
+    {
+      "issue": 54,
+      "url": "https://github.com/dlworrell/code-noodling/issues/54",
+      "title": "Election audit EA-09: Define modeled events, ties and jurisdiction-specific contest rules precisely",
+      "tracker_state_at_capture": "closed",
+      "disposition": "PASS",
+      "criteria": [
+        {
+          "ordinal": 1,
+          "original_text": "The A/B/C/D counterexample cannot be described as a complete top-two outcome probability by a B-versus-C calculation alone.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Explicit pair/majority/tie/rule semantics and all-format counterexamples; PR63."
+        },
+        {
+          "ordinal": 2,
+          "original_text": "Ties remain unresolved unless a supported authoritative tie rule resolves them; sort order is not treated as tie adjudication.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Explicit pair/majority/tie/rule semantics and all-format counterexamples; PR63."
+        },
+        {
+          "ordinal": 3,
+          "original_text": "Unsupported supermajority/validation rules suppress an asserted passage outcome.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Explicit pair/majority/tie/rule semantics and all-format counterexamples; PR63."
+        },
+        {
+          "ordinal": 4,
+          "original_text": "JSON, report prose, risk tables and Facebook text all retain the exact event and whether the probability is pairwise or joint.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Explicit pair/majority/tie/rule semantics and all-format counterexamples; PR63."
+        },
+        {
+          "ordinal": 5,
+          "original_text": "Documentation and source/fixture provenance are updated in the same change series.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Explicit pair/majority/tie/rule semantics and all-format counterexamples; PR63."
+        },
+        {
+          "ordinal": 6,
+          "original_text": "The parent audit record links the resolving PR, exact checks/artifacts and any residual limitations; no forecast-calibration claim is inferred solely from passing tests.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Explicit pair/majority/tie/rule semantics and all-format counterexamples; PR63."
+        }
+      ],
+      "evidence": "Explicit pair/majority/tie/rule semantics and all-format counterexamples; PR63."
+    },
+    {
+      "issue": 55,
+      "url": "https://github.com/dlworrell/code-noodling/issues/55",
+      "title": "Election audit EA-10: Validate batch weighting and separate new ballots from tally revisions",
+      "tracker_state_at_capture": "open",
+      "disposition": "BLOCKED",
+      "criteria": [
+        {
+          "ordinal": 1,
+          "original_text": "Identical snapshots, tally corrections, negative deltas, round transfers and recount revisions cannot manufacture independent new ballots.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "BLOCKED",
+          "evidence": "Disjoint arithmetic/sensitivity/grouping pass; ISR001/002 fail original criterion1 in five cases."
+        },
+        {
+          "ordinal": 2,
+          "original_text": "The LD42 sensitivity is reproducible and reported as sensitivity, not a confidence interval.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Disjoint arithmetic/sensitivity/grouping pass; ISR001/002 fail original criterion1 in five cases."
+        },
+        {
+          "ordinal": 3,
+          "original_text": "The chosen likelihood or recency construction documents overlap/dependence and produces explicit effective-weight diagnostics.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Disjoint arithmetic/sensitivity/grouping pass; ISR001/002 fail original criterion1 in five cases."
+        },
+        {
+          "ordinal": 4,
+          "original_text": "Related snapshots stay in one validation group and held-out data cannot tune caps/weights.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Disjoint arithmetic/sensitivity/grouping pass; ISR001/002 fail original criterion1 in five cases."
+        },
+        {
+          "ordinal": 5,
+          "original_text": "Documentation and source/fixture provenance are updated in the same change series.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Disjoint arithmetic/sensitivity/grouping pass; ISR001/002 fail original criterion1 in five cases."
+        },
+        {
+          "ordinal": 6,
+          "original_text": "The parent audit record links the resolving PR, exact checks/artifacts and any residual limitations; no forecast-calibration claim is inferred solely from passing tests.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Disjoint arithmetic/sensitivity/grouping pass; ISR001/002 fail original criterion1 in five cases."
+        }
+      ],
+      "evidence": "Disjoint arithmetic/sensitivity/grouping pass; ISR001/002 fail original criterion1 in five cases."
+    },
+    {
+      "issue": 56,
+      "url": "https://github.com/dlworrell/code-noodling/issues/56",
+      "title": "Election audit EA-11: Expose evidence dimensions and label reliability scores as an unvalidated rubric",
+      "tracker_state_at_capture": "closed",
+      "disposition": "PASS",
+      "criteria": [
+        {
+          "ordinal": 1,
+          "original_text": "A zero/missing/contradictory result cannot receive a reassuring reliability interpretation that overrides forecast ineligibility.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Actual withheld public outputs and separate unvalidated rubric/evidence dimensions."
+        },
+        {
+          "ordinal": 2,
+          "original_text": "Public summaries retain the event, information time, remaining-pool basis and experimental/calibration status.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Actual withheld public outputs and separate unvalidated rubric/evidence dimensions."
+        },
+        {
+          "ordinal": 3,
+          "original_text": "Evidence dimensions remain visible without needing to decode a single aggregate number.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Actual withheld public outputs and separate unvalidated rubric/evidence dimensions."
+        },
+        {
+          "ordinal": 4,
+          "original_text": "Docs and machine fields make no mapping from score to empirical correctness until held-out evidence supports it.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Actual withheld public outputs and separate unvalidated rubric/evidence dimensions."
+        },
+        {
+          "ordinal": 5,
+          "original_text": "Documentation and source/fixture provenance are updated in the same change series.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Actual withheld public outputs and separate unvalidated rubric/evidence dimensions."
+        },
+        {
+          "ordinal": 6,
+          "original_text": "The parent audit record links the resolving PR, exact checks/artifacts and any residual limitations; no forecast-calibration claim is inferred solely from passing tests.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Actual withheld public outputs and separate unvalidated rubric/evidence dimensions."
+        }
+      ],
+      "evidence": "Actual withheld public outputs and separate unvalidated rubric/evidence dimensions."
+    },
+    {
+      "issue": 57,
+      "url": "https://github.com/dlworrell/code-noodling/issues/57",
+      "title": "Election audit EA-12: Bound beta-binomial tail approximation error with an independent oracle",
+      "tracker_state_at_capture": "closed",
+      "disposition": "PASS",
+      "criteria": [
+        {
+          "ordinal": 1,
+          "original_text": "All 1,080 audited small-case threshold/probability checks are retained or reproducibly reconstructed.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent1080 rational plus2115 direct SciPy comparisons and edge/budget checks."
+        },
+        {
+          "ordinal": 2,
+          "original_text": "Reproduce and resolve or explicitly bound the R=5,001 skewed case; cover probability bounds, impossible thresholds and confirmed R=0.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent1080 rational plus2115 direct SciPy comparisons and edge/budget checks."
+        },
+        {
+          "ordinal": 3,
+          "original_text": "Reviewed exact cases remain within a stated tight tolerance; approximated cases satisfy the documented error policy.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent1080 rational plus2115 direct SciPy comparisons and edge/budget checks."
+        },
+        {
+          "ordinal": 4,
+          "original_text": "Tests distinguish numerical correctness from empirical model validity and document any optional scientific dependency.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent1080 rational plus2115 direct SciPy comparisons and edge/budget checks."
+        },
+        {
+          "ordinal": 5,
+          "original_text": "Documentation and source/fixture provenance are updated in the same change series.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent1080 rational plus2115 direct SciPy comparisons and edge/budget checks."
+        },
+        {
+          "ordinal": 6,
+          "original_text": "The parent audit record links the resolving PR, exact checks/artifacts and any residual limitations; no forecast-calibration claim is inferred solely from passing tests.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Independent1080 rational plus2115 direct SciPy comparisons and edge/budget checks."
+        }
+      ],
+      "evidence": "Independent1080 rational plus2115 direct SciPy comparisons and edge/budget checks."
+    },
+    {
+      "issue": 58,
+      "url": "https://github.com/dlworrell/code-noodling/issues/58",
+      "title": "Election audit EA-13: Run a chronological held-out election forecast backtest",
+      "tracker_state_at_capture": "open",
+      "disposition": "PARTIAL",
+      "criteria": [
+        {
+          "ordinal": 1,
+          "original_text": "No final result or later revision leaks into an earlier forecast's inputs; the retrieval-dated 2024 replay remains classified as descriptive replay.",
+          "tracker_checked_at_capture": false,
+          "review_disposition": "PARTIAL",
+          "evidence": "Frozen two-phase conditional reconstruction/scores reproduce; historical validation incomplete, original unvalidated failure branch permitted."
+        },
+        {
+          "ordinal": 2,
+          "original_text": "Train/held-out membership and model parameters are frozen and reproducible; related snapshots never cross evaluation groups.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Frozen two-phase conditional reconstruction/scores reproduce; historical validation incomplete, original unvalidated failure branch permitted."
+        },
+        {
+          "ordinal": 3,
+          "original_text": "Scores, calibration and baseline comparisons can be regenerated from a hashed manifest with complete inclusion/exclusion accounting.",
+          "tracker_checked_at_capture": false,
+          "review_disposition": "PARTIAL",
+          "evidence": "Frozen two-phase conditional reconstruction/scores reproduce; historical validation incomplete, original unvalidated failure branch permitted."
+        },
+        {
+          "ordinal": 4,
+          "original_text": "Unavailable dated inputs are documented as a blocker to forecast validation rather than replaced with fabricated historical assumptions.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Frozen two-phase conditional reconstruction/scores reproduce; historical validation incomplete, original unvalidated failure branch permitted."
+        },
+        {
+          "ordinal": 5,
+          "original_text": "Documentation and source/fixture provenance are updated in the same change series.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Frozen two-phase conditional reconstruction/scores reproduce; historical validation incomplete, original unvalidated failure branch permitted."
+        },
+        {
+          "ordinal": 6,
+          "original_text": "The parent audit record links the resolving PR, exact checks/artifacts and any residual limitations; no forecast-calibration claim is inferred solely from passing tests.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Frozen two-phase conditional reconstruction/scores reproduce; historical validation incomplete, original unvalidated failure branch permitted."
+        }
+      ],
+      "evidence": "Frozen two-phase conditional reconstruction/scores reproduce; historical validation incomplete, original unvalidated failure branch permitted."
+    },
+    {
+      "issue": 59,
+      "url": "https://github.com/dlworrell/code-noodling/issues/59",
+      "title": "Election audit EA-14: Gate forecast publication on scientific eligibility and retain audit regressions",
+      "tracker_state_at_capture": "closed",
+      "disposition": "PARTIAL",
+      "criteria": [
+        {
+          "ordinal": 1,
+          "original_text": "Each known failure fixture blocks its unsupported forecast while valid descriptive reports still publish.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Known gate/replay matrix passes; newly observed unsupported batch cases require matrix extension."
+        },
+        {
+          "ordinal": 2,
+          "original_text": "The original arithmetic/source-integrity controls remain separate and passing; document-quality success cannot bypass scientific eligibility.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Known gate/replay matrix passes; newly observed unsupported batch cases require matrix extension."
+        },
+        {
+          "ordinal": 3,
+          "original_text": "An end-to-end regression preserves Maine's final 402,936-ballot accounting and Alaska archive/final/recount lineage without inventing historical forecast probabilities.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Known gate/replay matrix passes; newly observed unsupported batch cases require matrix extension."
+        },
+        {
+          "ordinal": 4,
+          "original_text": "After EA-05\u2013EA-13, the gate's complete supported/unsupported matrix is exercised; the parent audit closes only after linked acceptance evidence and re-audit.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PARTIAL",
+          "evidence": "Known gate/replay matrix passes; newly observed unsupported batch cases require matrix extension."
+        },
+        {
+          "ordinal": 5,
+          "original_text": "Documentation and source/fixture provenance are updated in the same change series.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Known gate/replay matrix passes; newly observed unsupported batch cases require matrix extension."
+        },
+        {
+          "ordinal": 6,
+          "original_text": "The parent audit record links the resolving PR, exact checks/artifacts and any residual limitations; no forecast-calibration claim is inferred solely from passing tests.",
+          "tracker_checked_at_capture": true,
+          "review_disposition": "PASS",
+          "evidence": "Known gate/replay matrix passes; newly observed unsupported batch cases require matrix extension."
+        }
+      ],
+      "evidence": "Known gate/replay matrix passes; newly observed unsupported batch cases require matrix extension."
+    }
+  ],
+  "findings": [
+    {
+      "id": "ISR-001",
+      "severity": "medium",
+      "support": "CONFIRMED",
+      "path": "election-analysis/election_reporting/analysis.py",
+      "lines": [
+        363,
+        450
+      ],
+      "summary": "Pair/aggregate-only delta checks accept contradictory whole-contest new_ballots annotations.",
+      "counterexamples": [
+        "third_candidate_negative",
+        "ballots_decrease_while_pair_increases",
+        "candidate_removed",
+        "majority_negative_third_candidate"
+      ],
+      "minimum_fix": "Shared complete actual-adjacent-transition qualification;negative/identity/denominator/accounting contradictions fail closed visibly."
+    },
+    {
+      "id": "ISR-002",
+      "severity": "medium",
+      "support": "CONFIRMED",
+      "path": "election-analysis/election_reporting/analysis.py",
+      "lines": [
+        590,
+        363,
+        450
+      ],
+      "summary": "De-duplicated history changes predecessor;three-snapshot repeated latest bytes manufacture20 latest pair votes.",
+      "counterexamples": [
+        "duplicate_latest_after_prior_increase"
+      ],
+      "minimum_fix": "Select actual immediate source predecessor before history filtering;bind annotation to immutable predecessor;duplicate latest contributes no new batch."
+    },
+    {
+      "id": "ISR-003",
+      "severity": "low",
+      "support": "CONFIRMED",
+      "path": "election-analysis/docs/election-reporting.md",
+      "lines": [
+        251
+      ],
+      "summary": "737-vote Measure2 known-result wording omits original archive/recount743 distinction.",
+      "minimum_fix": "Name archive737 and later recount743 together;prefer source representations for298 partially reviewed records."
+    }
+  ],
+  "original_permitted_failure_clause": {
+    "issue": 58,
+    "section": "Observability, failure modes, and recovery",
+    "text": "If historical inputs are insufficient, publish a documented unvalidated result and acquisition gaps; do not claim an accuracy rate or calibration from final-only replays."
+  },
+  "scientific_status": {
+    "operational_forecast_validity": "unestablished",
+    "calibration_established": false,
+    "caps_empirically_validated": false,
+    "historical_byte_availability_established": false,
+    "prediction_reserved_outcome_isolation": "PASS computational scope",
+    "proper_scores": "PASS arithmetic under explicit conditional assumptions",
+    "independent_geographic_clusters_per_experiment": 1,
+    "supported_use": "Descriptive tallies and explicitly conditional uncalibrated experimental calculations within qualified evidence scope."
+  },
+  "residual_risks": [
+    "Historical archive/version availability is qualified,not demonstrated contemporaneous byte identity.",
+    "No correction-separated candidate batch ledger for either frozen experiment.",
+    "OC queue acceptance/challenge overlap/future arrivals/geographic-pair allocation remain assumptions.",
+    "King turnout pools need not equal realized countable remaining votes.",
+    "One county per assumption stratum and few reversals cannot establish calibration/generalization.",
+    "Official-finalist Maine allocation is not independent eligibility/elimination adjudication.",
+    "Indexed Alaska references are not verified binary originals;all final rounds were not independently recomputed.",
+    "Prospective evaluator has no eligible real series;bootstrap scaffolding is not empirical validation."
+  ],
+  "runtime": {
+    "python": "3.12.14",
+    "historical_pypdf": "6.10.0",
+    "historical_reuse": "6.2.0",
+    "current_qualification_pypdf": "6.21.2",
+    "scipy": "1.17.0",
+    "numpy": "2.3.5",
+    "pandas_available_not_needed_by_independent_parsers": "2.2.3",
+    "openpyxl": "3.1.5",
+    "poppler": "24.02.0",
+    "edt_commit": "bca66c1e2d2a9bf9c05f9429e618299216a17f27"
+  },
+  "paths": {
+    "REPO": "/workspace/scratch/c02121b31d52/election-evidence-continuation",
+    "REVIEW": "/workspace/scratch/c02121b31d52/independent-statistical-review",
+    "ORIGINAL_PACKAGE": "/workspace/scratch/c02121b31d52/audit-source-verified/Election_Analysis_2024_Replay_Package.zip",
+    "EDT": "/workspace/scratch/c02121b31d52/edt"
+  },
+  "commands": [
+    {
+      "id": "C01",
+      "command": "PYTHONDONTWRITEBYTECODE=1 EDT_DIR=/workspace/scratch/c02121b31d52/edt /workspace/scratch/c02121b31d52/oc-current-runtime/bin/python election-analysis/ci/test_results.py --output REVIEW/full-suite",
+      "exit_code": 0,
+      "outputs": [
+        "full-suite.log",
+        "full-suite/test-results.json",
+        "full-suite/test-predicate.json"
+      ],
+      "result": "173 tests passed",
+      "output_sha256": {
+        "full-suite.log": "fa7b26d074b7700fe8701623beb0664781845c457b7c5397979b04069b807476",
+        "full-suite/test-results.json": "c9361a0dfbf84866065e06b8b558c5174989ee7879be920a252e2bdcda3dd312",
+        "full-suite/test-predicate.json": "408e139aa3e060240b05bd44b0d24ed96c86a45d9e7de55ab3d71fc590370935"
+      }
+    },
+    {
+      "id": "C02",
+      "command": "PYTHONDONTWRITEBYTECODE=1 /workspace/scratch/c02121b31d52/oc-historical-runtime/bin/python election-analysis/ci/reproduce_official_experiment.py --repo . --python /workspace/scratch/c02121b31d52/oc-historical-runtime/bin/python --output REVIEW/oc-reproduction",
+      "exit_code": 0,
+      "outputs": [
+        "oc-reproduction.log",
+        "oc-reproduction/verification.json",
+        "oc-reproduction/predictions.json",
+        "oc-reproduction/reproduction-seal.json",
+        "oc-reproduction/scores.json"
+      ],
+      "result": "MATCH;37 hashes;159 predictions;53 base contests;complete score/exclusion semantics",
+      "output_sha256": {
+        "oc-reproduction.log": "e55ad1c30ee560c78ffc9604250357c124c6fd60fecc3aa19aca9fcb5510ff7d",
+        "oc-reproduction/verification.json": "59816657744e2c5af05b95ba10e91c34803b87b2cb81e0fcd91c08721aa397e9",
+        "oc-reproduction/predictions.json": "f204f7410f0f37a37ec869fa8d0bd7d07937d6da63268bd4988c3d2ca0a77338",
+        "oc-reproduction/reproduction-seal.json": "0d23d74a9d51e26008d07ae593f8d36f6e9a1e613ce4ca5beda2f20076ffa125",
+        "oc-reproduction/scores.json": "9a41db8069496818809c88af6fbc6e539967261adca9bf4d549d4d9251982255"
+      }
+    },
+    {
+      "id": "C03",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=election-analysis /workspace/scratch/c02121b31d52/oc-historical-runtime/bin/python -m election_reporting.retrospective predict --protocol election-analysis/docs/engineering/king-retrospective-protocol-v2.json --fixtures election-analysis/tests/fixtures --forecast-sources election-analysis/docs/engineering/king-historical-forecast-sources.json --output REVIEW/king-predictions.json",
+      "exit_code": 0,
+      "outputs": [
+        "king-predict.log",
+        "king-predictions.json",
+        "king-reproduction-seal.json"
+      ],
+      "result": "493 predictions;new hash sealed separately before scoring",
+      "output_sha256": {
+        "king-predict.log": "6679447ae3c693efe4f2068b3bbc9790fc55d7601473ddc74c8b10dab35f8d4b",
+        "king-predictions.json": "dc904e908e80c20ec917571680dc16a0a7f2fd4186791641ca6baa767993c8c4",
+        "king-reproduction-seal.json": "20355dff4049d0417f1b764bdbc65b090c44ec0933bf67a8e090f7ea0e97f67c"
+      }
+    },
+    {
+      "id": "C04",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=election-analysis /workspace/scratch/c02121b31d52/oc-historical-runtime/bin/python -m election_reporting.retrospective score --protocol election-analysis/docs/engineering/king-retrospective-protocol-v2.json --fixtures election-analysis/tests/fixtures --predictions REVIEW/king-predictions.json --predictions-sha256 dc904e908e80c20ec917571680dc16a0a7f2fd4186791641ca6baa767993c8c4 --output REVIEW/king-scores.json",
+      "exit_code": 0,
+      "outputs": [
+        "king-score.log",
+        "king-scores.json"
+      ],
+      "result": "Complete semantics match first run after computational clocks/newscore seal only",
+      "output_sha256": {
+        "king-score.log": "2d5f4db7c597efb805c5c11b1556908b41d9db1cabc4cb227bb298bc5c5f06ef",
+        "king-scores.json": "912a789a322d52b2d3ff31125f4684da7cfed004c238bfbd692a9e37d8c7837a"
+      }
+    },
+    {
+      "id": "C05",
+      "command": "PYTHONDONTWRITEBYTECODE=1 /workspace/scratch/c02121b31d52/oc-historical-runtime/bin/python REVIEW/independent_checks.py --repo REPO --output REVIEW --original-package ORIGINAL_PACKAGE --edt EDT",
+      "exit_code": 0,
+      "outputs": [
+        "independent_checks.py",
+        "independent-check-results.json",
+        "independent-checks.log"
+      ],
+      "result": "1080 rational/2115 SciPy checks;independent raw outcome/score/group checks;five observed batch counterexamples",
+      "output_sha256": {
+        "independent_checks.py": "66e8ad8c3475cdbbfce5f4d2315f2b8a163ed59d4f56b15c1727d921775d48aa",
+        "independent-check-results.json": "f1103b1368d10099826f580a0ef74b30a9462a8a9fdc09d9c9a425e6714b8b4f",
+        "independent-checks.log": "a716b71bd622d85e0388d17a7d1660b90d9f1cc1b0c139b0f6222076ef50c21c"
+      }
+    },
+    {
+      "id": "C06",
+      "command": "PYTHONDONTWRITEBYTECODE=1 /workspace/scratch/c02121b31d52/oc-historical-runtime/bin/python REVIEW/independent_rcv_checks.py --repo REPO --original-package ORIGINAL_PACKAGE --output REVIEW/independent-rcv-results.json",
+      "exit_code": 0,
+      "outputs": [
+        "independent_rcv_checks.py",
+        "independent-rcv-results.json",
+        "independent-rcv.log"
+      ],
+      "result": "Six original exports;108 patterns;402936 ballots;197151/194445 final allocation",
+      "output_sha256": {
+        "independent_rcv_checks.py": "4eb88f5508dcb79c173612ba4a71d95651651dec66a5d3e22850163b3b614639",
+        "independent-rcv-results.json": "f5dd8df35a38f5e6a7140df16c061f5cba14965428848a8fe540b2db7ca76d32",
+        "independent-rcv.log": "f5dd8df35a38f5e6a7140df16c061f5cba14965428848a8fe540b2db7ca76d32"
+      }
+    },
+    {
+      "id": "C07",
+      "command": "PYTHONDONTWRITEBYTECODE=1 /workspace/scratch/c02121b31d52/oc-historical-runtime/bin/python REVIEW/independent_alaska_checks.py --repo REPO --original-package ORIGINAL_PACKAGE --output REVIEW/independent-alaska-results.json",
+      "exit_code": 0,
+      "outputs": [
+        "independent_alaska_checks.py",
+        "independent-alaska-results.json",
+        "independent-alaska.log"
+      ],
+      "result": "Independent complete-key/mode aggregation;all73 frozen tallies match;31 qualified outputs",
+      "output_sha256": {
+        "independent_alaska_checks.py": "7a2d62877219fc000b0c225f4e7d12c7b304151c99d745e6a9ade2713411134c",
+        "independent-alaska-results.json": "efa9aa4c645d17025bbc7fef70e94d2571914761638e6455f8c48d374cb7eeae",
+        "independent-alaska.log": "efa9aa4c645d17025bbc7fef70e94d2571914761638e6455f8c48d374cb7eeae"
+      }
+    },
+    {
+      "id": "C08",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=election-analysis /workspace/scratch/c02121b31d52/oc-current-runtime/bin/python -m election_reporting.official_qualification --fixtures election-analysis/tests/fixtures --output REVIEW/oc-current-qualification.json",
+      "exit_code": 0,
+      "outputs": [
+        "oc-current-qualification.json",
+        "oc-current-qualification.log"
+      ],
+      "result": "Modern pypdf6.21.2 qualification matches first report bytes",
+      "output_sha256": {
+        "oc-current-qualification.json": "374b4d9d3dcdf5dc2df638b628436421f5b01ffb19206450f0be0130b7e47090",
+        "oc-current-qualification.log": "d7259982b04e6ac5efc741abea709bcce39163e3f61fbe1bfc161f65648bc170"
+      }
+    },
+    {
+      "id": "C09",
+      "command": "PYTHONDONTWRITEBYTECODE=1 /workspace/scratch/c02121b31d52/oc-current-runtime/bin/python election-analysis/ci/reproduce_official_experiment.py --repo . --python /workspace/scratch/c02121b31d52/oc-current-runtime/bin/python --output REVIEW/negative-runtime",
+      "exit_code": 1,
+      "outputs": [
+        "negative-runtime.log"
+      ],
+      "result": "EXPECTED REJECTION:installed pypdf6.21.2/reuse unavailable do not match historical pins",
+      "output_sha256": {
+        "negative-runtime.log": "b02b100e014cbc3dc7d12d49b2e59b6e4e5ceb1ba81f7032842f7629382f7b6a"
+      }
+    },
+    {
+      "id": "C10",
+      "command": "PYTHONDONTWRITEBYTECODE=1 /workspace/scratch/c02121b31d52/oc-historical-runtime/bin/python election-analysis/ci/reproduce_official_experiment.py --repo . --source-commit 3e9ae3bee1c657c91629b133f379a5b73e41781a --python /workspace/scratch/c02121b31d52/oc-historical-runtime/bin/python --output REVIEW/negative-source",
+      "exit_code": 1,
+      "outputs": [
+        "negative-source.log"
+      ],
+      "result": "EXPECTED REJECTION:changed ci/requirements-provenance.txt hash",
+      "output_sha256": {
+        "negative-source.log": "12cbb636f80183f207d0a301ebad624d3db78dba10fb692ab1735cc18b54c4d3"
+      }
+    },
+    {
+      "id": "C11",
+      "command": "pdftotext -layout REVIEW/{gen2024-run13,gen2024-run12-canonical,unprocessed-20241108,unprocessed-20241109}.pdf corresponding.txt; pdftoppm -f 1 -singlefile -scale-to 1400 -png pool.pdf prefix (invoked individually by subprocess, not shell brace expansion)",
+      "exit_code": 0,
+      "outputs": [
+        "gen2024-run13.txt",
+        "gen2024-run12-canonical.txt",
+        "unprocessed-20241108.txt",
+        "unprocessed-20241109.txt",
+        "unprocessed-nov8.png",
+        "unprocessed-nov9.png"
+      ],
+      "result": "Read-only source extraction;both pool pages visually reviewed;AMENDED/fields confirmed",
+      "output_sha256": {
+        "gen2024-run13.txt": "1b8ca8da39e16a6e9a61c9ec350bf2f6c758447e83f97486eac6897f863a2f61",
+        "gen2024-run12-canonical.txt": "c2685368d17ab9a17689fae716029540a1279d8904d45c4a445edd46ab896345",
+        "unprocessed-20241108.txt": "36a892a2820b9b57de4ae1c103299e154cf559b2e02d4adbf0a949cd141c5e49",
+        "unprocessed-20241109.txt": "1c375165ed063970683386e83ad36688eba3383cf1848d9f83f29e2ccd3af8e8",
+        "unprocessed-nov8.png": "7a3c9c8d9363b81203d139729705eec43026d1a9b046c853d0bb1fc1205d8ffb",
+        "unprocessed-nov9.png": "2796cb57e39c4f570183f8b41396d322bac1f525d8ea2dca5186e02d36464943"
+      }
+    },
+    {
+      "id": "C12",
+      "command": "git status --short; git diff --exit-code 3e9ae3bee1c657c91629b133f379a5b73e41781a -- election-analysis (separate sequential calls in review)",
+      "exit_code": 0,
+      "outputs": [],
+      "result": "Implementation checkout clean;no changes",
+      "output_sha256": {}
+    }
+  ],
+  "review_markdown_sha256": "71c3aa8c1fa3c1fcd829927fd5f1de93ac3a87dbfe9201986c6d317b8d3d2926",
+  "retained_check_result_sha256": {
+    "independent-check-results.json": "f1103b1368d10099826f580a0ef74b30a9462a8a9fdc09d9c9a425e6714b8b4f",
+    "independent-rcv-results.json": "f5dd8df35a38f5e6a7140df16c061f5cba14965428848a8fe540b2db7ca76d32",
+    "independent-alaska-results.json": "efa9aa4c645d17025bbc7fef70e94d2571914761638e6455f8c48d374cb7eeae",
+    "authoritative-issues.json": "7d7e1098e622f9f7a558574bccfec78323414b461fa8434d964e26786ef35011",
+    "primary-source-retrieval.json": "3fb89250cf16153bebad2b4b5aef333865388f683ac8d12eeba26c0c3ae41cf4"
+  },
+  "source_artifact_sha256": {
+    "docs/engineering/evidence-continuation-validation.json": "58a0c16fb68b4ee35244dfa10f51f219ec0f984f35da6062c73c14db055f99f9",
+    "docs/engineering/king-retrospective-diagnostic-v2.png": "22437338525bceede19a6a6995c797d29c12b032f0d047d67d04140ee2cd99e2",
+    "docs/engineering/king-retrospective-predictions-v2.json": "9be7e233195698250928284909e070e96f4cd1b4de2f519820af7de99af72426",
+    "docs/engineering/king-retrospective-protocol-v2.json": "eabb8c1eebfe27a0f4500df1964af46e64b38f8e85d881fec3f9490e5492164f",
+    "docs/engineering/king-retrospective-scores-v2.json": "4e835cdf4156bc4df3f1d721d2397623aef1cce74a278f07d0d8888af55370e6",
+    "docs/engineering/king-retrospective-seal-v2.json": "001845f0455b922328650dfce155c985053848cecb34aa6010026079844543c2",
+    "docs/engineering/king-retrospective-validation-v2.json": "1054e94468f49351f0fe6ba48a5f26b9317588600c9e85df0592c31bb222e59e",
+    "docs/engineering/oc-official-diagnostic-v1.png": "0343ed9665a20aea165ff9f6fde3c107d7ffb1b2ca0cb3b2607ea7a2b9655785",
+    "docs/engineering/oc-official-independent-check-v1.json": "a4c3e03984a176af091579688b0a9a3d6e4f3094c03a9e4a59fcfddf755c6b3c",
+    "docs/engineering/oc-official-predictions-v1.json": "98b0437b03bb082dad87d3fa948c3f5fe70e4b0108ba2592432ca9d3ce3378eb",
+    "docs/engineering/oc-official-protocol-v1.json": "1b50c31396d783bd7dab653fb53f5d758e99acbe7c0e80b5cfac29ddd8447511",
+    "docs/engineering/oc-official-qualification-v1.json": "374b4d9d3dcdf5dc2df638b628436421f5b01ffb19206450f0be0130b7e47090",
+    "docs/engineering/oc-official-scores-v1.json": "5a85b9e5e4d4365221bc8b0a53b4df23d4eea3b0c544dd385ad76d0336e7ba94",
+    "docs/engineering/oc-official-seal-v1.json": "de3db7b610188ca84ba63164f58d1373247e03c74b8ef0653c8915cf02d0accd",
+    "docs/engineering/oc-official-validation-v1.json": "3d2efb9135d21ea5dced6bbf6e82b4bca305dacfb1e84c94ab55c8f3d75e5e5c",
+    "docs/engineering/oc-runtime-reproduction-v1.zip": "cc72251697d5e64b1e5d19674a82c4ea315d09b78a6f6586b71009f3030abebd"
+  },
+  "source_documents": {
+    "original_zip_sha256": "06d150c885e9f95aa3235dc4ceaab09f34379bc27f8de66864c00e85af67f73e",
+    "methods_member_sha256": "a99403241718c80db7a3e2f8e61cb6e85264d5528bdf3b1648f55805169a992a",
+    "standalone_replay_version": 6,
+    "standalone_replay_sha256": "a766499d838a53b28024d2af0cc289cb48a483226d1d25b83cd2b764fbde7dab"
+  },
+  "interpretation": "Initial immutable-snapshot review. Any later repair needs a separate hash-bound delta review;this record is not rewritten to erase initial failures."
+}

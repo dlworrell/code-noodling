@@ -1,0 +1,385 @@
+{
+  "actual_publication": {
+    "data_status": {
+      "contradictory": 1,
+      "inconsistent_ballot_accounting": 8,
+      "no_reported_results": 2,
+      "reported": 283,
+      "source_vintage_conflict": 3,
+      "unresolved_tie": 1
+    },
+    "decisions": 187,
+    "numeric_forecasts": 0,
+    "race_representations": 298,
+    "races_semantically_match_committed": true,
+    "social_text_matches": true,
+    "source_counts": {
+      "king-county": 151,
+      "washington": 147
+    }
+  },
+  "batch_adversarial_checks": [
+    {
+      "actual_latest_pair_votes": 15,
+      "case": "third_candidate_negative",
+      "classification": "new_ballots",
+      "conditional_probability": 0.0016439626197873086,
+      "expected_latest_pair_votes": 0,
+      "new_ballots": 160,
+      "new_choices": [
+        [
+          "A",
+          90
+        ],
+        [
+          "B",
+          65
+        ],
+        [
+          "C",
+          5
+        ]
+      ],
+      "old_ballots": 150,
+      "old_choices": [
+        [
+          "A",
+          80
+        ],
+        [
+          "B",
+          60
+        ],
+        [
+          "C",
+          10
+        ]
+      ],
+      "scenario_eligible": true
+    },
+    {
+      "actual_latest_pair_votes": 5,
+      "case": "ballots_decrease_while_pair_increases",
+      "classification": "new_ballots",
+      "conditional_probability": 0.0016124033049414424,
+      "expected_latest_pair_votes": 0,
+      "new_ballots": 145,
+      "new_choices": [
+        [
+          "A",
+          85
+        ],
+        [
+          "B",
+          60
+        ]
+      ],
+      "old_ballots": 150,
+      "old_choices": [
+        [
+          "A",
+          80
+        ],
+        [
+          "B",
+          60
+        ]
+      ],
+      "scenario_eligible": true
+    },
+    {
+      "actual_latest_pair_votes": 15,
+      "case": "candidate_removed",
+      "classification": "new_ballots",
+      "conditional_probability": 0.001588630234947094,
+      "expected_latest_pair_votes": 0,
+      "new_ballots": 155,
+      "new_choices": [
+        [
+          "A",
+          90
+        ],
+        [
+          "B",
+          65
+        ]
+      ],
+      "old_ballots": 150,
+      "old_choices": [
+        [
+          "A",
+          80
+        ],
+        [
+          "B",
+          60
+        ],
+        [
+          "C",
+          10
+        ]
+      ],
+      "scenario_eligible": true
+    },
+    {
+      "actual_latest_pair_votes": 20,
+      "case": "duplicate_latest_after_prior_increase",
+      "classification": "new_ballots",
+      "conditional_probability": 0.006433141795489086,
+      "displayed_margin_history": [
+        [
+          "2026-08-05T00:00",
+          20
+        ],
+        [
+          "2026-08-06T00:00",
+          20
+        ]
+      ],
+      "expected_latest_pair_votes": 0,
+      "latest_label": "2026-08-07T00:00",
+      "scenario_eligible": true
+    },
+    {
+      "actual_latest_pair_votes": 10,
+      "case": "majority_negative_third_candidate",
+      "classification": "new_ballots",
+      "conditional_probability": 0.012163110622407016,
+      "expected_latest_pair_votes": 0,
+      "scenario_eligible": true
+    }
+  ],
+  "descriptive_replay": {
+    "numeric_probabilities": 0,
+    "records": [
+      204,
+      73,
+      262
+    ]
+  },
+  "edge_cases": {
+    "budget_withheld": null,
+    "disjoint_posterior_example": {
+      "alpha": 141.0,
+      "beta": 361.0,
+      "calibration": "hand-set power likelihood; effective weights are not independent sample sizes",
+      "historical_effective_weight": 300,
+      "historical_observed_votes": 1000,
+      "latest_effective_weight": 200,
+      "latest_effective_weight_fraction": 0.4,
+      "latest_raw_fraction": 0.5,
+      "latest_verified_pair_votes": 1000,
+      "observed_pair_votes": 2000,
+      "overlap_votes_reused": 0,
+      "prior_alpha": 1,
+      "prior_beta": 1
+    },
+    "impossible_threshold": 0.0,
+    "skewed_5001": 0.2498500899460324,
+    "zero_pool": 0.0
+  },
+  "exact_rational_oracle": {
+    "checks": 1080,
+    "maximum_absolute_error": 3.3306690738754696e-16
+  },
+  "generated_at": "2026-10-25T14:20:53.524533+00:00",
+  "independent_raw_parsers_and_grouped_scores": {
+    "king-retrospective": {
+      "all_rows": 493,
+      "base_rows": 147,
+      "contests_with_any_reversal": 3,
+      "elections": {
+        "wa:king:2023-general": {
+          "contests": 10,
+          "row_reversals": 4,
+          "rows": 98
+        },
+        "wa:king:2024-general": {
+          "contests": 1,
+          "row_reversals": 0,
+          "rows": 11
+        },
+        "wa:king:2025-general": {
+          "contests": 10,
+          "row_reversals": 3,
+          "rows": 38
+        }
+      },
+      "independent_geographic_clusters": 1,
+      "maximum_calibration_bin_error": 2.7755575615628914e-17,
+      "maximum_score_error": 1.1102230246251565e-16,
+      "proper_scores": {
+        "cumulative_share": {
+          "brier": 0.0383711489069155,
+          "log_loss": 0.9587323599553331
+        },
+        "fixed_half": {
+          "brier": 0.25,
+          "log_loss": 0.6931471805599453
+        },
+        "model": {
+          "brier": 0.03755656952167359,
+          "log_loss": 0.21044475245159516
+        },
+        "scenario_margin_lock": {
+          "brier": 0.1514772727272727,
+          "log_loss": 0.41998417803967003
+        },
+        "untempered_beta_binomial": {
+          "brier": 0.03815923172478483,
+          "log_loss": 0.9203040766802258
+        }
+      },
+      "raw_outcome_checks": 493,
+      "unique_contests": 21,
+      "unweighted_row_brier_for_comparison_only": 0.04485327436756613
+    },
+    "oc-official": {
+      "all_rows": 159,
+      "base_rows": 53,
+      "contests_with_any_reversal": 2,
+      "elections": {
+        "ca:orange:2024-general": {
+          "contests": 53,
+          "row_reversals": 2,
+          "rows": 53
+        }
+      },
+      "independent_geographic_clusters": 1,
+      "maximum_calibration_bin_error": 0.0,
+      "maximum_score_error": 0.0,
+      "proper_scores": {
+        "cumulative_share": {
+          "brier": 0.03777126945246742,
+          "log_loss": 0.1364518748643742
+        },
+        "disjoint_increment_conditional": {
+          "brier": 0.028870579480398943,
+          "log_loss": 0.08424815476530102
+        },
+        "fixed_half": {
+          "brier": 0.25,
+          "log_loss": 0.6931471805599453
+        },
+        "model": {
+          "brier": 0.033682658867824955,
+          "log_loss": 0.09501048405582256
+        },
+        "official_queue_margin_rule": {
+          "brier": 0.1320754716981132,
+          "log_loss": 0.36619096331515977
+        },
+        "reported_increment_only_conditional": {
+          "brier": 0.03869495031848734,
+          "log_loss": 0.13811864515365976
+        },
+        "untempered_beta_binomial": {
+          "brier": 0.03725110006773637,
+          "log_loss": 0.12758257550007404
+        }
+      },
+      "raw_outcome_checks": 159,
+      "unique_contests": 53,
+      "unweighted_row_brier_for_comparison_only": 0.033682658867824955
+    }
+  },
+  "inventory": {
+    "counts_by_container": {
+      "in-person": 578577,
+      "mail": 2179053
+    },
+    "is_dated_candidate_new_ballot_ledger": false,
+    "sha256": "36b6c0079cc3882e601dc7ef7024d987973e3a17bceb9263dabbc433c6e78cff",
+    "source_count_sum": 2757630,
+    "unique_keys": 10208
+  },
+  "original_package": {
+    "bytes": 15956607,
+    "crc": "PASS",
+    "members": 54,
+    "methods_member_sha256": "a99403241718c80db7a3e2f8e61cb6e85264d5528bdf3b1648f55805169a992a",
+    "replay_fixture_original_bytes": {
+      "alaska": "58f7d392c6c81b547bafda5b6cb9b03bc4d621e5f772af57c9c21a5e8565fdbf",
+      "maine": "8cfe06a98a7a2225ff80d4c1a582179d7c24cda2d5da12f5c9278234d882c091",
+      "washington": "e1437da58c1dd8552598f60e86437ddfe8a6a593c359ab67c5bde2e68ff8720f"
+    },
+    "sha256": "06d150c885e9f95aa3235dc4ceaab09f34379bc27f8de66864c00e85af67f73e"
+  },
+  "reviewed_commit": "3e9ae3bee1c657c91629b133f379a5b73e41781a",
+  "reviewed_tree": "2ccd8e0a0a08d610e61e0e51938794d57dddecd8",
+  "reviewer": "Separate agentic AI statistical reviewer; not implementation agent, human reviewer, certification, or blind preregistration",
+  "scipy_direct_mass_oracles": [
+    {
+      "checks": 1479,
+      "experiment": "king-retrospective",
+      "largest_error_cases": {
+        "cumulative_share": {
+          "actual": 0.2919031648249214,
+          "canonical_id": "wa:king:2025-general:5e26d72f3bb463dc",
+          "n": 35398,
+          "oracle": 0.29190316482376827,
+          "scenario": "high"
+        },
+        "model": {
+          "actual": 0.4066162568116077,
+          "canonical_id": "wa:king:2023-general:7e1d0ddca5224ec3",
+          "n": 46503,
+          "oracle": 0.4066162567798589,
+          "scenario": "high"
+        },
+        "untempered_beta_binomial": {
+          "actual": 0.3033624594599814,
+          "canonical_id": "wa:king:2025-general:5e26d72f3bb463dc",
+          "n": 35398,
+          "oracle": 0.3033624595381226,
+          "scenario": "high"
+        }
+      },
+      "max_abs_errors": {
+        "cumulative_share": 1.1531331445269188e-12,
+        "model": 3.1748770279449445e-11,
+        "untempered_beta_binomial": 7.814116020909978e-11
+      }
+    },
+    {
+      "checks": 636,
+      "experiment": "oc-official",
+      "largest_error_cases": {
+        "cumulative_share": {
+          "actual": 0.42423907265416544,
+          "canonical_id": "ca:orange:2024-general:759e64a8eaa37e38",
+          "n": 1878,
+          "oracle": 0.4242390726533936,
+          "scenario": "separate_challenged"
+        },
+        "disjoint_increment_conditional": {
+          "actual": 0.20668472577478142,
+          "canonical_id": "ca:orange:2024-general:759e64a8eaa37e38",
+          "n": 1878,
+          "oracle": 0.20668472577568875,
+          "scenario": "separate_challenged"
+        },
+        "model": {
+          "actual": 0.471695728073292,
+          "canonical_id": "ca:orange:2024-general:759e64a8eaa37e38",
+          "n": 1878,
+          "oracle": 0.4716957280750721,
+          "scenario": "separate_challenged"
+        },
+        "untempered_beta_binomial": {
+          "actual": 0.43027662899233177,
+          "canonical_id": "ca:orange:2024-general:759e64a8eaa37e38",
+          "n": 1878,
+          "oracle": 0.430276629004458,
+          "scenario": "separate_challenged"
+        }
+      },
+      "max_abs_errors": {
+        "cumulative_share": 7.718270467194088e-13,
+        "disjoint_increment_conditional": 9.073297668749092e-13,
+        "model": 1.7800760865327447e-12,
+        "untempered_beta_binomial": 1.2126244453014579e-11
+      }
+    }
+  ]
+}
