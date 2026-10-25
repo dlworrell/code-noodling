@@ -78,3 +78,10 @@ adds bounded PDF/CSV readers, original source files and a frozen conditional
 comparison. Its official queue estimates still require acceptance/geographic
 assumptions; a reported tally increment is not a verified correction-free batch.
 It does not establish forecast calibration or close the remaining scientific audit.
+
+
+Frozen OC v1 must be reproduced from its original source and runtime, using
+[`ci/reproduce_official_experiment.py`](ci/reproduce_official_experiment.py).
+It verifies source hashes and installed pins, writes a new seal and compares the
+full results while preserving the first run. See [ADR-008](docs/engineering/ADR-008-frozen-runtime-reproduction.md).
+Current CI dependency upgrades do not rewrite historical protocols.
