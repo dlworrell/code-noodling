@@ -220,6 +220,13 @@ def reviewed_rule(config, canonical_id, inferred):
     rule = dict(rows[0])
     kind = rule.get("rule")
     supported = kind in {"winner", "top_two", "top_four", "wa_judicial"}
+    offices = {r.get("office") for r in config.audit_contract.get("identities", [])
+               if r.get("canonical_id") == canonical_id}
+    scope_matches = (len(offices) == 1 and bool(rule.get("office"))
+                     and offices == {rule["office"]}
+                     and bool(rule.get("election_type"))
+                     and rule["election_type"] == config.audit_contract.get("election_type"))
+    supported = supported and scope_matches
     if row_positions := rule.get("positions"):
         supported = supported and row_positions == {"winner": 1, "top_two": 2, "top_four": 4, "wa_judicial": 1}.get(kind)
     else:
@@ -228,7 +235,10 @@ def reviewed_rule(config, canonical_id, inferred):
         supported = False
     if rule.get("validation_requirements") or not str(rule.get("authority_url", "")).startswith("https://"):
         supported = False
-    rule.update(supported=supported, reason="Reviewed binary-boundary rule" if supported else "Unsupported passage/validation/RCV rule")
+    rule.update(supported=supported, scope_matches=scope_matches,
+                reason="Reviewed office/election binary-boundary rule" if supported else
+                "Office/election rule scope is missing or mismatched" if not scope_matches else
+                "Unsupported passage/validation/RCV rule")
     return rule
 
 
@@ -260,8 +270,8 @@ def remaining_pool(config, canonical_id, jurisdictions, source_time):
             return {**unknown, "reason": "Official pool must distinguish returned/accepted/countable ballots and document acceptance/cure assumptions."}
         row["status"] = "confirmed_zero" if row["ballots"] == 0 else "official_outstanding"
     elif row.get("kind") == "scenario":
-        if not row.get("basis") or not all(k in row for k in ("low", "base", "high")) or not row["low"] <= row["base"] <= row["high"]:
-            return {**unknown, "reason": "Scenario must declare ordered low/base/high counts and basis."}
+        if not row.get("basis") or not row.get("category_basis") or not all(k in row for k in ("low", "base", "high")) or not row["low"] <= row["base"] <= row["high"]:
+            return {**unknown, "reason": "Scenario must declare ordered low/base/high counts, basis and ballot-category assumptions."}
         row["ballots"] = row["base"]
         row["status"] = "conditional_scenario"
     else:

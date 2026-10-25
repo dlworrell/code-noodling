@@ -27,9 +27,15 @@ def threshold(remaining: int, margin: int, tie_changes: bool) -> int:
 
 def posterior(change, current, batch_share=None, batch_votes=None):
     """Separate the preceding history from the latest verified new-ballot batch."""
+    details = posterior_details(change, current, batch_share, batch_votes)
+    return details["alpha"], details["beta"]
+
+
+def posterior_details(change, current, batch_share=None, batch_votes=None):
+    """Expose raw contributions and effective weights, without calibration claims."""
     total = change + current
     batch_change = round(batch_share * batch_votes) if batch_share is not None and batch_votes else 0
-    if (not batch_votes or batch_votes > total or batch_change > change
+    if (not batch_votes or batch_votes < 0 or batch_votes > total or batch_change < 0 or batch_change > change
             or batch_votes - batch_change > current):
         batch_votes = batch_change = 0
     historical_total = total - batch_votes
@@ -38,11 +44,17 @@ def posterior(change, current, batch_share=None, batch_votes=None):
     share = historical_change / historical_total if historical_total else 0.5
     alpha = 1 + share * historical_weight
     beta = 1 + (1-share) * historical_weight
+    weight = min(batch_votes, 200)
     if batch_votes:
-        weight = min(batch_votes, 200)
         alpha += batch_change / batch_votes * weight
         beta += (batch_votes-batch_change) / batch_votes * weight
-    return alpha, beta
+    return {"alpha": alpha, "beta": beta, "observed_pair_votes": total,
+            "historical_observed_votes": historical_total, "latest_verified_pair_votes": batch_votes,
+            "historical_effective_weight": historical_weight, "latest_effective_weight": weight,
+            "latest_raw_fraction": batch_votes/total if total else 0,
+            "latest_effective_weight_fraction": weight/(historical_weight+weight) if historical_weight+weight else 0,
+            "overlap_votes_reused": 0, "prior_alpha": 1, "prior_beta": 1,
+            "calibration": "hand-set power likelihood; effective weights are not independent sample sizes"}
 
 
 def beta_binomial_tail(n, alpha, beta, first):

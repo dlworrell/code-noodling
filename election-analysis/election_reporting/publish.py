@@ -88,8 +88,62 @@ def _report_status(analysis: ElectionAnalysis) -> str:
         f"Report mode: {analysis.report_mode}. Forecast target: {analysis.forecast_target}. "
         f"Information time: {analysis.information_time or 'unknown'}. "
         f"Election lifecycle: {analysis.election_status.lifecycle}. "
-        "Experimental and uncalibrated. A versioned evidence gate checks lifecycle, source freshness, coverage, provenance, contest identity, rules and remaining-pool basis. No held-out calibration has validated predictive accuracy."
+        "Experimental and uncalibrated. A versioned evidence gate checks lifecycle, source freshness, coverage, provenance, contest identity, rules and remaining-pool basis. No held-out calibration has validated predictive accuracy. "
+        + _source_coverage_text(analysis)
     )
+
+
+def _source_coverage_text(analysis: ElectionAnalysis) -> str:
+    facts = [r.evidence.get("source", {}) for r in analysis.races]
+    publications = sorted({f["source_published_at"] for f in facts if f.get("source_published_at")})
+    ages = [f["source_age_hours"] for f in facts if f.get("source_age_hours") is not None]
+    publication_range = f"{publications[0]} to {publications[-1]}" if publications else "unknown"
+    age_range = f"{min(ages):.1f} to {max(ages):.1f} hours at information time" if ages else "unknown"
+    missing_sources = analysis.coverage_summary.get("configured_sources_without_snapshots", [])
+    return (f"Source publication range: {publication_range}; known source-age range: {age_range}. "
+            f"Unknown source age: {sum(f.get('source_age_hours') is None for f in facts)} contest record(s); "
+            f"unknown count-update time: {sum(not f.get('count_updated_at') for f in facts)}; "
+            f"incomplete/unverified coverage: {sum(f.get('coverage_complete') is not True for f in facts)}. "
+            f"Configured sources without snapshots: {', '.join(missing_sources) or 'none'}. "
+            "Retrieval and report generation times do not advance a source's count clock.")
+
+
+def _source_context(race: RaceAnalysis) -> str:
+    source = race.evidence.get("source", {})
+    age = source.get("source_age_hours")
+    return (f"Source published {source.get('source_published_at') or 'unknown'}; "
+            f"count updated {source.get('count_updated_at') or 'unknown'}; "
+            f"age {f'{age:.1f} hours' if age is not None else 'unknown'}; "
+            f"coverage {'complete' if source.get('coverage_complete') is True else 'incomplete/unverified'}; "
+            f"data {race.data_status}; identity {'reviewed' if race.evidence.get('identity', {}).get('reviewed') else 'unreviewed'}; "
+            f"office/election rule {'supported' if race.evidence.get('rule', {}).get('supported') else 'unreviewed/unsupported'}; "
+            f"provenance {source.get('source_url') or 'unknown'}; "
+            f"input SHA-256 {source.get('snapshot_sha256') or 'unknown'}.")
+
+
+def _pool_context(decision: DecisionAnalysis) -> str:
+    pool = decision.remaining_pool
+    counts = (f"low/base/high {pool['low']:,}/{pool['base']:,}/{pool['high']:,} ballots"
+              if pool.get("kind") == "scenario" and all(k in pool for k in ("low", "base", "high"))
+              else f"{pool['ballots']:,} {pool.get('ballot_unit', 'ballots')}" if pool.get("ballots") is not None
+              else "unknown count")
+    sensitivity = decision.numerical_evidence.get("remaining_pool_sensitivity", [])
+    conditional = "; ".join(f"R={r['remaining_ballots']:,}: {_probability_label(r['conditional_probability'])}" for r in sensitivity)
+    return (f"Remaining pool: {pool.get('status', 'unknown')}, {counts}, as of {pool.get('as_of') or 'unknown'}. "
+            f"Jurisdictions: {', '.join(pool.get('jurisdictions', [])) or 'unknown'}; "
+            f"ballot categories: {json.dumps(pool['categories'], sort_keys=True) if pool.get('categories') else pool.get('category_basis') or 'unreviewed'}. "
+            f"Basis: {pool.get('basis') or pool.get('authority_url') or pool.get('reason') or 'unknown'}. "
+            f"Contest/pair participation: {pool.get('contest_fraction', 'unknown')}/{pool.get('pair_fraction', 'unknown')}; "
+            f"{pool.get('participation_basis') or 'mapping unreviewed'}. "
+            + (f"Acceptance/cure assumption: {pool['acceptance_assumption']}. " if pool.get('acceptance_assumption') else "")
+            + (f"Sensitivity: {conditional}. " if conditional else "")
+            + "Sensitivity is conditional and uncalibrated; it is not a confidence interval.")
+
+
+def _event_label(decision: DecisionAnalysis) -> str:
+    if decision.event.get("scope") == "selected_pair":
+        return f"Selected pair: {decision.change_side} strictly overtakes {decision.current_side}"
+    return str(decision.event.get("definition") or decision.event.get("scope") or "Unresolved event")
 
 
 def _status_text(status: ResultStatus) -> str:
@@ -351,7 +405,7 @@ def _at_glance_table(analysis: ElectionAnalysis) -> str:
             )
             row = (
                 f"| Not estimable | Unvalidated | {_table_text(race.contest)} | "
-                f"No supported modeled boundary | — | {scope} |"
+                f"No supported modeled boundary | — | {scope} | {_table_text(_source_context(race))} |"
             )
             rows.append((order, row))
         for decision in race.decisions:
@@ -367,7 +421,7 @@ def _at_glance_table(analysis: ElectionAnalysis) -> str:
                 f"{decision.risk.reliability_score}/100 "
                 f"{decision.risk.reliability_grade}"
             )
-            boundary = decision.kind.replace("_", " ").title()
+            boundary = _event_label(decision)
             current = (
                 f"{decision.current_side} +{decision.margin:,} over "
                 f"{decision.change_side}"
@@ -376,13 +430,14 @@ def _at_glance_table(analysis: ElectionAnalysis) -> str:
             row = (
                 f"| {_probability_label(probability)} | {reliability} | "
                 f"{_table_text(race.contest)} | {_table_text(boundary)} | "
-                f"{_table_text(current)} | {scope} |"
+                f"{_table_text(current)} | {scope} | "
+                f"{_table_text(_source_context(race) + ' ' + _pool_context(decision))} |"
             )
             rows.append((order, row))
     rows.sort(key=lambda item: item[0])
     header = [
-        "| Experimental conditional probability (uncalibrated) | Unvalidated rubric | Race | Selected boundary | Current margin | Scope |",
-        "| ---: | --- | --- | --- | --- | --- |",
+        "| Experimental conditional probability (uncalibrated) | Unvalidated rubric | Race | Selected boundary | Current margin | Scope | Evidence basis |",
+        "| ---: | --- | --- | --- | --- | --- | --- |",
     ]
     return "\n".join(header + [row for _order, row in rows])
 
@@ -415,7 +470,7 @@ def _facebook_decision_item(
     race: RaceAnalysis,
     decision: DecisionAnalysis,
 ) -> str:
-    boundary = decision.kind.replace("_", " ").title()
+    boundary = _event_label(decision)
     current_state = decision.current_state
     if decision.kind in {"winner", "top_two_cutoff", "top_four_cutoff"}:
         if decision.margin == 0:
@@ -435,7 +490,8 @@ def _facebook_decision_item(
         f"Experimental, uncalibrated conditional probability: "
         f"{_probability_label(decision.risk.change_probability)}. "
         f"Unvalidated evidence rubric: {decision.risk.reliability_score}/100 "
-        f"({decision.risk.reliability_grade}). Event scope: {decision.event.get('scope', 'unresolved')}; selected boundary only, uncalibrated."
+        f"({decision.risk.reliability_grade}). Event scope: {decision.event.get('scope', 'unresolved')}; selected boundary only, uncalibrated.\n"
+        f"  {_source_context(race)}\n  {_pool_context(decision)}"
     )
 
 
@@ -470,7 +526,7 @@ def facebook_summary(analysis: ElectionAnalysis, report_url: str = PUBLIC_REPORT
             "no numerical risk ranking is published.", "", "DESCRIPTIVE MARGINS WITH DATED STATUS EVIDENCE",
         ]
         for race, decision in boundaries:
-            lines.extend([f"• {race.contest}: {decision.current_state}", _status_text(race.result_status)])
+            lines.extend([f"• {race.contest}: {decision.current_state}", _status_text(race.result_status), _source_context(race)])
         lines += ["", "WITHHOLDING REASONS"]
         reasons = Counter(race.forecast_reason for race in controlling_races if race.decisions)
         lines.extend(f"• {count} contest(s): {reason}" for reason, count in sorted(reasons.items()))
@@ -663,6 +719,7 @@ def _race_nodes(race: RaceAnalysis, index: int) -> list[dict[str, object]]:
         + ". Coverage complete: " + str(race.evidence.get("source", {}).get("coverage_complete"))
         + "; geography: " + str(race.evidence.get("geography_comparison", {}).get("status"))
         + "; geographic qualification: " + str(race.evidence.get("source", {}).get("geography", {}).get("label", "reviewed aliases required"))
+        + ("; geography details: " + json.dumps(race.evidence["source"]["geography"], sort_keys=True) if race.evidence.get("source", {}).get("geography") else "")
         + "; remaining pool: " + str(race.evidence.get("remaining_pool", {}).get("status"))
         + "; rule supported: " + str(race.evidence.get("rule", {}).get("supported"))
         + "; calibration: unvalidated; evidence rubric: unvalidated heuristic."
