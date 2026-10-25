@@ -211,19 +211,39 @@ class GitHub:
     def commit(self, sha: str) -> dict:
         return self.api("GET", f"repos/{self.repository}/git/commits/{sha}")
 
-    def point_branch(self, branch: str, sha: str, exists: bool) -> None:
+    def point_branch(self, branch: str, sha: str, exists: bool, expected_head: str | None = None) -> None:
+        metadata = self.api("GET", f"repos/{self.repository}")
+        if branch == metadata["default_branch"]:
+            raise PublishError("refusing to update the default branch")
         if exists:
-            self.api(
-                "PATCH",
-                f"repos/{self.repository}/git/refs/heads/{branch}",
-                {"sha": sha, "force": True},
-            )
+            if not expected_head:
+                raise PublishError("an observed head is required for a branch reset")
+            request = {
+                "query": "mutation($input:UpdateRefsInput!){updateRefs(input:$input){clientMutationId}}",
+                "variables": {"input": {
+                    "repositoryId": metadata["node_id"],
+                    "refUpdates": [{"name": f"refs/heads/{branch}", "beforeOid": expected_head,
+                                    "afterOid": sha, "force": True}],
+                }},
+            }
+            result = self.api("POST", "graphql", request)
+            if not isinstance(result, dict) or result.get("errors"):
+                raise PublishError("leased automation-branch reset failed")
         else:
             self.api(
                 "POST",
                 f"repos/{self.repository}/git/refs",
                 {"ref": f"refs/heads/{branch}", "sha": sha},
             )
+
+    def require_verified_commit(self, sha: str, parent: str, tree: str) -> None:
+        observed = self.commit(sha)
+        verification = observed.get("verification", {})
+        if (observed.get("sha") != sha or verification.get("verified") is not True
+                or verification.get("reason") != "valid"
+                or observed.get("tree", {}).get("sha") != tree
+                or [item.get("sha") for item in observed.get("parents", [])] != [parent]):
+            raise PublishError(f"GitHub did not verify the exact report commit {sha}")
 
     def create_commit(self, request: dict) -> dict:
         data = self.api("POST", "graphql", request)
@@ -306,6 +326,10 @@ def publish(
     summary: str = DEFAULT_SUMMARY,
     log: Callable[[str], None] = print,
 ) -> str | None:
+    if os.environ.get("GITHUB_EVENT_NAME") == "pull_request_target":
+        raise PublishError("refusing publishing from pull_request_target")
+    if branch == base:
+        raise PublishError("the automation branch must differ from the base branch")
     changes, tree = detect_changes(repo_root, report_path)
     if changes.empty:
         log("Reports are already current; nothing to publish.")
@@ -317,11 +341,15 @@ def publish(
     if head is not None:
         current = github.commit(head)
         parents = [p["sha"] for p in current.get("parents", [])]
-        if parents == [base_sha] and current["tree"]["sha"] == tree:
+        verification = current.get("verification", {})
+        if (parents == [base_sha] and current["tree"]["sha"] == tree
+                and current.get("sha") == head
+                and verification.get("verified") is True
+                and verification.get("reason") == "valid"):
             log(f"{branch} already holds these reports on top of {base_sha}.")
             return github.upsert_pull_request(branch, base, title, body)
 
-    github.point_branch(branch, base_sha, exists=head is not None)
+    github.point_branch(branch, base_sha, exists=head is not None, expected_head=head)
     commit_input = build_commit_input(
         repository=github.repository,
         branch=branch,
@@ -332,6 +360,7 @@ def publish(
         read_bytes=lambda path: (repo_root / path).read_bytes(),
     )
     commit = github.create_commit(build_graphql_request(commit_input))
+    github.require_verified_commit(commit["oid"], base_sha, tree)
     log(f"Created verified commit {commit['oid']} on {branch}.")
     url = github.upsert_pull_request(branch, base, title, body)
     log(f"Pull request: {url}")

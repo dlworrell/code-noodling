@@ -11,6 +11,7 @@ import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from election_reporting.ci.publish_reports import (
     CREATE_COMMIT_MUTATION,
@@ -45,6 +46,8 @@ class FakeGh:
         if key not in self.responses:
             return subprocess.CompletedProcess(args, 1, b"", f"HTTP 404 {key}".encode())
         body = self.responses[key]
+        if callable(body):
+            body = body(payload)
         if isinstance(body, Exception):
             return subprocess.CompletedProcess(args, 1, b"", str(body).encode())
         out = b"" if body is None else json.dumps(body).encode()
@@ -160,6 +163,14 @@ class PublishFlowTests(unittest.TestCase):
         (self.root / "README.md").write_text("unrelated local edit\n")
 
     def run_publish(self, fake: FakeGh):
+        # Successful API fixtures include the separate, observed signature evidence.
+        _, tree = detect_changes(self.root, "election-analysis/reports")
+        fake.responses.setdefault(("GET", f"repos/{REPO}"),
+                                  {"node_id": "REPO", "default_branch": "main"})
+        fake.responses.setdefault(("GET", f"repos/{REPO}/git/commits/{'c' * 40}"), {
+            "sha": "c" * 40, "tree": {"sha": tree}, "parents": [{"sha": self.base_sha}],
+            "verification": {"verified": True, "reason": "valid"},
+        })
         return publish(
             github=GitHub(REPO, runner=fake),
             repo_root=self.root,
@@ -208,16 +219,18 @@ class PublishFlowTests(unittest.TestCase):
             fake.endpoints(),
             [
                 ("GET", f"repos/{REPO}/git/matching-refs/heads/{BRANCH}"),
+                ("GET", f"repos/{REPO}"),
                 ("POST", f"repos/{REPO}/git/refs"),
                 ("POST", "graphql"),
+                ("GET", f"repos/{REPO}/git/commits/{'c' * 40}"),
                 ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}&base=main"),
                 ("POST", f"repos/{REPO}/pulls"),
             ],
         )
         self.assertEqual(
-            fake.calls[1][2], {"ref": f"refs/heads/{BRANCH}", "sha": self.base_sha}
+            fake.calls[2][2], {"ref": f"refs/heads/{BRANCH}", "sha": self.base_sha}
         )
-        commit_input = fake.calls[2][2]["variables"]["input"]
+        commit_input = fake.calls[3][2]["variables"]["input"]
         self.assertEqual(commit_input["expectedHeadOid"], self.base_sha)
         files = commit_input["fileChanges"]
         self.assertEqual(
@@ -226,7 +239,7 @@ class PublishFlowTests(unittest.TestCase):
         )
         self.assertEqual(base64.b64decode(files["additions"][1]["contents"]), b"\x00\xff\x10")
         self.assertEqual(files["deletions"], [{"path": "election-analysis/reports/edt/old.md"}])
-        pr = fake.calls[4][2]
+        pr = fake.calls[6][2]
         self.assertEqual((pr["head"], pr["base"]), (BRANCH, "main"))
         # Nothing ever targets the base branch ref.
         for method, endpoint, _ in fake.calls:
@@ -255,7 +268,10 @@ class PublishFlowTests(unittest.TestCase):
             }
         )
         self.assertEqual(self.run_publish(fake), "https://pr/7")
-        self.assertEqual(fake.calls[2][2], {"sha": self.base_sha, "force": True})
+        lease = next(payload["variables"]["input"] for _, _, payload in fake.calls
+                     if payload and "UpdateRefsInput" in payload.get("query", ""))
+        self.assertEqual(lease["refUpdates"], [{"name": f"refs/heads/{BRANCH}",
+                         "beforeOid": old_head, "afterOid": self.base_sha, "force": True}])
         self.assertNotIn(("POST", f"repos/{REPO}/pulls"), fake.endpoints())
 
     def test_identical_branch_content_skips_commit(self) -> None:
@@ -268,8 +284,9 @@ class PublishFlowTests(unittest.TestCase):
                     {"ref": f"refs/heads/{BRANCH}", "object": {"sha": head}}
                 ],
                 ("GET", f"repos/{REPO}/git/commits/{head}"): {
-                    "tree": {"sha": tree},
+                    "sha": head, "tree": {"sha": tree},
                     "parents": [{"sha": self.base_sha}],
+                    "verification": {"verified": True, "reason": "valid"},
                 },
                 ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}&base=main"): [
                     {"number": 7, "html_url": "https://pr/7"}
@@ -309,6 +326,80 @@ class PublishFlowTests(unittest.TestCase):
         )
         with self.assertRaises(PublishError):
             self.run_publish(fake)
+
+
+    def test_unverified_new_commit_never_opens_a_pr(self):
+        self.regenerate()
+        _, tree = detect_changes(self.root, "election-analysis/reports")
+        for verification in ({}, {"verified": False, "reason": "unsigned"},
+                             {"verified": True, "reason": "unknown_key"},
+                             {"verified": 1, "reason": "valid"}):
+            fake = FakeGh({
+                ("GET", f"repos/{REPO}/git/matching-refs/heads/{BRANCH}"): [],
+                ("POST", f"repos/{REPO}/git/refs"): {},
+                ("POST", "graphql"): {"data": {"createCommitOnBranch": {
+                    "commit": {"oid": "c"*40, "url": "u"}}}},
+                ("GET", f"repos/{REPO}/git/commits/{'c'*40}"): {
+                    "sha": "c"*40, "tree": {"sha": tree},
+                    "parents": [{"sha": self.base_sha}], "verification": verification},
+            })
+            with self.subTest(verification=verification), self.assertRaisesRegex(PublishError, "did not verify"):
+                self.run_publish(fake)
+            self.assertFalse(any("/pulls" in endpoint for _, endpoint, _ in fake.calls))
+
+    def test_unsigned_identical_content_is_replaced(self):
+        self.regenerate()
+        _, tree = detect_changes(self.root, "election-analysis/reports")
+        old = "e"*40
+        fake = FakeGh({
+            ("GET", f"repos/{REPO}/git/matching-refs/heads/{BRANCH}"):
+                [{"ref": f"refs/heads/{BRANCH}", "object": {"sha": old}}],
+            ("GET", f"repos/{REPO}/git/commits/{old}"): {
+                "sha": old, "tree": {"sha": tree}, "parents": [{"sha": self.base_sha}],
+                "verification": {"verified": False, "reason": "unsigned"}},
+            ("POST", "graphql"): {"data": {"updateRefs": {"clientMutationId": None},
+                "createCommitOnBranch": {"commit": {"oid": "c"*40, "url": "u"}}}},
+            ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}&base=main"):
+                [{"number": 7, "html_url": "https://pr/7"}],
+            ("PATCH", f"repos/{REPO}/pulls/7"): {},
+        })
+        self.assertEqual(self.run_publish(fake), "https://pr/7")
+        mutations = [p["query"] for _, e, p in fake.calls if e == "graphql"]
+        self.assertTrue(any("UpdateRefsInput" in q for q in mutations))
+        self.assertTrue(any("CreateCommitOnBranchInput" in q for q in mutations))
+
+    def test_concurrent_branch_update_aborts_before_new_commit(self):
+        self.regenerate()
+        old = "e"*40
+        fake = FakeGh({
+            ("GET", f"repos/{REPO}/git/matching-refs/heads/{BRANCH}"):
+                [{"ref": f"refs/heads/{BRANCH}", "object": {"sha": old}}],
+            ("GET", f"repos/{REPO}/git/commits/{old}"): {"tree": {"sha": "0"*40}, "parents": []},
+            ("POST", "graphql"): {"errors": [{"message": "beforeOid mismatch"}]},
+        })
+        with self.assertRaisesRegex(PublishError, "leased"):
+            self.run_publish(fake)
+        calls = [p for _, e, p in fake.calls if e == "graphql"]
+        self.assertEqual(len(calls), 1)
+        self.assertIn("UpdateRefsInput", calls[0]["query"])
+
+    def test_verification_binds_tree_parent_and_identity(self):
+        oid = "c"*40
+        good = {"sha": oid, "tree": {"sha": "d"*40}, "parents": [{"sha": self.base_sha}],
+                "verification": {"verified": True, "reason": "valid"}}
+        for field, value in (("sha", "e"*40), ("tree", {"sha": "e"*40}), ("parents", [])):
+            observed = {**good, field: value}
+            fake = FakeGh({("GET", f"repos/{REPO}/git/commits/{oid}"): observed})
+            with self.subTest(field=field), self.assertRaises(PublishError):
+                GitHub(REPO, runner=fake).require_verified_commit(oid, self.base_sha, "d"*40)
+
+    def test_default_branch_and_pull_request_target_fail_closed(self):
+        fake = FakeGh({("GET", f"repos/{REPO}"): {"node_id": "REPO", "default_branch": "main"}})
+        with self.assertRaisesRegex(PublishError, "default branch"):
+            GitHub(REPO, runner=fake).point_branch("main", self.base_sha, True, self.base_sha)
+        with mock.patch.dict("os.environ", {"GITHUB_EVENT_NAME": "pull_request_target"}):
+            with self.assertRaisesRegex(PublishError, "pull_request_target"):
+                self.run_publish(FakeGh({}))
 
 
 if __name__ == "__main__":
