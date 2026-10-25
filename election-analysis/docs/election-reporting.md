@@ -20,8 +20,7 @@ The Engineering Documents Toolkit (EDT) validates that document and publishes
 Markdown and HTML under `election-analysis/reports/<state>/<election day>/`. The same build also writes a compact
 plain-text summary that can be pasted directly into Facebook.
 
-Each modeled boundary has a conditional statistical change probability and a separate
-0–100 reliability score. The report begins with a probability-sorted table so close
+Each supported selected boundary can have an **experimental, uncalibrated conditional scenario probability** and a separate **unvalidated** 0–100 evidence rubric. The report begins with a probability-sorted table so close
 races and weak evidence can both be found quickly.
 
 The software is experimental and uncalibrated. EDT checks document structure and
@@ -53,13 +52,14 @@ states withhold the calculation, retain descriptive margins and explain why.
 Different lifecycles/stages/rounds/result versions are never subtracted as a new
 batch. Every original version remains visible in JSON input lineage.
 
-Analysis JSON is now schema 3. Consumers must handle null probability, pool,
-required-share and batch fields and read `forecast_eligibility.reason`,
-`result_status`, `report_mode`, `forecast_target` and `information_time`.
-`forecast_eligibility.scope` explicitly limits this gate to lifecycle/stage;
-source freshness, identity, completeness and calibration have separate open
-audit issues. A zero evidence score accompanies withholding; it is not a low-risk
-prediction. Markdown, HTML and Facebook summaries use the same status contract.
+Analysis JSON is schema 4; config schema 3 adds the reviewed `[audit]` contract
+in [ADR-004](engineering/ADR-004-scientific-evidence-contract.md). Read per-contest
+`evidence`, `scientific_eligibility`, `data_status`, canonical identity, source
+publication/count-update/retrieval times and generated time separately. Filename
+labels with unknown timezones never establish freshness. The gate supports only
+experimental scenarios; `validated_forecast_eligible` remains false until real
+held-out evidence and independent review support promotion. Consumers must retain
+null probability/pool fields and the named withholding reasons.
 
 The historical Washington primary summary supersedes the earlier prospective
 publication. The original can be reviewed at audited revision
@@ -306,10 +306,11 @@ preserving the larger reported count when detailed tallies are incomplete. Adjus
 denominators are disclosed in JSON and beside the affected race in human reports. The
 reader limits the workbook's total uncompressed size to 50 MiB before parsing.
 
-Canonical keys reconcile the export naming differences for U.S. House districts,
-state legislative positions, and Supreme Court positions. This is what lets a
-higher-priority statewide total replace the matching King County slice while retaining
-county-only races.
+Normalized names are search labels, not authority to merge source records.
+Only an explicit election/jurisdiction/office/source-ID/name crosswalk establishes
+a canonical contest and a complete controlling representation. County slices and
+unreviewed records remain separate. Area joins require reviewed office/ID/county
+aliases; generic names and reused local IDs never authorize a join.
 
 ## Decision rules
 
@@ -336,11 +337,15 @@ The analyzer deliberately separates the decision boundary from the displayed ran
   Alaska elections use it:
   - `top_four` (Alaska primaries) models the fourth-versus-fifth cutoff, because the
     top four candidates advance to the general election.
-  - `rcv` (Alaska general elections) evaluates whether the first-choice leader is
-    above 50 percent. Without a first-choice majority the race is flagged: later
-    ranked-choice rounds decide it, the first-choice leader is not necessarily the
-    winner, and Alaska tabulates rounds only after the final count on the 15th day.
-    Round-by-round tabulation from cast vote records is not modeled yet.
+  - `rcv` (Alaska general elections) reports a raw-first-ranking diagnostic
+    without a winner or stopping-rule claim. Maine governing scope follows office
+    and election type, regardless of the webpage section. Anonymous patterns can
+    reproduce final allocation to **supplied official finalists**, conserving all
+    six Maine CD2 exports; this is not an independent eligibility/elimination engine.
+
+Inferred/default rules are descriptive. A numeric scenario requires a reviewed
+`audit.rules` record with election/office scope, authority and supported passage
+requirements. Unsupported supermajority/quorum rules withhold calculations.
 
 Use `[[contest_rules]]` in `election.toml` to override a contest with `winner`,
 `top_two`, `top_four`, `rcv`, `wa_judicial`, `automatic`, or `ignore` when the
@@ -348,34 +353,19 @@ inference is not correct.
 
 ## Remaining-vote calculation
 
-For source-level reported ballots \(B_s\), configured expected final ballots \(F_s\),
-and current ballots in contest \(B_c\), the estimated remaining contest ballots are
+`expected_final_ballots` is retained for legacy description and never enables a
+forecast. The reviewed `audit.remaining_pools` entry requires a timezone-aware
+`as_of`, compatible information/source times, exact jurisdiction/category coverage,
+and either an official authority/count (including an explicit zero) or ordered
+`low/base/high` sensitivity scenarios with a documented basis. Nonzero counts also
+require explicit contest and selected-pair participation fractions. No final-total
+backfill is permitted. Turnout overrun and missing counts do not prove zero.
 
-\[
-R_c = \operatorname{round}\left[B_c\left(\frac{F_s}{B_s}-1\right)\right].
-\]
-
-For a two-side decision, the current participation rate of those sides scales \(R_c\)
-to an estimated remaining decision-vote pool \(R\). If the current margin is \(M\),
-the trailing side must receive approximately
-
-\[
-p_{\mathrm{required}} = \frac{1}{2} + \frac{M}{2R}
-\]
-
-of that remaining pool to reverse the boundary. The same algebra is applied to a
-50-percent majority boundary by grouping all nonleading choices together.
-
-`expected_final_ballots` must be accompanied by a documented basis and evidence score:
-
-- King County uses its [official 45 percent turnout forecast](https://kingcounty.gov/en/dept/elections/results/2026/august-primary-election)
-  and 1,454,559 registered voters, producing 654,552 expected final ballots with
-  forecast evidence 75/100.
-- Washington State uses the Secretary of State's [official 2022 primary turnout of
-  40.43 percent](https://www.sos.wa.gov/elections/data-research/election-data-and-maps/reports-data-and-statistics/voter-turnout-election)
-  applied to approximately 5.1 million current registered voters, producing 2,061,930
-  expected final ballots with forecast evidence 45/100. This is a historical proxy,
-  not an official 2026 turnout forecast.
+The mapped number of future decision votes is `round(ballots * contest_fraction *
+pair_fraction)` for a selected pair. Each low/base/high scenario is propagated
+through the probability calculation and labeled sensitivity, never a confidence
+interval. The exact strict-reversal threshold is `floor((M+R)/2)+1`; loss of a
+strict majority uses `ceil((M+R)/2)`. Ties remain unresolved.
 
 ## County and precinct results
 
@@ -391,57 +381,43 @@ leader for every controlling race) come from the latest county snapshot.
 | Reconciliation | County sums against the statewide totals and precinct sums against county totals, per contest and choice (labels compared without case). Differences are listed as data-quality findings and never adjusted. A county with county votes but no precinct rows is reported as missing precinct detail, not as a mismatch. |
 | County changes | Between the last two county snapshots: the counties that added the most ballots, and for the ten closest races the counties whose margin moved most. |
 | Precinct changes | The same between the last two precinct snapshots. |
-| Remaining ballots | For each close race, the county with the most remaining ballots declared in `[[remaining_ballots]]`. With margin \(m\) and \(R\) remaining ballots scaled to the county's share of ballots cast for the two sides, the trailing side needs \((m + R) / 2R\) of them; above 100% that county cannot change the outcome alone. The needed share is compared with the county's current split. |
+| Remaining ballots | Legacy date-only county counts remain descriptive and withhold numeric county scenarios until a reviewed publication/category/participation contract is supplied. |
 
 On the 2026 primary (certified data, Sep 11 2026), 974 county-versus-statewide and
 5,874 precinct-versus-county comparisons reconcile with no mismatches; the state's
 precinct sheet has no King County rows (151 contest-county pairs).
 
-## Statistical change probability
+## Statistical change probability and evidence rubric
 
-For the two sides of a decision boundary, let (q) be the change side's current share
-of their combined vote and (n) their combined observed votes. The model deliberately
-tempers the apparent sample size:
+`disjoint_tempered_beta_binomial_v2` uses preceding history capped at 300 effective
+observations and a separately weighted latest verified new-ballot batch capped at
+200. The latest batch is subtracted from the historical pool before weighting.
+Only explicitly classified nonnegative compatible new-ballot increments contribute
+as a new batch; corrections, transfers, recounts, unknown changes and duplicate
+bytes do not. These caps are hand-set and unvalidated.
 
-\[
-n_e = \min(n, 300), \qquad
-\alpha = 1 + qn_e, \qquad
-\beta = 1 + (1-q)n_e.
-\]
+Finite beta-binomial tails use a full-support normalized log recurrence through
+200,000 future decision votes. Larger calculations are withheld. The numerical
+policy is 1e-8 absolute / 1e-6 relative tolerance (relative floor 1e-10), checked
+against rational small-case and independent SciPy references including 5,000,
+5,001, skewed and 200,000-vote cases. Numerical accuracy is not calibration.
 
-When a comparable latest batch exists, its share contributes at most 200 additional
-effective observations. Given (R) estimated remaining decision votes, the predictive
-count follows a beta-binomial distribution. The implementation evaluates the tail
-past the exact flip threshold directly when no more than 5,000 decision votes remain.
-Larger tails use the distribution's mean and variance with a continuity-corrected
-normal approximation.
+Every probability names a selected pair or selected-leader majority event. It is
+not a full top-two set probability, an RCV outcome probability, or a joint chance
+that any boundary changes. Maximum boundary bands are triage only.
 
-The caps keep a large early count from producing false precision when later mail
-batches differ by geography or return timing. The probability is conditional on the
-remaining-ballot estimate and this exchangeability model; it is not an election call or
-a probability calibrated against historical race outcomes.
+The evidence rubric is an unvalidated heuristic, capped at 50, starting at half
+the configured source rubric with penalties for small/reconciled/partial pools.
+Repeated cumulative snapshots receive no independent-validation bonus. Explicit
+fields expose stage, source age, coverage, provenance, remaining-pool basis, rule
+support and calibration. Rubric grades are not correctness probabilities.
 
-## Reliability score
-
-Probability and evidence quality answer different questions. Reliability is computed
-independently as
-
-\[
-0.55F + 0.25H + 0.20S,
-\]
-
-where (F) is the configured forecast-evidence score, (H) is 25, 65, or 85 for one,
-two, or at least three compatible snapshots, and
-(S = \min(100, 20\log_{10}(n+1))). Reconciled ballot denominators subtract five
-points, noncontrolling county slices are capped at 25, and the overall score is capped
-at 85. Decision pools below 500 votes lose ten points; pools below 2,000 lose five.
-
-| Grade | Score | Meaning |
-| --- | ---: | --- |
-| High | 75–85 | Strong input support; model limitations still apply |
-| Moderate | 50–74 | Useful with material forecast or history uncertainty |
-| Low | 25–49 | Directional only |
-| Insufficient | 0–24 | Missing forecast or noncontrolling evidence |
+The prospective validation scaffold enforces frozen protocol/model lineage,
+pre-outcome input times, held-out election/contest groups, no tuning leakage and
+preregistered baselines. It reports group-weighted Brier/log loss, calibration bins
+and group bootstrap uncertainty when eligible inputs exist. No eligible real
+held-out series has been acquired; the 539-record 2024 replay is descriptive
+source ingestion and cannot establish forecast accuracy.
 
 ## Risk bands
 
