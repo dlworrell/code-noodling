@@ -136,8 +136,8 @@ def load_config(path: Path) -> ElectionConfig:
         raise ElectionReportError(f"invalid TOML in {path}: {exc}") from exc
 
     schema = raw.get("schema_version")
-    if type(schema) is not int or schema not in {1, 2}:
-        raise ElectionReportError("schema_version must be 1 or 2")
+    if type(schema) is not int or schema not in {1, 2, 3}:
+        raise ElectionReportError("schema_version must be 1, 2 or 3")
 
     election = raw.get("election")
     if not isinstance(election, dict):
@@ -250,6 +250,8 @@ def load_config(path: Path) -> ElectionConfig:
 
     areas = _areas(raw, base, {source.source_id for source in sources})
     remaining = _remaining_ballots(raw)
+    from .evidence import validate_contract
+    audit_contract = validate_contract(raw.get("audit", {}), source_ids)
 
     return ElectionConfig(
         title=title,
@@ -264,4 +266,6 @@ def load_config(path: Path) -> ElectionConfig:
         information_time=information_time,
         election_status=election_status,
         result_statuses=parse_status_records(raw.get("result_status", []), source_ids),
+        directory=base,
+        audit_contract=audit_contract,
     )

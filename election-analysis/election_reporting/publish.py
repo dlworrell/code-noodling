@@ -11,7 +11,8 @@ from collections import Counter
 from pathlib import Path
 
 from . import __version__
-from .analysis import FLIP_BANDS, risk_counts
+from .analysis import FLIP_BANDS, PROBABILITY_MODEL, risk_counts
+from .numerics import ERROR_POLICY
 from .model import DecisionAnalysis, ElectionAnalysis, ElectionReportError, RaceAnalysis, ResultStatus
 
 
@@ -34,6 +35,10 @@ def _decision_payload(decision: object) -> dict[str, object]:
     risk = decision.risk
     return {
         "kind": decision.kind,
+        "event": decision.event,
+        "remaining_pool": decision.remaining_pool,
+        "batch_evidence": decision.batch_evidence,
+        "numerical_evidence": decision.numerical_evidence,
         "current_state": decision.current_state,
         "current_side": decision.current_side,
         "change_side": decision.change_side,
@@ -83,8 +88,7 @@ def _report_status(analysis: ElectionAnalysis) -> str:
         f"Report mode: {analysis.report_mode}. Forecast target: {analysis.forecast_target}. "
         f"Information time: {analysis.information_time or 'unknown'}. "
         f"Election lifecycle: {analysis.election_status.lifecycle}. "
-        "Experimental and uncalibrated. Lifecycle/stage eligibility is only one prerequisite; "
-        "it does not validate source freshness, coverage, contest identity or predictive accuracy."
+        "Experimental and uncalibrated. A versioned evidence gate checks lifecycle, source freshness, coverage, provenance, contest identity, rules and remaining-pool basis. No held-out calibration has validated predictive accuracy."
     )
 
 
@@ -193,7 +197,7 @@ def _area_nodes(areas) -> list[dict[str, object]]:
             f"{title}s with the largest change, {changes['from']} to {changes['to']}", level=3,
         ))
         nodes.append(_node(f"areas-{level}-new-ballots", "paragraph", _area_table(
-            (title, "New ballots"),
+            (title, "Reported tally delta (classification unknown)"),
             [(item["area"], f"{item['new_ballots']:,}") for item in changes["largest_new_ballots"]],
         )))
         rows = []
@@ -203,7 +207,7 @@ def _area_nodes(areas) -> list[dict[str, object]]:
                              swing["area"], f"{swing['new_ballots']:,}", _signed(swing["margin_change"])))
         if rows:
             nodes.append(_node(f"areas-{level}-swings", "paragraph", _area_table(
-                ("Contest", "Decision", title, "New ballots", "Margin change"), rows,
+                ("Contest", "Decision", title, "Reported tally delta (classification unknown)", "Margin change"), rows,
             )))
     if areas.remaining:
         nodes.append(_node("areas-remaining-heading", "heading3",
@@ -222,7 +226,11 @@ def _area_nodes(areas) -> list[dict[str, object]]:
 
 def _base_payload(analysis: ElectionAnalysis) -> dict[str, object]:
     return {
-        "schema_version": 3,
+        "schema_version": 4,
+        "generated_at": analysis.generated_at,
+        "source_summary": analysis.source_summary,
+        "coverage_summary": analysis.coverage_summary,
+        "official_result_versions": list(analysis.official_versions),
         "tool_version": __version__,
         "title": analysis.title,
         "as_of": analysis.as_of,
@@ -232,24 +240,25 @@ def _base_payload(analysis: ElectionAnalysis) -> dict[str, object]:
         "election_status": _status_payload(analysis.election_status),
         "methodology": {
             "probability_status": (
-                "conditional tempered beta-binomial predictive probability; not an "
-                "election call"
+                "experimental, uncalibrated conditional selected-boundary scenario"
             ),
-            "probability_model": "tempered_beta_binomial_v1",
+            "probability_model": PROBABILITY_MODEL,
             "tail_evaluation": (
-                "exact through 5,000 remaining decision votes; moment-matched normal "
-                "approximation above 5,000"
+                "full-support normalized log recurrence; withhold above numerical budget"
             ),
+            "numerical_error_policy": ERROR_POLICY,
+            "likelihood": "preceding history excludes the separately weighted latest verified new-ballot batch",
+            "calibration": "none; caps and rubric are hand-set and unvalidated",
+            "overall_risk": "maximum selected-boundary triage band, not P(any outcome changes)",
             "effective_sample_caps": {
                 "cumulative_votes": 300,
                 "latest_batch_votes": 200,
             },
             "risk_bands": FLIP_BANDS,
             "remaining_votes": (
-                "contest ballots scaled proportionally from the configured "
-                "source-level expected final ballot count"
+                "contemporaneous official category counts or declared low/base/high sensitivity scenarios with explicit contest/pair participation; no final-total backfill"
             ),
-            "stage_policy": "ADR-003; unknown/completed/incompatible stages withhold forecasts",
+            "stage_policy": "ADR-003/004; versioned scientific evidence gate withholds unsupported calculations",
             "validation_status": "experimental_uncalibrated",
             "xlsx_ballot_denominator": (
                 "maximum of reported Ballots Cast and valid votes plus overvotes "
@@ -261,6 +270,8 @@ def _base_payload(analysis: ElectionAnalysis) -> dict[str, object]:
                 "source_id": snapshot.source_id,
                 "path": snapshot.path.as_posix(),
                 "timestamp": snapshot.timestamp.isoformat(timespec="minutes"),
+                "timestamp_interpretation": "legacy filename label; timezone may be unknown",
+                "source_evidence": snapshot.source_metadata,
                 "sha256": snapshot.sha256,
                 "contests": len(snapshot.contests),
                 "result_versions": [
@@ -273,6 +284,10 @@ def _base_payload(analysis: ElectionAnalysis) -> dict[str, object]:
         "races": [
             {
                 "contest_id": race.contest_id,
+                "canonical_id": race.canonical_id,
+                "data_status": race.data_status,
+                "evidence": race.evidence,
+                "scientific_eligibility": race.scientific_eligibility,
                 "contest": race.contest,
                 "contest_order": race.contest_order,
                 "source_id": race.source_id,
@@ -290,7 +305,7 @@ def _base_payload(analysis: ElectionAnalysis) -> dict[str, object]:
                 "result_status": _status_payload(race.result_status),
                 "forecast_eligibility": {
                     "eligible": race.forecast_eligible,
-                    "scope": "lifecycle_and_tabulation_stage_only",
+                    "scope": "experimental_scenario_scientific_gate_v1",
                     "reason": race.forecast_reason,
                 },
                 "excluded_history": list(race.excluded_history),
@@ -326,7 +341,7 @@ def _at_glance_table(analysis: ElectionAnalysis) -> str:
     rows: list[tuple[tuple[object, ...], str]] = []
     for race in analysis.races:
         if not race.decisions:
-            scope = "Controlling" if race.controlling else "County slice"
+            scope = "Controlling" if race.controlling else "Partial/unreviewed"
             order = (
                 not race.controlling,
                 True,
@@ -335,8 +350,8 @@ def _at_glance_table(analysis: ElectionAnalysis) -> str:
                 "not_applicable",
             )
             row = (
-                f"| Not applicable | N/A | {_table_text(race.contest)} | "
-                f"No modeled boundary | — | {scope} |"
+                f"| Not estimable | Unvalidated | {_table_text(race.contest)} | "
+                f"No supported modeled boundary | — | {scope} |"
             )
             rows.append((order, row))
         for decision in race.decisions:
@@ -357,7 +372,7 @@ def _at_glance_table(analysis: ElectionAnalysis) -> str:
                 f"{decision.current_side} +{decision.margin:,} over "
                 f"{decision.change_side}"
             )
-            scope = "Controlling" if race.controlling else "County slice"
+            scope = "Controlling" if race.controlling else "Partial/unreviewed"
             row = (
                 f"| {_probability_label(probability)} | {reliability} | "
                 f"{_table_text(race.contest)} | {_table_text(boundary)} | "
@@ -366,7 +381,7 @@ def _at_glance_table(analysis: ElectionAnalysis) -> str:
             rows.append((order, row))
     rows.sort(key=lambda item: item[0])
     header = [
-        "| Change probability | Reliability | Race | Boundary | Current margin | Scope |",
+        "| Experimental conditional probability (uncalibrated) | Unvalidated rubric | Race | Selected boundary | Current margin | Scope |",
         "| ---: | --- | --- | --- | --- | --- |",
     ]
     return "\n".join(header + [row for _order, row in rows])
@@ -417,10 +432,10 @@ def _facebook_decision_item(
     return (
         f"• {race.contest}\n"
         f"  {boundary}: {current_state} "
-        f"Modeled change probability: "
+        f"Experimental, uncalibrated conditional probability: "
         f"{_probability_label(decision.risk.change_probability)}. "
-        f"Reliability: {decision.risk.reliability_score}/100 "
-        f"({decision.risk.reliability_grade})."
+        f"Unvalidated evidence rubric: {decision.risk.reliability_score}/100 "
+        f"({decision.risk.reliability_grade}). Event scope: {decision.event.get('scope', 'unresolved')}; selected boundary only, uncalibrated."
     )
 
 
@@ -490,7 +505,7 @@ def facebook_summary(analysis: ElectionAnalysis, report_url: str = PUBLIC_REPORT
         "",
         analysis.title,
         _report_status(analysis),
-        f"Results snapshot: {analysis.as_of.replace('T', ' ')}",
+        f"Latest filename label: {analysis.as_of.replace('T', ' ')}; individual source times and coverage vary",
         "",
         (
             f"The analysis reviewed {len(analysis.races)} reported contests. "
@@ -543,7 +558,7 @@ def facebook_summary(analysis: ElectionAnalysis, report_url: str = PUBLIC_REPORT
                 "have no modeled change boundary."
             ),
             "",
-            "EVIDENCE RELIABILITY",
+            "UNVALIDATED EVIDENCE RUBRIC",
             "",
             (
                 f"High {reliability_counts.get('High', 0)}, "
@@ -552,8 +567,7 @@ def facebook_summary(analysis: ElectionAnalysis, report_url: str = PUBLIC_REPORT
                 f"Insufficient {reliability_counts.get('Insufficient', 0)}."
             ),
             (
-                "Reliability measures the strength of the available evidence. It is "
-                "not the probability that the current result is correct."
+                "This hand-set rubric is unvalidated and is not a correctness probability; repeated snapshots do not establish calibration."
             ),
         ]
     )
@@ -641,13 +655,25 @@ def _race_nodes(race: RaceAnalysis, index: int) -> list[dict[str, object]]:
             + ".",
         ),
     ]
+    nodes.append(_node(f"{prefix}-evidence", "paragraph",
+        "Data status: " + race.data_status + ". Source published: " + str(race.evidence.get("source", {}).get("source_published_at"))
+        + "; count updated: " + str(race.evidence.get("source", {}).get("count_updated_at"))
+        + "; retrieved: " + str(race.evidence.get("source", {}).get("retrieved_at"))
+        + "; source age hours: " + str(race.evidence.get("source", {}).get("source_age_hours"))
+        + ". Coverage complete: " + str(race.evidence.get("source", {}).get("coverage_complete"))
+        + "; geography: " + str(race.evidence.get("geography_comparison", {}).get("status"))
+        + "; geographic qualification: " + str(race.evidence.get("source", {}).get("geography", {}).get("label", "reviewed aliases required"))
+        + "; remaining pool: " + str(race.evidence.get("remaining_pool", {}).get("status"))
+        + "; rule supported: " + str(race.evidence.get("rule", {}).get("supported"))
+        + "; calibration: unvalidated; evidence rubric: unvalidated heuristic."
+        + " Findings: " + "; ".join(race.evidence.get("source", {}).get("coverage_findings", []))
+        + ("; headline/detail differences: " + json.dumps(race.evidence["geography_comparison"]["differences"],sort_keys=True) if race.evidence.get("geography_comparison", {}).get("differences") else "")))
     if race.excluded_history:
         nodes.append(_node(f"{prefix}-excluded-history", "paragraph",
                            "Excluded from comparable history: " + "; ".join(race.excluded_history) + "."))
     if not race.decisions:
         message = (
-            "No modeled decision boundary: the race is uncontested, ignored by "
-            "configuration, or has no more candidates than available top-two positions."
+            "No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change."
         )
         nodes.append(_node(f"{prefix}-no-decision", "paragraph", message))
         return nodes
@@ -661,6 +687,8 @@ def _race_nodes(race: RaceAnalysis, index: int) -> list[dict[str, object]]:
                 level=3,
             )
         )
+        nodes.append(_node(f"{decision_prefix}-event", "paragraph",
+            "Event: " + json.dumps(decision.event, sort_keys=True) + "; remaining-pool basis: " + json.dumps(decision.remaining_pool, sort_keys=True)))
         nodes.append(
             _node(
                 f"{decision_prefix}-state",
@@ -672,10 +700,10 @@ def _race_nodes(race: RaceAnalysis, index: int) -> list[dict[str, object]]:
             _node(
                 f"{decision_prefix}-risk",
                 "paragraph",
-                f"Modeled change probability: "
+                f"Experimental, uncalibrated conditional probability: "
                 f"{_probability_label(decision.risk.change_probability)}. "
-                f"Reliability: {decision.risk.reliability_score}/100 "
-                f"({decision.risk.reliability_grade}). Exposure band: "
+                f"Unvalidated evidence rubric: {decision.risk.reliability_score}/100 "
+                f"({decision.risk.reliability_grade}; not validated). Selected-boundary triage band: "
                 f"{_risk_label(decision.risk.level)}. {decision.risk.rationale}",
             )
         )
@@ -683,7 +711,7 @@ def _race_nodes(race: RaceAnalysis, index: int) -> list[dict[str, object]]:
             _node(
                 f"{decision_prefix}-reliability",
                 "paragraph",
-                f"Reliability basis: {decision.risk.reliability_rationale}",
+                f"Evidence rubric basis: {decision.risk.reliability_rationale}",
             )
         )
         if decision.risk.latest_batch_share is not None:
@@ -723,6 +751,7 @@ def build_edom(analysis: ElectionAnalysis) -> dict[str, object]:
             f"Latest input label {analysis.as_of}; {len(analysis.races)} contests reported. "
             "Individual source dates may be older; this label is not an authoritative current-count time.",
         ),
+        _node("source-coverage", "paragraph", "Generated: " + analysis.generated_at + "; mixed source vintages: " + json.dumps(analysis.source_summary, sort_keys=True) + "; coverage findings: " + json.dumps(analysis.coverage_summary, sort_keys=True)),
         _node("summary-heading", "heading2", "Summary", level=2),
         _node(
             "summary-counts",
@@ -746,9 +775,7 @@ def build_edom(analysis: ElectionAnalysis) -> dict[str, object]:
         _node(
             "at-glance-guide",
             "paragraph",
-            "Sorted by modeled change probability, with controlling results before "
-            "county-only slices. Reliability measures evidence quality, not the chance "
-            "that the current result is correct.",
+            "Experimental scenario numbers are conditional and uncalibrated. Unknown results are excluded from numeric rankings. Every event names its selected pair or majority boundary; a maximum boundary band is triage, not a joint probability that any election outcome changes.",
         ),
         _node("at-glance-table", "paragraph", _at_glance_table(analysis)),
         _node(
@@ -760,24 +787,17 @@ def build_edom(analysis: ElectionAnalysis) -> dict[str, object]:
         _node(
             "method-risk",
             "paragraph",
-            "Change probabilities use a tempered beta-binomial posterior predictive "
-            "model. Tails are exact through 5,000 remaining decision votes and use a "
-            "moment-matched normal approximation above that. Effective sample caps "
-            "prevent every counted ballot from being treated as an independent draw.",
+            "Experimental conditional probabilities use disjoint preceding history and a separately weighted verified new-ballot batch. Finite beta-binomial tails use normalized log recurrence and an explicit numerical error policy; oversized calculations are withheld. Hand-set sample caps are unvalidated modeling choices.",
         ),
         _node(
             "method-remaining",
             "paragraph",
-            "Remaining contest votes are estimated by scaling current contest ballots "
-            "to each source's configured expected final ballot count. Missing forecasts "
-            "produce an Unknown assessment.",
+            "Remaining pools require contemporaneous official category counts or declared low/base/high sensitivity scenarios, compatible dates and jurisdictions, and explicit contest/pair participation assumptions. Unknown pools remain unestimated; final totals and turnout overruns cannot establish zero outstanding.",
         ),
         _node(
             "method-reliability",
             "paragraph",
-            "Reliability is a 0–100 evidence score combining remaining-ballot forecast "
-            "quality, compatible snapshot history, and observed decision-vote volume. "
-            "Reconciled denominators reduce it; noncontrolling slices are capped at 25.",
+            "The optional 0–100 evidence rubric is a hand-set, unvalidated heuristic. Separate fields expose lifecycle, source age, coverage, provenance, rule support, remaining-pool basis and calibration. Snapshot count is not independent validation, and rubric grades are not correctness probabilities.",
         ),
         _node(
             "method-scope",
@@ -794,6 +814,8 @@ def build_edom(analysis: ElectionAnalysis) -> dict[str, object]:
             "overvotes, and undervotes. Any adjustment is disclosed on that race.",
         ),
     ]
+    if analysis.official_versions:
+        children.append(_node("official-versions", "paragraph", "Dated official result versions (raw, final and recount kept separate): " + json.dumps(analysis.official_versions, sort_keys=True)))
     if analysis.areas is not None:
         children.extend(_area_nodes(analysis.areas))
     children += [
