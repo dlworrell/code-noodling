@@ -87,9 +87,10 @@ workflows only choose triggers and call the scope's `ci/` scripts.
 | crypto-pipeline | [`crypto_pipeline/`](crypto_pipeline/) | [`crypto_pipeline/docs/engineering/`](crypto_pipeline/docs/engineering/) |
 | election-analysis | [`election-analysis/`](election-analysis/) | None needed: AES-SEC-001 is declared not applicable (no C or C++) |
 
-Everything else is the repository-level remainder until it is migrated. Until
-AEMS can scan scopes separately, the repository-wide AES-SEC-001 scan and
-ledger stay authoritative for every file.
+Everything else is the repository-level remainder until it is migrated.
+The pinned AEMS governance workflow scans crypto with its own profile and
+ledger, verifies the election scope remains non-native, and scans the remainder
+with declared scopes excluded. It retains the tracked-file coverage plan.
 
 ---
 

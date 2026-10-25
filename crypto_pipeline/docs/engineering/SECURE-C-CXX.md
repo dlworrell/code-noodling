@@ -48,11 +48,14 @@ In addition to the repository profile, code in this scope must:
 
 ## Transition
 
-AEMS does not yet scan governed project scopes separately (Catylist #24).
-Until it does, AES-SEC-001 requires the repository-wide scan and the
-repository-level ledger to remain authoritative for these files. This scope's
-ledger carries the same dispositions re-keyed to scope-relative paths, ready
-for the scope-rooted scan, and is supplementary until then.
+AEMS now scans this scope separately (Catylist #24). The scope ledger is
+active for `crypto_pipeline/` and uses scope-relative finding identities.
+The root ledger retains only the repository-level remainder. The reviewed
+path-only migration preserved all 22 existing dispositions: 19 here and 3 in
+the remainder, with no new approvals. The identity/count map is recorded in
+[`scope-ledger-rekey-20261025.json`](evidence/scope-ledger-rekey-20261025.json).
+The root governance workflow pins the AEMS engine and checks the scope,
+not-applicable election classification, and remainder separately.
 
 ## Waivers
 

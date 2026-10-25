@@ -18,7 +18,11 @@ HOSTED = re.compile(
     r"macos-(?:latest|14|15|15-intel|26))"
 )
 # Existing governance delegation; changes require review of the called workflow.
-REUSABLE = {"dlworrell/AEMS/.github/workflows/aes-sec-001-distributed.yml@main"}
+REUSABLE = {
+    "dlworrell/AEMS/.github/workflows/aes-sec-001-distributed.yml@main",
+    # Immutable scope engine; called workflow uses ubuntu-24.04.
+    "dlworrell/AEMS/.github/workflows/aes-sec-001-distributed.yml@4df3a37418536d97865c9774701d910eb6f11bdb",
+}
 
 
 def hosted(value: object) -> bool:

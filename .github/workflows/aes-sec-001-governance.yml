@@ -3,16 +3,66 @@ name: AES-SEC-001 Governance
 on:
   pull_request:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  governance:
-    uses: dlworrell/AEMS/.github/workflows/aes-sec-001-distributed.yml@main
+  coverage:
+    name: Scope coverage and applicability
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check out pinned AEMS coverage engine
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: dlworrell/AEMS
+          ref: 4df3a37418536d97865c9774701d910eb6f11bdb
+          path: .aems-scope-engine
+          persist-credentials: false
+      - name: Verify scope coverage and election applicability
+        run: |
+          mkdir -p build/aems/scope-coverage
+          python3 .aems-scope-engine/scripts/aems_scope_coverage.py . \
+            > build/aems/scope-coverage/coverage.json
+          python3 .aems-scope-engine/scripts/aes_sec_001_scan.py election-analysis \
+            --repo-name dlworrell/code-noodling --include-dangerous-primitives \
+            --format json > build/aems/scope-coverage/election.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('build/aems/scope-coverage/election.json').read_text())
+          assert not report['native_files'] and not report['build_surfaces'], 'Reassess AES-SEC-001 applicability'
+          assert not any(p.suffix in {'.cu', '.cuh'} for p in Path('election-analysis').rglob('*') if p.is_file()), 'Reassess CUDA applicability'
+          PY
+      - name: Retain scope coverage evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: aes-sec-001-scope-coverage-${{ github.run_id }}
+          path: build/aems/scope-coverage/
+          if-no-files-found: error
+  crypto:
+    name: Crypto scope
+    uses: dlworrell/AEMS/.github/workflows/aes-sec-001-distributed.yml@4df3a37418536d97865c9774701d910eb6f11bdb
     with:
+      scan_root: crypto_pipeline
+      evidence_name: crypto-pipeline
       include_dangerous_primitives: true
       strict: true
+      strict_review_ratchet: true
+  remainder:
+    name: Repository remainder
+    uses: dlworrell/AEMS/.github/workflows/aes-sec-001-distributed.yml@4df3a37418536d97865c9774701d910eb6f11bdb
+    with:
+      exclude_paths: |
+        crypto_pipeline
+        election-analysis
+      evidence_name: repository-remainder
+      include_dangerous_primitives: true
+      strict: true
+      strict_review_ratchet: true
