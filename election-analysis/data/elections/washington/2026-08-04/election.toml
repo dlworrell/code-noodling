@@ -203,6 +203,7 @@ area_aliases = [{ contest_id = "152", name = "Skykomish School District No. 404 
 [[audit.rules]]
 canonical_id = "wa:2026-primary:ld42-senator"
 rule = "top_two"
+office = "State Senator"
 positions = 2
 election_type = "primary"
 tie_policy = "unresolved"
@@ -211,6 +212,7 @@ authority_url = "https://www.sos.wa.gov/elections/data-research/election-data-an
 [[audit.rules]]
 canonical_id = "wa:2026-primary:king-assessor"
 rule = "top_two"
+office = "Assessor"
 positions = 2
 election_type = "primary"
 tie_policy = "unresolved"

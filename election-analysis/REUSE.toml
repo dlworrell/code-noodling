@@ -76,7 +76,7 @@ SPDX-License-Identifier = "LicenseRef-ME-SOS-PublicData"
 
 # Hash-bound audit regression data and independent numerical references.
 [[annotations]]
-path = ["tests/fixtures/maine-2024-cd2-manifest.json", "tests/fixtures/official-result-versions.json", "tests/fixtures/beta-binomial-oracles.json", "tests/fixtures/validation-protocol-v1.json"]
+path = ["tests/fixtures/maine-2024-cd2-manifest.json", "tests/fixtures/official-result-versions.json", "tests/fixtures/beta-binomial-oracles.json", "tests/fixtures/validation-protocol-v1.json", "tests/fixtures/king-archives-manifest.json"]
 SPDX-FileCopyrightText = "2026 Donovan Worrell"
 SPDX-License-Identifier = "Apache-2.0"
 
@@ -104,3 +104,8 @@ SPDX-License-Identifier = "LicenseRef-AK-DOE-PublicData"
 path = "tests/fixtures/maine-2024-cd2-patterns.json"
 SPDX-FileCopyrightText = "Maine Secretary of State"
 SPDX-License-Identifier = "LicenseRef-ME-SOS-PublicData"
+
+[[annotations]]
+path = "tests/fixtures/king-archives.zip"
+SPDX-FileCopyrightText = "King County Elections"
+SPDX-License-Identifier = "LicenseRef-KingCounty-PublicData"

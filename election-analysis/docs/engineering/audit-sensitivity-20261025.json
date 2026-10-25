@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "status": "diagnostic sensitivity; not calibration or a forecast",
+  "fixed_information_time": "2026-10-25T04:27:06+00:00",
+  "clock_qualification": "Post-event audit observation time; never claimed as an August pre-outcome forecast time. Each table holds the named historical count fixed.",
+  "original_revision": "99c03904a7258994bcbc25c2e73ede722d00c461",
+  "comparison_provenance": "Independent reconstruction of the statically inspected original formula, compared with rounded tables in the October 23 audit. Original program not executed.",
+  "inputs": [
+    {
+      "path": "input/king-county/2026-08-06-1600.csv",
+      "sha256": "9a1572cc9655d088f2d36656867755f5268d8464d045f5f45d32c21d1406ec35"
+    },
+    {
+      "path": "input/washington/2026-08-08-0018.csv",
+      "sha256": "18a0ff493c6b81339b615ff562961c6377b2aae83a45556c6fe0e0cf0266df03"
+    },
+    {
+      "path": "input/washington/2026-10-14-1100.csv",
+      "sha256": "bdd7591803dc9ff69614d09a342ff27be3faa2281b4757e8034a0c1503edf3c1"
+    }
+  ],
+  "assessor": {
+    "snapshot_label": "2026-08-06-1600",
+    "current": 73546,
+    "challenger": 72333,
+    "margin": 1213,
+    "source_ballots": 409531,
+    "pair_participation": 0.35620990840742217,
+    "participation_qualification": "Audited source-wide scaling and fixed observed pair share, not measured future participation.",
+    "rows": [
+      {
+        "assumed_final_source_ballots": 409531,
+        "hypothetical_remaining_pair_votes": 0,
+        "legacy_normal_probability": 0.0,
+        "stable_finite_tail_probability": 0.0,
+        "legacy_zero_row_is_not_official_zero": true
+      },
+      {
+        "assumed_final_source_ballots": 534500,
+        "hypothetical_remaining_pair_votes": 44515,
+        "legacy_normal_probability": 0.26880502545401724,
+        "stable_finite_tail_probability": 0.2691803763086047,
+        "legacy_zero_row_is_not_official_zero": false
+      },
+      {
+        "assumed_final_source_ballots": 654552,
+        "hypothetical_remaining_pair_votes": 87279,
+        "legacy_normal_probability": 0.3500265816426008,
+        "stable_finite_tail_probability": 0.35026265199712997,
+        "legacy_zero_row_is_not_official_zero": false
+      },
+      {
+        "assumed_final_source_ballots": 750000,
+        "hypothetical_remaining_pair_votes": 121278,
+        "legacy_normal_probability": 0.3754328699961728,
+        "stable_finite_tail_probability": 0.3756130960587073,
+        "legacy_zero_row_is_not_official_zero": false
+      }
+    ]
+  },
+  "ld42": {
+    "current": 13125,
+    "challenger": 13121,
+    "margin": 4,
+    "hypothetical_remaining_pair_votes": 2800,
+    "latest_pair_votes": 209,
+    "latest_pair_share": 0.5119617224880383,
+    "rows": [
+      {
+        "scenario": "cumulative only",
+        "latest_share": null,
+        "conditional_probability": 0.48725116842512495
+      },
+      {
+        "scenario": "latest share -2 percentage points",
+        "latest_share": 0.49196172248803827,
+        "conditional_probability": 0.43212014287728756
+      },
+      {
+        "scenario": "legacy overlapping components",
+        "latest_share": 0.5119617224880383,
+        "conditional_probability": 0.5628235201549648
+      },
+      {
+        "scenario": "latest share +2 percentage points",
+        "latest_share": 0.5319617224880383,
+        "conditional_probability": 0.686967715765824
+      }
+    ],
+    "alternative_constructions": [
+      {
+        "construction": "cumulative_only",
+        "alpha": 150.97713937361885,
+        "beta": 151.02286062638117,
+        "conditional_probability": 0.48725116842512495
+      },
+      {
+        "construction": "latest_only",
+        "alpha": 103.39234449760765,
+        "beta": 98.60765550239235,
+        "conditional_probability": 0.6184349007288307
+      },
+      {
+        "construction": "legacy_overlap",
+        "alpha": 253.36948387122652,
+        "beta": 248.63051612877354,
+        "conditional_probability": 0.5628235201549648
+      },
+      {
+        "construction": "disjoint_v2",
+        "alpha": 253.34049520621465,
+        "beta": 248.65950479378535,
+        "conditional_probability": 0.5618836207861305
+      },
+      {
+        "construction": "untempered_cumulative",
+        "alpha": 13122,
+        "beta": 13126,
+        "conditional_probability": 0.4611707881726117
+      }
+    ],
+    "disjoint_effective_weights": {
+      "alpha": 253.34049520621465,
+      "beta": 248.65950479378535,
+      "observed_pair_votes": 26246,
+      "historical_observed_votes": 26037,
+      "latest_verified_pair_votes": 209,
+      "historical_effective_weight": 300,
+      "latest_effective_weight": 200,
+      "latest_raw_fraction": 0.00796311818943839,
+      "latest_effective_weight_fraction": 0.4,
+      "overlap_votes_reused": 0,
+      "prior_alpha": 1,
+      "prior_beta": 1,
+      "calibration": "hand-set power likelihood; effective weights are not independent sample sizes"
+    }
+  },
+  "interpretation": "Neither table is a confidence interval. All assumptions are hypothetical, hand-set and unvalidated. Actual primary forecasts remain withheld because the count/recount completed and other evidence gates apply. No construction is selected by its fit to these examples."
+}

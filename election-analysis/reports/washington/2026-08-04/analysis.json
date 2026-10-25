@@ -1014,7 +1014,7 @@
     "tabulation_stage": "unknown"
   },
   "forecast_target": "none",
-  "generated_at": "2026-10-25T05:25:39+00:00",
+  "generated_at": "2026-10-25T06:04:33+00:00",
   "information_time": "2026-10-25T04:27:06+00:00",
   "inputs": [
     {
@@ -5887,11 +5887,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 67.65742640128624,
+            "beta": 234.34257359871376,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 54111,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 54111,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "James Etzkorn",
           "current_side": "Mary Silva",
@@ -6104,11 +6116,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 75.41020191285867,
+            "beta": 226.58979808714133,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 14115,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 14115,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "James Etzkorn",
           "current_side": "Mary Silva",
@@ -6302,11 +6326,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 90.3230178034871,
+            "beta": 211.67698219651288,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 97846,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 97846,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Tomas Scheel",
           "current_side": "Edwin H. Feller",
@@ -6504,11 +6540,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 75.75132180302894,
+            "beta": 226.24867819697107,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 22318,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 22318,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Gwen Kirkland",
           "current_side": "Nirav Sheth",
@@ -6727,11 +6775,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 95.39149721112038,
+            "beta": 206.60850278887963,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 113845,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 113845,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Brent Hennrich",
           "current_side": "Marie Gluesenkamp Perez",
@@ -6939,11 +6999,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 139.68876793666502,
+            "beta": 162.31123206333498,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 20210,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 20210,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Trinh Ha",
           "current_side": "Spencer Meline",
@@ -7172,11 +7244,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 99.32254406275102,
+            "beta": 202.67745593724896,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 63489,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 63489,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Jerrod Sessler",
           "current_side": "John Duresky",
@@ -7379,11 +7463,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 120.83931832014608,
+            "beta": 181.1606816798539,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 41075,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 41075,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Kshama Sawant",
           "current_side": "Doug Basler",
@@ -7617,11 +7713,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 140.48144028917002,
+            "beta": 161.51855971082998,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 71930,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 71930,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Nate Powell",
           "current_side": "Carmela Conroy",
@@ -7825,11 +7933,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 83.71511956317077,
+            "beta": 218.2848804368292,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 79665,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 79665,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Leon Lawson",
           "current_side": "Teresa Fox",
@@ -8028,11 +8148,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 79.32019721537446,
+            "beta": 222.67980278462554,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 28801,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 28801,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Gwen Kirkland",
           "current_side": "Nirav Sheth",
@@ -8372,11 +8504,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 145.927042138279,
+            "beta": 156.072957861721,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 58664,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 58664,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Trinh Ha",
           "current_side": "Spencer Meline",
@@ -8574,11 +8718,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 142.81073703366695,
+            "beta": 159.18926296633305,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 8792,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 8792,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Cliff Moon",
           "current_side": "Jenne Alderks",
@@ -8777,11 +8933,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 133.51576734407848,
+            "beta": 168.4842326559215,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 55653,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 55653,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Kshama Sawant",
           "current_side": "Doug Basler",
@@ -8989,11 +9157,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 75.15688867701108,
+            "beta": 226.84311132298893,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 65027,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 65027,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Alex Scheel",
           "current_side": "Chris D. Chung",
@@ -9327,11 +9507,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 53.952273156008296,
+            "beta": 248.0477268439917,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 15903,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 15903,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Aimee Warmerdam",
           "current_side": "Michelle Bennett",
@@ -9525,11 +9717,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 149.87193098871933,
+            "beta": 152.12806901128067,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 18084,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 18084,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Jenne Alderks",
           "current_side": "Cliff Moon",
@@ -9990,11 +10194,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 66.69375183338222,
+            "beta": 235.30624816661776,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 13636,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 13636,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Martin L Miller",
           "current_side": "Angela Taylor",
@@ -10187,11 +10403,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 139.53179090197443,
+            "beta": 162.46820909802554,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 11497,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 11497,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Christian Rombough",
           "current_side": "Ashley Fedan",
@@ -10380,11 +10608,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 45.2289625553617,
+            "beta": 256.7710374446383,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 14902,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 14902,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "John Kness",
           "current_side": "Tony Kiepe",
@@ -10709,11 +10949,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 145.74717067408451,
+            "beta": 156.25282932591549,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 26243,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 26243,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Pam Kohlmeier",
           "current_side": "Luc Jasmin III",
@@ -10911,11 +11163,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 115.12680756395994,
+            "beta": 186.87319243604003,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 17081,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 17081,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Debra Long",
           "current_side": "Trent Maier",
@@ -11240,11 +11504,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 86.89476370751628,
+            "beta": 215.10523629248374,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 23509,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 23509,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Bob Curtis",
           "current_side": "Rob Tupper",
@@ -11437,11 +11713,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 116.29794692038058,
+            "beta": 185.70205307961942,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 3994,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 3994,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Adam James",
           "current_side": "Mike Steele",
@@ -11635,11 +11923,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 56.280276816609,
+            "beta": 245.71972318339098,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 21675,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 21675,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Aimee Warmerdam",
           "current_side": "Michelle Bennett",
@@ -12114,11 +12414,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 129.0254777070064,
+            "beta": 172.9745222929936,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 16485,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 16485,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Isaiah Paine",
           "current_side": "Alan Nolan",
@@ -12311,11 +12623,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 148.8605650090864,
+            "beta": 153.13943499091357,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 18159,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 18159,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Aaron M. Croft",
           "current_side": "Julia Payne",
@@ -12513,11 +12837,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 72.93814432989691,
+            "beta": 229.0618556701031,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 14550,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 14550,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Brandon Ray Medina",
           "current_side": "Ronald L McCoy",
@@ -14037,11 +14373,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 141.1932658915899,
+            "beta": 160.8067341084101,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 19869,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 19869,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Carrie R. Kennedy",
           "current_side": "Tim Hazelo",
@@ -14366,11 +14714,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 134.340028118096,
+            "beta": 167.65997188190397,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 14937,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 14937,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Christian Rombough",
           "current_side": "Ashley Fedan",
@@ -15094,11 +15454,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 128.0248504371836,
+            "beta": 173.97514956281637,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 26076,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 26076,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Adam James",
           "current_side": "Maggie Adams",
@@ -15690,11 +16062,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 132.9080806178188,
+            "beta": 169.0919193821812,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 15927,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 15927,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Don Myers",
           "current_side": "Joshua Thompson",
@@ -15887,11 +16271,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 34.37535455404979,
+            "beta": 267.6246454459502,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 6346,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 6346,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "William Chichenoff",
           "current_side": "Chelsea Dimas",
@@ -16084,11 +16480,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 113.81650515786183,
+            "beta": 188.18349484213817,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 6398,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 6398,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Tony G Sandoval",
           "current_side": "Ezequiel Morfin",
@@ -16412,11 +16820,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 78.81854238968765,
+            "beta": 223.18145761031235,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 10085,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 10085,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Ira McBee",
           "current_side": "Jesse Salomon",
@@ -16756,11 +17176,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 120.13433253957137,
+            "beta": 181.86566746042863,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 7139,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 7139,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Lisa Rezac",
           "current_side": "Danica Noble",
@@ -16949,11 +17381,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 125.12731006160165,
+            "beta": 176.87268993839837,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 15584,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 15584,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Chase Foster",
           "current_side": "Liz Hallock",
@@ -17679,11 +18123,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 23.885549957644123,
+            "beta": 278.1144500423559,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 22429,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 22429,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Thomas Everett Haynes",
           "current_side": "Kevin Waters",
@@ -17876,11 +18332,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 143.73063918853646,
+            "beta": 158.26936081146354,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 6211,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 6211,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Darryl K. Jones",
           "current_side": "Chris Martinez",
@@ -18205,11 +18673,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 143.86432666197325,
+            "beta": 158.13567333802675,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 9943,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 9943,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Alex Andrade",
           "current_side": "Yuri Marinchik",
@@ -18938,11 +19418,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 49.457815317452784,
+            "beta": 252.5421846825472,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 21074,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 21074,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Jimi O'Hagan",
           "current_side": "Joel McEntire",
@@ -21000,11 +21492,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 88.86098386775544,
+            "beta": 213.13901613224456,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 20084,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 20084,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Kristin Lillegard",
           "current_side": "Lance Byrd",
@@ -21334,11 +21838,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 101.45739454514653,
+            "beta": 200.54260545485346,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 17709,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 17709,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Aiden I.R. Hamilton",
           "current_side": "Eric W. Pratt",
@@ -21674,11 +22190,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 145.7674418604651,
+            "beta": 156.2325581395349,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 26316,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 26316,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Patrick DePoe",
           "current_side": "Kaylee Kuehn",
@@ -21872,11 +22400,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 82.20552532440351,
+            "beta": 219.79447467559646,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 14334,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 14334,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Nick Oloo",
           "current_side": "David Berg",
@@ -22069,11 +22609,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 28.022096087573484,
+            "beta": 273.97790391242654,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 14799,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 14799,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Ren Fanony",
           "current_side": "Jenn Marie Strickling",
@@ -22402,11 +22954,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 11.696980991427505,
+            "beta": 290.3030190085725,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 8049,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 8049,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Alex Tsimerman",
           "current_side": "Elle Nguyen",
@@ -22595,11 +23159,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 121.79426946170862,
+            "beta": 180.20573053829136,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 28479,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 28479,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Natalie Bornfleth",
           "current_side": "Adison Richards",
@@ -22929,11 +23505,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 76.38421269117153,
+            "beta": 225.6157873088285,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 26743,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 26743,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Tedd Wetherbee",
           "current_side": "Renee Hernandez Greenfield",
@@ -23126,11 +23714,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 96.0646698434309,
+            "beta": 205.9353301565691,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 8814,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 8814,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Heather-Marie Wilson",
           "current_side": "Hannah Sabio-Howell",
@@ -24399,11 +24999,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 147.51162790697674,
+            "beta": 154.48837209302326,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 7396,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 7396,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Natasha Laitila",
           "current_side": "Patrick Stickney",
@@ -25263,11 +25875,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 132.07769423558898,
+            "beta": 169.92230576441105,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 10773,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 10773,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Chandler Torbett",
           "current_side": "John P Gibbons",
@@ -25996,11 +26620,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 98.35055252296631,
+            "beta": 203.64944747703368,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 22533,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 22533,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Ira McBee",
           "current_side": "Jesse Salomon",
@@ -26193,11 +26829,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 100.46402803545661,
+            "beta": 201.5359719645434,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 14553,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 14553,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Ron Davis",
           "current_side": "Will Dreher",
@@ -26401,11 +27049,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 132.6423589093215,
+            "beta": 169.3576410906785,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 17347,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 17347,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Lisa Rezac",
           "current_side": "Danica Noble",
@@ -26997,11 +27657,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 143.6609785361952,
+            "beta": 158.3390214638048,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 7501,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 7501,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Darryl K. Jones",
           "current_side": "Chris Martinez",
@@ -27326,11 +27998,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 143.52118996177498,
+            "beta": 158.47881003822502,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 12034,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 12034,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Alex Andrade",
           "current_side": "Yuri Marinchik",
@@ -27528,11 +28212,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 116.9182886876084,
+            "beta": 185.0817113123916,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 10378,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 10378,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Jasnoor Kaur Hans",
           "current_side": "Cobi Clark",
@@ -28778,11 +29474,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 120.65592502246758,
+            "beta": 181.3440749775324,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 23367,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 23367,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Shaena Garberich",
           "current_side": "Jim Pierson",
@@ -29116,11 +29824,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 149.75273342976027,
+            "beta": 152.24726657023973,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 145879,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 145879,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Christopher Roberts",
           "current_side": "Dominique M Scarimbolo",
@@ -29251,9 +29971,11 @@
           "authority_url": "https://www.sos.wa.gov/elections/data-research/election-data-and-maps/election-results-and-voters-pamphlets/2026-primary-election",
           "canonical_id": "wa:2026-primary:king-assessor",
           "election_type": "primary",
+          "office": "Assessor",
           "positions": 2,
-          "reason": "Reviewed binary-boundary rule",
+          "reason": "Reviewed office/election binary-boundary rule",
           "rule": "top_two",
+          "scope_matches": true,
           "supported": true,
           "tie_policy": "unresolved"
         },
@@ -29502,11 +30224,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 58.57086209428697,
+            "beta": 243.42913790571302,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 20427,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 20427,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Miriam Mboya",
           "current_side": "Toshiko Grace Hasegawa",
@@ -29826,11 +30560,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 76.44401058067766,
+            "beta": 225.55598941932234,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 15878,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 15878,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Mia Jacobson",
           "current_side": "Nick Duda",
@@ -30286,11 +31032,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 111.25527036196448,
+            "beta": 190.7447296380355,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 128217,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 128217,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Laura Christensen Colberg",
           "current_side": "Scott Edwards",
@@ -30341,9 +31099,21 @@
         },
         {
           "batch_evidence": {
+            "alpha": 101.02664645330532,
+            "beta": 200.9733535466947,
             "calibration": "unvalidated hand-set caps",
             "classification": "unknown_or_not_new",
-            "likelihood": "disjoint_history_and_latest_v2"
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 386543,
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 386543,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "all other choices",
           "current_side": "Colleen Melody",
@@ -30668,11 +31438,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 122.08744668713156,
+            "beta": 179.91255331286843,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 220866,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 220866,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "David Stevens",
           "current_side": "Jaime Michelle Hawk",
@@ -30723,9 +31505,21 @@
         },
         {
           "batch_evidence": {
+            "alpha": 128.20460362039339,
+            "beta": 173.7953963796066,
             "calibration": "unvalidated hand-set caps",
             "classification": "unknown_or_not_new",
-            "likelihood": "disjoint_history_and_latest_v2"
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 385262,
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 385262,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Mike Diaz",
           "current_side": "no majority",
@@ -31191,11 +31985,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 144.40732003717207,
+            "beta": 157.59267996282793,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 167868,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 167868,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Dave Larson",
           "current_side": "Sharonda Amamilo",
@@ -31246,9 +32052,21 @@
         },
         {
           "batch_evidence": {
+            "alpha": 143.862525987526,
+            "beta": 158.137474012474,
             "calibration": "unvalidated hand-set caps",
             "classification": "unknown_or_not_new",
-            "likelihood": "disjoint_history_and_latest_v2"
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 384800,
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 384800,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Theo Angelis",
           "current_side": "no majority",
@@ -31437,11 +32255,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 122.28407404514567,
+            "beta": 179.71592595485433,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 12803,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 12803,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Annie Fitzgerald",
           "current_side": "Thomas (Jeff) Kelly",
@@ -31639,11 +32469,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 115.64034133996034,
+            "beta": 186.35965866003968,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 109451,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 109451,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Karim A. Merchant",
           "current_side": "Todd A. Bloom",
@@ -31694,9 +32536,21 @@
         },
         {
           "batch_evidence": {
+            "alpha": 100.1071498541086,
+            "beta": 201.89285014589143,
             "calibration": "unvalidated hand-set caps",
             "classification": "unknown_or_not_new",
-            "likelihood": "disjoint_history_and_latest_v2"
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 382819,
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 382819,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "all other choices",
           "current_side": "Debra L. Stephens",
@@ -32016,11 +32870,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 72.02371312897628,
+            "beta": 229.97628687102372,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 20748,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 20748,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Dusty Wisniew",
           "current_side": "Sam Low",
@@ -32218,11 +33084,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 145.0838583302451,
+            "beta": 156.9161416697549,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 18889,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 18889,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Robert J Sutherland",
           "current_side": "Steve Ewing",
@@ -32556,11 +33434,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 136.05646864383436,
+            "beta": 165.94353135616564,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 10891,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 10891,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Salomon Rodrigue Mbouombouo",
           "current_side": "Joseph Segault",
@@ -32753,11 +33643,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 12.26170046801872,
+            "beta": 289.7382995319813,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 10256,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 10256,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Alex Tsimerman",
           "current_side": "Elle Nguyen",
@@ -33086,11 +33988,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 138.93780250771752,
+            "beta": 163.06219749228248,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 52478,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 52478,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Josh Schaer",
           "current_side": "Bianca Tse",
@@ -33141,9 +34055,21 @@
         },
         {
           "batch_evidence": {
+            "alpha": 142.6656776643722,
+            "beta": 159.33432233562783,
             "calibration": "unvalidated hand-set caps",
             "classification": "unknown_or_not_new",
-            "likelihood": "disjoint_history_and_latest_v2"
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 101112,
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 101112,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Jan Trasen",
           "current_side": "no majority",
@@ -33337,11 +34263,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 150.97713937361885,
+            "beta": 151.02286062638117,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 26246,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 26246,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Eamonn Collins",
           "current_side": "Michael Alvarez Shepard",
@@ -33451,9 +34389,11 @@
           "authority_url": "https://www.sos.wa.gov/elections/data-research/election-data-and-maps/election-results-and-voters-pamphlets/2026-primary-election",
           "canonical_id": "wa:2026-primary:ld42-senator",
           "election_type": "primary",
+          "office": "State Senator",
           "positions": 2,
-          "reason": "Reviewed binary-boundary rule",
+          "reason": "Reviewed office/election binary-boundary rule",
           "rule": "top_two",
+          "scope_matches": true,
           "supported": true,
           "tie_policy": "unresolved"
         },
@@ -33840,11 +34780,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 87.42698764649985,
+            "beta": 214.57301235350016,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 12628,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 12628,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Heather-Marie Wilson",
           "current_side": "Hannah Sabio-Howell",
@@ -34833,11 +35785,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 137.08938547486034,
+            "beta": 164.91061452513964,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 1790,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 1790,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "No",
           "current_side": "Yes",
@@ -35162,11 +36126,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 131.48211508553655,
+            "beta": 170.51788491446348,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 13503,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 13503,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Chandler Torbett",
           "current_side": "John P Gibbons",
@@ -35495,11 +36471,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 107.13321922692911,
+            "beta": 194.86678077307087,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 21033,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 21033,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Ron Davis",
           "current_side": "Will Dreher",
@@ -35969,11 +36957,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 121.93803540833808,
+            "beta": 180.0619645916619,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 14008,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 14008,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Jasnoor Kaur Hans",
           "current_side": "Cobi Clark",
@@ -36832,11 +37832,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 120.46505393104309,
+            "beta": 181.5349460689569,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 16039,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 16039,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Mike Pond",
           "current_side": "Sarah Mittelman",
@@ -37165,11 +38177,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 112.82963064322226,
+            "beta": 189.17036935677777,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 818504,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 818504,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Laura Christensen Colberg",
           "current_side": "Scott Edwards",
@@ -37220,9 +38244,21 @@
         },
         {
           "batch_evidence": {
+            "alpha": 142.29312072371246,
+            "beta": 159.70687927628754,
             "calibration": "unvalidated hand-set caps",
             "classification": "unknown_or_not_new",
-            "likelihood": "disjoint_history_and_latest_v2"
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 1746550,
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 1746550,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "all other choices",
           "current_side": "Colleen Melody",
@@ -37416,11 +38452,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 146.2893025741516,
+            "beta": 155.71069742584842,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 1122700,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 1122700,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Mike Diaz",
           "current_side": "Jaime Michelle Hawk",
@@ -37471,9 +38519,21 @@
         },
         {
           "batch_evidence": {
+            "alpha": 106.56157717002255,
+            "beta": 195.43842282997744,
             "calibration": "unvalidated hand-set caps",
             "classification": "unknown_or_not_new",
-            "likelihood": "disjoint_history_and_latest_v2"
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 1740028,
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 1740028,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "David Stevens",
           "current_side": "no majority",
@@ -37672,11 +38732,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 120.60796743914179,
+            "beta": 181.3920325608582,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 930688,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 930688,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Sharonda Amamilo",
           "current_side": "Dave Larson",
@@ -37727,9 +38799,21 @@
         },
         {
           "batch_evidence": {
+            "alpha": 108.51759920663437,
+            "beta": 193.48240079336563,
             "calibration": "unvalidated hand-set caps",
             "classification": "unknown_or_not_new",
-            "likelihood": "disjoint_history_and_latest_v2"
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 1739425,
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 1739425,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Theo Angelis",
           "current_side": "no majority",
@@ -37927,11 +39011,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 93.13832384052074,
+            "beta": 208.86167615947923,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 675950,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 675950,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Karim A. Merchant",
           "current_side": "Todd A. Bloom",
@@ -37982,9 +39078,21 @@
         },
         {
           "batch_evidence": {
+            "alpha": 137.87835533873604,
+            "beta": 164.12164466126393,
             "calibration": "unvalidated hand-set caps",
             "classification": "unknown_or_not_new",
-            "likelihood": "disjoint_history_and_latest_v2"
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 1726167,
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 1726167,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "all other choices",
           "current_side": "Debra L. Stephens",
@@ -38177,11 +39285,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 119.16412802791383,
+            "beta": 182.83587197208615,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 29806,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 29806,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Bruce King",
           "current_side": "Janet St Clair",
@@ -38435,8 +39555,9 @@
           "authority_url": "https://results.vote.wa.gov/results/20260804/export.html",
           "canonical_id": "wa:2026-primary:south-beach-bonds",
           "positions": 0,
-          "reason": "Unsupported passage/validation/RCV rule",
+          "reason": "Office/election rule scope is missing or mismatched",
           "rule": "unsupported_measure",
+          "scope_matches": false,
           "supported": false,
           "tie_policy": "unresolved",
           "validation_requirements": [
@@ -38609,8 +39730,9 @@
           "authority_url": "https://results.vote.wa.gov/results/20260804/export.html",
           "canonical_id": "wa:2026-primary:snoqualmie-pass-benefit-charge",
           "positions": 0,
-          "reason": "Unsupported passage/validation/RCV rule",
+          "reason": "Office/election rule scope is missing or mismatched",
           "rule": "unsupported_measure",
+          "scope_matches": false,
           "supported": false,
           "tie_policy": "unresolved",
           "validation_requirements": [
@@ -38719,11 +39841,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 137.25358888802668,
+            "beta": 164.74641111197332,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 12887,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 12887,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Approved",
           "current_side": "Rejected",
@@ -38921,11 +40055,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 60.136064292889834,
+            "beta": 241.86393570711016,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 8959,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 8959,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Dimitri Georgakopoulos",
           "current_side": "Julie Kang",
@@ -39235,11 +40381,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 128.8130030552909,
+            "beta": 173.1869969447091,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 182634,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 182634,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "No",
           "current_side": "Yes",
@@ -39422,11 +40580,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 106.67724631202505,
+            "beta": 195.32275368797497,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 4474,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 4474,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Rejected",
           "current_side": "Approved",
@@ -39609,11 +40779,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 92.63498098859316,
+            "beta": 209.36501901140684,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 789,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 789,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "No",
           "current_side": "Yes",
@@ -39796,11 +40978,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 102.88679245283018,
+            "beta": 199.11320754716982,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 371,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 371,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "No",
           "current_side": "Yes",
@@ -40257,11 +41451,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 115.73580863977152,
+            "beta": 186.26419136022847,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 67224,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 67224,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Lindsay Calkins",
           "current_side": "Garmon Newsom",
@@ -40440,11 +41646,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 79.61593835747139,
+            "beta": 222.3840616425286,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 151973,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 151973,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "No",
           "current_side": "Yes",
@@ -40687,8 +41905,9 @@
           "authority_url": "https://results.vote.wa.gov/results/20260804/export.html",
           "canonical_id": "wa:2026-primary:skykomish-prop1",
           "positions": 0,
-          "reason": "Unsupported passage/validation/RCV rule",
+          "reason": "Office/election rule scope is missing or mismatched",
           "rule": "unsupported_measure",
+          "scope_matches": false,
           "supported": false,
           "tie_policy": "unresolved",
           "validation_requirements": [
@@ -40795,11 +42014,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 93.33880853150282,
+            "beta": 208.66119146849718,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 8158,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 8158,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "No",
           "current_side": "Yes",
@@ -40978,11 +42209,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 141.08016032064128,
+            "beta": 160.91983967935872,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 300,
+            "historical_observed_votes": 499,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 499,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Approved",
           "current_side": "Rejected",
@@ -41226,8 +42469,9 @@
           "authority_url": "https://results.vote.wa.gov/results/20260804/export.html",
           "canonical_id": "wa:2026-primary:snoqualmie-pass-benefit-charge",
           "positions": 0,
-          "reason": "Unsupported passage/validation/RCV rule",
+          "reason": "Office/election rule scope is missing or mismatched",
           "rule": "unsupported_measure",
+          "scope_matches": false,
           "supported": false,
           "tie_policy": "unresolved",
           "validation_requirements": [
@@ -41335,11 +42579,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 20.0,
+            "beta": 24.000000000000004,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 42,
+            "historical_observed_votes": 42,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 42,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Patricia Larson",
           "current_side": "Erica Tomas",
@@ -41518,11 +42774,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 16.0,
+            "beta": 22.999999999999996,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 37,
+            "historical_observed_votes": 37,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 37,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Hanan Amer",
           "current_side": "Shantell Sanders",
@@ -41701,11 +42969,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 13.0,
+            "beta": 31.999999999999996,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 43,
+            "historical_observed_votes": 43,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 43,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "TJ Revely",
           "current_side": "Trevon Cooper",
@@ -41884,11 +43164,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 34.0,
+            "beta": 39.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 71,
+            "historical_observed_votes": 71,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 71,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Tracey Cook-Lee",
           "current_side": "Janice Bristol",
@@ -42067,11 +43359,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 40.0,
+            "beta": 42.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 80,
+            "historical_observed_votes": 80,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 80,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Orna Berryman",
           "current_side": "Clarence Gunn",
@@ -42250,11 +43554,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 29.0,
+            "beta": 33.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 60,
+            "historical_observed_votes": 60,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 60,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Srikant Vemparala",
           "current_side": "Vandana Prashant Mishra",
@@ -42433,11 +43749,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 21.0,
+            "beta": 35.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 54,
+            "historical_observed_votes": 54,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 54,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Rick Kirkham",
           "current_side": "Alex Marcellus",
@@ -42616,11 +43944,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 28.0,
+            "beta": 46.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 72,
+            "historical_observed_votes": 72,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 72,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Vikram Modgil",
           "current_side": "Paul B Neil",
@@ -42799,11 +44139,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 7.0,
+            "beta": 27.999999999999996,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 33,
+            "historical_observed_votes": 33,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 33,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Meera Hessami",
           "current_side": "Ozzie Bagan",
@@ -42982,11 +44334,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 19.0,
+            "beta": 36.00000000000001,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 53,
+            "historical_observed_votes": 53,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 53,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Gordon Baxter",
           "current_side": "Eric Carlson",
@@ -43165,11 +44529,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 22.0,
+            "beta": 28.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 48,
+            "historical_observed_votes": 48,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 48,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Tiffany Atwood",
           "current_side": "Dale Fonk",
@@ -43348,11 +44724,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 18.0,
+            "beta": 23.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 39,
+            "historical_observed_votes": 39,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 39,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Dan Farrer",
           "current_side": "Jana Lottinville",
@@ -43531,11 +44919,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 26.0,
+            "beta": 27.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 51,
+            "historical_observed_votes": 51,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 51,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Sean Smith",
           "current_side": "Kimberley Darby",
@@ -43719,11 +45119,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 36.0,
+            "beta": 39.99999999999999,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 74,
+            "historical_observed_votes": 74,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 74,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Robert Murano",
           "current_side": "Orla Blythe",
@@ -43902,11 +45314,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 12.0,
+            "beta": 28.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 38,
+            "historical_observed_votes": 38,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 38,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Yu Sun",
           "current_side": "Joan Murphy",
@@ -44085,11 +45509,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 23.0,
+            "beta": 37.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 58,
+            "historical_observed_votes": 58,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 58,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Lamir Magus",
           "current_side": "Marion Palo",
@@ -44268,11 +45704,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 28.0,
+            "beta": 37.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 63,
+            "historical_observed_votes": 63,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 63,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Michael Neher",
           "current_side": "Lionel Forde",
@@ -44451,11 +45899,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 39.0,
+            "beta": 52.99999999999999,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 90,
+            "historical_observed_votes": 90,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 90,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Daniel Schirmer",
           "current_side": "Fanny Pacheco",
@@ -44634,11 +46094,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 25.0,
+            "beta": 29.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 52,
+            "historical_observed_votes": 52,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 52,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Brittany Nicole Furgason",
           "current_side": "Elizabeth A. Watson",
@@ -44817,11 +46289,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 11.0,
+            "beta": 27.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 36,
+            "historical_observed_votes": 36,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 36,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Melissa D Ohashi",
           "current_side": "MyAnn Morrow",
@@ -45000,11 +46484,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 19.0,
+            "beta": 21.000000000000004,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 38,
+            "historical_observed_votes": 38,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 38,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Grace Wong",
           "current_side": "Ruth-Fiam Nord",
@@ -45183,11 +46679,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 51.0,
+            "beta": 93.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 142,
+            "historical_observed_votes": 142,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 142,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Bill Cruikshank",
           "current_side": "Margit Moore",
@@ -45366,11 +46874,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 12.0,
+            "beta": 49.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 59,
+            "historical_observed_votes": 59,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 59,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Jack Jensen",
           "current_side": "Madison Long",
@@ -45549,11 +47069,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 11.0,
+            "beta": 12.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 21,
+            "historical_observed_votes": 21,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 21,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Victoria J Bloom",
           "current_side": "Zhulan Li",
@@ -45732,11 +47264,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 21.0,
+            "beta": 28.000000000000004,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 47,
+            "historical_observed_votes": 47,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 47,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Jason Gayler",
           "current_side": "Michael Tate",
@@ -45915,11 +47459,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 24.0,
+            "beta": 28.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 50,
+            "historical_observed_votes": 50,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 50,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Tim Noonan",
           "current_side": "Roger Ledbetter",
@@ -46098,11 +47654,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 12.0,
+            "beta": 43.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 53,
+            "historical_observed_votes": 53,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 53,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Chinmay Nagarkar",
           "current_side": "Mathew Patrick Thomas",
@@ -46281,11 +47849,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 14.0,
+            "beta": 35.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 47,
+            "historical_observed_votes": 47,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 47,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Bill Cooper",
           "current_side": "Laura Billington",
@@ -46474,11 +48054,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 24.0,
+            "beta": 38.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 60,
+            "historical_observed_votes": 60,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 60,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Dawne Adam",
           "current_side": "Aleathea Batchelor",
@@ -46657,11 +48249,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 19.0,
+            "beta": 54.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 71,
+            "historical_observed_votes": 71,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 71,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Richard Dustin Wight",
           "current_side": "Patricia Ogunmola",
@@ -46840,11 +48444,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 40.0,
+            "beta": 64.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 102,
+            "historical_observed_votes": 102,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 102,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Rachel Segerhammar",
           "current_side": "Gina Fuentevilla",
@@ -47023,11 +48639,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 25.0,
+            "beta": 49.00000000000001,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 72,
+            "historical_observed_votes": 72,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 72,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Livey Beha",
           "current_side": "Laura Cain-Harris",
@@ -47206,11 +48834,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 7.0,
+            "beta": 13.000000000000002,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 18,
+            "historical_observed_votes": 18,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 18,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Linda Mills",
           "current_side": "Angie Phillips",
@@ -47389,11 +49029,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 33.0,
+            "beta": 53.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 84,
+            "historical_observed_votes": 84,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 84,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Hudayfa Ismail",
           "current_side": "Leslie S Harris",
@@ -47572,11 +49224,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 15.0,
+            "beta": 41.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 54,
+            "historical_observed_votes": 54,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 54,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Patrick McKee",
           "current_side": "Nicole Frickle",
@@ -47755,11 +49419,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 28.0,
+            "beta": 46.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 72,
+            "historical_observed_votes": 72,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 72,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Jesse Scott-Kandoll",
           "current_side": "Helen Sernett",
@@ -47938,11 +49614,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 47.0,
+            "beta": 55.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 100,
+            "historical_observed_votes": 100,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 100,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Joanna Grist",
           "current_side": "James Apa",
@@ -48121,11 +49809,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 34.0,
+            "beta": 35.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 67,
+            "historical_observed_votes": 67,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 67,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Claire Ramos",
           "current_side": "Laura Marie Rivera",
@@ -48304,11 +50004,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 21.0,
+            "beta": 27.000000000000004,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 46,
+            "historical_observed_votes": 46,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 46,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Etan Berkowitz",
           "current_side": "Brad Nelson",
@@ -48487,11 +50199,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 42.0,
+            "beta": 64.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 104,
+            "historical_observed_votes": 104,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 104,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Sue Moser",
           "current_side": "Kiana Scott",
@@ -48670,11 +50394,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 29.0,
+            "beta": 66.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 93,
+            "historical_observed_votes": 93,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 93,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Greg Thiessen",
           "current_side": "Kendall Oehler",
@@ -48858,11 +50594,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 49.0,
+            "beta": 61.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 108,
+            "historical_observed_votes": 108,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 108,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "E. Bailey Medilo",
           "current_side": "Melissa Falcone",
@@ -49041,11 +50789,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 43.0,
+            "beta": 59.00000000000001,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 100,
+            "historical_observed_votes": 100,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 100,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Carla McLean",
           "current_side": "Scott Winn",
@@ -49224,11 +50984,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 39.0,
+            "beta": 54.99999999999999,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 92,
+            "historical_observed_votes": 92,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 92,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Daniel Escapa",
           "current_side": "Chukundi Salisbury Sr",
@@ -49407,11 +51179,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 61.0,
+            "beta": 69.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 128,
+            "historical_observed_votes": 128,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 128,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Jamie Fackler",
           "current_side": "Bridgette Maryman",
@@ -49590,11 +51374,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 48.0,
+            "beta": 82.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 128,
+            "historical_observed_votes": 128,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 128,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "April Vian",
           "current_side": "Beth Brunton",
@@ -49773,11 +51569,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 18.0,
+            "beta": 37.00000000000001,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 53,
+            "historical_observed_votes": 53,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 53,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Casey Smith",
           "current_side": "Jennifer Parada",
@@ -49956,11 +51764,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 43.0,
+            "beta": 47.99999999999999,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 89,
+            "historical_observed_votes": 89,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 89,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Robert Stephens Jr",
           "current_side": "Carla Curio",
@@ -50139,11 +51959,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 20.0,
+            "beta": 50.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 68,
+            "historical_observed_votes": 68,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 68,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Heather Hess",
           "current_side": "Megan Riel-Mehan",
@@ -50322,11 +52154,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 10.0,
+            "beta": 46.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 54,
+            "historical_observed_votes": 54,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 54,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Kirky Hanson",
           "current_side": "Maya Cutforth",
@@ -50505,11 +52349,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 73.0,
+            "beta": 93.00000000000001,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 164,
+            "historical_observed_votes": 164,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 164,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Marietta Zintak",
           "current_side": "Ian Mosher",
@@ -50693,11 +52549,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 33.0,
+            "beta": 45.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 76,
+            "historical_observed_votes": 76,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 76,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Chio Saeteurn",
           "current_side": "Suresh Chanmugam",
@@ -50876,11 +52744,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 30.0,
+            "beta": 31.999999999999996,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 60,
+            "historical_observed_votes": 60,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 60,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Brandon Heechan Gim",
           "current_side": "Fernando Medina Corey",
@@ -51059,11 +52939,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 27.0,
+            "beta": 61.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 86,
+            "historical_observed_votes": 86,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 86,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Tim Gould",
           "current_side": "Linda J Clifton",
@@ -51242,11 +53134,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 30.0,
+            "beta": 67.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 95,
+            "historical_observed_votes": 95,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 95,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Aaron Wheeler",
           "current_side": "Carl Slater",
@@ -51425,11 +53329,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 45.0,
+            "beta": 65.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 108,
+            "historical_observed_votes": 108,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 108,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Daniel Heppner",
           "current_side": "Bryce Kolton",
@@ -51613,11 +53529,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 15.0,
+            "beta": 57.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 70,
+            "historical_observed_votes": 70,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 70,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Aaron McCloud",
           "current_side": "Adora Blue",
@@ -51796,11 +53724,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 28.0,
+            "beta": 33.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 59,
+            "historical_observed_votes": 59,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 59,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Emeka Alozie",
           "current_side": "Leonard Harrison Jerome",
@@ -51979,11 +53919,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 20.0,
+            "beta": 40.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 58,
+            "historical_observed_votes": 58,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 58,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Jase Pickering",
           "current_side": "Sean Butterfield",
@@ -52162,11 +54114,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 6.0,
+            "beta": 38.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 42,
+            "historical_observed_votes": 42,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 42,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Matthew Epshtein",
           "current_side": "Amy Madden",
@@ -52345,11 +54309,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 14.0,
+            "beta": 36.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 48,
+            "historical_observed_votes": 48,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 48,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Bob Mahon",
           "current_side": "Anne Purcell",
@@ -52528,11 +54504,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 30.0,
+            "beta": 45.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 73,
+            "historical_observed_votes": 73,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 73,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Jeremy Erdman",
           "current_side": "Seth May",
@@ -52711,11 +54699,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 21.0,
+            "beta": 31.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 50,
+            "historical_observed_votes": 50,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 50,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Paul Lee",
           "current_side": "Aspen Coyle",
@@ -52894,11 +54894,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 20.0,
+            "beta": 48.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 66,
+            "historical_observed_votes": 66,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 66,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Grant Peltier",
           "current_side": "Chanpreet Singh",
@@ -53077,11 +55089,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 24.0,
+            "beta": 39.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 61,
+            "historical_observed_votes": 61,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 61,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Stephen Paolini",
           "current_side": "Brandon Monson",
@@ -53260,11 +55284,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 17.0,
+            "beta": 35.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 50,
+            "historical_observed_votes": 50,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 50,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Paul Nacamuli",
           "current_side": "Frank Field",
@@ -53443,11 +55479,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 40.0,
+            "beta": 65.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 103,
+            "historical_observed_votes": 103,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 103,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "David Lichter",
           "current_side": "Sharon London",
@@ -53626,11 +55674,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 61.0,
+            "beta": 63.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 122,
+            "historical_observed_votes": 122,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 122,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Nancy Lichter",
           "current_side": "Sylvia Haven",
@@ -53809,11 +55869,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 24.0,
+            "beta": 47.00000000000001,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 69,
+            "historical_observed_votes": 69,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 69,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Ed Freeman",
           "current_side": "Matt Weatherford",
@@ -53992,11 +56064,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 26.0,
+            "beta": 34.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 58,
+            "historical_observed_votes": 58,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 58,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Lisa Rivera",
           "current_side": "Hunter Brown",
@@ -54175,11 +56259,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 10.0,
+            "beta": 42.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 50,
+            "historical_observed_votes": 50,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 50,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "John Luethe",
           "current_side": "Tara Gallagher",
@@ -54358,11 +56454,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 42.0,
+            "beta": 75.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 115,
+            "historical_observed_votes": 115,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 115,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Candy Wilson",
           "current_side": "Janet M Way",
@@ -54541,11 +56649,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 44.0,
+            "beta": 44.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 86,
+            "historical_observed_votes": 86,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 86,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Norbert Steele",
           "current_side": "Andrew Holt",
@@ -54730,11 +56850,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 40.0,
+            "beta": 70.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 108,
+            "historical_observed_votes": 108,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 108,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Allison Luzader",
           "current_side": "Bettelinn Brown",
@@ -54913,11 +57045,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 55.0,
+            "beta": 96.00000000000001,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 149,
+            "historical_observed_votes": 149,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 149,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Tom Fitzpatrick",
           "current_side": "Lauri DeVore",
@@ -55096,11 +57240,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 12.0,
+            "beta": 24.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 34,
+            "historical_observed_votes": 34,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 34,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Ping Liu",
           "current_side": "Laura Steinmetz",
@@ -55279,11 +57435,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 45.0,
+            "beta": 85.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 128,
+            "historical_observed_votes": 128,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 128,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Hammad Ali Hashmi",
           "current_side": "Eric Scheir",
@@ -55462,11 +57630,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 28.0,
+            "beta": 60.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 86,
+            "historical_observed_votes": 86,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 86,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Christine Ann Pinto",
           "current_side": "Janice Gedlund",
@@ -55645,11 +57825,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 24.0,
+            "beta": 38.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 60,
+            "historical_observed_votes": 60,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 60,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Dian Ferguson",
           "current_side": "Dennis Martinez",
@@ -55828,11 +58020,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 54.0,
+            "beta": 70.00000000000001,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 122,
+            "historical_observed_votes": 122,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 122,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Tamara M Bauman",
           "current_side": "Kate Kruller",
@@ -56011,11 +58215,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 24.0,
+            "beta": 42.99999999999999,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 65,
+            "historical_observed_votes": 65,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 65,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Paul Michael Mcmahon",
           "current_side": "Michael Bladow",
@@ -56194,11 +58410,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 11.0,
+            "beta": 47.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 56,
+            "historical_observed_votes": 56,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 56,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Nirav Sheth",
           "current_side": "Paul R Fisher",
@@ -56377,11 +58605,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 37.0,
+            "beta": 46.0,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 81,
+            "historical_observed_votes": 81,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 81,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Lloyd T Spencer",
           "current_side": "Dominik Faunce",
@@ -56560,11 +58800,23 @@
       "decisions": [
         {
           "batch_evidence": {
+            "alpha": 38.0,
+            "beta": 40.99999999999999,
             "calibration": "hand-set; not tuned or validated",
             "classification": "unknown_or_not_new",
             "cumulative_cap": 300,
+            "historical_effective_weight": 77,
+            "historical_observed_votes": 77,
             "latest_cap": 200,
-            "likelihood": "disjoint_history_and_latest_v2"
+            "latest_effective_weight": 0,
+            "latest_effective_weight_fraction": 0.0,
+            "latest_raw_fraction": 0.0,
+            "latest_verified_pair_votes": 0,
+            "likelihood": "disjoint_history_and_latest_v2",
+            "observed_pair_votes": 77,
+            "overlap_votes_reused": 0,
+            "prior_alpha": 1,
+            "prior_beta": 1
           },
           "change_side": "Srikanth Sundaragopalan",
           "current_side": "Aspen Richter",
@@ -56743,5 +58995,5 @@
     ]
   },
   "title": "2026 Washington Primary Historical Results — EA-01 Audit Correction",
-  "tool_version": "0.5.0"
+  "tool_version": "0.5.1"
 }

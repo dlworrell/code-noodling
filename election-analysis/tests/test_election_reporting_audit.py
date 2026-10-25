@@ -33,6 +33,27 @@ SCOPE = Path(__file__).resolve().parents[1]
 
 
 class NumericalAuditTests(unittest.TestCase):
+    def test_audited_assessor_and_ld42_sensitivities_are_reconstructed(self):
+        from election_reporting.audit_sensitivity import reconstruct
+        result=reconstruct(SCOPE/"data/elections/washington/2026-08-04")
+        assessor=result["assessor"]["rows"]
+        self.assertEqual([r["hypothetical_remaining_pair_votes"] for r in assessor],[0,44515,87279,121278])
+        for row,reference in zip(assessor,[0,.269,.350,.375]):
+            self.assertAlmostEqual(row["legacy_normal_probability"],reference,delta=.0005)
+        self.assertAlmostEqual(assessor[2]["stable_finite_tail_probability"],.35026265,delta=1e-8)
+        self.assertTrue(assessor[0]["legacy_zero_row_is_not_official_zero"])
+        ld=result["ld42"]
+        for row,reference in zip(ld["rows"],[.487,.432,.563,.687]):
+            self.assertAlmostEqual(row["conditional_probability"],reference,delta=.0005)
+        weights=ld["disjoint_effective_weights"]
+        self.assertEqual(weights["historical_observed_votes"],26037)
+        self.assertEqual(weights["latest_verified_pair_votes"],209)
+        self.assertEqual(weights["overlap_votes_reused"],0)
+        self.assertLess(weights["latest_raw_fraction"],.008)
+        self.assertEqual(weights["latest_effective_weight_fraction"],.4)
+        self.assertIn("Post-event audit observation",result["clock_qualification"])
+        self.assertIn("Neither table is a confidence interval",result["interpretation"])
+
     def test_1080_integer_thresholds_and_rational_distribution_oracles(self):
         checks = 0
         for n in range(1, 19):
@@ -69,6 +90,108 @@ class NumericalAuditTests(unittest.TestCase):
 
 
 class SourceAuditTests(unittest.TestCase):
+    def test_gate_matrix_retains_tallies_and_withholds_unqualified_scenarios(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); (root/"inputs").mkdir()
+            (root/"inputs/2026-08-06.csv").write_text(result_rows("Local","9",100,[("A",51),("B",49)]))
+            cfg=root/"election.toml"
+            cfg.write_text('schema_version=1\n[election]\ntitle="t"\n[[sources]]\nid="local"\npath="inputs"\njurisdiction="Local"\nscope="county"\npriority=1\nexpected_final_ballots=120\n')
+            cases=[("source_versions","source_published_at",None),
+                   ("source_versions","source_published_at","2025-01-01T00:00:00Z"),
+                   ("source_versions","source_published_at","2027-01-01T00:00:00Z"),
+                   ("source_versions","coverage_complete",False),
+                   ("source_versions","source_url",None),("source_versions","retrieved_at",None),
+                   ("identities","coverage_complete",False),("identities","jurisdictions",[]),
+                   ("identities","role","partial"),("rules","passage_numerator",3),
+                   ("rules","passage_denominator",5),("rules","validation_requirements",["quorum"]),
+                   ("rules","rule","rcv"),("remaining_pools","as_of","2025-01-01T00:00:00Z"),
+                   ("remaining_pools","jurisdictions",["Different county"]),
+                   ("remaining_pools","coverage_complete",False),("remaining_pools","participation_basis",None)]
+            cases.append(("remaining_pools","category_basis",None))
+            for table,field,value in cases:
+                with self.subTest(table=table,field=field,value=value):
+                    config=counting_config(cfg);config.audit_contract[table][0][field]=value
+                    analysis=analyze_election(config);race=analysis.races[0]
+                    self.assertEqual(race.valid_votes,100)
+                    self.assertFalse(race.scientific_eligibility["eligible"])
+                    self.assertIsNone(race.decisions[0].risk.change_probability)
+                    self.assertIn("FORECASTS WITHHELD",facebook_summary(analysis))
+            valid=analyze_election(counting_config(cfg)).races[0]
+            self.assertTrue(valid.scientific_eligibility["eligible"])
+            self.assertFalse(valid.scientific_eligibility["validated_forecast_eligible"])
+
+    def test_corrections_identical_counts_and_negative_deltas_are_not_new_batches(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); (root/"inputs").mkdir()
+            first=root/"inputs/2026-08-05.csv";last=root/"inputs/2026-08-06.csv"
+            first.write_text(result_rows("Local","9",80,[("A",50),("B",30)]))
+            last.write_text(result_rows("Local","9",100,[("A",60),("B",40)]))
+            cfg=root/"election.toml"
+            cfg.write_text('schema_version=1\n[election]\ntitle="t"\n[[sources]]\nid="local"\npath="inputs"\njurisdiction="Local"\nscope="county"\npriority=1\nexpected_final_ballots=120\n')
+            config=counting_config(cfg)
+            self.assertEqual(analyze_election(config).races[0].decisions[0].batch_evidence["latest_verified_pair_votes"],20)
+            for classification in ("correction","recount","unknown"):
+                config=counting_config(cfg)
+                config.audit_contract["source_versions"][-1]["delta_kind"]=classification
+                decision=analyze_election(config).races[0].decisions[0]
+                self.assertEqual(decision.batch_evidence["latest_verified_pair_votes"],0)
+                self.assertIsNone(decision.risk.latest_batch_votes)
+            for choices in ([("A",50),("B",30)],[("A",49),("B",51)]):
+                last.write_text(result_rows("Local","9",sum(v for _,v in choices),choices))
+                decision=analyze_election(counting_config(cfg)).races[0].decisions[0]
+                self.assertEqual(decision.batch_evidence["latest_verified_pair_votes"],0)
+                self.assertIsNone(decision.risk.latest_batch_votes)
+
+    def test_office_and_election_rule_mismatches_withhold_scenarios(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); (root/"inputs").mkdir()
+            (root/"inputs/2026-08-06.csv").write_text(result_rows("Local","9",100,[("A",51),("B",49)]))
+            cfg=root/"election.toml"
+            cfg.write_text('schema_version=1\n[election]\ntitle="t"\n[[sources]]\nid="local"\npath="inputs"\njurisdiction="Local"\nscope="county"\npriority=1\nexpected_final_ballots=120\n')
+            config=counting_config(cfg)
+            self.assertIsNotNone(analyze_election(config).races[0].decisions[0].risk.change_probability)
+            for changes in ({"office":"Different office"},{"election_type":"general"},{"office":None},{"election_type":None}):
+                config=counting_config(cfg)
+                config.audit_contract["rules"][0].update(changes)
+                race=analyze_election(config).races[0]
+                self.assertFalse(race.evidence["rule"]["scope_matches"])
+                self.assertIsNone(race.decisions[0].risk.change_probability)
+
+    def test_selected_pair_cannot_represent_all_multi_candidate_outcomes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); (root/"inputs").mkdir()
+            cfg=root/"election.toml"
+            cfg.write_text('schema_version=1\n[election]\ntitle="t"\n[[sources]]\nid="local"\npath="inputs"\njurisdiction="Local"\nscope="county"\npriority=1\nexpected_final_ballots=300\n')
+            for cid,choices,final_choices in (("9",[("A",80),("B",60),("C",50)],{"A":80,"B":60,"C":90}),
+                                             ("10",[("A",80),("B",60),("C",50),("D",49)],{"A":80,"B":60,"C":50,"D":89})):
+                (root/"inputs/2026-08-06.csv").write_text(result_rows("Local",cid,sum(v for _,v in choices),choices))
+                race=analyze_election(counting_config(cfg)).races[0]
+                decision=race.decisions[0]
+                self.assertFalse(decision.event["whole_outcome_probability"])
+                self.assertEqual(decision.event["scope"],"selected_pair")
+                self.assertLess(final_choices[decision.change_side],final_choices[decision.current_side])
+                seats=1 if cid=="9" else 2
+                self.assertNotEqual({n for n,_ in choices[:seats]},set(sorted(final_choices,key=final_choices.get,reverse=True)[:seats]))
+
+    def test_short_summary_carries_clocks_coverage_and_pool_sensitivity(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); (root/"inputs").mkdir()
+            (root/"inputs/2026-08-06.csv").write_text(result_rows("Local","9",100,[("A",51),("B",49)]))
+            cfg=root/"election.toml"
+            cfg.write_text('schema_version=1\n[election]\ntitle="t"\n[[sources]]\nid="local"\npath="inputs"\njurisdiction="Local"\nscope="county"\npriority=1\nexpected_final_ballots=120\n')
+            config=counting_config(cfg)
+            config.audit_contract["remaining_pools"][0].update(low=10,base=20,high=40)
+            analysis=analyze_election(config)
+            social=facebook_summary(analysis)
+            for phrase in ("Source publication range:","known source-age range:","unknown count-update time: 1", "incomplete/unverified coverage: 0", "low/base/high 10/20/40", "as of 2026-08-06", "Contest/pair participation: 1/1.0", "R=10:", "R=40:", "not a confidence interval", "Selected pair: B strictly overtakes A", "input SHA-256"):
+                self.assertIn(phrase,social)
+            version=config.audit_contract["source_versions"][0]
+            version.update(source_published_at=None,coverage_complete=False)
+            withheld=facebook_summary(analyze_election(config))
+            self.assertIn("Unknown source age: 1",withheld)
+            self.assertIn("incomplete/unverified coverage: 1",withheld)
+            self.assertIn("FORECASTS WITHHELD",withheld)
+
     def test_pool_sensitivity_zero_unknown_tie_and_staleness(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory); (root/"inputs").mkdir()
@@ -201,6 +324,29 @@ class SourceAuditTests(unittest.TestCase):
 
 
 class RcvAuditTests(unittest.TestCase):
+    def test_authoritative_selection_preserves_partial_accounting_and_lineage(self):
+        payload=json.loads((FIXTURES/"official-result-versions.json").read_text())
+        records=validate_versions(payload)
+        measure=[r for r in records if r["canonical_id"].endswith("measure2")]
+        self.assertNotIn("selection",measure[0])
+        selected=measure[1]
+        self.assertEqual(selected["selection"]["supersedes"],["archive-first-choice"])
+        self.assertEqual(selected["selection"]["status"],"authoritative_vote_totals_with_partial_accounting")
+        self.assertEqual(selected["ballots"]-selected["continuing"],14564)
+        self.assertIsNone(selected["blanks"])
+        self.assertIsNone(selected["source_published_at"])
+        hd40=next(r for r in records if r["canonical_id"].endswith(":HD40"))
+        self.assertEqual(hd40["continuing"]+hd40["blanks"]+hd40["exhausted"]+hd40["overvotes"],3170)
+        self.assertEqual(max(hd40["votes"].values())-min(hd40["votes"].values()),533)
+        for modification in ("missing_lineage","unknown_selection","raw_selection","bad_partial_accounting","naive_clock"):
+            broken=json.loads(json.dumps(payload))
+            if modification=="missing_lineage":broken["selections"][0]["supersedes"]=["not-present"]
+            elif modification=="unknown_selection":broken["selections"][0]["round_id"]="not-present"
+            elif modification=="raw_selection":broken["selections"][-1].update(result_version="me-2024-raw",round_id="0")
+            elif modification=="bad_partial_accounting":next(r for r in broken["records"] if r.get("coverage_status")=="partial_accounting")["noncontinuing_total"]-=1
+            else:broken["records"][0]["source_published_at"]="2024-11-30T15:21:13"
+            with self.subTest(modification=modification),self.assertRaises(ElectionReportError):validate_versions(broken)
+
     def test_all_six_maine_exports_conserve_and_reproduce_final_totals(self):
         patterns=json.loads((FIXTURES/"maine-2024-cd2-patterns.json").read_text())
         manifest=json.loads((FIXTURES/"maine-2024-cd2-manifest.json").read_text())

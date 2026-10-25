@@ -273,7 +273,7 @@ every_minutes = 1440
 | Source | Every `.xlsx` linked under the election's headings on `www.maine.gov/sos/elections-voting/election-results-data` (or the year's page for an earlier election). Cast vote record exports, candidate lists and the President-by-congressional-district view are skipped. Each snapshot keeps the workbooks in one reproducible ZIP with a `SOURCES.txt` of URLs, `Last-Modified` dates and SHA-256 checksums. |
 | Parsing | Workbook layouts vary by office and year: names above or below the column-header row, misspelled headers, `BLANK` and `TBC` columns, county subtotal rows, unlabeled total rows, referendum questions grouped across columns, precinct-level ranked-choice first choices. Every block is reconciled to the workbook's own total row; a block that does not reconcile, or has no total row, is left out and reported as an error, never guessed. |
 | Output | `input/maine/` holds statewide totals; each county gets `input/<county>-county/` from its municipal rows. `STATE UOCAVA` (military and overseas) rows have no municipality, so they are in statewide totals only. |
-| Rules | Plurality (`default_rule = "winner"`), except contests posted in a ranked-choice section of the page, which the watcher adds to `election.toml` as `[[contest_rules]]` with `rule = "rcv"`. |
+| Rules | Governing RCV scope follows the office and election type, independently of the webpage's ranked/non-ranked grouping. Raw first rankings remain diagnostics; supplied official finalists and ballot eligibility are separate evidence. Inferred/default rules cannot authorize numeric scenarios. |
 | HTTP | `www.maine.gov`'s firewall refuses every non-browser client, including honestly identified ones, so that host alone receives a browser User-Agent; every Maine snapshot's `SOURCES.json` note says so. The issue was reported to the Secretary of State's elections division on 2026-10-23. |
 
 Every workbook of the 2024 general election (14 files, 262 contests) and the
@@ -346,6 +346,11 @@ The analyzer deliberately separates the decision boundary from the displayed ran
 Inferred/default rules are descriptive. A numeric scenario requires a reviewed
 `audit.rules` record with election/office scope, authority and supported passage
 requirements. Unsupported supermajority/quorum rules withhold calculations.
+The rule's `election_type` must equal `audit.election_type`, and its `office`
+must equal the unique office in the reviewed canonical identity. Missing or
+mismatched scope withholds the scenario. A selected pair can reverse without
+capturing every possible change among other candidates; all public tables and
+short summaries name that exact event.
 
 Use `[[contest_rules]]` in `election.toml` to override a contest with `winner`,
 `top_two`, `top_four`, `rcv`, `wa_judicial`, `automatic`, or `ignore` when the
@@ -357,7 +362,8 @@ inference is not correct.
 forecast. The reviewed `audit.remaining_pools` entry requires a timezone-aware
 `as_of`, compatible information/source times, exact jurisdiction/category coverage,
 and either an official authority/count (including an explicit zero) or ordered
-`low/base/high` sensitivity scenarios with a documented basis. Nonzero counts also
+`low/base/high` sensitivity scenarios with a documented `basis` and
+`category_basis` (covered ballot categories and acceptance assumptions). Nonzero counts also
 require explicit contest and selected-pair participation fractions. No final-total
 backfill is permitted. Turnout overrun and missing counts do not prove zero.
 
@@ -366,6 +372,12 @@ pair_fraction)` for a selected pair. Each low/base/high scenario is propagated
 through the probability calculation and labeled sensitivity, never a confidence
 interval. The exact strict-reversal threshold is `floor((M+R)/2)+1`; loss of a
 strict majority uses `ceil((M+R)/2)`. Ties remain unresolved.
+
+Short summaries and risk tables retain source-age/coverage context, the exact
+selected event, dated pool, geographic/category coverage and participation
+assumptions beside numeric scenarios. See [ADR-005](engineering/ADR-005-audit-acceptance-and-archive-evidence.md)
+for version-2 official result selections, partial recount accounting, bounded
+archival readers and the remaining historical-validation evidence gap.
 
 ## County and precinct results
 

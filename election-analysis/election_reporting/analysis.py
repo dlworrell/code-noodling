@@ -11,7 +11,7 @@ from dataclasses import replace
 from datetime import datetime, timezone
 
 from .versions import load_versions
-from .numerics import ERROR_POLICY, beta_binomial_tail, posterior, threshold
+from .numerics import ERROR_POLICY, beta_binomial_tail, posterior, posterior_details, threshold
 from .ingest import load_source_snapshots
 from .model import (
     ChoiceResult,
@@ -408,7 +408,8 @@ def _pair_decision(
                "whole_outcome_probability": False, "tie_policy": "unresolved; no sort-order adjudication",
                "threshold_formula": "floor((M+R)/2)+1", "tie_changes": False},
         numerical_evidence={**ERROR_POLICY,"remaining_pool_sensitivity":_sensitivity(pool,challenger.votes,current.votes,margin,latest_batch_share,latest_batch_votes)},
-        batch_evidence={"classification": "new_ballots" if latest_batch_votes is not None else "unknown_or_not_new",
+        batch_evidence={**posterior_details(challenger.votes,current.votes,latest_batch_share,latest_batch_votes),
+                        "classification": "new_ballots" if latest_batch_votes is not None else "unknown_or_not_new",
                         "likelihood": "disjoint_history_and_latest_v2", "cumulative_cap": CUMULATIVE_EFFECTIVE_SAMPLE_CAP,
                         "latest_cap": LATEST_BATCH_EFFECTIVE_SAMPLE_CAP, "calibration": "hand-set; not tuned or validated"},
     )
@@ -488,7 +489,8 @@ def _majority_decision(
     return DecisionAnalysis(
         kind="majority_status",
         numerical_evidence={**ERROR_POLICY,"remaining_pool_sensitivity":_sensitivity(pool,total_votes-leader.votes if has_majority else leader.votes,leader.votes if has_majority else total_votes-leader.votes,margin,latest_batch_share,latest_batch_votes,has_majority,False)},
-        batch_evidence={"classification": "new_ballots" if latest_batch_votes else "unknown_or_not_new",
+        batch_evidence={**posterior_details(total_votes-leader.votes if has_majority else leader.votes,leader.votes if has_majority else total_votes-leader.votes,latest_batch_share,latest_batch_votes),
+                        "classification": "new_ballots" if latest_batch_votes else "unknown_or_not_new",
                         "likelihood": "disjoint_history_and_latest_v2", "calibration": "unvalidated hand-set caps"},
         current_state=state,
         current_side=current_side,

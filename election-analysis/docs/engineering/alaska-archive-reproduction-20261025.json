@@ -1,0 +1,286 @@
+{
+  "schema_version": 1,
+  "format": "medsl_alaska_2024_v1",
+  "encoding": "utf-8-sig",
+  "input_sha256": "e4c3bc5e6cb20238a9bc337b3a3cefc93236faa70e6eee5bf4306b4994a70680",
+  "rows": 130516,
+  "zero_filled_repetitions": 2788,
+  "mode_contributions": {
+    "alaska": {
+      "ELECTION DAY": 3135024,
+      "ABSENTEE": 1343420,
+      "EARLY VOTING": 1299525,
+      "QUESTION": 183295,
+      "FEDERAL OVERSEAS": 799
+    },
+    "aleutians-east-borough": {
+      "ELECTION DAY": 6056
+    },
+    "aleutians-west-census-area": {
+      "ELECTION DAY": 13334
+    },
+    "anchorage-municipality": {
+      "ELECTION DAY": 1386666
+    },
+    "bethel-census-area": {
+      "ELECTION DAY": 41498
+    },
+    "bristol-bay-borough": {
+      "ELECTION DAY": 5755
+    },
+    "chugach-census-area": {
+      "ELECTION DAY": 33294
+    },
+    "copper-river-census-area": {
+      "ELECTION DAY": 19697
+    },
+    "denali-borough": {
+      "ELECTION DAY": 8009
+    },
+    "dillingham-census-area": {
+      "ELECTION DAY": 20987
+    },
+    "fairbanks-north-star-borough": {
+      "ELECTION DAY": 304806
+    },
+    "haines-borough": {
+      "ELECTION DAY": 8292
+    },
+    "hoonah-angoon-census-area": {
+      "ELECTION DAY": 7104
+    },
+    "juneau-city-and-borough": {
+      "ELECTION DAY": 72154
+    },
+    "kenai-peninsula-borough": {
+      "ELECTION DAY": 309977
+    },
+    "ketchikan-gateway-borough": {
+      "ELECTION DAY": 38621
+    },
+    "kodiak-island-borough": {
+      "ELECTION DAY": 70774
+    },
+    "kusilvak-census-area": {
+      "ELECTION DAY": 16284
+    },
+    "lake-and-peninsula-borough": {
+      "ELECTION DAY": 6275
+    },
+    "matanuska-susitna-borough": {
+      "ELECTION DAY": 566809
+    },
+    "nome-census-area": {
+      "ELECTION DAY": 22482
+    },
+    "north-slope-borough": {
+      "ELECTION DAY": 13831
+    },
+    "northwest-arctic-borough": {
+      "ELECTION DAY": 12250
+    },
+    "petersburg-borough": {
+      "ELECTION DAY": 8415
+    },
+    "prince-of-wales-hyder-census-area": {
+      "ELECTION DAY": 18102
+    },
+    "sitka-city-and-borough": {
+      "ELECTION DAY": 18654
+    },
+    "skagway-municipality": {
+      "ELECTION DAY": 4523
+    },
+    "southeast-fairbanks-census-area": {
+      "ELECTION DAY": 29837
+    },
+    "wrangell-city-and-borough": {
+      "ELECTION DAY": 6770
+    },
+    "yakutat-city-and-borough": {
+      "ELECTION DAY": 2258
+    },
+    "yukon-koyukuk-census-area": {
+      "ELECTION DAY": 20397
+    }
+  },
+  "district_rows_mislabeled_election_day": [
+    "District 37 - Early Voting",
+    "District 6 - Early Voting",
+    "District 7 - Early Voting",
+    "District 8 - Early Voting"
+  ],
+  "qualification": "Mode contributions count contest selections, not distinct voters. All supplied categories retained statewide; derivative provenance and approximate geography remain explicit.",
+  "executed_at": "2026-10-25T06:00:15.988653+00:00",
+  "normalized_filename_qualification": "Reconstruction observation date, not a 2024 count-update timestamp.",
+  "outputs": [
+    {
+      "place_id": "alaska",
+      "path": "alaska/2026-10-25.csv",
+      "sha256": "c8e1d1f63413b27c7654793d498d2ebd6e6e3329053ff2cf2d1b2ca26e47bfc9"
+    },
+    {
+      "place_id": "aleutians-east-borough",
+      "path": "aleutians-east-borough/2026-10-25.csv",
+      "sha256": "99ba2b777dddcfb17b02cf93a9ea20767a8e8a223f67abcd01f0141be7f36d98"
+    },
+    {
+      "place_id": "aleutians-west-census-area",
+      "path": "aleutians-west-census-area/2026-10-25.csv",
+      "sha256": "b22da42cf4e72adc04802077fd707d5681e5e48d9bb95596ca7efee31b6af0d5"
+    },
+    {
+      "place_id": "anchorage-municipality",
+      "path": "anchorage-municipality/2026-10-25.csv",
+      "sha256": "2407eaa6277418f07dd9bd8fb7ad23979287200fc52eb6f1f142c2fc55942d95"
+    },
+    {
+      "place_id": "bethel-census-area",
+      "path": "bethel-census-area/2026-10-25.csv",
+      "sha256": "9a2ebff26a511dc7217e8cb8eb3390ecca272528378bad6b2418e753984b43f6"
+    },
+    {
+      "place_id": "bristol-bay-borough",
+      "path": "bristol-bay-borough/2026-10-25.csv",
+      "sha256": "e3197830ef705c66832e02af3a1153f1e91c33abf438d42268820d630f66f0cc"
+    },
+    {
+      "place_id": "chugach-census-area",
+      "path": "chugach-census-area/2026-10-25.csv",
+      "sha256": "f4546c51018f772cee37d6fc2abb8a40a694728addf8d64db7b8bb8bd077c5b6"
+    },
+    {
+      "place_id": "copper-river-census-area",
+      "path": "copper-river-census-area/2026-10-25.csv",
+      "sha256": "7a1e6e35fecc53b0e92e805d02c42f3335e1b22aaed0b0fe6c22ffde41621719"
+    },
+    {
+      "place_id": "denali-borough",
+      "path": "denali-borough/2026-10-25.csv",
+      "sha256": "65375c4d82a9220deb083961837640f655020bea91b1739b9efedfa4175abd16"
+    },
+    {
+      "place_id": "dillingham-census-area",
+      "path": "dillingham-census-area/2026-10-25.csv",
+      "sha256": "579666e4944f2246a3ba1d684c88af08935cf889cba9b9d8281b45f6b168c350"
+    },
+    {
+      "place_id": "fairbanks-north-star-borough",
+      "path": "fairbanks-north-star-borough/2026-10-25.csv",
+      "sha256": "c881df4a4d5072387640df09727b02ca0a23611e5f526a606cdd774eb1a59250"
+    },
+    {
+      "place_id": "haines-borough",
+      "path": "haines-borough/2026-10-25.csv",
+      "sha256": "68c441705629b85b99423014848ad4ea9142b50b27ee98099241bb8b2cd8d007"
+    },
+    {
+      "place_id": "hoonah-angoon-census-area",
+      "path": "hoonah-angoon-census-area/2026-10-25.csv",
+      "sha256": "a6f622b328ecaae355144e223cf90645d1df90e9c7aec090872179db0190b1b6"
+    },
+    {
+      "place_id": "juneau-city-and-borough",
+      "path": "juneau-city-and-borough/2026-10-25.csv",
+      "sha256": "5bf2d0cc53f0675b3bd5a18c72164b2611ff8af11aaca7786fb4e450b1b9bdcd"
+    },
+    {
+      "place_id": "kenai-peninsula-borough",
+      "path": "kenai-peninsula-borough/2026-10-25.csv",
+      "sha256": "5300c47d0c72cf9dda2a4c487cedf8adb4a4fb2bd5605c83d753f4d0df7b339b"
+    },
+    {
+      "place_id": "ketchikan-gateway-borough",
+      "path": "ketchikan-gateway-borough/2026-10-25.csv",
+      "sha256": "9acc4a38dd0d11bb53746aa4b7b402cc83f7a6625a0e39ff271ee7932109ff86"
+    },
+    {
+      "place_id": "kodiak-island-borough",
+      "path": "kodiak-island-borough/2026-10-25.csv",
+      "sha256": "552058dbe0fb7045895ffc97f0ae4c5f1b81073f1554d3789a01956a0793821c"
+    },
+    {
+      "place_id": "kusilvak-census-area",
+      "path": "kusilvak-census-area/2026-10-25.csv",
+      "sha256": "90a5855694e1e5acf4625b466b48814dd57ad3bd551c11073ea2d29fdf947144"
+    },
+    {
+      "place_id": "lake-and-peninsula-borough",
+      "path": "lake-and-peninsula-borough/2026-10-25.csv",
+      "sha256": "fac9871dde26382f65ec8cd6f887590518dcd4aa626f73ae983cfc86b97449d8"
+    },
+    {
+      "place_id": "matanuska-susitna-borough",
+      "path": "matanuska-susitna-borough/2026-10-25.csv",
+      "sha256": "7c7ea2d10928d747bd8df10bd19c61d6630f10352206342714735284b3b6d668"
+    },
+    {
+      "place_id": "nome-census-area",
+      "path": "nome-census-area/2026-10-25.csv",
+      "sha256": "96d088ad2b071e7ed38d1e356a9017af3b35a5f6ec15b8c86061271ee2116192"
+    },
+    {
+      "place_id": "north-slope-borough",
+      "path": "north-slope-borough/2026-10-25.csv",
+      "sha256": "3e2446a9996dc61265e65dd5d27ca210500cdef8bc14481d06ee5cd56a2210d9"
+    },
+    {
+      "place_id": "northwest-arctic-borough",
+      "path": "northwest-arctic-borough/2026-10-25.csv",
+      "sha256": "aceed3f3d4eb311151b5b85cbb8737065ea9fabd76433159dacb22de62f3f740"
+    },
+    {
+      "place_id": "petersburg-borough",
+      "path": "petersburg-borough/2026-10-25.csv",
+      "sha256": "426084e00d0d34dd1d2fda5b9273be2fa1642af3e5712e93093b52dc51e26a27"
+    },
+    {
+      "place_id": "prince-of-wales-hyder-census-area",
+      "path": "prince-of-wales-hyder-census-area/2026-10-25.csv",
+      "sha256": "806c6a59863ce87781c415ab0d7274ea2888bc298faace168db53625451d66d8"
+    },
+    {
+      "place_id": "sitka-city-and-borough",
+      "path": "sitka-city-and-borough/2026-10-25.csv",
+      "sha256": "62a08c928387abe79eefea53c2b3e93800e7583ab4692b7afed40efcf56e4ac8"
+    },
+    {
+      "place_id": "skagway-municipality",
+      "path": "skagway-municipality/2026-10-25.csv",
+      "sha256": "39c37729f9cfbd96338fe63d8ee81bd46f3cae7783f8439c3b64eb7f26724e2e"
+    },
+    {
+      "place_id": "southeast-fairbanks-census-area",
+      "path": "southeast-fairbanks-census-area/2026-10-25.csv",
+      "sha256": "4520689b034e0ad01b86b181152f57b55fe1625776cd594918e62006637a0e57"
+    },
+    {
+      "place_id": "wrangell-city-and-borough",
+      "path": "wrangell-city-and-borough/2026-10-25.csv",
+      "sha256": "63b300fe6430c00bcdb4fc3bd310c2955c52c52a456d92b881529efaa7afc130"
+    },
+    {
+      "place_id": "yakutat-city-and-borough",
+      "path": "yakutat-city-and-borough/2026-10-25.csv",
+      "sha256": "934a315023cef0a844d485a1f8af089eeee625b10525e81ea32f0ecd4cfd4a46"
+    },
+    {
+      "place_id": "yukon-koyukuk-census-area",
+      "path": "yukon-koyukuk-census-area/2026-10-25.csv",
+      "sha256": "baae81bd4ce85330b47bf7e4c77181420bda5afaac749e4192ae4e83e1e163af"
+    }
+  ],
+  "full_source_comparison": {
+    "frozen_73_contest_statewide_accounting_match": true,
+    "statewide_contests": 73,
+    "geographic_outputs": 31,
+    "expected_fixture_sha256": "58f7d392c6c81b547bafda5b6cb9b03bc4d621e5f772af57c9c21a5e8565fdbf"
+  },
+  "source": {
+    "package_sha256": "06d150c885e9f95aa3235dc4ceaab09f34379bc27f8de66864c00e85af67f73e",
+    "package_member": "historical-2024/alaska-medsl.csv",
+    "upstream": "https://github.com/MEDSL/2024-elections-official/tree/df531089c78e6d0098db1a6bfb3849a066a06995",
+    "source_qualification": "Frozen derivative archive; not an independently retrieved official ENR binary."
+  },
+  "crosswalk_sha256": "861e632c70f24ef45aa8a18c40f50e5d57874dcb39384656383449efe77d6e2f"
+}
