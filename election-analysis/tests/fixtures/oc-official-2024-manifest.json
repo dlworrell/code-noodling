@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "jurisdiction": "Orange County, California",
+  "election_id": "ca:orange:2024-general",
+  "archive_sha256": "5bb32ca7a50cb24049511afe770d7abe7b378cc725bc692065f0cb0356b188af",
+  "acquisition_date_utc": "2026-10-25",
+  "acquisition_time_precision": "date only; actual individual download clocks were not recorded. Never used as historical publication times.",
+  "acquisition": "Official HTTPS downloads through the browser; originals retained without PDF repair. Final CSV is the Download summary CSV control in the registrar-delegated livevoterturnout report.",
+  "archive_authority": "https://ocvote.gov/data/election-results-archives",
+  "certified_archive_authority": "https://ocvote.gov/data/election-results-archives/archived-statement-of-votes",
+  "files": [
+    {
+      "file": "unprocessed-20241108.pdf",
+      "url": "https://ocvote.gov/fileadmin/user_upload/press/unprocessed-20241108.pdf",
+      "role": "pool",
+      "source_count_or_form_time": "2024-11-08T17:00:00-08:00",
+      "bytes": 114452,
+      "sha256": "d9542b18721ac75c8a6c109df9edf423a56c35211daa8406cb963297a559a840"
+    },
+    {
+      "file": "unprocessed-20241109.pdf",
+      "url": "https://ocvote.gov/fileadmin/user_upload/press/unprocessed-20241109.pdf",
+      "role": "pool",
+      "source_count_or_form_time": "2024-11-09T17:00:00-08:00",
+      "bytes": 114431,
+      "sha256": "2205f472fa1b7a0a9cdda71a9f6e1a666509f47de696e8ff9056dbf01d7e0b79"
+    },
+    {
+      "file": "gen2024-run12.pdf",
+      "url": "https://ocvote.gov/fileadmin/user_upload/press/gen2024-run12.pdf",
+      "role": "duplicate_count",
+      "source_count_or_form_time": "2024-11-08T16:47:00-08:00",
+      "bytes": 649857,
+      "sha256": "a5d97ea83d311f1b92919e4d8be4e354d21edcd837e05378a651300ecfc582a8"
+    },
+    {
+      "file": "gen2024-run12-canonical.pdf",
+      "url": "https://ocvote.gov/fileadmin/live/GEN2024/Run_12/cumulative.pdf",
+      "role": "count",
+      "source_count_or_form_time": "2024-11-08T16:47:00-08:00",
+      "bytes": 665354,
+      "sha256": "0622c587f9f28283f116ea1dd26cf6d7f2189c992983b277ee85608ddc853198"
+    },
+    {
+      "file": "gen2024-run13.pdf",
+      "url": "https://ocvote.gov/fileadmin/live/GEN2024/Run_13/cumulative.pdf",
+      "role": "count",
+      "source_count_or_form_time": "2024-11-09T17:28:00-08:00",
+      "bytes": 665205,
+      "sha256": "9696e1e6edd348826bd6e5f9082fd10b7af62edb2425d06401c5af7ce395f4ed"
+    },
+    {
+      "file": "gen2024-final-summary.csv",
+      "url": "https://www.livevoterturnout.com/ENR/orangecaenr/18/en/EzifcRF_Index_18.html",
+      "role": "outcome",
+      "source_count_or_form_time": null,
+      "bytes": 65772,
+      "sha256": "f6110b60d1cec2d56cf8cccaac157b12ba7334c20e862dd1d647b3e55ac20a8d"
+    },
+    {
+      "file": "gen2024-certified-sov.pdf",
+      "url": "https://ocvote.gov/fileadmin/live/GEN2024/sov.pdf",
+      "role": "outcome_reference",
+      "source_count_or_form_time": null,
+      "bytes": 10635256,
+      "sha256": "92e39e74d571da2e32372eaeac9eab29cf821bc9507223e78f3f6b916dd93ef5"
+    },
+    {
+      "file": "gen2024-media.zip",
+      "url": "https://ocvote.gov/fileadmin/live/GEN2024/media.zip",
+      "role": "outcome_reference",
+      "source_count_or_form_time": null,
+      "bytes": 1383441,
+      "sha256": "57fd06a30db8dca76764e16e7238152047115a8ff6d8bde21feff2d2502d0585"
+    }
+  ],
+  "publisher_facts": {
+    "release_url": "https://ocvote.gov/press-releases/registrar-of-voters-adds-more-than-64000-ballots-to-unofficial-results-of-2024-presidential-general",
+    "release_displayed_at": "2024-11-09T18:42:00",
+    "release_timezone": "not explicit in HTML; local Pacific interpretation is a reconstruction assumption",
+    "ballots_added_on_nov9": 64183,
+    "ballots_added_since_election_night": 205077,
+    "estimated_unprocessed_rounded": 212000,
+    "newly_received_rounded": 900,
+    "count_links": [
+      "Cumulative Results Reports for November 8",
+      "Cumulative Results Reports for November 9"
+    ],
+    "count_link_target_both": "https://ocvote.gov/fileadmin/user_upload/press/gen2024-run12.pdf",
+    "duplicate_link_finding": "Both labels point to the November 8 report; the independently retrieved canonical Run_13 PDF supplies the November 9 count. No link label is treated as a separate snapshot.",
+    "corrections_transfers_recount_partition": "not supplied; positive changes plus a reported ballot addition do not prove a pure new-ballot batch"
+  },
+  "certification": {
+    "url": "https://ocvote.gov/press-releases/orange-county-ca-registrar-of-voters-certifies-the-2024-presidential-general-election-results",
+    "displayed_date": "2024-12-03",
+    "counted_ballots": 1417397,
+    "qualification": "Certification of election counts, not validation of this forecast model. CSV vendor display updated December 4; original SOV retained separately."
+  },
+  "qualification": "Closest acquired match for official cumulative counts, contemporaneously labeled pool estimates and final outcomes. Current archive bytes are not authenticated historical captures; no official contest-specific countable pool or correction-free batch lineage is supplied.",
+  "license": "Publisher rights retained; no general open-data license inferred from public access."
+}
