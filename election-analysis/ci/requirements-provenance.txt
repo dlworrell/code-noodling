@@ -4,4 +4,4 @@
 # Catalyst-File-ID: urn:uuid:8ba2e09a-596a-42de-b3cd-4177274089ec
 
 reuse==6.2.0
-pypdf==6.10.0
+pypdf==6.21.2
