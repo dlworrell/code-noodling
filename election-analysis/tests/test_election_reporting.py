@@ -342,7 +342,11 @@ class ElectionReportingTests(unittest.TestCase):
                 "expected_final_ballots = 150\n",
                 encoding="utf-8",
             )
-            decision = analyze_election(counting_config(config_path)).races[0].decisions[0]
+            config = counting_config(config_path)
+            # Valid votes increase by 23 while ballots increase by 20. This
+            # lead-history case does not assert a correction-free new batch.
+            config.audit_contract["source_versions"][-1]["delta_kind"] = "unknown"
+            decision = analyze_election(config).races[0].decisions[0]
             self.assertTrue(decision.risk.lead_changed)
             self.assertEqual(decision.risk.level, "high")
             self.assertGreater(decision.risk.change_probability or 0.0, 0.25)

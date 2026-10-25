@@ -4,9 +4,9 @@ Report mode: historical. Forecast target: none. Information time: 2026-10-25T04:
 
 Lifecycle: certified; tabulation stage: unknown. Authority: https://www.sos.wa.gov/about-office/news/2026/secretary-state-certifies-candidates-and-measures-november-general-election; evidence as of 2026-10-25T04:27:06+00:00.
 
-Latest input label 2026-10-14T11:00; 298 contests reported. Individual source dates may be older; this label is not an authoritative current-count time.
+Latest input label 2026-10-14T11:00; 298 source representations of contests; overlapping jurisdictions may appear separately. Individual source dates may be older; this label is not an authoritative current-count time.
 
-Generated: 2026-10-25T08:19:59+00:00; mixed source vintages: {"missing_coverage": 0, "missing_source_time": 151, "schema_version": 1, "vintages": [{"legacy_filename_label": "2026-08-06T16:00", "records": 151, "source_id": "king-county", "source_published_at": null}, {"legacy_filename_label": "2026-10-14T11:00", "records": 147, "source_id": "washington", "source_published_at": "2026-09-11T17:37:08+00:00"}]}; coverage findings: {"configured_sources_without_snapshots": [], "missing_or_incomplete": 0, "status": "explicit_per_contest; missing sources never imply zero risk", "watcher_coverage": {}}
+Generated: 2026-10-25T14:30:27+00:00; mixed source vintages: {"missing_coverage": 0, "missing_source_time": 151, "schema_version": 1, "vintages": [{"legacy_filename_label": "2026-08-06T16:00", "records": 151, "source_id": "king-county", "source_published_at": null}, {"legacy_filename_label": "2026-10-14T11:00", "records": 147, "source_id": "washington", "source_published_at": "2026-09-11T17:37:08+00:00"}]}; coverage findings: {"configured_sources_without_snapshots": [], "missing_or_incomplete": 0, "status": "explicit_per_contest; missing sources never imply zero risk", "watcher_coverage": {}}
 
 ## Summary
 

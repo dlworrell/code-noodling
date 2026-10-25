@@ -89,6 +89,10 @@ increment. The caps of 300/200 are hand-set and unvalidated. Low/base/high remai
 scenarios propagate separately, with explicit participation assumptions and no
 confidence-interval claim. No final-total backfill or turnout-overrun zero is used.
 
+[ADR-009](ADR-009-consecutive-whole-contest-batches.md) repairs the independent
+review's counterexamples: qualification uses the complete immediate source
+transition before history de-duplication, for both pair and majority likelihoods.
+
 Full-support normalized log recurrence replaces the normal approximation switch.
 The supported numerical budget is 200,000 remaining decision votes; larger problems
 return no number. The checked policy is 1e-8 absolute / 1e-6 relative tolerance,

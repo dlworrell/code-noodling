@@ -1,0 +1,51 @@
+{
+  "reader": "openpyxl 3.1.5",
+  "source": "exact original frozen ZIP; each six-export hash verified",
+  "files": [
+    {
+      "file": "historical-2024/maine-cvr/Nov24_CVR_1.xlsx",
+      "ballots": 99999,
+      "sha256": "62f3e7116f89553db38c54bf353d3b41912f359686f6c2bcd39cb1898c47abdd"
+    },
+    {
+      "file": "historical-2024/maine-cvr/Nov24_CVR_2.xlsx",
+      "ballots": 99999,
+      "sha256": "b4d533ebcb985ddd276ab8a97d69efcf8c4c93e377b479dce7bfc884eac2c1de"
+    },
+    {
+      "file": "historical-2024/maine-cvr/Nov24_CVR_3.xlsx",
+      "ballots": 98669,
+      "sha256": "147b1ca3620e88cb18831a3e9b60b1be156a9cddd2ad0d4ea302e36f43a7e7ae"
+    },
+    {
+      "file": "historical-2024/maine-cvr/Nov24_CVR_4.xlsx",
+      "ballots": 99999,
+      "sha256": "8cca7708d2afac2a08949380fced080292927de8d7d258ca8064785b99e95203"
+    },
+    {
+      "file": "historical-2024/maine-rcv-uocava.xlsx",
+      "ballots": 2786,
+      "sha256": "35e71938df989346df5dd8899c2a31d1f24a56e4304a131ec48925eebe2c5c0c"
+    },
+    {
+      "file": "historical-2024/maine-rcv-handcount.xlsx",
+      "ballots": 1484,
+      "sha256": "6f2cea48e701d4f652f6af3f2b875c7187e6c8729f16a441cceec9ef050d4f0e"
+    }
+  ],
+  "anonymous_patterns": 108,
+  "machine_duplicate_keys": 0,
+  "ballots": 402936,
+  "continuing": 391596,
+  "finalist_totals": {
+    "Golden, Jared Forrest": 197151,
+    "Theriault, Austin": 194445
+  },
+  "exhaustion": {
+    "skipped_ranks": 10673,
+    "no_continuing_choice": 388,
+    "overvote": 279
+  },
+  "matches_all_committed_anonymous_patterns": true,
+  "scope": "Final allocation to supplied official finalists; no independent eligibility or elimination adjudication"
+}

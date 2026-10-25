@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "source_sha256": "e4c3bc5e6cb20238a9bc337b3a3cefc93236faa70e6eee5bf4306b4994a70680",
+  "source_rows": 130516,
+  "statewide_contests": 73,
+  "all_frozen_contest_tallies_match": true,
+  "outputs": 31,
+  "unique_source_keys": 127728,
+  "zero_filled_repetitions": 2788,
+  "independent_mode_contributions": {
+    "ELECTION DAY": 3135024,
+    "ABSENTEE": 1343420,
+    "EARLY VOTING": 1299525,
+    "QUESTION": 183295,
+    "FEDERAL OVERSEAS": 799
+  },
+  "district_rows_mislabeled_election_day": [
+    "District 37 - Early Voting",
+    "District 6 - Early Voting",
+    "District 7 - Early Voting",
+    "District 8 - Early Voting"
+  ],
+  "split_precincts": [
+    "01-670",
+    "29-545",
+    "36-042",
+    "36-062",
+    "36-118"
+  ],
+  "vintage": {
+    "geometry_year": 2023,
+    "census_year": 2020,
+    "assignment_method": "largest resident-population share; not measured votes"
+  },
+  "qualifications": [
+    "Mode contributions count selections across contests, not unique voter ballots.",
+    "Boroughs are approximate precinct-only subsets; not controlling full contests.",
+    "MEDSL derivative bytes matched, not independently authenticated original ENR."
+  ]
+}

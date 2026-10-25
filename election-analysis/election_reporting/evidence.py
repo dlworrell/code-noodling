@@ -295,11 +295,14 @@ def scientific_gate(config, context, lifecycle_ok, lifecycle_reason):
         "provenance": bool(facts.get("snapshot_sha256") and facts.get("source_url") and facts.get("retrieved_at")),
         "geography_compatibility": context.get("geography_comparison", {}).get("status") not in {"contradictory", "source_vintage_conflict", "missing", "incompatible_or_partial"},
         "noncontradictory_data": context["data_status"] == "reported",
+        "batch_annotation_consistent": not context.get("batch_transition", {}).get("contradictory", False),
         "supported_rule": rule.get("supported") is True,
         "remaining_pool": pool.get("status") in {"official_outstanding", "confirmed_zero", "conditional_scenario"},
         "model_status": "experimental_uncalibrated",
     }
     reasons = [name for name, value in checks.items() if value is False]
+    if context.get("batch_transition", {}).get("contradictory"):
+        reasons.extend("New-ballot annotation: " + reason for reason in context["batch_transition"]["reasons"])
     if not lifecycle_ok:
         reasons.append(lifecycle_reason)
     if pool.get("status") == "unknown":

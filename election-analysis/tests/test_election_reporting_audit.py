@@ -90,6 +90,113 @@ class NumericalAuditTests(unittest.TestCase):
 
 
 class SourceAuditTests(unittest.TestCase):
+    def transition_race(self, rows, rule="winner", middle_stage=None, prior_changes=None):
+        """Exercise actual CSV ingestion and the public analyzer, not its guard."""
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "inputs").mkdir()
+            for index, text in enumerate(rows, 5):
+                (root / f"inputs/2026-08-{index:02}.csv").write_text(text)
+            cfg = root / "election.toml"
+            cfg.write_text('schema_version=1\n[election]\ntitle="transition regression"\n[[sources]]\nid="local"\npath="inputs"\njurisdiction="Local"\nscope="county"\npriority=1\nexpected_final_ballots=300\n')
+            config = counting_config(cfg)
+            # Equal bytes have one hash-bound status record, regardless of how
+            # many retrieval filenames are present.
+            config = replace(config, result_statuses=tuple({
+                (r.source_id, r.snapshot_sha256, r.contest_id): r
+                for r in config.result_statuses}.values()))
+            config.audit_contract["rules"][0]["rule"] = rule
+            if prior_changes:
+                config.audit_contract["source_versions"][0].update(prior_changes)
+            if middle_stage:
+                digest = read_snapshot(root / "inputs/2026-08-06.csv", "local").sha256
+                config = replace(config, result_statuses=tuple(
+                    replace(r, status=replace(r.status, **middle_stage))
+                    if r.snapshot_sha256 == digest else r for r in config.result_statuses))
+            return analyze_election(config).races[0]
+
+    def test_whole_contest_revisions_cannot_be_new_pair_or_majority_votes(self):
+        old = result_rows("Local", "9", 150, [("A",80),("B",60),("C",10)])
+        cases = [
+            (160, [("A",90),("B",65),("C",5)], "candidate tally decreased"),
+            (145, [("A",85),("B",60),("C",0)], "denominator decreased"),
+            (155, [("A",90),("B",65)], "Candidate inventory changed"),
+            (170, [("A",90),("B",65),("C",10),("D",5)], "Candidate inventory changed"),
+            (150, [("A",85),("B",60),("C",10)], "increments exceed"),
+        ]
+        for rule in ("winner", "wa_judicial"):
+            for ballots, choices, reason in cases:
+                with self.subTest(rule=rule, choices=choices, ballots=ballots):
+                    race = self.transition_race([old, result_rows("Local","9",ballots,choices)], rule)
+                    self.assertFalse(race.forecast_eligible)
+                    self.assertTrue(race.evidence["quarantined"])
+                    self.assertIn(reason, " ".join(race.evidence["batch_transition"]["reasons"]))
+                    for decision in race.decisions:
+                        self.assertEqual(decision.batch_evidence["latest_verified_pair_votes"], 0)
+                        self.assertIsNone(decision.risk.latest_batch_votes)
+                        self.assertIsNone(decision.risk.change_probability)
+
+    def test_identical_latest_source_does_not_reuse_an_older_increment(self):
+        old = result_rows("Local","9",80,[("A",50),("B",30)])
+        current = result_rows("Local","9",100,[("A",60),("B",40)])
+        for rule in ("winner", "wa_judicial"):
+            race = self.transition_race([old,current,current], rule)
+            self.assertTrue(race.forecast_eligible)  # cumulative scenario only
+            transition = race.evidence["batch_transition"]
+            self.assertEqual(transition["previous_snapshot_sha256"], transition["current_snapshot_sha256"])
+            self.assertIn("Identical source bytes", " ".join(transition["reasons"]))
+            for decision in race.decisions:
+                self.assertEqual(decision.batch_evidence["latest_verified_pair_votes"],0)
+                self.assertIsNone(decision.risk.latest_batch_votes)
+
+    def test_missing_or_incompatible_immediate_predecessor_is_not_skipped(self):
+        old = result_rows("Local","9",80,[("A",50),("B",30)])
+        current = result_rows("Local","9",100,[("A",60),("B",40)])
+        cases = [([old,result_rows("Other","99",90,[("A",55),("B",35)]),current],None),
+                 ([old,result_rows("Local","9",90,[("A",55),("B",35)]),current],{"result_version":"corrected"})]
+        for rows, stage in cases:
+            race = self.transition_race(rows, middle_stage=stage)
+            self.assertEqual(race.decisions[0].batch_evidence["latest_verified_pair_votes"],0)
+            self.assertNotEqual(race.evidence["batch_transition"]["classification"],"new_ballots")
+
+    def test_compatible_complete_increment_retains_disjoint_pair_and_majority_weights(self):
+        old = result_rows("Local","9",150,[("A",80),("B",60),("C",10)])
+        current = result_rows("Local","9",170,[("A",90),("B",65),("C",15)])
+        race = self.transition_race([old,current], "wa_judicial")
+        self.assertTrue(race.forecast_eligible)
+        self.assertEqual(race.evidence["batch_transition"]["choice_deltas"],{"A":10,"B":5,"C":5})
+        pair, majority = race.decisions
+        # Judicial pair is the selected second/third-place boundary B/C.
+        self.assertEqual(pair.batch_evidence["latest_verified_pair_votes"],10)
+        self.assertEqual(majority.batch_evidence["latest_verified_pair_votes"],20)
+        for decision in (pair,majority):
+            self.assertEqual(decision.batch_evidence["overlap_votes_reused"],0)
+            self.assertIsNotNone(decision.risk.change_probability)
+
+    def test_unverified_previous_coverage_or_clock_supplies_no_batch(self):
+        rows = [result_rows("Local","9",80,[("A",50),("B",30)]),
+                result_rows("Local","9",100,[("A",60),("B",40)])]
+        for changes in ({"coverage_complete":False}, {"source_published_at":None},
+                        {"source_published_at":"2026-08-06T00:00:00Z"},
+                        {"source_published_at":"2026-08-07T00:00:00Z"}):
+            race = self.transition_race(rows, prior_changes=changes)
+            self.assertEqual(race.decisions[0].batch_evidence["latest_verified_pair_votes"],0)
+            self.assertNotEqual(race.evidence["batch_transition"]["classification"],"new_ballots")
+
+    def test_known_counter_revisions_and_changed_availability_reject_new_votes(self):
+        def counted(ballots, choices, over, under):
+            rows = result_rows("Local","9",ballots,choices).splitlines()
+            return rows[0] + ',"Contest Overvotes","Contest Undervotes"\n' + "\n".join(
+                row + f',"{over}","{under}"' for row in rows[1:]) + "\n"
+        old = counted(160,[("A",80),("B",60),("C",10)],0,10)
+        for over,under in ((0,5),("","")):
+            race = self.transition_race([old,counted(170,[("A",90),("B",65),("C",10)],over,under)])
+            self.assertFalse(race.forecast_eligible)
+            self.assertEqual(race.decisions[0].batch_evidence["latest_verified_pair_votes"],0)
+        positive = self.transition_race([old,counted(170,[("A",85),("B",65),("C",10)],0,10)])
+        self.assertTrue(positive.forecast_eligible)
+        self.assertEqual(positive.decisions[0].batch_evidence["latest_verified_pair_votes"],10)
+
     def test_gate_matrix_retains_tallies_and_withholds_unqualified_scenarios(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory); (root/"inputs").mkdir()

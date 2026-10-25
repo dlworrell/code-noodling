@@ -249,9 +249,13 @@ election = "next"
 | TLS | `www.elections.alaska.gov` serves the wrong intermediate certificate. The watcher adds the published GlobalSign GCC R46 OV TLS CA 2025 intermediate for that host only (`watch/certs.py`, SHA-256 checked); verification is never turned off. |
 
 Statewide totals from the watcher match the Division's own *Election Summary
-Report* for the 2026 primary, and the 2024 general election reproduces its known
-results (Ballot Measure 2 failing by 737 votes; U.S. Representative going to
-ranked-choice rounds with no first-choice majority).
+Report* for the 2026 primary. The frozen 2024 derivative first-choice archive
+records Ballot Measure 2 failing by 737 votes and U.S. House first choices with
+no majority. These are stage-specific descriptive records. The separate reviewed
+[result-version ledger](../tests/fixtures/official-result-versions.json) records
+the later official Measure 2 recount margin of 743 votes and the U.S. House
+final RCV allocation; its source/acquisition and incomplete-accounting limits
+remain explicit. The archived 737 margin is not the final recount outcome.
 
 ### Maine
 

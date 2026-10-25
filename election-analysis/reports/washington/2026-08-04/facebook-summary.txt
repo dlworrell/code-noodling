@@ -5,7 +5,7 @@ Report mode: historical. Forecast target: none. Information time: 2026-10-25T04:
 Latest input label: 2026-10-14T11:00; individual sources may be older.
 Lifecycle: certified; tabulation stage: unknown. Authority: https://www.sos.wa.gov/about-office/news/2026/secretary-state-certifies-candidates-and-measures-november-general-election; evidence as of 2026-10-25T04:27:06+00:00.
 
-Reviewed 298 reported contests. Unestimated probabilities are not numerical zero; no numerical risk ranking is published.
+Reviewed 298 source representations of contests; overlapping jurisdictions may appear separately. Unestimated probabilities are not numerical zero; no numerical risk ranking is published.
 
 DESCRIPTIVE MARGINS WITH DATED STATUS EVIDENCE
 • State Senator - Legislative District 42: Michael Alvarez Shepard leads Eamonn Collins by 4 votes.

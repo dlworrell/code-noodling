@@ -1,0 +1,387 @@
+{
+  "review_scope": "Hash-bound uncommitted repair candidate;initial snapshot review retained separately.",
+  "generated_at": "2026-10-25T14:32:14.946983+00:00",
+  "base_commit": "3e9ae3bee1c657c91629b133f379a5b73e41781a",
+  "candidate_files": {
+    "election-analysis/docs/election-reporting.md": "b43b44c77fea34ac404dbbc3dcb3e3396e5b5e8705ff5c3e9f16b1f3b1f269ef",
+    "election-analysis/docs/engineering/ADR-004-scientific-evidence-contract.md": "65c02d0dc6bcf77cff826a44b85b3fe9ba3924ba354c9efa34624f5f42628699",
+    "election-analysis/docs/engineering/ADR-009-consecutive-whole-contest-batches.md": "7295bb5277966585ab816133dad474aa38bc19c0c1311b3aca1af01faa66d090",
+    "election-analysis/election_reporting/analysis.py": "437edd603d399e38e34f2543bf6aa9c34ab9ad28a22d4fb72bdb0e05870a8c36",
+    "election-analysis/election_reporting/evidence.py": "e333051f069a10db16510c50fd432a639b6f6c2289072f2008a4f67ef6fe5096",
+    "election-analysis/election_reporting/publish.py": "97963f118cc1c986e65649ae5c83a3f4a19628e0260ecbc7831fc53593435eff",
+    "election-analysis/reports/washington/2026-08-04/analysis.json": "ef6660b3d168487ae2bcbe78107a16e061076acc75545822440e98f030ca5a34",
+    "election-analysis/reports/washington/2026-08-04/canonical-document.edom.json": "131001b1610ef0d07e4cf03a4841c8bacba4933c8a142ae9da08d6eb42b19951",
+    "election-analysis/reports/washington/2026-08-04/election-analysis.html": "4d0eb85b166102fb18cf1009f9d5f2e128b378f745613bf330436f0afd277414",
+    "election-analysis/reports/washington/2026-08-04/election-analysis.md": "c1ec544941244fdc9defc7586264e2cffe63678bab5a715e0a2ec8150b3a5add",
+    "election-analysis/reports/washington/2026-08-04/facebook-summary.txt": "c8be8ad1fd75c15642a17ec8c72cb76be34c7ada72f5e62ad5229059048b8a03",
+    "election-analysis/tests/test_election_reporting.py": "6b34efc66c36f98c0457880938f255864ebe40705bf1587b66adc1881343300e",
+    "election-analysis/tests/test_election_reporting_audit.py": "6728dd48537671b0e5f622d6033f84b79c0ccaf029f4e97388184b5e733df2b1"
+  },
+  "independent_cases": [
+    {
+      "case": "third_candidate_negative",
+      "rule": "winner",
+      "status": "PASS",
+      "latest_votes": [
+        0
+      ],
+      "quarantined": true,
+      "probabilities_withheld": true,
+      "reasons": [
+        "A candidate tally decreased."
+      ]
+    },
+    {
+      "case": "ballots_decrease_while_pair_increases",
+      "rule": "winner",
+      "status": "PASS",
+      "latest_votes": [
+        0
+      ],
+      "quarantined": true,
+      "probabilities_withheld": true,
+      "reasons": [
+        "A candidate tally decreased.",
+        "A ballot denominator decreased."
+      ]
+    },
+    {
+      "case": "candidate_removed",
+      "rule": "winner",
+      "status": "PASS",
+      "latest_votes": [
+        0
+      ],
+      "quarantined": true,
+      "probabilities_withheld": true,
+      "reasons": [
+        "Candidate inventory changed or contains duplicate identities."
+      ]
+    },
+    {
+      "case": "candidate_added",
+      "rule": "winner",
+      "status": "PASS",
+      "latest_votes": [
+        0
+      ],
+      "quarantined": true,
+      "probabilities_withheld": true,
+      "reasons": [
+        "Candidate inventory changed or contains duplicate identities."
+      ]
+    },
+    {
+      "case": "observed_votes_exceed_ballot_increment",
+      "rule": "winner",
+      "status": "PASS",
+      "latest_votes": [
+        0
+      ],
+      "quarantined": true,
+      "probabilities_withheld": true,
+      "reasons": [
+        "An endpoint has inconsistent ballot accounting.",
+        "Observed count increments exceed the reported ballot increment."
+      ]
+    },
+    {
+      "case": "third_candidate_negative",
+      "rule": "wa_judicial",
+      "status": "PASS",
+      "latest_votes": [
+        0,
+        0
+      ],
+      "quarantined": true,
+      "probabilities_withheld": true,
+      "reasons": [
+        "A candidate tally decreased."
+      ]
+    },
+    {
+      "case": "ballots_decrease_while_pair_increases",
+      "rule": "wa_judicial",
+      "status": "PASS",
+      "latest_votes": [
+        0,
+        0
+      ],
+      "quarantined": true,
+      "probabilities_withheld": true,
+      "reasons": [
+        "A candidate tally decreased.",
+        "A ballot denominator decreased."
+      ]
+    },
+    {
+      "case": "candidate_removed",
+      "rule": "wa_judicial",
+      "status": "PASS",
+      "latest_votes": [
+        0
+      ],
+      "quarantined": true,
+      "probabilities_withheld": true,
+      "reasons": [
+        "Candidate inventory changed or contains duplicate identities."
+      ]
+    },
+    {
+      "case": "candidate_added",
+      "rule": "wa_judicial",
+      "status": "PASS",
+      "latest_votes": [
+        0,
+        0
+      ],
+      "quarantined": true,
+      "probabilities_withheld": true,
+      "reasons": [
+        "Candidate inventory changed or contains duplicate identities."
+      ]
+    },
+    {
+      "case": "observed_votes_exceed_ballot_increment",
+      "rule": "wa_judicial",
+      "status": "PASS",
+      "latest_votes": [
+        0,
+        0
+      ],
+      "quarantined": true,
+      "probabilities_withheld": true,
+      "reasons": [
+        "An endpoint has inconsistent ballot accounting.",
+        "Observed count increments exceed the reported ballot increment."
+      ]
+    },
+    {
+      "case": "exact_original_two_choice_denominator",
+      "status": "PASS",
+      "quarantined": true,
+      "latest_votes": 0
+    },
+    {
+      "case": "duplicate_latest_after_prior_increase",
+      "rule": "winner",
+      "status": "PASS",
+      "latest_votes": 0,
+      "cumulative_scenario_retained": true,
+      "transition_hashes": {
+        "schema_version": 1,
+        "declared_kind": "new_ballots",
+        "classification": "unknown_or_not_new",
+        "contradictory": false,
+        "current_snapshot_sha256": "a3a299a6f96041474dfc68c266e6bf36c96889a732674f21224cd6937b4de0fe",
+        "previous_snapshot_sha256": "a3a299a6f96041474dfc68c266e6bf36c96889a732674f21224cd6937b4de0fe",
+        "choice_deltas": {},
+        "reasons": [
+          "Identical source bytes contain no new votes."
+        ]
+      }
+    },
+    {
+      "case": "duplicate_latest_after_prior_increase",
+      "rule": "wa_judicial",
+      "status": "PASS",
+      "latest_votes": 0,
+      "cumulative_scenario_retained": true,
+      "transition_hashes": {
+        "schema_version": 1,
+        "declared_kind": "new_ballots",
+        "classification": "unknown_or_not_new",
+        "contradictory": false,
+        "current_snapshot_sha256": "a3a299a6f96041474dfc68c266e6bf36c96889a732674f21224cd6937b4de0fe",
+        "previous_snapshot_sha256": "a3a299a6f96041474dfc68c266e6bf36c96889a732674f21224cd6937b4de0fe",
+        "choice_deltas": {},
+        "reasons": [
+          "Identical source bytes contain no new votes."
+        ]
+      }
+    },
+    {
+      "case": "missing_immediate",
+      "rule": "winner",
+      "status": "PASS",
+      "latest_votes": 0,
+      "reasons": [
+        "Contest missing from the immediately preceding source."
+      ]
+    },
+    {
+      "case": "incompatible_immediate",
+      "rule": "winner",
+      "status": "PASS",
+      "latest_votes": 0,
+      "reasons": [
+        "Immediate source contest/stage/version is incompatible."
+      ]
+    },
+    {
+      "case": "missing_immediate",
+      "rule": "wa_judicial",
+      "status": "PASS",
+      "latest_votes": 0,
+      "reasons": [
+        "Contest missing from the immediately preceding source."
+      ]
+    },
+    {
+      "case": "incompatible_immediate",
+      "rule": "wa_judicial",
+      "status": "PASS",
+      "latest_votes": 0,
+      "reasons": [
+        "Immediate source contest/stage/version is incompatible."
+      ]
+    },
+    {
+      "case": "known_under_counter_decreases",
+      "status": "PASS",
+      "latest_votes": 0,
+      "quarantined": true
+    },
+    {
+      "case": "known_counter_availability_changes",
+      "status": "PASS",
+      "latest_votes": 0,
+      "quarantined": true
+    },
+    {
+      "case": "insufficient_prior_evidence",
+      "field": "coverage_complete",
+      "value": false,
+      "status": "PASS",
+      "latest_votes": 0
+    },
+    {
+      "case": "insufficient_prior_evidence",
+      "field": "source_published_at",
+      "value": null,
+      "status": "PASS",
+      "latest_votes": 0
+    },
+    {
+      "case": "insufficient_prior_evidence",
+      "field": "source_published_at",
+      "value": "2026-08-06T00:00:00Z",
+      "status": "PASS",
+      "latest_votes": 0
+    },
+    {
+      "case": "unverified_or_nonnew_annotation",
+      "declared": "unknown",
+      "status": "PASS",
+      "latest_votes": 0
+    },
+    {
+      "case": "unverified_or_nonnew_annotation",
+      "declared": "correction",
+      "status": "PASS",
+      "latest_votes": 0
+    },
+    {
+      "case": "unverified_or_nonnew_annotation",
+      "declared": "transfer",
+      "status": "PASS",
+      "latest_votes": 0
+    },
+    {
+      "case": "unverified_or_nonnew_annotation",
+      "declared": "recount",
+      "status": "PASS",
+      "latest_votes": 0
+    },
+    {
+      "case": "positive_complete_pair",
+      "status": "PASS",
+      "latest_votes": 150,
+      "alpha": 179.57142857142856,
+      "beta": 272.42857142857144
+    },
+    {
+      "case": "positive_complete_majority",
+      "status": "PASS",
+      "latest_votes": 200,
+      "alpha": 241,
+      "beta": 261
+    }
+  ],
+  "case_count": 28,
+  "original_five_counterexamples_resolved": true,
+  "primary_representations": 298,
+  "primary_numeric_forecasts": 0,
+  "primary_original_semantics_match_after_only_additive_evidence": true,
+  "entire_published_json_matches_base_after_only_additive_evidence_and_generated_clock": true,
+  "regenerated_primary_races_and_social_text_match": true,
+  "representation_labels_confirmed_all_human_formats": true,
+  "only_removed_comparison_fields": [
+    "evidence.batch_transition",
+    "decisions.batch_evidence.transition",
+    "scientific_eligibility.checks.batch_annotation_consistent"
+  ],
+  "descriptive_replay_records": [
+    204,
+    73,
+    262
+  ],
+  "immutable_files_verified": {
+    "tests/fixtures/beta-binomial-oracles.json": "633792a6a744b1a1469c9faa65172988eacb94b2b158de5d98dfa7b98d4c7572",
+    "tests/fixtures/king-archives-manifest.json": "fa02b84ccf845f5419020173befbebd16a821db1437077729370c4f657ee8ade",
+    "tests/fixtures/king-archives.zip": "5b5a48204c376131806ff471e93251215f72bc19aad085653e566f62a55c9a89",
+    "tests/fixtures/maine-2024-cd2-manifest.json": "f62c6740dcf7d7a012fc26f0b2d7637015a0905a3c459138344b23e2a5728b76",
+    "tests/fixtures/maine-2024-cd2-patterns.json": "9371d0335d95c3efa1d4c9001389ac0abb03608040062d5be9cb6a98ef0dfc35",
+    "tests/fixtures/oc-ballot-manifest-2024-source.json": "1ce6016b8db17bb33f394e9091e04ca071b45b2377410fe60b01dfb28c938b1c",
+    "tests/fixtures/oc-ballot-manifest-2024.csv": "36b6c0079cc3882e601dc7ef7024d987973e3a17bceb9263dabbc433c6e78cff",
+    "tests/fixtures/oc-official-2024-manifest.json": "c2984b27d24c848207eb70f7a6a4c32c82f33b5a48fcb870c0ad2e605ae10e79",
+    "tests/fixtures/oc-official-2024.zip": "5bb32ca7a50cb24049511afe770d7abe7b378cc725bc692065f0cb0356b188af",
+    "tests/fixtures/official-result-versions.json": "a9f0ff13103a241207aca37357b860dbc241b97b8b5cf84c864ee3146d4fa3f6",
+    "tests/fixtures/replay-2024/alaska.csv": "58f7d392c6c81b547bafda5b6cb9b03bc4d621e5f772af57c9c21a5e8565fdbf",
+    "tests/fixtures/replay-2024/maine.csv": "8cfe06a98a7a2225ff80d4c1a582179d7c24cda2d5da12f5c9278234d882c091",
+    "tests/fixtures/replay-2024/manifest.json": "8374b963dd30148a921151ae36d72f9407508fe501742170d009a6135e0d3704",
+    "tests/fixtures/replay-2024/washington.csv": "e1437da58c1dd8552598f60e86437ddfe8a6a593c359ab67c5bde2e68ff8720f",
+    "tests/fixtures/validation-protocol-v1.json": "cde412fca9f6215375e636c0ad4f490963179f8ffd2d61542e442a0f99c91241",
+    "data/README.md": "ed05a2eb4173745606acf425dccbddaf059b7838b51a02aa79ecf79ee606f569",
+    "data/crosswalks/alaska/README.md": "bda80ceb967cd8d86bf16d713c070aadcb821568af597065c76c8119d689fc88",
+    "data/crosswalks/alaska/house-district-borough.csv": "13710635cac2cb26865cc3594f795b0f8ce3494579b85b9989ab002eb5d259f4",
+    "data/crosswalks/alaska/precinct-borough.csv": "861e632c70f24ef45aa8a18c40f50e5d57874dcb39384656383449efe77d6e2f",
+    "data/elections/alaska/2026-11-03/election.toml": "df7d7d919e8a050c87a4b9530da339344b8057908dc126a65ec0a6d0ebe3b13d",
+    "data/elections/maine/2026-11-03/election.toml": "da1649cff7820fbc33229f48e911a9498218c4356001eaf56ad21f552c854b4a",
+    "data/elections/washington/2026-08-04/SOURCES.json": "497a40cc05c3b56e9f5ed10fcd3b5a6de0b36f4e0a84abdedce67fb39979ab5e",
+    "data/elections/washington/2026-08-04/areas/washington/county/2026-09-11-1037.csv": "495d4c377ba429ec449c045005fb1e2bbb83c85216761b83143fc23802c0ab8c",
+    "data/elections/washington/2026-08-04/areas/washington/precinct/2026-09-11-1037.csv.gz": "c906d8fff03a0c29864b3cb91e2d41f5ac544604cbed4d525670f7a1d5dc8c88",
+    "data/elections/washington/2026-08-04/election.toml": "f9a2e1d2a7eef40f2cede1bd780827bdd80f2cdf29890b6dab82258c55dd009a",
+    "data/elections/washington/2026-08-04/input/king-county/2026-08-06-1600.csv": "9a1572cc9655d088f2d36656867755f5268d8464d045f5f45d32c21d1406ec35",
+    "data/elections/washington/2026-08-04/input/washington/2026-08-07-0118.csv": "7a1112037e8edc7d9e1acb97dc63807a1c78c06b8dff7167d169a46d41d06c24",
+    "data/elections/washington/2026-08-04/input/washington/2026-08-08-0018.csv": "18a0ff493c6b81339b615ff562961c6377b2aae83a45556c6fe0e0cf0266df03",
+    "data/elections/washington/2026-08-04/input/washington/2026-10-14-1100.csv": "bdd7591803dc9ff69614d09a342ff27be3faa2281b4757e8034a0c1503edf3c1",
+    "data/elections/washington/2026-08-04/raw/washington/2026-08-07-0118.xlsx": "fd4d2a14a01d3945095e92cbb0d0a85b1c0fadc025882c73ed9348da1fbdf43a",
+    "data/elections/washington/2026-08-04/raw/washington/2026-08-08-0018.xlsx": "0a6891a586429767a1c00a14b0d3127612e21a339f9f19351056dcb2e9d84718",
+    "data/elections/washington/2026-08-04/raw/washington/2026-10-14-1100.xlsx": "d580c91e84f5c534e3094b46558cd5e6ad9778ca6219546015af3f331b324f17",
+    "data/elections/washington/2026-11-03/election.toml": "be5921a25898311622f051dc0ad087bb5d7ddf5ff7dd80af3a9cd2938e5db3b7",
+    "data/watch.toml": "b79f41a7dbf342d79523a52dd251d4743e709cbe7047dbaf3d74153e21797ac3",
+    "docs/engineering/king-retrospective-diagnostic-v2.png": "22437338525bceede19a6a6995c797d29c12b032f0d047d67d04140ee2cd99e2",
+    "docs/engineering/king-retrospective-predictions-v2.json": "9be7e233195698250928284909e070e96f4cd1b4de2f519820af7de99af72426",
+    "docs/engineering/king-retrospective-protocol-v2.json": "eabb8c1eebfe27a0f4500df1964af46e64b38f8e85d881fec3f9490e5492164f",
+    "docs/engineering/king-retrospective-scores-v2.json": "4e835cdf4156bc4df3f1d721d2397623aef1cce74a278f07d0d8888af55370e6",
+    "docs/engineering/king-retrospective-seal-v2.json": "001845f0455b922328650dfce155c985053848cecb34aa6010026079844543c2",
+    "docs/engineering/king-retrospective-validation-v2.json": "1054e94468f49351f0fe6ba48a5f26b9317588600c9e85df0592c31bb222e59e",
+    "docs/engineering/oc-official-diagnostic-v1.png": "0343ed9665a20aea165ff9f6fde3c107d7ffb1b2ca0cb3b2607ea7a2b9655785",
+    "docs/engineering/oc-official-independent-check-v1.json": "a4c3e03984a176af091579688b0a9a3d6e4f3094c03a9e4a59fcfddf755c6b3c",
+    "docs/engineering/oc-official-predictions-v1.json": "98b0437b03bb082dad87d3fa948c3f5fe70e4b0108ba2592432ca9d3ce3378eb",
+    "docs/engineering/oc-official-protocol-v1.json": "1b50c31396d783bd7dab653fb53f5d758e99acbe7c0e80b5cfac29ddd8447511",
+    "docs/engineering/oc-official-qualification-v1.json": "374b4d9d3dcdf5dc2df638b628436421f5b01ffb19206450f0be0130b7e47090",
+    "docs/engineering/oc-official-scores-v1.json": "5a85b9e5e4d4365221bc8b0a53b4df23d4eea3b0c544dd385ad76d0336e7ba94",
+    "docs/engineering/oc-official-seal-v1.json": "de3db7b610188ca84ba63164f58d1373247e03c74b8ef0653c8915cf02d0accd",
+    "docs/engineering/oc-official-validation-v1.json": "3d2efb9135d21ea5dced6bbf6e82b4bca305dacfb1e84c94ab55c8f3d75e5e5c",
+    "docs/engineering/oc-runtime-reproduction-v1.zip": "cc72251697d5e64b1e5d19674a82c4ea315d09b78a6f6586b71009f3030abebd",
+    "election_reporting/numerics.py": "bf190b8a8defc5c5af52be781db973eb8fe3214c285f3715b9071f75ffd1882e",
+    "election_reporting/rcv.py": "8881f37769127d70ce96d962a269e1c09e3807117ed7e8152822b0ed2a475dc3",
+    "election_reporting/retrospective.py": "53ebfd34ee551b17f095deeec4834150888d2d588cbbc0923f3cdee07f921527",
+    "election_reporting/official_validation.py": "893f12eefa0dece553e9674bdc1f72e80f0600cff922231ae2a2b0d0af06d9bd",
+    "election_reporting/validation.py": "2c69a629c90a96c706df2e91026481349d877dfdd2a10044442bcd4a6815bf79",
+    "election_reporting/official_archives.py": "86fd53f671613de44ce016e9eef4f7b62f15babaa5e33cb9a05b71cd182f75a1"
+  },
+  "scientific_status": "Experimental and uncalibrated;no data,caps,targets,frozen predictions or scores changed."
+}
