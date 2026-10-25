@@ -117,3 +117,57 @@ final accounting and the Measure 2 recount partition remain explicitly
 unresolved; the acceptance contract permits visible unresolved coverage rather
 than fabricated totals. The independent final review required by #45/#59 is
 still outstanding. These limits prevent a truthful “no issues remain” claim.
+
+## Continuation: accepted main and frozen scenario experiment
+
+PR #63 is now merged at `df8499f1bb336c64967d506953b7532d3bac61da`.
+Its exact tree matches the tested head/CI tree; all eight workflows, 146 tests
+and actual provenance overall 0 passed. Seven further scoped acceptances bring
+the ledger to **12/14 children closed**. The earlier 5/14 checkpoint and its
+PRM-0029 build-only merge boundary are historical. Under the renewed resolution
+instruction, PRM-0030 governs acceptance through the repository's normal signed
+commit/PR controls; no deployment or scientific promotion is inferred.
+
+Filled current inputs: implementation `election_reporting.retrospective` and
+`tests/test_election_reporting_retrospective.py`; original/specification evidence
+is the audit's frozen formula, rational distribution oracles, recorded source
+archives, dated government bulletins and explicit EA-10/13 contracts. Comparison
+scope is captured originals plus execution of the new implementation only.
+Output remains this directory, linked to `../king-retrospective-*-v2.*` artifacts.
+PRM-0068 statically reconciles missing evidence in [INVESTIGATION.md](INVESTIGATION.md).
+The current source/recipe/split and limitations are specified in [ADR-006](../ADR-006-retrospective-scenario-evaluation.md).
+
+| Case | Independent expectation / actual observation | Disposition |
+| --- | --- | --- |
+| Frozen model and whole groups | All 33 package files hash-bound; no fitting; training membership or altered source rejected by synthetic adversarial cases | MATCH |
+| Reserved outcome separation | Predict succeeds even when the reserved outcome is invalid CSV; actual prediction reads 32 as-of files and no reserved files | MATCH |
+| Prediction seal and lineage | Changed bytes, duplicate scenarios, altered clocks, eligibility promotion or fabricated/missing baseline values rejected | MATCH |
+| Historical proxy limits | Independent calendar cases preserve next-day 16:30 Pacific, delayed modification, stale/migrated exclusion and earliest duplicate availability | MATCH, qualified proxy only |
+| Nonpositive turnout remainder | A reached turnout projection is unavailable pool evidence, never official zero | MATCH |
+| Binomial numerical baseline | Small exact rational enumeration and nine independent SciPy cases through n=200,000; max absolute difference 2.52e-11 | MATCH; numerical only |
+| Dependence-aware loss weights | Independent grouped aggregation and synthetic repeated-snapshot invariance; 147 base rows, 21 contests, three elections, one county | MATCH; no geographic confidence interval claimed |
+| Named certified event | Strict selected-pair reversal; certified tie is not reversal; original certified CSV identity retained, no legal-winner/latest-recount assertion | MATCH to synthetic event oracle |
+| Verified latest-batch baseline | Official new-ballot/correction partition is absent; positive tally deltas cannot manufacture it | NOT RUN |
+| Official outstanding baseline | Dated accepted/category/outstanding counts absent; turnout scenarios do not substitute for this baseline | NOT RUN |
+| Historical-byte authenticity | HTTP metadata and current archive labels do not authenticate unchanged bytes at historical publication | EXPECTATION UNKNOWN |
+| Independent final re-audit | Separate qualified scientific review required by parent #45 | NOT RUN |
+
+Current matrix: **8 MATCH, 0 observed DIVERGENCE, 3 NOT RUN, 1 EXPECTATION UNKNOWN**.
+The largest unresolved gap is batch/pool evidence and independent review, not a
+tested equivalence claim. The 493 hypothetical scenario rows were generated
+after the protocol freeze and sealed before scoring; 147 base rows received
+Brier/log-loss diagnostics. Scores compare realized outcomes under hypothetical
+pools and cannot validate calibration conditional on those pools being realized.
+The model's base Brier is 0.03755657 and log loss 0.21044475; cumulative-share
+values are 0.03837115/0.95873236. Small differences and one county do not establish
+superiority. Low/high cases have different coverage and are sensitivity only.
+
+Nine new offline tests cover the phase boundary and numerical/control cases.
+The final structured suite passes all **155 tests**, including the chronological
+duplicate regression. Local provenance is **overall 0**: 122/122 files licensed,
+71 authored File-IDs and 62 exemptions, with no File-ID violations. Actual
+versions, hashes, aggregate check and commands are in
+`../king-retrospective-validation-v2.json`. The original 539-record replay stays
+descriptive, the prospective evaluator stays unchanged, and every actual primary
+forecast remains withheld. #55/#58 and parent #45 remain open for the named
+scientific and independent-review criteria.

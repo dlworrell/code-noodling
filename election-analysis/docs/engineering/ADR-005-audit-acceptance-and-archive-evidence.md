@@ -7,7 +7,7 @@ Catalyst-File-ID: urn:uuid:41db8d37-2ec2-405d-b276-e6c73c5c4064
 
 # ADR-005: Audit acceptance, result lineage and archival evidence
 
-Status: Proposed for review; experimental scope, no scientific promotion
+Status: Accepted by merged PR #63; experimental scope, no scientific promotion
 Date: 2026-10-25 UTC
 Issues: parent #45; EA-02/06/07/08/09/10/11/13/14
 Extends: ADR-003/004
