@@ -12,7 +12,7 @@ from pathlib import Path
 
 from . import __version__
 from .analysis import FLIP_BANDS, risk_counts
-from .model import DecisionAnalysis, ElectionAnalysis, ElectionReportError, RaceAnalysis
+from .model import DecisionAnalysis, ElectionAnalysis, ElectionReportError, RaceAnalysis, ResultStatus
 
 
 PUBLIC_REPORT_BASE = "https://github.com/dlworrell/code-noodling/blob/main/"
@@ -65,6 +65,37 @@ def analysis_payload(analysis: ElectionAnalysis) -> dict[str, object]:
     if analysis.areas is not None:
         payload["areas"] = _areas_payload(analysis.areas)
     return payload
+
+
+def _status_payload(status: ResultStatus) -> dict[str, object]:
+    return {
+        "lifecycle": status.lifecycle,
+        "tabulation_stage": status.tabulation_stage,
+        "authority_url": status.authority_url or None,
+        "evidence_as_of": status.evidence_as_of.isoformat() if status.evidence_as_of else None,
+        "result_version": status.result_version or None,
+        "round_id": status.round_id or None,
+    }
+
+
+def _report_status(analysis: ElectionAnalysis) -> str:
+    return (
+        f"Report mode: {analysis.report_mode}. Forecast target: {analysis.forecast_target}. "
+        f"Information time: {analysis.information_time or 'unknown'}. "
+        f"Election lifecycle: {analysis.election_status.lifecycle}. "
+        "Experimental and uncalibrated. Lifecycle/stage eligibility is only one prerequisite; "
+        "it does not validate source freshness, coverage, contest identity or predictive accuracy."
+    )
+
+
+def _status_text(status: ResultStatus) -> str:
+    text = f"Lifecycle: {status.lifecycle}; tabulation stage: {status.tabulation_stage}."
+    if status.result_version:
+        text += f" Result version: {status.result_version}; round: {status.round_id or 'not applicable'}."
+    if status.authority_url:
+        stamp = status.evidence_as_of.isoformat() if status.evidence_as_of else "unknown"
+        text += f" Authority: {status.authority_url}; evidence as of {stamp}."
+    return text
 
 
 def _areas_payload(areas) -> dict[str, object]:
@@ -191,10 +222,14 @@ def _area_nodes(areas) -> list[dict[str, object]]:
 
 def _base_payload(analysis: ElectionAnalysis) -> dict[str, object]:
     return {
-        "schema_version": 2,
+        "schema_version": 3,
         "tool_version": __version__,
         "title": analysis.title,
         "as_of": analysis.as_of,
+        "report_mode": analysis.report_mode,
+        "forecast_target": analysis.forecast_target,
+        "information_time": analysis.information_time,
+        "election_status": _status_payload(analysis.election_status),
         "methodology": {
             "probability_status": (
                 "conditional tempered beta-binomial predictive probability; not an "
@@ -214,6 +249,8 @@ def _base_payload(analysis: ElectionAnalysis) -> dict[str, object]:
                 "contest ballots scaled proportionally from the configured "
                 "source-level expected final ballot count"
             ),
+            "stage_policy": "ADR-003; unknown/completed/incompatible stages withhold forecasts",
+            "validation_status": "experimental_uncalibrated",
             "xlsx_ballot_denominator": (
                 "maximum of reported Ballots Cast and valid votes plus overvotes "
                 "plus undervotes"
@@ -226,6 +263,10 @@ def _base_payload(analysis: ElectionAnalysis) -> dict[str, object]:
                 "timestamp": snapshot.timestamp.isoformat(timespec="minutes"),
                 "sha256": snapshot.sha256,
                 "contests": len(snapshot.contests),
+                "result_versions": [
+                    {"contest_id": contest.contest_id, **_status_payload(contest.result_status)}
+                    for contest in snapshot.contests.values()
+                ],
             }
             for snapshot in analysis.snapshots
         ],
@@ -246,6 +287,13 @@ def _base_payload(analysis: ElectionAnalysis) -> dict[str, object]:
                 "controlling": race.controlling,
                 "scope_note": race.scope_note,
                 "overall_risk": race.overall_risk,
+                "result_status": _status_payload(race.result_status),
+                "forecast_eligibility": {
+                    "eligible": race.forecast_eligible,
+                    "scope": "lifecycle_and_tabulation_stage_only",
+                    "reason": race.forecast_reason,
+                },
+                "excluded_history": list(race.excluded_history),
                 "choices": [
                     {"name": choice.name, "votes": choice.votes, "order": choice.order}
                     for choice in race.choices
@@ -380,13 +428,44 @@ def facebook_summary(analysis: ElectionAnalysis, report_url: str = PUBLIC_REPORT
     """Build a compact, plain-text report suitable for a Facebook post."""
     counts = risk_counts(analysis)
     controlling_races = [race for race in analysis.races if race.controlling]
-    modeled_races = [race for race in controlling_races if race.decisions]
+    modeled_races = [race for race in controlling_races
+                     if any(d.risk.change_probability is not None for d in race.decisions)]
     modeled_decisions = [
         decision
         for race in controlling_races
         for decision in race.decisions
         if decision.risk.change_probability is not None
     ]
+    if analysis.report_mode != "current" or not modeled_decisions:
+        # EA-01: a historical correction must not retain a prospective headline or
+        # reinterpret withheld/null probabilities as a table of low-risk races.
+        heading = "HISTORICAL ELECTION RESULTS" if analysis.report_mode == "historical" else "ELECTION RESULTS"
+        boundaries = sorted(
+            ((race, decision) for race in controlling_races for decision in race.decisions
+             if race.valid_votes > 0 and race.result_status.lifecycle != "unknown"
+             and "precinct committee officer" not in race.contest.casefold()),
+            key=lambda item: (item[0].result_status.lifecycle == "unknown", item[1].margin, item[0].contest),
+        )[:6]
+        lines = [
+            f"🗳️ {heading} — FORECASTS WITHHELD", "", analysis.title,
+            _report_status(analysis),
+            f"Latest input label: {analysis.as_of}; individual sources may be older.",
+            _status_text(analysis.election_status), "",
+            f"Reviewed {len(analysis.races)} reported contests. Unestimated probabilities are not numerical zero; "
+            "no numerical risk ranking is published.", "", "DESCRIPTIVE MARGINS WITH DATED STATUS EVIDENCE",
+        ]
+        for race, decision in boundaries:
+            lines.extend([f"• {race.contest}: {decision.current_state}", _status_text(race.result_status)])
+        lines += ["", "WITHHOLDING REASONS"]
+        reasons = Counter(race.forecast_reason for race in controlling_races if race.decisions)
+        lines.extend(f"• {count} contest(s): {reason}" for reason, count in sorted(reasons.items()))
+        if analysis.report_mode == "historical":
+            lines += ["", "This audit correction supersedes earlier prospective summaries. "
+                      "Original inputs and the audited publication remain in repository history (audit #45)."]
+        lines += ["", "Descriptive counts retain their source limits; this is not an official result, a race call, "
+                  "or a validated forecast. Recount and litigation probabilities are unestimated.",
+                  "", "Full race-by-race report and methodology:", report_url]
+        return "\n".join(lines) + "\n"
     reliability_counts = Counter(
         decision.risk.reliability_grade for decision in modeled_decisions
     )
@@ -410,6 +489,7 @@ def facebook_summary(analysis: ElectionAnalysis, report_url: str = PUBLIC_REPORT
         "🗳️ ELECTION RESULTS: WHAT COULD STILL CHANGE",
         "",
         analysis.title,
+        _report_status(analysis),
         f"Results snapshot: {analysis.as_of.replace('T', ' ')}",
         "",
         (
@@ -458,6 +538,7 @@ def facebook_summary(analysis: ElectionAnalysis, report_url: str = PUBLIC_REPORT
                 f"Meaningful {counts.get('meaningful', 0)}, "
                 f"Low {counts.get('low', 0)}, and "
                 f"Very low {counts.get('very_low', 0)}. "
+                f"{counts.get('unknown', 0)} controlling races have withheld probabilities. "
                 f"Another {counts.get('not_applicable', 0)} controlling races "
                 "have no modeled change boundary."
             ),
@@ -535,6 +616,12 @@ def _race_nodes(race: RaceAnalysis, index: int) -> list[dict[str, object]]:
     nodes = [
         _node(f"{prefix}-heading", "heading2", race.contest, level=2),
         _node(
+            f"{prefix}-result-status", "paragraph", _status_text(race.result_status),
+        ),
+        _node(
+            f"{prefix}-forecast-status", "paragraph", f"Forecast eligibility: {race.forecast_reason}",
+        ),
+        _node(
             f"{prefix}-source",
             "paragraph",
             f"Source: {race.jurisdiction} ({race.source_id}), snapshot {race.snapshot}. "
@@ -554,6 +641,9 @@ def _race_nodes(race: RaceAnalysis, index: int) -> list[dict[str, object]]:
             + ".",
         ),
     ]
+    if race.excluded_history:
+        nodes.append(_node(f"{prefix}-excluded-history", "paragraph",
+                           "Excluded from comparable history: " + "; ".join(race.excluded_history) + "."))
     if not race.decisions:
         message = (
             "No modeled decision boundary: the race is uncontested, ignored by "
@@ -625,10 +715,13 @@ def build_edom(analysis: ElectionAnalysis) -> dict[str, object]:
     counts = risk_counts(analysis)
     children: list[dict[str, object]] = [
         _node("report-title", "title", analysis.title),
+        _node("report-status", "paragraph", _report_status(analysis)),
+        _node("election-status", "paragraph", _status_text(analysis.election_status)),
         _node(
             "report-as-of",
             "paragraph",
-            f"Analysis as of {analysis.as_of}; {len(analysis.races)} contests reported.",
+            f"Latest input label {analysis.as_of}; {len(analysis.races)} contests reported. "
+            "Individual source dates may be older; this label is not an authoritative current-count time.",
         ),
         _node("summary-heading", "heading2", "Summary", level=2),
         _node(

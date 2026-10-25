@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import math
 from collections import Counter
+from dataclasses import replace
 
 from .ingest import load_source_snapshots
 from .model import (
@@ -21,6 +22,7 @@ from .model import (
     Snapshot,
     SourceConfig,
 )
+from .stages import annotate_snapshots, forecast_eligibility, stage_identity
 
 
 RISK_ORDER = {
@@ -146,7 +148,11 @@ def _remaining_contest_ballots(
 ) -> int | None:
     if source.expected_final_ballots is None:
         return None
-    reported = _source_reported_ballots(snapshot)
+    # EA-01: transfers/final rounds/recounts are not additional newly counted ballots.
+    reported = max(
+        item.ballots for item in snapshot.contests.values()
+        if stage_identity(item.result_status) == stage_identity(contest.result_status)
+    )
     if reported <= 0 or source.expected_final_ballots <= reported:
         return 0
     return round(
@@ -572,7 +578,9 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
     history_map: dict[str, tuple[Snapshot, ...]] = {}
     all_snapshots: list[Snapshot] = []
     for source in config.sources:
-        snapshots = load_source_snapshots(source)
+        snapshots = annotate_snapshots(
+            source.source_id, load_source_snapshots(source), config.result_statuses
+        )
         history_map[source.source_id] = snapshots
         all_snapshots.extend(snapshots)
     if not all_snapshots:
@@ -598,8 +606,29 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
     for source, latest, contest in selected.values():
         ranked = _ranked_choices(contest, config)
         rule = _infer_rule(source, contest, config)
-        history = history_map[source.source_id]
+        source_history = history_map[source.source_id]
+        # Preserve every source version, but never derive a batch by subtracting
+        # first rankings from an RCV round, or one result version from another.
+        history = tuple(
+            snapshot for snapshot in source_history
+            if (previous := snapshot.contests.get(contest.key)) is not None
+            and (
+                snapshot is latest
+                or (contest.result_status.tabulation_stage != "unknown"
+                    and stage_identity(previous.result_status) == stage_identity(contest.result_status))
+            )
+        )
+        excluded_history = tuple(
+            f"{snapshot.path.name}: incompatible or unknown tabulation stage/result version"
+            for snapshot in source_history if snapshot not in history
+        )
         controlling, scope_note = _scope_status(source, contest)
+        eligible, reason = forecast_eligibility(config, contest.result_status, rule)
+        if not controlling:
+            eligible, reason = False, scope_note
+        # Suppress the calculation itself, not just its display. Retain descriptive
+        # boundaries and margins with an explicit unestimated result.
+        forecast_source = source if eligible else replace(source, expected_final_ballots=None)
         decisions: list[DecisionAnalysis] = []
         if rule == "winner" and len(ranked) >= 2:
             decisions.append(
@@ -608,7 +637,7 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
                     ranked[0],
                     ranked[1],
                     contest,
-                    source,
+                    forecast_source,
                     latest,
                     history,
                     controlling,
@@ -621,7 +650,7 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
                     ranked[3],
                     ranked[4],
                     contest,
-                    source,
+                    forecast_source,
                     latest,
                     history,
                     controlling,
@@ -634,7 +663,7 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
                     ranked[1],
                     ranked[2],
                     contest,
-                    source,
+                    forecast_source,
                     latest,
                     history,
                     controlling,
@@ -643,13 +672,26 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
         if rule in {"wa_judicial", "rcv"} and ranked:
             decisions.append(
                 _majority_decision(
-                    ranked[0], contest, source, latest, history, controlling
+                    ranked[0], contest, forecast_source, latest, history, controlling
                 )
             )
-        if rule == "rcv" and ranked and 2 * ranked[0].votes <= sum(
-            choice.votes for choice in contest.choices
-        ):
-            scope_note = f"{scope_note} {RCV_PENDING_NOTE}"
+        if rule == "rcv" and ranked:
+            scope_note += (
+                " RCV stage is explicit; a raw first-ranking share is not a final winner "
+                "or a tabulation stopping rule. Full RCV interpretation remains unsupported."
+            )
+            if 2 * ranked[0].votes <= sum(choice.votes for choice in contest.choices):
+                scope_note = f"{scope_note} {RCV_PENDING_NOTE}"
+        if not eligible:
+            decisions = [replace(decision, risk=replace(
+                decision.risk, level="unknown", flip_band=FLIP_BANDS["unknown"],
+                change_probability=None, probability_model="not_available",
+                reliability_score=0, reliability_grade="Insufficient",
+                reliability_rationale="Forecast withheld: " + reason,
+                required_share=None, estimated_remaining_votes=None,
+                latest_batch_share=None, latest_batch_votes=None,
+                rationale="Forecast withheld: " + reason,
+            )) for decision in decisions]
 
         races.append(
             RaceAnalysis(
@@ -670,6 +712,10 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
                 choices=tuple(sorted(contest.choices, key=lambda item: (-item.votes, item.order))),
                 decisions=tuple(decisions),
                 overall_risk=_overall_risk(tuple(decisions)),
+                result_status=contest.result_status,
+                forecast_eligible=eligible,
+                forecast_reason=reason,
+                excluded_history=excluded_history,
             )
         )
 
@@ -688,6 +734,10 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
         snapshots=tuple(
             sorted(all_snapshots, key=lambda item: (item.timestamp, item.source_id))
         ),
+        report_mode=config.report_mode,
+        forecast_target=config.forecast_target,
+        information_time=config.information_time.isoformat() if config.information_time else None,
+        election_status=config.election_status,
     )
 
 
