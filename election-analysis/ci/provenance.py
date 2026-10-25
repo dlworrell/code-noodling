@@ -56,6 +56,7 @@ AUTOMATION = [
     ("data/crosswalks/*/*.csv", "derived-data"),
     ("docs/engineering/*.json", "engineering-record"),
     ("tests/fixtures/*.json", "regression-evidence"),
+    ("tests/fixtures/king-archives.zip", "hash-bound-official-source-archive"),
     ("tests/fixtures/replay-2024/*", "frozen-source-regression"),
 ]
 
