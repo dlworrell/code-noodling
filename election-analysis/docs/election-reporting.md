@@ -24,8 +24,48 @@ Each modeled boundary has a conditional statistical change probability and a sep
 0–100 reliability score. The report begins with a probability-sorted table so close
 races and weak evidence can both be found quickly.
 
-The result is a triage report, not a call by an election authority and not a substitute
-for certified results.
+The software is experimental and uncalibrated. EDT checks document structure and
+provenance; it does not validate a real-world forecast or certify an outcome.
+
+## Lifecycle, stages and legacy migration (EA-01)
+
+[ADR-003](engineering/ADR-003-result-lifecycle-and-stages.md) amends the earlier
+forecast contract. Configuration schema 1 remains readable, but now produces
+descriptive results with unknown lifecycle/stage and null probabilities. A passed
+certification deadline never changes that state automatically. The watcher still
+writes schema 1 and therefore cannot implicitly re-enable forecasts.
+
+Schema 2 adds `[election]` fields `report_mode`, `forecast_target` and an
+offset-aware `information_time`, plus `[election.status]` and `[[result_status]]`
+records. Each contest status binds to a configured `source_id`, exact input
+`snapshot_sha256` and `contest_id` (or an explicit `*` for that one source/hash).
+Known lifecycle/stage metadata needs an HTTPS authority URL and an offset-aware
+`evidence_as_of`. Known stages require `result_version`; RCV rounds require
+`round_id`. See the Washington primary configuration for an actual historical
+migration: the official recount evidence confirms completion for LD42 while the
+underlying summary keeps its original plurality-count stage and bytes.
+
+Current outstanding-ballot scenarios require dated counting evidence for both
+the election and contest, a supported plurality stage and an explicit information
+time. Only evidence available by that time may be used. Recount, litigation and
+full RCV models remain unsupported. Historical, completed, unknown and incompatible
+states withhold the calculation, retain descriptive margins and explain why.
+Different lifecycles/stages/rounds/result versions are never subtracted as a new
+batch. Every original version remains visible in JSON input lineage.
+
+Analysis JSON is now schema 3. Consumers must handle null probability, pool,
+required-share and batch fields and read `forecast_eligibility.reason`,
+`result_status`, `report_mode`, `forecast_target` and `information_time`.
+`forecast_eligibility.scope` explicitly limits this gate to lifecycle/stage;
+source freshness, identity, completeness and calibration have separate open
+audit issues. A zero evidence score accompanies withholding; it is not a low-risk
+prediction. Markdown, HTML and Facebook summaries use the same status contract.
+
+The historical Washington primary summary supersedes the earlier prospective
+publication. The original can be reviewed at audited revision
+`99c03904a7258994bcbc25c2e73ede722d00c461`; its inputs and audit evidence are preserved.
+The remaining sections describe the conditional model only when these
+prerequisites are met, rather than granting legacy files forecast eligibility.
 
 ## Repository layout
 
