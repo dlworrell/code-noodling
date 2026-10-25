@@ -522,7 +522,7 @@ def facebook_summary(analysis: ElectionAnalysis, report_url: str = PUBLIC_REPORT
             _report_status(analysis),
             f"Latest input label: {analysis.as_of}; individual sources may be older.",
             _status_text(analysis.election_status), "",
-            f"Reviewed {len(analysis.races)} reported contests. Unestimated probabilities are not numerical zero; "
+            f"Reviewed {len(analysis.races)} source representations of contests; overlapping jurisdictions may appear separately. Unestimated probabilities are not numerical zero; "
             "no numerical risk ranking is published.", "", "DESCRIPTIVE MARGINS WITH DATED STATUS EVIDENCE",
         ]
         for race, decision in boundaries:
@@ -564,7 +564,7 @@ def facebook_summary(analysis: ElectionAnalysis, report_url: str = PUBLIC_REPORT
         f"Latest filename label: {analysis.as_of.replace('T', ' ')}; individual source times and coverage vary",
         "",
         (
-            f"The analysis reviewed {len(analysis.races)} reported contests. "
+            f"The analysis reviewed {len(analysis.races)} source representations of contests; overlapping jurisdictions may appear separately. "
             f"It modeled {len(modeled_decisions)} controlling decision boundaries "
             f"across {len(modeled_races)} races."
         ),
@@ -805,7 +805,7 @@ def build_edom(analysis: ElectionAnalysis) -> dict[str, object]:
         _node(
             "report-as-of",
             "paragraph",
-            f"Latest input label {analysis.as_of}; {len(analysis.races)} contests reported. "
+            f"Latest input label {analysis.as_of}; {len(analysis.races)} source representations of contests; overlapping jurisdictions may appear separately. "
             "Individual source dates may be older; this label is not an authoritative current-count time.",
         ),
         _node("source-coverage", "paragraph", "Generated: " + analysis.generated_at + "; mixed source vintages: " + json.dumps(analysis.source_summary, sort_keys=True) + "; coverage findings: " + json.dumps(analysis.coverage_summary, sort_keys=True)),
