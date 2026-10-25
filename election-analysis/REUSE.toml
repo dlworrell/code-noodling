@@ -73,3 +73,34 @@ SPDX-License-Identifier = "LicenseRef-AK-DOE-PublicData"
 path = ["data/elections/maine/*/input/**", "data/elections/maine/*/raw/**"]
 SPDX-FileCopyrightText = "Maine Secretary of State"
 SPDX-License-Identifier = "LicenseRef-ME-SOS-PublicData"
+
+# Hash-bound audit regression data and independent numerical references.
+[[annotations]]
+path = ["tests/fixtures/maine-2024-cd2-manifest.json", "tests/fixtures/official-result-versions.json", "tests/fixtures/beta-binomial-oracles.json", "tests/fixtures/validation-protocol-v1.json"]
+SPDX-FileCopyrightText = "2026 Donovan Worrell"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = "tests/fixtures/replay-2024/manifest.json"
+SPDX-FileCopyrightText = "2026 Donovan Worrell"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = "tests/fixtures/replay-2024/washington.csv"
+SPDX-FileCopyrightText = "Washington Secretary of State"
+SPDX-License-Identifier = "LicenseRef-WA-SOS-PublicData"
+
+[[annotations]]
+path = "tests/fixtures/replay-2024/maine.csv"
+SPDX-FileCopyrightText = "Maine Secretary of State"
+SPDX-License-Identifier = "LicenseRef-ME-SOS-PublicData"
+
+[[annotations]]
+path = "tests/fixtures/replay-2024/alaska.csv"
+SPDX-FileCopyrightText = "State of Alaska, Division of Elections; MIT Election Data and Science Lab (frozen derivative archive)"
+SPDX-License-Identifier = "LicenseRef-AK-DOE-PublicData"
+
+[[annotations]]
+path = "tests/fixtures/maine-2024-cd2-patterns.json"
+SPDX-FileCopyrightText = "Maine Secretary of State"
+SPDX-License-Identifier = "LicenseRef-ME-SOS-PublicData"
