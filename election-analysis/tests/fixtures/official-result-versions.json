@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "records": [
     {
       "canonical_id": "ak:2024-general:USRep",
@@ -19,7 +19,11 @@
       "blanks": 5788,
       "exhausted": 7595,
       "overvotes": 624,
-      "ballots": 335853
+      "ballots": 335853,
+      "source_published_at": null,
+      "count_updated_at": null,
+      "certification_status": "unknown; source stage/official designation retained separately",
+      "report_date_qualification": "Report date is not an offset-aware publication or count-update timestamp."
     },
     {
       "canonical_id": "ak:2024-general:SenD",
@@ -39,7 +43,11 @@
       "blanks": 803,
       "exhausted": 1399,
       "overvotes": 20,
-      "ballots": 20138
+      "ballots": 20138,
+      "source_published_at": null,
+      "count_updated_at": null,
+      "certification_status": "unknown; source stage/official designation retained separately",
+      "report_date_qualification": "Report date is not an offset-aware publication or count-update timestamp."
     },
     {
       "canonical_id": "ak:2024-general:SenF",
@@ -59,7 +67,11 @@
       "blanks": 935,
       "exhausted": 599,
       "overvotes": 11,
-      "ballots": 17967
+      "ballots": 17967,
+      "source_published_at": null,
+      "count_updated_at": null,
+      "certification_status": "unknown; source stage/official designation retained separately",
+      "report_date_qualification": "Report date is not an offset-aware publication or count-update timestamp."
     },
     {
       "canonical_id": "ak:2024-general:SenL",
@@ -79,7 +91,11 @@
       "blanks": 761,
       "exhausted": 1728,
       "overvotes": 20,
-      "ballots": 20340
+      "ballots": 20340,
+      "source_published_at": null,
+      "count_updated_at": null,
+      "certification_status": "unknown; source stage/official designation retained separately",
+      "report_date_qualification": "Report date is not an offset-aware publication or count-update timestamp."
     },
     {
       "canonical_id": "ak:2024-general:HD6",
@@ -99,7 +115,11 @@
       "blanks": 376,
       "exhausted": 618,
       "overvotes": 16,
-      "ballots": 11798
+      "ballots": 11798,
+      "source_published_at": null,
+      "count_updated_at": null,
+      "certification_status": "unknown; source stage/official designation retained separately",
+      "report_date_qualification": "Report date is not an offset-aware publication or count-update timestamp."
     },
     {
       "canonical_id": "ak:2024-general:HD28",
@@ -119,7 +139,11 @@
       "blanks": 1177,
       "exhausted": 1255,
       "overvotes": 8,
-      "ballots": 8917
+      "ballots": 8917,
+      "source_published_at": null,
+      "count_updated_at": null,
+      "certification_status": "unknown; source stage/official designation retained separately",
+      "report_date_qualification": "Report date is not an offset-aware publication or count-update timestamp."
     },
     {
       "canonical_id": "ak:2024-general:HD28",
@@ -129,7 +153,10 @@
       "authority_url": "https://www.elections.alaska.gov/results/24GENR/RCV-HD28.pdf",
       "evidence_as_of": "2026-10-25T05:15:04+00:00",
       "coverage_status": "unresolved",
-      "finding": "Official report located in Division index, but complete final-round accounting not retrieved. Direct binary returned HTTP 503/timeouts; partial indexed snippets are insufficient to verify conservation."
+      "finding": "Official report located in Division index, but complete final-round accounting not retrieved. Direct binary returned HTTP 503/timeouts; partial indexed snippets are insufficient to verify conservation.",
+      "source_published_at": null,
+      "count_updated_at": null,
+      "certification_status": "unknown; source stage/official designation retained separately"
     },
     {
       "canonical_id": "ak:2024-general:HD36",
@@ -148,7 +175,10 @@
       "exhausted": 1698,
       "overvotes": 28,
       "ballots": 9382,
-      "acquisition": "official indexed final-round PDF text; complete accounting available; direct binary HTTP 503/timeout, no verified binary SHA-256"
+      "acquisition": "official indexed final-round PDF text; complete accounting available; direct binary HTTP 503/timeout, no verified binary SHA-256",
+      "source_published_at": null,
+      "count_updated_at": null,
+      "certification_status": "unknown; source stage/official designation retained separately"
     },
     {
       "canonical_id": "ak:2024-general:HD38",
@@ -167,17 +197,34 @@
       "exhausted": 608,
       "overvotes": 45,
       "ballots": 3707,
-      "acquisition": "official indexed final-round PDF text; complete accounting available; direct binary HTTP 503/timeout, no verified binary SHA-256"
+      "acquisition": "official indexed final-round PDF text; complete accounting available; direct binary HTTP 503/timeout, no verified binary SHA-256",
+      "source_published_at": null,
+      "count_updated_at": null,
+      "certification_status": "unknown; source stage/official designation retained separately"
     },
     {
       "canonical_id": "ak:2024-general:HD40",
       "result_version": "ak-original-20241130",
-      "round_id": "unresolved",
+      "round_id": "2",
       "tabulation_stage": "final_round",
       "authority_url": "https://www.elections.alaska.gov/results/24GENR/RCV-HD40.pdf",
-      "evidence_as_of": "2026-10-25T05:15:04+00:00",
-      "coverage_status": "unresolved",
-      "finding": "Official report located in Division index, but complete final-round accounting not retrieved. Direct binary returned HTTP 503/timeouts; partial indexed snippets are insufficient to verify conservation."
+      "evidence_as_of": "2026-10-25T05:55:40.390383+00:00",
+      "coverage_status": "official_indexed_reference",
+      "source_published_at": null,
+      "count_updated_at": null,
+      "certification_status": "official results as labeled in Division RCV report",
+      "report_date": "2024-11-30",
+      "report_local_time": "15:23:31; timezone not provided",
+      "votes": {
+        "Chase, Saima \"Ikrik\"": 1008,
+        "Burke, Robyn \"Niayuq\"": 1541
+      },
+      "continuing": 2549,
+      "blanks": 117,
+      "exhausted": 489,
+      "overvotes": 15,
+      "ballots": 3170,
+      "acquisition": "Official indexed RCV Detailed Report text. Direct binary retrieval HTTP 503; no verified binary SHA-256."
     },
     {
       "canonical_id": "ak:2024-general:measure2",
@@ -197,22 +244,37 @@
       "exhausted": 0,
       "overvotes": 132,
       "ballots": 335653,
-      "acquisition": "frozen MEDSL archive; derivative rather than independently downloaded official precinct CSV"
+      "acquisition": "frozen MEDSL archive; derivative rather than independently downloaded official precinct CSV",
+      "source_published_at": null,
+      "count_updated_at": null,
+      "certification_status": "unknown; source stage/official designation retained separately"
     },
     {
       "canonical_id": "ak:2024-general:measure2",
       "result_version": "recount-20241209",
       "round_id": "not-applicable",
       "tabulation_stage": "recount",
-      "authority_url": "https://www.elections.alaska.gov/election-results/e/?id=24genr",
+      "authority_url": "https://www.elections.alaska.gov/results/24GENR/ElectionSummaryReport-Recount-Result.pdf",
       "evidence_as_of": "2026-10-25T05:15:04+00:00",
       "votes": {
         "YES": 160230,
         "NO": 160973
       },
       "margin": 743,
-      "coverage_status": "unresolved",
-      "finding": "Recount candidate totals officially announced, margin 743; complete blank/overvote/ballot accounting unavailable, so complete-stage coverage remains unresolved."
+      "coverage_status": "partial_accounting",
+      "finding": "Times Cast and candidate totals conserve a combined noncontinuing total of 14,564. The report does not partition blanks, exhausted and overvotes; these fields remain null. Not independently verified binary bytes.",
+      "source_published_at": null,
+      "count_updated_at": null,
+      "certification_status": "OFFICIAL RECOUNT RESULTS as labeled in Division report",
+      "report_date": "2024-12-09",
+      "report_local_time": "19:41:51; timezone not provided",
+      "continuing": 321203,
+      "ballots": 335767,
+      "noncontinuing_total": 14564,
+      "blanks": null,
+      "exhausted": null,
+      "overvotes": null,
+      "acquisition": "Official indexed Election Summary Report text; no verified binary SHA-256."
     },
     {
       "canonical_id": "me:2024-general:cd2",
@@ -233,7 +295,10 @@
       "exhausted": 0,
       "overvotes": 0,
       "ballots": 402936,
-      "accounting_partition": "final noncontinuing total 11340 = exhausted 11061 + overvote 279; raw blanks are not an interpreted Round-1 denominator"
+      "accounting_partition": "final noncontinuing total 11340 = exhausted 11061 + overvote 279; raw blanks are not an interpreted Round-1 denominator",
+      "source_published_at": null,
+      "count_updated_at": null,
+      "certification_status": "unknown; source stage/official designation retained separately"
     },
     {
       "canonical_id": "me:2024-general:cd2",
@@ -253,7 +318,42 @@
       "exhausted": 11061,
       "overvotes": 279,
       "ballots": 402936,
-      "accounting_partition": "final noncontinuing total 11340 = exhausted 11061 + overvote 279; raw blanks are not an interpreted Round-1 denominator"
+      "accounting_partition": "final noncontinuing total 11340 = exhausted 11061 + overvote 279; raw blanks are not an interpreted Round-1 denominator",
+      "source_published_at": null,
+      "count_updated_at": null,
+      "certification_status": "unknown; source stage/official designation retained separately"
+    }
+  ],
+  "selections": [
+    {
+      "canonical_id": "ak:2024-general:measure2",
+      "result_version": "recount-20241209",
+      "round_id": "not-applicable",
+      "supersedes": [
+        "archive-first-choice"
+      ],
+      "authority_url": "https://www.elections.alaska.gov/results/24GENR/ElectionSummaryReport-Recount-Result.pdf",
+      "reason": "Official later recount vote totals supersede the frozen derivative archive, preserving its separate 737 margin and incomplete recount partition."
+    },
+    {
+      "canonical_id": "ak:2024-general:HD28",
+      "result_version": "ak-recount-20241209",
+      "round_id": "2",
+      "supersedes": [
+        "ak-original-20241130"
+      ],
+      "authority_url": "https://www.elections.alaska.gov/results/24GENR/RcvDetailedReport-HD28-Recount.pdf",
+      "reason": "Official later recount final round is the current descriptive reference; unavailable original final-round accounting remains explicitly unresolved."
+    },
+    {
+      "canonical_id": "me:2024-general:cd2",
+      "result_version": "me-2024-official-final",
+      "round_id": "final",
+      "supersedes": [
+        "me-2024-raw"
+      ],
+      "authority_url": "https://www1.maine.gov/sos/elections-voting/election-results-data/election-results-2024",
+      "reason": "Official final allocation to supplied eligible finalists supersedes raw-first-ranking diagnostics for descriptive outcome reporting."
     }
   ]
 }

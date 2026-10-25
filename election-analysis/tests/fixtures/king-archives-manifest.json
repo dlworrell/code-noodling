@@ -1,0 +1,1218 @@
+{
+  "schema_version": 1,
+  "purpose": "Descriptive historical count archive and missing-evidence inventory; not a backtest or historical forecast.",
+  "files": [
+    {
+      "file": "webresults-2022-certified.csv",
+      "url": "https://aqua.kingcounty.gov/elections/2022/nov-general/webresults.csv",
+      "retrieved_at": "2026-10-25T05:53:47.140963+00:00",
+      "bytes": 36036,
+      "sha256": "aaebc5a75a05745001b165e6f0a8235e912b11a5e0d774955281c70341bc657f",
+      "last_modified": "Tue, 29 Nov 2022 23:39:27 GMT",
+      "status": "downloaded",
+      "contests": 104,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2022-general"
+    },
+    {
+      "file": "webresults-20221108.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2022/11/webresults-20221108.csv?rev=baaecd86a6ea4fb09c9d6bd0db5105d2&hash=A1B7A3CA692AC3E4DD3E580FE7768CCF",
+      "retrieved_at": "2026-10-25T05:53:46.319262+00:00",
+      "bytes": 35935,
+      "sha256": "ebd70f2c740632edc649af92759cd3813d639beaa271127cf7c994dad5be3ffe",
+      "last_modified": "Fri, 13 Dec 2024 23:20:53 GMT",
+      "status": "downloaded",
+      "contests": 104,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2022-general"
+    },
+    {
+      "file": "webresults-20221109.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2022/11/webresults-20221109.csv?rev=1a2b89facc7c4796be4da6ed3d0a8da1&hash=91C3E3A25A179A01F86150CD51239642",
+      "retrieved_at": "2026-10-25T05:53:46.271431+00:00",
+      "bytes": 35960,
+      "sha256": "383c06fcd01873e46b045ebd4e09d7750e0e2c4b67be2d4ded22ec822dc48bd5",
+      "last_modified": "Fri, 13 Dec 2024 23:20:53 GMT",
+      "status": "downloaded",
+      "contests": 104,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2022-general"
+    },
+    {
+      "file": "webresults-20221110.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2022/11/webresults-20221110.csv?rev=d83bdf57a38a4df08dc38550d984fcb5&hash=1045E9136131793B97E66DA7B17DFF02",
+      "retrieved_at": "2026-10-25T05:53:46.307484+00:00",
+      "bytes": 35984,
+      "sha256": "81b49e67d755789a4209f9bc25404adf5c383ba251871f84d649941ad2678e68",
+      "last_modified": "Fri, 13 Dec 2024 23:20:53 GMT",
+      "status": "downloaded",
+      "contests": 104,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2022-general"
+    },
+    {
+      "file": "webresults-20221111.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2022/11/webresults-20221111.csv?rev=0149c4f1c0264857905dec4040f75ef9&hash=4AD103BFDCC515CBA59B4D85A4FD5D08",
+      "retrieved_at": "2026-10-25T05:53:46.259980+00:00",
+      "bytes": 36014,
+      "sha256": "43a157c7925ee91dc4bcdce59d76fd1703b023a4456d08700dcc761fad58dfc1",
+      "last_modified": "Fri, 13 Dec 2024 23:20:53 GMT",
+      "status": "downloaded",
+      "contests": 104,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2022-general"
+    },
+    {
+      "file": "webresults-20221112.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2022/11/webresults-20221112.csv?rev=4d54ae4b53a84747878dadaf297955aa&hash=49B22B285F155595CD7B5B93B0037496",
+      "retrieved_at": "2026-10-25T05:53:49.796146+00:00",
+      "bytes": 36022,
+      "sha256": "731e542c9bf973d3edc4afbcaa04dc2c5614275217838f47c511824645e10152",
+      "last_modified": "Fri, 13 Dec 2024 23:20:53 GMT",
+      "status": "downloaded",
+      "contests": 104,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2022-general"
+    },
+    {
+      "file": "webresults-20221114.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2022/11/webresults-20221114.csv?rev=963f1ee48ed14c11ad34f227b5fa155e&hash=4B05413940FAFC840856531E110005A5",
+      "retrieved_at": "2026-10-25T05:53:49.871560+00:00",
+      "bytes": 36026,
+      "sha256": "c4dc2ce641e6dad7a9cd891eef1407ced09ff4571dde4e1eba86c80391806529",
+      "last_modified": "Fri, 13 Dec 2024 23:20:53 GMT",
+      "status": "downloaded",
+      "contests": 104,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2022-general"
+    },
+    {
+      "file": "webresults-20221115.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2022/11/webresults-20221115.csv?rev=b910b5a5834e4585bf42ab9fa50f91a6&hash=66A20B277813B0DB2EE3574ADB198C73",
+      "retrieved_at": "2026-10-25T05:53:49.783738+00:00",
+      "bytes": 36035,
+      "sha256": "4d45e97c5db280aa1435a25f5f910282c8fda16a4397e0565a14744c7a3dd397",
+      "last_modified": "Fri, 13 Dec 2024 23:20:54 GMT",
+      "status": "downloaded",
+      "contests": 104,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2022-general"
+    },
+    {
+      "file": "webresults-20221116.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2022/11/webresults-20221116.csv?rev=8212e930d23849c7b4084f91833480f3&hash=5A0AAD2BB854B85F019B3C36205BE235",
+      "retrieved_at": "2026-10-25T05:53:49.912039+00:00",
+      "bytes": 36038,
+      "sha256": "8a79baa702bfc12fc88e03c21db2ff37b2c9974a7f953eca2633b9a9b7243612",
+      "last_modified": "Fri, 13 Dec 2024 23:20:54 GMT",
+      "status": "downloaded",
+      "contests": 104,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2022-general"
+    },
+    {
+      "file": "webresults-20221117.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2022/11/webresults-20221117.csv?rev=782fbeac2e6849e2b4ef8643bfbb6cf2&hash=A5FCA3A70D78CCC2D767244D92FCED0B",
+      "retrieved_at": "2026-10-25T05:53:49.851399+00:00",
+      "bytes": 36038,
+      "sha256": "896a2fac934880f9f1560fca9f6fff74992c8b1089dfcb9412af769e9716cb31",
+      "last_modified": "Fri, 13 Dec 2024 23:20:54 GMT",
+      "status": "downloaded",
+      "contests": 104,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2022-general"
+    },
+    {
+      "file": "webresults-20221118.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2022/11/webresults-20221118.csv?rev=8708dc9d14d24ed6a2c6a341143b4ecf&hash=D747B32073DDD908C10AF42E4A17E09A",
+      "retrieved_at": "2026-10-25T05:53:52.731110+00:00",
+      "bytes": 36039,
+      "sha256": "2028d395da7b7f7d1c75a0ca426c760e3df08df0871ec41efe47b7483e67950d",
+      "last_modified": "Fri, 13 Dec 2024 23:20:54 GMT",
+      "status": "downloaded",
+      "contests": 104,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2022-general"
+    },
+    {
+      "file": "webresults-20221119.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2022/11/webresults-20221119.csv?rev=02140a0fffb344aca20ba7409d52602f&hash=AE67509556E7A2671091DF14A7F95158",
+      "retrieved_at": "2026-10-25T05:53:52.732046+00:00",
+      "bytes": 36039,
+      "sha256": "2608df86f8973b6930351261f16caad4d8b2179ad55a6bbd9ab855411264024c",
+      "last_modified": "Fri, 13 Dec 2024 23:20:54 GMT",
+      "status": "downloaded",
+      "contests": 104,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2022-general"
+    },
+    {
+      "file": "webresults-20221121.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2022/11/webresults-20221121.csv?rev=59aa092a44d3438489011c7d26c36f71&hash=8B783B6E9D3BD38FBA58244A1D38A745",
+      "retrieved_at": "2026-10-25T05:53:52.695215+00:00",
+      "bytes": 36039,
+      "sha256": "e3700e445aa759c3a60720b40f753a4e50268ea1153161712a59c5b8cedbe661",
+      "last_modified": "Fri, 13 Dec 2024 23:20:54 GMT",
+      "status": "downloaded",
+      "contests": 104,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2022-general"
+    },
+    {
+      "file": "webresults-20221123.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2022/11/webresults-20221123.csv?rev=b12ee07a7b9b47bc8f37a39d068c4f73&hash=E0C64260BCFC799EDCFD581877646CEC",
+      "retrieved_at": "2026-10-25T05:53:52.681317+00:00",
+      "bytes": 36039,
+      "sha256": "ab9cddaab12b41bd7f4e3dd9b98f227192b380e36b3165768299ab8af6585a0a",
+      "last_modified": "Fri, 13 Dec 2024 23:20:55 GMT",
+      "status": "downloaded",
+      "contests": 104,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2022-general"
+    },
+    {
+      "file": "webresults-20221128.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2022/11/webresults-20221128.csv?rev=f7b0c5e454a44baa90320d3dabbb13bf&hash=879DCB1A3E509BDFA980215A24E23313",
+      "retrieved_at": "2026-10-25T05:53:52.680133+00:00",
+      "bytes": 36036,
+      "sha256": "96927eed5bc23ca070b3d3916c1881db5861dfaf7dff72e72428cbbaff5833af",
+      "last_modified": "Fri, 13 Dec 2024 23:20:55 GMT",
+      "status": "downloaded",
+      "contests": 104,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2022-general"
+    },
+    {
+      "file": "webresults-20221129.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2022/11/webresults-20221129.csv?rev=8af31a8ae9ce4893b0f5a6a56370bccf&hash=4973699BC89C57BA636D7C74637F7F12",
+      "retrieved_at": "2026-10-25T05:53:55.675512+00:00",
+      "bytes": 36036,
+      "sha256": "aaebc5a75a05745001b165e6f0a8235e912b11a5e0d774955281c70341bc657f",
+      "last_modified": "Fri, 13 Dec 2024 23:20:55 GMT",
+      "status": "downloaded",
+      "contests": 104,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2022-general"
+    },
+    {
+      "file": "webresults-20231107.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2023/11/webresults-20231107.csv?rev=f666139643a54095a15796ea11e72dea&hash=B89E878E559ED3AEFACD6E637314706D",
+      "retrieved_at": "2026-10-25T05:53:55.847053+00:00",
+      "bytes": 103891,
+      "sha256": "f5b192b41918f9e5b9daf1cf8a63625ba7660442ff6e87b97dc8af44ab56d453",
+      "last_modified": "Wed, 08 Nov 2023 23:37:44 GMT",
+      "status": "downloaded",
+      "contests": 329,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2023-general"
+    },
+    {
+      "file": "webresults-20231108.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2023/11/webresults-20231108.csv?rev=b2796f2be78e4e918a9bf7de151e09d6&hash=494507E2580B260EF0C0BE29B85DC63B",
+      "retrieved_at": "2026-10-25T05:53:55.791426+00:00",
+      "bytes": 103956,
+      "sha256": "6027be5f6fb22a9b4310cadd6550ce46e20490b925837c4b386491eefe322a76",
+      "last_modified": "Thu, 09 Nov 2023 02:32:41 GMT",
+      "status": "downloaded",
+      "contests": 329,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2023-general"
+    },
+    {
+      "file": "webresults-20231109.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2023/11/webresults-20231109.csv?rev=f133dcf01c31431ca161f40f127e55c0&hash=AB949693B5715D837212AD61F81A1285",
+      "retrieved_at": "2026-10-25T05:53:55.771528+00:00",
+      "bytes": 104094,
+      "sha256": "da2ef20f5a0c152615c7d7d30e73bdf21397672dbc3da5d3f9734ab5c3304736",
+      "last_modified": "Mon, 13 Nov 2023 17:47:13 GMT",
+      "status": "downloaded",
+      "contests": 329,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2023-general"
+    },
+    {
+      "file": "webresults-20231110.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2023/11/webresults-20231110.csv?rev=1a50208cbe1f45bfbc5f81e03e7f677a&hash=7DC9B0AEE82E6000A2D6C16FF41A90CC",
+      "retrieved_at": "2026-10-25T05:53:58.891198+00:00",
+      "bytes": 104259,
+      "sha256": "82098eaa372d752821a81d54e36394e35f9ad4852e472444f413c0738711d281",
+      "last_modified": "Mon, 13 Nov 2023 17:47:14 GMT",
+      "status": "downloaded",
+      "contests": 329,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2023-general"
+    },
+    {
+      "file": "webresults-20231113.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2023/11/webresults-20231113.csv?rev=0c29faaf885b4c6185626f464f13d48d&hash=6E491D53E8F073012D08EE18A319ED33",
+      "retrieved_at": "2026-10-25T05:53:58.719268+00:00",
+      "bytes": 104258,
+      "sha256": "e2df10e85254ba70c43b169a977edf69a9bc1028bb0334720e53e16a4bcd0f7d",
+      "last_modified": "Mon, 13 Nov 2023 23:37:23 GMT",
+      "status": "downloaded",
+      "contests": 329,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2023-general"
+    },
+    {
+      "file": "webresults-20231114.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2023/11/webresults-20231114.csv?rev=db73f8eca83a4bc1b1c29b96cb458b99&hash=72B72E3689B45E0EE740AC3D50E9D395",
+      "retrieved_at": "2026-10-25T05:53:58.835235+00:00",
+      "bytes": 104267,
+      "sha256": "a7300df5b2a01e310a35469c3e3c90689ea3429900509ba70b7a7c8f47a7319b",
+      "last_modified": "Thu, 16 Nov 2023 00:07:00 GMT",
+      "status": "downloaded",
+      "contests": 329,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2023-general"
+    },
+    {
+      "file": "webresults-20231115.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2023/11/webresults-20231115.csv?rev=8658fc74eb60432fb14cfd6713c70887&hash=6F5A0B55AA17399636AA90941B84227C",
+      "retrieved_at": "2026-10-25T05:53:58.887478+00:00",
+      "bytes": 104267,
+      "sha256": "a77dd370f1c39416b1492bb4404c3718cb289d9595198be14243798a3d63834a",
+      "last_modified": "Thu, 16 Nov 2023 21:05:24 GMT",
+      "status": "downloaded",
+      "contests": 329,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2023-general"
+    },
+    {
+      "file": "webresults-20231116.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2023/11/webresults-20231116.csv?rev=f74a72de3e0843bda66dbeb04e21a024&hash=87EF4CB8BCF55D5AAF5BC350E5BA5DB3",
+      "retrieved_at": "2026-10-25T05:53:58.723213+00:00",
+      "bytes": 104266,
+      "sha256": "541fdbc41156d466a7791710a2e55134d7fd87f2629db5e6164fc8caf60c9a2a",
+      "last_modified": "Fri, 17 Nov 2023 23:32:07 GMT",
+      "status": "downloaded",
+      "contests": 329,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2023-general"
+    },
+    {
+      "file": "webresults-20231117.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2023/11/webresults-20231117.csv?rev=90ed5d384e114152a58b2e3667ec3033&hash=82260A904261EE845732FABD906F960B",
+      "retrieved_at": "2026-10-25T05:54:02.143631+00:00",
+      "bytes": 104266,
+      "sha256": "75415faedb4136b0108a1cd71b789bebb90d259c4fb4c93df0f37ff581cd94be",
+      "last_modified": "Fri, 17 Nov 2023 23:32:07 GMT",
+      "status": "downloaded",
+      "contests": 329,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2023-general"
+    },
+    {
+      "file": "webresults-20231120.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2023/11/webresults-20231120.csv?rev=fc9322fd6d6c4e4490343edc0d685821&hash=219D76D6A6A6EB78D00781078E2EC4A7",
+      "retrieved_at": "2026-10-25T05:54:02.163218+00:00",
+      "bytes": 104266,
+      "sha256": "db30245388ee0f1d19ac981782cc539bbaf86ad8950cfa723b4ea799031c3319",
+      "last_modified": "Tue, 21 Nov 2023 23:19:13 GMT",
+      "status": "downloaded",
+      "contests": 329,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2023-general"
+    },
+    {
+      "file": "webresults-20231121.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2023/11/webresults-20231121.csv?rev=82f3deabbe1643b794aa35e133a5c507&hash=6E32B53C9C9F9F20F1B142B49320D275",
+      "retrieved_at": "2026-10-25T05:54:02.219262+00:00",
+      "bytes": 104265,
+      "sha256": "1363c4951cdbc17355f5173ade465f9b73cf5077d55c06846aec9e9fdb16d0ad",
+      "last_modified": "Wed, 22 Nov 2023 23:39:04 GMT",
+      "status": "downloaded",
+      "contests": 329,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2023-general"
+    },
+    {
+      "file": "webresults-20231122.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2023/11/webresults-20231122.csv?rev=46f0f20c237c4c87af3fe79f640ed2ef&hash=44EEC39087AD4134FBE14B676A78E98C",
+      "retrieved_at": "2026-10-25T05:54:01.807464+00:00",
+      "bytes": 104265,
+      "sha256": "687f572b48cb2a752d6104ac2a0ad4a80d71e4f9e366ece5762ec1730467746a",
+      "last_modified": "Wed, 22 Nov 2023 23:39:23 GMT",
+      "status": "downloaded",
+      "contests": 329,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2023-general"
+    },
+    {
+      "file": "webresults-20231127-final.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2023/11/webresults-20231127-final.csv?rev=d8e6058ed2a841fcbdf4591ed13a2b21&hash=30BC231E2E93345F6F45A739C3975E9E",
+      "retrieved_at": "2026-10-25T05:54:02.243231+00:00",
+      "bytes": 104265,
+      "sha256": "8e558f9d6433a5b69577de4820268e62a0db603fdb5b65a149e15153721a435f",
+      "last_modified": "Tue, 28 Nov 2023 23:38:40 GMT",
+      "status": "downloaded",
+      "contests": 329,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2023-general"
+    },
+    {
+      "file": "webresults-20231127.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2023/11/webresults-20231127.csv?rev=600426b75fb14e07b6cf1a74b443b09e&hash=ACE4066D651DF875CC9400A423A8F01A",
+      "retrieved_at": "2026-10-25T05:54:04.995282+00:00",
+      "bytes": 104265,
+      "sha256": "767600532929b9b3b6c2da70eda8fd75fd018b702b48d8df76201b7a0aa13409",
+      "last_modified": "Mon, 27 Nov 2023 23:26:43 GMT",
+      "status": "downloaded",
+      "contests": 329,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2023-general"
+    },
+    {
+      "file": "webresults-20241105.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241105.csv?rev=5c2af9b33eb44c4ab613df2d02c36752&hash=1DA52B69B1EA16DE167351F0B11BCC2A",
+      "retrieved_at": "2026-10-25T05:47:03.817592+00:00",
+      "bytes": 29744,
+      "sha256": "4b07815c0bfeeddf18b55a432ead006b91f21167585a620fa38f42241ddbe8d3",
+      "last_modified": "Wed, 06 Nov 2024 23:39:15 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults-20241106.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241106.csv?rev=5399d80f232d4dd786f2a31e16237e29&hash=634F93C1E0E701032ECA193180C9D9A3",
+      "retrieved_at": "2026-10-25T05:47:04.015610+00:00",
+      "bytes": 29756,
+      "sha256": "936be7991dcb41153eb41243d8286e523d9bda2f3a06128406358345823b1fd2",
+      "last_modified": "Thu, 07 Nov 2024 23:33:33 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults-20241107.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241107.csv?rev=ec103a3cce194d2dae1f6f6f851d881c&hash=26E96DE0BC5771FA595B008ABBE269F4",
+      "retrieved_at": "2026-10-25T05:47:03.980163+00:00",
+      "bytes": 29767,
+      "sha256": "8176f2430231d8e2388dc04ad3eea06f899899df809ab6df38e996cef238d903",
+      "last_modified": "Fri, 08 Nov 2024 22:31:08 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults-20241108.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241108.csv?rev=ffe7e3b910054fec8654343c2f6ece8a&hash=DFC1CA744EC21BC422C76A14988EA42A",
+      "retrieved_at": "2026-10-25T05:47:03.980691+00:00",
+      "bytes": 29837,
+      "sha256": "01eaf29947964b8801699ae12b92ae208ee38ff4260cd8fccf844bdc575ca70f",
+      "last_modified": "Mon, 11 Nov 2024 23:07:46 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults-20241111.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241111.csv?rev=0e357be134de455eb924b828cf5f9f3d&hash=BDBB4BC33283AF80F1A281F822369485",
+      "retrieved_at": "2026-10-25T05:47:03.819316+00:00",
+      "bytes": 29839,
+      "sha256": "1950fa3e84725d3171f1f4772ff10ad26f05fcfd711f95ec5540939f076fe144",
+      "last_modified": "Tue, 12 Nov 2024 22:55:29 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults-20241112.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241112.csv?rev=61a4444875cd4e0f930f7fb73a884082&hash=9FF43C35F70E5D96E6C44A15DA3307F9",
+      "retrieved_at": "2026-10-25T05:47:07.277096+00:00",
+      "bytes": 29838,
+      "sha256": "c0330925e66d6c1f47b0aa801ad18aa959acb26494a7de37d2ff5da8443b00ba",
+      "last_modified": "Wed, 13 Nov 2024 23:19:45 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults-20241113.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241113.csv?rev=04fa530a2a6643c083ac69deba6c13d7&hash=56F5334C35271DC7E3588CE7489B0608",
+      "retrieved_at": "2026-10-25T05:47:07.276396+00:00",
+      "bytes": 29845,
+      "sha256": "f09824f485e76dc9efd769aba86dbc6b04eb5a27184c66c4f1e1784486f4fe99",
+      "last_modified": "Thu, 14 Nov 2024 20:43:37 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults-20241114.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241114.csv?rev=c21e0230aa4d4ab39a9cb3be7ff8adb6&hash=A27E3D6FFADCF0678999EA1354068E9B",
+      "retrieved_at": "2026-10-25T05:47:07.279287+00:00",
+      "bytes": 29845,
+      "sha256": "a2ad8c8e94aed1d9740fe8f619152a2e74e42e11841cb29870a0cb74b9ab25a5",
+      "last_modified": "Fri, 15 Nov 2024 20:23:02 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults-20241115.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241115.csv?rev=8e57707097e949d8bc8580c8ac6e343d&hash=38B000C902C1B8FF72331551A7C12922",
+      "retrieved_at": "2026-10-25T05:47:07.235434+00:00",
+      "bytes": 29846,
+      "sha256": "354ba870219e9b79f222a64609f9b376c795fea4d09b987e38de1304494003e6",
+      "last_modified": "Sat, 16 Nov 2024 23:33:41 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults-20241116.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241116.csv?rev=dfc72f1790fe4a14ab2f0398a5bf6ca4&hash=6E9787D27317C99B0ABFE16173C614B2",
+      "retrieved_at": "2026-10-25T05:47:07.380379+00:00",
+      "bytes": 29846,
+      "sha256": "869233b5f1f8dd33dc82b51c1e9465040c820bf7065fb2d251b5a6f29302222b",
+      "last_modified": "Mon, 18 Nov 2024 20:16:21 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults-20241118.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241118.csv?rev=c1e8d73dbb534684a1fe18f8011b085b&hash=1A95E2CF61C3F27A539523E1F66B2CCA",
+      "retrieved_at": "2026-10-25T05:47:07.379862+00:00",
+      "bytes": 29846,
+      "sha256": "fdc6bd79532aad9e88a5a94edb590a5bfa3384f31a02ab5d2038cc34217dd572",
+      "last_modified": "Tue, 19 Nov 2024 21:11:26 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults-20241119.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241119.csv?rev=6193e16806f7420ea95a1cf6ddb26ec2&hash=B39BEBE318F94920FAF4679D573F9C9D",
+      "retrieved_at": "2026-10-25T05:47:10.731686+00:00",
+      "bytes": 29846,
+      "sha256": "b7576627f67756ea3e797e0c5a76744c71e5cd409bda9e7893ce158c62f90d8f",
+      "last_modified": "Wed, 20 Nov 2024 19:42:39 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults-20241121.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241121.csv?rev=11a56dc60284450b9398ccd1e65014bc&hash=BB8D6907963A4FD37C237852FBE442A8",
+      "retrieved_at": "2026-10-25T05:47:11.179688+00:00",
+      "bytes": 29845,
+      "sha256": "3a5d37b3f15d211d198fbd57ce3e1dbef8ef5517f616a73fb15b7490d018e72d",
+      "last_modified": "Fri, 22 Nov 2024 22:26:17 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults-20241122.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241122.csv?rev=e17c165e1d834881a87a1307528acdff&hash=415F82C41C7C2111E2954A5D29DE63F3",
+      "retrieved_at": "2026-10-25T05:47:10.735611+00:00",
+      "bytes": 29845,
+      "sha256": "e74a5dc7b8bcbcc3afaa665f6467b2f89714a6e8012da34996e23026758f6bff",
+      "last_modified": "Mon, 25 Nov 2024 17:07:17 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults-20241123.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241123.csv?rev=5b33988805174d7d9882c3cb9a41b30f&hash=7ED1494D0D968E8BE4774A177EC7A426",
+      "retrieved_at": "2026-10-25T05:47:10.823584+00:00",
+      "bytes": 29842,
+      "sha256": "3830f2b4d82d6a46dec19a186ce612d0c66af6c1c75b74b39a4a2ab9bb321ffb",
+      "last_modified": "Mon, 25 Nov 2024 19:31:06 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults-20241125.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241125.csv?rev=5b3d0b71236542448924eb41656690e1&hash=67BDB2F8E6F21939B0C75B34253A1116",
+      "retrieved_at": "2026-10-25T05:47:10.712407+00:00",
+      "bytes": 29782,
+      "sha256": "b2c1175dff18499afa0877e1af1b6be415063dc09f544c406dbc54e0c469485d",
+      "last_modified": "Tue, 26 Nov 2024 23:25:57 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults-20241126.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2024/11/webresults-20241126.csv?rev=9771ede9fc16476d854b69657e859c84&hash=15AA9369389287AF736B7EC766260E64",
+      "retrieved_at": "2026-10-25T05:47:03.816291+00:00",
+      "bytes": 29765,
+      "sha256": "ba5351bc0deb95450915d8ccd69dd07f2f34aa6f5b4359e16f9ad13d9cdee950",
+      "last_modified": "Tue, 26 Nov 2024 23:31:29 GMT",
+      "status": "downloaded",
+      "contests": 73,
+      "encoding": "utf-8-sig",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2024-general"
+    },
+    {
+      "file": "webresults---20251118.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2025/11/webresults---20251118.csv?rev=e96d70c223dc46a7b9c3d9c36b9e1207&hash=51BBE5E8D3B3DA9C21F4E1EEF669CF21",
+      "retrieved_at": "2026-10-25T05:47:17.557391+00:00",
+      "bytes": 105048,
+      "sha256": "4bb837616705f399fe7983e4b00fa99a12b8d78aae09a35d512ce6e7078e6eba",
+      "last_modified": "Wed, 19 Nov 2025 23:19:35 GMT",
+      "status": "downloaded",
+      "contests": 355,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2025-general"
+    },
+    {
+      "file": "webresults---20251119.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2025/11/webresults---20251119.csv?rev=54c9c7f6cfe540e3a4d338e1767a3095&hash=6DBF944F6AD5AF55D2F1551C98633256",
+      "retrieved_at": "2026-10-25T05:47:17.420960+00:00",
+      "bytes": 105041,
+      "sha256": "0ce1bb3c3825aa7f41ecb944642754c5804caca668787cd2e59d8fe5bbdddbc7",
+      "last_modified": "Thu, 20 Nov 2025 23:02:11 GMT",
+      "status": "downloaded",
+      "contests": 355,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2025-general"
+    },
+    {
+      "file": "webresults---20251120.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2025/11/webresults---20251120.csv?rev=2e2860d7b6e74d62ad73ae468627d3aa&hash=BE4ED0379190B33961BF815DE6E3D870",
+      "retrieved_at": "2026-10-25T05:47:21.051936+00:00",
+      "bytes": 105040,
+      "sha256": "500f9e46f3fa07729347c13e4ee8d381ed690e76a8db2b426a4ae0b4ec97cc67",
+      "last_modified": "Fri, 21 Nov 2025 21:27:26 GMT",
+      "status": "downloaded",
+      "contests": 355,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2025-general"
+    },
+    {
+      "file": "webresults---20251121.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2025/11/webresults---20251121.csv?rev=b3bc657f6a354741a20a3f16c918ec49&hash=9BD940AEC636253D4DA4F438A547C4D0",
+      "retrieved_at": "2026-10-25T05:47:21.019323+00:00",
+      "bytes": 105040,
+      "sha256": "2779e5511b861b5aeb2a770747aa537ff823930ea584d1c4333b0405baaf5d8e",
+      "last_modified": "Mon, 24 Nov 2025 23:21:31 GMT",
+      "status": "downloaded",
+      "contests": 355,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2025-general"
+    },
+    {
+      "file": "webresults---20251124.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2025/11/webresults---20251124.csv?rev=c20ec8852a9b49a6aea9872bc5ee47bb&hash=C94F83167989CB537A0708D5D71196A9",
+      "retrieved_at": "2026-10-25T05:47:21.055632+00:00",
+      "bytes": 105040,
+      "sha256": "bb1facf33f977f0bd32522a99c27fbc8f8655a0bd5635ba410b33a79c17c2552",
+      "last_modified": "Mon, 24 Nov 2025 23:21:31 GMT",
+      "status": "downloaded",
+      "contests": 355,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2025-general"
+    },
+    {
+      "file": "webresults-11252025-final.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2025/11/webresults-11252025-final.csv?rev=4a92d72185f14fa2b22149bbaec57302&hash=3A5FBEB426F99EF2B49A1BF56252E27E",
+      "retrieved_at": "2026-10-25T05:47:10.803268+00:00",
+      "bytes": 105040,
+      "sha256": "ea4afb4abaa8b2abda8476ab2910355b0f50502acf005e9ac26a468371b97e6e",
+      "last_modified": "Tue, 25 Nov 2025 20:21:03 GMT",
+      "status": "downloaded",
+      "contests": 355,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2025-general"
+    },
+    {
+      "file": "webresults-20251104.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2025/11/webresults-20251104.csv?rev=f1d527a541d646748b9bdfbab785fff3&hash=7E3D1B3ABCEA19060D18D96228380CF8",
+      "retrieved_at": "2026-10-25T05:47:13.735551+00:00",
+      "bytes": 104521,
+      "sha256": "6189f2517697aee601bb4c8b35653a5e688eb987f865f60ea2cd807ea725ea5d",
+      "last_modified": "Wed, 05 Nov 2025 23:12:35 GMT",
+      "status": "downloaded",
+      "contests": 355,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2025-general"
+    },
+    {
+      "file": "webresults-20251105.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2025/11/webresults-20251105.csv?rev=b71844a178f348e4bc967684a2dc6fbd&hash=4D35F3251CD1936BDD434FB4337AB74B",
+      "retrieved_at": "2026-10-25T05:47:14.179250+00:00",
+      "bytes": 104670,
+      "sha256": "a9a41b96ab3a3a8811590f5620bedc6c0329d1a8f2139023af2d4f35d795e6fb",
+      "last_modified": "Thu, 06 Nov 2025 19:27:04 GMT",
+      "status": "downloaded",
+      "contests": 355,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2025-general"
+    },
+    {
+      "file": "webresults-20251106.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2025/11/webresults-20251106.csv?rev=67dc3f01415e4f77aed268231a4d5906&hash=559B9BE2E1ACFA215FF8B970A311FD07",
+      "retrieved_at": "2026-10-25T05:47:14.148100+00:00",
+      "bytes": 104795,
+      "sha256": "f7f2a06d28bdf0f5157f6e75c820fe711a2d2acbe70c0b0ef4edc87c84b6470c",
+      "last_modified": "Fri, 07 Nov 2025 23:10:40 GMT",
+      "status": "downloaded",
+      "contests": 355,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2025-general"
+    },
+    {
+      "file": "webresults-20251107.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2025/11/webresults-20251107.csv?rev=5b7546a96a794014b94a2a140baf4beb&hash=D3715D4754116D63A3BD187033586475",
+      "retrieved_at": "2026-10-25T05:47:14.155168+00:00",
+      "bytes": 104931,
+      "sha256": "f97e427f234fe1b9ad822b05970ebc8a55cb02e7b38be90b47860f1dd6842885",
+      "last_modified": "Mon, 10 Nov 2025 22:12:06 GMT",
+      "status": "downloaded",
+      "contests": 355,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2025-general"
+    },
+    {
+      "file": "webresults-20251110.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2025/11/webresults-20251110.csv?rev=3d8fe1eaea3a4c929ac0e04009327726&hash=845902432EAD1380DBC76A186E951733",
+      "retrieved_at": "2026-10-25T05:47:14.195223+00:00",
+      "bytes": 105051,
+      "sha256": "dd6140c40a8d460741eca662e0b6c0ce79021339944fe6d652d9c35ea543ab71",
+      "last_modified": "Tue, 11 Nov 2025 20:18:18 GMT",
+      "status": "downloaded",
+      "contests": 355,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2025-general"
+    },
+    {
+      "file": "webresults-20251111.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2025/11/webresults-20251111.csv?rev=11e9d1f351f34f299d5942542676f1d2&hash=C255A07875C37250B8483452E29E0E62",
+      "retrieved_at": "2026-10-25T05:47:14.143237+00:00",
+      "bytes": 105081,
+      "sha256": "68eb2543bd05eab1b87cbdec67d72529a32b4eabb02793445f4978e05c69386d",
+      "last_modified": "Wed, 12 Nov 2025 19:40:13 GMT",
+      "status": "downloaded",
+      "contests": 355,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2025-general"
+    },
+    {
+      "file": "webresults-20251112.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2025/11/webresults-20251112.csv?rev=635d1a885fa04aaa89dc197f598abd4a&hash=CF27FE153C277DE5F8E55A3BA84C2AB2",
+      "retrieved_at": "2026-10-25T05:47:17.239293+00:00",
+      "bytes": 105081,
+      "sha256": "ee6a48b87204aa4824a8ceb518ecfa390e14a4a653b735aae25a09f278f3b408",
+      "last_modified": "Thu, 13 Nov 2025 22:46:41 GMT",
+      "status": "downloaded",
+      "contests": 355,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2025-general"
+    },
+    {
+      "file": "webresults-20251113.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2025/11/webresults-20251113.csv?rev=e569465cd27b442a9dd581492710cd0b&hash=F2EB852E6655309E2961493308543C0D",
+      "retrieved_at": "2026-10-25T05:47:17.219405+00:00",
+      "bytes": 105079,
+      "sha256": "3a33d0fd23675451d6da974fc8a810c2600d6ef4c88b8ecdb80167003782738d",
+      "last_modified": "Fri, 14 Nov 2025 23:10:40 GMT",
+      "status": "downloaded",
+      "contests": 355,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2025-general"
+    },
+    {
+      "file": "webresults-20251114.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2025/11/webresults-20251114.csv?rev=f18284228e52452c82ec41cbc102563f&hash=9FC7A894703DE477E18A26E6C698766F",
+      "retrieved_at": "2026-10-25T05:47:17.191899+00:00",
+      "bytes": 105078,
+      "sha256": "88d04fd45e6dffd330d858054f2837ad154820c7ea8c0d0f9ebf258e272a2429",
+      "last_modified": "Mon, 17 Nov 2025 23:28:12 GMT",
+      "status": "downloaded",
+      "contests": 355,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2025-general"
+    },
+    {
+      "file": "webresults-20251117.csv",
+      "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2025/11/webresults-20251117.csv?rev=4c1748d05cdb4a73b03bcee6bf3138f0&hash=BF0A2E74BAB695EA42E579713651442A",
+      "retrieved_at": "2026-10-25T05:47:17.419855+00:00",
+      "bytes": 105065,
+      "sha256": "a695a9adb16aeb4d6c9855b852830a549374fba9f22a50658fd5db4305df765c",
+      "last_modified": "Tue, 18 Nov 2025 22:58:19 GMT",
+      "status": "downloaded",
+      "contests": 355,
+      "encoding": "cp1252",
+      "historical_count_updated_at": null,
+      "eligible_for_forecast_validation": false,
+      "exclusion_reasons": [
+        "No then-available outstanding/category evidence acquired.",
+        "Reviewed office/election rule and whole-jurisdiction identity required.",
+        "No contemporaneously published model forecast series."
+      ],
+      "election_id": "wa:king:2025-general"
+    }
+  ],
+  "source_pages": [
+    "https://kingcounty.gov/en/dept/elections/results/2022/november-general",
+    "https://kingcounty.gov/en/dept/elections/results/2023/november-general",
+    "https://kingcounty.gov/en/dept/elections/results/2024/november-general",
+    "https://kingcounty.gov/en/dept/elections/results/2025/november-general"
+  ],
+  "source_page_findings": [
+    "2022 result page links November 22 CSV to the 2023 archive URL. Those bytes are retained once in the 2023 group, not relabeled as 2022.",
+    "2023 certified final link filename contains 20231127 while the page says certification November 28; the filename is not a publication/count timestamp.",
+    "HTTP Last-Modified is retained as a server publication proxy; actual retrieval remains 2026. It is not a measured count-update time."
+  ],
+  "acquisition_references": 64,
+  "unique_files": 63,
+  "archive_sha256": "5b5a48204c376131806ff471e93251215f72bc19aad085653e566f62a55c9a89",
+  "validation_status": "unvalidated: zero eligible held-out forecast records; no Brier/log-loss/calibration score reported"
+}
