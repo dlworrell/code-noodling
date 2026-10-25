@@ -171,3 +171,44 @@ versions, hashes, aggregate check and commands are in
 descriptive, the prospective evaluator stays unchanged, and every actual primary
 forecast remains withheld. #55/#58 and parent #45 remain open for the named
 scientific and independent-review criteria.
+
+
+## Current continuation — official Orange County queue evidence
+
+Applied the current Dropbox PRM-0030 (primary acceptance), PRM-0026 (new PDF,
+AcroForm and export formats) and PRM-0068 (static residual evidence). The new
+implementation was executed under the user's renewed resolution instruction.
+Original bundled replay scripts and a REA engine were not executed. Source bytes,
+clocks, qualification, versioned schema and reproduction are in ADR-007 and the
+neighboring `oc-official-*-v1` records. PR #64 remains the merged base.
+
+| Case | Evidence / actual result | Disposition |
+| --- | --- | --- |
+| Original count extraction | Three PDFs, all candidate/cast row triples agree between Poppler and pypdf; 212 contests each | MATCH |
+| Nov8 copies | Different raw hashes/metadata, identical 212-contest parsed values | MATCH; bytes never normalized away |
+| Nov9 press count link | Both dated labels actually link to the Nov8 report; canonical Run_13 supplies Nov9 | Source DIVERGENCE retained |
+| Last-report form label | 140894/205077 are election-night additions; latest increase is 64183 | Source-semantic DIVERGENCE reconciled to dated registrar release |
+| Pool forms | AMENDED retained; category sums 275420/212152; challenged overlap unknown, not added in base | MATCH |
+| Final source comparison | 172 exact titles and 412 choices agree in total/mail/center; 40 abbreviated titles and 4 damaged names remain unmatched | MATCH within explicit coverage |
+| Scored pairs | All 159 scenario events independently match exact precinct aggregates for 53 distinct contests | MATCH |
+| Frozen groups and phase boundary | 37 model/dependency hashes; no fitting; one held-out county/election; four as-of reads, zero reserved outcome reads; full recipe replay matches sealed rows | MATCH |
+| Proper scores and numerics | All seven methods share 53 base cases; direct losses agree within 1e-14; 636 SciPy comparisons within 9.65e-11 | MATCH, arithmetic only |
+| Real new-ballot/correction partition | Explicit official additions exist, correction partition does not | NOT RUN for verified latest likelihood; conditional sensitivity labeled |
+| Official countable contest pool | Official unprocessed estimate acquired; acceptance/geography/arrivals remain assumptions | NOT RUN for guaranteed countable-pool baseline; qualified queue comparison run |
+| Historical original versions | Present bytes and producer clocks cannot authenticate historical content identity | EXPECTATION UNKNOWN |
+| Independent final re-audit | Separate qualified scientific reviewer still required by #45 | NOT RUN |
+
+The frozen recipe produced 159 rows, scored 53 base contests and observed two
+selected-pair reversals. Primary Brier/log loss is 0.03368266/0.09501048 versus
+cumulative-share 0.03777127/0.13645187. Conditional disjoint increments produce
+0.02887058/0.08424815, but their no-corrections premise is unverified. None of
+these differences establishes superiority or calibration. The diagnostic labels
+its one-county and conditional assumptions. Full source/format checks and nine
+new regression tests pass; the complete structured suite passes **164 tests**.
+Final local provenance and exact remote/CI evidence accompany merge acceptance.
+
+The data is sufficient to verify extraction, accounting and these qualified
+comparisons. It is insufficient to clear every remaining audit requirement.
+#55/#58 and parent #45 remain open; 12/14 child issues remain resolved. The
+current next-data contract in INVESTIGATION.md replaces the earlier blanket
+statement that no official queue source had been acquired.
