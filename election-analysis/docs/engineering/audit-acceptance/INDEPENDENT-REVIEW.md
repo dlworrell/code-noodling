@@ -5,12 +5,16 @@ SPDX-License-Identifier: Apache-2.0
 Catalyst-File-ID: urn:uuid:bcc832e2-0bae-47e6-9db5-2a8d5e3ba950
 -->
 
-# Independent statistical review brief — not yet performed
+# Independent statistical review brief
 
 Authoritative audit: [#45](https://github.com/dlworrell/code-noodling/issues/45).
 Open children: [EA-10 #55](https://github.com/dlworrell/code-noodling/issues/55),
 [EA-13 #58](https://github.com/dlworrell/code-noodling/issues/58).
-This is a review packet prepared by the implementer, not an independent verdict.
+This is the implementer's original review packet. The separate AI review and
+independent repair review were completed on October 25, 2026; their unchanged
+reports, exact scope and accepted dispositions are linked in
+[INDEPENDENT-REVIEW-ACCEPTANCE.md](INDEPENDENT-REVIEW-ACCEPTANCE.md).
+The questions below remain the original brief, rather than a reviewer verdict.
 
 The reviewer should independently read the original audit/acceptance criteria,
 source records, ADR-004 through ADR-008, first protocols/seals, complete score and
