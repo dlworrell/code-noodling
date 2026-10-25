@@ -1,0 +1,24 @@
+name: Verified signing hardening (bootstrap)
+on:
+  push:
+    branches: [bootstrap/signing-hardening-20261025]
+permissions:
+  contents: write
+concurrency:
+  group: signing-hardening-${{ github.repository }}
+  cancel-in-progress: false
+jobs:
+  verified-repair:
+    if: github.event_name == 'push' && github.actor == 'dlworrell'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Publish and verify exact reviewed tree
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          EXPECTED_PAYLOAD_SHA256: 2fd0caef2a148562b98dea5c3d4ee94b9c952482bc1a7e4cd79d229dbf5f8922
+          EXPECTED_BOOTSTRAP_BRANCH: bootstrap/signing-hardening-20261025
+        run: python3 .github/signing-repair/publish.py
