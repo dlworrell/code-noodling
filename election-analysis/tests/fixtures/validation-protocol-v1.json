@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-10-25T05:15:04+00:00",
+  "model_id": "disjoint_tempered_beta_binomial_v2",
+  "event_scope": "selected_pair_strict_reversal",
+  "training_groups": [],
+  "baselines": [
+    "fixed_half",
+    "current_margin_official_pool",
+    "cumulative_share",
+    "latest_batch_only",
+    "untempered_beta_binomial"
+  ],
+  "log_loss_clip": 1e-12,
+  "split_policy": "hold out entire election/contest groups; no tuning or retrospective predictions using known final outcomes",
+  "required_inputs": [
+    "dated pre-outcome snapshots",
+    "then-available outstanding/category evidence",
+    "reviewed canonical identity and rule",
+    "later certified event outcome"
+  ],
+  "promotion_policy": "independent review of group scores, calibration and data coverage; no automatic promotion",
+  "status": "prospective scaffold; 2024 final-only replay is excluded; no eligible held-out forecasts acquired",
+  "training_elections": [],
+  "training_jurisdictions": [],
+  "uncertainty_groups": "whole elections; cluster all related races, jurisdictions and repeated snapshots"
+}

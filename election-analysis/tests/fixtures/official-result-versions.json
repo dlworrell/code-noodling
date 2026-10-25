@@ -1,0 +1,259 @@
+{
+  "schema_version": 1,
+  "records": [
+    {
+      "canonical_id": "ak:2024-general:USRep",
+      "result_version": "ak-original-20241130",
+      "round_id": "3",
+      "tabulation_stage": "final_round",
+      "authority_url": "https://www.elections.alaska.gov/results/24GENR/RCV-USRep.pdf",
+      "evidence_as_of": "2026-10-25T05:15:04+00:00",
+      "report_date": "2024-11-30",
+      "coverage_status": "official_indexed_reference",
+      "acquisition": "official indexed PDF text; direct binary retrieval HTTP 503 or timeout; no verified binary SHA-256",
+      "votes": {
+        "Begich, Nick": 164861,
+        "Peltola, Mary S.": 156985
+      },
+      "continuing": 321846,
+      "blanks": 5788,
+      "exhausted": 7595,
+      "overvotes": 624,
+      "ballots": 335853
+    },
+    {
+      "canonical_id": "ak:2024-general:SenD",
+      "result_version": "ak-original-20241130",
+      "round_id": "2",
+      "tabulation_stage": "final_round",
+      "authority_url": "https://www.elections.alaska.gov/results/24GENR/RCV-SenD.pdf",
+      "evidence_as_of": "2026-10-25T05:15:04+00:00",
+      "report_date": "2024-11-30",
+      "coverage_status": "official_indexed_reference",
+      "acquisition": "official indexed PDF text; direct binary retrieval HTTP 503 or timeout; no verified binary SHA-256",
+      "votes": {
+        "Carpenter, Ben": 8114,
+        "Bjorkman, Jesse J.": 9802
+      },
+      "continuing": 17916,
+      "blanks": 803,
+      "exhausted": 1399,
+      "overvotes": 20,
+      "ballots": 20138
+    },
+    {
+      "canonical_id": "ak:2024-general:SenF",
+      "result_version": "ak-original-20241130",
+      "round_id": "2",
+      "tabulation_stage": "final_round",
+      "authority_url": "https://www.elections.alaska.gov/results/24GENR/RCV-SenF.pdf",
+      "evidence_as_of": "2026-10-25T05:15:04+00:00",
+      "report_date": "2024-11-30",
+      "coverage_status": "official_indexed_reference",
+      "acquisition": "official indexed PDF text; direct binary retrieval HTTP 503 or timeout; no verified binary SHA-256",
+      "votes": {
+        "Kaufman, James D.": 8678,
+        "Park, Janice L.": 7744
+      },
+      "continuing": 16422,
+      "blanks": 935,
+      "exhausted": 599,
+      "overvotes": 11,
+      "ballots": 17967
+    },
+    {
+      "canonical_id": "ak:2024-general:SenL",
+      "result_version": "ak-original-20241130",
+      "round_id": "2",
+      "tabulation_stage": "final_round",
+      "authority_url": "https://www.elections.alaska.gov/results/24GENR/RCV-SenL.pdf",
+      "evidence_as_of": "2026-10-25T05:15:04+00:00",
+      "report_date": "2024-11-30",
+      "coverage_status": "official_indexed_reference",
+      "acquisition": "official indexed PDF text; direct binary retrieval HTTP 503 or timeout; no verified binary SHA-256",
+      "votes": {
+        "Goecker, Jared D.": 7939,
+        "Merrick, Kelly R.": 9892
+      },
+      "continuing": 17831,
+      "blanks": 761,
+      "exhausted": 1728,
+      "overvotes": 20,
+      "ballots": 20340
+    },
+    {
+      "canonical_id": "ak:2024-general:HD6",
+      "result_version": "ak-original-20241130",
+      "round_id": "2",
+      "tabulation_stage": "final_round",
+      "authority_url": "https://www.elections.alaska.gov/results/24GENR/RCV-HD6.pdf",
+      "evidence_as_of": "2026-10-25T05:15:04+00:00",
+      "report_date": "2024-11-30",
+      "coverage_status": "official_indexed_reference",
+      "acquisition": "official indexed PDF text; direct binary retrieval HTTP 503 or timeout; no verified binary SHA-256",
+      "votes": {
+        "Vance, Sarah L.": 5638,
+        "Johnson, Brent": 5150
+      },
+      "continuing": 10788,
+      "blanks": 376,
+      "exhausted": 618,
+      "overvotes": 16,
+      "ballots": 11798
+    },
+    {
+      "canonical_id": "ak:2024-general:HD28",
+      "result_version": "ak-recount-20241209",
+      "round_id": "2",
+      "tabulation_stage": "recount",
+      "authority_url": "https://www.elections.alaska.gov/results/24GENR/RcvDetailedReport-HD28-Recount.pdf",
+      "evidence_as_of": "2026-10-25T05:15:04+00:00",
+      "report_date": "2024-12-09",
+      "coverage_status": "official_indexed_reference",
+      "acquisition": "official indexed PDF text; direct binary retrieval HTTP 503 or timeout; no verified binary SHA-256",
+      "votes": {
+        "Menard, Steve": 3234,
+        "Moore, Elexie": 3243
+      },
+      "continuing": 6477,
+      "blanks": 1177,
+      "exhausted": 1255,
+      "overvotes": 8,
+      "ballots": 8917
+    },
+    {
+      "canonical_id": "ak:2024-general:HD28",
+      "result_version": "ak-original-20241130",
+      "round_id": "unresolved",
+      "tabulation_stage": "final_round",
+      "authority_url": "https://www.elections.alaska.gov/results/24GENR/RCV-HD28.pdf",
+      "evidence_as_of": "2026-10-25T05:15:04+00:00",
+      "coverage_status": "unresolved",
+      "finding": "Official report located in Division index, but complete final-round accounting not retrieved. Direct binary returned HTTP 503/timeouts; partial indexed snippets are insufficient to verify conservation."
+    },
+    {
+      "canonical_id": "ak:2024-general:HD36",
+      "result_version": "ak-original-20241130",
+      "round_id": "3",
+      "tabulation_stage": "final_round",
+      "authority_url": "https://www.elections.alaska.gov/results/24GENR/RCV-HD36.pdf",
+      "evidence_as_of": "2026-10-25T05:23:10+00:00",
+      "coverage_status": "official_indexed_reference",
+      "votes": {
+        "Kowalski, Brandon P. \"Putuuqti\"": 3155,
+        "Schwanke, Rebecca A.": 4070
+      },
+      "continuing": 7225,
+      "blanks": 431,
+      "exhausted": 1698,
+      "overvotes": 28,
+      "ballots": 9382,
+      "acquisition": "official indexed final-round PDF text; complete accounting available; direct binary HTTP 503/timeout, no verified binary SHA-256"
+    },
+    {
+      "canonical_id": "ak:2024-general:HD38",
+      "result_version": "ak-original-20241130",
+      "round_id": "3",
+      "tabulation_stage": "final_round",
+      "authority_url": "https://www.elections.alaska.gov/results/24GENR/RCV-HD38.pdf",
+      "evidence_as_of": "2026-10-25T05:23:10+00:00",
+      "coverage_status": "official_indexed_reference",
+      "votes": {
+        "McCormick, C.J.": 1411,
+        "Jimmie, Nellie D. \"Unangik\"": 1548
+      },
+      "continuing": 2959,
+      "blanks": 95,
+      "exhausted": 608,
+      "overvotes": 45,
+      "ballots": 3707,
+      "acquisition": "official indexed final-round PDF text; complete accounting available; direct binary HTTP 503/timeout, no verified binary SHA-256"
+    },
+    {
+      "canonical_id": "ak:2024-general:HD40",
+      "result_version": "ak-original-20241130",
+      "round_id": "unresolved",
+      "tabulation_stage": "final_round",
+      "authority_url": "https://www.elections.alaska.gov/results/24GENR/RCV-HD40.pdf",
+      "evidence_as_of": "2026-10-25T05:15:04+00:00",
+      "coverage_status": "unresolved",
+      "finding": "Official report located in Division index, but complete final-round accounting not retrieved. Direct binary returned HTTP 503/timeouts; partial indexed snippets are insufficient to verify conservation."
+    },
+    {
+      "canonical_id": "ak:2024-general:measure2",
+      "result_version": "archive-first-choice",
+      "round_id": "not-applicable",
+      "tabulation_stage": "plurality_count",
+      "authority_url": "https://www.elections.alaska.gov/election-results/e/?id=24genr",
+      "evidence_as_of": "2026-10-25T05:15:04+00:00",
+      "votes": {
+        "YES": 160124,
+        "NO": 160861
+      },
+      "margin": 737,
+      "coverage_status": "derivative_archive",
+      "continuing": 320985,
+      "blanks": 14536,
+      "exhausted": 0,
+      "overvotes": 132,
+      "ballots": 335653,
+      "acquisition": "frozen MEDSL archive; derivative rather than independently downloaded official precinct CSV"
+    },
+    {
+      "canonical_id": "ak:2024-general:measure2",
+      "result_version": "recount-20241209",
+      "round_id": "not-applicable",
+      "tabulation_stage": "recount",
+      "authority_url": "https://www.elections.alaska.gov/election-results/e/?id=24genr",
+      "evidence_as_of": "2026-10-25T05:15:04+00:00",
+      "votes": {
+        "YES": 160230,
+        "NO": 160973
+      },
+      "margin": 743,
+      "coverage_status": "unresolved",
+      "finding": "Recount candidate totals officially announced, margin 743; complete blank/overvote/ballot accounting unavailable, so complete-stage coverage remains unresolved."
+    },
+    {
+      "canonical_id": "me:2024-general:cd2",
+      "result_version": "me-2024-raw",
+      "round_id": "0",
+      "tabulation_stage": "raw_first_rankings",
+      "authority_url": "https://www1.maine.gov/sos/elections-voting/election-results-data/election-results-2024",
+      "evidence_as_of": "2026-10-25T05:15:04+00:00",
+      "coverage_status": "frozen_six_export_reconciliation",
+      "acquisition": "six hash-verified official CVR exports; final totals reconcile to archived official PDF; independent finalist eligibility not adjudicated",
+      "votes": {
+        "Golden, Jared Forrest": 196388,
+        "Theriault, Austin": 194130,
+        "Write-in": 421
+      },
+      "continuing": 390939,
+      "blanks": 11997,
+      "exhausted": 0,
+      "overvotes": 0,
+      "ballots": 402936,
+      "accounting_partition": "final noncontinuing total 11340 = exhausted 11061 + overvote 279; raw blanks are not an interpreted Round-1 denominator"
+    },
+    {
+      "canonical_id": "me:2024-general:cd2",
+      "result_version": "me-2024-official-final",
+      "round_id": "final",
+      "tabulation_stage": "final_round",
+      "authority_url": "https://www1.maine.gov/sos/elections-voting/election-results-data/election-results-2024",
+      "evidence_as_of": "2026-10-25T05:15:04+00:00",
+      "coverage_status": "frozen_six_export_reconciliation",
+      "acquisition": "six hash-verified official CVR exports; final totals reconcile to archived official PDF; independent finalist eligibility not adjudicated",
+      "votes": {
+        "Golden, Jared Forrest": 197151,
+        "Theriault, Austin": 194445
+      },
+      "continuing": 391596,
+      "blanks": 0,
+      "exhausted": 11061,
+      "overvotes": 279,
+      "ballots": 402936,
+      "accounting_partition": "final noncontinuing total 11340 = exhausted 11061 + overvote 279; raw blanks are not an interpreted Round-1 denominator"
+    }
+  ]
+}

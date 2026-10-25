@@ -1,0 +1,53 @@
+{
+  "audit_package_sha256": "06d150c885e9f95aa3235dc4ceaab09f34379bc27f8de66864c00e85af67f73e",
+  "authority_url": "https://www1.maine.gov/sos/elections-voting/election-results-data/election-results-2024",
+  "ballots": 402936,
+  "files": [
+    {
+      "ballots": 99999,
+      "kind": "machine",
+      "path": "historical-2024/maine-cvr/Nov24_CVR_1.xlsx",
+      "sha256": "62f3e7116f89553db38c54bf353d3b41912f359686f6c2bcd39cb1898c47abdd"
+    },
+    {
+      "ballots": 99999,
+      "kind": "machine",
+      "path": "historical-2024/maine-cvr/Nov24_CVR_2.xlsx",
+      "sha256": "b4d533ebcb985ddd276ab8a97d69efcf8c4c93e377b479dce7bfc884eac2c1de"
+    },
+    {
+      "ballots": 98669,
+      "kind": "machine",
+      "path": "historical-2024/maine-cvr/Nov24_CVR_3.xlsx",
+      "sha256": "147b1ca3620e88cb18831a3e9b60b1be156a9cddd2ad0d4ea302e36f43a7e7ae"
+    },
+    {
+      "ballots": 99999,
+      "kind": "machine",
+      "path": "historical-2024/maine-cvr/Nov24_CVR_4.xlsx",
+      "sha256": "8cca7708d2afac2a08949380fced080292927de8d7d258ca8064785b99e95203"
+    },
+    {
+      "ballots": 2786,
+      "kind": "uocava",
+      "path": "historical-2024/maine-rcv-uocava.xlsx",
+      "sha256": "35e71938df989346df5dd8899c2a31d1f24a56e4304a131ec48925eebe2c5c0c"
+    },
+    {
+      "ballots": 1484,
+      "kind": "auxiliary",
+      "path": "historical-2024/maine-rcv-handcount.xlsx",
+      "sha256": "6f2cea48e701d4f652f6af3f2b875c7187e6c8729f16a441cceec9ef050d4f0e"
+    }
+  ],
+  "finalists": [
+    "Golden, Jared Forrest",
+    "Theriault, Austin"
+  ],
+  "machine_ballots": 398666,
+  "noncontinuing": [
+    "Write-in"
+  ],
+  "rule_version": "Maine-2024-CD2-official-finalists; two-skipped-rank/overvote exhaustion; no independent eligibility adjudication",
+  "schema_version": 1
+}
