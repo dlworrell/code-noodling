@@ -609,7 +609,7 @@ def analyze_election(config: ElectionConfig) -> ElectionAnalysis:
         if comparison["status"] in {"contradictory", "source_vintage_conflict"}:
             data_status = comparison["status"]
             controlling = False
-        if (rule == "winner" and len(ranked) >= 2 and ranked[0].votes == ranked[1].votes
+        if (rule in {"winner", "wa_judicial"} and len(ranked) >= 2 and ranked[0].votes == ranked[1].votes
             or rule in {"top_two", "wa_judicial"} and len(ranked) >= 3 and ranked[1].votes == ranked[2].votes
             or rule == "top_four" and len(ranked) >= 5 and ranked[3].votes == ranked[4].votes):
             if data_status == "reported": data_status = "unresolved_tie"

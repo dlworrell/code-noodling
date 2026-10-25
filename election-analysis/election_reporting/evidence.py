@@ -49,6 +49,7 @@ def validate_contract(raw, source_ids):
         raise ElectionReportError("audit.max_source_age_hours must be positive and finite")
     keys = set()
     selectors = set()
+    controlling_ids = set()
     for name in ("identities", "source_versions", "area_versions", "remaining_pools", "rules"):
         rows = raw.get(name, [])
         if not isinstance(rows, list) or not all(isinstance(row, dict) for row in rows):
@@ -66,6 +67,16 @@ def validate_contract(raw, source_ids):
                 if key in keys:
                     raise ElectionReportError("duplicate reviewed source/contest identity")
                 keys.add(key)
+                if row.get("role") == "controlling":
+                    if row.get("canonical_id") in controlling_ids:
+                        raise ElectionReportError("a canonical contest may have only one reviewed controlling source identity")
+                    controlling_ids.add(row.get("canonical_id"))
+                aliases = row.get("area_aliases", [])
+                if not isinstance(aliases, list) or not all(isinstance(a,dict) for a in aliases):
+                    raise ElectionReportError("reviewed area aliases must be objects")
+                alias_keys = [(a.get("contest_id"),a.get("name"),a.get("jurisdiction")) for a in aliases]
+                if len(set(alias_keys)) != len(alias_keys):
+                    raise ElectionReportError("duplicate reviewed area alias would count geography twice")
                 required = ("canonical_id", "jurisdiction_id", "office", "source_contest_name", "authority_url")
                 if not raw.get("election_id") or any(not isinstance(row.get(k), str) or not row[k] for k in required):
                     raise ElectionReportError("reviewed identity requires election, jurisdiction, office, authority and canonical IDs")
@@ -188,8 +199,11 @@ def geographic_comparison(contest, ident, facts, geography):
         complete = len(found) == len(aliases) and set(found) == set(ident.get("jurisdictions", []))
         if not found:
             continue
-        differences = {choice.name: {"headline": choice.votes, "geography": aggregate.get(choice.name.casefold(), 0)}
-                       for choice in contest.choices if choice.votes != aggregate.get(choice.name.casefold(), 0)}
+        headline = {choice.name.casefold():choice.votes for choice in contest.choices}
+        named = {choice.name.casefold():choice.name for choice in contest.choices}
+        geography_choices = set(aggregate) - {"ballots cast", "over votes", "under votes"}
+        differences = {named.get(name,name): {"headline": headline.get(name,0), "geography": aggregate.get(name,0)}
+                       for name in sorted(set(headline)|geography_choices) if headline.get(name,0) != aggregate.get(name,0)}
         same = bool(facts.get("publication_id")) and facts.get("publication_id") == version.get("publication_id")
         return {"status": "contradictory" if differences and same and complete else "source_vintage_conflict" if differences else "reconciled" if same and complete else "incompatible_or_partial",
                 "same_publication": same, "complete_membership": complete, "jurisdictions": found,
