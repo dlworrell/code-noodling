@@ -28,6 +28,37 @@ records the final work-item dispositions and residual scientific limits.
 **A triage report, not a call by an election authority and not a substitute for
 certified results.**
 
+## November 3, 2026 collection gates
+
+Live collection is pinned to the **2026-11-03** general election. Every state
+waits until one hour after its scheduled final poll closing. The hard
+`not_before` boundary runs **before any results-site discovery or download**,
+including `plan`, manual workflow dispatch and `fetch --force`.
+
+| State | Earliest collection, November 3 local time | UTC instant (November 4) |
+|---|---|---|
+| Maine | 21:00 EST | 02:00 UTC |
+| Washington | 21:00 PST | 05:00 UTC |
+| Alaska (statewide) | 21:00 HST in Adak / 22:00 AKST in Anchorage | 07:00 UTC |
+
+Alaska waits for the western Aleutian polls as well as the mainland. These
+instants are the configured policy derived from the official scheduled closing
+times; they do not detect an emergency extension. GitHub may start cron jobs
+late, so collection begins at or after the applicable boundary. Offline tests
+and committed-data analysis remain available before election night.
+
+Sources checked October 25, 2026: [Washington's 2026 calendar](https://www.sos.wa.gov/elections/elections-calendar/dates-and-deadlines),
+[Alaska's election calendar](https://www.elections.alaska.gov/calendar/) and
+[polling-place hours](https://www.elections.alaska.gov/election-polls/),
+[Maine polling times, 21-A §626](https://legislature.maine.gov/statutes/21-A/title21-Asec626.html),
+and [the federal Hawaii-Aleutian boundary, 49 CFR 71.12](https://www.ecfr.gov/current/title-49/subtitle-A/part-71/section-71.12).
+
+`python -m election_reporting.watch status` displays eligibility without source
+requests. `status --now 2026-11-04T02:00:00Z` simulates a boundary offline;
+`--now` is refused for live commands. `--force` may override cadence or the
+window end, but cannot override `not_before`. Fixed end dates keep later annual
+cron occurrences idle; extend the configuration if certification is delayed.
+
 ## Layout
 
 This directory is the `election-analysis` governed project scope declared in

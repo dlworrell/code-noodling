@@ -194,10 +194,11 @@ elections = "elections"   # election-analysis/data/elections/<state>/<election d
 [[watch]]
 state = "Washington"
 counties = ["King", "Snohomish", "Pierce", "Kittitas", "Chelan"]
-election = "next"
+election = "2026-11-03"
 
 [watch.schedule]
 polls_close = "20:00"
+not_before = 2026-11-03T21:00:00-08:00
 ```
 
 `python -m election_reporting.watch` (see
@@ -206,22 +207,29 @@ polls_close = "20:00"
 | Step | What it does |
 | --- | --- |
 | Places | Resolves county names against the Washington results site (`results.votewa.gov`), which serves the state and all 39 counties; an unknown name fails with the list of valid ones. |
-| Election | `next` is the soonest election on the site whose checking window has not ended; a date picks a specific one. |
-| Window | From polls closing (20:00) on election day until the end of the last certification day: state 30 days after a general election and 17 after a primary; counties 21 and 14 (RCW 29A.60.190 and 29A.60.250). Every 30 minutes until 02:00 after election night, then hourly. Each state's `[watch.schedule]` table can override any of these. |
+| Election | This deployment pins `2026-11-03`. The generic `next` selector remains available for other configurations, but cannot be combined with a hard `not_before` gate. |
+| Window | The configured `not_before` floor holds Washington until 21:00 PST November 3, 2026, before any metadata or result request, including forced runs. The window then runs until the end of the last certification day: state 30 days after a general election and 17 after a primary; counties 21 and 14 (RCW 29A.60.190 and 29A.60.250). Every 30 minutes until 02:00 after election night, then hourly. Each state's `[watch.schedule]` table can override any of these. |
 | Sources | State: the Secretary of State's `All Results Excel` report, which includes ballots cast, overvotes, and undervotes, and the `Summary and Precinct Results Excel` report for county and precinct breakdowns (see [County and precinct results](#county-and-precinct-results)). King County: the county's own nightly `webresults-YYYYMMDD.csv` export, stored byte for byte. Other counties: the results site's data API. |
 | Output | A plain-text CSV per place and snapshot in `input/`, the original in `raw/` (workbooks as-is, API JSON trimmed to results and gzipped), and a `SOURCES.json` record with the source URL, retrieval time, source timestamp, and SHA-256 of each file. A snapshot is saved only when its content changed, and never before any votes are reported. |
 | States | Each state is planned and fetched on its own schedule and in its own directory; one state failing does not stop the others. |
 | Config | Creates `election.toml` for a new election (state priority 100, counties 10, certification dates filled in) and appends sources when places are added later. |
 
-The **Election Source Watch** workflow runs every 30 minutes, exits early when a run
-is not due, and publishes new snapshots as a GitHub-verified commit on the
+The **Election Source Watch** workflow still launches every 30 minutes for
+offline validation. Its `watch.sh` entry points gate pending-branch lookup,
+carry-forward, live collection and publication before those operations run.
+They all exit successfully without those operations while every state is held.
+The first gate opens at 02:00 UTC November 4 (21:00 EST November 3); per-state
+runtime gates still hold the later states. Fixed end dates keep later annual
+cron occurrences from contacting the result sources. It exits early when a run is not due, and publishes new snapshots as a GitHub-verified commit on the
 workflow-owned `automation/election-sources` branch with a pull request to the
 default branch, using the same publisher as the reports. Snapshots waiting in an
 unmerged pull request are carried forward into each run (only files recorded in
 that branch's `SOURCES.json`, each checked against its SHA-256), because the state
 overwrites its report files and an earlier version cannot be downloaded again.
 Merging the pull request triggers report generation. Run it by hand with
-**Run workflow → force** to fetch outside the window.
+**Run workflow → force** to override cadence/end after the hard start boundary.
+See the [2026 gate table](../README.md#november-3-2026-collection-gates). No
+metadata requests or snapshots are produced for a state before its floor.
 
 The results API reports valid votes but not ballots cast, overvotes, or undervotes
 for county data, so for those counties the contest denominator is the vote total.
@@ -242,7 +250,7 @@ election = "next"
 | --- | --- |
 | Places | Alaska has no counties. Its county equivalents are 19 boroughs and 11 census areas; names resolve against [`crosswalks/alaska/precinct-borough.csv`](../data/crosswalks/alaska/README.md), with or without "Borough" or "Census Area". |
 | Election | The primary is the third Tuesday in August (AS 15.25.020) and the general the Tuesday after the first Monday in November of even years (AS 15.15.020); election IDs follow the Division of Elections (`26genr`). |
-| Window | 20:00 Alaska time (polls close; results post after 21:00) until the State Review Board's target certification day: 22 days after a general election and 13 after a primary, from the Division's 2026 calendar. |
+| Window | This statewide deployment starts at 21:00 HST November 3, 2026 (22:00 Anchorage / 07:00 UTC November 4), one hour after the last Aleutian poll closing, until the State Review Board's target certification day: 22 days after a general election and 13 after a primary, from the Division's 2026 calendar. |
 | Source | The precinct results CSV linked from `www.elections.alaska.gov/election-results/e/?id=<election>`, kept gzipped in `raw/alaska/`. A file last modified before polls closed is skipped, because the Division reuses one path a year and the link can still serve the previous election's file. |
 | Output | `input/alaska/` holds statewide totals from every row. Each borough or census area gets `input/<borough>/` from its election-day precincts only: absentee, early, questioned and remote ballots are reported per House district, and federal-only overseas ballots statewide, so they appear only in the statewide totals. |
 | Rules | `election.toml` sets `default_rule = "top_four"` for a primary and `"rcv"` for a general election; ballot measures and judicial retention questions stay `winner`. |
@@ -288,7 +296,8 @@ Locally:
 ```bash
 export PYTHONPATH=election-analysis                           # from the repository root
 python -m election_reporting.watch plan              # resolve, show, and write election.toml
-python -m election_reporting.watch fetch --force     # fetch now, ignoring the window
+python -m election_reporting.watch status            # offline eligibility, no HTTP
+python -m election_reporting.watch fetch --force     # ignores cadence/end, never not_before
 ```
 
 ## Supported source formats

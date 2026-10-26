@@ -22,6 +22,8 @@ from .schedule import (
     NO_CERTIFICATION_DATE,
     Window,
     certification_date,
+    before_start,
+    hold_message,
     election_kind,
     is_due,
     watch_window,
@@ -45,7 +47,9 @@ class Plan:
 
 
 def plan(config: WatchConfig, fetch: Fetch, now: datetime) -> Plan:
-    """Resolve the selected places and election, and the checking window."""
+    """Resolve the selected places and election, after the hard start gate."""
+    if before_start(config, now):
+        raise ElectionReportError(hold_message(config))
     if config.state_id == "alaska":
         # election-analysis/data/elections/alaska -> election-analysis/data
         crosswalk = alaska.load_crosswalk(config.elections_root.parents[1])
@@ -571,6 +575,14 @@ def fetch_snapshots(
     force: bool = False,
     log: Callable[[str], None] = print,
 ) -> FetchResult:
+    if before_start(config, now):
+        message = hold_message(config)
+        log(message)
+        return FetchResult(due=False, skipped=[message])
+    if config.end is not None and now > config.end and not force:
+        message = f"{config.state}: checking window ended; nothing fetched."
+        log(message)
+        return FetchResult(due=False, skipped=[message])
     election_plan = plan(config, fetch, now)
     window = election_plan.window
     due = force or is_due(config, window, now)

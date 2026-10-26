@@ -17,9 +17,8 @@ state = "Washington"
 # County names as on the Washington results site; "County" is optional.
 # King County and the counties bordering it.
 counties = ["King", "Snohomish", "Pierce", "Kittitas", "Chelan"]
-# "next" is the soonest election whose checking window has not ended,
-# or set a date such as 2026-11-03.
-election = "next"
+# Pin this deployment to the requested November 3, 2026 general election.
+election = "2026-11-03"
 # Defaults to the state's own time zone (America/Los_Angeles).
 # timezone = "America/Los_Angeles"
 # Use King County's own nightly CSV export (with ballots, overvotes and
@@ -27,15 +26,17 @@ election = "next"
 prefer_county_files = true
 
 [watch.schedule]
-# From polls closing on election day until the end of the last certification
-# day (state: 30 days after a general election, 17 after a primary).
+# One hour after the 20:00 PST closing; no live metadata or results before this.
+not_before = 2026-11-03T21:00:00-08:00
+end = 2026-12-04T00:00:00-08:00
+# Until the end of the last certification day.
 polls_close = "20:00"
 election_night_until = "02:00"
 election_night_every_minutes = 30
 every_minutes = 60
 # Optional fixed overrides:
-# start = 2026-11-03T20:00:00-08:00
-# end = 2026-12-04T00:00:00-08:00
+# start = 2026-11-03T21:00:00-08:00  # cannot precede not_before
+# Extend end explicitly if certification is delayed.
 
 [[watch]]
 state = "Alaska"
@@ -43,10 +44,14 @@ state = "Alaska"
 # source for each of the 30 from the statewide precinct file, using
 # crosswalks/alaska/precinct-borough.csv. Names such as "Bethel" also work.
 counties = "all"
-election = "next"
-# Defaults to America/Anchorage; polls close at 20:00.
+election = "2026-11-03"
+# Display/snapshot time defaults to America/Anchorage. Polls close at 20:00
+# local time. For this statewide feed, wait for the last Aleutian polls too.
 
 [watch.schedule]
+# 21:00 Hawaii-Aleutian standard time = 22:00 Anchorage = 07:00 UTC Nov 4.
+not_before = 2026-11-03T21:00:00-10:00
+end = 2026-11-26T00:00:00-09:00
 # Until the State Review Board's target certification day (22 days after a
 # general election, 13 after a primary).
 polls_close = "20:00"
@@ -59,10 +64,13 @@ state = "Maine"
 # Statewide plus each of the 16 counties, from the county code on every
 # municipal row of the Secretary of State's office workbooks.
 counties = "all"
-election = "next"
+election = "2026-11-03"
 # Defaults to America/New_York; polls close at 20:00.
 
 [watch.schedule]
+# One hour after the 20:00 EST closing.
+not_before = 2026-11-03T21:00:00-05:00
+end = 2026-12-09T00:00:00-05:00
 # Maine posts no election-night results; official office workbooks appear
 # over the following weeks, so check once a day for 35 days.
 polls_close = "20:00"

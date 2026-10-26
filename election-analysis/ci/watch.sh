@@ -16,7 +16,33 @@ rel=${scope#"$root"/}
 export PYTHONPATH="$scope"
 cd "$root"
 
+# The existing workflow calls these commands as separate steps. Gate every
+# live/publication entry point here as well as per-state requests in Python.
+# This works for scheduled and manual runs without broadening token permissions.
 case "${1:-}" in
+  pending|carry|fetch|publish)
+    gate_args=()
+    if [[ ${FORCE:-false} == true ]]; then gate_args+=(--force); fi
+    if python3 -m election_reporting.watch status --require-eligible "${gate_args[@]}"; then
+      :
+    else
+      gate_status=$?
+      if [[ $gate_status != 3 ]]; then exit "$gate_status"; fi
+      if [[ ${1:-} == pending ]]; then
+        echo "exists=false" >> "${GITHUB_OUTPUT:-/dev/null}"
+      fi
+      exit 0
+    fi
+    ;;
+esac
+
+case "${1:-}" in
+  gate)
+    # Offline, real-clock status for the workflow's publication/fetch gate.
+    args=()
+    if [[ ${FORCE:-false} == true ]]; then args+=(--force); fi
+    python3 -m election_reporting.watch status "${args[@]}"
+    ;;
   test)
     python3 -m unittest discover -s "$rel/tests" -p 'test_election_watch*.py'
     ;;
@@ -41,7 +67,7 @@ case "${1:-}" in
     rm -rf "$checkout"
     ;;
   fetch)
-    # FORCE=true fetches even outside the checking window.
+    # FORCE=true ignores cadence/end, never the state's not_before gate.
     args=()
     if [[ ${FORCE:-false} == true ]]; then args+=(--force); fi
     python3 -m election_reporting.watch fetch "${args[@]}"
@@ -57,7 +83,7 @@ case "${1:-}" in
       --run-url "${RUN_URL:?}"
     ;;
   *)
-    echo "usage: watch.sh {test|pending|carry CHECKOUT|fetch|publish}" >&2
+    echo "usage: watch.sh {gate|test|pending|carry CHECKOUT|fetch|publish}" >&2
     exit 2
     ;;
 esac

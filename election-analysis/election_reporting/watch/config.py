@@ -19,7 +19,7 @@ SUPPORTED_STATES = {"washington": "Washington", "alaska": "Alaska", "maine": "Ma
 # Per-state defaults; [[watch]] tables can override timezone and schedule.
 STATE_DEFAULTS = {
     "washington": {"timezone": "America/Los_Angeles", "polls_close": "20:00"},
-    # Polls close at 20:00 Alaska time (AS 15.15.020); results post after 21:00.
+    # Polls close at 20:00 local time; the Aleutian Islands close later than Anchorage.
     "alaska": {"timezone": "America/Anchorage", "polls_close": "20:00"},
     "maine": {"timezone": "America/New_York", "polls_close": "20:00"},
 }
@@ -42,6 +42,7 @@ class WatchConfig:
     elections_root: Path
     all_counties: bool = False  # counties = "all"
     precinct_results: bool = False  # Washington: county and precinct breakdowns
+    not_before: datetime | None = None  # hard floor, including forced/manual runs
 
 
 def _time(value: object, location: str, default: str) -> time:
@@ -124,6 +125,15 @@ def _parse_watch(watch: dict, location: str, elections_root: Path) -> WatchConfi
     if not isinstance(schedule, dict):
         raise ElectionReportError(f"{location}.schedule must be a TOML table")
     where = f"{location}.schedule"
+    not_before = _moment(schedule.get("not_before"), f"{where}.not_before", zone)
+    if not_before is not None:
+        raw_floor = schedule["not_before"]
+        if isinstance(raw_floor, str):
+            raw_floor = datetime.fromisoformat(raw_floor)
+        if raw_floor.tzinfo is None or raw_floor.utcoffset() is None:
+            raise ElectionReportError(f"{where}.not_before requires an explicit UTC offset")
+        if election == "next":
+            raise ElectionReportError(f"{where}.not_before requires a fixed election date")
 
     seen: set[str] = set()
     names: list[str] = []
@@ -155,6 +165,7 @@ def _parse_watch(watch: dict, location: str, elections_root: Path) -> WatchConfi
         elections_root=elections_root / state_id,
         all_counties=all_counties,
         precinct_results=precinct_results,
+        not_before=not_before,
     )
 
 
