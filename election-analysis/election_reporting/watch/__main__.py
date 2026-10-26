@@ -18,6 +18,7 @@ from ..model import ElectionReportError
 from .config import load_watch_settings
 from .http import fetch as http_fetch
 from .run import carry_forward, fetch_snapshots, plan, write_election_config
+from .schedule import before_start, hold_message
 
 
 def _now(text: str | None) -> datetime:
@@ -29,7 +30,7 @@ def _now(text: str | None) -> datetime:
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="python -m election_reporting.watch")
-    parser.add_argument("command", choices=("plan", "fetch", "carry"))
+    parser.add_argument("command", choices=("status", "plan", "fetch", "carry"))
     parser.add_argument(
         "--from",
         dest="carry_from",
@@ -37,12 +38,32 @@ def main(argv: Sequence[str] | None = None) -> int:
         help="carry: an elections directory from an unmerged automation branch",
     )
     parser.add_argument("--config", type=Path, default=Path("election-analysis/data/watch.toml"))
-    parser.add_argument("--now", help="ISO date-time to use as the current time (testing)")
-    parser.add_argument("--force", action="store_true", help="fetch even when not due")
+    parser.add_argument("--now", help="status only: simulate a time without making source requests")
+    parser.add_argument("--force", action="store_true", help="ignore cadence/end, never the hard start gate")
+    parser.add_argument("--require-eligible", action="store_true", help="status: exit 3 if all states are held or ended")
     args = parser.parse_args(argv)
+    if args.now and args.command != "status":
+        parser.error("--now is only allowed for offline status; live commands use the real clock")
     try:
         settings = load_watch_settings(args.config)
         now = _now(args.now)
+        if args.command == "status":
+            eligible = False
+            for config in settings.watches:
+                held = before_start(config, now)
+                ended = config.end is not None and now > config.end and not args.force
+                if held:
+                    print(hold_message(config))
+                elif ended:
+                    print(f"{config.state}: checking window ended")
+                else:
+                    print(f"{config.state}: start gate open")
+                eligible = eligible or not (held or ended)
+            output = os.environ.get("GITHUB_OUTPUT")
+            if output:
+                with open(output, "a", encoding="utf-8") as handle:
+                    handle.write(f"eligible={str(eligible).lower()}\n")
+            return 3 if args.require_eligible and not eligible else 0
         if args.command == "carry":
             if args.carry_from is None:
                 parser.error("carry needs --from")
@@ -51,7 +72,10 @@ def main(argv: Sequence[str] | None = None) -> int:
             return 0
         if args.command == "plan":
             for config in settings.watches:
-                _print_plan(config, plan(config, http_fetch, now))
+                if before_start(config, now):
+                    print(hold_message(config))
+                else:
+                    _print_plan(config, plan(config, http_fetch, now))
             return 0
     except ElectionReportError as error:
         print(f"error: {error}", file=sys.stderr)

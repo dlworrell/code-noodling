@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Catalyst-File-ID: urn:uuid:70fb394a-465b-467b-8323-b6b524b3b22a
 
-"""When to check: from polls closing until certification.
+"""When to check: from the configured start gate until certification.
 
 Washington certification deadlines (RCW 29A.60.190 for counties and
 RCW 29A.60.250 for the Secretary of State), counted from election day:
@@ -31,6 +31,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 
+from ..model import ElectionReportError
 from .config import WatchConfig
 
 CERTIFICATION_DAYS = {
@@ -80,10 +81,28 @@ class Window:
         return self.start <= moment <= self.end
 
 
+def before_start(config: WatchConfig, now: datetime) -> bool:
+    """Hard pre-network floor; cadence and --force cannot override it."""
+    if now.tzinfo is None or now.utcoffset() is None:
+        raise ElectionReportError("current time must include a UTC offset")
+    return config.not_before is not None and now < config.not_before
+
+
+def hold_message(config: WatchConfig) -> str:
+    floor = config.not_before
+    assert floor is not None
+    return (
+        f"{config.state}: held until {floor.isoformat()} "
+        "(one hour after the configured final poll closing; force cannot override)"
+    )
+
+
 def watch_window(config: WatchConfig, election_day: date, kind: str, has_state: bool) -> Window:
-    """The checking window: polls close until the last certification day ends."""
+    """The checking window, clamped to the hard collection floor."""
     zone = config.timezone
     start = config.start or datetime.combine(election_day, config.polls_close, zone)
+    if config.not_before is not None:
+        start = max(start, config.not_before).astimezone(zone)
     night_end = datetime.combine(
         election_day + timedelta(days=1), config.election_night_until, zone
     )
@@ -101,7 +120,7 @@ def is_due(config: WatchConfig, window: Window, now: datetime) -> bool:
     checks; afterwards only runs in the first ``every_minutes`` slot of the
     period do, measured from the window start, so hourly is one run in two.
     """
-    if not window.contains(now):
+    if before_start(config, now) or not window.contains(now):
         return False
     if now <= window.election_night_end:
         step = config.election_night_every_minutes

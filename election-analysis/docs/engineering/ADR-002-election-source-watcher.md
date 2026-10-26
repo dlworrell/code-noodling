@@ -85,14 +85,33 @@ committed files.
     User-Agent; every other host gets the watcher's own, and each Maine
     snapshot records the exception.
 
+## November 2026 operating restriction
+
+The November 3, 2026 deployment is pinned to that election and must not make any
+live source request before one hour after the scheduled final poll closing in
+the applicable state. The configured hard floors are 02:00 UTC November 4 for
+Maine, 05:00 UTC for Washington and 07:00 UTC for statewide Alaska (including
+the later Aleutian closing). Runtime guards precede discovery, `plan` and
+fetching; neither manual dispatch, an earlier `start`, nor `--force` bypasses
+these guards. A simulated `--now` is allowed only for offline status.
+
+The existing root workflow retains its every-30-minute launch for offline
+validation. Its scope-owned `watch.sh` commands perform an offline eligibility
+check before pending-branch lookup, carry-forward, collection or publication.
+The fixed 2026 end dates suppress result-source requests in later annual cron
+seasons. Offline fixture tests and historical analysis remain available. See the source-linked [deployment table](../../README.md#november-3-2026-collection-gates).
+
 ## Consequences
 
 - Every new snapshot has recorded provenance and is reviewable before it is used.
 - Following another Washington county is a one-word change to `watch.toml`.
 - Each merged snapshot pull request regenerates the reports through the existing
   workflow.
-- The workflow runs every 30 minutes all year and exits early outside a window; a
-  run delayed by GitHub past its slot can skip one hourly check.
+- The workflow launches every 30 minutes for offline validation. All live and
+  publication commands are held before the first state gate; per-state gates
+  and cadence control collection afterwards. A run delayed by GitHub past its
+  slot can skip one hourly check. Start times are lower bounds, not a guarantee
+  of punctual GitHub scheduling.
 - County data from the results API has no ballots-cast, overvote or undervote
   counts, so those contests' denominators are vote totals.
 - Two watched counties' shares of a multi-county local contest are not summed;
