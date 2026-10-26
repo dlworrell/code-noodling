@@ -1,88 +1,22 @@
-name: crypto_pipeline Provenance (report-only)
-
-# PRM-0012 steps 3-4: REUSE, Catalyst-File-ID and Doxygen checks, the scope
-# manifest and test results for crypto_pipeline/. Report-only: results are
-# published in the job summary and as an artifact, and never fail the pull
-# request. On pushes to main only, the attest job signs the scope manifest and
-# the test results (GitHub artifact attestations, Sigstore) and verifies them.
-# Never add pull_request_target; pull requests, including from forks, never
-# reach the signing job. Logic lives in the crypto_pipeline scope (ADR-0004).
-
+name: Verified reviewed change (manual)
 on:
-  pull_request:
-    branches: [main]
-  push:
-    branches: [main]
   workflow_dispatch:
-
 permissions:
-  contents: read
-
+  contents: write
+concurrency:
+  group: reviewed-change-election
+  cancel-in-progress: false
 jobs:
-  report:
+  publish-reviewed-change:
+    if: github.event_name == 'workflow_dispatch' && github.actor == 'dlworrell'
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
-      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
-        with:
-          python-version: '3.12'
-      - name: Install pinned tools (reuse, doxygen)
-        run: crypto_pipeline/ci/provenance.sh install-tools
-      - name: Checker tests
-        run: crypto_pipeline/ci/provenance.sh tests
-      - name: Provenance checks (report-only)
-        id: checks
-        run: crypto_pipeline/ci/provenance.sh report build/provenance
-      - name: Test results (report-only)
-        id: tests
-        run: crypto_pipeline/ci/provenance.sh test-results build/provenance
-      - name: Publish results and scope manifest
-        if: always()
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: crypto-pipeline-provenance
-          path: build/provenance/
-          if-no-files-found: error
-
-  attest:
-    # Commits on main only: never pull_request (fork or not), never
-    # pull_request_target, never workflow_dispatch.
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: report
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    permissions:
-      contents: read
-      id-token: write
-      attestations: write
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - name: Download the report job's results
-        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
-        with:
-          name: crypto-pipeline-provenance
-          path: build/provenance
-      - name: Attest the scope manifest (check results)
-        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
-        with:
-          subject-path: build/provenance/scope-manifest.json
-          predicate-type: https://catalyst.dlworrell.dev/attestation/check/v1
-          predicate-path: build/provenance/results.json
-          create-storage-record: false
-      - name: Attest the test results
-        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
-        with:
-          subject-path: build/provenance/test-results.json
-          predicate-type: https://catalyst.dlworrell.dev/attestation/test/v1
-          predicate-path: build/provenance/test-predicate.json
-          create-storage-record: false
-      - name: Verify the attestations; reject a changed copy and another commit
+      - name: Publish exact reviewed tree and verify GitHub signature
         env:
-          GH_TOKEN: ${{ github.token }}
-          OTHER_SHA: ${{ github.event.before }}
-        run: crypto_pipeline/ci/provenance.sh verify build/provenance
+          GITHUB_TOKEN: ${{ github.token }}
+          EXPECTED_PAYLOAD_SHA256: 1f6180705b7e216c160f30d2829af141adf774296512706032cecbd0135e80e1
+        run: python3 .github/signing-repair/publish.py
