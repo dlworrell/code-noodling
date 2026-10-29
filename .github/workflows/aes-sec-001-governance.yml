@@ -3,7 +3,7 @@ name: AES-SEC-001 Governance
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, dev-daily, fitment]
   workflow_dispatch:
 
 permissions:

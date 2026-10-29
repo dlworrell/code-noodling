@@ -11,12 +11,12 @@ name: election-analysis Provenance (report-only)
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, dev-daily, fitment]
     paths:
       - "election-analysis/**"
       - ".github/workflows/election_provenance.yml"
   push:
-    branches: [main]
+    branches: [main, dev-daily, fitment]
     paths:
       - "election-analysis/**"
       - ".github/workflows/election_provenance.yml"
