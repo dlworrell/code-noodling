@@ -2,9 +2,9 @@ name: Cryptographic Wrapper Validation Pipeline
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop, dev-daily, fitment]
   pull_request:
-    branches: [ main ]
+    branches: [main, dev-daily, fitment]
 
 jobs:
   audit-and-test:

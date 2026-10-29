@@ -1,9 +1,9 @@
 name: Montgomery Constant-Flow Candidate
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop, dev-daily, fitment]
   pull_request:
-    branches: [ main ]
+    branches: [main, dev-daily, fitment]
   workflow_dispatch:
 permissions:
   contents: read
