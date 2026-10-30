@@ -224,3 +224,7 @@ Permission is granted to use, modify, and distribute this software with attribut
 This MIT notice remains the stated license until the license files and headers
 recorded under [Licensing](#licensing) are added. The repository default then
 becomes Apache-2.0.
+
+## Releasing
+
+Changes move `dev-daily` → `fitment` → `main`, and a release is published only after the owner approves it. See [docs/RELEASING.md](docs/RELEASING.md).
