@@ -7,7 +7,7 @@ Catalyst-File-ID: urn:uuid:c7d6364c-e0fe-4597-b941-eab09dea4086
 
 # ADR-002: Scheduled Acquisition of Official Election Result Snapshots
 
-Status: Proposed
+Status: Accepted by owner decision on 2026-11-01
 Date: 2026-10-23
 
 Amended 2026-10-23: election files moved under `election-analysis/`. Paths below read
