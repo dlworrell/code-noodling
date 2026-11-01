@@ -7,7 +7,7 @@ Catalyst-File-ID: urn:uuid:694e3d97-3c23-49f3-91b4-bf856f1a223e
 
 # ADR-004: Reviewed evidence and experimental scenario boundaries
 
-Status: Proposed for review; no scientific promotion
+Status: Accepted by owner decision on 2026-11-01; no scientific promotion
 Date: 2026-10-24 (Pacific)
 Issues: EA-02–EA-14, parent [#45](https://github.com/dlworrell/code-noodling/issues/45)
 Supersedes: numerical, identity, timing and remaining-pool assumptions in ADR-001/002; extends ADR-003

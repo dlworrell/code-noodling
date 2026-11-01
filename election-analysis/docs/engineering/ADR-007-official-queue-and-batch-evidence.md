@@ -7,7 +7,7 @@ Catalyst-File-ID: urn:uuid:417aa847-25a6-455c-a5cb-0cf234c0a28c
 
 # ADR-007: Official queue evidence and conditional batch comparisons
 
-Status: Proposed for review; experimental offline research only
+Status: Accepted by owner decision on 2026-11-01; experimental offline research only
 Date: 2026-10-25 (Pacific)
 Issues: EA-10 #55, EA-13 #58; parent #45
 Extends: ADR-004/005/006; distinct offline artifact schema 3
