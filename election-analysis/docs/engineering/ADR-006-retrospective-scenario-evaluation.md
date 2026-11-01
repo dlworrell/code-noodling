@@ -7,7 +7,7 @@ Catalyst-File-ID: urn:uuid:b58839c5-3175-4f8a-b316-b8e5ef00f908
 
 # ADR-006: Frozen retrospective turnout scenarios
 
-Status: Proposed for review; experimental, no forecast promotion
+Status: Accepted by owner decision on 2026-11-01; experimental, no forecast promotion
 Date: 2026-10-25 UTC
 Issues: EA-10 #55, EA-13 #58; parent #45
 Extends: ADR-004/005; independent offline artifact schema 2

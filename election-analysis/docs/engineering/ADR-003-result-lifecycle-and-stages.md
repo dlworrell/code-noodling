@@ -7,7 +7,7 @@ Catalyst-File-ID: urn:uuid:035e6367-45bc-4dfe-b80e-678d3d628d09
 
 # ADR-003: Dated lifecycle evidence and separate tabulation stages
 
-Status: Proposed
+Status: Accepted by owner decision on 2026-11-01
 Date: 2026-10-24
 Issue: [EA-01 #46](https://github.com/dlworrell/code-noodling/issues/46)
 Audit: [EA-AUD-2026-10-23 #45](https://github.com/dlworrell/code-noodling/issues/45)
