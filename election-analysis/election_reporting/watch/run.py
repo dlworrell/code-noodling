@@ -389,10 +389,12 @@ def _fetch_king_county(store, config, place, plan_, fetch, now, result) -> None:
     if not files:
         result.skipped.append(f"{place.place_id}: no county result files yet")
         return
-    seen_urls = {r.source_url.split("?", 1)[0] for r in store.records if r.place == place.place_id}
+    # Every listed file is fetched on every run, even at a URL already recorded:
+    # King County can replace an export in place (or change only its query
+    # string) to publish a correction. _record keeps a new immutable snapshot
+    # when the bytes differ and skips identical bytes, so a repeated file stays
+    # idempotent. A URL is never treated as a content identity.
     for item in files:
-        if item.url.split("?", 1)[0] in seen_urls:
-            continue
         response = fetch(item.url)
         local = (response.last_modified or now).astimezone(config.timezone)
         if local.date() != item.day:

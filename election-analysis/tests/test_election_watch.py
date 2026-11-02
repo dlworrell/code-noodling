@@ -350,6 +350,66 @@ class FetchTests(unittest.TestCase):
             later = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
             self.assertEqual([(r.place, r.snapshot) for r in later.added], [("pierce-county", "2026-11-03-2145")])
 
+    # WATCH-02 acceptance cases (King County exports replaced in place):
+    # K1 a corrected body B at the same URL is kept as a new immutable snapshot;
+    # K2 a correction that changes only the query string is kept the same way;
+    # K3 serving the same body A again adds nothing (idempotent);
+    # K4 the earlier snapshot's bytes are untouched by the correction.
+
+    def king_snapshots(self, root: Path):
+        election = root / "elections" / "washington" / "2026-11-03"
+        return sorted((r.snapshot, r.input_sha256) for r in ElectionStore(election).records
+                      if r.place == "king-county")
+
+    def corrected(self, fake, url_key: str, page_href: str, body: str, modified: str):
+        fake.routes[KC_PAGE] = Response(KC_PAGE, f'<a href="{page_href}">Nov 3</a>'.encode())
+        fake.routes[url_key] = Response(KC_FILE, body.encode("utf-8"), {"last-modified": modified})
+        return fake
+
+    def test_k1_corrected_body_at_the_same_url_is_a_new_snapshot(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            fake = self.corrected(web(root), KC_FILE + "?rev=1&hash=2", f"{KC_FILE}?rev=1&amp;hash=2",
+                                  KC_CSV + "\n", "Wed, 04 Nov 2026 05:10:00 GMT")
+            later = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
+            self.assertEqual([r.place for r in later.added], ["king-county"])
+            self.assertEqual(len(self.king_snapshots(root)), 2)
+
+    def test_k2_query_only_revision_is_a_new_snapshot(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            fake = self.corrected(web(root), KC_FILE + "?rev=2&hash=3", f"{KC_FILE}?rev=2&amp;hash=3",
+                                  KC_CSV + "\n", "Wed, 04 Nov 2026 05:10:00 GMT")
+            later = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
+            self.assertEqual([r.place for r in later.added], ["king-county"])
+
+    def test_k3_same_body_again_adds_nothing(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            before = self.king_snapshots(root)
+            again = fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            self.assertEqual([r for r in again.added if r.place == "king-county"], [])
+            self.assertEqual(self.king_snapshots(root), before)
+            self.assertIn("king-county: unchanged", again.skipped)
+
+    def test_k4_earlier_snapshot_bytes_are_untouched(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            election = root / "elections" / "washington" / "2026-11-03"
+            first = (election / "input/king-county/2026-11-03-2030.csv").read_bytes()
+            fake = self.corrected(web(root), KC_FILE + "?rev=1&hash=2", f"{KC_FILE}?rev=1&amp;hash=2",
+                                  KC_CSV + "\n", "Wed, 04 Nov 2026 05:10:00 GMT")
+            fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
+            self.assertEqual((election / "input/king-county/2026-11-03-2030.csv").read_bytes(), first)
+
     def test_not_due_fetches_nothing(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
