@@ -170,6 +170,7 @@ class PublishFlowTests(unittest.TestCase):
                                   {"node_id": "REPO", "default_branch": "main"})
         fake.responses.setdefault(("GET", f"repos/{REPO}/compare/{self.base_sha}...dev-daily"),
                                   {"status": "identical"})
+        fake.responses.setdefault(("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"), [])
         fake.responses.setdefault(("GET", f"repos/{REPO}/git/commits/{'c' * 40}"), {
             "sha": "c" * 40, "tree": {"sha": tree}, "parents": [{"sha": self.base_sha}],
             "verification": {"verified": True, "reason": "valid"},
@@ -222,6 +223,7 @@ class PublishFlowTests(unittest.TestCase):
             fake.endpoints(),
             [
                 ("GET", f"repos/{REPO}/compare/{self.base_sha}...dev-daily"),
+                ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"),
                 ("GET", f"repos/{REPO}/git/matching-refs/heads/{BRANCH}"),
                 ("GET", f"repos/{REPO}"),
                 ("POST", f"repos/{REPO}/git/refs"),
@@ -232,9 +234,9 @@ class PublishFlowTests(unittest.TestCase):
             ],
         )
         self.assertEqual(
-            fake.calls[3][2], {"ref": f"refs/heads/{BRANCH}", "sha": self.base_sha}
+            fake.calls[4][2], {"ref": f"refs/heads/{BRANCH}", "sha": self.base_sha}
         )
-        commit_input = fake.calls[4][2]["variables"]["input"]
+        commit_input = fake.calls[5][2]["variables"]["input"]
         self.assertEqual(commit_input["expectedHeadOid"], self.base_sha)
         files = commit_input["fileChanges"]
         self.assertEqual(
@@ -243,7 +245,7 @@ class PublishFlowTests(unittest.TestCase):
         )
         self.assertEqual(base64.b64decode(files["additions"][1]["contents"]), b"\x00\xff\x10")
         self.assertEqual(files["deletions"], [{"path": "election-analysis/reports/edt/old.md"}])
-        pr = fake.calls[7][2]
+        pr = fake.calls[8][2]
         self.assertEqual((pr["head"], pr["base"]), (BRANCH, "dev-daily"))
         # Nothing ever targets a base branch ref.
         for method, endpoint, _ in fake.calls:
@@ -350,7 +352,8 @@ class PublishFlowTests(unittest.TestCase):
             })
             with self.subTest(verification=verification), self.assertRaisesRegex(PublishError, "did not verify"):
                 self.run_publish(fake)
-            self.assertFalse(any("/pulls" in endpoint for _, endpoint, _ in fake.calls))
+            # The pre-write ambiguity check reads the PR list; nothing may change a PR.
+            self.assertFalse(any("/pulls" in endpoint and method != "GET" for method, endpoint, _ in fake.calls))
 
     def test_unsigned_identical_content_is_replaced(self):
         self.regenerate()
@@ -413,7 +416,7 @@ class PublishFlowTests(unittest.TestCase):
     # R2 main, fitment or any other base is refused before any GitHub call;
     # R3 a generating commit that is not on dev-daily is refused before any write;
     # R4 an open PR from the automation branch to another base (#91) is retargeted, not duplicated;
-    # R5 several open PRs from the automation branch are refused before any PR write;
+    # R5 several open PRs from the automation branch are refused before any write at all;
     # R6 a rerun with identical content leaves the commit alone and does not retarget again.
 
     def writes(self, fake: FakeGh) -> list[tuple[str, str]]:
@@ -476,7 +479,8 @@ class PublishFlowTests(unittest.TestCase):
         })
         with self.assertRaisesRegex(PublishError, "several open pull requests"):
             self.run_publish(fake)
-        self.assertFalse(any("/pulls" in e and m != "GET" for m, e in fake.endpoints()))
+        # Refused before ANY write: no branch reset, no commit, no PR change.
+        self.assertEqual(self.writes(fake), [])
 
     def test_r6_rerun_is_idempotent(self) -> None:
         self.regenerate()

@@ -260,7 +260,19 @@ class GitHub:
         return data["data"]["createCommitOnBranch"]["commit"]
 
     def require_on_base(self, base: str, base_sha: str) -> None:
-        """Fail unless ``base_sha`` is the head of ``base`` or one of its ancestors."""
+        """Fail unless ``base_sha`` is the head of ``base`` or one of its ancestors.
+
+        Purpose: files are proposed against the exact commit they were
+        generated from (ADR-0013 consistency). If ``base_sha`` were not on the
+        base, for example generated from ``main`` or a stale fork point, the
+        PR would mix that commit's history into ``dev-daily``.
+
+        How: GitHub's compare API, ``base_sha...base``. ``identical`` means the
+        base has not moved; ``ahead`` means the base gained commits after
+        generation, which is safe because the PR merges on top. Any other
+        status (``behind``, ``diverged``) or an unreadable comparison raises
+        ``PublishError``. No write happens before this check.
+        """
         comparison = self.api("GET", f"repos/{self.repository}/compare/{base_sha}...{base}")
         status = comparison.get("status") if isinstance(comparison, dict) else None
         if status not in ("identical", "ahead"):
@@ -270,7 +282,15 @@ class GitHub:
             )
 
     def open_pull_request(self, branch: str, base: str) -> dict | None:
-        """The one open pull request from ``branch``, whatever its base; refuse if several."""
+        """The one open pull request from ``branch``, whatever its base; refuse if several.
+
+        The base is deliberately not used as a filter: a pull request left on
+        another base by the earlier default-branch route (code-noodling #91,
+        on ``main``) must be found so that it can be retargeted rather than
+        duplicated. Several open pull requests from the same automation branch
+        raise ``PublishError``, because which one to update would be ambiguous.
+        ``publish`` calls this before any write, and again when upserting.
+        """
         owner = self.repository.split("/", 1)[0]
         pulls = self.api("GET", f"repos/{self.repository}/pulls?state=open&head={owner}:{branch}") or []
         if len(pulls) > 1:
@@ -280,6 +300,13 @@ class GitHub:
 
     def upsert_pull_request(self, branch: str, base: str, title: str, body: str,
                             log: Callable[[str], None] = print) -> str:
+        """Update the automation branch's open pull request, or open one.
+
+        An existing pull request gets the new title and body. If its base
+        differs from ``base`` (the earlier route's ``main``), it is retargeted
+        to ``base`` in the same PATCH and the migration is logged. Otherwise a
+        new pull request from ``branch`` to ``base`` is opened. Returns its URL.
+        """
         existing = self.open_pull_request(branch, base)
         if existing:
             update = {"title": title, "body": body}
@@ -361,7 +388,12 @@ def publish(
     if changes.empty:
         log("Reports are already current; nothing to publish.")
         return None
+    # Route checks, all before any write (branch reset, commit or PR):
+    # the generating commit must be on the base, and the automation branch
+    # must not have several open pull requests (which one to update would
+    # be ambiguous). open_pull_request raises on ambiguity.
     github.require_on_base(base, base_sha)
+    github.open_pull_request(branch, base)
     log(f"{len(changes.additions)} file(s) to add/update, {len(changes.deletions)} to delete.")
     body = pull_request_body(changes, base_sha, run_url, summary)
 
