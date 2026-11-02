@@ -51,6 +51,43 @@ class PublicationPrecisionAndStalenessTests(unittest.TestCase):
         self.assertEqual(_probability_label(0.0004), "<0.1%")
         self.assertEqual(_probability_label(0.001), "0.1%")
 
+    def test_p6_full_report_never_shows_100_for_0_9996(self) -> None:
+        """Em's review of 560564a: the analysis rationale had its own ':.1%' formatter.
+
+        The whole pipeline (analysis rationale, report paragraph, at-a-glance
+        table, Markdown, HTML and social text) is run with the probability
+        model pinned to 0.9996, and no output may contain "100.0%".
+        """
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            inputs = root / "inputs"
+            inputs.mkdir()
+            (inputs / "2026-08-06.csv").write_text(
+                result_rows("Local Proposition 1 (Vote for 1)", "9", 100, [("Yes", 51), ("No", 48)]),
+                encoding="utf-8",
+            )
+            config_path = root / "election.toml"
+            config_path.write_text(
+                'schema_version = 1\n[election]\ntitle = "Test"\n[[sources]]\nid = "local"\n'
+                'path = "inputs"\njurisdiction = "Local"\nscope = "local"\npriority = 1\n'
+                "expected_final_ballots = 120\n",
+                encoding="utf-8",
+            )
+            with mock.patch("election_reporting.analysis._tempered_beta_binomial_probability",
+                            return_value=(0.9996, 0.5)):
+                analysis = analyze_election(counting_config(config_path))
+            risk = analysis.races[0].decisions[0].risk
+            self.assertEqual(risk.change_probability, 0.9996)
+            self.assertIn("conditional scenario: >99.9%", risk.rationale)
+            output = root / "reports"
+            publish(analysis, output)
+            for path in output.rglob("*"):
+                if path.is_file() and path.suffix in (".md", ".html", ".txt", ".json"):
+                    with self.subTest(file=path.name):
+                        self.assertNotIn("100.0%", path.read_text(encoding="utf-8"))
+            markdown = (output / "election-analysis.md").read_text(encoding="utf-8")
+            self.assertIn(">99.9%", markdown)
+
     def two_generations(self, first: str | None, second: str | None) -> Path:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -69,9 +106,14 @@ class PublicationPrecisionAndStalenessTests(unittest.TestCase):
             )
             output = root / "reports"
             analysis = analyze_election(counting_config(config_path))
+            output.mkdir()
+            unrelated = output / "notes-kept-by-hand.txt"
+            unrelated.write_text("keep me\n", encoding="utf-8")
             for breakdown in (first, second):
                 with mock.patch("election_reporting.publish.county_breakdown_csv", return_value=breakdown):
                     publish(analysis, output)
+            # Only the stale breakdown may be removed; an unrelated file is untouched.
+            self.assertEqual(unrelated.read_text(encoding="utf-8"), "keep me\n")
             path = output / "county-breakdown.csv"
             return path.read_text(encoding="utf-8") if path.exists() else None
 

@@ -13,7 +13,7 @@ from pathlib import Path
 from . import __version__
 from .analysis import FLIP_BANDS, PROBABILITY_MODEL, risk_counts
 from .numerics import ERROR_POLICY
-from .model import DecisionAnalysis, ElectionAnalysis, ElectionReportError, RaceAnalysis, ResultStatus
+from .model import DecisionAnalysis, ElectionAnalysis, ElectionReportError, RaceAnalysis, ResultStatus, format_probability
 
 
 PUBLIC_REPORT_BASE = "https://github.com/dlworrell/code-noodling/blob/main/"
@@ -380,19 +380,8 @@ def _slug(value: str) -> str:
 
 
 def _probability_label(value: float | None) -> str:
-    """One decimal place, never rounding an uncertain probability to certainty.
-
-    Below 0.1% shows as "<0.1%"; above 99.9% but below 1 shows as ">99.9%",
-    because rounding (0.9996 -> "100.0%") would display near-certainty as
-    certainty. Only a probability of exactly 1 shows as "100.0%".
-    """
-    if value is None:
-        return "Not estimable"
-    if value < 0.001:
-        return "<0.1%"
-    if 0.999 < value < 1:
-        return ">99.9%"
-    return f"{value:.1%}"
+    """Report label for a probability; see ``model.format_probability`` (one shared policy)."""
+    return format_probability(value)
 
 
 def _table_text(value: str) -> str:

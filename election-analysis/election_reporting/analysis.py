@@ -14,6 +14,7 @@ from .versions import load_versions
 from .numerics import ERROR_POLICY, beta_binomial_tail, posterior, posterior_details, threshold
 from .ingest import load_source_snapshots
 from .model import (
+    format_probability,
     ChoiceResult,
     ContestResult,
     DecisionAnalysis,
@@ -276,7 +277,8 @@ def _risk_from_requirement(
             rationale = "The reviewed remaining pool explicitly confirms zero future decision votes."
         else:
             rationale = (
-                f"Experimental, uncalibrated conditional scenario: {probability:.1%} "
+                # format_probability, not ":.1%": a 0.9996 probability must never read "100.0%".
+                f"Experimental, uncalibrated conditional scenario: {format_probability(probability)} "
                 f"selected-boundary change probability across {remaining_votes:,} estimated remaining "
                 f"decision votes; the change side needs {required_share:.1%}."
             )
