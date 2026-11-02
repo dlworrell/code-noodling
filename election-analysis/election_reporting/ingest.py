@@ -201,13 +201,27 @@ def _xlsx_cell_value(cell: ET.Element, shared_strings: list[str]) -> str:
         raise ElectionReportError("XLSX shared-string index is invalid") from exc
 
 
+XLSX_MAX_COLUMN = 16_384  # XFD, the last column the XLSX format allows
+_CELL_REFERENCE = re.compile(r"([A-Z]{1,3})([1-9][0-9]{0,6})")
+
+
 def _xlsx_column(reference: str) -> int:
-    match = re.match(r"([A-Z]+)", reference.upper())
+    """1-based column of a cell reference such as ``B7``; 0 when the cell has none.
+
+    The column bounds the list allocated for its row, so a reference beyond
+    XFD, or one that is not a cell reference at all, is refused before any
+    allocation (ZIP and row budgets do not limit column letters).
+    """
+    if not reference:
+        return 0  # cells may omit r; such cells are ignored, as before
+    match = _CELL_REFERENCE.fullmatch(reference.upper())
     if match is None:
-        return 0
+        raise ElectionReportError(f"XLSX cell reference {reference[:20]!r} is not supported")
     column = 0
     for character in match.group(1):
         column = column * 26 + ord(character) - ord("A") + 1
+    if column > XLSX_MAX_COLUMN:
+        raise ElectionReportError(f"XLSX cell reference {reference[:20]!r} is beyond column XFD")
     return column
 
 

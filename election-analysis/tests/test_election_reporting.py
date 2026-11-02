@@ -730,3 +730,92 @@ class ResultStageTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def one_cell_xlsx(reference: str, sheet: str = "Sheet1") -> bytes:
+    """A minimal workbook whose only cell carries ``reference``."""
+    import io
+
+    worksheet = (
+        '<?xml version="1.0" encoding="UTF-8"?>'
+        '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'
+        f'<sheetData><row r="1"><c r="{escape(reference)}"><v>7</v></c></row></sheetData></worksheet>'
+    )
+    workbook = (
+        '<?xml version="1.0" encoding="UTF-8"?>'
+        '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" '
+        'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
+        f'<sheets><sheet name="{sheet}" sheetId="1" r:id="rId1"/></sheets></workbook>'
+    )
+    relationships = (
+        '<?xml version="1.0" encoding="UTF-8"?>'
+        '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+        '<Relationship Id="rId1" '
+        'Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" '
+        'Target="worksheets/sheet1.xml"/></Relationships>'
+    )
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+        archive.writestr("xl/workbook.xml", workbook)
+        archive.writestr("xl/_rels/workbook.xml.rels", relationships)
+        archive.writestr("xl/worksheets/sheet1.xml", worksheet)
+    return buffer.getvalue()
+
+
+class XlsxCoordinateBoundTests(unittest.TestCase):
+    """ING-01: column letters bound the row list allocated, so they are checked first.
+
+    Acceptance cases:
+    C1 XFD1, the last column XLSX allows, still reads;
+    C2 XFE1 (one past XFD) is refused;
+    C3 ZZZZZZ1 (about 321 million columns) is refused before any allocation;
+    C4 a reference that is not a cell reference (for example "1A" or "A0") is refused;
+    C5 a cell without a reference is ignored, as before.
+    Each case runs through both readers: the whole-workbook reader and the streamed one.
+    """
+
+    PATH = Path("test.xlsx")
+
+    def readers(self, reference: str):
+        from election_reporting.ingest import iter_xlsx_sheet_rows, xlsx_worksheets
+
+        raw = one_cell_xlsx(reference)
+        return (
+            lambda: xlsx_worksheets(self.PATH, raw)[0][1],
+            lambda: list(iter_xlsx_sheet_rows(self.PATH, raw, "Sheet1")),
+        )
+
+    def test_c1_last_allowed_column_reads(self) -> None:
+        for read in self.readers("XFD1"):
+            rows = read()
+            self.assertEqual(len(rows[0]), 16_384)
+            self.assertEqual(rows[0][-1], "7")
+
+    def test_c2_one_past_the_last_column_is_refused(self) -> None:
+        for read in self.readers("XFE1"):
+            with self.assertRaisesRegex(ElectionReportError, "beyond column XFD"):
+                read()
+
+    def test_c3_huge_column_is_refused_before_allocation(self) -> None:
+        import tracemalloc
+
+        for read in self.readers("ZZZZZZ1"):
+            tracemalloc.start()
+            try:
+                with self.assertRaisesRegex(ElectionReportError, "not supported|beyond column XFD"):
+                    read()
+                _, peak = tracemalloc.get_traced_memory()
+            finally:
+                tracemalloc.stop()
+            self.assertLess(peak, 50 * 1024 * 1024)
+
+    def test_c4_invalid_references_are_refused(self) -> None:
+        for reference in ("1A", "A0", "A-1", "AB", "A1:B2"):
+            for read in self.readers(reference):
+                with self.subTest(reference=reference), self.assertRaisesRegex(
+                        ElectionReportError, "not supported"):
+                    read()
+
+    def test_c5_cell_without_reference_is_ignored(self) -> None:
+        for read in self.readers(""):
+            self.assertEqual(read(), [[]])
