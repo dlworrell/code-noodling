@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2025 Donovan Worrell
+
+SPDX-License-Identifier: MIT
+Catalyst-File-ID: urn:uuid:0532e320-8625-4304-bdbc-cfb2b7f3f3ff
+-->
+
 # Code Noodling
 
 `code-noodling` is an experimental monorepo with three codebases:
