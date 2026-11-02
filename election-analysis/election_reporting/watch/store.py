@@ -37,6 +37,14 @@ def contained(root: Path, relative: str) -> Path:
     Refused before any I/O: empty, absolute or backslash paths, any ``..`` or
     empty component, any existing symlink along the path, and anything whose
     resolved location falls outside ``root``.
+
+    Returns the joined path; the caller then opens it. ``root`` itself is
+    trusted (a directory chosen by the caller).
+
+    Limit: this is check-then-open. A path component swapped for a symlink
+    between this check and the open (a race) is not caught; that needs write
+    access to the tree during the run, which the watcher's fresh workflow
+    checkouts do not give anyone else.
     """
     if not isinstance(relative, str) or not relative or "\\" in relative or "\x00" in relative:
         raise ElectionReportError(f"refusing stored path {relative!r}: not a plain relative path")

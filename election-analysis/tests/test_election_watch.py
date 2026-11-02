@@ -7,9 +7,11 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import shutil
 import tempfile
 import unittest
+from unittest import mock
 from datetime import date, datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -564,6 +566,102 @@ class CarryForwardTests(unittest.TestCase):
             election_target = target / "washington" / "2026-11-03"
             written = [p for p in election_target.rglob("*") if p.is_file()] if election_target.exists() else []
             self.assertEqual(written, [])
+
+
+    # P7-P10 (Em's review of 6cf9e53): the whole chain, from root to election
+    # directory to SOURCES.json and files, in both trees, is confined before any
+    # read or write; and no file I/O ever touches a path outside the two roots.
+
+    def monitored_carry(self, root: Path):
+        """Run carry_forward while recording every path read or written; return (error, paths)."""
+        seen: list[Path] = []
+        originals = {name: getattr(Path, name) for name in ("read_bytes", "read_text", "write_bytes", "write_text")}
+
+        def spy(name):
+            def wrapper(self_path, *args, **kwargs):
+                seen.append(Path(os.path.realpath(self_path)))
+                return originals[name](self_path, *args, **kwargs)
+            return wrapper
+
+        error = None
+        with mock.patch.multiple(Path, **{name: spy(name) for name in originals}):
+            try:
+                carry_forward(root / "pending" / "elections", root / "main" / "elections", log=lambda _: None)
+            except ElectionReportError as exc:
+                error = exc
+        return error, seen
+
+    def assert_no_outside_io(self, root: Path, seen) -> None:
+        allowed = [Path(os.path.realpath(root / "pending")), Path(os.path.realpath(root / "main"))]
+        outside = [p for p in seen if not any(p == a or a in p.parents for a in allowed)]
+        self.assertEqual(outside, [])
+
+    def outside_dir(self, root: Path) -> Path:
+        outside = root / "elsewhere"
+        outside.mkdir(exist_ok=True)
+        return outside
+
+    def test_p7_target_election_directory_symlink_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.pending_tree(root)
+            outside = self.outside_dir(root)
+            (root / "main" / "elections" / "washington").mkdir(parents=True)
+            (root / "main" / "elections" / "washington" / "2026-11-03").symlink_to(outside, target_is_directory=True)
+            error, seen = self.monitored_carry(root)
+            self.assertIsNotNone(error)
+            self.assertEqual(list(outside.iterdir()), [])
+            self.assert_no_outside_io(root, seen)
+
+    def test_p8_source_ledger_symlink_is_refused_before_reading(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            election = self.pending_tree(root)
+            outside = self.outside_dir(root)
+            ledger = election / "SOURCES.json"
+            (outside / "SOURCES.json").write_bytes(ledger.read_bytes())
+            ledger.unlink()
+            ledger.symlink_to(outside / "SOURCES.json")
+            error, seen = self.monitored_carry(root)
+            self.assertIsNotNone(error)
+            self.assert_no_outside_io(root, seen)
+
+    def test_p9_target_ledger_symlink_is_refused_before_writing(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.pending_tree(root)
+            outside = self.outside_dir(root)
+            (outside / "victim.json").write_text("{}", encoding="utf-8")
+            target_election = root / "main" / "elections" / "washington" / "2026-11-03"
+            target_election.mkdir(parents=True)
+            (target_election / "SOURCES.json").symlink_to(outside / "victim.json")
+            error, seen = self.monitored_carry(root)
+            self.assertIsNotNone(error)
+            self.assertEqual((outside / "victim.json").read_text(encoding="utf-8"), "{}")
+            self.assert_no_outside_io(root, seen)
+
+    def test_p10_symlinked_directory_in_pending_tree_is_not_followed(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            election = self.pending_tree(root)
+            outside = self.outside_dir(root)
+            # Move the real election directory outside and link it back in.
+            shutil.move(str(election), str(outside / "2026-11-03"))
+            election.symlink_to(outside / "2026-11-03", target_is_directory=True)
+            error, seen = self.monitored_carry(root)
+            self.assertIsNone(error)  # not followed, so nothing is found to carry
+            self.assertFalse((root / "main" / "elections").exists()
+                             and any((root / "main" / "elections").rglob("*.csv")))
+            self.assert_no_outside_io(root, seen)
+
+    def test_p11_valid_tree_carries_with_no_outside_io(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.pending_tree(root)
+            error, seen = self.monitored_carry(root)
+            self.assertIsNone(error)
+            self.assertTrue(any((root / "main" / "elections").rglob("*.csv")))
+            self.assert_no_outside_io(root, seen)
 
 
 class RepositoryTests(unittest.TestCase):

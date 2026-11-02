@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import json
+import os
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -642,35 +643,84 @@ def fetch_snapshots(
     return result
 
 
+def _election_dirs(source_root: Path) -> list[Path]:
+    """Election directories under ``source_root``: those holding a regular SOURCES.json.
+
+    The walk never follows symlinked directories (``followlinks=False``), so a
+    symlink planted in the pending tree cannot lead the walk, or any later
+    read, outside ``source_root``. A SOURCES.json that is itself a symlink is
+    left for ``contained`` to refuse, which makes the attempt visible rather
+    than silently skipped.
+    """
+    found = []
+    for directory, _subdirs, files in os.walk(source_root, followlinks=False):
+        if SOURCES_FILE in files:
+            found.append(Path(directory))
+    return sorted(found)
+
+
 def carry_forward(source_root: Path, target_root: Path, log: Callable[[str], None] = print) -> int:
     """Copy snapshots recorded under ``source_root`` but missing from ``target_root``.
 
-    Used by the scheduled workflow: snapshots waiting in an unmerged automation
-    pull request are copied onto a fresh checkout of the default branch before
-    the next fetch, because report files that the state overwrites cannot be
-    downloaded again. Only snapshot files and their records move; everything
-    else on the default branch (for example a hand-edited ``election.toml``)
-    is left as it is.
+    Purpose. The scheduled watcher proposes snapshots through an automation
+    pull request. Until that PR is merged, its snapshots exist only on the
+    automation branch, and the state may overwrite the source file, so it
+    cannot be downloaded again. Each run therefore copies the still-unmerged
+    snapshots (checked out at ``source_root``) onto the fresh checkout
+    (``target_root``) before fetching. Only snapshot files and their records
+    move; everything else in the target, such as a hand-edited
+    ``election.toml``, is left as it is.
+
+    Inputs: two directories chosen by the workflow, which are the trusted
+    roots. Everything read from inside them (directory names, SOURCES.json
+    and the paths it records) is data, not trusted locations: the pending
+    branch can be written by automation, and a matching SHA-256 proves
+    content, not that a path may be used.
+
+    Output: the number of snapshots copied. It raises ``ElectionReportError``,
+    and writes nothing for that election directory, when any of the following
+    is found:
+    - a path that would leave either root;
+    - a symlink anywhere along the chain: root, election directory,
+      SOURCES.json, or snapshot file, in either tree;
+    - a digest mismatch.
+
+    Order of checks, all done before the store for that directory is built:
+    1. find election directories without following symlinks;
+    2. confine the source election directory and its SOURCES.json;
+    3. confine the target election directory and its SOURCES.json;
+    4. only then read the two ledgers;
+    5. stage and verify every file of every missing record (read through
+       ``contained``);
+    6. write.
+
+    Limits: the checks resolve paths and then open them. A process that swaps
+    a path component for a symlink between check and open (a race) is not
+    defended against. The roots are fresh workflow checkouts that no other
+    process writes during the run, so that race needs control of the runner
+    itself.
     """
     copied = 0
     if not source_root.is_dir():
         return 0
-    # Election directories are <state>/<date>/; find them by their records.
-    for source_dir in sorted(path.parent for path in source_root.rglob(SOURCES_FILE)):
-        relative = source_dir.relative_to(source_root)
-        if ".." in relative.parts:
-            continue
-        # The election directory itself must not be reached through a symlink.
-        contained(source_root, relative.as_posix())
+    for source_dir in _election_dirs(source_root):
+        relative = source_dir.relative_to(source_root).as_posix()
+        if relative == ".":
+            continue  # a ledger directly in the root is not an election directory
+        # Steps 2-3: confine both election directories and both ledgers before reading either.
+        contained(source_root, relative)
+        contained(source_root, f"{relative}/{SOURCES_FILE}")
+        target_dir = contained(target_root, relative)
+        contained(target_root, f"{relative}/{SOURCES_FILE}")
         carried = ElectionStore(source_dir)
         if not carried.records:
             continue
-        target = ElectionStore(target_root / relative)
+        target = ElectionStore(target_dir)
         before = copied
         if not target.election:
             target.election = carried.election
-        # Validate every path and digest in this election directory before
-        # writing any file, so a bad record leaves no partial copy behind.
+        # Step 5: validate every path and digest in this election directory
+        # before writing any file, so a bad record leaves no partial copy.
         staged = []
         for record in carried.records:
             if target.has_snapshot(record.place, record.snapshot):
@@ -685,12 +735,13 @@ def carry_forward(source_root: Path, target_root: Path, log: Callable[[str], Non
                     raise ElectionReportError(f"{source_dir / stored} does not match its recorded SHA-256")
                 files.append((stored, data))
             staged.append((record, files))
+        # Step 6: write (write_file confines each path again).
         for record, files in staged:
             for stored, data in files:
                 target.write_file(stored, data)
             target.add(record)
             copied += 1
-            log(f"carried forward {relative.as_posix()} {record.place} {record.snapshot}")
+            log(f"carried forward {relative} {record.place} {record.snapshot}")
         if copied > before:
             target.save()
     return copied
