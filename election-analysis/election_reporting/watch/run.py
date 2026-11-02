@@ -26,6 +26,7 @@ from .schedule import (
     hold_message,
     election_kind,
     is_due,
+    polls_closed,
     watch_window,
 )
 from .store import SOURCES_FILE, ElectionStore, SnapshotRecord, gzip_bytes, sha256
@@ -418,8 +419,12 @@ def _fetch_alaska(store, config, plan_, fetch, now, result) -> None:
     modified = response.last_modified
     # The Division reuses one results path per year, so before new results are
     # posted the link can still serve an earlier election's file (or the
-    # election day's zero report, posted before polls close).
-    if modified is not None and modified < plan_.window.start:
+    # election day's zero report, posted before polls close). The file is this
+    # election's when it is linked from this election's results page (above)
+    # and was last modified after polls closed. Compare with polls closing,
+    # not the window start: the window is clamped to the request floor, and a
+    # file posted between polls closing and the floor is still this election's.
+    if modified is not None and modified < polls_closed(config, plan_.election.day):
         result.skipped.append(
             f"alaska: results file last modified {modified:%Y-%m-%d %H:%M %Z}, "
             "before polls closed; no results for this election yet"

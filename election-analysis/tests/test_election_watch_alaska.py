@@ -251,6 +251,60 @@ class AlaskaFetchTests(unittest.TestCase):
             self.assertEqual(result.added, [])
             self.assertIn("before polls closed", result.skipped[0])
 
+    # WATCH-04 acceptance cases (production gating: the real 07:00 UTC request floor).
+    # A1 a file posted after polls closed but before the floor is this election's, even
+    #    when it is requested after the floor;
+    # A2 the election-day zero report, posted before polls closed, is still rejected;
+    # A3 an earlier election's file at the shared path is still rejected;
+    # A4 nothing is requested before the floor (the floor itself is unchanged).
+
+    def production_config(self, root: Path):
+        path = root / "watch.toml"
+        path.write_text(
+            'schema_version = 1\n[[watch]]\nstate = "Alaska"\n'
+            'counties = ["Ketchikan Gateway", "Kenai Peninsula"]\nelection = "2026-11-03"\n'
+            "[watch.schedule]\nnot_before = 2026-11-03T21:00:00-10:00\n"
+            "end = 2026-11-26T00:00:00-09:00\npolls_close = \"20:00\"\n"
+            'election_night_until = "02:00"\nelection_night_every_minutes = 30\nevery_minutes = 60\n',
+            encoding="utf-8",
+        )
+        return load_watch_settings(path).watches[0]
+
+    def test_a1_file_posted_between_polls_closing_and_the_floor_is_accepted(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            config = self.production_config(data_root(Path(tmp)))
+            after_floor = datetime(2026, 11, 3, 22, 7, tzinfo=ANCHORAGE)  # 07:07 UTC, after the floor
+            web = alaska_web(last_modified="Wed, 04 Nov 2026 06:50:00 GMT")  # after 05:00 UTC polls close
+            result = fetch_snapshots(config, web, after_floor, log=lambda _: None)
+            self.assertEqual(result.errors, [])
+            self.assertEqual(sorted(r.place for r in result.added),
+                             ["alaska", "kenai-peninsula-borough", "ketchikan-gateway-borough"])
+
+    def test_a2_zero_report_before_polls_closed_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            config = self.production_config(data_root(Path(tmp)))
+            after_floor = datetime(2026, 11, 3, 22, 7, tzinfo=ANCHORAGE)
+            web = alaska_web(last_modified="Wed, 04 Nov 2026 04:30:00 GMT")  # 19:30 AKST, polls open
+            result = fetch_snapshots(config, web, after_floor, log=lambda _: None)
+            self.assertEqual(result.added, [])
+            self.assertIn("before polls closed", result.skipped[0])
+
+    def test_a3_earlier_election_file_is_rejected_under_production_gating(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            config = self.production_config(data_root(Path(tmp)))
+            after_floor = datetime(2026, 11, 3, 22, 7, tzinfo=ANCHORAGE)
+            web = alaska_web(last_modified="Mon, 31 Aug 2026 21:07:47 GMT")
+            result = fetch_snapshots(config, web, after_floor, log=lambda _: None)
+            self.assertEqual(result.added, [])
+
+    def test_a4_nothing_is_requested_before_the_floor(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            config = self.production_config(data_root(Path(tmp)))
+            before_floor = datetime(2026, 11, 3, 21, 50, tzinfo=ANCHORAGE)  # 06:50 UTC
+            web = alaska_web()
+            fetch_snapshots(config, web, before_floor, log=lambda _: None)
+            self.assertEqual(web.requests, [])
+
     def test_no_results_link_yet(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = data_root(Path(tmp))
