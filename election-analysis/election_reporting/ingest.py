@@ -208,9 +208,26 @@ _CELL_REFERENCE = re.compile(r"([A-Z]{1,3})([1-9][0-9]{0,6})")
 def _xlsx_column(reference: str) -> int:
     """1-based column of a cell reference such as ``B7``; 0 when the cell has none.
 
-    The column bounds the list allocated for its row, so a reference beyond
-    XFD, or one that is not a cell reference at all, is refused before any
-    allocation (ZIP and row budgets do not limit column letters).
+    Purpose: both XLSX readers size each row's list from the largest column
+    seen in that row, so the column must be bounded before it is used. The
+    ZIP-size and row-count budgets do not limit column letters, and
+    ``ZZZZZZ1`` alone would mean a list of about 321 million entries.
+
+    Inputs and outputs:
+    - "" (a cell with no ``r`` attribute) -> 0; the caller ignores the cell,
+      as before;
+    - a real reference: one to three letters, then a row number with no
+      leading zero, case-insensitive, for example "B7" or "xfd1048576" ->
+      its column, 1 to 16,384;
+    - a column past XFD (16,384, the XLSX format's maximum) ->
+      ``ElectionReportError``, before any allocation;
+    - anything else ("1A", "A0", "AB", "A1:B2") -> ``ElectionReportError``.
+
+    Limit: this bounds a single row at 16,384 columns. It does not bound the
+    whole workbook. Many rows that each reach column XFD can still expand to
+    rows x 16,384 entries within the existing byte and row budgets. That
+    cumulative availability risk is recorded separately and is not addressed
+    here.
     """
     if not reference:
         return 0  # cells may omit r; such cells are ignored, as before

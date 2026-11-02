@@ -785,11 +785,43 @@ class XlsxCoordinateBoundTests(unittest.TestCase):
             lambda: list(iter_xlsx_sheet_rows(self.PATH, raw, "Sheet1")),
         )
 
+    BUDGET = 8 * 1024 * 1024  # declared peak-allocation budget per read, in bytes
+
+    def peak(self, read):
+        """Run ``read`` under tracemalloc; return (result or exception, peak bytes)."""
+        import tracemalloc
+
+        tracemalloc.start()
+        try:
+            try:
+                outcome = read()
+            except ElectionReportError as error:
+                outcome = error
+            _, peak = tracemalloc.get_traced_memory()
+        finally:
+            tracemalloc.stop()
+        return outcome, peak
+
     def test_c1_last_allowed_column_reads(self) -> None:
         for read in self.readers("XFD1"):
-            rows = read()
+            rows, peak = self.peak(read)
             self.assertEqual(len(rows[0]), 16_384)
             self.assertEqual(rows[0][-1], "7")
+            self.assertLess(peak, self.BUDGET)
+
+    def test_c1b_normal_reference_reads_within_budget(self) -> None:
+        for read in self.readers("C2"):
+            rows, peak = self.peak(read)
+            self.assertEqual(rows[0], ["", "", "7"])
+            self.assertLess(peak, self.BUDGET)
+
+    def test_c4b_invalid_and_out_of_range_refusals_stay_within_budget(self) -> None:
+        for reference in ("XFE1", "ZZZZZZ1", "1A"):
+            for read in self.readers(reference):
+                outcome, peak = self.peak(read)
+                with self.subTest(reference=reference):
+                    self.assertIsInstance(outcome, ElectionReportError)
+                    self.assertLess(peak, self.BUDGET)
 
     def test_c2_one_past_the_last_column_is_refused(self) -> None:
         for read in self.readers("XFE1"):
