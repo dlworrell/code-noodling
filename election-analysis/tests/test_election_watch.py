@@ -5,7 +5,9 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
+import shutil
 import tempfile
 import unittest
 from datetime import date, datetime, timezone
@@ -478,6 +480,90 @@ class CarryForwardTests(unittest.TestCase):
             next((pending / "elections").rglob("*.csv")).write_text("tampered", encoding="utf-8")
             with self.assertRaisesRegex(ElectionReportError, "does not match its recorded SHA-256"):
                 carry_forward(pending / "elections", root / "main", log=lambda _: None)
+
+
+    # WATCH-01 acceptance cases (paths in the pending branch's SOURCES.json are data):
+    # P1 a parent (..) path is refused before any read outside the pending tree;
+    # P2 an absolute path is refused;
+    # P3 a symlink inside the pending tree is refused before it is followed;
+    # P4 a symlink inside the target tree is refused before any write through it;
+    # P5 one bad path in an election directory leaves no partial copy of any of its records;
+    # P6 normal relative paths still carry (test_carries_only_missing_snapshots...).
+
+    def pending_tree(self, root: Path) -> Path:
+        pending = root / "pending"
+        pending.mkdir()
+        config = load_watch_config(write_watch(pending))
+        fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+        return pending / "elections" / "washington" / "2026-11-03"
+
+    def rewrite(self, election: Path, place: str, **fields) -> None:
+        sources = election / "SOURCES.json"
+        data = json.loads(sources.read_text(encoding="utf-8"))
+        for item in data["snapshots"]:
+            if item["place"] == place:
+                item.update(fields)
+        sources.write_text(json.dumps(data), encoding="utf-8")
+
+    def assert_refused(self, root: Path) -> Path:
+        target = root / "main" / "elections"
+        with self.assertRaisesRegex(ElectionReportError, "refusing stored path"):
+            carry_forward(root / "pending" / "elections", target, log=lambda _: None)
+        return target
+
+    def test_p1_parent_path_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            election = self.pending_tree(root)
+            secret = root / "outside.csv"
+            secret.write_bytes(b"secret")
+            self.rewrite(election, "king-county", input="../../../../outside.csv",
+                         input_sha256=hashlib.sha256(b"secret").hexdigest())
+            target = self.assert_refused(root)
+            self.assertFalse(any(target.rglob("outside.csv")) if target.exists() else False)
+
+    def test_p2_absolute_path_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            election = self.pending_tree(root)
+            self.rewrite(election, "king-county", input=str(root / "x.csv"))
+            self.assert_refused(root)
+
+    def test_p3_symlink_in_pending_tree_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            election = self.pending_tree(root)
+            outside = root / "elsewhere"
+            outside.mkdir()
+            record = next(r for r in ElectionStore(election).records if r.place == "king-county")
+            real = election / record.input
+            (outside / real.name).write_bytes(real.read_bytes())
+            shutil.rmtree(real.parent)
+            real.parent.symlink_to(outside, target_is_directory=True)
+            self.assert_refused(root)
+
+    def test_p4_symlink_in_target_tree_is_refused_before_writing(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.pending_tree(root)
+            outside = root / "elsewhere"
+            outside.mkdir()
+            target_election = root / "main" / "elections" / "washington" / "2026-11-03"
+            target_election.mkdir(parents=True)
+            (target_election / "input").symlink_to(outside, target_is_directory=True)
+            self.assert_refused(root)
+            self.assertEqual(list(outside.iterdir()), [])
+
+    def test_p5_bad_raw_path_leaves_no_partial_copy(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            election = self.pending_tree(root)
+            self.rewrite(election, "pierce-county", raw="../../../escape.json.gz")
+            target = self.assert_refused(root)
+            # Nothing from this election directory is written, not even the valid records.
+            election_target = target / "washington" / "2026-11-03"
+            written = [p for p in election_target.rglob("*") if p.is_file()] if election_target.exists() else []
+            self.assertEqual(written, [])
 
 
 class RepositoryTests(unittest.TestCase):

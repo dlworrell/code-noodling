@@ -28,7 +28,7 @@ from .schedule import (
     is_due,
     watch_window,
 )
-from .store import SOURCES_FILE, ElectionStore, SnapshotRecord, gzip_bytes, sha256
+from .store import SOURCES_FILE, ElectionStore, SnapshotRecord, contained, gzip_bytes, sha256
 
 STATE_PRIORITY = 100
 COUNTY_PRIORITY = 10
@@ -660,6 +660,8 @@ def carry_forward(source_root: Path, target_root: Path, log: Callable[[str], Non
         relative = source_dir.relative_to(source_root)
         if ".." in relative.parts:
             continue
+        # The election directory itself must not be reached through a symlink.
+        contained(source_root, relative.as_posix())
         carried = ElectionStore(source_dir)
         if not carried.records:
             continue
@@ -667,15 +669,24 @@ def carry_forward(source_root: Path, target_root: Path, log: Callable[[str], Non
         before = copied
         if not target.election:
             target.election = carried.election
+        # Validate every path and digest in this election directory before
+        # writing any file, so a bad record leaves no partial copy behind.
+        staged = []
         for record in carried.records:
             if target.has_snapshot(record.place, record.snapshot):
                 continue
+            files = []
             for stored, digest in ((record.input, record.input_sha256), (record.raw, record.raw_sha256)):
                 if not stored:
                     continue
-                data = (source_dir / stored).read_bytes()
+                contained(target.directory, stored)
+                data = contained(source_dir, stored).read_bytes()
                 if sha256(data) != digest:
                     raise ElectionReportError(f"{source_dir / stored} does not match its recorded SHA-256")
+                files.append((stored, data))
+            staged.append((record, files))
+        for record, files in staged:
+            for stored, data in files:
                 target.write_file(stored, data)
             target.add(record)
             copied += 1
