@@ -489,7 +489,20 @@ def _zip_workbooks(files: list[tuple[str, str, bytes]]) -> bytes:
 
 
 def _fetch_maine(store, config, plan_, fetch, now, result) -> None:
-    """Every office workbook posted for the election, combined into one snapshot."""
+    """Every office workbook posted for the election, combined into one snapshot.
+
+    Discovery reads two pages (the current results page, then the election
+    year's page; see ``maine.discover``). Outcomes, by what discovery saw:
+    - workbooks found: they are fetched and combined; a failure on the other
+      page is still reported as a run error;
+    - both pages failed: errors only, coverage status ``discovery_failed``,
+      and no "nothing posted" claim, so the run is visible as failed;
+    - one page failed and the other listed nothing: an error for the failed
+      page, plus a qualified skip ("no results found on the pages that could
+      be read; discovery incomplete"), coverage status ``discovery_incomplete``;
+    - both pages answered and listed nothing: "no results posted for this
+      election yet".
+    """
     discovery = maine.discover(fetch, plan_.election)
     links = discovery.links
     # A failed discovery page is a source error, reported even when the other page answered.
@@ -507,6 +520,14 @@ def _fetch_maine(store, config, plan_, fetch, now, result) -> None:
             # Both pages failed: unknown, not empty. The errors above make the run visible as failed.
             store.coverage["maine"]["status"] = "discovery_failed"
             return
+        if discovery.failures:
+            # One page answered with nothing for this election, the other failed:
+            # only the page that answered can be described, and discovery is incomplete.
+            store.coverage["maine"]["status"] = "discovery_incomplete"
+            result.skipped.append("maine: no results found on the discovery pages that could be read; "
+                                  "discovery incomplete (see errors)")
+            return
+        # Both pages answered and neither lists this election's workbooks.
         result.skipped.append("maine: no results posted for this election yet")
         return
     contests: list[maine.Contest] = []

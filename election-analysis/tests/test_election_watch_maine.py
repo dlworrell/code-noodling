@@ -404,6 +404,10 @@ class MaineFetchTests(unittest.TestCase):
             self.assertEqual(result.added, [])
             self.assertEqual(len(result.errors), 1)
             self.assertIn(maine.YEAR_PAGE.format(year=2026), result.errors[0])
+            # Not an unqualified "no results posted": discovery was incomplete.
+            self.assertNotIn("maine: no results posted for this election yet", result.skipped)
+            self.assertEqual(result.skipped, ["maine: no results found on the discovery pages that could be "
+                                              "read; discovery incomplete (see errors)"])
 
     def test_window_is_daily_for_35_days(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
