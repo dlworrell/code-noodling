@@ -380,10 +380,18 @@ def _slug(value: str) -> str:
 
 
 def _probability_label(value: float | None) -> str:
+    """One decimal place, never rounding an uncertain probability to certainty.
+
+    Below 0.1% shows as "<0.1%"; above 99.9% but below 1 shows as ">99.9%",
+    because rounding (0.9996 -> "100.0%") would display near-certainty as
+    certainty. Only a probability of exactly 1 shows as "100.0%".
+    """
     if value is None:
         return "Not estimable"
     if value < 0.001:
         return "<0.1%"
+    if 0.999 < value < 1:
+        return ">99.9%"
     return f"{value:.1%}"
 
 
@@ -926,8 +934,12 @@ def publish(analysis: ElectionAnalysis, output_dir: Path) -> None:
         facebook_summary(analysis, public_report_url(output_dir)), encoding="utf-8"
     )
     breakdown = county_breakdown_csv(analysis)
+    county_path = output_dir / "county-breakdown.csv"
     if breakdown is not None:
-        (output_dir / "county-breakdown.csv").write_text(breakdown, encoding="utf-8")
+        county_path.write_text(breakdown, encoding="utf-8")
+    else:
+        # A breakdown left from an earlier generation would no longer match this analysis.
+        county_path.unlink(missing_ok=True)
     generate_document_reports(edom, output_dir / "edt" / "document")
     write_edom_markdown(edom_path, output_dir / "election-analysis.md")
     write_edom_html(
