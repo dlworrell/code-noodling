@@ -305,6 +305,34 @@ class AlaskaFetchTests(unittest.TestCase):
             fetch_snapshots(config, web, before_floor, log=lambda _: None)
             self.assertEqual(web.requests, [])
 
+    # A5-A7 (Em's review of c9db9c6): identity evidence that is missing,
+    # unreadable or inconsistent is refused, never replaced by retrieval time.
+
+    def refused(self, headers: dict[str, str]):
+        with tempfile.TemporaryDirectory() as tmp:
+            config = self.production_config(data_root(Path(tmp)))
+            after_floor = datetime(2026, 11, 3, 22, 7, tzinfo=ANCHORAGE)
+            web = alaska_web()
+            web.routes[ENR] = Response(ENR, SAMPLE, headers)
+            return fetch_snapshots(config, web, after_floor, log=lambda _: None)
+
+    def test_a5_missing_last_modified_is_refused(self) -> None:
+        result = self.refused({})
+        self.assertEqual(result.added, [])
+        self.assertIn("no Last-Modified header", result.skipped[0])
+
+    def test_a6_unreadable_last_modified_is_refused(self) -> None:
+        for value in ("not a date", "Wed, 04 Nov 2026 06:50:00 -0000", "2026-11-04T06:50:00Z"):
+            with self.subTest(value=value):
+                result = self.refused({"last-modified": value})
+                self.assertEqual(result.added, [])
+                self.assertIn("unreadable Last-Modified", result.skipped[0])
+
+    def test_a7_last_modified_after_retrieval_is_refused(self) -> None:
+        result = self.refused({"last-modified": "Thu, 05 Nov 2026 06:50:00 GMT"})  # a day ahead
+        self.assertEqual(result.added, [])
+        self.assertIn("later than the retrieval time", result.skipped[0])
+
     def test_no_results_link_yet(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = data_root(Path(tmp))

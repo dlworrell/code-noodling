@@ -409,33 +409,83 @@ def _fetch_king_county(store, config, place, plan_, fetch, now, result) -> None:
         )
 
 
+ALASKA_CLOCK_SKEW = timedelta(minutes=10)  # tolerated difference between the Division's clock and ours
+
+
+def _alaska_publication_time(response, config, election_day, now) -> tuple[datetime | None, str]:
+    """When the Division published this results file, if that can be established.
+
+    Purpose. The Division of Elections reuses one results path per year, so
+    the link on this election's results page can still serve an earlier
+    election's file, or the election-day "zero report" posted before polls
+    close. The only evidence of which file is being served is the HTTP
+    ``Last-Modified`` header; the CSV body carries no election identifier.
+
+    Inputs: the HTTP response, the watch configuration (time zone and polls
+    closing time), the election day, and the current time (timezone-aware).
+
+    Output: ``(published, "")`` when ``Last-Modified`` is present, parseable,
+    timezone-aware, no earlier than polls closing and no later than ``now``
+    plus a small clock-skew allowance. Otherwise ``(None, reason)``, and the
+    caller must not store the file.
+
+    Why polls closing and not the window start: the window start is clamped to
+    the request floor (07:00 UTC on November 4 for Alaska). A file posted after
+    polls closed (05:00 UTC) but before the floor belongs to this election,
+    even when it is fetched after the floor.
+
+    Why missing or malformed dates are refused rather than replaced by the
+    retrieval time: substituting "now" would turn "we cannot tell which
+    election this file is" into "this file is current", which is exactly the
+    stale-file case this check exists to stop. Refusing makes the gap visible
+    in the run's skipped list; a later fetch with a valid header is stored
+    normally.
+
+    Limits: a valid recent date is necessary, not sufficient. It shows the
+    file changed after polls closed, not that every row is this election's.
+    Identity also rests on the link coming from this election's own results
+    page (see ``alaska.results_file_url``).
+    """
+    raw = response.headers.get("last-modified", "")
+    if not raw:
+        return None, "no Last-Modified header, so the file cannot be tied to this election"
+    published = response.last_modified
+    if published is None or published.tzinfo is None or published.utcoffset() is None:
+        return None, f"unreadable Last-Modified {raw[:40]!r}, so the file cannot be tied to this election"
+    if published < polls_closed(config, election_day):
+        return None, (f"last modified {published.astimezone(config.timezone):%Y-%m-%d %H:%M %Z}, "
+                      "before polls closed; no results for this election yet")
+    if published > now + ALASKA_CLOCK_SKEW:
+        return None, (f"Last-Modified {raw[:40]!r} is later than the retrieval time, "
+                      "so the date cannot be trusted")
+    return published, ""
+
+
 def _fetch_alaska(store, config, plan_, fetch, now, result) -> None:
-    """One statewide precinct file, converted to statewide and borough inputs."""
+    """One statewide precinct file, converted to statewide and borough inputs.
+
+    Steps: find the precinct CSV linked from this election's results page;
+    fetch it; refuse it unless its publication time can be established (see
+    ``_alaska_publication_time``); convert it to statewide and per-borough
+    inputs; record one snapshot per place, stamped with the publication time.
+    Nothing is stored for a refused file, and the reason is added to
+    ``result.skipped``.
+    """
     url = alaska.results_file_url(fetch, plan_.election)
     if url is None:
         result.skipped.append("alaska: no precinct results file posted yet")
         return
     response = fetch(url)
-    modified = response.last_modified
-    # The Division reuses one results path per year, so before new results are
-    # posted the link can still serve an earlier election's file (or the
-    # election day's zero report, posted before polls close). The file is this
-    # election's when it is linked from this election's results page (above)
-    # and was last modified after polls closed. Compare with polls closing,
-    # not the window start: the window is clamped to the request floor, and a
-    # file posted between polls closing and the floor is still this election's.
-    if modified is not None and modified < polls_closed(config, plan_.election.day):
-        result.skipped.append(
-            f"alaska: results file last modified {modified:%Y-%m-%d %H:%M %Z}, "
-            "before polls closed; no results for this election yet"
-        )
+    modified, refusal = _alaska_publication_time(response, config, plan_.election.day, now)
+    if modified is None:
+        result.skipped.append(f"alaska: results file refused: {refusal}")
         return
     crosswalk = alaska.load_crosswalk(config.elections_root.parents[1])
     outputs = alaska.convert(response.body, crosswalk, list(plan_.places))
     if not _has_votes(outputs.get("alaska", "ContestOrder,Votes\n")):
         result.skipped.append("alaska: no votes reported yet")
         return
-    moment = modified or now
+    moment = modified  # established above; never the retrieval time
     raw = gzip_bytes(response.body)
     for place in plan_.places:
         text = outputs.get(place.place_id)
