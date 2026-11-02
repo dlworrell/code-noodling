@@ -10,7 +10,9 @@ name: Election Source Watch
 # ADR-0006 (AES-DEV-001-R003/R005): this workflow never pushes to the default
 # branch. New snapshots go to the workflow-owned automation/election-sources
 # branch as a GitHub-verified commit (GraphQL createCommitOnBranch), with a
-# pull request to the default branch. Snapshots waiting in that pull request
+# pull request into dev-daily (Catylist ADR-0013: automation -> dev-daily ->
+# fitment -> main). Schedules run on the default branch, so the job checks out
+# dev-daily and proposes snapshots against that exact commit. Snapshots waiting in that pull request
 # are carried forward into each run, because report files the state overwrites
 # cannot be downloaded again.
 # Never add pull_request_target: this job holds a write token.
@@ -48,9 +50,10 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - name: Check out default branch
+      - name: Check out dev-daily
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          ref: dev-daily
           persist-credentials: false
 
       - name: Set up Python
@@ -90,6 +93,6 @@ jobs:
         if: ${{ !cancelled() }}
         env:
           GH_TOKEN: ${{ github.token }}
-          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+          BASE_BRANCH: dev-daily
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: election-analysis/ci/watch.sh publish
