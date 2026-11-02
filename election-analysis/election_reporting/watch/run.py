@@ -490,14 +490,23 @@ def _zip_workbooks(files: list[tuple[str, str, bytes]]) -> bytes:
 
 def _fetch_maine(store, config, plan_, fetch, now, result) -> None:
     """Every office workbook posted for the election, combined into one snapshot."""
-    links = maine.result_links(fetch, plan_.election)
+    discovery = maine.discover(fetch, plan_.election)
+    links = discovery.links
+    # A failed discovery page is a source error, reported even when the other page answered.
+    for page_url, error in discovery.failures:
+        result.errors.append(f"maine: discovery page {page_url} could not be read: {error}")
     store.coverage["maine"] = {"status": "incomplete_or_unreviewed", "observed_at": now.isoformat(),
         "discovered_workbooks": [link.url for link in links], "failed_workbooks": [],
+        "failed_discovery_pages": [{"url": u, "error": e} for u, e in discovery.failures],
         "expected_offices": maine.expected_offices(plan_.election.day),
         "missing_expected_offices": [], "coverage_complete": False,
         "finding": "Discovery does not establish every office/district/municipality; full expected inventory needs review."}
     if not links:
         store.coverage["maine"]["missing_expected_offices"] = maine.expected_offices(plan_.election.day)
+        if discovery.unreachable:
+            # Both pages failed: unknown, not empty. The errors above make the run visible as failed.
+            store.coverage["maine"]["status"] = "discovery_failed"
+            return
         result.skipped.append("maine: no results posted for this election yet")
         return
     contests: list[maine.Contest] = []
