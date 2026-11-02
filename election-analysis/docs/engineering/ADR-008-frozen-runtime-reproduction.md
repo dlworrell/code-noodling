@@ -7,7 +7,7 @@ Catalyst-File-ID: urn:uuid:b8cfacd7-cd9e-4d64-96f0-6e225b9b39ee
 
 # ADR-008: Reproduce a frozen experiment after dependency updates
 
-Status: Proposed for review; experimental offline tooling
+Status: Accepted by owner decision on 2026-11-01; experimental offline tooling
 Date: 2026-10-25 (Pacific)
 Issues: EA-10 #55, EA-13 #58; parent #45
 Base: `7018e9d229a316687365fd1192d161ff82e9e283`
