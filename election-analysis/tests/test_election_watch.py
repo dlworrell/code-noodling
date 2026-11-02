@@ -410,6 +410,36 @@ class FetchTests(unittest.TestCase):
             fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
             self.assertEqual((election / "input/king-county/2026-11-03-2030.csv").read_bytes(), first)
 
+    # K5-K6 (Em's review of df4c59e): controls.
+
+    def test_k5_substantive_count_change_is_kept_with_new_counts(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            changed = KC_CSV.replace('"Alpha","1,000","600"', '"Alpha","1,000","610"')
+            self.assertNotEqual(changed, KC_CSV)
+            fake = self.corrected(web(root), KC_FILE + "?rev=1&hash=2", f"{KC_FILE}?rev=1&amp;hash=2",
+                                  changed, "Wed, 04 Nov 2026 05:10:00 GMT")
+            later = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
+            added = [r for r in later.added if r.place == "king-county"]
+            self.assertEqual(len(added), 1)
+            election = root / "elections" / "washington" / "2026-11-03"
+            self.assertIn('"Alpha","1,000","610"', (election / added[0].input).read_text(encoding="utf-8"))
+
+    def test_k6_same_body_under_a_new_query_adds_nothing(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            before = self.king_snapshots(root)
+            fake = self.corrected(web(root), KC_FILE + "?rev=9&hash=9", f"{KC_FILE}?rev=9&amp;hash=9",
+                                  KC_CSV, "Wed, 04 Nov 2026 05:10:00 GMT")
+            later = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
+            self.assertEqual([r for r in later.added if r.place == "king-county"], [])
+            self.assertEqual(self.king_snapshots(root), before)
+            self.assertIn("king-county: unchanged", later.skipped)
+
     def test_not_due_fetches_nothing(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

@@ -381,6 +381,27 @@ def _fetch_votewa_json(store, config, place, plan_, fetch, now, result) -> None:
 
 
 def _fetch_king_county(store, config, place, plan_, fetch, now, result) -> None:
+    """King County's own nightly CSV exports, one snapshot per distinct body.
+
+    Purpose: King County posts election results as CSV exports linked from
+    its results page, and may republish a corrected export at the same URL,
+    or change only the URL's query string.
+
+    Behaviour: every export listed for this election (dated on or after
+    election day) is fetched on every due run. ``_record`` compares the
+    body's SHA-256 with what is already stored:
+    - new bytes become a new immutable snapshot (under a free time stamp
+      if the minute is taken);
+    - identical bytes are reported as ``unchanged`` and nothing is written.
+    The URL is never treated as content identity, because a correction can
+    keep it.
+
+    Cost (a deliberate trade-off): each run re-downloads the county's listed
+    exports, a handful of CSV files of a few hundred kilobytes each, under the
+    existing per-request size caps. There is no bandwidth saving; the gain is
+    that a correction cannot be missed. Request floors and cadence are
+    unchanged.
+    """
     page = sources.king_county_page(fetch, plan_.election.day)
     if page is None:
         result.skipped.append(f"{place.place_id}: no county results page yet")
