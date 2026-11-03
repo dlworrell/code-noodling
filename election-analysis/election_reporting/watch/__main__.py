@@ -37,6 +37,13 @@ def main(argv: Sequence[str] | None = None) -> int:
         type=Path,
         help="carry: an elections directory from an unmerged automation branch",
     )
+    parser.add_argument(
+        "--trusted-root",
+        dest="trusted_root",
+        type=Path,
+        help="carry: the pending checkout the workflow chose; directories below it are checked "
+        "(supplied by ci/watch.sh; optional for standalone use, which then skips that check)",
+    )
     parser.add_argument("--config", type=Path, default=Path("election-analysis/data/watch.toml"))
     parser.add_argument("--now", help="status only: simulate a time without making source requests")
     parser.add_argument("--force", action="store_true", help="ignore cadence/end, never the hard start gate")
@@ -67,7 +74,9 @@ def main(argv: Sequence[str] | None = None) -> int:
         if args.command == "carry":
             if args.carry_from is None:
                 parser.error("carry needs --from")
-            count = carry_forward(args.carry_from, settings.elections_root)
+            # --trusted-root is the pending checkout the workflow chose; every directory
+            # below it down to --from is checked before anything is read (WATCH-01).
+            count = carry_forward(args.carry_from, settings.elections_root, source_base=args.trusted_root)
             print(f"carried forward {count} snapshot(s)")
             return 0
         if args.command == "plan":

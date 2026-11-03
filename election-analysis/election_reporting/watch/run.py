@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import json
+import os
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -29,7 +30,7 @@ from .schedule import (
     polls_closed,
     watch_window,
 )
-from .store import SOURCES_FILE, ElectionStore, SnapshotRecord, gzip_bytes, sha256
+from .store import SOURCES_FILE, ElectionStore, SnapshotRecord, contained, gzip_bytes, sha256
 
 STATE_PRIORITY = 100
 COUNTY_PRIORITY = 10
@@ -762,44 +763,144 @@ def fetch_snapshots(
     return result
 
 
-def carry_forward(source_root: Path, target_root: Path, log: Callable[[str], None] = print) -> int:
+def _election_dirs(source_root: Path) -> list[Path]:
+    """Election directories under ``source_root``: those holding a regular SOURCES.json.
+
+    The walk never follows symlinked directories (``followlinks=False``), so a
+    symlink planted in the pending tree cannot lead the walk, or any later
+    read, outside ``source_root``. A SOURCES.json that is itself a symlink is
+    left for ``contained`` to refuse, which makes the attempt visible rather
+    than silently skipped.
+    """
+    found = []
+    for directory, _subdirs, files in os.walk(source_root, followlinks=False):
+        if SOURCES_FILE in files:
+            found.append(Path(directory))
+    return sorted(found)
+
+
+def _confine_source_root(source_base: Path, source_root: Path) -> None:
+    """Refuse ``source_root`` unless every directory from ``source_base`` down to it is real.
+
+    ``source_base`` is the pending checkout directory that the workflow itself
+    chose (for example ``.pending``), so it is trusted. The directories below
+    it (``election-analysis/data/elections``) come from the automation
+    branch's tree, so any of them could be a symlink planted to redirect the
+    carry outside the checkout. Each one is checked with ``contained`` (no
+    ``..``, no absolute part, no symlink component, resolved inside the base)
+    before anything under ``source_root`` is listed or read.
+    """
+    relative = os.path.relpath(os.path.abspath(source_root), os.path.abspath(source_base))
+    if relative == "." or relative.startswith(".."):
+        raise ElectionReportError(f"refusing carry source {source_root}: it is not inside {source_base}")
+    contained(source_base, Path(relative).as_posix())
+
+
+def carry_forward(source_root: Path, target_root: Path, log: Callable[[str], None] = print,
+                  source_base: Path | None = None) -> int:
     """Copy snapshots recorded under ``source_root`` but missing from ``target_root``.
 
-    Used by the scheduled workflow: snapshots waiting in an unmerged automation
-    pull request are copied onto a fresh checkout of the default branch before
-    the next fetch, because report files that the state overwrites cannot be
-    downloaded again. Only snapshot files and their records move; everything
-    else on the default branch (for example a hand-edited ``election.toml``)
-    is left as it is.
+    Purpose. The scheduled watcher proposes snapshots through an automation
+    pull request. Until that PR is merged, its snapshots exist only on the
+    automation branch, and the state may overwrite the source file, so it
+    cannot be downloaded again. Each run therefore copies the still-unmerged
+    snapshots (checked out at ``source_root``) onto the fresh checkout
+    (``target_root``) before fetching. Only snapshot files and their records
+    move; everything else in the target, such as a hand-edited
+    ``election.toml``, is left as it is.
+
+    Inputs and trust boundary:
+    - ``source_base``: the pending checkout directory the workflow chose. It
+      is trusted. When given, every directory from it down to
+      ``source_root`` must be a real directory; this is checked before
+      discovery. The workflow wrapper (``ci/watch.sh carry``) always supplies
+      it via ``--trusted-root``. For standalone CLI use the flag is optional,
+      and without it this source-root segment is not checked.
+    - ``source_root``: the elections directory inside that checkout. Its
+      path below ``source_base`` comes from the automation branch, so it is
+      data until checked.
+    - ``target_root``: the elections directory of the workflow's own
+      ``dev-daily`` checkout. It is trusted as a root, because that tree is
+      reviewed code, not automation output, but everything written under it
+      is still confined.
+    Everything read inside either tree (directory names, SOURCES.json and
+    the paths it records) is data, not trusted locations, and a matching
+    SHA-256 proves content, not that a path may be used.
+
+    Output: the number of snapshots copied. It raises ``ElectionReportError``
+    (before any read when the problem is in the source-root segment, and
+    before any write for that election directory otherwise) when any of the
+    following is found:
+    - a path that would leave either root;
+    - a symlink anywhere along the chain: root, election directory,
+      SOURCES.json, or snapshot file, in either tree;
+    - a digest mismatch.
+
+    Symlinked *directories* found while walking the pending tree are skipped,
+    not followed and not reported. A symlink on a checked path is refused
+    with an error. These are two different outcomes.
+
+    Order of checks:
+    0. confine the source-root segment, from ``source_base`` down to
+       ``source_root`` (when ``source_base`` is given);
+    1. find election directories without following symlinks;
+    2. confine the source election directory and its SOURCES.json;
+    3. confine the target election directory and its SOURCES.json;
+    4. only then read the two ledgers;
+    5. stage and verify every file of every missing record (read through
+       ``contained``);
+    6. write.
+
+    Limits: the checks resolve paths and then open them. A process that swaps
+    a path component for a symlink between check and open (a race) is not
+    defended against. The roots are fresh workflow checkouts that no other
+    process writes during the run, so that race needs control of the runner
+    itself.
     """
     copied = 0
+    if source_base is not None:
+        _confine_source_root(source_base, source_root)  # step 0, before any listing or read
     if not source_root.is_dir():
         return 0
-    # Election directories are <state>/<date>/; find them by their records.
-    for source_dir in sorted(path.parent for path in source_root.rglob(SOURCES_FILE)):
-        relative = source_dir.relative_to(source_root)
-        if ".." in relative.parts:
-            continue
+    for source_dir in _election_dirs(source_root):
+        relative = source_dir.relative_to(source_root).as_posix()
+        if relative == ".":
+            continue  # a ledger directly in the root is not an election directory
+        # Steps 2-3: confine both election directories and both ledgers before reading either.
+        contained(source_root, relative)
+        contained(source_root, f"{relative}/{SOURCES_FILE}")
+        target_dir = contained(target_root, relative)
+        contained(target_root, f"{relative}/{SOURCES_FILE}")
         carried = ElectionStore(source_dir)
         if not carried.records:
             continue
-        target = ElectionStore(target_root / relative)
+        target = ElectionStore(target_dir)
         before = copied
         if not target.election:
             target.election = carried.election
+        # Step 5: validate every path and digest in this election directory
+        # before writing any file, so a bad record leaves no partial copy.
+        staged = []
         for record in carried.records:
             if target.has_snapshot(record.place, record.snapshot):
                 continue
+            files = []
             for stored, digest in ((record.input, record.input_sha256), (record.raw, record.raw_sha256)):
                 if not stored:
                     continue
-                data = (source_dir / stored).read_bytes()
+                contained(target.directory, stored)
+                data = contained(source_dir, stored).read_bytes()
                 if sha256(data) != digest:
                     raise ElectionReportError(f"{source_dir / stored} does not match its recorded SHA-256")
+                files.append((stored, data))
+            staged.append((record, files))
+        # Step 6: write (write_file confines each path again).
+        for record, files in staged:
+            for stored, data in files:
                 target.write_file(stored, data)
             target.add(record)
             copied += 1
-            log(f"carried forward {relative.as_posix()} {record.place} {record.snapshot}")
+            log(f"carried forward {relative} {record.place} {record.snapshot}")
         if copied > before:
             target.save()
     return copied

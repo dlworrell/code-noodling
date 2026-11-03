@@ -21,9 +21,47 @@ import gzip
 import hashlib
 import json
 from dataclasses import asdict, dataclass
-from pathlib import Path
+from pathlib import Path, PurePosixPath
+
+from ..model import ElectionReportError
 
 SOURCES_FILE = "SOURCES.json"
+
+
+def contained(root: Path, relative: str) -> Path:
+    """``root / relative``, refused unless it stays inside ``root``.
+
+    Paths in SOURCES.json come from files in the repository, including the
+    unmerged automation branch, so they are data, not trusted locations. A
+    matching SHA-256 proves content, not that a path may be read or written.
+    Refused before any I/O: empty, absolute or backslash paths, any ``..`` or
+    empty component, any existing symlink along the path, and anything whose
+    resolved location falls outside ``root``.
+
+    Returns the joined path; the caller then opens it. ``root`` itself is
+    trusted (a directory chosen by the caller).
+
+    Limit: this is check-then-open. A path component swapped for a symlink
+    between this check and the open (a race) is not caught; that needs write
+    access to the tree during the run, which the watcher's fresh workflow
+    checkouts do not give anyone else.
+    """
+    if not isinstance(relative, str) or not relative or "\\" in relative or "\x00" in relative:
+        raise ElectionReportError(f"refusing stored path {relative!r}: not a plain relative path")
+    pure = PurePosixPath(relative)
+    if pure.is_absolute() or any(part in ("", ".", "..") for part in relative.split("/")):
+        raise ElectionReportError(f"refusing stored path {relative!r}: not a plain relative path")
+    current = root
+    for part in pure.parts:
+        current = current / part
+        if current.is_symlink():
+            raise ElectionReportError(f"refusing stored path {relative!r}: it passes through a symlink")
+    target = root.joinpath(*pure.parts)
+    try:
+        target.resolve().relative_to(root.resolve())
+    except ValueError:
+        raise ElectionReportError(f"refusing stored path {relative!r}: it leaves {root}") from None
+    return target
 
 
 @dataclass(frozen=True)
@@ -76,7 +114,7 @@ class ElectionStore:
         return any(r.place == place and r.snapshot == snapshot for r in self.records)
 
     def write_file(self, relative: str, data: bytes) -> str:
-        target = self.directory / relative
+        target = contained(self.directory, relative)
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(data)
         return sha256(data)
