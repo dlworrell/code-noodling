@@ -13,7 +13,7 @@ from pathlib import Path
 from . import __version__
 from .analysis import FLIP_BANDS, PROBABILITY_MODEL, risk_counts
 from .numerics import ERROR_POLICY
-from .model import DecisionAnalysis, ElectionAnalysis, ElectionReportError, RaceAnalysis, ResultStatus
+from .model import DecisionAnalysis, ElectionAnalysis, ElectionReportError, RaceAnalysis, ResultStatus, format_probability
 
 
 PUBLIC_REPORT_BASE = "https://github.com/dlworrell/code-noodling/blob/main/"
@@ -380,11 +380,8 @@ def _slug(value: str) -> str:
 
 
 def _probability_label(value: float | None) -> str:
-    if value is None:
-        return "Not estimable"
-    if value < 0.001:
-        return "<0.1%"
-    return f"{value:.1%}"
+    """Report label for a probability; see ``model.format_probability`` (one shared policy)."""
+    return format_probability(value)
 
 
 def _table_text(value: str) -> str:
@@ -926,8 +923,12 @@ def publish(analysis: ElectionAnalysis, output_dir: Path) -> None:
         facebook_summary(analysis, public_report_url(output_dir)), encoding="utf-8"
     )
     breakdown = county_breakdown_csv(analysis)
+    county_path = output_dir / "county-breakdown.csv"
     if breakdown is not None:
-        (output_dir / "county-breakdown.csv").write_text(breakdown, encoding="utf-8")
+        county_path.write_text(breakdown, encoding="utf-8")
+    else:
+        # A breakdown left from an earlier generation would no longer match this analysis.
+        county_path.unlink(missing_ok=True)
     generate_document_reports(edom, output_dir / "edt" / "document")
     write_edom_markdown(edom_path, output_dir / "election-analysis.md")
     write_edom_html(
