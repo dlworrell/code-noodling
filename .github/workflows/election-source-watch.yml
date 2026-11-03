@@ -124,7 +124,7 @@ jobs:
         if: ${{ steps.ring0_key.outputs.present == 'true' }}
         uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
         with:
-          app-id: '5474337'
+          app-id: ${{ secrets.RING0_APP_ID || '5474337' }}
           private-key: ${{ secrets.RING0_APP_PRIVATE_KEY || secrets.RING0_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
           repositories: ${{ github.event.repository.name }}

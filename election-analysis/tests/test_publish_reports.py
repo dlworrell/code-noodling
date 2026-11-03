@@ -528,7 +528,7 @@ class WorkflowRouteTests(unittest.TestCase):
                      ".github/workflows/election-source-watch.yml"):
             text = self.read(path)
             self.assertIn("actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510", text, path)
-            self.assertIn("app-id: '5474337'", text, path)
+            self.assertIn("app-id: ${{ secrets.RING0_APP_ID || '5474337' }}", text, path)
             self.assertIn("environment: RING0", text, path)
             self.assertIn("if: ${{ steps.ring0_key.outputs.present == 'true' }}", text, path)
             self.assertIn("GH_TOKEN: ${{ steps.ring0.outputs.token || github.token }}", text, path)
