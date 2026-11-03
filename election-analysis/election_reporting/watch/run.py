@@ -402,7 +402,10 @@ def _fetch_king_county(store, config, place, plan_, fetch, now, result) -> None:
     Cost (a deliberate trade-off): each run re-downloads the county's listed
     exports, a handful of CSV files of a few hundred kilobytes each, under the
     existing per-request size caps. There is no bandwidth saving; the gain is
-    that a correction cannot be missed. Request floors and cadence are
+    that changed bytes available at the next fetch are detected, even when
+    the county keeps the same URL. The guarantee is bounded by the cadence:
+    an intermediate version that the county overwrites between two fetches
+    is never seen and can still be missed. Request floors and cadence are
     unchanged.
     """
     page = sources.king_county_page(fetch, plan_.election.day)
