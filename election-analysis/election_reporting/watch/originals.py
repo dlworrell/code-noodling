@@ -64,7 +64,8 @@ from .store import sha256
 
 MANIFEST = "MANIFEST.json"
 RETAIN = timedelta(days=30)  # Donovan, 2026-11-03: retain 30 days and archive
-RETENTION_NOTE = ("archived to Dropbox in the run that downloaded it; archive_after marks the end of the "
+RETENTION_NOTE = ("captured unmodified; backed up in the run's 90-day artifact; archived only when the "
+                  "archive step uploads it (not done by this file). archive_after marks the end of the "
                   "owner's 30-day retention window (informational; owner rule, 2026-11-03)")
 
 # File extensions by declared content type, then by URL suffix. The extension

@@ -282,7 +282,7 @@ class DropboxArchiveTests(unittest.TestCase):
             lines: list[str] = []
             self.assertEqual(dropbox_archive.archive(Path(directory), "41-1", "token", post=box, log=lines.append), 0)
             self.assertIn(f"already archived (verified): {body_path}", lines)
-            self.assertIn(f"header kept from first archive: {header_path}", lines)
+            self.assertIn(f"first header kept: {header_path}", lines)
             self.assertEqual(box.files[header_path], b"{earlier header}")
             # Different bytes under the same name, or a folder in the way: failure, never "archived".
             for box in (FakeDropbox(existing={body_path: b""}), FakeDropbox(folders=[body_path])):
@@ -290,6 +290,47 @@ class DropboxArchiveTests(unittest.TestCase):
                 self.assertEqual(dropbox_archive.archive(Path(directory), "41-1", "token", post=box, log=lines.append), 1)
                 self.assertTrue(any(line.startswith("::error::") and body_path in line for line in lines))
                 self.assertFalse(any(line.startswith("already archived") and body_path in line for line in lines))
+
+    def test_d3c_missing_header_of_archived_body_is_uploaded_and_retry_repairs(self) -> None:
+        # Em's 10:57 negative case: body already archived with a verified hash, header absent.
+        body_path = f"{self.BASE}/maine/{sha(b'workbook')}.xlsx"
+        header_path = f"{self.BASE}/maine/{sha(b'workbook')}.header.json"
+        with tempfile.TemporaryDirectory() as directory:
+            kept_run(Path(directory))
+            box = FakeDropbox(existing={body_path: b"workbook"})
+            lines: list[str] = []
+            status = dropbox_archive.archive(Path(directory), "41-1", "token", post=box, log=lines.append)
+            self.assertEqual(status, 0)
+            self.assertIn(header_path, box.files)  # uploaded, not skipped
+            self.assertIn(f"archived: {header_path}", lines)
+            # A folder where the header should be is a failure, not "kept".
+            box = FakeDropbox(existing={body_path: b"workbook"}, folders=[header_path])
+            lines = []
+            self.assertEqual(dropbox_archive.archive(Path(directory), "41-1", "token", post=box, log=lines.append), 1)
+            self.assertTrue(any(line.startswith("::error::") and header_path in line for line in lines))
+
+    def test_d3d_manifest_save_failure_never_fails_the_fetch(self) -> None:
+        page = "https://www.maine.gov/sos/results"
+        fake = FakeWeb({page: Response(page, b"<html>x</html>", {"content-type": "text/html"})})
+
+        def fetch_one(config, fetch, now, force=False):
+            fetch(page)
+            return mock.Mock(added=[], errors=[], skipped=["ok"])
+
+        with tempfile.TemporaryDirectory() as directory:
+            watch_toml = write_watch(Path(directory))
+            with mock.patch.object(watch_cli, "http_fetch", fake), \
+                    mock.patch.object(watch_cli, "fetch_snapshots", fetch_one), \
+                    mock.patch.object(OriginalsKeeper, "save", side_effect=OSError("disk full")), \
+                    mock.patch("builtins.print") as printed:
+                status = watch_cli.main(["fetch", "--config", str(watch_toml),
+                                         "--keep-originals", str(Path(directory) / "kept")])
+            self.assertEqual(status, 0)
+            self.assertTrue(any("could not write the originals manifest" in str(c.args[0]) for c in printed.call_args_list))
+
+    def test_d3e_header_note_does_not_claim_archival(self) -> None:
+        from election_reporting.watch.originals import RETENTION_NOTE
+        self.assertIn("archived only when the archive step uploads it", RETENTION_NOTE)
 
     def test_d3b_transport_error_fails_one_file_and_the_rest_continue(self) -> None:
         import urllib.error
@@ -374,6 +415,35 @@ class DropboxEdgeTests(unittest.TestCase):
     def test_d10_token_response_is_parsed(self) -> None:
         token = dropbox_archive.access_token("k", "s", "r", post=lambda *_: (200, b'{"access_token": "abc"}'))
         self.assertEqual(token, "abc")
+
+
+class ContentHashSpecTests(unittest.TestCase):
+    """#123: content_hash against Dropbox's published algorithm, with pinned vectors.
+
+    Dropbox's content_hash: split the file into 4 MiB (4,194,304-byte) blocks,
+    take the SHA-256 of each block, concatenate the binary digests, and take
+    the SHA-256 of that concatenation. The expected values below are fixed hex
+    strings, not recomputed by the function under test. For one block the
+    result is SHA-256(SHA-256(data)); "abc" gives the well-known double-SHA-256
+    value 4f8b42c2...6358. The 4 MiB and 4 MiB + 1 cases pin the block boundary.
+    """
+
+    VECTORS = {
+        "empty": (b"", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"),
+        "abc": (b"abc", "4f8b42c22dd3729b519ba6f68d2da7cc5b2d606d05daed5ad5128cc03e6c6358"),
+        "exactly one block": (b"a" * (4 * 1024 * 1024),
+                              "907a506cf5e706bda5c7a29b43c9c65d8344bd2fa2f22339b359c214812af5a1"),
+        "one block plus one byte": (b"a" * (4 * 1024 * 1024 + 1),
+                                    "5f858b62ccd88447586305aec6fd53c96747cfebf527cbba129a6dfed47d9624"),
+    }
+
+    def test_d11_content_hash_matches_dropbox_spec_vectors(self) -> None:
+        self.assertEqual(dropbox_archive.BLOCK, 4 * 1024 * 1024)
+        for name, (data, expected) in self.VECTORS.items():
+            self.assertEqual(dropbox_archive.content_hash(data), expected, name)
+        # The block hash is not the plain SHA-256 of the file once it spans two blocks.
+        two_blocks = self.VECTORS["one block plus one byte"][0]
+        self.assertNotEqual(dropbox_archive.content_hash(two_blocks), hashlib.sha256(two_blocks).hexdigest())
 
 
 class WorkflowContractTests(unittest.TestCase):
