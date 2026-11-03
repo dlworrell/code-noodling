@@ -97,6 +97,17 @@ def hold_message(config: WatchConfig) -> str:
     )
 
 
+def polls_closed(config: WatchConfig, election_day: date) -> datetime:
+    """When polls closed, unclamped by the request floor.
+
+    The floor (``not_before``) limits when the watcher may *request* anything.
+    It says nothing about when a source file was *published*: results posted
+    between polls closing and the floor belong to this election and must not be
+    rejected just because they were fetched after the floor.
+    """
+    return datetime.combine(election_day, config.polls_close, config.timezone)
+
+
 def watch_window(config: WatchConfig, election_day: date, kind: str, has_state: bool) -> Window:
     """The checking window, clamped to the hard collection floor."""
     zone = config.timezone
