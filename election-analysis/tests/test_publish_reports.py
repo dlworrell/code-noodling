@@ -529,7 +529,8 @@ class WorkflowRouteTests(unittest.TestCase):
             text = self.read(path)
             self.assertIn("actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510", text, path)
             self.assertIn("app-id: '5474337'", text, path)
-            self.assertIn("if: ${{ env.HAS_RING0_KEY == 'true' }}", text, path)
+            self.assertIn("environment: RING0", text, path)
+            self.assertIn("if: ${{ steps.ring0_key.outputs.present == 'true' }}", text, path)
             self.assertIn("GH_TOKEN: ${{ steps.ring0.outputs.token || github.token }}", text, path)
             publish = text.split("- name: Publish verified commit and pull request", 1)[1]
             self.assertNotIn("GH_TOKEN: ${{ github.token }}", publish.split("run:", 1)[0], path)
