@@ -75,7 +75,7 @@ case "${1:-}" in
   publish)
     python3 -m election_reporting.ci.publish_reports \
       --base "${BASE_BRANCH:?}" \
-      --base-sha "${GITHUB_SHA:?}" \
+      --base-sha "$(git rev-parse HEAD)" \
       --branch "${SNAPSHOT_BRANCH:?}" \
       --path "$rel/data/elections" \
       --title "data: new official election result snapshots" \

@@ -118,10 +118,11 @@ election with no snapshots yet is skipped.
 
 The workflow tests the analyzer, checks out the pinned EDT revision, generates the
 report, validates the generated EDOM, and uploads the complete report directory as a
-CI artifact. When the regenerated reports differ from the committed ones on the
-default branch, it opens (or updates) a pull request with them; see
+CI artifact. When the regenerated reports differ from the committed ones on
+`dev-daily`, it opens (or updates) a pull request into `dev-daily` with them; see
 [Automated report publication](#automated-report-publication). Reports reach `main`
-only when that pull request is reviewed and merged.
+only through the Catylist ADR-0013 promotion path (`dev-daily` → `fitment` → `main`)
+after that pull request is reviewed and merged.
 
 ## Automated report publication
 
@@ -132,9 +133,15 @@ therefore never runs `git push`. Its behavior depends on the triggering event:
 | Event | Behavior |
 | --- | --- |
 | `pull_request` | Tests, generates, and uploads the `election-result-reports` artifact. Nothing is committed. Stale committed reports produce a warning, not a failure. |
-| `push` to the default branch, `schedule`, or `workflow_dispatch` on the default branch with `commit_reports` | If the reports changed, a second job commits them to the workflow-owned branch `automation/election-reports` and opens or updates a pull request to the default branch. |
+| `push` to `dev-daily`, or `workflow_dispatch` on `dev-daily` with `commit_reports` | If the reports changed, a second job commits them to the workflow-owned branch `automation/election-reports` and opens or updates a pull request into `dev-daily`. |
 | `push` to any other branch, or dispatch from another branch | Tests, generates, and uploads the artifact only. |
 | Reports unchanged | Nothing is published. |
+
+The publisher (`election_reporting/ci/publish_reports.py`) enforces the route before
+any write. It refuses every base except `dev-daily`, and refuses a generating commit
+that is not on `dev-daily`. An open automation pull request left from the earlier
+default-branch route is retargeted to `dev-daily` rather than duplicated. Several
+open pull requests from the same automation branch are refused.
 
 The publishing job runs `python -m election_reporting.ci.publish_reports`. It
 creates `automation/election-reports` from the analyzed commit (or force-resets it
@@ -221,8 +228,9 @@ They all exit successfully without those operations while every state is held.
 The first gate opens at 02:00 UTC November 4 (21:00 EST November 3); per-state
 runtime gates still hold the later states. Fixed end dates keep later annual
 cron occurrences from contacting the result sources. It exits early when a run is not due, and publishes new snapshots as a GitHub-verified commit on the
-workflow-owned `automation/election-sources` branch with a pull request to the
-default branch, using the same publisher as the reports. Snapshots waiting in an
+workflow-owned `automation/election-sources` branch with a pull request into
+`dev-daily`, using the same publisher as the reports. Schedules run on the default
+branch, so the job checks out `dev-daily` and proposes snapshots against that commit. Snapshots waiting in an
 unmerged pull request are carried forward into each run (only files recorded in
 that branch's `SOURCES.json`, each checked against its SHA-256), because the state
 overwrites its report files and an earlier version cannot be downloaded again.
