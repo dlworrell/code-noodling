@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2025 Donovan Worrell
+
+SPDX-License-Identifier: MIT
+Catalyst-File-ID: urn:uuid:86f583e6-1743-49e2-8561-a9edd9c0783f
+-->
+
 # Legacy PhysX Dice Prototypes
 
 These files preserve the evolution of the physical-dice experiments but are

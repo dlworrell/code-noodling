@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2025 Donovan Worrell
+
+SPDX-License-Identifier: MIT
+Catalyst-File-ID: urn:uuid:6c75caa1-686a-4bb4-919d-d6e4fc93eb0e
+-->
+
 # dice-cpu
 
 `dice_cpu` is the unbiased CPU dice engine for the prime-number suite. It
