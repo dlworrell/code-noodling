@@ -444,10 +444,19 @@ class PublishFlowTests(unittest.TestCase):
             self.assertEqual(fake.endpoints(), [("GET", f"repos/{REPO}/compare/{self.base_sha}...dev-daily")])
 
     def test_r3_unreadable_comparison_is_refused(self) -> None:
+        """The compare call itself fails (HTTP 404): publish stops there, fail closed.
+
+        run_publish only defaults the compare response when none is given, so
+        configuring the failure here makes this test exercise exactly the
+        unreadable-comparison path (Em's rereview of 8c9a7c0).
+        """
         self.regenerate()
-        fake = FakeGh({})  # compare answers 404
-        with self.assertRaises(PublishError):
+        compare = ("GET", f"repos/{REPO}/compare/{self.base_sha}...dev-daily")
+        fake = FakeGh({compare: RuntimeError("HTTP 404 Not Found")})
+        with self.assertRaisesRegex(PublishError, "compare"):
             self.run_publish(fake)
+        # The compare call is the only call made: nothing read after it, nothing written.
+        self.assertEqual(fake.endpoints(), [compare])
         self.assertEqual(self.writes(fake), [])
 
     def test_r4_wrong_base_pull_request_is_migrated(self) -> None:
