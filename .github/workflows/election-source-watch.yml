@@ -127,6 +127,9 @@ jobs:
       - name: Create catylist-ring-0 token
         id: ring0
         if: ${{ steps.ring0_key.outputs.present == 'true' }}
+        # A bad or rotated key must never stop publication: on failure the
+        # publish step falls back to github.token (no CI on that PR, as before).
+        continue-on-error: true
         uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
         with:
           app-id: ${{ secrets.RING0_APP_ID || '5474337' }}
@@ -135,6 +138,10 @@ jobs:
           repositories: ${{ github.event.repository.name }}
           permission-contents: write
           permission-pull-requests: write
+
+      - name: Warn when publishing without ring-0
+        if: ${{ steps.ring0_key.outputs.present == 'true' && steps.ring0.outcome != 'success' }}
+        run: echo "::warning::The catylist-ring-0 token could not be created (check RING0_PRIVATE_KEY in the RING0 environment); publishing as github-actions, whose PRs get no CI."
 
       - name: Publish verified commit and pull request
         # Runs even when one state's fetch failed, so the other states'

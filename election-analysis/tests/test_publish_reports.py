@@ -531,6 +531,8 @@ class WorkflowRouteTests(unittest.TestCase):
             self.assertIn("app-id: ${{ secrets.RING0_APP_ID || '5474337' }}", text, path)
             self.assertIn("environment: RING0", text, path)
             self.assertIn("if: ${{ steps.ring0_key.outputs.present == 'true' }}", text, path)
+            token_step = text.split("- name: Create catylist-ring-0 token", 1)[1].split("- name:", 1)[0]
+            self.assertIn("continue-on-error: true", token_step, path)  # a bad key never stops publication
             self.assertIn("GH_TOKEN: ${{ steps.ring0.outputs.token || github.token }}", text, path)
             publish = text.split("- name: Publish verified commit and pull request", 1)[1]
             self.assertNotIn("GH_TOKEN: ${{ github.token }}", publish.split("run:", 1)[0], path)
