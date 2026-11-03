@@ -382,6 +382,33 @@ def _fetch_votewa_json(store, config, place, plan_, fetch, now, result) -> None:
 
 
 def _fetch_king_county(store, config, place, plan_, fetch, now, result) -> None:
+    """King County's own nightly CSV exports, one snapshot per distinct body.
+
+    Purpose: King County posts election results as CSV exports linked from
+    its results page, and may republish a corrected export at the same URL,
+    or change only the URL's query string.
+
+    Behaviour: every export listed for this election (dated on or after
+    election day) is fetched on every due run. ``_record`` compares the
+    body's SHA-256 with what is already stored:
+    - new bytes become a new immutable snapshot (under a free time stamp
+      if the minute is taken);
+    - identical bytes create no new snapshot and are reported as
+      ``unchanged``. The retrieval is still appended to the observation
+      history, and SOURCES.json is saved at the end of the run, so a ledger
+      write can still happen; only the snapshot set is unchanged.
+    The URL is never treated as content identity, because a correction can
+    keep it.
+
+    Cost (a deliberate trade-off): each run re-downloads the county's listed
+    exports, a handful of CSV files of a few hundred kilobytes each, under the
+    existing per-request size caps. There is no bandwidth saving; the gain is
+    that changed bytes available at the next fetch are detected, even when
+    the county keeps the same URL. The guarantee is bounded by the cadence:
+    an intermediate version that the county overwrites between two fetches
+    is never seen and can still be missed. Request floors and cadence are
+    unchanged.
+    """
     page = sources.king_county_page(fetch, plan_.election.day)
     if page is None:
         result.skipped.append(f"{place.place_id}: no county results page yet")
@@ -390,10 +417,12 @@ def _fetch_king_county(store, config, place, plan_, fetch, now, result) -> None:
     if not files:
         result.skipped.append(f"{place.place_id}: no county result files yet")
         return
-    seen_urls = {r.source_url.split("?", 1)[0] for r in store.records if r.place == place.place_id}
+    # Every listed file is fetched on every run, even at a URL already recorded:
+    # King County can replace an export in place (or change only its query
+    # string) to publish a correction. _record keeps a new immutable snapshot
+    # when the bytes differ and skips identical bytes, so a repeated file stays
+    # idempotent. A URL is never treated as a content identity.
     for item in files:
-        if item.url.split("?", 1)[0] in seen_urls:
-            continue
         response = fetch(item.url)
         local = (response.last_modified or now).astimezone(config.timezone)
         if local.date() != item.day:
