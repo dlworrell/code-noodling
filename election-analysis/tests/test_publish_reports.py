@@ -519,6 +519,22 @@ class WorkflowRouteTests(unittest.TestCase):
     def read(self, path: str) -> str:
         return (self.ROOT / path).read_text(encoding="utf-8")
 
+    def test_automation_publishes_as_ring0_with_fallback(self) -> None:
+        # GitHub does not run workflows on commits or PRs made with the workflow's
+        # own GITHUB_TOKEN, so automation PRs never got required checks (#91).
+        # Both publishers mint a catylist-ring-0 token (Catylist ADR-0012) and fall
+        # back to github.token only when the key secret is absent.
+        for path in (".github/workflows/election-result-reports.yml",
+                     ".github/workflows/election-source-watch.yml"):
+            text = self.read(path)
+            self.assertIn("actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510", text, path)
+            self.assertIn("app-id: ${{ secrets.RING0_APP_ID || '5474337' }}", text, path)
+            self.assertIn("environment: RING0", text, path)
+            self.assertIn("if: ${{ steps.ring0_key.outputs.present == 'true' }}", text, path)
+            self.assertIn("GH_TOKEN: ${{ steps.ring0.outputs.token || github.token }}", text, path)
+            publish = text.split("- name: Publish verified commit and pull request", 1)[1]
+            self.assertNotIn("GH_TOKEN: ${{ github.token }}", publish.split("run:", 1)[0], path)
+
     def test_reports_workflow_publishes_from_and_into_dev_daily(self) -> None:
         text = self.read(".github/workflows/election-result-reports.yml")
         self.assertIn("github.ref == 'refs/heads/dev-daily'", text)
