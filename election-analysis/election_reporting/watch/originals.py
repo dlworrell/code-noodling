@@ -17,7 +17,8 @@ Where the files go. ``OriginalsKeeper`` writes into a directory outside the
 repository tree (the workflow passes ``$RUNNER_TEMP/election-originals``).
 The workflow then (1) uploads that directory as a GitHub Actions artifact
 with 90-day retention, and (2) archives it to Dropbox under
-``/repo/election-analyser/data/`` (owner decision, 2026-11-03; see
+the app's own folder, ``/Apps/election-analyser/data/`` (owner decisions,
+2026-11-03: Dropbox, by state, and app-folder access only; see
 ``dropbox_archive.py``). The files are deliberately not committed through the
 snapshot pull request: a 21 MB workbook, base64-encoded in a GraphQL
 ``createCommitOnBranch`` request, could make the snapshot publication itself

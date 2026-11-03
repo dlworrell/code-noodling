@@ -113,7 +113,7 @@ jobs:
         run: election-analysis/ci/watch.sh publish
 
       # Owner decision (2026-11-03): archive the downloaded originals to
-      # Dropbox /repo/election-analyser/data/<state>/ (body, header and
+      # Dropbox /Apps/election-analyser/data/<state>/ (app-folder access only) (body, header and
       # SHA-256 stamp per file; election_reporting/watch/dropbox_archive.py).
       # Runs after publication so an archive failure never blocks snapshots.
       # Needs the DROPBOX_APP_KEY, DROPBOX_APP_SECRET and DROPBOX_REFRESH_TOKEN

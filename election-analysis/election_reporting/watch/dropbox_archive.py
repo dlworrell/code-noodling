@@ -5,10 +5,17 @@
 
 """Archive a run's downloaded originals to Dropbox.
 
-Purpose. Owner decision (2026-11-03): downloaded files go to Dropbox under
-``/repo/election-analyser/data/``, one directory per state, each file stored
-with a header and a SHA stamp. ``originals.OriginalsKeeper`` already lays a
-run's files out that way; this uploads them unchanged.
+Purpose. Owner decisions (2026-11-03): downloaded files go to Dropbox, one
+directory per state, each file stored with a header and a SHA stamp, and the
+Dropbox app gets access to its own data area only, not the whole Dropbox.
+``originals.OriginalsKeeper`` already lays a run's files out that way; this
+uploads them unchanged.
+
+Access. The app is an **App folder** app: Dropbox confines it to
+``/Apps/<app name>/`` and it cannot read or write anything else. Paths in API
+calls are relative to that folder, so the default base ``/data`` lands in
+``/Apps/<app name>/data/``; with the app named ``election-analyser`` that is
+``/Apps/election-analyser/data/<state>/``.
 
 Inputs:
 - ``directory``: the run's originals directory (``ORIGINALS_DIR``).
@@ -16,8 +23,7 @@ Inputs:
   ``<run id>-<attempt>``).
 - Credentials, from the environment only and never printed:
   ``DROPBOX_APP_KEY``, ``DROPBOX_APP_SECRET``, ``DROPBOX_REFRESH_TOKEN``.
-  The app needs full Dropbox access (not an App folder) with the
-  ``files.content.write`` scope, because the target is ``/repo/...``.
+  The app is an App folder app with the ``files.content.write`` scope only.
 
 Output, in Dropbox:
 - ``<base>/<state>/<sha256>.<ext>`` and ``<base>/<state>/<sha256>.header.json``,
@@ -51,7 +57,7 @@ from typing import Callable
 
 from .originals import MANIFEST
 
-BASE = "/repo/election-analyser/data"
+BASE = "/data"  # relative to the App folder: /Apps/<app name>/data
 TOKEN_URL = "https://api.dropboxapi.com/oauth2/token"
 UPLOAD_URL = "https://content.dropboxapi.com/2/files/upload"
 MAX_SINGLE_UPLOAD = 150 * 1024 * 1024
