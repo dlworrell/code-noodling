@@ -245,6 +245,32 @@ Every contest from the API also carries the counties it spans; a county source's
 share of a multi-county contest is reported as not controlling, and the statewide
 totals control when the state reports the contest.
 
+### Downloaded originals: retained 30 days, then archived
+
+Owner rule, 2026-11-03: every file the watcher downloads is saved unmodified,
+retained for 30 days, then archived. Each scheduled run passes
+`ORIGINALS_DIR` (outside the checkout) to `ci/watch.sh fetch`, which runs the
+watcher with `--keep-originals`. Every successful response body (discovery
+pages, workbooks, CSV exports, API JSON) is written once, named by its
+SHA-256, and listed in `MANIFEST.json` with its byte length, first retrieval
+time, the `archive_after` date 30 days later, and each retrieval's URL, time,
+`Last-Modified`, `ETag` and `Content-Type`. The workflow uploads the
+directory as the run's `election-originals-<run>-<attempt>` artifact, kept
+for 90 days.
+
+This covers the files the repository keeps only in derived or trimmed form:
+the Washington "Summary and Precinct Results" workbook and the VoteWA JSON.
+The originals are not committed through the snapshot pull request, because a
+21 MB workbook in a GraphQL `createCommitOnBranch` request could make
+snapshot publication itself fail. Match a snapshot to its original by
+`source_url` and `retrieved_at` in `SOURCES.json`.
+
+Not yet decided by the owner: the long-term archive destination, and access
+to it. Until a destination is chosen, the 90-day artifact is the retained
+copy; moving files past `archive_after` to the archive is a follow-up.
+A failed request has no body to keep; it is reported in the run's errors and
+coverage as before.
+
 ### Alaska
 
 ```toml

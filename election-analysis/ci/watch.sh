@@ -72,6 +72,9 @@ case "${1:-}" in
     # FORCE=true ignores cadence/end, never the state's not_before gate.
     args=()
     if [[ ${FORCE:-false} == true ]]; then args+=(--force); fi
+    # ORIGINALS_DIR (set by the workflow, outside the checkout): every
+    # downloaded body is kept there and uploaded as a 90-day artifact.
+    if [[ -n ${ORIGINALS_DIR:-} ]]; then args+=(--keep-originals "$ORIGINALS_DIR"); fi
     python3 -m election_reporting.watch fetch "${args[@]}"
     ;;
   publish)
