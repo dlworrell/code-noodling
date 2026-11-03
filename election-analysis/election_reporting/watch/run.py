@@ -491,17 +491,23 @@ def _zip_workbooks(files: list[tuple[str, str, bytes]]) -> bytes:
 def _fetch_maine(store, config, plan_, fetch, now, result) -> None:
     """Every office workbook posted for the election, combined into one snapshot.
 
-    Discovery reads two pages (the current results page, then the election
-    year's page; see ``maine.discover``). Outcomes, by what discovery saw:
-    - workbooks found: they are fetched and combined; a failure on the other
-      page is still reported as a run error;
-    - both pages failed: errors only, coverage status ``discovery_failed``,
-      and no "nothing posted" claim, so the run is visible as failed;
-    - one page failed and the other listed nothing: an error for the failed
-      page, plus a qualified skip ("no results found on the pages that could
-      be read; discovery incomplete"), coverage status ``discovery_incomplete``;
-    - both pages answered and listed nothing: "no results posted for this
-      election yet".
+    Discovery tries the current results page first. Only when that page
+    fails or lists no workbooks for this election does it try the election
+    year's page (see ``maine.discover``); when the current page lists
+    workbooks, the year page is not read at all. Every failure on a page
+    that was attempted is kept. Outcomes, by what discovery saw:
+    - workbooks found: they are fetched and combined; if the current page
+      failed before the year page supplied them, that failure is still
+      reported as a run error;
+    - both pages attempted and both failed: errors only, coverage status
+      ``discovery_failed``, and no "nothing posted" claim, so the run is
+      visible as failed;
+    - both pages attempted, one failed and the other listed nothing: an
+      error for the failed page, plus a qualified skip ("no results found on
+      the discovery pages that could be read; discovery incomplete (see
+      errors)"), coverage status ``discovery_incomplete``;
+    - both pages attempted, both answered and listed nothing: "no results
+      posted for this election yet".
     """
     discovery = maine.discover(fetch, plan_.election)
     links = discovery.links
