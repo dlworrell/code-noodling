@@ -108,6 +108,20 @@ def content_hash(data: bytes) -> str:
     return hashlib.sha256(blocks).hexdigest()
 
 
+def remote_metadata(token: str, path: str, post: Post) -> dict | None:
+    """Dropbox metadata for ``path``, or None if it cannot be read."""
+    status, body = post(METADATA_URL, json.dumps({"path": path}).encode("utf-8"), {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json",
+    })
+    if status != 200:
+        return None
+    try:
+        return json.loads(body)
+    except ValueError:
+        return None
+
+
 def remote_matches(token: str, path: str, data: bytes, post: Post) -> bool:
     """True only if ``path`` in Dropbox is a file whose content hash equals ``data``'s.
 
@@ -141,7 +155,7 @@ def access_token(app_key: str, app_secret: str, refresh_token: str, post: Post =
     return json.loads(body)["access_token"]
 
 
-def upload(token: str, path: str, data: bytes, post: Post = _post) -> str:
+def upload(token: str, path: str, data: bytes, post: Post = _post, *, keep_existing_file: bool = False) -> str:
     """Upload ``data`` to ``path`` without overwriting.
 
     Returns 'archived', or 'already archived (verified)' when a file is
@@ -149,6 +163,11 @@ def upload(token: str, path: str, data: bytes, post: Post = _post) -> str:
     cannot be verified (different bytes, a folder in the way, or the check
     itself failing) raises: a SHA-256 in the file name is not proof of what
     is stored under it.
+
+    ``keep_existing_file`` is for the header of a body that an earlier run
+    already archived: a header that already exists there as a file is that
+    first archived header and is kept ('first header kept'); a missing header
+    is uploaded; a folder in the way or an unreadable check still raises.
     """
     if len(data) > MAX_SINGLE_UPLOAD:
         raise RuntimeError(f"{path}: {len(data):,} bytes exceeds the single-upload limit")
@@ -163,6 +182,8 @@ def upload(token: str, path: str, data: bytes, post: Post = _post) -> str:
     if status == 409 and b"conflict" in body:
         if remote_matches(token, path, data, post):
             return "already archived (verified)"
+        if keep_existing_file and (remote_metadata(token, path, post) or {}).get(".tag") == "file":
+            return "first header kept"
         raise RuntimeError(f"{path}: already exists in Dropbox with different or unverifiable content")
     summary = body[:200].decode("utf-8", errors="replace")
     raise RuntimeError(f"{path}: HTTP {status}: {summary}")
@@ -172,10 +193,13 @@ def archive(directory: Path, label: str, token: str, base: str = BASE,
             post: Post = _post, log: Callable[[str], None] = print) -> int:
     """Upload every original, then its header, then the run manifest.
 
-    Bodies go first. A header is skipped when its body was already archived
-    (verified) by an earlier run: the header from the first archived
-    retrieval is kept, and this run's retrievals are in the run manifest.
-    Each file is attempted even if an earlier one failed.
+    Bodies go first. Every header is then uploaded. When its body was
+    already archived (verified) by an earlier run, a header already present
+    as a file is the first archived one and is kept; a header that is
+    missing (for example after an interrupted earlier run) is uploaded now,
+    so a retry repairs it. Each file is attempted even if an earlier one
+    failed, and the run counts as archived only if every body, header and
+    the manifest succeeded.
     """
     if not (directory / MANIFEST).exists():
         log("::notice::No downloaded originals to archive.")
@@ -188,11 +212,9 @@ def archive(directory: Path, label: str, token: str, base: str = BASE,
     for local in bodies + headers:
         relative = local.relative_to(directory).as_posix()
         key = f"{local.parent.name}/{local.name.split('.', 1)[0]}"
-        if local in headers and key in previously_archived:
-            log(f"header kept from first archive: {base}/{relative}")
-            continue
         try:
-            outcome = upload(token, f"{base}/{relative}", local.read_bytes(), post)
+            outcome = upload(token, f"{base}/{relative}", local.read_bytes(), post,
+                             keep_existing_file=local in headers and key in previously_archived)
             log(f"{outcome}: {base}/{relative}")
             if local in bodies and outcome.startswith("already archived"):
                 previously_archived.add(key)

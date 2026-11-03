@@ -118,7 +118,11 @@ def main(argv: Sequence[str] | None = None) -> int:
         if result.errors and not result.added and not result.skipped:
             failed = True
     if keeper:
-        manifest = keeper.save()
+        try:
+            manifest = keeper.save()
+        except OSError as error:  # the manifest is a side effect; never fail the fetch for it
+            manifest = None
+            print(f"::warning::could not write the originals manifest: {error}")
         print(f"kept {len(keeper.entries)} downloaded file(s)" + (f"; manifest {manifest}" if manifest else ""))
         if keeper.failures:
             print(f"::warning::{len(keeper.failures)} original(s) could not be kept; snapshots were still fetched")
