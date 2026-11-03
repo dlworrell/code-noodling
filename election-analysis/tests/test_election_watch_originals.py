@@ -282,7 +282,7 @@ class DropboxArchiveTests(unittest.TestCase):
             lines: list[str] = []
             self.assertEqual(dropbox_archive.archive(Path(directory), "41-1", "token", post=box, log=lines.append), 0)
             self.assertIn(f"already archived (verified): {body_path}", lines)
-            self.assertIn(f"header kept from first archive: {header_path}", lines)
+            self.assertIn(f"first header kept: {header_path}", lines)
             self.assertEqual(box.files[header_path], b"{earlier header}")
             # Different bytes under the same name, or a folder in the way: failure, never "archived".
             for box in (FakeDropbox(existing={body_path: b""}), FakeDropbox(folders=[body_path])):
@@ -290,6 +290,47 @@ class DropboxArchiveTests(unittest.TestCase):
                 self.assertEqual(dropbox_archive.archive(Path(directory), "41-1", "token", post=box, log=lines.append), 1)
                 self.assertTrue(any(line.startswith("::error::") and body_path in line for line in lines))
                 self.assertFalse(any(line.startswith("already archived") and body_path in line for line in lines))
+
+    def test_d3c_missing_header_of_archived_body_is_uploaded_and_retry_repairs(self) -> None:
+        # Em's 10:57 negative case: body already archived with a verified hash, header absent.
+        body_path = f"{self.BASE}/maine/{sha(b'workbook')}.xlsx"
+        header_path = f"{self.BASE}/maine/{sha(b'workbook')}.header.json"
+        with tempfile.TemporaryDirectory() as directory:
+            kept_run(Path(directory))
+            box = FakeDropbox(existing={body_path: b"workbook"})
+            lines: list[str] = []
+            status = dropbox_archive.archive(Path(directory), "41-1", "token", post=box, log=lines.append)
+            self.assertEqual(status, 0)
+            self.assertIn(header_path, box.files)  # uploaded, not skipped
+            self.assertIn(f"archived: {header_path}", lines)
+            # A folder where the header should be is a failure, not "kept".
+            box = FakeDropbox(existing={body_path: b"workbook"}, folders=[header_path])
+            lines = []
+            self.assertEqual(dropbox_archive.archive(Path(directory), "41-1", "token", post=box, log=lines.append), 1)
+            self.assertTrue(any(line.startswith("::error::") and header_path in line for line in lines))
+
+    def test_d3d_manifest_save_failure_never_fails_the_fetch(self) -> None:
+        page = "https://www.maine.gov/sos/results"
+        fake = FakeWeb({page: Response(page, b"<html>x</html>", {"content-type": "text/html"})})
+
+        def fetch_one(config, fetch, now, force=False):
+            fetch(page)
+            return mock.Mock(added=[], errors=[], skipped=["ok"])
+
+        with tempfile.TemporaryDirectory() as directory:
+            watch_toml = write_watch(Path(directory))
+            with mock.patch.object(watch_cli, "http_fetch", fake), \
+                    mock.patch.object(watch_cli, "fetch_snapshots", fetch_one), \
+                    mock.patch.object(OriginalsKeeper, "save", side_effect=OSError("disk full")), \
+                    mock.patch("builtins.print") as printed:
+                status = watch_cli.main(["fetch", "--config", str(watch_toml),
+                                         "--keep-originals", str(Path(directory) / "kept")])
+            self.assertEqual(status, 0)
+            self.assertTrue(any("could not write the originals manifest" in str(c.args[0]) for c in printed.call_args_list))
+
+    def test_d3e_header_note_does_not_claim_archival(self) -> None:
+        from election_reporting.watch.originals import RETENTION_NOTE
+        self.assertIn("archived only when the archive step uploads it", RETENTION_NOTE)
 
     def test_d3b_transport_error_fails_one_file_and_the_rest_continue(self) -> None:
         import urllib.error

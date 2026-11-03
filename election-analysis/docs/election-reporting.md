@@ -253,7 +253,13 @@ file with a header and a SHA stamp. The Dropbox app has access to its own
 folder only (App folder access), so the archive lives in
 `/Apps/election-analyser/data/`.
 
-What happens, and when: each run uploads the files it downloaded to Dropbox
+Current owner decision (2026-11-03): the Dropbox step is deferred. No
+Dropbox secrets are configured, so each run's archive step reports "NOT
+archived", and the run's 90-day GitHub artifact is the retained copy. The
+owner downloads the artifacts and moves them manually each day. The
+Dropbox upload below applies only once the secrets are added.
+
+What happens, and when, with Dropbox configured: each run uploads the files it downloaded to Dropbox
 in the same run, right after snapshot publication, so Dropbox holds the
 archive from the start. The run's GitHub artifact is a 90-day fallback copy.
 `archive_after`, 30 days after a file's first retrieval, records the end of
@@ -278,10 +284,12 @@ How a run does it:
    Uploads never overwrite. When a file is already present, its Dropbox
    content hash is compared with the local bytes: a match is "already
    archived (verified)"; different bytes, a folder in the way, or a failed
-   check is an error. When a body was already archived by an earlier run,
-   its header is not uploaded again: the header from the first archived
-   retrieval is kept, and later retrievals are recorded in each run's
-   manifest. A network error or timeout fails that one file; the others are
+   check is an error. Every header is uploaded too. When its body was
+   already archived by an earlier run, a header already there as a file is
+   the first archived one and is kept (later retrievals are recorded in each
+   run's manifest); a missing header is uploaded, so a retry repairs an
+   interrupted run. A run counts as archived only if every body, header and
+   the manifest succeeded. A network error or timeout fails that one file; the others are
    still attempted. A failed upload marks the
    step red without affecting snapshot publication.
 
