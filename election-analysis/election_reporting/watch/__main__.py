@@ -17,6 +17,7 @@ from typing import Sequence
 from ..model import ElectionReportError
 from .config import load_watch_settings
 from .http import fetch as http_fetch
+from .originals import OriginalsKeeper
 from .run import carry_forward, fetch_snapshots, plan, write_election_config
 from .schedule import before_start, hold_message
 
@@ -43,6 +44,13 @@ def main(argv: Sequence[str] | None = None) -> int:
         type=Path,
         help="carry: the pending checkout the workflow chose; directories below it are checked "
         "(supplied by ci/watch.sh; optional for standalone use, which then skips that check)",
+    )
+    parser.add_argument(
+        "--keep-originals",
+        dest="keep_originals",
+        type=Path,
+        help="fetch: save every downloaded body unmodified in this directory, with MANIFEST.json "
+        "(archived to Dropbox by ci/watch.sh archive; see watch/originals.py)",
     )
     parser.add_argument("--config", type=Path, default=Path("election-analysis/data/watch.toml"))
     parser.add_argument("--now", help="status only: simulate a time without making source requests")
@@ -91,10 +99,16 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 1
     added = 0
     failed = False
+    # Every successful download is kept byte for byte when --keep-originals is
+    # given (owner retention rule: retain 30 days and archive to Dropbox).
+    keeper = OriginalsKeeper(args.keep_originals) if args.keep_originals else None
+    source_fetch = keeper.recording(http_fetch) if keeper else http_fetch
     for config in settings.watches:
         print(f"== {config.state}")
+        if keeper:
+            keeper.state = config.state_id  # originals are filed by state
         try:
-            result = fetch_snapshots(config, http_fetch, now, force=args.force)
+            result = fetch_snapshots(config, source_fetch, now, force=args.force)
         except ElectionReportError as error:
             # One state's outage must not stop the others.
             print(f"error: {config.state}: {error}", file=sys.stderr)
@@ -103,6 +117,15 @@ def main(argv: Sequence[str] | None = None) -> int:
         added += len(result.added)
         if result.errors and not result.added and not result.skipped:
             failed = True
+    if keeper:
+        try:
+            manifest = keeper.save()
+        except OSError as error:  # the manifest is a side effect; never fail the fetch for it
+            manifest = None
+            print(f"::warning::could not write the originals manifest: {error}")
+        print(f"kept {len(keeper.entries)} downloaded file(s)" + (f"; manifest {manifest}" if manifest else ""))
+        if keeper.failures:
+            print(f"::warning::{len(keeper.failures)} original(s) could not be kept; snapshots were still fetched")
     output = os.environ.get("GITHUB_OUTPUT")
     if output:
         with open(output, "a", encoding="utf-8") as handle:

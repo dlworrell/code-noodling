@@ -245,6 +245,76 @@ Every contest from the API also carries the counties it spans; a county source's
 share of a multi-county contest is reported as not controlling, and the statewide
 totals control when the state reports the contest.
 
+### Downloaded originals: kept and archived to Dropbox
+
+Owner rule, 2026-11-03: every file the watcher downloads is saved unmodified,
+retained for 30 days and archived in Dropbox, one directory per state, each
+file with a header and a SHA stamp. The Dropbox app has access to its own
+folder only (App folder access), so the archive lives in
+`/Apps/election-analyser/data/`.
+
+Current owner decision (2026-11-03): the Dropbox step is deferred. No
+Dropbox secrets are configured, so each run's archive step reports "NOT
+archived", and the run's 90-day GitHub artifact is the retained copy. The
+owner downloads the artifacts and moves them manually each day. The
+Dropbox upload below applies only once the secrets are added.
+
+What happens, and when, with Dropbox configured: each run uploads the files it downloaded to Dropbox
+in the same run, right after snapshot publication, so Dropbox holds the
+archive from the start. The run's GitHub artifact is a 90-day fallback copy.
+`archive_after`, 30 days after a file's first retrieval, records the end of
+the 30-day retention window; it is informational, and no job reads it.
+
+How a run does it:
+
+1. `ci/watch.sh fetch` runs the watcher with `--keep-originals
+   "$ORIGINALS_DIR"` (outside the checkout). Every successful response body
+   (discovery pages, workbooks, CSV exports, API JSON) is written as
+   `<state>/<sha256>.<ext>`, exactly as served, with its header beside it as
+   `<state>/<sha256>.header.json`: SHA-256, byte length, first retrieval (URL,
+   time, `Last-Modified`, `ETag`, `Content-Type`) and `archive_after`, 30 days
+   after first retrieval. `MANIFEST.json` lists every retrieval in the run.
+   If a file cannot be saved (for example a full disk), the run warns and
+   the snapshot fetch carries on.
+2. The workflow uploads the directory as the run's
+   `election-originals-<run>-<attempt>` artifact, kept for 90 days.
+3. After snapshot publication, `ci/watch.sh archive` copies the same layout
+   to Dropbox: `/Apps/election-analyser/data/<state>/<sha256>.<ext>`, the
+   header beside it, and the run manifest as `manifests/<run>-<attempt>.json`.
+   Uploads never overwrite. When a file is already present, its Dropbox
+   content hash is compared with the local bytes: a match is "already
+   archived (verified)"; different bytes, a folder in the way, or a failed
+   check is an error. Every header is uploaded too. When its body was
+   already archived by an earlier run, a header already there as a file is
+   the first archived one and is kept (later retrievals are recorded in each
+   run's manifest); a missing header is uploaded, so a retry repairs an
+   interrupted run. A run counts as archived only if every body, header and
+   the manifest succeeded. A network error or timeout fails that one file; the others are
+   still attempted. A failed upload marks the
+   step red without affecting snapshot publication.
+
+Dropbox credentials are the repository secrets `DROPBOX_APP_KEY`,
+`DROPBOX_APP_SECRET` and `DROPBOX_REFRESH_TOKEN`, for a Dropbox app named
+`election-analyser` with **App folder** access and the
+`files.content.write` and `files.metadata.read` scopes (the second is for
+the content-hash check). It cannot see anything outside its own folder.
+
+Status words are kept distinct: a file is *captured* when the keeper saves
+it on the runner, *backed up* when it is in the run's 90-day artifact, and
+*archived* only when it is in Dropbox, uploaded or verified by content hash.
+Without the secrets the archive step says the run was NOT archived and exits
+successfully so snapshot publication is never blocked. Such runs are not
+replayed to Dropbox automatically once the secrets exist; copying earlier
+artifacts to Dropbox is a separate backfill.
+
+This covers the files the repository keeps only in derived or trimmed form:
+the Washington "Summary and Precinct Results" workbook and the VoteWA JSON.
+The originals are not committed through the snapshot pull request, because a
+21 MB workbook in a GraphQL `createCommitOnBranch` request could make
+snapshot publication itself fail. Match a snapshot to its original by
+`source_url` and `retrieved_at` in `SOURCES.json`. A failed request has no
+body to keep; it is reported in the run's errors and coverage as before.
+
 ### Alaska
 
 ```toml
