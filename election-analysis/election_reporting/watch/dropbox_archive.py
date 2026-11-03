@@ -27,9 +27,12 @@ Inputs:
 
 Output, in Dropbox:
 - ``<base>/<state>/<sha256>.<ext>`` and ``<base>/<state>/<sha256>.header.json``,
-  uploaded in ``add`` mode without autorename. A file that already exists
-  under its SHA-256 name has that exact content, so a conflict means "already
-  archived" and is not an error. Nothing in Dropbox is ever overwritten.
+  uploaded in ``add`` mode without autorename. Nothing in Dropbox is ever
+  overwritten. For a body, a file already present under its SHA-256 name has
+  that exact content, so a conflict means "already archived". For a header,
+  a conflict means the header from the body's first archived retrieval is
+  kept and this run's header is not uploaded; this run's retrievals of that
+  body are still recorded in the run manifest below.
 - ``<base>/manifests/<label>.json``: this run's MANIFEST.json, including
   every retrieval of bodies archived by earlier runs.
 
@@ -146,11 +149,12 @@ def main(argv: list[str] | None = None) -> int:
               "DROPBOX_REFRESH_TOKEN are not all configured. The 90-day artifact still holds the files.")
         return 0
     try:
-        token = access_token(*(os.environ[key] for key in keys))
+        # _post is looked up here, at call time, so tests can substitute it.
+        token = access_token(*(os.environ[key] for key in keys), post=_post)
     except (RuntimeError, KeyError, ValueError) as error:
         print(f"::error::{error}")
         return 1
-    return archive(args.directory, args.label, token, args.base)
+    return archive(args.directory, args.label, token, args.base, post=_post)
 
 
 if __name__ == "__main__":

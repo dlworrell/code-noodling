@@ -50,7 +50,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         dest="keep_originals",
         type=Path,
         help="fetch: save every downloaded body unmodified in this directory, with MANIFEST.json "
-        "(retain 30 days, then archive; see watch/originals.py)",
+        "(archived to Dropbox by ci/watch.sh archive; see watch/originals.py)",
     )
     parser.add_argument("--config", type=Path, default=Path("election-analysis/data/watch.toml"))
     parser.add_argument("--now", help="status only: simulate a time without making source requests")
@@ -100,7 +100,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     added = 0
     failed = False
     # Every successful download is kept byte for byte when --keep-originals is
-    # given (owner retention rule: retain 30 days, then archive).
+    # given (owner retention rule: retain 30 days and archive to Dropbox).
     keeper = OriginalsKeeper(args.keep_originals) if args.keep_originals else None
     source_fetch = keeper.recording(http_fetch) if keeper else http_fetch
     for config in settings.watches:
@@ -120,6 +120,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     if keeper:
         manifest = keeper.save()
         print(f"kept {len(keeper.entries)} downloaded file(s)" + (f"; manifest {manifest}" if manifest else ""))
+        if keeper.failures:
+            print(f"::warning::{len(keeper.failures)} original(s) could not be kept; snapshots were still fetched")
     output = os.environ.get("GITHUB_OUTPUT")
     if output:
         with open(output, "a", encoding="utf-8") as handle:
