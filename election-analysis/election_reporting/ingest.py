@@ -223,8 +223,12 @@ def _xlsx_column(reference: str) -> int:
       ``ElectionReportError``, before any allocation;
     - anything else ("1A", "A0", "AB", "A1:B2") -> ``ElectionReportError``.
 
+    Scope: only the column letters and the reference's shape are checked. The
+    row number is not compared with the enclosing row element, nor with any
+    row limit; row counts are bounded separately by the existing row budget.
+
     Limit: this bounds a single row at 16,384 columns. It does not bound the
-    whole workbook. Many rows that each reach column XFD can still expand to
+    whole workbook, and there is no aggregate allocation budget. Many rows that each reach column XFD can still expand to
     rows x 16,384 entries within the existing byte and row budgets. That
     cumulative availability risk is recorded separately and is not addressed
     here.
