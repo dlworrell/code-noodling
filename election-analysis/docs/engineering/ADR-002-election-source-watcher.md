@@ -107,7 +107,10 @@ seasons. Offline fixture tests and historical analysis remain available. See the
 - Following another Washington county is a one-word change to `watch.toml`.
 - Each merged snapshot pull request regenerates the reports through the existing
   workflow.
-- The workflow launches every 30 minutes for offline validation. All live and
+- The workflow launches hourly at :07 for offline validation, and an external
+  backup scheduler dispatches it with `force=false` at :37 (owner decision,
+  2026-11-03). Per-state 30-minute eligibility is unchanged, so half-hour
+  collection depends on both triggers arriving. All live and
   publication commands are held before the first state gate; per-state gates
   and cadence control collection afterwards. A run delayed by GitHub past its
   slot can skip one hourly check. Start times are lower bounds, not a guarantee

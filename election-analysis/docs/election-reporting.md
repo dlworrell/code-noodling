@@ -221,8 +221,13 @@ not_before = 2026-11-03T21:00:00-08:00
 | States | Each state is planned and fetched on its own schedule and in its own directory; one state failing does not stop the others. |
 | Config | Creates `election.toml` for a new election (state priority 100, counties 10, certification dates filled in) and appends sources when places are added later. |
 
-The **Election Source Watch** workflow still launches every 30 minutes for
-offline validation. Its `watch.sh` entry points gate pending-branch lookup,
+The **Election Source Watch** workflow launches hourly at :07 UTC for offline
+validation; an external backup scheduler dispatches it with `force=false` at
+:37 (owner decision, 2026-11-03: two hourly schedules on opposite sides of the
+hour). Per-state eligibility is unchanged: a state on its 30-minute cadence is
+collected in a half-hour slot only when a run lands in that slot, so losing
+either trigger halves its cadence. Neither trigger can make a state fetch early
+or bypass its floor, and `force=true` is never used by the backup. Its `watch.sh` entry points gate pending-branch lookup,
 carry-forward, live collection and publication before those operations run.
 They all exit successfully without those operations while every state is held.
 The first gate opens at 02:00 UTC November 4 (21:00 EST November 3); per-state
