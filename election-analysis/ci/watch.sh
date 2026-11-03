@@ -79,7 +79,7 @@ case "${1:-}" in
     ;;
   archive)
     # Owner decision (2026-11-03): the run's downloaded originals go to
-    # Dropbox /repo/election-analyser/data/<state>/, each body with its
+    # Dropbox /Apps/election-analyser/data/<state>/ (app-folder access only), each body with its
     # header and SHA-256 stamp. Credentials come from the environment and are
     # never printed; without them the step warns and the artifact remains.
     python3 -m election_reporting.watch.dropbox_archive "${ORIGINALS_DIR:?}" \

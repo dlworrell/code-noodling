@@ -20,7 +20,8 @@ after 30 days". Cases:
 - O6: the workflow passes ORIGINALS_DIR and uploads it as a 90-day artifact,
   and ci/watch.sh forwards it.
 - D1-D5: the Dropbox archive (owner decision, 2026-11-03) puts each body and
-  its header under /repo/election-analyser/data/<state>/ by SHA-256, never
+  its header under /data/<state>/ in the app's own folder (the app has
+  App folder access only, so this is /Apps/election-analyser/data/), never
   overwrites, treats an existing SHA-named file as already archived, reports
   real failures, and skips with a warning (exit 0) without credentials.
 """
@@ -187,7 +188,7 @@ def kept_run(directory: Path) -> OriginalsKeeper:
 
 
 class DropboxArchiveTests(unittest.TestCase):
-    BASE = "/repo/election-analyser/data"
+    BASE = "/data"  # relative to the App folder
 
     def test_d1_bodies_and_headers_go_to_state_folders_by_sha(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -203,6 +204,11 @@ class DropboxArchiveTests(unittest.TestCase):
                 f"{self.BASE}/manifests/41-1.json",
             ]))
             self.assertEqual(box.files[f"{self.BASE}/maine/{sha(b'workbook')}.xlsx"], b"workbook")
+
+    def test_d0_default_base_stays_inside_the_app_folder(self) -> None:
+        # App folder apps address paths relative to /Apps/<app name>/; the
+        # default must not name any location outside that folder.
+        self.assertEqual(dropbox_archive.BASE, "/data")
 
     def test_d2_never_overwrites(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
