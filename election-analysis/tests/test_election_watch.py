@@ -664,6 +664,77 @@ class CarryForwardTests(unittest.TestCase):
             self.assert_no_outside_io(root, seen)
 
 
+    # P12-P14 (Em's rereview of 2a7a42f): the segment from the pending checkout
+    # (trusted, chosen by the workflow) down to its nested elections directory
+    # comes from the automation branch and is checked before any listing or read.
+
+    def checkout_layout(self, root: Path, symlinked: bool) -> tuple[Path, Path]:
+        """A pending checkout with election-analysis/data/elections, optionally via a symlink."""
+        self.pending_tree(root)  # real snapshots under root/pending/elections
+        checkout = root / ".pending"
+        data_parent = checkout / "election-analysis"
+        data_parent.mkdir(parents=True)
+        if symlinked:
+            outside = self.outside_dir(root)
+            shutil.move(str(root / "pending" / "elections"), str(outside / "elections"))
+            (data_parent / "data").symlink_to(outside, target_is_directory=True)
+        else:
+            (data_parent / "data").mkdir()
+            shutil.move(str(root / "pending" / "elections"), str(data_parent / "data" / "elections"))
+        return checkout, data_parent / "data" / "elections"
+
+    def carry_with_base(self, root: Path, checkout: Path, source: Path):
+        seen: list[Path] = []
+        originals = {name: getattr(Path, name) for name in ("read_bytes", "read_text", "write_bytes", "write_text")}
+
+        def spy(name):
+            def wrapper(self_path, *args, **kwargs):
+                seen.append(Path(os.path.realpath(self_path)))
+                return originals[name](self_path, *args, **kwargs)
+            return wrapper
+
+        error = None
+        with mock.patch.multiple(Path, **{name: spy(name) for name in originals}):
+            try:
+                carry_forward(source, root / "main" / "elections", log=lambda _: None, source_base=checkout)
+            except ElectionReportError as exc:
+                error = exc
+        return error, seen
+
+    def test_p12_symlink_between_checkout_and_elections_root_is_refused_before_reading(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            checkout, source = self.checkout_layout(root, symlinked=True)
+            error, seen = self.carry_with_base(root, checkout, source)
+            self.assertIsNotNone(error)
+            self.assertIn("symlink", str(error))
+            self.assertEqual(seen, [])  # nothing read or written at all
+            self.assertFalse((root / "main").exists())
+
+    def test_p13_real_nested_elections_root_carries(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            checkout, source = self.checkout_layout(root, symlinked=False)
+            error, seen = self.carry_with_base(root, checkout, source)
+            self.assertIsNone(error)
+            self.assertTrue(any((root / "main" / "elections").rglob("*.csv")))
+            allowed = [Path(os.path.realpath(checkout)), Path(os.path.realpath(root / "main"))]
+            self.assertEqual([p for p in seen if not any(a == p or a in p.parents for a in allowed)], [])
+
+    def test_p14_source_outside_the_trusted_root_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.pending_tree(root)
+            (root / ".pending").mkdir()
+            with self.assertRaisesRegex(ElectionReportError, "not inside"):
+                carry_forward(root / "pending" / "elections", root / "main" / "elections",
+                              log=lambda _: None, source_base=root / ".pending")
+
+    def test_p15_workflow_passes_the_trusted_root(self) -> None:
+        script = (Path(__file__).resolve().parents[1] / "ci" / "watch.sh").read_text(encoding="utf-8")
+        self.assertIn('carry --from "$pending" --trusted-root "$checkout"', script)
+
+
 class RepositoryTests(unittest.TestCase):
     def test_snapshot_files_are_not_git_ignored(self) -> None:
         import subprocess

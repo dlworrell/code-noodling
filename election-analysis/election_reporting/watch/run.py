@@ -659,7 +659,25 @@ def _election_dirs(source_root: Path) -> list[Path]:
     return sorted(found)
 
 
-def carry_forward(source_root: Path, target_root: Path, log: Callable[[str], None] = print) -> int:
+def _confine_source_root(source_base: Path, source_root: Path) -> None:
+    """Refuse ``source_root`` unless every directory from ``source_base`` down to it is real.
+
+    ``source_base`` is the pending checkout directory that the workflow itself
+    chose (for example ``.pending``), so it is trusted. The directories below
+    it (``election-analysis/data/elections``) come from the automation
+    branch's tree, so any of them could be a symlink planted to redirect the
+    carry outside the checkout. Each one is checked with ``contained`` (no
+    ``..``, no absolute part, no symlink component, resolved inside the base)
+    before anything under ``source_root`` is listed or read.
+    """
+    relative = os.path.relpath(os.path.abspath(source_root), os.path.abspath(source_base))
+    if relative == "." or relative.startswith(".."):
+        raise ElectionReportError(f"refusing carry source {source_root}: it is not inside {source_base}")
+    contained(source_base, Path(relative).as_posix())
+
+
+def carry_forward(source_root: Path, target_root: Path, log: Callable[[str], None] = print,
+                  source_base: Path | None = None) -> int:
     """Copy snapshots recorded under ``source_root`` but missing from ``target_root``.
 
     Purpose. The scheduled watcher proposes snapshots through an automation
@@ -671,21 +689,38 @@ def carry_forward(source_root: Path, target_root: Path, log: Callable[[str], Non
     move; everything else in the target, such as a hand-edited
     ``election.toml``, is left as it is.
 
-    Inputs: two directories chosen by the workflow, which are the trusted
-    roots. Everything read from inside them (directory names, SOURCES.json
-    and the paths it records) is data, not trusted locations: the pending
-    branch can be written by automation, and a matching SHA-256 proves
-    content, not that a path may be used.
+    Inputs and trust boundary:
+    - ``source_base``: the pending checkout directory the workflow chose. It
+      is trusted. When given (the CLI always passes it), every directory from
+      it down to ``source_root`` must be a real directory; this is checked
+      before discovery.
+    - ``source_root``: the elections directory inside that checkout. Its
+      path below ``source_base`` comes from the automation branch, so it is
+      data until checked.
+    - ``target_root``: the elections directory of the workflow's own
+      ``dev-daily`` checkout. It is trusted as a root, because that tree is
+      reviewed code, not automation output, but everything written under it
+      is still confined.
+    Everything read inside either tree (directory names, SOURCES.json and
+    the paths it records) is data, not trusted locations, and a matching
+    SHA-256 proves content, not that a path may be used.
 
-    Output: the number of snapshots copied. It raises ``ElectionReportError``,
-    and writes nothing for that election directory, when any of the following
-    is found:
+    Output: the number of snapshots copied. It raises ``ElectionReportError``
+    (before any read when the problem is in the source-root segment, and
+    before any write for that election directory otherwise) when any of the
+    following is found:
     - a path that would leave either root;
     - a symlink anywhere along the chain: root, election directory,
       SOURCES.json, or snapshot file, in either tree;
     - a digest mismatch.
 
-    Order of checks, all done before the store for that directory is built:
+    Symlinked *directories* found while walking the pending tree are skipped,
+    not followed and not reported. A symlink on a checked path is refused
+    with an error. These are two different outcomes.
+
+    Order of checks:
+    0. confine the source-root segment, from ``source_base`` down to
+       ``source_root`` (when ``source_base`` is given);
     1. find election directories without following symlinks;
     2. confine the source election directory and its SOURCES.json;
     3. confine the target election directory and its SOURCES.json;
@@ -701,6 +736,8 @@ def carry_forward(source_root: Path, target_root: Path, log: Callable[[str], Non
     itself.
     """
     copied = 0
+    if source_base is not None:
+        _confine_source_root(source_base, source_root)  # step 0, before any listing or read
     if not source_root.is_dir():
         return 0
     for source_dir in _election_dirs(source_root):
