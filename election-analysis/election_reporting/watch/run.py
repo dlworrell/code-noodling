@@ -691,9 +691,11 @@ def carry_forward(source_root: Path, target_root: Path, log: Callable[[str], Non
 
     Inputs and trust boundary:
     - ``source_base``: the pending checkout directory the workflow chose. It
-      is trusted. When given (the CLI always passes it), every directory from
-      it down to ``source_root`` must be a real directory; this is checked
-      before discovery.
+      is trusted. When given, every directory from it down to
+      ``source_root`` must be a real directory; this is checked before
+      discovery. The workflow wrapper (``ci/watch.sh carry``) always supplies
+      it via ``--trusted-root``. For standalone CLI use the flag is optional,
+      and without it this source-root segment is not checked.
     - ``source_root``: the elections directory inside that checkout. Its
       path below ``source_base`` comes from the automation branch, so it is
       data until checked.

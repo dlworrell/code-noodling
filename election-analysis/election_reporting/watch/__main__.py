@@ -41,7 +41,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         "--trusted-root",
         dest="trusted_root",
         type=Path,
-        help="carry: the pending checkout the workflow chose; directories below it are checked",
+        help="carry: the pending checkout the workflow chose; directories below it are checked "
+        "(supplied by ci/watch.sh; optional for standalone use, which then skips that check)",
     )
     parser.add_argument("--config", type=Path, default=Path("election-analysis/data/watch.toml"))
     parser.add_argument("--now", help="status only: simulate a time without making source requests")
