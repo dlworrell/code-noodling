@@ -392,7 +392,10 @@ def _fetch_king_county(store, config, place, plan_, fetch, now, result) -> None:
     body's SHA-256 with what is already stored:
     - new bytes become a new immutable snapshot (under a free time stamp
       if the minute is taken);
-    - identical bytes are reported as ``unchanged`` and nothing is written.
+    - identical bytes create no new snapshot and are reported as
+      ``unchanged``. The retrieval is still appended to the observation
+      history, and SOURCES.json is saved at the end of the run, so a ledger
+      write can still happen; only the snapshot set is unchanged.
     The URL is never treated as content identity, because a correction can
     keep it.
 
