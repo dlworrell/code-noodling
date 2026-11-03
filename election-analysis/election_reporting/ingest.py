@@ -225,11 +225,20 @@ def _xlsx_column(reference: str) -> int:
 
     Scope: only the column letters and the reference's shape are checked. The
     row number is not compared with the enclosing row element, nor with any
-    row limit; row counts are bounded separately by the existing row budget.
+    row limit.
+
+    Row counts differ by reader:
+    - the streamed reader, ``iter_xlsx_sheet_rows``, enforces its own row
+      budget (``MAX_STREAMED_SHEET_ROWS``) and decompressed-byte budget;
+    - the dense reader, ``_xlsx_rows`` (used by ``xlsx_summary_rows`` and
+      ``xlsx_worksheets``), has no row-count budget. Its input is bounded only
+      by the uncompressed-size check on the members it reads
+      (``MAX_XLSX_UNCOMPRESSED_BYTES``).
 
     Limit: this bounds a single row at 16,384 columns. It does not bound the
-    whole workbook, and there is no aggregate allocation budget. Many rows that each reach column XFD can still expand to
-    rows x 16,384 entries within the existing byte and row budgets. That
+    whole workbook, and there is no aggregate allocation budget. In the dense
+    reader with ``width=None``, many rows that each reach column XFD can
+    still expand to rows x 16,384 entries within the byte budget. That
     cumulative availability risk is recorded separately and is not addressed
     here.
     """
