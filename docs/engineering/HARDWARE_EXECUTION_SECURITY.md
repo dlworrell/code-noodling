@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2025 Donovan Worrell
+
+SPDX-License-Identifier: MIT
+Catalyst-File-ID: urn:uuid:93dc01d6-623e-4f56-b6ce-73a0b761e949
+-->
+
 # Hardware execution security: no public lab runners
 
 ## Decision

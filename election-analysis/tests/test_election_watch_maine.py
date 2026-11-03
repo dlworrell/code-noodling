@@ -362,6 +362,53 @@ class MaineFetchTests(unittest.TestCase):
             result = fetch_snapshots(config, web, datetime(2026, 11, 4, 20, 7, tzinfo=EASTERN), log=lambda _: None)
             self.assertEqual(result.skipped, ["maine: no results posted for this election yet"])
 
+    # WATCH-05 acceptance cases:
+    # M1 both discovery pages failing is a source error, not "nothing posted";
+    # M2 both pages answering with nothing for this election is "nothing posted"
+    #    (test_nothing_posted_yet);
+    # M3 the current page failing while the year page has workbooks keeps the
+    #    snapshot and reports the failure;
+    # M4 one page failing and the other answering empty reports the failure.
+
+    def maine_now(self):
+        return datetime(2026, 11, 24, 20, 7, tzinfo=EASTERN)
+
+    def test_m1_both_discovery_pages_failing_is_an_error(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            config = load_watch_settings(write_watch(Path(tmp))).watches[0]
+            result = fetch_snapshots(config, FakeWeb({}), self.maine_now(), log=lambda _: None)
+            self.assertEqual(result.added, [])
+            self.assertEqual(result.skipped, [])  # not "no results posted"
+            self.assertEqual(len(result.errors), 2)
+            self.assertTrue(all("discovery page" in e and "could not be read" in e for e in result.errors))
+
+    def test_m3_current_page_failure_keeps_year_page_results_and_reports_it(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            config = load_watch_settings(write_watch(Path(tmp))).watches[0]
+            web = maine_web()
+            year_page = maine.YEAR_PAGE.format(year=2026)
+            web.routes[year_page] = web.routes.pop(maine.RESULTS_PAGE)
+            web.routes[year_page] = Response(year_page, web.routes[year_page].body)
+            result = fetch_snapshots(config, web, self.maine_now(), log=lambda _: None)
+            self.assertTrue(result.added)
+            self.assertEqual([e for e in result.errors if "discovery page" in e],
+                             [f"maine: discovery page {maine.RESULTS_PAGE} could not be read: "
+                              f"HTTP 404 from {maine.RESULTS_PAGE}"])
+
+    def test_m4_one_page_failing_and_one_empty_reports_the_failure(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            config = load_watch_settings(write_watch(Path(tmp))).watches[0]
+            empty = "<h2>June 9, 2026 - Primary Election</h2>"
+            web = FakeWeb({maine.RESULTS_PAGE: Response(maine.RESULTS_PAGE, empty.encode())})
+            result = fetch_snapshots(config, web, self.maine_now(), log=lambda _: None)
+            self.assertEqual(result.added, [])
+            self.assertEqual(len(result.errors), 1)
+            self.assertIn(maine.YEAR_PAGE.format(year=2026), result.errors[0])
+            # Not an unqualified "no results posted": discovery was incomplete.
+            self.assertNotIn("maine: no results posted for this election yet", result.skipped)
+            self.assertEqual(result.skipped, ["maine: no results found on the discovery pages that could be "
+                                              "read; discovery incomplete (see errors)"])
+
     def test_window_is_daily_for_35_days(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             config = load_watch_settings(write_watch(Path(tmp))).watches[0]

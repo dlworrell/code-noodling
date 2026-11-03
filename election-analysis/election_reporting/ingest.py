@@ -201,13 +201,57 @@ def _xlsx_cell_value(cell: ET.Element, shared_strings: list[str]) -> str:
         raise ElectionReportError("XLSX shared-string index is invalid") from exc
 
 
+XLSX_MAX_COLUMN = 16_384  # XFD, the last column the XLSX format allows
+_CELL_REFERENCE = re.compile(r"([A-Z]{1,3})([1-9][0-9]{0,6})")
+
+
 def _xlsx_column(reference: str) -> int:
-    match = re.match(r"([A-Z]+)", reference.upper())
+    """1-based column of a cell reference such as ``B7``; 0 when the cell has none.
+
+    Purpose: both XLSX readers size each row's list from the largest column
+    seen in that row, so the column must be bounded before it is used. The
+    ZIP-size and row-count budgets do not limit column letters, and
+    ``ZZZZZZ1`` alone would mean a list of about 321 million entries.
+
+    Inputs and outputs:
+    - "" (a cell with no ``r`` attribute) -> 0; the caller ignores the cell,
+      as before;
+    - a real reference: one to three letters, then a row number with no
+      leading zero, case-insensitive, for example "B7" or "xfd1048576" ->
+      its column, 1 to 16,384;
+    - a column past XFD (16,384, the XLSX format's maximum) ->
+      ``ElectionReportError``, before any allocation;
+    - anything else ("1A", "A0", "AB", "A1:B2") -> ``ElectionReportError``.
+
+    Scope: only the column letters and the reference's shape are checked. The
+    row number is not compared with the enclosing row element, nor with any
+    row limit.
+
+    Row counts differ by reader:
+    - the streamed reader, ``iter_xlsx_sheet_rows``, enforces its own row
+      budget (``MAX_STREAMED_SHEET_ROWS``) and decompressed-byte budget;
+    - the dense reader, ``_xlsx_rows`` (used by ``xlsx_summary_rows`` and
+      ``xlsx_worksheets``), has no row-count budget. Its input is bounded only
+      by the uncompressed-size check on the members it reads
+      (``MAX_XLSX_UNCOMPRESSED_BYTES``).
+
+    Limit: this bounds a single row at 16,384 columns. It does not bound the
+    whole workbook, and there is no aggregate allocation budget. In the dense
+    reader with ``width=None``, many rows that each reach column XFD can
+    still expand to rows x 16,384 entries within the byte budget. That
+    cumulative availability risk is recorded separately and is not addressed
+    here.
+    """
+    if not reference:
+        return 0  # cells may omit r; such cells are ignored, as before
+    match = _CELL_REFERENCE.fullmatch(reference.upper())
     if match is None:
-        return 0
+        raise ElectionReportError(f"XLSX cell reference {reference[:20]!r} is not supported")
     column = 0
     for character in match.group(1):
         column = column * 26 + ord(character) - ord("A") + 1
+    if column > XLSX_MAX_COLUMN:
+        raise ElectionReportError(f"XLSX cell reference {reference[:20]!r} is beyond column XFD")
     return column
 
 

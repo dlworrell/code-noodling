@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import json
+import os
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -26,9 +27,10 @@ from .schedule import (
     hold_message,
     election_kind,
     is_due,
+    polls_closed,
     watch_window,
 )
-from .store import SOURCES_FILE, ElectionStore, SnapshotRecord, gzip_bytes, sha256
+from .store import SOURCES_FILE, ElectionStore, SnapshotRecord, contained, gzip_bytes, sha256
 
 STATE_PRIORITY = 100
 COUNTY_PRIORITY = 10
@@ -381,6 +383,33 @@ def _fetch_votewa_json(store, config, place, plan_, fetch, now, result) -> None:
 
 
 def _fetch_king_county(store, config, place, plan_, fetch, now, result) -> None:
+    """King County's own nightly CSV exports, one snapshot per distinct body.
+
+    Purpose: King County posts election results as CSV exports linked from
+    its results page, and may republish a corrected export at the same URL,
+    or change only the URL's query string.
+
+    Behaviour: every export listed for this election (dated on or after
+    election day) is fetched on every due run. ``_record`` compares the
+    body's SHA-256 with what is already stored:
+    - new bytes become a new immutable snapshot (under a free time stamp
+      if the minute is taken);
+    - identical bytes create no new snapshot and are reported as
+      ``unchanged``. The retrieval is still appended to the observation
+      history, and SOURCES.json is saved at the end of the run, so a ledger
+      write can still happen; only the snapshot set is unchanged.
+    The URL is never treated as content identity, because a correction can
+    keep it.
+
+    Cost (a deliberate trade-off): each run re-downloads the county's listed
+    exports, a handful of CSV files of a few hundred kilobytes each, under the
+    existing per-request size caps. There is no bandwidth saving; the gain is
+    that changed bytes available at the next fetch are detected, even when
+    the county keeps the same URL. The guarantee is bounded by the cadence:
+    an intermediate version that the county overwrites between two fetches
+    is never seen and can still be missed. Request floors and cadence are
+    unchanged.
+    """
     page = sources.king_county_page(fetch, plan_.election.day)
     if page is None:
         result.skipped.append(f"{place.place_id}: no county results page yet")
@@ -389,10 +418,12 @@ def _fetch_king_county(store, config, place, plan_, fetch, now, result) -> None:
     if not files:
         result.skipped.append(f"{place.place_id}: no county result files yet")
         return
-    seen_urls = {r.source_url.split("?", 1)[0] for r in store.records if r.place == place.place_id}
+    # Every listed file is fetched on every run, even at a URL already recorded:
+    # King County can replace an export in place (or change only its query
+    # string) to publish a correction. _record keeps a new immutable snapshot
+    # when the bytes differ and skips identical bytes, so a repeated file stays
+    # idempotent. A URL is never treated as a content identity.
     for item in files:
-        if item.url.split("?", 1)[0] in seen_urls:
-            continue
         response = fetch(item.url)
         local = (response.last_modified or now).astimezone(config.timezone)
         if local.date() != item.day:
@@ -408,29 +439,84 @@ def _fetch_king_county(store, config, place, plan_, fetch, now, result) -> None:
         )
 
 
+ALASKA_CLOCK_SKEW = timedelta(minutes=10)  # tolerated difference between the Division's clock and ours
+
+
+def _alaska_publication_time(response, config, election_day, now) -> tuple[datetime | None, str]:
+    """When the Division published this results file, if that can be established.
+
+    Purpose. The Division of Elections reuses one results path per year, so
+    the link on this election's results page can still serve an earlier
+    election's file, or the election-day "zero report" posted before polls
+    close. The only evidence of which file is being served is the HTTP
+    ``Last-Modified`` header; the CSV body carries no election identifier.
+
+    Inputs: the HTTP response, the watch configuration (time zone and polls
+    closing time), the election day, and the current time (timezone-aware).
+
+    Output: ``(published, "")`` when ``Last-Modified`` is present, parseable,
+    timezone-aware, no earlier than polls closing and no later than ``now``
+    plus a small clock-skew allowance. Otherwise ``(None, reason)``, and the
+    caller must not store the file.
+
+    Why polls closing and not the window start: the window start is clamped to
+    the request floor (07:00 UTC on November 4 for Alaska). A file posted after
+    polls closed (05:00 UTC) but before the floor passes this publication-time
+    eligibility check, even when it is fetched after the floor. Passing the
+    check does not prove the file is this election's (see Limits).
+
+    Why missing or malformed dates are refused rather than replaced by the
+    retrieval time: substituting "now" would turn "we cannot tell which
+    election this file is" into "this file is current", which is exactly the
+    stale-file case this check exists to stop. Refusing makes the gap visible
+    in the run's skipped list; a later fetch with a valid header is stored
+    normally.
+
+    Limits: a valid recent date is necessary, not sufficient. It shows the
+    file changed after polls closed, not that every row is this election's.
+    Identity also rests on the link coming from this election's own results
+    page (see ``alaska.results_file_url``).
+    """
+    raw = response.headers.get("last-modified", "")
+    if not raw:
+        return None, "no Last-Modified header, so the file cannot be tied to this election"
+    published = response.last_modified
+    if published is None or published.tzinfo is None or published.utcoffset() is None:
+        return None, f"unreadable Last-Modified {raw[:40]!r}, so the file cannot be tied to this election"
+    if published < polls_closed(config, election_day):
+        return None, (f"last modified {published.astimezone(config.timezone):%Y-%m-%d %H:%M %Z}, "
+                      "before polls closed; no results for this election yet")
+    if published > now + ALASKA_CLOCK_SKEW:
+        return None, (f"Last-Modified {raw[:40]!r} is later than the retrieval time, "
+                      "so the date cannot be trusted")
+    return published, ""
+
+
 def _fetch_alaska(store, config, plan_, fetch, now, result) -> None:
-    """One statewide precinct file, converted to statewide and borough inputs."""
+    """One statewide precinct file, converted to statewide and borough inputs.
+
+    Steps: find the precinct CSV linked from this election's results page;
+    fetch it; refuse it unless its publication time can be established (see
+    ``_alaska_publication_time``); convert it to statewide and per-borough
+    inputs; record one snapshot per place, stamped with the publication time.
+    Nothing is stored for a refused file, and the reason is added to
+    ``result.skipped``.
+    """
     url = alaska.results_file_url(fetch, plan_.election)
     if url is None:
         result.skipped.append("alaska: no precinct results file posted yet")
         return
     response = fetch(url)
-    modified = response.last_modified
-    # The Division reuses one results path per year, so before new results are
-    # posted the link can still serve an earlier election's file (or the
-    # election day's zero report, posted before polls close).
-    if modified is not None and modified < plan_.window.start:
-        result.skipped.append(
-            f"alaska: results file last modified {modified:%Y-%m-%d %H:%M %Z}, "
-            "before polls closed; no results for this election yet"
-        )
+    modified, refusal = _alaska_publication_time(response, config, plan_.election.day, now)
+    if modified is None:
+        result.skipped.append(f"alaska: results file refused: {refusal}")
         return
     crosswalk = alaska.load_crosswalk(config.elections_root.parents[1])
     outputs = alaska.convert(response.body, crosswalk, list(plan_.places))
     if not _has_votes(outputs.get("alaska", "ContestOrder,Votes\n")):
         result.skipped.append("alaska: no votes reported yet")
         return
-    moment = modified or now
+    moment = modified  # established above; never the retrieval time
     raw = gzip_bytes(response.body)
     for place in plan_.places:
         text = outputs.get(place.place_id)
@@ -489,15 +575,51 @@ def _zip_workbooks(files: list[tuple[str, str, bytes]]) -> bytes:
 
 
 def _fetch_maine(store, config, plan_, fetch, now, result) -> None:
-    """Every office workbook posted for the election, combined into one snapshot."""
-    links = maine.result_links(fetch, plan_.election)
+    """Every office workbook posted for the election, combined into one snapshot.
+
+    Discovery tries the current results page first. Only when that page
+    fails or lists no workbooks for this election does it try the election
+    year's page (see ``maine.discover``); when the current page lists
+    workbooks, the year page is not read at all. Every failure on a page
+    that was attempted is kept. Outcomes, by what discovery saw:
+    - workbooks found: they are fetched and combined; if the current page
+      failed before the year page supplied them, that failure is still
+      reported as a run error;
+    - both pages attempted and both failed: errors only, coverage status
+      ``discovery_failed``, and no "nothing posted" claim, so the run is
+      visible as failed;
+    - both pages attempted, one failed and the other listed nothing: an
+      error for the failed page, plus a qualified skip ("no results found on
+      the discovery pages that could be read; discovery incomplete (see
+      errors)"), coverage status ``discovery_incomplete``;
+    - both pages attempted, both answered and listed nothing: "no results
+      posted for this election yet".
+    """
+    discovery = maine.discover(fetch, plan_.election)
+    links = discovery.links
+    # A failed discovery page is a source error, reported even when the other page answered.
+    for page_url, error in discovery.failures:
+        result.errors.append(f"maine: discovery page {page_url} could not be read: {error}")
     store.coverage["maine"] = {"status": "incomplete_or_unreviewed", "observed_at": now.isoformat(),
         "discovered_workbooks": [link.url for link in links], "failed_workbooks": [],
+        "failed_discovery_pages": [{"url": u, "error": e} for u, e in discovery.failures],
         "expected_offices": maine.expected_offices(plan_.election.day),
         "missing_expected_offices": [], "coverage_complete": False,
         "finding": "Discovery does not establish every office/district/municipality; full expected inventory needs review."}
     if not links:
         store.coverage["maine"]["missing_expected_offices"] = maine.expected_offices(plan_.election.day)
+        if discovery.unreachable:
+            # Both pages failed: unknown, not empty. The errors above make the run visible as failed.
+            store.coverage["maine"]["status"] = "discovery_failed"
+            return
+        if discovery.failures:
+            # One page answered with nothing for this election, the other failed:
+            # only the page that answered can be described, and discovery is incomplete.
+            store.coverage["maine"]["status"] = "discovery_incomplete"
+            result.skipped.append("maine: no results found on the discovery pages that could be read; "
+                                  "discovery incomplete (see errors)")
+            return
+        # Both pages answered and neither lists this election's workbooks.
         result.skipped.append("maine: no results posted for this election yet")
         return
     contests: list[maine.Contest] = []
@@ -642,44 +764,144 @@ def fetch_snapshots(
     return result
 
 
-def carry_forward(source_root: Path, target_root: Path, log: Callable[[str], None] = print) -> int:
+def _election_dirs(source_root: Path) -> list[Path]:
+    """Election directories under ``source_root``: those holding a regular SOURCES.json.
+
+    The walk never follows symlinked directories (``followlinks=False``), so a
+    symlink planted in the pending tree cannot lead the walk, or any later
+    read, outside ``source_root``. A SOURCES.json that is itself a symlink is
+    left for ``contained`` to refuse, which makes the attempt visible rather
+    than silently skipped.
+    """
+    found = []
+    for directory, _subdirs, files in os.walk(source_root, followlinks=False):
+        if SOURCES_FILE in files:
+            found.append(Path(directory))
+    return sorted(found)
+
+
+def _confine_source_root(source_base: Path, source_root: Path) -> None:
+    """Refuse ``source_root`` unless every directory from ``source_base`` down to it is real.
+
+    ``source_base`` is the pending checkout directory that the workflow itself
+    chose (for example ``.pending``), so it is trusted. The directories below
+    it (``election-analysis/data/elections``) come from the automation
+    branch's tree, so any of them could be a symlink planted to redirect the
+    carry outside the checkout. Each one is checked with ``contained`` (no
+    ``..``, no absolute part, no symlink component, resolved inside the base)
+    before anything under ``source_root`` is listed or read.
+    """
+    relative = os.path.relpath(os.path.abspath(source_root), os.path.abspath(source_base))
+    if relative == "." or relative.startswith(".."):
+        raise ElectionReportError(f"refusing carry source {source_root}: it is not inside {source_base}")
+    contained(source_base, Path(relative).as_posix())
+
+
+def carry_forward(source_root: Path, target_root: Path, log: Callable[[str], None] = print,
+                  source_base: Path | None = None) -> int:
     """Copy snapshots recorded under ``source_root`` but missing from ``target_root``.
 
-    Used by the scheduled workflow: snapshots waiting in an unmerged automation
-    pull request are copied onto a fresh checkout of the default branch before
-    the next fetch, because report files that the state overwrites cannot be
-    downloaded again. Only snapshot files and their records move; everything
-    else on the default branch (for example a hand-edited ``election.toml``)
-    is left as it is.
+    Purpose. The scheduled watcher proposes snapshots through an automation
+    pull request. Until that PR is merged, its snapshots exist only on the
+    automation branch, and the state may overwrite the source file, so it
+    cannot be downloaded again. Each run therefore copies the still-unmerged
+    snapshots (checked out at ``source_root``) onto the fresh checkout
+    (``target_root``) before fetching. Only snapshot files and their records
+    move; everything else in the target, such as a hand-edited
+    ``election.toml``, is left as it is.
+
+    Inputs and trust boundary:
+    - ``source_base``: the pending checkout directory the workflow chose. It
+      is trusted. When given, every directory from it down to
+      ``source_root`` must be a real directory; this is checked before
+      discovery. The workflow wrapper (``ci/watch.sh carry``) always supplies
+      it via ``--trusted-root``. For standalone CLI use the flag is optional,
+      and without it this source-root segment is not checked.
+    - ``source_root``: the elections directory inside that checkout. Its
+      path below ``source_base`` comes from the automation branch, so it is
+      data until checked.
+    - ``target_root``: the elections directory of the workflow's own
+      ``dev-daily`` checkout. It is trusted as a root, because that tree is
+      reviewed code, not automation output, but everything written under it
+      is still confined.
+    Everything read inside either tree (directory names, SOURCES.json and
+    the paths it records) is data, not trusted locations, and a matching
+    SHA-256 proves content, not that a path may be used.
+
+    Output: the number of snapshots copied. It raises ``ElectionReportError``
+    (before any read when the problem is in the source-root segment, and
+    before any write for that election directory otherwise) when any of the
+    following is found:
+    - a path that would leave either root;
+    - a symlink anywhere along the chain: root, election directory,
+      SOURCES.json, or snapshot file, in either tree;
+    - a digest mismatch.
+
+    Symlinked *directories* found while walking the pending tree are skipped,
+    not followed and not reported. A symlink on a checked path is refused
+    with an error. These are two different outcomes.
+
+    Order of checks:
+    0. confine the source-root segment, from ``source_base`` down to
+       ``source_root`` (when ``source_base`` is given);
+    1. find election directories without following symlinks;
+    2. confine the source election directory and its SOURCES.json;
+    3. confine the target election directory and its SOURCES.json;
+    4. only then read the two ledgers;
+    5. stage and verify every file of every missing record (read through
+       ``contained``);
+    6. write.
+
+    Limits: the checks resolve paths and then open them. A process that swaps
+    a path component for a symlink between check and open (a race) is not
+    defended against. The roots are fresh workflow checkouts that no other
+    process writes during the run, so that race needs control of the runner
+    itself.
     """
     copied = 0
+    if source_base is not None:
+        _confine_source_root(source_base, source_root)  # step 0, before any listing or read
     if not source_root.is_dir():
         return 0
-    # Election directories are <state>/<date>/; find them by their records.
-    for source_dir in sorted(path.parent for path in source_root.rglob(SOURCES_FILE)):
-        relative = source_dir.relative_to(source_root)
-        if ".." in relative.parts:
-            continue
+    for source_dir in _election_dirs(source_root):
+        relative = source_dir.relative_to(source_root).as_posix()
+        if relative == ".":
+            continue  # a ledger directly in the root is not an election directory
+        # Steps 2-3: confine both election directories and both ledgers before reading either.
+        contained(source_root, relative)
+        contained(source_root, f"{relative}/{SOURCES_FILE}")
+        target_dir = contained(target_root, relative)
+        contained(target_root, f"{relative}/{SOURCES_FILE}")
         carried = ElectionStore(source_dir)
         if not carried.records:
             continue
-        target = ElectionStore(target_root / relative)
+        target = ElectionStore(target_dir)
         before = copied
         if not target.election:
             target.election = carried.election
+        # Step 5: validate every path and digest in this election directory
+        # before writing any file, so a bad record leaves no partial copy.
+        staged = []
         for record in carried.records:
             if target.has_snapshot(record.place, record.snapshot):
                 continue
+            files = []
             for stored, digest in ((record.input, record.input_sha256), (record.raw, record.raw_sha256)):
                 if not stored:
                     continue
-                data = (source_dir / stored).read_bytes()
+                contained(target.directory, stored)
+                data = contained(source_dir, stored).read_bytes()
                 if sha256(data) != digest:
                     raise ElectionReportError(f"{source_dir / stored} does not match its recorded SHA-256")
+                files.append((stored, data))
+            staged.append((record, files))
+        # Step 6: write (write_file confines each path again).
+        for record, files in staged:
+            for stored, data in files:
                 target.write_file(stored, data)
             target.add(record)
             copied += 1
-            log(f"carried forward {relative.as_posix()} {record.place} {record.snapshot}")
+            log(f"carried forward {relative} {record.place} {record.snapshot}")
         if copied > before:
             target.save()
     return copied

@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2025 Donovan Worrell
+
+SPDX-License-Identifier: MIT
+Catalyst-File-ID: urn:uuid:92315834-604f-44fc-86b9-5a12f73096eb
+-->
+
 # Prime Number and Dice Suite
 
 This directory collects the prime-number generators and the dice programs that

@@ -195,3 +195,31 @@ class ElectionAnalysis:
     generated_at: str = ""
     source_summary: dict[str, object] = field(default_factory=dict)
     coverage_summary: dict[str, object] = field(default_factory=dict)
+
+
+def format_probability(value: float | None) -> str:
+    """The one display policy for a probability, used by every report text.
+
+    Purpose: show a probability with one decimal place without ever rounding
+    an uncertain value to certainty or to impossibility.
+
+    Inputs and outputs:
+    - ``None`` -> "Not estimable" (withheld; never shown as a number);
+    - below 0.001 -> "<0.1%";
+    - above 0.999 but below 1 -> ">99.9%" (plain rounding would show 0.9996
+      as "100.0%", presenting near-certainty as certainty);
+    - exactly 1 -> "100.0%";
+    - anything else -> one decimal place, for example 0.5 -> "50.0%".
+
+    Every place that prints a probability (the report paragraphs, the
+    at-a-glance table and the analysis rationale) must call this, so that a
+    single report never shows two different renderings of the same value.
+    This is display only; it does not validate or calibrate the probability.
+    """
+    if value is None:
+        return "Not estimable"
+    if value < 0.001:
+        return "<0.1%"
+    if 0.999 < value < 1:
+        return ">99.9%"
+    return f"{value:.1%}"
