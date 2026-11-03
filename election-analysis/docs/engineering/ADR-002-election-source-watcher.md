@@ -108,8 +108,9 @@ seasons. Offline fixture tests and historical analysis remain available. See the
 - Each merged snapshot pull request regenerates the reports through the existing
   workflow.
 - The workflow launches hourly at :07 for offline validation, and an external
-  backup scheduler dispatches it with `force=false` at :37 (owner decision,
-  2026-11-03). Per-state 30-minute eligibility is unchanged, so half-hour
+  backup scheduler outside this repository dispatches it with `force=false`,
+  intended at :37 (owner decision, 2026-11-03); its actual configuration is
+  not recorded here. Per-state 30-minute eligibility is unchanged, so half-hour
   collection depends on both triggers arriving. All live and
   publication commands are held before the first state gate; per-state gates
   and cadence control collection afterwards. A run delayed by GitHub past its
