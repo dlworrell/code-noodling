@@ -200,7 +200,7 @@ elections = "elections"   # election-analysis/data/elections/<state>/<election d
 
 [[watch]]
 state = "Washington"
-counties = ["King", "Snohomish", "Pierce", "Kittitas", "Chelan"]
+counties = "all"            # or names, e.g. ["King", "Snohomish", "Pierce"]
 election = "2026-11-03"
 
 [watch.schedule]
