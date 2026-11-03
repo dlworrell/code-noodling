@@ -89,10 +89,11 @@ jobs:
         run: election-analysis/ci/watch.sh fetch
 
       # Owner retention rule (2026-11-03): every downloaded file is saved
-      # unmodified, retained for 30 days, then archived. The bodies and their
+      # unmodified, retained for 30 days and archived. The bodies, headers and
       # MANIFEST.json (election_reporting/watch/originals.py) are kept as this
-      # run's artifact for 90 days, long enough to archive each file after its
-      # 30 days. Runs even when a fetch failed, so partial downloads are kept.
+      # run's artifact for 90 days, a fallback copy; the archive step below
+      # uploads them to Dropbox in this same run. Runs even when a fetch
+      # failed, so partial downloads are kept.
       - name: Keep downloaded originals
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

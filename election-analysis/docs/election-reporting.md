@@ -245,13 +245,19 @@ Every contest from the API also carries the counties it spans; a county source's
 share of a multi-county contest is reported as not controlling, and the statewide
 totals control when the state reports the contest.
 
-### Downloaded originals: retained 30 days, then archived
+### Downloaded originals: kept and archived to Dropbox
 
 Owner rule, 2026-11-03: every file the watcher downloads is saved unmodified,
-retained for 30 days, then archived in Dropbox, one directory per state,
-each file with a header and a SHA stamp. The Dropbox app has access to its
-own folder only (App folder access), so the archive lives in
+retained for 30 days and archived in Dropbox, one directory per state, each
+file with a header and a SHA stamp. The Dropbox app has access to its own
+folder only (App folder access), so the archive lives in
 `/Apps/election-analyser/data/`.
+
+What happens, and when: each run uploads the files it downloaded to Dropbox
+in the same run, right after snapshot publication, so Dropbox holds the
+archive from the start. The run's GitHub artifact is a 90-day fallback copy.
+`archive_after`, 30 days after a file's first retrieval, records the end of
+the 30-day retention window; it is informational, and no job reads it.
 
 How a run does it:
 
@@ -262,20 +268,36 @@ How a run does it:
    `<state>/<sha256>.header.json`: SHA-256, byte length, first retrieval (URL,
    time, `Last-Modified`, `ETag`, `Content-Type`) and `archive_after`, 30 days
    after first retrieval. `MANIFEST.json` lists every retrieval in the run.
+   If a file cannot be saved (for example a full disk), the run warns and
+   the snapshot fetch carries on.
 2. The workflow uploads the directory as the run's
    `election-originals-<run>-<attempt>` artifact, kept for 90 days.
 3. After snapshot publication, `ci/watch.sh archive` copies the same layout
    to Dropbox: `/Apps/election-analyser/data/<state>/<sha256>.<ext>`, the
    header beside it, and the run manifest as `manifests/<run>-<attempt>.json`.
-   Uploads never overwrite; a SHA-named file already present is the same
-   content and is reported as already archived. A failed upload marks the
+   Uploads never overwrite. When a file is already present, its Dropbox
+   content hash is compared with the local bytes: a match is "already
+   archived (verified)"; different bytes, a folder in the way, or a failed
+   check is an error. When a body was already archived by an earlier run,
+   its header is not uploaded again: the header from the first archived
+   retrieval is kept, and later retrievals are recorded in each run's
+   manifest. A network error or timeout fails that one file; the others are
+   still attempted. A failed upload marks the
    step red without affecting snapshot publication.
 
 Dropbox credentials are the repository secrets `DROPBOX_APP_KEY`,
 `DROPBOX_APP_SECRET` and `DROPBOX_REFRESH_TOKEN`, for a Dropbox app named
-`election-analyser` with **App folder** access and only the
-`files.content.write` scope. It cannot see anything else in the Dropbox. Without them the archive
-step warns and the 90-day artifact remains the retained copy.
+`election-analyser` with **App folder** access and the
+`files.content.write` and `files.metadata.read` scopes (the second is for
+the content-hash check). It cannot see anything outside its own folder.
+
+Status words are kept distinct: a file is *captured* when the keeper saves
+it on the runner, *backed up* when it is in the run's 90-day artifact, and
+*archived* only when it is in Dropbox, uploaded or verified by content hash.
+Without the secrets the archive step says the run was NOT archived and exits
+successfully so snapshot publication is never blocked. Such runs are not
+replayed to Dropbox automatically once the secrets exist; copying earlier
+artifacts to Dropbox is a separate backfill.
 
 This covers the files the repository keeps only in derived or trimmed form:
 the Washington "Summary and Precinct Results" workbook and the VoteWA JSON.
