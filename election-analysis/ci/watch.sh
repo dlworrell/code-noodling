@@ -20,7 +20,7 @@ cd "$root"
 # live/publication entry point here as well as per-state requests in Python.
 # This works for scheduled and manual runs without broadening token permissions.
 case "${1:-}" in
-  pending|carry|fetch|publish)
+  pending|carry|fetch|publish|archive)
     gate_args=()
     if [[ ${FORCE:-false} == true ]]; then gate_args+=(--force); fi
     if python3 -m election_reporting.watch status --require-eligible "${gate_args[@]}"; then
@@ -72,7 +72,18 @@ case "${1:-}" in
     # FORCE=true ignores cadence/end, never the state's not_before gate.
     args=()
     if [[ ${FORCE:-false} == true ]]; then args+=(--force); fi
+    # ORIGINALS_DIR (set by the workflow, outside the checkout): every
+    # downloaded body is kept there and uploaded as a 90-day artifact.
+    if [[ -n ${ORIGINALS_DIR:-} ]]; then args+=(--keep-originals "$ORIGINALS_DIR"); fi
     python3 -m election_reporting.watch fetch "${args[@]}"
+    ;;
+  archive)
+    # Owner decision (2026-11-03): the run's downloaded originals go to
+    # Dropbox /repo/election-analyser/data/<state>/, each body with its
+    # header and SHA-256 stamp. Credentials come from the environment and are
+    # never printed; without them the step warns and the artifact remains.
+    python3 -m election_reporting.watch.dropbox_archive "${ORIGINALS_DIR:?}" \
+      --label "${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
     ;;
   publish)
     python3 -m election_reporting.ci.publish_reports \
