@@ -19,6 +19,13 @@ branch and requires automation-produced commits to be GitHub-verified. A plain
 4. Opens a pull request from the automation branch to the base branch, or updates
    the existing one.
 
+Route (Catylist ADR-0013). Automation publishes into ``dev-daily`` only; work
+reaches ``fitment`` and ``main`` through promotion, never directly. Before any
+write the script refuses any other base and checks that ``--base-sha`` (the
+commit the files were generated from) is on the base branch. An open pull
+request from the automation branch to another base, left by the earlier
+default-branch route, is migrated to ``dev-daily`` instead of being duplicated.
+
 If nothing changed, it does nothing. If the automation branch already carries
 exactly this content on top of the analyzed commit, it only ensures the PR exists.
 
@@ -42,6 +49,7 @@ from typing import Callable, Sequence
 DEFAULT_BRANCH = "automation/election-reports"
 DEFAULT_PATH = "election-analysis/reports"
 DEFAULT_TITLE = "reports: update election result analysis"
+ALLOWED_BASES = frozenset({"dev-daily"})  # ADR-0013: automation -> dev-daily -> fitment -> main
 
 CREATE_COMMIT_MUTATION = """
 mutation($input: CreateCommitOnBranchInput!) {
@@ -251,22 +259,63 @@ class GitHub:
             raise PublishError(f"createCommitOnBranch failed: {data!r}")
         return data["data"]["createCommitOnBranch"]["commit"]
 
+    def require_on_base(self, base: str, base_sha: str) -> None:
+        """Fail unless ``base_sha`` is the head of ``base`` or one of its ancestors.
+
+        Purpose: files are proposed against the exact commit they were
+        generated from (ADR-0013 consistency). If ``base_sha`` were not on the
+        base, for example generated from ``main`` or a stale fork point, the
+        PR would mix that commit's history into ``dev-daily``.
+
+        How: GitHub's compare API, ``base_sha...base``. ``identical`` means the
+        base has not moved; ``ahead`` means the base gained commits after
+        generation, which is safe because the PR merges on top. Any other
+        status (``behind``, ``diverged``) or an unreadable comparison raises
+        ``PublishError``. No write happens before this check.
+        """
+        comparison = self.api("GET", f"repos/{self.repository}/compare/{base_sha}...{base}")
+        status = comparison.get("status") if isinstance(comparison, dict) else None
+        if status not in ("identical", "ahead"):
+            raise PublishError(
+                f"the generating commit {base_sha} is not on {base} (compare status: {status}); "
+                "files must be generated from the base they are proposed to"
+            )
+
     def open_pull_request(self, branch: str, base: str) -> dict | None:
+        """The one open pull request from ``branch``, whatever its base; refuse if several.
+
+        The base is deliberately not used as a filter: a pull request left on
+        another base by the earlier default-branch route (code-noodling #91,
+        on ``main``) must be found so that it can be retargeted rather than
+        duplicated. Several open pull requests from the same automation branch
+        raise ``PublishError``, because which one to update would be ambiguous.
+        ``publish`` calls this before any write, and again when upserting.
+        """
         owner = self.repository.split("/", 1)[0]
-        pulls = self.api(
-            "GET",
-            f"repos/{self.repository}/pulls?state=open&head={owner}:{branch}&base={base}",
-        )
+        pulls = self.api("GET", f"repos/{self.repository}/pulls?state=open&head={owner}:{branch}") or []
+        if len(pulls) > 1:
+            numbers = ", ".join(f"#{p.get('number')}" for p in pulls)
+            raise PublishError(f"several open pull requests from {branch} ({numbers}); close all but one")
         return pulls[0] if pulls else None
 
-    def upsert_pull_request(self, branch: str, base: str, title: str, body: str) -> str:
+    def upsert_pull_request(self, branch: str, base: str, title: str, body: str,
+                            log: Callable[[str], None] = print) -> str:
+        """Update the automation branch's open pull request, or open one.
+
+        An existing pull request gets the new title and body. If its base
+        differs from ``base`` (the earlier route's ``main``), it is retargeted
+        to ``base`` in the same PATCH and the migration is logged. Otherwise a
+        new pull request from ``branch`` to ``base`` is opened. Returns its URL.
+        """
         existing = self.open_pull_request(branch, base)
         if existing:
-            self.api(
-                "PATCH",
-                f"repos/{self.repository}/pulls/{existing['number']}",
-                {"title": title, "body": body},
-            )
+            update = {"title": title, "body": body}
+            current = (existing.get("base") or {}).get("ref")
+            if current != base:
+                # Left by the earlier default-branch route: retarget it rather than open a duplicate.
+                update["base"] = base
+                log(f"Migrating pull request #{existing['number']} from base {current} to {base}.")
+            self.api("PATCH", f"repos/{self.repository}/pulls/{existing['number']}", update)
             return existing["html_url"]
         try:
             created = self.api(
@@ -330,10 +379,21 @@ def publish(
         raise PublishError("refusing publishing from pull_request_target")
     if branch == base:
         raise PublishError("the automation branch must differ from the base branch")
+    if base not in ALLOWED_BASES:
+        raise PublishError(
+            f"refusing to publish into {base}: automation publishes into "
+            f"{', '.join(sorted(ALLOWED_BASES))} only (ADR-0013)"
+        )
     changes, tree = detect_changes(repo_root, report_path)
     if changes.empty:
         log("Reports are already current; nothing to publish.")
         return None
+    # Route checks, all before any write (branch reset, commit or PR):
+    # the generating commit must be on the base, and the automation branch
+    # must not have several open pull requests (which one to update would
+    # be ambiguous). open_pull_request raises on ambiguity.
+    github.require_on_base(base, base_sha)
+    github.open_pull_request(branch, base)
     log(f"{len(changes.additions)} file(s) to add/update, {len(changes.deletions)} to delete.")
     body = pull_request_body(changes, base_sha, run_url, summary)
 
@@ -347,7 +407,7 @@ def publish(
                 and verification.get("verified") is True
                 and verification.get("reason") == "valid"):
             log(f"{branch} already holds these reports on top of {base_sha}.")
-            return github.upsert_pull_request(branch, base, title, body)
+            return github.upsert_pull_request(branch, base, title, body, log)
 
     github.point_branch(branch, base_sha, exists=head is not None, expected_head=head)
     commit_input = build_commit_input(
@@ -362,7 +422,7 @@ def publish(
     commit = github.create_commit(build_graphql_request(commit_input))
     github.require_verified_commit(commit["oid"], base_sha, tree)
     log(f"Created verified commit {commit['oid']} on {branch}.")
-    url = github.upsert_pull_request(branch, base, title, body)
+    url = github.upsert_pull_request(branch, base, title, body, log)
     log(f"Pull request: {url}")
     return url
 
@@ -370,7 +430,7 @@ def publish(
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--repository", default=os.environ.get("GITHUB_REPOSITORY"))
-    parser.add_argument("--base", required=True, help="pull request base branch")
+    parser.add_argument("--base", required=True, help="pull request base branch (dev-daily only)")
     parser.add_argument("--base-sha", required=True, help="commit the reports were generated from")
     parser.add_argument("--branch", default=DEFAULT_BRANCH)
     parser.add_argument("--path", default=DEFAULT_PATH)
