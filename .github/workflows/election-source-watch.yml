@@ -111,3 +111,18 @@ jobs:
           BASE_BRANCH: dev-daily
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: election-analysis/ci/watch.sh publish
+
+      # Owner decision (2026-11-03): archive the downloaded originals to
+      # Dropbox /repo/election-analyser/data/<state>/ (body, header and
+      # SHA-256 stamp per file; election_reporting/watch/dropbox_archive.py).
+      # Runs after publication so an archive failure never blocks snapshots.
+      # Needs the DROPBOX_APP_KEY, DROPBOX_APP_SECRET and DROPBOX_REFRESH_TOKEN
+      # secrets; without them it warns and the 90-day artifact remains.
+      - name: Archive originals to Dropbox
+        if: ${{ !cancelled() }}
+        env:
+          ORIGINALS_DIR: ${{ runner.temp }}/election-originals
+          DROPBOX_APP_KEY: ${{ secrets.DROPBOX_APP_KEY }}
+          DROPBOX_APP_SECRET: ${{ secrets.DROPBOX_APP_SECRET }}
+          DROPBOX_REFRESH_TOKEN: ${{ secrets.DROPBOX_REFRESH_TOKEN }}
+        run: election-analysis/ci/watch.sh archive

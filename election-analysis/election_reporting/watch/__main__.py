@@ -105,6 +105,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     source_fetch = keeper.recording(http_fetch) if keeper else http_fetch
     for config in settings.watches:
         print(f"== {config.state}")
+        if keeper:
+            keeper.state = config.state_id  # originals are filed by state
         try:
             result = fetch_snapshots(config, source_fetch, now, force=args.force)
         except ElectionReportError as error:

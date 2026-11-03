@@ -19,6 +19,10 @@ after 30 days". Cases:
 - O5: the CLI's --keep-originals wraps the fetch and writes the manifest.
 - O6: the workflow passes ORIGINALS_DIR and uploads it as a 90-day artifact,
   and ci/watch.sh forwards it.
+- D1-D5: the Dropbox archive (owner decision, 2026-11-03) puts each body and
+  its header under /repo/election-analyser/data/<state>/ by SHA-256, never
+  overwrites, treats an existing SHA-named file as already archived, reports
+  real failures, and skips with a warning (exit 0) without credentials.
 """
 
 from __future__ import annotations
@@ -33,6 +37,7 @@ from unittest import mock
 
 from election_reporting.model import ElectionReportError
 from election_reporting.watch import __main__ as watch_cli
+from election_reporting.watch import dropbox_archive
 from election_reporting.watch.http import Response
 from election_reporting.watch.originals import MANIFEST, OriginalsKeeper
 from election_reporting.watch.run import fetch_snapshots
@@ -55,7 +60,7 @@ class KeeperTests(unittest.TestCase):
     def test_o1_body_kept_byte_for_byte_with_30_day_archive_date(self) -> None:
         body = b"PK\x03\x04 workbook bytes \x00\xff"
         with tempfile.TemporaryDirectory() as directory:
-            keep = OriginalsKeeper(Path(directory), clock=lambda: T0)
+            keep = OriginalsKeeper(Path(directory), clock=lambda: T0, state="washington")
             digest = keep.keep(
                 "https://results.votewa.gov/cdn/results/1/Summary.xlsx",
                 body,
@@ -64,7 +69,12 @@ class KeeperTests(unittest.TestCase):
             )
             keep.save()
             self.assertEqual(digest, sha(body))
-            self.assertEqual((Path(directory) / f"{digest}.xlsx").read_bytes(), body)
+            self.assertEqual((Path(directory) / "washington" / f"{digest}.xlsx").read_bytes(), body)
+            header = json.loads((Path(directory) / "washington" / f"{digest}.header.json").read_text())
+            self.assertEqual(header["sha256"], digest)
+            self.assertEqual(header["state"], "washington")
+            self.assertEqual(header["first_retrieval"]["url"], "https://results.votewa.gov/cdn/results/1/Summary.xlsx")
+            self.assertEqual(header["archive_after"], (T0 + timedelta(days=30)).isoformat(timespec="seconds"))
             entry = manifest(Path(directory))["files"][0]
             self.assertEqual(entry["bytes"], len(body))
             self.assertEqual(entry["first_retrieved_at"], "2026-11-04T04:00:00+00:00")
@@ -75,12 +85,13 @@ class KeeperTests(unittest.TestCase):
     def test_o2_same_body_written_once_with_every_retrieval(self) -> None:
         moments = iter([T0, T0 + timedelta(minutes=30)])
         with tempfile.TemporaryDirectory() as directory:
-            keep = OriginalsKeeper(Path(directory), clock=lambda: next(moments))
+            keep = OriginalsKeeper(Path(directory), clock=lambda: next(moments), state="washington")
             keep.keep("https://kingcounty.gov/a.csv", b"same", {})
             keep.keep("https://kingcounty.gov/a.csv?rev=2", b"same", {})
             keep.save()
-            files = sorted(p.name for p in Path(directory).iterdir())
-            self.assertEqual(files, sorted([MANIFEST, f"{sha(b'same')}.csv"]))
+            files = sorted(p.relative_to(directory).as_posix() for p in Path(directory).rglob("*") if p.is_file())
+            self.assertEqual(files, sorted([MANIFEST, f"washington/{sha(b'same')}.csv",
+                                            f"washington/{sha(b'same')}.header.json"]))
             entry = manifest(Path(directory))["files"][0]
             self.assertEqual([r["url"] for r in entry["retrievals"]],
                              ["https://kingcounty.gov/a.csv", "https://kingcounty.gov/a.csv?rev=2"])
@@ -106,7 +117,7 @@ class KeeperTests(unittest.TestCase):
             originals = root / "originals"
             config = load_watch_config(write_watch(root))
             fake = web(root)
-            keep = OriginalsKeeper(originals, clock=lambda: T0)
+            keep = OriginalsKeeper(originals, clock=lambda: T0, state="washington")
             result = fetch_snapshots(config, keep.recording(fake), ELECTION_NIGHT, log=lambda _: None)
             keep.save()
             self.assertEqual(result.errors, [])
@@ -115,6 +126,8 @@ class KeeperTests(unittest.TestCase):
             self.assertEqual(kept, served)
             for entry in manifest(originals)["files"]:
                 self.assertEqual(sha((originals / entry["file"]).read_bytes()), entry["sha256"])
+                self.assertTrue(entry["file"].startswith("washington/"))
+                self.assertTrue((originals / entry["header"]).is_file())
             # VoteWA JSON is stored trimmed in the repository; the original is kept here untrimmed.
             votewa = next(url for url in fake.requests if url.endswith("/data"))
             self.assertIn(sha(fake.routes[votewa].body), kept)
@@ -137,9 +150,97 @@ class KeeperTests(unittest.TestCase):
                     mock.patch.object(watch_cli, "fetch_snapshots", fetch_one):
                 status = watch_cli.main(["fetch", "--config", str(watch_toml), "--keep-originals", str(originals)])
             self.assertEqual(status, 0)
-            self.assertEqual((originals / f"{sha(b'<html>results</html>')}.html").read_bytes(),
+            state = load_watch_config(watch_toml).state_id
+            self.assertEqual((originals / state / f"{sha(b'<html>results</html>')}.html").read_bytes(),
                              b"<html>results</html>")
             self.assertEqual(len(manifest(originals)["files"]), 1)
+
+
+class FakeDropbox:
+    """Records uploads; answers 409 conflict for paths already present."""
+
+    def __init__(self, existing=(), fail=()):
+        self.files: dict[str, bytes] = {path: b"" for path in existing}
+        self.fail = set(fail)
+        self.calls: list[tuple[str, dict]] = []
+
+    def __call__(self, url, data, headers):
+        if url == dropbox_archive.TOKEN_URL:
+            return 200, b'{"access_token": "short-lived"}'
+        argument = json.loads(headers["Dropbox-API-Arg"])
+        self.calls.append((argument["path"], argument))
+        if argument["path"] in self.fail:
+            return 500, b"server error"
+        if argument["path"] in self.files:
+            return 409, b'{"error_summary": "path/conflict/file/"}'
+        self.files[argument["path"]] = data
+        return 200, b"{}"
+
+
+def kept_run(directory: Path) -> OriginalsKeeper:
+    keep = OriginalsKeeper(directory, clock=lambda: T0, state="maine")
+    keep.keep("https://www.maine.gov/sos/a.xlsx", b"workbook", {})
+    keep.state = "alaska"
+    keep.keep("https://www.elections.alaska.gov/r.csv", b"precincts", {})
+    keep.save()
+    return keep
+
+
+class DropboxArchiveTests(unittest.TestCase):
+    BASE = "/repo/election-analyser/data"
+
+    def test_d1_bodies_and_headers_go_to_state_folders_by_sha(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            kept_run(Path(directory))
+            box = FakeDropbox()
+            status = dropbox_archive.archive(Path(directory), "41-1", "token", post=box, log=lambda _: None)
+            self.assertEqual(status, 0)
+            self.assertEqual(sorted(box.files), sorted([
+                f"{self.BASE}/alaska/{sha(b'precincts')}.csv",
+                f"{self.BASE}/alaska/{sha(b'precincts')}.header.json",
+                f"{self.BASE}/maine/{sha(b'workbook')}.xlsx",
+                f"{self.BASE}/maine/{sha(b'workbook')}.header.json",
+                f"{self.BASE}/manifests/41-1.json",
+            ]))
+            self.assertEqual(box.files[f"{self.BASE}/maine/{sha(b'workbook')}.xlsx"], b"workbook")
+
+    def test_d2_never_overwrites(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            kept_run(Path(directory))
+            box = FakeDropbox()
+            dropbox_archive.archive(Path(directory), "41-1", "token", post=box, log=lambda _: None)
+            self.assertTrue(all(arg["mode"] == "add" and arg["autorename"] is False for _, arg in box.calls))
+
+    def test_d3_existing_sha_named_file_is_already_archived(self) -> None:
+        existing = f"{self.BASE}/maine/{sha(b'workbook')}.xlsx"
+        with tempfile.TemporaryDirectory() as directory:
+            kept_run(Path(directory))
+            lines: list[str] = []
+            status = dropbox_archive.archive(Path(directory), "41-1", "token",
+                                             post=FakeDropbox(existing=[existing]), log=lines.append)
+            self.assertEqual(status, 0)
+            self.assertIn(f"already archived: {existing}", lines)
+
+    def test_d4_real_failure_is_reported_and_others_continue(self) -> None:
+        failing = f"{self.BASE}/alaska/{sha(b'precincts')}.csv"
+        with tempfile.TemporaryDirectory() as directory:
+            kept_run(Path(directory))
+            box = FakeDropbox(fail=[failing])
+            lines: list[str] = []
+            status = dropbox_archive.archive(Path(directory), "41-1", "token", post=box, log=lines.append)
+            self.assertEqual(status, 1)
+            self.assertTrue(any(line.startswith("::error::") and failing in line for line in lines))
+            self.assertIn(f"{self.BASE}/maine/{sha(b'workbook')}.xlsx", box.files)
+
+    def test_d5_missing_credentials_warn_and_exit_zero_without_leaking(self) -> None:
+        with tempfile.TemporaryDirectory() as directory, \
+                mock.patch.dict("os.environ", {"DROPBOX_APP_KEY": "k"}, clear=True), \
+                mock.patch("builtins.print") as printed:
+            self.assertEqual(dropbox_archive.main([directory, "--label", "x"]), 0)
+            self.assertIn("skipped", printed.call_args[0][0])
+        with self.assertRaises(RuntimeError) as failure:
+            dropbox_archive.access_token("k", "s", "secret-refresh", post=lambda *_: (400, b"secret-refresh"))
+        self.assertNotIn("secret-refresh", str(failure.exception))
 
 
 class WorkflowContractTests(unittest.TestCase):
@@ -151,6 +252,13 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertIn("if: ${{ !cancelled() }}", workflow.split("Keep downloaded originals", 1)[1].split("uses:", 1)[0])
         wrapper = (ROOT / "election-analysis/ci/watch.sh").read_text(encoding="utf-8")
         self.assertIn('args+=(--keep-originals "$ORIGINALS_DIR")', wrapper)
+        # The Dropbox archive runs after publication, never blocks it, and takes secrets from the environment.
+        archive = workflow.split("Archive originals to Dropbox", 1)[1]
+        self.assertLess(workflow.index("Publish verified commit"), workflow.index("Archive originals to Dropbox"))
+        for secret in ("DROPBOX_APP_KEY", "DROPBOX_APP_SECRET", "DROPBOX_REFRESH_TOKEN"):
+            self.assertIn(f"${{{{ secrets.{secret} }}}}", archive)
+        self.assertIn("election-analysis/ci/watch.sh archive", archive)
+        self.assertIn("python3 -m election_reporting.watch.dropbox_archive", wrapper)
 
 
 if __name__ == "__main__":
