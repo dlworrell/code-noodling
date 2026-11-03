@@ -3,9 +3,14 @@ name: Election Source Watch
 # Checks the official result sources selected in election-analysis/data/watch.toml and
 # proposes new snapshots as a pull request (election-analysis/docs/engineering/ADR-002).
 #
-# Runs every 30 minutes; `python -m election_reporting.watch fetch` decides
-# whether a run is due (every 30 minutes from polls closing until 02:00, then
-# hourly until certification) and exits quickly otherwise.
+# Runs hourly at :07. Owner decision (2026-11-03): primary and backup hourly,
+# on opposite sides of the hour. The backup is an external scheduler, outside
+# this repository, that dispatches this workflow with force=false; the
+# intended backup minute is :37, and its actual configuration is not recorded
+# or guaranteed here. `python -m election_reporting.watch fetch` decides whether
+# each state is due (every 30 minutes from polls closing until 02:00, then
+# hourly until certification) and exits quickly otherwise, so a state's
+# half-hour slot is only collected when a run (primary or backup) lands in it.
 #
 # ADR-0006 (AES-DEV-001-R003/R005): this workflow never pushes to the default
 # branch. New snapshots go to the workflow-owned automation/election-sources
@@ -22,7 +27,7 @@ name: Election Source Watch
 
 on:
   schedule:
-    - cron: "7,37 * * * *"
+    - cron: "7 * * * *"
   workflow_dispatch:
     inputs:
       force:
