@@ -16,6 +16,16 @@ rel=${scope#"$root"/}
 export PYTHONPATH="$scope"
 cd "$root"
 
+# Capture-only collection (election_reporting/watch/capture.py, owner decision
+# 2026-11-03) runs first for `fetch`, before the watcher's gate below: it has
+# its own per-state hard floors in data/capture.toml and ignores FORCE. It only
+# saves unmodified files into ORIGINALS_DIR (the 90-day artifact); a failure is
+# a warning and never stops the watcher.
+if [[ ${1:-} == fetch && -n ${ORIGINALS_DIR:-} && -f $rel/data/capture.toml ]]; then
+  python3 -m election_reporting.watch.capture "$ORIGINALS_DIR" --config "$rel/data/capture.toml" \
+    || echo "::warning::capture-only collection exited with status $?; the watcher continues"
+fi
+
 # The existing workflow calls these commands as separate steps. Gate every
 # live/publication entry point here as well as per-state requests in Python.
 # This works for scheduled and manual runs without broadening token permissions.

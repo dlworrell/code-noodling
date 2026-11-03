@@ -384,6 +384,31 @@ python -m election_reporting.watch status            # offline eligibility, no H
 python -m election_reporting.watch fetch --force     # ignores cadence/end, never not_before
 ```
 
+### Capture-only states
+
+Owner decision (2026-11-03): beyond the three parsed states, the watcher keeps
+unmodified copies of the official result files of eight more states, selected
+in `data/capture.toml` and fetched by `election_reporting/watch/capture.py`.
+Nothing is parsed or committed; the files go into the run's 90-day
+`election-originals-*` artifact with the parsed states' originals.
+
+| Platform | States | Files kept each run |
+| --- | --- | --- |
+| Enhanced Voting (the results.votewa.gov API) | Georgia, Virginia, Rhode Island, Utah, Idaho | jurisdiction list, each same-day election's metadata, every published report file, statewide results JSON, each county's or town's results JSON (local contests) |
+| Clarity | Colorado, Iowa | election list, version, settings, statewide `detailxml.zip` and `summary.zip`, each county's `detailxml.zip` (precincts and local contests) |
+| NC State Board of Elections | North Carolina | the statewide precinct zip (every county and contest) |
+
+Each state's `not_before` is a hard floor at the close of its last polls; no
+request is made before it, and there is no force option. Collection runs on
+every run for eight hours, then every three hours until December 4.
+`ci/watch.sh fetch` runs the capture before the watcher's own gate, within a
+240-second budget, and a capture failure is only a warning. Statewide files
+come first; county files follow while the budget lasts, in an order that
+rotates each half hour. Limits: the due check uses clock slots, so two close
+runs can both fetch; a file is stored once per run by SHA-256, but the
+requests are still made. Arizona (moving to Enhanced Voting tonight) is not
+included: its results host refuses non-browser clients.
+
 ## Supported source formats
 
 King County CSV-shaped exports require `ContestOrder`, `Contest`, `Contest ID`,

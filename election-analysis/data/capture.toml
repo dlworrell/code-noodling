@@ -1,0 +1,77 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:714a8448-33c3-4a82-893d-ef0c965800b6
+
+# Capture-only collection (election_reporting/watch/capture.py). Owner
+# decision, 2026-11-03: keep unmodified copies of the official result files of
+# the states whose results sites share a platform we can read, plus North
+# Carolina. Nothing here is parsed or committed; the files go into the run's
+# 90-day originals artifact.
+#
+# not_before is a hard floor: the close of the state's LAST polls (standard
+# time; daylight saving time ended November 1, 2026). No request is made for a
+# state before it. Every run (each half hour) for night_hours after the floor,
+# then once per every_minutes until end.
+schema_version = 1
+
+[defaults]
+election = 2026-11-03
+end = 2026-12-04T00:00:00Z  # about 30 days; certification files arrive by then
+night_hours = 8
+every_minutes = 180
+counties = true
+
+[[capture]]
+state = "georgia"
+platform = "enhanced-voting"
+host = "results.sos.ga.gov"
+jurisdiction = "georgia"
+not_before = 2026-11-04T00:00:00Z  # 19:00 EST
+
+[[capture]]
+state = "virginia"
+platform = "enhanced-voting"
+host = "enr.elections.virginia.gov"
+jurisdiction = "virginia"
+not_before = 2026-11-04T00:00:00Z  # 19:00 EST
+
+[[capture]]
+state = "north-carolina"
+platform = "ncsbe"
+not_before = 2026-11-04T00:30:00Z  # 19:30 EST
+# The statewide precinct zip already holds every county and local contest.
+counties = false
+
+[[capture]]
+state = "rhode-island"
+platform = "enhanced-voting"
+host = "electionresults.ri.gov"
+jurisdiction = "rhodeisland"
+not_before = 2026-11-04T01:00:00Z  # 20:00 EST; localities are cities and towns
+
+[[capture]]
+state = "colorado"
+platform = "clarity"
+jurisdiction = "CO"
+not_before = 2026-11-04T02:00:00Z  # 19:00 MST
+
+[[capture]]
+state = "iowa"
+platform = "clarity"
+jurisdiction = "IA"
+not_before = 2026-11-04T02:00:00Z  # 20:00 CST
+
+[[capture]]
+state = "utah"
+platform = "enhanced-voting"
+host = "electionresults.utah.gov"
+jurisdiction = "utah"
+not_before = 2026-11-04T03:00:00Z  # 20:00 MST
+
+[[capture]]
+state = "idaho"
+platform = "enhanced-voting"
+host = "results.voteidaho.gov"
+jurisdiction = "id"
+not_before = 2026-11-04T04:00:00Z  # 20:00 PST, the northern panhandle's close
