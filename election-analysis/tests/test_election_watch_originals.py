@@ -417,6 +417,35 @@ class DropboxEdgeTests(unittest.TestCase):
         self.assertEqual(token, "abc")
 
 
+class ContentHashSpecTests(unittest.TestCase):
+    """#123: content_hash against Dropbox's published algorithm, with pinned vectors.
+
+    Dropbox's content_hash: split the file into 4 MiB (4,194,304-byte) blocks,
+    take the SHA-256 of each block, concatenate the binary digests, and take
+    the SHA-256 of that concatenation. The expected values below are fixed hex
+    strings, not recomputed by the function under test. For one block the
+    result is SHA-256(SHA-256(data)); "abc" gives the well-known double-SHA-256
+    value 4f8b42c2...6358. The 4 MiB and 4 MiB + 1 cases pin the block boundary.
+    """
+
+    VECTORS = {
+        "empty": (b"", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"),
+        "abc": (b"abc", "4f8b42c22dd3729b519ba6f68d2da7cc5b2d606d05daed5ad5128cc03e6c6358"),
+        "exactly one block": (b"a" * (4 * 1024 * 1024),
+                              "907a506cf5e706bda5c7a29b43c9c65d8344bd2fa2f22339b359c214812af5a1"),
+        "one block plus one byte": (b"a" * (4 * 1024 * 1024 + 1),
+                                    "5f858b62ccd88447586305aec6fd53c96747cfebf527cbba129a6dfed47d9624"),
+    }
+
+    def test_d11_content_hash_matches_dropbox_spec_vectors(self) -> None:
+        self.assertEqual(dropbox_archive.BLOCK, 4 * 1024 * 1024)
+        for name, (data, expected) in self.VECTORS.items():
+            self.assertEqual(dropbox_archive.content_hash(data), expected, name)
+        # The block hash is not the plain SHA-256 of the file once it spans two blocks.
+        two_blocks = self.VECTORS["one block plus one byte"][0]
+        self.assertNotEqual(dropbox_archive.content_hash(two_blocks), hashlib.sha256(two_blocks).hexdigest())
+
+
 class WorkflowContractTests(unittest.TestCase):
     def test_o6_workflow_uploads_originals_for_90_days_and_wrapper_forwards_them(self) -> None:
         workflow = (ROOT / ".github/workflows/election-source-watch.yml").read_text(encoding="utf-8")
