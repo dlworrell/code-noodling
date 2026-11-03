@@ -5,8 +5,10 @@ name: Election Result Reports
 # publish-pull-request job writes a GitHub-verified commit (GraphQL
 # createCommitOnBranch) to the workflow-owned automation/election-reports branch
 # and opens or updates a pull request into dev-daily (Catylist ADR-0013:
-# automation -> dev-daily -> fitment -> main). It publishes only from a push to
-# dev-daily, so reports are generated from, and proposed to, the same commit.
+# automation -> dev-daily -> fitment -> main). It publishes only from a run on
+# dev-daily: a push to dev-daily, or a manual workflow_dispatch on dev-daily
+# with commit_reports set. Either way, reports are generated from, and proposed
+# to, the same dev-daily commit.
 # Never add pull_request_target: the publish job holds a write token.
 #
 # Logic lives in election-analysis/ci/reports.sh (governed scope, Catylist

@@ -461,8 +461,9 @@ def _alaska_publication_time(response, config, election_day, now) -> tuple[datet
 
     Why polls closing and not the window start: the window start is clamped to
     the request floor (07:00 UTC on November 4 for Alaska). A file posted after
-    polls closed (05:00 UTC) but before the floor belongs to this election,
-    even when it is fetched after the floor.
+    polls closed (05:00 UTC) but before the floor passes this publication-time
+    eligibility check, even when it is fetched after the floor. Passing the
+    check does not prove the file is this election's (see Limits).
 
     Why missing or malformed dates are refused rather than replaced by the
     retrieval time: substituting "now" would turn "we cannot tell which
