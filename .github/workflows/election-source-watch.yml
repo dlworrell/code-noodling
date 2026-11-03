@@ -85,7 +85,22 @@ jobs:
       - name: Fetch new snapshots
         env:
           FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.force }}
+          ORIGINALS_DIR: ${{ runner.temp }}/election-originals
         run: election-analysis/ci/watch.sh fetch
+
+      # Owner retention rule (2026-11-03): every downloaded file is saved
+      # unmodified, retained for 30 days, then archived. The bodies and their
+      # MANIFEST.json (election_reporting/watch/originals.py) are kept as this
+      # run's artifact for 90 days, long enough to archive each file after its
+      # 30 days. Runs even when a fetch failed, so partial downloads are kept.
+      - name: Keep downloaded originals
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: election-originals-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/election-originals/
+          if-no-files-found: ignore
+          retention-days: 90
 
       - name: Publish verified commit and pull request
         # Runs even when one state's fetch failed, so the other states'
@@ -96,3 +111,18 @@ jobs:
           BASE_BRANCH: dev-daily
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: election-analysis/ci/watch.sh publish
+
+      # Owner decision (2026-11-03): archive the downloaded originals to
+      # Dropbox /Apps/election-analyser/data/<state>/ (app-folder access only) (body, header and
+      # SHA-256 stamp per file; election_reporting/watch/dropbox_archive.py).
+      # Runs after publication so an archive failure never blocks snapshots.
+      # Needs the DROPBOX_APP_KEY, DROPBOX_APP_SECRET and DROPBOX_REFRESH_TOKEN
+      # secrets; without them it warns and the 90-day artifact remains.
+      - name: Archive originals to Dropbox
+        if: ${{ !cancelled() }}
+        env:
+          ORIGINALS_DIR: ${{ runner.temp }}/election-originals
+          DROPBOX_APP_KEY: ${{ secrets.DROPBOX_APP_KEY }}
+          DROPBOX_APP_SECRET: ${{ secrets.DROPBOX_APP_SECRET }}
+          DROPBOX_REFRESH_TOKEN: ${{ secrets.DROPBOX_REFRESH_TOKEN }}
+        run: election-analysis/ci/watch.sh archive
