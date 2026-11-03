@@ -19,6 +19,11 @@ after 30 days". Cases:
 - O5: the CLI's --keep-originals wraps the fetch and writes the manifest.
 - O6: the workflow passes ORIGINALS_DIR and uploads it as a 90-day artifact,
   and ci/watch.sh forwards it.
+- O7 (#116): a failure to save an original warns and the fetch continues.
+- O8 (#118): a second keeper on the same directory merges the manifest;
+  extension and state-name fallbacks.
+- D6-D10 (#117): the CLI success path forwards --base; oversize, 409 without
+  "conflict", an empty directory, and a successful token response.
 - D1-D5: the Dropbox archive (owner decision, 2026-11-03) puts each body and
   its header under /data/<state>/ in the app's own folder (the app has
   App folder access only, so this is /Apps/election-analyser/data/), never
@@ -157,22 +162,71 @@ class KeeperTests(unittest.TestCase):
             self.assertEqual(len(manifest(originals)["files"]), 1)
 
 
-class FakeDropbox:
-    """Records uploads; answers 409 conflict for paths already present."""
+class KeeperRobustnessTests(unittest.TestCase):
+    def test_o7_failure_to_keep_never_stops_the_fetch(self) -> None:
+        page = "https://www.maine.gov/sos/results"
+        fake = FakeWeb({page: Response(page, b"<html>results</html>", {"content-type": "text/html"})})
+        with tempfile.TemporaryDirectory() as directory:
+            keep = OriginalsKeeper(Path(directory), clock=lambda: T0, state="maine")
+            with mock.patch.object(keep, "keep", side_effect=OSError("No space left on device")), \
+                    mock.patch("builtins.print") as printed:
+                response = keep.recording(fake)(page)
+            self.assertIs(response, fake.routes[page])
+            self.assertEqual(len(keep.failures), 1)
+            self.assertIn("No space left", keep.failures[0])
+            self.assertIn("::warning::", printed.call_args[0][0])
 
-    def __init__(self, existing=(), fail=()):
-        self.files: dict[str, bytes] = {path: b"" for path in existing}
+    def test_o8_second_keeper_merges_and_fallbacks_hold(self) -> None:
+        from election_reporting.watch.originals import _extension, _safe_state
+        with tempfile.TemporaryDirectory() as directory:
+            first = OriginalsKeeper(Path(directory), clock=lambda: T0, state="alaska")
+            first.keep("https://www.elections.alaska.gov/r.csv", b"rows", {})
+            first.save()
+            second = OriginalsKeeper(Path(directory), clock=lambda: T0 + timedelta(hours=1), state="alaska")
+            second.keep("https://www.elections.alaska.gov/r.csv", b"rows", {})
+            second.save()
+            entry = manifest(Path(directory))["files"][0]
+            self.assertEqual(len(entry["retrievals"]), 2)
+            self.assertEqual(entry["first_retrieved_at"], "2026-11-04T04:00:00+00:00")
+        cases = [
+            ("https://x.gov/a", "text/csv; charset=utf-8", "csv"),
+            ("https://x.gov/page.htm", "", "html"),
+            ("https://x.gov/file.XLSX?rev=2", "", "xlsx"),
+            ("https://x.gov/data", "application/octet-stream", "bin"),
+        ]
+        for url, content_type, expected in cases:
+            self.assertEqual(_extension(url, content_type), expected, url)
+        self.assertEqual(_safe_state("Washington"), "washington")
+        self.assertEqual(_safe_state("../etc"), "etc")
+        self.assertEqual(_safe_state(""), "unknown")
+
+
+class FakeDropbox:
+    """Records uploads; answers 409 conflict for paths already present and
+    serves get_metadata with Dropbox's content hash of the stored bytes."""
+
+    def __init__(self, existing=None, fail=(), folders=()):
+        self.files: dict[str, bytes] = dict(existing or {})
+        self.folders = set(folders)
         self.fail = set(fail)
         self.calls: list[tuple[str, dict]] = []
 
     def __call__(self, url, data, headers):
         if url == dropbox_archive.TOKEN_URL:
             return 200, b'{"access_token": "short-lived"}'
+        if url == dropbox_archive.METADATA_URL:
+            path = json.loads(data)["path"]
+            if path in self.folders:
+                return 200, json.dumps({".tag": "folder"}).encode()
+            if path in self.files:
+                return 200, json.dumps({".tag": "file",
+                                        "content_hash": dropbox_archive.content_hash(self.files[path])}).encode()
+            return 409, b'{"error_summary": "path/not_found/"}'
         argument = json.loads(headers["Dropbox-API-Arg"])
         self.calls.append((argument["path"], argument))
         if argument["path"] in self.fail:
             return 500, b"server error"
-        if argument["path"] in self.files:
+        if argument["path"] in self.files or argument["path"] in self.folders:
             return 409, b'{"error_summary": "path/conflict/file/"}'
         self.files[argument["path"]] = data
         return 200, b"{}"
@@ -217,15 +271,54 @@ class DropboxArchiveTests(unittest.TestCase):
             dropbox_archive.archive(Path(directory), "41-1", "token", post=box, log=lambda _: None)
             self.assertTrue(all(arg["mode"] == "add" and arg["autorename"] is False for _, arg in box.calls))
 
-    def test_d3_existing_sha_named_file_is_already_archived(self) -> None:
-        existing = f"{self.BASE}/maine/{sha(b'workbook')}.xlsx"
+    def test_d3_conflict_is_success_only_when_content_hash_matches(self) -> None:
+        body_path = f"{self.BASE}/maine/{sha(b'workbook')}.xlsx"
+        header_path = f"{self.BASE}/maine/{sha(b'workbook')}.header.json"
+        with tempfile.TemporaryDirectory() as directory:
+            kept_run(Path(directory))
+            # Same bytes already archived by an earlier run (with that run's header): verified,
+            # and this run's header is not uploaded over the first one.
+            box = FakeDropbox(existing={body_path: b"workbook", header_path: b"{earlier header}"})
+            lines: list[str] = []
+            self.assertEqual(dropbox_archive.archive(Path(directory), "41-1", "token", post=box, log=lines.append), 0)
+            self.assertIn(f"already archived (verified): {body_path}", lines)
+            self.assertIn(f"header kept from first archive: {header_path}", lines)
+            self.assertEqual(box.files[header_path], b"{earlier header}")
+            # Different bytes under the same name, or a folder in the way: failure, never "archived".
+            for box in (FakeDropbox(existing={body_path: b""}), FakeDropbox(folders=[body_path])):
+                lines = []
+                self.assertEqual(dropbox_archive.archive(Path(directory), "41-1", "token", post=box, log=lines.append), 1)
+                self.assertTrue(any(line.startswith("::error::") and body_path in line for line in lines))
+                self.assertFalse(any(line.startswith("already archived") and body_path in line for line in lines))
+
+    def test_d3b_transport_error_fails_one_file_and_the_rest_continue(self) -> None:
+        import urllib.error
+        failing = f"{self.BASE}/alaska/{sha(b'precincts')}.csv"
+        box = FakeDropbox()
+
+        def flaky(url, data, headers):
+            if "Dropbox-API-Arg" in headers and json.loads(headers["Dropbox-API-Arg"])["path"] == failing:
+                raise urllib.error.URLError("timed out")
+            return box(url, data, headers)
+
         with tempfile.TemporaryDirectory() as directory:
             kept_run(Path(directory))
             lines: list[str] = []
-            status = dropbox_archive.archive(Path(directory), "41-1", "token",
-                                             post=FakeDropbox(existing=[existing]), log=lines.append)
-            self.assertEqual(status, 0)
-            self.assertIn(f"already archived: {existing}", lines)
+            with mock.patch("urllib.request.urlopen", side_effect=urllib.error.URLError("timed out")):
+                status, body = dropbox_archive._post("https://content.dropboxapi.com/x", b"", {})
+            self.assertEqual(status, dropbox_archive.TRANSPORT_ERROR)
+            self.assertIn(b"transport error", body)
+
+            def transport(url, data, headers):
+                try:
+                    return flaky(url, data, headers)
+                except urllib.error.URLError as error:
+                    return dropbox_archive.TRANSPORT_ERROR, f"transport error: {error.reason}".encode()
+
+            status = dropbox_archive.archive(Path(directory), "41-1", "token", post=transport, log=lines.append)
+            self.assertEqual(status, 1)
+            self.assertIn(f"{self.BASE}/maine/{sha(b'workbook')}.xlsx", box.files)
+            self.assertIn(f"{self.BASE}/manifests/41-1.json", box.files)
 
     def test_d4_real_failure_is_reported_and_others_continue(self) -> None:
         failing = f"{self.BASE}/alaska/{sha(b'precincts')}.csv"
@@ -243,10 +336,44 @@ class DropboxArchiveTests(unittest.TestCase):
                 mock.patch.dict("os.environ", {"DROPBOX_APP_KEY": "k"}, clear=True), \
                 mock.patch("builtins.print") as printed:
             self.assertEqual(dropbox_archive.main([directory, "--label", "x"]), 0)
-            self.assertIn("skipped", printed.call_args[0][0])
+            self.assertIn("NOT archived", printed.call_args[0][0])
         with self.assertRaises(RuntimeError) as failure:
             dropbox_archive.access_token("k", "s", "secret-refresh", post=lambda *_: (400, b"secret-refresh"))
         self.assertNotIn("secret-refresh", str(failure.exception))
+
+
+class DropboxEdgeTests(unittest.TestCase):
+    def test_d6_cli_success_path_forwards_base(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            kept_run(Path(directory))
+            box = FakeDropbox()
+            env = {"DROPBOX_APP_KEY": "k", "DROPBOX_APP_SECRET": "s", "DROPBOX_REFRESH_TOKEN": "r"}
+            with mock.patch.dict("os.environ", env, clear=True), \
+                    mock.patch.object(dropbox_archive, "_post", box), mock.patch("builtins.print"):
+                status = dropbox_archive.main([directory, "--label", "7-1", "--base", "/elsewhere"])
+            self.assertEqual(status, 0)
+            self.assertTrue(box.files)
+            self.assertTrue(all(path.startswith("/elsewhere/") for path in box.files))
+
+    def test_d7_oversize_is_refused(self) -> None:
+        self.assertEqual(dropbox_archive.content_hash(b""), hashlib.sha256(b"").hexdigest())
+        with mock.patch.object(dropbox_archive, "MAX_SINGLE_UPLOAD", 3):
+            with self.assertRaises(RuntimeError):
+                dropbox_archive.upload("t", "/data/x", b"four", post=FakeDropbox())
+
+    def test_d8_409_without_conflict_is_a_failure(self) -> None:
+        with self.assertRaises(RuntimeError):
+            dropbox_archive.upload("t", "/data/x", b"a", post=lambda *_: (409, b'{"error_summary": "path/insufficient_space/"}'))
+
+    def test_d9_empty_directory_has_nothing_to_archive(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            lines: list[str] = []
+            self.assertEqual(dropbox_archive.archive(Path(directory), "x", "t", post=FakeDropbox(), log=lines.append), 0)
+            self.assertIn("No downloaded originals", lines[0])
+
+    def test_d10_token_response_is_parsed(self) -> None:
+        token = dropbox_archive.access_token("k", "s", "r", post=lambda *_: (200, b'{"access_token": "abc"}'))
+        self.assertEqual(token, "abc")
 
 
 class WorkflowContractTests(unittest.TestCase):

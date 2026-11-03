@@ -3,10 +3,10 @@
 # SPDX-License-Identifier: Apache-2.0
 # Catalyst-File-ID: urn:uuid:3f6b0d2e-8c41-4a57-9e1d-6a2b7c5f0e93
 
-"""Keep every downloaded file, byte for byte, for 30 days and then archive it.
+"""Keep every downloaded file, byte for byte, so it can be archived.
 
 Purpose. Donovan's retention rule (2026-11-03): every file the watcher
-downloads is saved unmodified and retained for 30 days, then archived. Some
+downloads is saved unmodified, retained for 30 days and archived. Some
 adapters store only a derived or trimmed file in the repository (the
 Washington "Summary and Precinct Results" workbook, VoteWA JSON), and none of
 them stores the discovery pages. This module saves the original response body
@@ -36,8 +36,12 @@ directory per state, each file stored with a header and a SHA stamp):
 - ``MANIFEST.json``: every body this run downloaded and every retrieval of
   it, including repeat downloads of bodies saved by earlier runs.
 
-The 30-day clock starts at the body's first retrieval in the run that saved
-it. ``archive_after`` marks when the retained copy is due for archiving.
+What actually happens, and when: the same run uploads every saved file to
+Dropbox right after snapshot publication, so Dropbox holds the archive from
+the start; the 90-day artifact is a fallback copy (for example while the
+Dropbox secrets are not configured). ``archive_after`` (first retrieval + 30
+days) records the end of the owner's 30-day retention window. It is
+informational: no job reads it or acts on it.
 
 Limits:
 - Only successful downloads are kept. A request that fails or is refused
@@ -59,7 +63,9 @@ from typing import Callable
 from .store import sha256
 
 MANIFEST = "MANIFEST.json"
-RETAIN = timedelta(days=30)  # Donovan, 2026-11-03: retain 30 days, then archive
+RETAIN = timedelta(days=30)  # Donovan, 2026-11-03: retain 30 days and archive
+RETENTION_NOTE = ("archived to Dropbox in the run that downloaded it; archive_after marks the end of the "
+                  "owner's 30-day retention window (informational; owner rule, 2026-11-03)")
 
 # File extensions by declared content type, then by URL suffix. The extension
 # is a convenience for whoever opens the file; the SHA-256 is the identity.
@@ -112,6 +118,7 @@ class OriginalsKeeper:
     clock: Callable[[], datetime] = lambda: datetime.now(timezone.utc)
     entries: dict[str, dict] = field(default_factory=dict)
     state: str = "unknown"  # set by the caller before each state's fetch
+    failures: list[str] = field(default_factory=list)  # originals that could not be saved
 
     def __post_init__(self) -> None:
         manifest = self.directory / MANIFEST
@@ -156,7 +163,7 @@ class OriginalsKeeper:
             }
             header = {key_: entry[key_] for key_ in ("sha256", "state", "file", "bytes", "first_retrieved_at", "archive_after")}
             header["first_retrieval"] = retrieval
-            header["retention"] = "retain 30 days from first retrieval, then archive (owner rule, 2026-11-03)"
+            header["retention"] = RETENTION_NOTE
             (self.directory / entry["header"]).write_text(
                 json.dumps(header, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
             self.entries[key] = entry
@@ -167,13 +174,23 @@ class OriginalsKeeper:
         """Wrap a fetch function so every successful response body is kept.
 
         The wrapper has the same signature and returns the same response, so
-        adapters are unchanged. Exceptions pass through untouched; nothing is
-        kept for a failed request.
+        adapters are unchanged. Exceptions from the fetch itself pass through
+        untouched; nothing is kept for a failed request.
+
+        Keeping is a side effect and must never break the primary job: if
+        saving the body fails (``OSError``, for example a full runner disk),
+        the failure is recorded in ``self.failures`` and printed as a
+        workflow warning, and the response is still returned so the
+        snapshot fetch continues.
         """
 
         def fetch_and_keep(url, *args, **kwargs):
             response = fetch(url, *args, **kwargs)
-            self.keep(response.url or url, response.body, dict(response.headers))
+            try:
+                self.keep(response.url or url, response.body, dict(response.headers))
+            except OSError as error:
+                self.failures.append(f"{url}: {error}")
+                print(f"::warning::could not keep the original of {url}: {error}")
             return response
 
         return fetch_and_keep
@@ -186,7 +203,7 @@ class OriginalsKeeper:
         manifest = self.directory / MANIFEST
         payload = {
             "schema": "election-originals.v1",
-            "retention": "retain 30 days from first retrieval, then archive (owner rule, 2026-11-03)",
+            "retention": RETENTION_NOTE,
             "files": sorted(self.entries.values(), key=lambda entry: (entry["state"], entry["sha256"])),
         }
         manifest.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
