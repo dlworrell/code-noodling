@@ -63,7 +63,9 @@ case "${1:-}" in
     checkout=${2:?usage: watch.sh carry CHECKOUT}
     pending=$checkout/$rel/data/elections
     [[ -d $pending ]] || pending=$checkout/election-data/elections
-    python3 -m election_reporting.watch carry --from "$pending"
+    # --trusted-root: the checkout directory is ours; every directory below it
+    # down to $pending comes from the automation branch and is checked first.
+    python3 -m election_reporting.watch carry --from "$pending" --trusted-root "$checkout"
     rm -rf "$checkout"
     ;;
   fetch)
@@ -75,7 +77,7 @@ case "${1:-}" in
   publish)
     python3 -m election_reporting.ci.publish_reports \
       --base "${BASE_BRANCH:?}" \
-      --base-sha "${GITHUB_SHA:?}" \
+      --base-sha "$(git rev-parse HEAD)" \
       --branch "${SNAPSHOT_BRANCH:?}" \
       --path "$rel/data/elections" \
       --title "data: new official election result snapshots" \

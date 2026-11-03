@@ -153,6 +153,7 @@ class PublishFlowTests(unittest.TestCase):
         run_git(self.root, "add", "-A")
         run_git(self.root, "commit", "-q", "-m", "init")
         self.base_sha = run_git(self.root, "rev-parse", "HEAD")
+        self.base = "dev-daily"
         self.logs: list[str] = []
 
     def regenerate(self) -> None:
@@ -167,6 +168,9 @@ class PublishFlowTests(unittest.TestCase):
         _, tree = detect_changes(self.root, "election-analysis/reports")
         fake.responses.setdefault(("GET", f"repos/{REPO}"),
                                   {"node_id": "REPO", "default_branch": "main"})
+        fake.responses.setdefault(("GET", f"repos/{REPO}/compare/{self.base_sha}...dev-daily"),
+                                  {"status": "identical"})
+        fake.responses.setdefault(("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"), [])
         fake.responses.setdefault(("GET", f"repos/{REPO}/git/commits/{'c' * 40}"), {
             "sha": "c" * 40, "tree": {"sha": tree}, "parents": [{"sha": self.base_sha}],
             "verification": {"verified": True, "reason": "valid"},
@@ -176,7 +180,7 @@ class PublishFlowTests(unittest.TestCase):
             repo_root=self.root,
             report_path="election-analysis/reports",
             branch=BRANCH,
-            base="main",
+            base=self.base,
             base_sha=self.base_sha,
             title="reports: update election result analysis",
             run_url="https://example.invalid/run/1",
@@ -210,7 +214,7 @@ class PublishFlowTests(unittest.TestCase):
                 ("POST", "graphql"): {
                     "data": {"createCommitOnBranch": {"commit": {"oid": "c" * 40, "url": "u"}}}
                 },
-                ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}&base=main"): [],
+                ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"): [],
                 ("POST", f"repos/{REPO}/pulls"): {"html_url": "https://pr/1", "number": 1},
             }
         )
@@ -218,19 +222,21 @@ class PublishFlowTests(unittest.TestCase):
         self.assertEqual(
             fake.endpoints(),
             [
+                ("GET", f"repos/{REPO}/compare/{self.base_sha}...dev-daily"),
+                ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"),
                 ("GET", f"repos/{REPO}/git/matching-refs/heads/{BRANCH}"),
                 ("GET", f"repos/{REPO}"),
                 ("POST", f"repos/{REPO}/git/refs"),
                 ("POST", "graphql"),
                 ("GET", f"repos/{REPO}/git/commits/{'c' * 40}"),
-                ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}&base=main"),
+                ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"),
                 ("POST", f"repos/{REPO}/pulls"),
             ],
         )
         self.assertEqual(
-            fake.calls[2][2], {"ref": f"refs/heads/{BRANCH}", "sha": self.base_sha}
+            fake.calls[4][2], {"ref": f"refs/heads/{BRANCH}", "sha": self.base_sha}
         )
-        commit_input = fake.calls[3][2]["variables"]["input"]
+        commit_input = fake.calls[5][2]["variables"]["input"]
         self.assertEqual(commit_input["expectedHeadOid"], self.base_sha)
         files = commit_input["fileChanges"]
         self.assertEqual(
@@ -239,11 +245,12 @@ class PublishFlowTests(unittest.TestCase):
         )
         self.assertEqual(base64.b64decode(files["additions"][1]["contents"]), b"\x00\xff\x10")
         self.assertEqual(files["deletions"], [{"path": "election-analysis/reports/edt/old.md"}])
-        pr = fake.calls[6][2]
-        self.assertEqual((pr["head"], pr["base"]), (BRANCH, "main"))
-        # Nothing ever targets the base branch ref.
+        pr = fake.calls[8][2]
+        self.assertEqual((pr["head"], pr["base"]), (BRANCH, "dev-daily"))
+        # Nothing ever targets a base branch ref.
         for method, endpoint, _ in fake.calls:
             self.assertNotIn("heads/main", endpoint)
+            self.assertNotIn("heads/dev-daily", endpoint)
 
     def test_existing_branch_is_force_reset_and_pr_updated(self) -> None:
         self.regenerate()
@@ -261,8 +268,8 @@ class PublishFlowTests(unittest.TestCase):
                 ("POST", "graphql"): {
                     "data": {"createCommitOnBranch": {"commit": {"oid": "c" * 40, "url": "u"}}}
                 },
-                ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}&base=main"): [
-                    {"number": 7, "html_url": "https://pr/7"}
+                ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"): [
+                    {"number": 7, "html_url": "https://pr/7", "base": {"ref": "dev-daily"}}
                 ],
                 ("PATCH", f"repos/{REPO}/pulls/7"): {},
             }
@@ -288,8 +295,8 @@ class PublishFlowTests(unittest.TestCase):
                     "parents": [{"sha": self.base_sha}],
                     "verification": {"verified": True, "reason": "valid"},
                 },
-                ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}&base=main"): [
-                    {"number": 7, "html_url": "https://pr/7"}
+                ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"): [
+                    {"number": 7, "html_url": "https://pr/7", "base": {"ref": "dev-daily"}}
                 ],
                 ("PATCH", f"repos/{REPO}/pulls/7"): {},
             }
@@ -306,7 +313,7 @@ class PublishFlowTests(unittest.TestCase):
                 ("POST", "graphql"): {
                     "data": {"createCommitOnBranch": {"commit": {"oid": "c" * 40, "url": "u"}}}
                 },
-                ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}&base=main"): [],
+                ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"): [],
                 ("POST", f"repos/{REPO}/pulls"): RuntimeError(
                     "GitHub Actions is not permitted to create or approve pull requests (HTTP 403)"
                 ),
@@ -345,7 +352,8 @@ class PublishFlowTests(unittest.TestCase):
             })
             with self.subTest(verification=verification), self.assertRaisesRegex(PublishError, "did not verify"):
                 self.run_publish(fake)
-            self.assertFalse(any("/pulls" in endpoint for _, endpoint, _ in fake.calls))
+            # The pre-write ambiguity check reads the PR list; nothing may change a PR.
+            self.assertFalse(any("/pulls" in endpoint and method != "GET" for method, endpoint, _ in fake.calls))
 
     def test_unsigned_identical_content_is_replaced(self):
         self.regenerate()
@@ -359,8 +367,8 @@ class PublishFlowTests(unittest.TestCase):
                 "verification": {"verified": False, "reason": "unsigned"}},
             ("POST", "graphql"): {"data": {"updateRefs": {"clientMutationId": None},
                 "createCommitOnBranch": {"commit": {"oid": "c"*40, "url": "u"}}}},
-            ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}&base=main"):
-                [{"number": 7, "html_url": "https://pr/7"}],
+            ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"):
+                [{"number": 7, "html_url": "https://pr/7", "base": {"ref": "dev-daily"}}],
             ("PATCH", f"repos/{REPO}/pulls/7"): {},
         })
         self.assertEqual(self.run_publish(fake), "https://pr/7")
@@ -400,6 +408,135 @@ class PublishFlowTests(unittest.TestCase):
         with mock.patch.dict("os.environ", {"GITHUB_EVENT_NAME": "pull_request_target"}):
             with self.assertRaisesRegex(PublishError, "pull_request_target"):
                 self.run_publish(FakeGh({}))
+
+
+    # ---------------------------------------------------------------- route (ADR-0013)
+    # Acceptance cases, written before the change:
+    # R1 publication into dev-daily works (test_creates_branch_commit_and_pull_request);
+    # R2 main, fitment or any other base is refused before any GitHub call;
+    # R3 a generating commit that is not on dev-daily is refused before any write;
+    # R4 an open PR from the automation branch to another base (#91) is retargeted, not duplicated;
+    # R5 several open PRs from the automation branch are refused before any write at all;
+    # R6 a rerun with identical content leaves the commit alone and does not retarget again.
+
+    def writes(self, fake: FakeGh) -> list[tuple[str, str]]:
+        return [(m, e) for m, e in fake.endpoints() if m in ("POST", "PATCH", "PUT", "DELETE")]
+
+    def test_r2_other_bases_are_refused_before_any_call(self) -> None:
+        self.regenerate()
+        for base in ("main", "fitment", "release", "automation/election-reports-2"):
+            fake = FakeGh({})
+            self.base = base
+            with self.subTest(base=base), self.assertRaisesRegex(PublishError, "dev-daily only"):
+                self.run_publish(fake)
+            self.assertEqual(fake.calls, [])
+
+    def test_r3_generating_commit_off_base_is_refused_before_writes(self) -> None:
+        self.regenerate()
+        for status in ("behind", "diverged", None):
+            fake = FakeGh({
+                ("GET", f"repos/{REPO}/compare/{self.base_sha}...dev-daily"): {"status": status},
+                ("GET", f"repos/{REPO}/git/matching-refs/heads/{BRANCH}"): [],
+            })
+            with self.subTest(status=status), self.assertRaisesRegex(PublishError, "not on dev-daily"):
+                self.run_publish(fake)
+            self.assertEqual(self.writes(fake), [])
+            self.assertEqual(fake.endpoints(), [("GET", f"repos/{REPO}/compare/{self.base_sha}...dev-daily")])
+
+    def test_r3_unreadable_comparison_is_refused(self) -> None:
+        """The compare call itself fails (HTTP 404): publish stops there, fail closed.
+
+        run_publish only defaults the compare response when none is given, so
+        configuring the failure here makes this test exercise exactly the
+        unreadable-comparison path (Em's rereview of 8c9a7c0).
+        """
+        self.regenerate()
+        compare = ("GET", f"repos/{REPO}/compare/{self.base_sha}...dev-daily")
+        fake = FakeGh({compare: RuntimeError("HTTP 404 Not Found")})
+        with self.assertRaisesRegex(PublishError, "compare"):
+            self.run_publish(fake)
+        # The compare call is the only call made: nothing read after it, nothing written.
+        self.assertEqual(fake.endpoints(), [compare])
+        self.assertEqual(self.writes(fake), [])
+
+    def test_r4_wrong_base_pull_request_is_migrated(self) -> None:
+        self.regenerate()
+        fake = FakeGh({
+            ("GET", f"repos/{REPO}/git/matching-refs/heads/{BRANCH}"):
+                [{"ref": f"refs/heads/{BRANCH}", "object": {"sha": "e" * 40}}],
+            ("GET", f"repos/{REPO}/git/commits/{'e' * 40}"): {"tree": {"sha": "0" * 40}, "parents": []},
+            ("POST", "graphql"): {"data": {"updateRefs": {"clientMutationId": None},
+                                  "createCommitOnBranch": {"commit": {"oid": "c" * 40, "url": "u"}}}},
+            ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"):
+                [{"number": 91, "html_url": "https://pr/91", "base": {"ref": "main"}}],
+            ("PATCH", f"repos/{REPO}/pulls/91"): {},
+        })
+        self.assertEqual(self.run_publish(fake), "https://pr/91")
+        patch = next(p for m, e, p in fake.calls if (m, e) == ("PATCH", f"repos/{REPO}/pulls/91"))
+        self.assertEqual(patch["base"], "dev-daily")
+        self.assertNotIn(("POST", f"repos/{REPO}/pulls"), fake.endpoints())
+        self.assertIn("Migrating pull request #91 from base main to dev-daily.", self.logs)
+
+    def test_r5_several_open_pull_requests_are_refused(self) -> None:
+        self.regenerate()
+        fake = FakeGh({
+            ("GET", f"repos/{REPO}/git/matching-refs/heads/{BRANCH}"): [],
+            ("POST", f"repos/{REPO}/git/refs"): {},
+            ("POST", "graphql"): {"data": {"createCommitOnBranch": {"commit": {"oid": "c" * 40, "url": "u"}}}},
+            ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"):
+                [{"number": 78, "base": {"ref": "main"}}, {"number": 91, "base": {"ref": "main"}}],
+        })
+        with self.assertRaisesRegex(PublishError, "several open pull requests"):
+            self.run_publish(fake)
+        # Refused before ANY write: no branch reset, no commit, no PR change.
+        self.assertEqual(self.writes(fake), [])
+
+    def test_r6_rerun_is_idempotent(self) -> None:
+        self.regenerate()
+        _, tree = detect_changes(self.root, "election-analysis/reports")
+        head = "d" * 40
+        fake = FakeGh({
+            ("GET", f"repos/{REPO}/git/matching-refs/heads/{BRANCH}"):
+                [{"ref": f"refs/heads/{BRANCH}", "object": {"sha": head}}],
+            ("GET", f"repos/{REPO}/git/commits/{head}"): {
+                "sha": head, "tree": {"sha": tree}, "parents": [{"sha": self.base_sha}],
+                "verification": {"verified": True, "reason": "valid"}},
+            ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"):
+                [{"number": 91, "html_url": "https://pr/91", "base": {"ref": "dev-daily"}}],
+            ("PATCH", f"repos/{REPO}/pulls/91"): {},
+        })
+        self.assertEqual(self.run_publish(fake), "https://pr/91")
+        self.assertEqual(self.writes(fake), [("PATCH", f"repos/{REPO}/pulls/91")])
+        patch = fake.calls[-1][2]
+        self.assertNotIn("base", patch)
+
+
+class WorkflowRouteTests(unittest.TestCase):
+    """The workflows publish into dev-daily, from a dev-daily checkout, never the default branch."""
+
+    ROOT = Path(__file__).resolve().parents[2]
+
+    def read(self, path: str) -> str:
+        return (self.ROOT / path).read_text(encoding="utf-8")
+
+    def test_reports_workflow_publishes_from_and_into_dev_daily(self) -> None:
+        text = self.read(".github/workflows/election-result-reports.yml")
+        self.assertIn("github.ref == 'refs/heads/dev-daily'", text)
+        self.assertIn("BASE_BRANCH: dev-daily", text)
+        self.assertNotIn("BASE_BRANCH: ${{ github.event.repository.default_branch }}", text)
+
+    def test_source_watch_checks_out_and_publishes_into_dev_daily(self) -> None:
+        text = self.read(".github/workflows/election-source-watch.yml")
+        self.assertIn("ref: dev-daily", text)
+        self.assertIn("BASE_BRANCH: dev-daily", text)
+        self.assertNotIn("BASE_BRANCH: ${{ github.event.repository.default_branch }}", text)
+
+    def test_scripts_publish_against_the_checked_out_commit(self) -> None:
+        for script in ("election-analysis/ci/reports.sh", "election-analysis/ci/watch.sh"):
+            with self.subTest(script=script):
+                text = self.read(script)
+                self.assertIn('--base-sha "$(git rev-parse HEAD)"', text)
+                self.assertNotIn('--base-sha "${GITHUB_SHA:?}"', text)
 
 
 if __name__ == "__main__":

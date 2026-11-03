@@ -213,17 +213,44 @@ def links_on_page(page: str, page_url: str, day: date) -> list[Link]:
     return links
 
 
-def result_links(fetch: Fetch, election: ElectionRef) -> list[Link]:
+@dataclass(frozen=True)
+class Discovery:
+    """Workbook links found, plus every discovery page that could not be read.
+
+    A page that fails is a source error, never "nothing posted": an outage of
+    both pages must not look like a quiet night.
+    """
+
+    links: list[Link]
+    failures: list[tuple[str, str]]  # (page URL, error)
+
+    @property
+    def unreachable(self) -> bool:
+        """No links, and no page answered: nothing is known about what is posted."""
+        return not self.links and len(self.failures) == DISCOVERY_PAGES
+
+
+DISCOVERY_PAGES = 2  # the current results page and the election year's page
+
+
+def discover(fetch: Fetch, election: ElectionRef) -> Discovery:
     """The election's workbooks: on the current results page, else its year's page."""
+    failures: list[tuple[str, str]] = []
     for url in (RESULTS_PAGE, YEAR_PAGE.format(year=election.day.year)):
         try:
             page = fetch(url).body.decode("utf-8", errors="replace")
-        except ElectionReportError:
+        except ElectionReportError as error:
+            failures.append((url, str(error)))
             continue
         found = links_on_page(page, url, election.day)
         if found:
-            return found
-    return []
+            return Discovery(found, failures)
+    return Discovery([], failures)
+
+
+def result_links(fetch: Fetch, election: ElectionRef) -> list[Link]:
+    """Links only, for callers that do not report discovery failures."""
+    return discover(fetch, election).links
 
 
 @dataclass

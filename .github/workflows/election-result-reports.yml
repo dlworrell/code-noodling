@@ -4,7 +4,11 @@ name: Election Result Reports
 # branch. When regenerated reports differ from what is committed, the
 # publish-pull-request job writes a GitHub-verified commit (GraphQL
 # createCommitOnBranch) to the workflow-owned automation/election-reports branch
-# and opens or updates a pull request to the default branch.
+# and opens or updates a pull request into dev-daily (Catylist ADR-0013:
+# automation -> dev-daily -> fitment -> main). It publishes only from a run on
+# dev-daily: a push to dev-daily, or a manual workflow_dispatch on dev-daily
+# with commit_reports set. Either way, reports are generated from, and proposed
+# to, the same dev-daily commit.
 # Never add pull_request_target: the publish job holds a write token.
 #
 # Logic lives in election-analysis/ci/reports.sh (governed scope, Catylist
@@ -14,7 +18,7 @@ on:
   workflow_dispatch:
     inputs:
       commit_reports:
-        description: Open or update a pull request with regenerated reports (default branch only)
+        description: Open or update a pull request with regenerated reports (dev-daily only)
         required: true
         type: boolean
         default: true
@@ -99,7 +103,7 @@ jobs:
     needs: analyze
     if: >-
       needs.analyze.outputs.reports_changed == 'true' &&
-      github.ref == format('refs/heads/{0}', github.event.repository.default_branch) &&
+      github.ref == 'refs/heads/dev-daily' &&
       (github.event_name == 'push' ||
        github.event_name == 'schedule' ||
        (github.event_name == 'workflow_dispatch' && inputs.commit_reports))
@@ -131,6 +135,6 @@ jobs:
       - name: Publish verified commit and pull request
         env:
           GH_TOKEN: ${{ github.token }}
-          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+          BASE_BRANCH: dev-daily
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: election-analysis/ci/reports.sh publish

@@ -68,7 +68,7 @@ case "${1:-}" in
   publish)
     python3 -m election_reporting.ci.publish_reports \
       --base "${BASE_BRANCH:?}" \
-      --base-sha "${GITHUB_SHA:?}" \
+      --base-sha "$(git rev-parse HEAD)" \
       --branch automation/election-reports \
       --path "$rel/reports" \
       --run-url "${RUN_URL:?}"

@@ -5,9 +5,13 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
+import os
+import shutil
 import tempfile
 import unittest
+from unittest import mock
 from datetime import date, datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -350,6 +354,96 @@ class FetchTests(unittest.TestCase):
             later = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
             self.assertEqual([(r.place, r.snapshot) for r in later.added], [("pierce-county", "2026-11-03-2145")])
 
+    # WATCH-02 acceptance cases (King County exports replaced in place):
+    # K1 a corrected body B at the same URL is kept as a new immutable snapshot;
+    # K2 a correction that changes only the query string is kept the same way;
+    # K3 serving the same body A again adds nothing (idempotent);
+    # K4 the earlier snapshot's bytes are untouched by the correction.
+
+    def king_snapshots(self, root: Path):
+        election = root / "elections" / "washington" / "2026-11-03"
+        return sorted((r.snapshot, r.input_sha256) for r in ElectionStore(election).records
+                      if r.place == "king-county")
+
+    def corrected(self, fake, url_key: str, page_href: str, body: str, modified: str):
+        fake.routes[KC_PAGE] = Response(KC_PAGE, f'<a href="{page_href}">Nov 3</a>'.encode())
+        fake.routes[url_key] = Response(KC_FILE, body.encode("utf-8"), {"last-modified": modified})
+        return fake
+
+    def test_k1_corrected_body_at_the_same_url_is_a_new_snapshot(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            fake = self.corrected(web(root), KC_FILE + "?rev=1&hash=2", f"{KC_FILE}?rev=1&amp;hash=2",
+                                  KC_CSV + "\n", "Wed, 04 Nov 2026 05:10:00 GMT")
+            later = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
+            self.assertEqual([r.place for r in later.added], ["king-county"])
+            self.assertEqual(len(self.king_snapshots(root)), 2)
+
+    def test_k2_query_only_revision_is_a_new_snapshot(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            fake = self.corrected(web(root), KC_FILE + "?rev=2&hash=3", f"{KC_FILE}?rev=2&amp;hash=3",
+                                  KC_CSV + "\n", "Wed, 04 Nov 2026 05:10:00 GMT")
+            later = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
+            self.assertEqual([r.place for r in later.added], ["king-county"])
+
+    def test_k3_same_body_again_adds_nothing(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            before = self.king_snapshots(root)
+            again = fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            self.assertEqual([r for r in again.added if r.place == "king-county"], [])
+            self.assertEqual(self.king_snapshots(root), before)
+            self.assertIn("king-county: unchanged", again.skipped)
+
+    def test_k4_earlier_snapshot_bytes_are_untouched(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            election = root / "elections" / "washington" / "2026-11-03"
+            first = (election / "input/king-county/2026-11-03-2030.csv").read_bytes()
+            fake = self.corrected(web(root), KC_FILE + "?rev=1&hash=2", f"{KC_FILE}?rev=1&amp;hash=2",
+                                  KC_CSV + "\n", "Wed, 04 Nov 2026 05:10:00 GMT")
+            fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
+            self.assertEqual((election / "input/king-county/2026-11-03-2030.csv").read_bytes(), first)
+
+    # K5-K6 (Em's review of df4c59e): controls.
+
+    def test_k5_substantive_count_change_is_kept_with_new_counts(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            changed = KC_CSV.replace('"Alpha","1,000","600"', '"Alpha","1,000","610"')
+            self.assertNotEqual(changed, KC_CSV)
+            fake = self.corrected(web(root), KC_FILE + "?rev=1&hash=2", f"{KC_FILE}?rev=1&amp;hash=2",
+                                  changed, "Wed, 04 Nov 2026 05:10:00 GMT")
+            later = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
+            added = [r for r in later.added if r.place == "king-county"]
+            self.assertEqual(len(added), 1)
+            election = root / "elections" / "washington" / "2026-11-03"
+            self.assertIn('"Alpha","1,000","610"', (election / added[0].input).read_text(encoding="utf-8"))
+
+    def test_k6_same_body_under_a_new_query_adds_nothing(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            before = self.king_snapshots(root)
+            fake = self.corrected(web(root), KC_FILE + "?rev=9&hash=9", f"{KC_FILE}?rev=9&amp;hash=9",
+                                  KC_CSV, "Wed, 04 Nov 2026 05:10:00 GMT")
+            later = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
+            self.assertEqual([r for r in later.added if r.place == "king-county"], [])
+            self.assertEqual(self.king_snapshots(root), before)
+            self.assertIn("king-county: unchanged", later.skipped)
+
     def test_not_due_fetches_nothing(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -478,6 +572,257 @@ class CarryForwardTests(unittest.TestCase):
             next((pending / "elections").rglob("*.csv")).write_text("tampered", encoding="utf-8")
             with self.assertRaisesRegex(ElectionReportError, "does not match its recorded SHA-256"):
                 carry_forward(pending / "elections", root / "main", log=lambda _: None)
+
+
+    # WATCH-01 acceptance cases (paths in the pending branch's SOURCES.json are data):
+    # P1 a parent (..) path is refused before any read outside the pending tree;
+    # P2 an absolute path is refused;
+    # P3 a symlink inside the pending tree is refused before it is followed;
+    # P4 a symlink inside the target tree is refused before any write through it;
+    # P5 one bad path in an election directory leaves no partial copy of any of its records;
+    # P6 normal relative paths still carry (test_carries_only_missing_snapshots...).
+
+    def pending_tree(self, root: Path) -> Path:
+        pending = root / "pending"
+        pending.mkdir()
+        config = load_watch_config(write_watch(pending))
+        fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+        return pending / "elections" / "washington" / "2026-11-03"
+
+    def rewrite(self, election: Path, place: str, **fields) -> None:
+        sources = election / "SOURCES.json"
+        data = json.loads(sources.read_text(encoding="utf-8"))
+        for item in data["snapshots"]:
+            if item["place"] == place:
+                item.update(fields)
+        sources.write_text(json.dumps(data), encoding="utf-8")
+
+    def assert_refused(self, root: Path) -> Path:
+        target = root / "main" / "elections"
+        with self.assertRaisesRegex(ElectionReportError, "refusing stored path"):
+            carry_forward(root / "pending" / "elections", target, log=lambda _: None)
+        return target
+
+    def test_p1_parent_path_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            election = self.pending_tree(root)
+            secret = root / "outside.csv"
+            secret.write_bytes(b"secret")
+            self.rewrite(election, "king-county", input="../../../../outside.csv",
+                         input_sha256=hashlib.sha256(b"secret").hexdigest())
+            target = self.assert_refused(root)
+            self.assertFalse(any(target.rglob("outside.csv")) if target.exists() else False)
+
+    def test_p2_absolute_path_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            election = self.pending_tree(root)
+            self.rewrite(election, "king-county", input=str(root / "x.csv"))
+            self.assert_refused(root)
+
+    def test_p3_symlink_in_pending_tree_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            election = self.pending_tree(root)
+            outside = root / "elsewhere"
+            outside.mkdir()
+            record = next(r for r in ElectionStore(election).records if r.place == "king-county")
+            real = election / record.input
+            (outside / real.name).write_bytes(real.read_bytes())
+            shutil.rmtree(real.parent)
+            real.parent.symlink_to(outside, target_is_directory=True)
+            self.assert_refused(root)
+
+    def test_p4_symlink_in_target_tree_is_refused_before_writing(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.pending_tree(root)
+            outside = root / "elsewhere"
+            outside.mkdir()
+            target_election = root / "main" / "elections" / "washington" / "2026-11-03"
+            target_election.mkdir(parents=True)
+            (target_election / "input").symlink_to(outside, target_is_directory=True)
+            self.assert_refused(root)
+            self.assertEqual(list(outside.iterdir()), [])
+
+    def test_p5_bad_raw_path_leaves_no_partial_copy(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            election = self.pending_tree(root)
+            self.rewrite(election, "pierce-county", raw="../../../escape.json.gz")
+            target = self.assert_refused(root)
+            # Nothing from this election directory is written, not even the valid records.
+            election_target = target / "washington" / "2026-11-03"
+            written = [p for p in election_target.rglob("*") if p.is_file()] if election_target.exists() else []
+            self.assertEqual(written, [])
+
+
+    # P7-P10 (Em's review of 6cf9e53): the whole chain, from root to election
+    # directory to SOURCES.json and files, in both trees, is confined before any
+    # read or write; and no file I/O ever touches a path outside the two roots.
+
+    def monitored_carry(self, root: Path):
+        """Run carry_forward while recording every path read or written; return (error, paths)."""
+        seen: list[Path] = []
+        originals = {name: getattr(Path, name) for name in ("read_bytes", "read_text", "write_bytes", "write_text")}
+
+        def spy(name):
+            def wrapper(self_path, *args, **kwargs):
+                seen.append(Path(os.path.realpath(self_path)))
+                return originals[name](self_path, *args, **kwargs)
+            return wrapper
+
+        error = None
+        with mock.patch.multiple(Path, **{name: spy(name) for name in originals}):
+            try:
+                carry_forward(root / "pending" / "elections", root / "main" / "elections", log=lambda _: None)
+            except ElectionReportError as exc:
+                error = exc
+        return error, seen
+
+    def assert_no_outside_io(self, root: Path, seen) -> None:
+        allowed = [Path(os.path.realpath(root / "pending")), Path(os.path.realpath(root / "main"))]
+        outside = [p for p in seen if not any(p == a or a in p.parents for a in allowed)]
+        self.assertEqual(outside, [])
+
+    def outside_dir(self, root: Path) -> Path:
+        outside = root / "elsewhere"
+        outside.mkdir(exist_ok=True)
+        return outside
+
+    def test_p7_target_election_directory_symlink_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.pending_tree(root)
+            outside = self.outside_dir(root)
+            (root / "main" / "elections" / "washington").mkdir(parents=True)
+            (root / "main" / "elections" / "washington" / "2026-11-03").symlink_to(outside, target_is_directory=True)
+            error, seen = self.monitored_carry(root)
+            self.assertIsNotNone(error)
+            self.assertEqual(list(outside.iterdir()), [])
+            self.assert_no_outside_io(root, seen)
+
+    def test_p8_source_ledger_symlink_is_refused_before_reading(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            election = self.pending_tree(root)
+            outside = self.outside_dir(root)
+            ledger = election / "SOURCES.json"
+            (outside / "SOURCES.json").write_bytes(ledger.read_bytes())
+            ledger.unlink()
+            ledger.symlink_to(outside / "SOURCES.json")
+            error, seen = self.monitored_carry(root)
+            self.assertIsNotNone(error)
+            self.assert_no_outside_io(root, seen)
+
+    def test_p9_target_ledger_symlink_is_refused_before_writing(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.pending_tree(root)
+            outside = self.outside_dir(root)
+            (outside / "victim.json").write_text("{}", encoding="utf-8")
+            target_election = root / "main" / "elections" / "washington" / "2026-11-03"
+            target_election.mkdir(parents=True)
+            (target_election / "SOURCES.json").symlink_to(outside / "victim.json")
+            error, seen = self.monitored_carry(root)
+            self.assertIsNotNone(error)
+            self.assertEqual((outside / "victim.json").read_text(encoding="utf-8"), "{}")
+            self.assert_no_outside_io(root, seen)
+
+    def test_p10_symlinked_directory_in_pending_tree_is_not_followed(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            election = self.pending_tree(root)
+            outside = self.outside_dir(root)
+            # Move the real election directory outside and link it back in.
+            shutil.move(str(election), str(outside / "2026-11-03"))
+            election.symlink_to(outside / "2026-11-03", target_is_directory=True)
+            error, seen = self.monitored_carry(root)
+            self.assertIsNone(error)  # not followed, so nothing is found to carry
+            self.assertFalse((root / "main" / "elections").exists()
+                             and any((root / "main" / "elections").rglob("*.csv")))
+            self.assert_no_outside_io(root, seen)
+
+    def test_p11_valid_tree_carries_with_no_outside_io(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.pending_tree(root)
+            error, seen = self.monitored_carry(root)
+            self.assertIsNone(error)
+            self.assertTrue(any((root / "main" / "elections").rglob("*.csv")))
+            self.assert_no_outside_io(root, seen)
+
+
+    # P12-P14 (Em's rereview of 2a7a42f): the segment from the pending checkout
+    # (trusted, chosen by the workflow) down to its nested elections directory
+    # comes from the automation branch and is checked before any listing or read.
+
+    def checkout_layout(self, root: Path, symlinked: bool) -> tuple[Path, Path]:
+        """A pending checkout with election-analysis/data/elections, optionally via a symlink."""
+        self.pending_tree(root)  # real snapshots under root/pending/elections
+        checkout = root / ".pending"
+        data_parent = checkout / "election-analysis"
+        data_parent.mkdir(parents=True)
+        if symlinked:
+            outside = self.outside_dir(root)
+            shutil.move(str(root / "pending" / "elections"), str(outside / "elections"))
+            (data_parent / "data").symlink_to(outside, target_is_directory=True)
+        else:
+            (data_parent / "data").mkdir()
+            shutil.move(str(root / "pending" / "elections"), str(data_parent / "data" / "elections"))
+        return checkout, data_parent / "data" / "elections"
+
+    def carry_with_base(self, root: Path, checkout: Path, source: Path):
+        seen: list[Path] = []
+        originals = {name: getattr(Path, name) for name in ("read_bytes", "read_text", "write_bytes", "write_text")}
+
+        def spy(name):
+            def wrapper(self_path, *args, **kwargs):
+                seen.append(Path(os.path.realpath(self_path)))
+                return originals[name](self_path, *args, **kwargs)
+            return wrapper
+
+        error = None
+        with mock.patch.multiple(Path, **{name: spy(name) for name in originals}):
+            try:
+                carry_forward(source, root / "main" / "elections", log=lambda _: None, source_base=checkout)
+            except ElectionReportError as exc:
+                error = exc
+        return error, seen
+
+    def test_p12_symlink_between_checkout_and_elections_root_is_refused_before_reading(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            checkout, source = self.checkout_layout(root, symlinked=True)
+            error, seen = self.carry_with_base(root, checkout, source)
+            self.assertIsNotNone(error)
+            self.assertIn("symlink", str(error))
+            self.assertEqual(seen, [])  # nothing read or written at all
+            self.assertFalse((root / "main").exists())
+
+    def test_p13_real_nested_elections_root_carries(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            checkout, source = self.checkout_layout(root, symlinked=False)
+            error, seen = self.carry_with_base(root, checkout, source)
+            self.assertIsNone(error)
+            self.assertTrue(any((root / "main" / "elections").rglob("*.csv")))
+            allowed = [Path(os.path.realpath(checkout)), Path(os.path.realpath(root / "main"))]
+            self.assertEqual([p for p in seen if not any(a == p or a in p.parents for a in allowed)], [])
+
+    def test_p14_source_outside_the_trusted_root_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.pending_tree(root)
+            (root / ".pending").mkdir()
+            with self.assertRaisesRegex(ElectionReportError, "not inside"):
+                carry_forward(root / "pending" / "elections", root / "main" / "elections",
+                              log=lambda _: None, source_base=root / ".pending")
+
+    def test_p15_workflow_passes_the_trusted_root(self) -> None:
+        script = (Path(__file__).resolve().parents[1] / "ci" / "watch.sh").read_text(encoding="utf-8")
+        self.assertIn('carry --from "$pending" --trusted-root "$checkout"', script)
 
 
 class RepositoryTests(unittest.TestCase):
