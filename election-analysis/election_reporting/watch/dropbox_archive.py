@@ -23,21 +23,31 @@ Inputs:
   ``<run id>-<attempt>``).
 - Credentials, from the environment only and never printed:
   ``DROPBOX_APP_KEY``, ``DROPBOX_APP_SECRET``, ``DROPBOX_REFRESH_TOKEN``.
-  The app is an App folder app with the ``files.content.write`` scope only.
+  The app is an App folder app with the ``files.content.write`` and
+  ``files.metadata.read`` scopes, both confined to the app folder.
 
 Output, in Dropbox:
 - ``<base>/<state>/<sha256>.<ext>`` and ``<base>/<state>/<sha256>.header.json``,
   uploaded in ``add`` mode without autorename. Nothing in Dropbox is ever
-  overwritten. For a body, a file already present under its SHA-256 name has
-  that exact content, so a conflict means "already archived". For a header,
-  a conflict means the header from the body's first archived retrieval is
-  kept and this run's header is not uploaded; this run's retrievals of that
-  body are still recorded in the run manifest below.
+  overwritten. On a conflict the stored file's Dropbox content hash is
+  compared with the local bytes: equal means "already archived (verified)",
+  anything else (different bytes, a folder, a failed check) is a failure. A
+  header from an earlier run of the same body has different bytes, so it is
+  never uploaded over it: when a body was already archived (verified), its
+  header is skipped and the first archived header is kept; later retrievals
+  are recorded in each run's manifest.
 - ``<base>/manifests/<label>.json``: this run's MANIFEST.json, including
   every retrieval of bodies archived by earlier runs.
 
-Returns 0 when every file is archived or already present; 1 if any upload
-failed (the failure is listed, and the workflow step shows red, but snapshot
+Status words, kept distinct: *captured* (saved by the keeper on the runner),
+*backed up* (in the run's 90-day artifact), *archived* (uploaded to Dropbox,
+or already there with a verified content hash). Without credentials the
+step prints that the run was NOT archived and exits 0, so snapshot
+publication is never blocked; such runs are not replayed to Dropbox later
+automatically (a backfill from the artifacts is a separate follow-up).
+
+Returns 0 when every file is archived or verified as already present; 1 if
+any upload failed (the failure is listed, and the workflow step shows red, but snapshot
 publication has already run and is not affected). Returns 0 with a notice
 when there is nothing to archive.
 
@@ -49,6 +59,7 @@ reported as a failure rather than truncated.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import sys
@@ -63,19 +74,56 @@ from .originals import MANIFEST
 BASE = "/data"  # relative to the App folder: /Apps/<app name>/data
 TOKEN_URL = "https://api.dropboxapi.com/oauth2/token"
 UPLOAD_URL = "https://content.dropboxapi.com/2/files/upload"
+METADATA_URL = "https://api.dropboxapi.com/2/files/get_metadata"
 MAX_SINGLE_UPLOAD = 150 * 1024 * 1024
+BLOCK = 4 * 1024 * 1024  # Dropbox content_hash block size
+TRANSPORT_ERROR = 0  # pseudo-status for a request that never got an HTTP answer
 
 # (url, data, headers) -> (status, body); injectable for tests.
 Post = Callable[[str, bytes, dict[str, str]], tuple[int, bytes]]
 
 
 def _post(url: str, data: bytes, headers: dict[str, str]) -> tuple[int, bytes]:
+    """POST and return (status, body). Never raises for network trouble.
+
+    An HTTP error returns its status and body. A request that gets no HTTP
+    answer at all (DNS failure, refused connection, timeout, TLS error)
+    returns ``TRANSPORT_ERROR`` with the reason, so the caller reports that
+    one file as failed and carries on with the rest.
+    """
     request = urllib.request.Request(url, data=data, headers=headers, method="POST")
     try:
         with urllib.request.urlopen(request, timeout=120) as reply:
             return reply.status, reply.read()
     except urllib.error.HTTPError as error:
         return error.code, error.read()
+    except (urllib.error.URLError, TimeoutError, OSError) as error:
+        reason = getattr(error, "reason", error)
+        return TRANSPORT_ERROR, f"transport error: {reason}".encode("utf-8", errors="replace")
+
+
+def content_hash(data: bytes) -> str:
+    """Dropbox's ``content_hash``: SHA-256 over the SHA-256 of each 4 MiB block."""
+    blocks = b"".join(hashlib.sha256(data[i:i + BLOCK]).digest() for i in range(0, len(data), BLOCK))
+    return hashlib.sha256(blocks).hexdigest()
+
+
+def remote_matches(token: str, path: str, data: bytes, post: Post) -> bool:
+    """True only if ``path`` in Dropbox is a file whose content hash equals ``data``'s.
+
+    Needs the ``files.metadata.read`` scope (inside the app folder only).
+    """
+    status, body = post(METADATA_URL, json.dumps({"path": path}).encode("utf-8"), {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json",
+    })
+    if status != 200:
+        return False
+    try:
+        metadata = json.loads(body)
+    except ValueError:
+        return False
+    return metadata.get(".tag") == "file" and metadata.get("content_hash") == content_hash(data)
 
 
 def access_token(app_key: str, app_secret: str, refresh_token: str, post: Post = _post) -> str:
@@ -94,7 +142,14 @@ def access_token(app_key: str, app_secret: str, refresh_token: str, post: Post =
 
 
 def upload(token: str, path: str, data: bytes, post: Post = _post) -> str:
-    """Upload ``data`` to ``path`` without overwriting. Returns 'archived' or 'already archived'."""
+    """Upload ``data`` to ``path`` without overwriting.
+
+    Returns 'archived', or 'already archived (verified)' when a file is
+    already there and Dropbox reports the same content hash. A conflict that
+    cannot be verified (different bytes, a folder in the way, or the check
+    itself failing) raises: a SHA-256 in the file name is not proof of what
+    is stored under it.
+    """
     if len(data) > MAX_SINGLE_UPLOAD:
         raise RuntimeError(f"{path}: {len(data):,} bytes exceeds the single-upload limit")
     argument = json.dumps({"path": path, "mode": "add", "autorename": False, "mute": True})
@@ -106,24 +161,41 @@ def upload(token: str, path: str, data: bytes, post: Post = _post) -> str:
     if status == 200:
         return "archived"
     if status == 409 and b"conflict" in body:
-        return "already archived"
+        if remote_matches(token, path, data, post):
+            return "already archived (verified)"
+        raise RuntimeError(f"{path}: already exists in Dropbox with different or unverifiable content")
     summary = body[:200].decode("utf-8", errors="replace")
     raise RuntimeError(f"{path}: HTTP {status}: {summary}")
 
 
 def archive(directory: Path, label: str, token: str, base: str = BASE,
             post: Post = _post, log: Callable[[str], None] = print) -> int:
-    """Upload every original and header under ``directory``, then the run manifest."""
+    """Upload every original, then its header, then the run manifest.
+
+    Bodies go first. A header is skipped when its body was already archived
+    (verified) by an earlier run: the header from the first archived
+    retrieval is kept, and this run's retrievals are in the run manifest.
+    Each file is attempted even if an earlier one failed.
+    """
     if not (directory / MANIFEST).exists():
         log("::notice::No downloaded originals to archive.")
         return 0
     failures = 0
     files = sorted(p for p in directory.rglob("*") if p.is_file() and p.name != MANIFEST)
-    for local in files:
+    headers = [p for p in files if p.name.endswith(".header.json")]
+    bodies = [p for p in files if not p.name.endswith(".header.json")]
+    previously_archived: set[str] = set()  # "<state>/<sha256>" of bodies archived by an earlier run
+    for local in bodies + headers:
         relative = local.relative_to(directory).as_posix()
+        key = f"{local.parent.name}/{local.name.split('.', 1)[0]}"
+        if local in headers and key in previously_archived:
+            log(f"header kept from first archive: {base}/{relative}")
+            continue
         try:
             outcome = upload(token, f"{base}/{relative}", local.read_bytes(), post)
             log(f"{outcome}: {base}/{relative}")
+            if local in bodies and outcome.startswith("already archived"):
+                previously_archived.add(key)
         except RuntimeError as error:
             failures += 1
             log(f"::error::Dropbox archive failed: {error}")
@@ -145,8 +217,9 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     keys = ("DROPBOX_APP_KEY", "DROPBOX_APP_SECRET", "DROPBOX_REFRESH_TOKEN")
     if not all(os.environ.get(key) for key in keys):
-        print("::warning::Dropbox archive skipped: DROPBOX_APP_KEY, DROPBOX_APP_SECRET and "
-              "DROPBOX_REFRESH_TOKEN are not all configured. The 90-day artifact still holds the files.")
+        print("::warning::NOT archived to Dropbox: DROPBOX_APP_KEY, DROPBOX_APP_SECRET and "
+              "DROPBOX_REFRESH_TOKEN are not all configured. This run's originals are captured and backed "
+              "up only in its 90-day artifact; they are not replayed to Dropbox later automatically.")
         return 0
     try:
         # _post is looked up here, at call time, so tests can substitute it.

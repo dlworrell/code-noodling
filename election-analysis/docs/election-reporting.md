@@ -275,18 +275,29 @@ How a run does it:
 3. After snapshot publication, `ci/watch.sh archive` copies the same layout
    to Dropbox: `/Apps/election-analyser/data/<state>/<sha256>.<ext>`, the
    header beside it, and the run manifest as `manifests/<run>-<attempt>.json`.
-   Uploads never overwrite. A body already present under its SHA-256 name is
-   the same content and is reported as already archived. A header already
-   present is the one from the body's first archived retrieval and is kept;
-   later retrievals of that body are recorded in each run's manifest. A failed upload marks the
+   Uploads never overwrite. When a file is already present, its Dropbox
+   content hash is compared with the local bytes: a match is "already
+   archived (verified)"; different bytes, a folder in the way, or a failed
+   check is an error. When a body was already archived by an earlier run,
+   its header is not uploaded again: the header from the first archived
+   retrieval is kept, and later retrievals are recorded in each run's
+   manifest. A network error or timeout fails that one file; the others are
+   still attempted. A failed upload marks the
    step red without affecting snapshot publication.
 
 Dropbox credentials are the repository secrets `DROPBOX_APP_KEY`,
 `DROPBOX_APP_SECRET` and `DROPBOX_REFRESH_TOKEN`, for a Dropbox app named
-`election-analyser` with **App folder** access and only the
-`files.content.write` scope. It cannot see anything else in the Dropbox.
-Without them the archive step warns and the 90-day artifact remains the
-retained copy.
+`election-analyser` with **App folder** access and the
+`files.content.write` and `files.metadata.read` scopes (the second is for
+the content-hash check). It cannot see anything outside its own folder.
+
+Status words are kept distinct: a file is *captured* when the keeper saves
+it on the runner, *backed up* when it is in the run's 90-day artifact, and
+*archived* only when it is in Dropbox, uploaded or verified by content hash.
+Without the secrets the archive step says the run was NOT archived and exits
+successfully so snapshot publication is never blocked. Such runs are not
+replayed to Dropbox automatically once the secrets exist; copying earlier
+artifacts to Dropbox is a separate backfill.
 
 This covers the files the repository keeps only in derived or trimmed form:
 the Washington "Summary and Precinct Results" workbook and the VoteWA JSON.
