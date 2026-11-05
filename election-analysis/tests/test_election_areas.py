@@ -45,6 +45,13 @@ def workbook(sheets: dict[str, list[list[object]]]) -> bytes:
             return f'<c r="{ref}"><v>{value}</v></c>'
         return f'<c r="{ref}" t="inlineStr"><is><t>{escape(str(value))}</t></is></c>'
 
+    def _entry(name: str) -> zipfile.ZipInfo:
+        # Fixed timestamp: a workbook built twice must be byte-identical
+        # (writestr(name) stamps the current time; see test_election_reporting).
+        entry = zipfile.ZipInfo(name, date_time=(2026, 1, 1, 0, 0, 0))
+        entry.compress_type = zipfile.ZIP_DEFLATED
+        return entry
+
     buffer = io.BytesIO()
     with zipfile.ZipFile(buffer, "w", zipfile.ZIP_DEFLATED) as archive:
         entries, rels = [], []
@@ -59,18 +66,18 @@ def workbook(sheets: dict[str, list[list[object]]]) -> bytes:
                 for r, row in enumerate(rows, start=1)
             )
             archive.writestr(
-                f"xl/worksheets/sheet{number}.xml",
+                _entry(f"xl/worksheets/sheet{number}.xml"),
                 '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'
                 f"<sheetData>{body}</sheetData></worksheet>",
             )
         archive.writestr(
-            "xl/workbook.xml",
+            _entry("xl/workbook.xml"),
             '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" '
             'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
             f"<sheets>{''.join(entries)}</sheets></workbook>",
         )
         archive.writestr(
-            "xl/_rels/workbook.xml.rels",
+            _entry("xl/_rels/workbook.xml.rels"),
             '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
             + "".join(rels) + "</Relationships>",
         )
