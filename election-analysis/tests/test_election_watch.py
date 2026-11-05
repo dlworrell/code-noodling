@@ -825,6 +825,30 @@ class CarryForwardTests(unittest.TestCase):
         self.assertIn('carry --from "$pending" --trusted-root "$checkout"', script)
 
 
+class DeploymentConfigTests(unittest.TestCase):
+    def test_deployed_watch_config_collects_every_washington_county(self) -> None:
+        from election_reporting.watch import sources
+        config = load_watch_settings(Path(__file__).resolve().parents[1] / "data" / "watch.toml")
+        washington = next(w for w in config.watches if w.state_id == "washington")
+        self.assertTrue(washington.all_counties)
+        self.assertTrue(washington.precinct_results)
+        names = ["Adams", "Asotin", "Benton", "Chelan", "Clallam", "Clark", "Columbia", "Cowlitz",
+                 "Douglas", "Ferry", "Franklin", "Garfield", "Grant", "Grays Harbor", "Island",
+                 "Jefferson", "King", "Kitsap", "Kittitas", "Klickitat", "Lewis", "Lincoln", "Mason",
+                 "Okanogan", "Pacific", "Pend Oreille", "Pierce", "San Juan", "Skagit", "Skamania",
+                 "Snohomish", "Spokane", "Stevens", "Thurston", "Wahkiakum", "Walla Walla", "Whatcom",
+                 "Whitman", "Yakima"]
+        site = {"childLocalities": [
+            {"name": text(f"{name} County"), "shortName": name.casefold().replace(" ", "-") + "-county-wa"}
+            for name in names]}
+        places = sources.resolve_places(site, washington.state, washington.counties,
+                                        washington.prefer_county_files, washington.all_counties)
+        self.assertEqual(len(places), 40)  # the state plus 39 counties
+        self.assertEqual([p.place_id for p in places if p.county_files], ["king-county"])
+        for state in ("alaska", "maine"):
+            self.assertTrue(next(w for w in config.watches if w.state_id == state).all_counties, state)
+
+
 class RepositoryTests(unittest.TestCase):
     def test_snapshot_files_are_not_git_ignored(self) -> None:
         import subprocess

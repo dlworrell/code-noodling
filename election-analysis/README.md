@@ -84,7 +84,7 @@ artifacts, and call the scripts in [`ci/`](ci/).
 
 | Workflow | What it does |
 |---|---|
-| `election-source-watch.yml` | Every 30 minutes during a checking window, fetches new official snapshots into `data/` and opens a pull request |
+| `election-source-watch.yml` | Hourly at :07 (an external backup, outside this repository, is intended to dispatch it at :37) during a checking window, fetches new official snapshots into `data/` and opens a pull request |
 | `election-result-reports.yml` | Runs the tests, builds and validates every election's report into `reports/`, and opens a pull request when they change |
 | `election_provenance.yml` | Report-only: REUSE compliance, a version 4 `Catalyst-File-ID` on every authored file, and `scope-manifest.json` (path, kind, File-ID, SHA-256 of every file), plus test results; results in the job summary and an artifact, never failing the pull request. On pushes to main only, signs the scope manifest and the test results (GitHub artifact attestations) and verifies them |
 

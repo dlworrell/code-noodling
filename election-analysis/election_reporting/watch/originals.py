@@ -54,6 +54,7 @@ Limits:
 from __future__ import annotations
 
 import json
+import os
 import urllib.parse
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
@@ -63,6 +64,7 @@ from typing import Callable
 from .store import sha256
 
 MANIFEST = "MANIFEST.json"
+MANIFEST_PARTIAL = MANIFEST + ".partial"  # written first, then renamed over MANIFEST
 RETAIN = timedelta(days=30)  # Donovan, 2026-11-03: retain 30 days and archive
 RETENTION_NOTE = ("captured unmodified; backed up in the run's 90-day artifact; archived only when the "
                   "archive step uploads it (not done by this file). archive_after marks the end of the "
@@ -197,7 +199,14 @@ class OriginalsKeeper:
         return fetch_and_keep
 
     def save(self) -> Path | None:
-        """Write ``MANIFEST.json`` (sorted, deterministic). Returns its path, or None if nothing was kept."""
+        """Write ``MANIFEST.json`` (sorted, deterministic). Returns its path, or None if nothing was kept.
+
+        The manifest is written to ``MANIFEST.json.partial`` and then renamed
+        over ``MANIFEST.json`` (``os.replace``, atomic on one filesystem). A
+        write that fails part-way therefore leaves the previous manifest, or
+        none, never a truncated one; the partial file is removed and the
+        error is raised to the caller.
+        """
         if not self.entries:
             return None
         self.directory.mkdir(parents=True, exist_ok=True)
@@ -207,5 +216,11 @@ class OriginalsKeeper:
             "retention": RETENTION_NOTE,
             "files": sorted(self.entries.values(), key=lambda entry: (entry["state"], entry["sha256"])),
         }
-        manifest.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        partial = self.directory / MANIFEST_PARTIAL
+        try:
+            partial.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            os.replace(partial, manifest)
+        except BaseException:
+            partial.unlink(missing_ok=True)
+            raise
         return manifest

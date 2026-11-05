@@ -201,6 +201,41 @@ class KeeperRobustnessTests(unittest.TestCase):
         self.assertEqual(_safe_state(""), "unknown")
 
 
+class ManifestIntegrityTests(unittest.TestCase):
+    def test_o9_failed_manifest_write_leaves_previous_manifest_intact(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            keep = OriginalsKeeper(Path(directory), clock=lambda: T0, state="maine")
+            keep.keep("https://www.maine.gov/sos/a.xlsx", b"workbook", {})
+            keep.save()
+            before = (Path(directory) / MANIFEST).read_bytes()
+            keep.keep("https://www.maine.gov/sos/b.csv", b"rows", {})
+            real_write = Path.write_text
+
+            def torn_write(path, text, *args, **kwargs):
+                real_write(path, text[: len(text) // 2], *args, **kwargs)  # half the bytes land
+                raise OSError("No space left on device")
+
+            with mock.patch.object(Path, "write_text", torn_write):
+                with self.assertRaises(OSError):
+                    keep.save()
+            self.assertEqual((Path(directory) / MANIFEST).read_bytes(), before)
+            self.assertEqual(sorted(p.name for p in Path(directory).iterdir()), sorted(["maine", MANIFEST]))
+
+    def test_d12_invalid_manifest_is_not_archived(self) -> None:
+        for broken in (b'{"schema": "election-originals.v1", "files": [', b"[]", b'{"schema": "other"}'):
+            with tempfile.TemporaryDirectory() as directory:
+                kept_run(Path(directory))
+                (Path(directory) / MANIFEST).write_bytes(broken)
+                (Path(directory) / (MANIFEST + ".partial")).write_bytes(broken)
+                box = FakeDropbox()
+                lines: list[str] = []
+                status = dropbox_archive.archive(Path(directory), "41-1", "t", post=box, log=lines.append)
+                self.assertEqual(status, 1, broken)
+                self.assertFalse(any("manifests/" in path or path.endswith(".partial") for path in box.files))
+                self.assertEqual(len(box.files), 4)  # bodies and headers still archived
+                self.assertTrue(any("not a valid" in line for line in lines))
+
+
 class FakeDropbox:
     """Records uploads; answers 409 conflict for paths already present and
     serves get_metadata with Dropbox's content hash of the stored bytes."""

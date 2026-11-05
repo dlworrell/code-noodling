@@ -69,7 +69,7 @@ import urllib.request
 from pathlib import Path
 from typing import Callable
 
-from .originals import MANIFEST
+from .originals import MANIFEST, MANIFEST_PARTIAL
 
 BASE = "/data"  # relative to the App folder: /Apps/<app name>/data
 TOKEN_URL = "https://api.dropboxapi.com/oauth2/token"
@@ -205,7 +205,8 @@ def archive(directory: Path, label: str, token: str, base: str = BASE,
         log("::notice::No downloaded originals to archive.")
         return 0
     failures = 0
-    files = sorted(p for p in directory.rglob("*") if p.is_file() and p.name != MANIFEST)
+    files = sorted(p for p in directory.rglob("*")
+                   if p.is_file() and p.name not in (MANIFEST, MANIFEST_PARTIAL))
     headers = [p for p in files if p.name.endswith(".header.json")]
     bodies = [p for p in files if not p.name.endswith(".header.json")]
     previously_archived: set[str] = set()  # "<state>/<sha256>" of bodies archived by an earlier run
@@ -222,7 +223,15 @@ def archive(directory: Path, label: str, token: str, base: str = BASE,
             failures += 1
             log(f"::error::Dropbox archive failed: {error}")
     try:
-        outcome = upload(token, f"{base}/manifests/{label}.json", (directory / MANIFEST).read_bytes(), post)
+        manifest = (directory / MANIFEST).read_bytes()
+        try:
+            valid = json.loads(manifest).get("schema") == "election-originals.v1"
+        except (ValueError, AttributeError):
+            valid = False
+        if not valid:
+            # Never archive a manifest that is not a complete, readable record.
+            raise RuntimeError(f"{MANIFEST} is not a valid election-originals.v1 manifest; not archived")
+        outcome = upload(token, f"{base}/manifests/{label}.json", manifest, post)
         log(f"{outcome}: {base}/manifests/{label}.json")
     except RuntimeError as error:
         failures += 1
