@@ -135,9 +135,29 @@ class DueTests(unittest.TestCase):
         self.assertFalse(capture.due(t, floor - timedelta(seconds=1))[0])
         self.assertTrue(capture.due(t, floor)[0])
         self.assertTrue(capture.due(t, floor + timedelta(hours=7, minutes=59))[0])
-        self.assertTrue(capture.due(t, floor + timedelta(hours=9, minutes=10))[0])   # 550 min: slot 0-29 of 180
-        self.assertFalse(capture.due(t, floor + timedelta(hours=9, minutes=40))[0])  # 580 min: not due
+        self.assertTrue(capture.due(t, floor + timedelta(hours=9, minutes=10))[0])   # 550 min: 10 into the slot
+        self.assertTrue(capture.due(t, floor + timedelta(hours=9, minutes=59))[0])   # 599 min: 59 into the slot
+        self.assertFalse(capture.due(t, floor + timedelta(hours=10))[0])             # 600 min: 60 into the slot
         self.assertFalse(capture.due(t, t.end)[0])
+
+    def test_d3_the_hourly_07_run_alone_covers_every_slot(self) -> None:
+        # Issue #142: step through the primary :07 trigger only, from each deployed
+        # floor (North Carolina's is at :30) to its end. Every every_minutes slot
+        # whose first hour ends before the end needs at least one capture.
+        for t in capture.load_targets(CONFIG):
+            with self.subTest(state=t.state):
+                run = t.not_before.replace(minute=7, second=0, microsecond=0)
+                if run < t.not_before:
+                    run += timedelta(hours=1)
+                hits: dict[int, int] = {}
+                while run < t.end:
+                    slot = int((run - t.not_before).total_seconds() // 60) // t.every_minutes
+                    hits[slot] = hits.get(slot, 0) + capture.due(t, run)[0]
+                    run += timedelta(hours=1)
+                step = timedelta(minutes=t.every_minutes)
+                complete = [slot for slot in hits if t.not_before + slot * step + timedelta(hours=1) <= t.end]
+                self.assertGreater(len(complete), 200)
+                self.assertEqual([slot for slot in complete if hits[slot] == 0], [])
 
     def test_d2_a_held_state_makes_no_request(self) -> None:
         def no_requests(url, max_bytes=None):
