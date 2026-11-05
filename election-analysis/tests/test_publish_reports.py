@@ -18,8 +18,10 @@ from election_reporting.ci.publish_reports import (
     GitHub,
     PublishError,
     ReportChanges,
+    batch_changes,
     build_commit_input,
     build_graphql_request,
+    encoded_size,
     detect_changes,
     parse_name_status,
     publish,
@@ -137,6 +139,29 @@ class PayloadTests(unittest.TestCase):
         self.assertEqual(len(commit_input["fileChanges"]["additions"]), 500)
         self.assertNotIn("deletions", commit_input["fileChanges"])
         self.assertNotIn("[skip ci]", json.dumps(commit_input["message"]))
+
+
+class BatchTests(unittest.TestCase):
+    SIZES = {"r/a": 300, "r/b": 300, "r/c": 900, "r/d": 30}
+
+    def test_b1_small_change_is_one_batch(self) -> None:
+        changes = ReportChanges(("r/a", "r/b"), ("r/x",))
+        self.assertEqual(batch_changes(changes, self.SIZES.__getitem__, limit=10_000), [changes])
+
+    def test_b2_packs_within_limit_in_path_order_with_deletions_first(self) -> None:
+        changes = ReportChanges(("r/a", "r/b", "r/c", "r/d"), ("r/x",))
+        batches = batch_changes(changes, self.SIZES.__getitem__, limit=encoded_size(600))
+        self.assertEqual([b.additions for b in batches], [("r/a", "r/b"), ("r/c",), ("r/d",)])
+        self.assertEqual([b.deletions for b in batches], [("r/x",), (), ()])
+        self.assertEqual(sum((b.additions for b in batches), ()), changes.additions)
+
+    def test_b3_deletions_only_is_one_batch(self) -> None:
+        changes = ReportChanges((), ("r/x", "r/y"))
+        self.assertEqual(batch_changes(changes, self.SIZES.__getitem__), [changes])
+
+    def test_b4_a_file_too_large_for_any_request_is_refused(self) -> None:
+        with self.assertRaisesRegex(PublishError, "too large"):
+            batch_changes(ReportChanges(("r/huge",), ()), lambda _: 40 * 1024 * 1024)
 
 
 class PublishFlowTests(unittest.TestCase):
@@ -490,6 +515,67 @@ class PublishFlowTests(unittest.TestCase):
             self.run_publish(fake)
         # Refused before ANY write: no branch reset, no commit, no PR change.
         self.assertEqual(self.writes(fake), [])
+
+    def chain_fake(self, tree: str, verified_first: bool = True) -> FakeGh:
+        first, second = "1" * 40, "2" * 40
+        commits = {first: (self.base_sha, None), second: (first, tree)}
+
+        def create(payload):
+            parent = payload["variables"]["input"]["expectedHeadOid"]
+            oid = first if parent == self.base_sha else second
+            return {"data": {"createCommitOnBranch": {"commit": {"oid": oid, "url": "u"}}}}
+
+        responses = {
+            ("GET", f"repos/{REPO}/git/matching-refs/heads/{BRANCH}"): [],
+            ("POST", f"repos/{REPO}/git/refs"): {},
+            ("POST", "graphql"): create,
+            ("POST", f"repos/{REPO}/pulls"): {"html_url": "https://pr/2", "number": 2},
+        }
+        for oid, (parent, commit_tree) in commits.items():
+            ok = verified_first or oid != first
+            responses[("GET", f"repos/{REPO}/git/commits/{oid}")] = {
+                "sha": oid, "tree": {"sha": commit_tree or "9" * 40}, "parents": [{"sha": parent}],
+                "verification": {"verified": ok, "reason": "valid" if ok else "unsigned"}}
+        return FakeGh(responses)
+
+    def test_b5_large_change_is_published_as_a_verified_chain(self) -> None:
+        self.regenerate()
+        _, tree = detect_changes(self.root, "election-analysis/reports")
+        fake = self.chain_fake(tree)
+        with mock.patch("election_reporting.ci.publish_reports.MAX_BATCH_BYTES", 4):
+            self.assertEqual(self.run_publish(fake), "https://pr/2")
+        inputs = [p["variables"]["input"] for _, e, p in fake.calls if e == "graphql"]
+        self.assertEqual([i["expectedHeadOid"] for i in inputs], [self.base_sha, "1" * 40])
+        self.assertEqual([i["message"]["headline"][-6:] for i in inputs], [" (1/2)", " (2/2)"])
+        paths = [[a["path"] for a in i["fileChanges"].get("additions", [])] for i in inputs]
+        self.assertEqual(paths, [["election-analysis/reports/analysis.json"],
+                                 ["election-analysis/reports/edt/new.bin"]])
+        self.assertEqual(inputs[0]["fileChanges"]["deletions"],
+                         [{"path": "election-analysis/reports/edt/old.md"}])
+        self.assertNotIn("deletions", inputs[1]["fileChanges"])
+
+    def test_b6_unverified_commit_in_a_chain_stops_before_the_next(self) -> None:
+        self.regenerate()
+        _, tree = detect_changes(self.root, "election-analysis/reports")
+        fake = self.chain_fake(tree, verified_first=False)
+        with mock.patch("election_reporting.ci.publish_reports.MAX_BATCH_BYTES", 4), \
+                self.assertRaisesRegex(PublishError, "did not verify"):
+            self.run_publish(fake)
+        self.assertEqual(len([e for _, e, _ in fake.calls if e == "graphql"]), 1)
+        self.assertFalse(any("/pulls" in e and m != "GET" for m, e, _ in fake.calls))
+
+    def test_b7_rerun_on_an_existing_chain_is_idempotent(self) -> None:
+        self.regenerate()
+        _, tree = detect_changes(self.root, "election-analysis/reports")
+        fake = self.chain_fake(tree)
+        fake.responses[("GET", f"repos/{REPO}/git/matching-refs/heads/{BRANCH}")] = [
+            {"ref": f"refs/heads/{BRANCH}", "object": {"sha": "2" * 40}}]
+        fake.responses[("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}")] = [
+            {"number": 2, "html_url": "https://pr/2", "base": {"ref": "dev-daily"}}]
+        fake.responses[("PATCH", f"repos/{REPO}/pulls/2")] = {}
+        with mock.patch("election_reporting.ci.publish_reports.MAX_BATCH_BYTES", 4):
+            self.assertEqual(self.run_publish(fake), "https://pr/2")
+        self.assertNotIn(("POST", "graphql"), fake.endpoints())
 
     def test_r6_rerun_is_idempotent(self) -> None:
         self.regenerate()
