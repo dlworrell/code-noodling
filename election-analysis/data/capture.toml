@@ -11,8 +11,10 @@
 #
 # not_before is a hard floor: the close of the state's LAST polls (standard
 # time; daylight saving time ended November 1, 2026). No request is made for a
-# state before it. Every run (each half hour) for night_hours after the floor,
-# then once per every_minutes until end.
+# state before it. Every run for night_hours after the floor, then in the first
+# hour of each every_minutes slot until end. Runs: hourly at :07 in this
+# repository, plus external backups at :12 and :42; the :07 run alone lands in
+# every slot.
 schema_version = 1
 
 [defaults]

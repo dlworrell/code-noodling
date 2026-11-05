@@ -400,12 +400,15 @@ Nothing is parsed or committed; the files go into the run's 90-day
 
 Each state's `not_before` is a hard floor at the close of its last polls; no
 request is made before it, and there is no force option. Collection runs on
-every run for eight hours, then every three hours until December 4.
+every run for eight hours, then in the first hour of each three-hour slot
+until December 4. The slot is an hour wide so the hourly :07 run alone lands
+in every slot, whatever the minute of the state's floor; the external :12 and
+:42 backups only add runs.
 `ci/watch.sh fetch` runs the capture before the watcher's own gate, within a
 240-second budget, and a capture failure is only a warning. Statewide files
 come first; county files follow while the budget lasts, in an order that
-rotates each half hour. Limits: the due check uses clock slots, so two close
-runs can both fetch; a file is stored once per run by SHA-256, but the
+rotates each half hour. Limits: the due check uses clock slots, so two runs
+in one slot can both fetch; a file is stored once per run by SHA-256, but the
 requests are still made. Arizona (moving to Enhanced Voting tonight) is not
 included: its results host refuses non-browser clients.
 
