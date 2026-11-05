@@ -14,9 +14,13 @@ elections = "elections"
 
 [[watch]]
 state = "Washington"
-# County names as on the Washington results site; "County" is optional.
-# King County and the counties bordering it.
-counties = ["King", "Snohomish", "Pierce", "Kittitas", "Chelan"]
+# County names as on the Washington results site ("County" is optional), or
+# "all". Owner request (2026-11-03): collect every state's data in full, so
+# all 39 counties are watched, each with its own local contests. King County
+# keeps its own CSV export (prefer_county_files below). The statewide
+# "Summary and Precinct Results" workbook (precinct_results, on by default for
+# Washington) adds county and precinct breakdowns for state-tabulated contests.
+counties = "all"
 # Pin this deployment to the requested November 3, 2026 general election.
 election = "2026-11-03"
 # Defaults to the state's own time zone (America/Los_Angeles).

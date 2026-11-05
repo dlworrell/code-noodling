@@ -91,6 +91,18 @@ def counting_config(path: Path):
                    information_time=stamp, election_status=status, result_statuses=records,audit_contract=contract)
 
 
+def fixed_zip_entry(name: str) -> zipfile.ZipInfo:
+    """A zip entry with a fixed timestamp, so a fixture built twice is byte-identical.
+
+    ``ZipFile.writestr(name, ...)`` stamps each entry with the current time
+    (2-second resolution); two builds straddling a boundary then differ, and a
+    test that expects "unchanged source, no new snapshot" fails at random.
+    """
+    entry = zipfile.ZipInfo(name, date_time=(2026, 1, 1, 0, 0, 0))
+    entry.compress_type = zipfile.ZIP_DEFLATED
+    return entry
+
+
 def write_summary_xlsx(
     path: Path,
     reported_ballots: int = 100,
@@ -148,14 +160,26 @@ def write_summary_xlsx(
         'Target="worksheets/sheet1.xml"/></Relationships>'
     )
     with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-        archive.writestr("xl/workbook.xml", workbook)
-        archive.writestr("xl/_rels/workbook.xml.rels", relationships)
-        archive.writestr("xl/worksheets/sheet1.xml", worksheet)
+        archive.writestr(fixed_zip_entry("xl/workbook.xml"), workbook)
+        archive.writestr(fixed_zip_entry("xl/_rels/workbook.xml.rels"), relationships)
+        archive.writestr(fixed_zip_entry("xl/worksheets/sheet1.xml"), worksheet)
         for name, payload in (extra_members or {}).items():
-            archive.writestr(name, payload)
+            archive.writestr(fixed_zip_entry(name), payload)
 
 
 class ElectionReportingTests(unittest.TestCase):
+    def test_xlsx_fixture_is_byte_identical_across_clock_ticks(self) -> None:
+        # Regression: the Election Source Watch offline test step failed on
+        # 2026-11-05 at 12:08 UTC (run 42024670240) because two builds of this
+        # fixture straddled a zip-timestamp boundary.
+        with tempfile.TemporaryDirectory() as directory:
+            first, second = Path(directory) / "a.xlsx", Path(directory) / "b.xlsx"
+            with mock.patch("zipfile.time.time", return_value=1_800_000_000.0):
+                write_summary_xlsx(first)
+            with mock.patch("zipfile.time.time", return_value=1_800_000_010.0):
+                write_summary_xlsx(second)
+            self.assertEqual(first.read_bytes(), second.read_bytes())
+
     def test_csv_text_with_xls_name_is_accepted(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "2026-08-06-results.csv.xls"

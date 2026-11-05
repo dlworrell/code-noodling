@@ -27,6 +27,23 @@ ALLOWED_HOSTS = frozenset(
         "www.maine.gov",
     }
 )
+# Capture-only collection (watch/capture.py): exact URL prefixes, not whole
+# hosts, so a shared host such as s3.amazonaws.com is limited to one bucket.
+CAPTURE_PREFIXES = (
+    "https://results.sos.ga.gov/results/public/",
+    "https://results.sos.ga.gov/cdn/results/",
+    "https://results.voteidaho.gov/results/public/",
+    "https://results.voteidaho.gov/cdn/results/",
+    "https://electionresults.ri.gov/results/public/",
+    "https://electionresults.ri.gov/cdn/results/",
+    "https://electionresults.utah.gov/results/public/",
+    "https://electionresults.utah.gov/cdn/results/",
+    "https://enr.elections.virginia.gov/results/public/",
+    "https://enr.elections.virginia.gov/cdn/results/",
+    "https://results.enr.clarityelections.com/CO/",
+    "https://results.enr.clarityelections.com/IA/",
+    "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/",
+)
 USER_AGENT = (
     "code-noodling-election-watcher/1 (+https://github.com/dlworrell/code-noodling)"
 )
@@ -67,6 +84,9 @@ Fetch = Callable[[str], Response]
 
 def check_url(url: str) -> str:
     parts = urllib.parse.urlsplit(url)
+    if (parts.scheme == "https" and url.startswith(CAPTURE_PREFIXES) and ".." not in parts.path
+            and "@" not in parts.netloc):
+        return url
     if parts.scheme != "https" or parts.hostname not in ALLOWED_HOSTS:
         raise ElectionReportError(f"refusing to fetch outside the official result hosts: {url}")
     return url
