@@ -36,10 +36,13 @@ county files while the time budget lasts):
 Guarantees and limits:
 - No request for a state before its ``not_before`` or after its ``end``; there
   is no force option. A held state makes no request at all.
-- Cadence: every run (every 30 minutes) for ``night_hours`` after the floor,
-  then once per ``every_minutes``. The decision uses clock slots, not the time
-  of the last fetch, so two runs close together can both fetch; bodies are
-  stored once per run by SHA-256, but the requests are still made.
+- Cadence: every run for ``night_hours`` after the floor, then in the first
+  ``SLOT_MINUTES`` (60) of each ``every_minutes`` slot counted from the floor.
+  The slot is as wide as the hourly primary trigger (:07), so that trigger
+  alone lands in every slot whatever the floor's minute; the external backups
+  (:12 and :42) only add runs. The decision uses clock slots, not the time of
+  the last fetch, so two runs in one slot can both fetch; bodies are stored
+  once per run by SHA-256, but the requests are still made.
 - Hosts and URL prefixes are limited to ``http.CAPTURE_PREFIXES``.
 - A time budget (default 240 s) bounds the whole capture so the parsed
   watcher that runs after it keeps its share of the job's 15 minutes; the
@@ -123,8 +126,8 @@ def load_targets(path: Path) -> list[Target]:
                 raise ElectionReportError(f"{where}: {name} must be a date-time with a UTC offset")
         if target.end <= target.not_before:
             raise ElectionReportError(f"{where}: end must be after not_before")
-        if target.every_minutes < 30:
-            raise ElectionReportError(f"{where}: every_minutes must be at least 30")
+        if target.every_minutes < SLOT_MINUTES:
+            raise ElectionReportError(f"{where}: every_minutes must be at least {SLOT_MINUTES}")
         if target.platform in ("enhanced-voting", "clarity") and not target.jurisdiction:
             raise ElectionReportError(f"{where}: jurisdiction is required for {target.platform}")
         if target.platform == "enhanced-voting" and not target.host:
@@ -134,6 +137,11 @@ def load_targets(path: Path) -> list[Target]:
     if len(states) != len(set(states)):
         raise ElectionReportError(f"{path}: a state is listed twice")
     return targets
+
+
+# Width of the due part of each every_minutes slot: the interval of the hourly
+# primary trigger, so one :07 run falls in every slot (issue #142).
+SLOT_MINUTES = 60
 
 
 def due(target: Target, now: datetime) -> tuple[bool, str]:
@@ -146,7 +154,7 @@ def due(target: Target, now: datetime) -> tuple[bool, str]:
     if elapsed < timedelta(hours=target.night_hours):
         return True, "election night: every run"
     minutes = int(elapsed.total_seconds() // 60)
-    if minutes % target.every_minutes < 30:
+    if minutes % target.every_minutes < SLOT_MINUTES:
         return True, f"every {target.every_minutes} minutes"
     return False, f"not due (every {target.every_minutes} minutes)"
 
