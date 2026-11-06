@@ -12,6 +12,7 @@ from pathlib import Path
 
 from . import __version__
 from .analysis import FLIP_BANDS, PROBABILITY_MODEL, risk_counts
+from .html_report import edom_to_html
 from .numerics import ERROR_POLICY
 from .model import DecisionAnalysis, ElectionAnalysis, ElectionReportError, RaceAnalysis, ResultStatus, format_probability
 
@@ -388,25 +389,161 @@ def _table_text(value: str) -> str:
     return " ".join(value.split()).replace("|", "\\|")
 
 
+PCO_MARKER = "precinct committee officer"
+
+
+def _share(part: int, whole: int) -> str:
+    """A percentage that never rounds a partial share up to a whole (no "100.0%")."""
+    if whole <= 0:
+        return "—"
+    value = 100 * part / whole
+    if part < whole and value >= 99.95:
+        return ">99.9%"
+    if 0 < value < 0.05:
+        return "<0.1%"
+    return f"{value:.1f}%"
+
+
+def _contest_key(name: str) -> str:
+    """Spelling-insensitive contest name: "Legislative District No. 32 State Senator (Vote for 1)"
+    and "Legislative District 32 - State Senator" are the same contest in two files."""
+    text = re.sub(r"\(vote for \d+\)", " ", name.casefold())
+    text = re.sub(r"\bpos\b\.?", "position", text)
+    text = re.sub(r"\b(no|number)\b\.?|#", " ", text)
+    return " ".join(re.findall(r"[a-z0-9]+", text))
+
+
+def _representatives(analysis: ElectionAnalysis) -> list[RaceAnalysis]:
+    """One report per contest name: the controlling one, else the one with the most votes.
+
+    Files overlap (a county file repeats its share of a statewide contest), and most
+    contests in a live count have no reviewed identity yet, so "controlling" alone
+    would leave nothing to summarise. This is a reading aid for the summary only;
+    the race-by-race section still lists every source representation.
+    """
+    best: dict[str, RaceAnalysis] = {}
+    for race in analysis.races:
+        key = _contest_key(race.contest)
+        current = best.get(key)
+        if current is None or (race.controlling, race.valid_votes) > (current.controlling, current.valid_votes):
+            best[key] = race
+    return sorted(best.values(), key=lambda race: (race.contest_order, race.contest.casefold()))
+
+
+def _closest_boundary(race: RaceAnalysis) -> tuple[str, str, int, str] | None:
+    """(leader, challenger, margin, boundary) for the rule's closest decision, else the top two."""
+    labels = {"winner": "", "top_two_cutoff": " for the last top-two spot",
+              "top_four_cutoff": " for the last top-four spot"}
+    pairs = [d for d in race.decisions if d.kind in labels]
+    if pairs:
+        decision = min(pairs, key=lambda d: (d.margin, d.kind))
+        return decision.current_side, decision.change_side, decision.margin, labels[decision.kind]
+    if len(race.choices) < 2:
+        return None
+    # Ranked-choice and other rules: describe first-choice tallies only, never a winner.
+    first, second = sorted(race.choices, key=lambda c: (-c.votes, c.order, c.name))[:2]
+    note = " in first choices (ranked-choice tabulation not modeled)" if race.rule == "rcv" else ""
+    return first.name, second.name, first.votes - second.votes, note
+
+
+def _close_races(analysis: ElectionAnalysis, limit: int = 8) -> list[tuple[RaceAnalysis, str, str, int, str]]:
+    """Contests with votes, closest first: (race, leader, challenger, margin, boundary).
+
+    Descriptive only: the margin says nothing about how likely it is to change.
+    """
+    rows = []
+    for race in _representatives(analysis):
+        if race.valid_votes <= 0 or PCO_MARKER in race.contest.casefold():
+            continue
+        found = _closest_boundary(race)
+        if found is not None:
+            rows.append((race, *found))
+    rows.sort(key=lambda r: (r[3] / r[0].valid_votes, r[3], r[0].contest.casefold()))
+    return rows[:limit]
+
+
+def _close_race_line(race: RaceAnalysis, leader: str, runner_up: str, margin: int, boundary: str = "") -> str:
+    if margin == 0:
+        state = f"{leader} and {runner_up} are tied{boundary}"
+    else:
+        state = f"{leader} leads {runner_up} by {margin:,} {'vote' if margin == 1 else 'votes'}{boundary}"
+    text = f"{race.contest}: {state} ({_share(margin, race.valid_votes)} of {race.valid_votes:,} votes counted)."
+    if race.result_status.lifecycle != "unknown":
+        text += f" Lifecycle: {race.result_status.lifecycle}."
+    return text
+
+
+GATE_LABELS = {
+    "lifecycle_and_stage": "this file has no result status (counting, certified, recount) recorded against it",
+    "source_time": "the count time is unknown or more than 48 hours old",
+    "identity": "the contest has not been matched to a reviewed contest list",
+    "complete_scope": "the file covers only part of the contest, or its scope is unreviewed",
+    "source_coverage": "the source has not been verified as complete",
+    "provenance": "the source's origin is not fully recorded",
+    "geography_compatibility": "files disagree about the contest's geography",
+    "noncontradictory_data": "the file's counts do not add up",
+    "batch_annotation_consistent": "new-ballot batches are inconsistent",
+    "supported_rule": "the office's winning rule has not been reviewed",
+    "remaining_pool": "there is no estimate of ballots left to count",
+}
+
+
+def _withholding_reasons(analysis: ElectionAnalysis) -> list[tuple[str, int]]:
+    """Plain-language gate failures, counted by contest (one representative per contest)."""
+    reasons: Counter[str] = Counter()
+    for race in _representatives(analysis):
+        if race.forecast_eligible:
+            continue
+        found = set()
+        for part in race.forecast_reason.split("; "):
+            part = part.strip()
+            if part in GATE_LABELS:
+                found.add(GATE_LABELS[part])
+            elif part.startswith("Election-day precinct subset"):
+                found.add("results are only approximately assigned to boroughs (election-day precincts only)")
+        reasons.update(found or {race.forecast_reason})
+    return sorted(reasons.items(), key=lambda item: (-item[1], item[0]))
+
+
+def _mode_sentence(analysis: ElectionAnalysis) -> str:
+    if analysis.report_mode == "current":
+        return ""
+    return (f"Forecasts are switched off for this report (report mode: {analysis.report_mode}); "
+            "even a contest that passed every check below would show counts only.")
+
+
+def _latest_count_time(analysis: ElectionAnalysis) -> str | None:
+    stamps = sorted({str(f) for race in analysis.races
+                     for f in (race.evidence.get("source", {}).get("count_updated_at")
+                               or race.evidence.get("source", {}).get("source_published_at"),) if f})
+    return stamps[-1] if stamps else None
+
+
+def _plain_lead(analysis: ElectionAnalysis) -> str:
+    contests = _representatives(analysis)
+    modeled = sum(1 for race in analysis.races if race.controlling for d in race.decisions if d.risk.change_probability is not None)
+    latest = _latest_count_time(analysis)
+    lifecycle = analysis.election_status.lifecycle
+    stage = {"counting": "Unofficial results; ballots are still being counted.",
+             "certified": "Certified results.", "final_tabulation": "Final tabulation.",
+             "recount_pending": "A recount is pending.", "recount_completed": "Recount completed.",
+             "awaiting_results": "No results have been released yet."}.get(lifecycle, "Results status not recorded.")
+    text = (f"{stage} {len(contests):,} contests"
+            + (f", latest source update {latest}" if latest else "") + ". ")
+    if modeled:
+        text += f"{modeled:,} decision boundaries have experimental, uncalibrated probabilities."
+    else:
+        text += "No forecasts are published for this report; the margins below are counts, not predictions."
+    return text
+
+
 def _at_glance_table(analysis: ElectionAnalysis) -> str:
     rows: list[tuple[tuple[object, ...], str]] = []
     for race in analysis.races:
-        if not race.decisions:
-            scope = "Controlling" if race.controlling else "Partial/unreviewed"
-            order = (
-                not race.controlling,
-                True,
-                0.0,
-                race.contest.casefold(),
-                "not_applicable",
-            )
-            row = (
-                f"| Not estimable | Unvalidated | {_table_text(race.contest)} | "
-                f"No supported modeled boundary | — | {scope} | {_table_text(_source_context(race))} |"
-            )
-            rows.append((order, row))
         for decision in race.decisions:
             probability = decision.risk.change_probability
+            if probability is None:
+                continue  # counted in the sentence above the table, not listed row by row
             order = (
                 not race.controlling,
                 probability is None,
@@ -508,31 +645,36 @@ def facebook_summary(analysis: ElectionAnalysis, report_url: str = PUBLIC_REPORT
         # EA-01: a historical correction must not retain a prospective headline or
         # reinterpret withheld/null probabilities as a table of low-risk races.
         heading = "HISTORICAL ELECTION RESULTS" if analysis.report_mode == "historical" else "ELECTION RESULTS"
-        boundaries = sorted(
-            ((race, decision) for race in controlling_races for decision in race.decisions
-             if race.valid_votes > 0 and race.result_status.lifecycle != "unknown"
-             and "precinct committee officer" not in race.contest.casefold()),
-            key=lambda item: (item[0].result_status.lifecycle == "unknown", item[1].margin, item[0].contest),
-        )[:6]
-        lines = [
-            f"🗳️ {heading} — FORECASTS WITHHELD", "", analysis.title,
+        lines = [f"🗳️ {heading} — FORECASTS WITHHELD", "", analysis.title, _plain_lead(analysis), ""]
+        close = _close_races(analysis, limit=6)
+        if close:
+            lines += ["CLOSEST RACES (CURRENT COUNT)"]
+            lines.extend(f"• {_close_race_line(*row)}" for row in close)
+            lines.append("")
+        reasons = _withholding_reasons(analysis)
+        if reasons:
+            lines += ["WHY FORECASTS ARE WITHHELD"]
+            if _mode_sentence(analysis):
+                lines.append(_mode_sentence(analysis))
+            lines.extend(f"• {count:,} contest(s): {reason}." for reason, count in reasons[:4])
+            if len(reasons) > 4:
+                lines.append("• Other reasons are listed on each race in the full report.")
+            lines.append("")
+        if analysis.report_mode == "historical":
+            lines += ["This audit correction supersedes earlier prospective summaries. "
+                      "Original inputs and the audited publication remain in repository history (audit #45).", ""]
+        lines += [
+            "ABOUT THIS DATA",
             _report_status(analysis),
             f"Latest input label: {analysis.as_of}; individual sources may be older.",
-            _status_text(analysis.election_status), "",
+            _status_text(analysis.election_status),
             f"Reviewed {len(analysis.races)} source representations of contests; overlapping jurisdictions may appear separately. Unestimated probabilities are not numerical zero; "
-            "no numerical risk ranking is published.", "", "DESCRIPTIVE MARGINS WITH DATED STATUS EVIDENCE",
+            "no numerical risk ranking is published.",
+            "",
+            "Descriptive counts retain their source limits; this is not an official result, a race call, "
+            "or a validated forecast. Recount and litigation probabilities are unestimated.",
+            "", "Full race-by-race report and methodology:", report_url,
         ]
-        for race, decision in boundaries:
-            lines.extend([f"• {race.contest}: {decision.current_state}", _status_text(race.result_status), _source_context(race)])
-        lines += ["", "WITHHOLDING REASONS"]
-        reasons = Counter(race.forecast_reason for race in controlling_races if race.decisions)
-        lines.extend(f"• {count} contest(s): {reason}" for reason, count in sorted(reasons.items()))
-        if analysis.report_mode == "historical":
-            lines += ["", "This audit correction supersedes earlier prospective summaries. "
-                      "Original inputs and the audited publication remain in repository history (audit #45)."]
-        lines += ["", "Descriptive counts retain their source limits; this is not an official result, a race call, "
-                  "or a validated forecast. Recount and litigation probabilities are unestimated.",
-                  "", "Full race-by-race report and methodology:", report_url]
         return "\n".join(lines) + "\n"
     reliability_counts = Counter(
         decision.risk.reliability_grade for decision in modeled_decisions
@@ -680,48 +822,45 @@ def _race_nodes(race: RaceAnalysis, index: int) -> list[dict[str, object]]:
             f"{race.valid_votes:,} valid votes, {race.overvotes or 0:,} overvotes, and "
             f"{race.undervotes or 0:,} undervotes."
         )
+    title = race.contest if race.controlling else f"{race.contest} ({race.jurisdiction} portion)"
+    ranked = sorted(race.choices, key=lambda c: (-c.votes, c.order, c.name))
     nodes = [
-        _node(f"{prefix}-heading", "heading2", race.contest, level=2),
+        _node(f"{prefix}-heading", "heading3" if not race.controlling else "heading2", title,
+              level=3 if not race.controlling else 2),
+        _node(
+            f"{prefix}-standings", "paragraph",
+            _area_table(("Choice", "Votes", "Share"),
+                        [(c.name, f"{c.votes:,}", _share(c.votes, race.valid_votes)) for c in ranked])
+            if ranked else "No choices reported.",
+        ),
         _node(
             f"{prefix}-result-status", "paragraph", _status_text(race.result_status),
         ),
         _node(
-            f"{prefix}-forecast-status", "paragraph", f"Forecast eligibility: {race.forecast_reason}",
+            f"{prefix}-forecast-status", "paragraph", f"Forecast: {race.forecast_reason}",
         ),
         _node(
             f"{prefix}-source",
             "paragraph",
             f"Source: {race.jurisdiction} ({race.source_id}), snapshot {race.snapshot}. "
             f"Ballots with contest: {race.ballots:,}. Valid votes: {race.valid_votes:,}."
-            f"{ballot_detail}",
-        ),
-        _node(
-            f"{prefix}-scope",
-            "paragraph",
-            f"Scope: {race.scope_note}",
-        ),
-        _node(
-            f"{prefix}-standings",
-            "paragraph",
-            "Standings: "
-            + "; ".join(f"{choice.name} {choice.votes:,}" for choice in race.choices)
-            + ".",
+            f"{ballot_detail} Scope: {race.scope_note}",
         ),
     ]
+    source = race.evidence.get("source", {})
+    findings = source.get("coverage_findings", [])
     nodes.append(_node(f"{prefix}-evidence", "paragraph",
-        "Data status: " + race.data_status + ". Source published: " + str(race.evidence.get("source", {}).get("source_published_at"))
-        + "; count updated: " + str(race.evidence.get("source", {}).get("count_updated_at"))
-        + "; retrieved: " + str(race.evidence.get("source", {}).get("retrieved_at"))
-        + "; source age hours: " + str(race.evidence.get("source", {}).get("source_age_hours"))
-        + ". Coverage complete: " + str(race.evidence.get("source", {}).get("coverage_complete"))
-        + "; geography: " + str(race.evidence.get("geography_comparison", {}).get("status"))
-        + "; geographic qualification: " + str(race.evidence.get("source", {}).get("geography", {}).get("label", "reviewed aliases required"))
-        + ("; geography details: " + json.dumps(race.evidence["source"]["geography"], sort_keys=True) if race.evidence.get("source", {}).get("geography") else "")
-        + "; remaining pool: " + str(race.evidence.get("remaining_pool", {}).get("status"))
-        + "; rule supported: " + str(race.evidence.get("rule", {}).get("supported"))
-        + "; calibration: unvalidated; evidence rubric: unvalidated heuristic."
-        + " Findings: " + "; ".join(race.evidence.get("source", {}).get("coverage_findings", []))
-        + ("; headline/detail differences: " + json.dumps(race.evidence["geography_comparison"]["differences"],sort_keys=True) if race.evidence.get("geography_comparison", {}).get("differences") else "")))
+        f"Evidence: data {race.data_status}; count updated {source.get('count_updated_at') or 'unknown'}"
+        f" (published {source.get('source_published_at') or 'unknown'}); coverage "
+        f"{'complete' if source.get('coverage_complete') is True else 'incomplete/unverified'}; geography "
+        f"{race.evidence.get('geography_comparison', {}).get('status') or 'not compared'}"
+        + (" (" + "; ".join(f"{k}: {v}" for k, v in sorted(source["geography"].items()))
+           + ")" if source.get("geography") else "")
+        + f"; remaining pool {race.evidence.get('remaining_pool', {}).get('status') or 'unknown'}; rule "
+        f"{'supported' if race.evidence.get('rule', {}).get('supported') else 'unreviewed/unsupported'}; calibration unvalidated."
+        + (" Findings: " + "; ".join(f.rstrip(".") for f in findings) + "." if findings else "")
+        + (" Headline/detail differences are listed in analysis.json."
+           if race.evidence.get("geography_comparison", {}).get("differences") else "")))
     if race.excluded_history:
         nodes.append(_node(f"{prefix}-excluded-history", "paragraph",
                            "Excluded from comparable history: " + "; ".join(race.excluded_history) + "."))
@@ -742,7 +881,7 @@ def _race_nodes(race: RaceAnalysis, index: int) -> list[dict[str, object]]:
             )
         )
         nodes.append(_node(f"{decision_prefix}-event", "paragraph",
-            "Event: " + json.dumps(decision.event, sort_keys=True) + "; remaining-pool basis: " + json.dumps(decision.remaining_pool, sort_keys=True)))
+            f"Event: {_event_label(decision)}. {_pool_context(decision)}"))
         nodes.append(
             _node(
                 f"{decision_prefix}-state",
@@ -795,8 +934,73 @@ def _race_nodes(race: RaceAnalysis, index: int) -> list[dict[str, object]]:
 
 def build_edom(analysis: ElectionAnalysis) -> dict[str, object]:
     counts = risk_counts(analysis)
+    modeled = [(race, d) for race in analysis.races for d in race.decisions if d.risk.change_probability is not None]
     children: list[dict[str, object]] = [
         _node("report-title", "title", analysis.title),
+        _node("summary-heading", "heading2", "At a glance", level=2),
+        _node("summary-lead", "paragraph", _plain_lead(analysis)),
+    ]
+    close = _close_races(analysis, limit=10)
+    if close:
+        children += [
+            _node("close-races-heading", "heading3", "Closest races in the current count", level=3),
+            _node("close-races-guide", "paragraph",
+                  "The closest decision in each contest (the winner, or the last advancing spot in a top-two or top-four primary), "
+                  "smallest share first. These are counts, not predictions; precinct committee officer races are omitted here."),
+            _node("close-races-table", "paragraph", _area_table(
+                ("Race", "Leading", "Next", "Margin (votes)", "Margin (share)"),
+                [(race.contest + boundary, leader, runner_up, f"{margin:,}", _share(margin, race.valid_votes))
+                 for race, leader, runner_up, margin, boundary in close])),
+        ]
+    reasons = _withholding_reasons(analysis)
+    if reasons:
+        children += [
+            _node("withheld-heading", "heading3", "Why forecasts are withheld", level=3),
+            *([_node("withheld-mode", "paragraph", _mode_sentence(analysis))] if _mode_sentence(analysis) else []),
+            _node("withheld-reasons", "paragraph",
+                  "\n".join(f"- {count:,} contest(s): {reason}." for reason, count in reasons)),
+        ]
+    if modeled:
+        not_estimable = sum(1 for race in analysis.races for d in race.decisions if d.risk.change_probability is None)
+        children += [
+            _node(
+                "summary-counts",
+                "paragraph",
+                "Controlling-contest risk counts: "
+                + "; ".join(
+                    f"{_risk_label(level)} {counts.get(level, 0)}"
+                    for level in ("toss_up", "high", "meaningful", "low", "very_low", "unknown", "not_applicable")
+                )
+                + ".",
+            ),
+            _node("at-glance-heading", "heading2", "At-a-glance decisions", level=2),
+            _node(
+                "at-glance-guide",
+                "paragraph",
+                "Experimental scenario numbers are conditional and uncalibrated. Unknown results are excluded from numeric rankings"
+                f" ({not_estimable:,} decision boundaries are not estimable and are not listed). Every event names its selected pair or majority boundary; a maximum boundary band is triage, not a joint probability that any election outcome changes.",
+            ),
+            _node("at-glance-table", "paragraph", _at_glance_table(analysis)),
+        ]
+    if analysis.areas is not None:
+        children.extend(_area_nodes(analysis.areas))
+    controlling = [(i, r) for i, r in enumerate(analysis.races, start=1) if r.controlling]
+    portions = [(i, r) for i, r in enumerate(analysis.races, start=1) if not r.controlling]
+    children.append(_node("races-heading", "heading2", "Race-by-race results", level=2))
+    for index, race in controlling:
+        children.extend(_race_nodes(race, index))
+    if portions:
+        children += [
+            _node("portions-heading", "heading2", "County and partial reports", level=2),
+            _node("portions-guide", "paragraph",
+                  "These files cover only part of a contest (for example one county's share of a statewide race) or "
+                  "have not been reviewed as the controlling source. They are listed for reference and are not "
+                  "the contest's overall result."),
+        ]
+        for index, race in portions:
+            children.extend(_race_nodes(race, index))
+    children += [
+        _node("about-heading", "heading2", "About this data", level=2),
         _node("report-status", "paragraph", _report_status(analysis)),
         _node("election-status", "paragraph", _status_text(analysis.election_status)),
         _node(
@@ -805,39 +1009,10 @@ def build_edom(analysis: ElectionAnalysis) -> dict[str, object]:
             f"Latest input label {analysis.as_of}; {len(analysis.races)} source representations of contests; overlapping jurisdictions may appear separately. "
             "Individual source dates may be older; this label is not an authoritative current-count time.",
         ),
-        _node("source-coverage", "paragraph", "Generated: " + analysis.generated_at + "; mixed source vintages: " + json.dumps(analysis.source_summary, sort_keys=True) + "; coverage findings: " + json.dumps(analysis.coverage_summary, sort_keys=True)),
-        _node("summary-heading", "heading2", "Summary", level=2),
-        _node(
-            "summary-counts",
-            "paragraph",
-            "Controlling-contest risk counts: "
-            + "; ".join(
-                f"{_risk_label(level)} {counts.get(level, 0)}"
-                for level in (
-                    "toss_up",
-                    "high",
-                    "meaningful",
-                    "low",
-                    "very_low",
-                    "unknown",
-                    "not_applicable",
-                )
-            )
-            + ".",
-        ),
-        _node("at-glance-heading", "heading2", "At-a-glance decisions", level=2),
-        _node(
-            "at-glance-guide",
-            "paragraph",
-            "Experimental scenario numbers are conditional and uncalibrated. Unknown results are excluded from numeric rankings. Every event names its selected pair or majority boundary; a maximum boundary band is triage, not a joint probability that any election outcome changes.",
-        ),
-        _node("at-glance-table", "paragraph", _at_glance_table(analysis)),
-        _node(
-            "method-heading",
-            "heading2",
-            "Method and limits",
-            level=2,
-        ),
+        _node("source-coverage", "paragraph",
+              f"Generated: {analysis.generated_at or 'unknown'}. Per-source vintages and coverage findings are listed in analysis.json "
+              "(source_summary and coverage_summary)."),
+        _node("method-heading", "heading2", "Method and limits", level=2),
         _node(
             "method-risk",
             "paragraph",
@@ -870,13 +1045,6 @@ def build_edom(analysis: ElectionAnalysis) -> dict[str, object]:
     ]
     if analysis.official_versions:
         children.append(_node("official-versions", "paragraph", "Dated official result versions (raw, final and recount kept separate): " + json.dumps(analysis.official_versions, sort_keys=True)))
-    if analysis.areas is not None:
-        children.extend(_area_nodes(analysis.areas))
-    children += [
-        _node("races-heading", "heading2", "Race-by-race analysis", level=2),
-    ]
-    for index, race in enumerate(analysis.races, start=1):
-        children.extend(_race_nodes(race, index))
     return {
         "schema_version": 1,
         "root": {
@@ -898,7 +1066,6 @@ def publish(analysis: ElectionAnalysis, output_dir: Path) -> None:
     try:
         from edt.document_reports import generate_document_reports
         from edt.edom_markdown import write_edom_markdown
-        from edt.html import write_edom_html
     except ImportError as exc:
         raise ElectionReportError(
             "EDT is required for publication. Install dlworrell/engineering-docs-toolkit "
@@ -931,8 +1098,4 @@ def publish(analysis: ElectionAnalysis, output_dir: Path) -> None:
         county_path.unlink(missing_ok=True)
     generate_document_reports(edom, output_dir / "edt" / "document")
     write_edom_markdown(edom_path, output_dir / "election-analysis.md")
-    write_edom_html(
-        edom_path,
-        output_dir / "election-analysis.html",
-        title=analysis.title,
-    )
+    (output_dir / "election-analysis.html").write_text(edom_to_html(edom, analysis.title), encoding="utf-8")

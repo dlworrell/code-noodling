@@ -1,6 +1,286 @@
 {
   "schema_version": 2,
-  "observations": [],
+  "observations": [
+    {
+      "place": "alaska",
+      "input_sha256": "efb5f220c2e5ababd23de6ff2cc2c9b35b4e12b5a1d1aafcf560315667f45c56",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": "bb3848ee30a8910d9a6f1a8c7981e3430f3ff22ac7907b3ffa370b49bd07aea5",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "aleutians-east-borough",
+      "input_sha256": "a2771b1ac4cd6d52c9261f16342ae6aa9a44f60bc772c0f327bf267dfb009ea2",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "aleutians-west-census-area",
+      "input_sha256": "a85ffe09f1a4907947cdd3e3c4fc7e5990abd3eb8f943bcd17f8d18c1a2f57b3",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "anchorage-municipality",
+      "input_sha256": "7d2d45a226bc75dd85c9507fdddfba73ebc3711997393c57c4d7b1d2477f2aab",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "bethel-census-area",
+      "input_sha256": "e182fa704966abd5951ffac5d80b40a15c5b421688866b932e61116900f7c7b7",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "bristol-bay-borough",
+      "input_sha256": "f41ffbf7c786b001edf2d1399203f4a6ae5e88f1d2a661cc3435dd9270c2316b",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "chugach-census-area",
+      "input_sha256": "3b783e764099c3c3a7427b52026fdfde75479c9598a7662bc6fb011697bdedcc",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "copper-river-census-area",
+      "input_sha256": "dc3d9a55ac112754f2f57cd4366f76cfb3914c99c358b20c0f20560df35a2861",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "denali-borough",
+      "input_sha256": "d174f16ad10d176232dbeea538e6cc55095ed363f28b7b4e21ae92e05a1bade9",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "dillingham-census-area",
+      "input_sha256": "4c59636cb9164ae8709be904ccecc630bbcbf5e7d519c440eebbaa106c17e81f",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "fairbanks-north-star-borough",
+      "input_sha256": "a1fbe02f6519b556c420178bd85be3dbf9d95bed2ecb6e2290e576c37b54d8f1",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "haines-borough",
+      "input_sha256": "f97bef35e8c337706b1f24041cfb6f2d18c035ce626fbd0757d002d47e857f7b",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "hoonah-angoon-census-area",
+      "input_sha256": "d19727d61c5275f8a29527fc05d31647589f44a487d5ee4caa5a96dcc430e9c6",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "juneau-city-and-borough",
+      "input_sha256": "c384f319545d6f4b914ac7b24997bc5133c4162552d6fa01274c76297403318e",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "kenai-peninsula-borough",
+      "input_sha256": "fa9a256461e401d194f55c9057eb90f2712baf21356f808ddedeb2db11b47ac0",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "ketchikan-gateway-borough",
+      "input_sha256": "0cf842a9d6398909ce9dc83a74dae8be3b18111a5a5de0b7e4f733e108574d86",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "kodiak-island-borough",
+      "input_sha256": "18262b88b58f008e27f82c7a7406218c18b50413c0410789804ca86e3e7314e8",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "kusilvak-census-area",
+      "input_sha256": "f34ac4fec51fc62d3aa03bb895d2ae9a9a5450c5e78fd1e66e37d059807ec39a",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "lake-and-peninsula-borough",
+      "input_sha256": "98383a396b6b67b15793606597032001b1a25e6786a50d4692f69532b5599822",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "matanuska-susitna-borough",
+      "input_sha256": "315ad7bacefa85efcd8ef99090df602d41c27f568d631db0e4936fdfb318a226",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "nome-census-area",
+      "input_sha256": "5ccbfef95c9ceb8f83dbedd58da401e8db2e339daac2e47614760a879c191972",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "north-slope-borough",
+      "input_sha256": "8051cd0e74061d31ca50cb7e9ff15e81481ca5589249165da67e4c1e66e82640",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "northwest-arctic-borough",
+      "input_sha256": "3094ea3d1b121d9e9ee1cdc607a4ba9dc6ecc41d5fc5814d8017ebc924742fa1",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "petersburg-borough",
+      "input_sha256": "c0e9a048200d0e86de4df377cb3df729896b305e1863b776eb1e4739d5fd633e",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "prince-of-wales-hyder-census-area",
+      "input_sha256": "48789f56863469333e6046fdf14eecaadf6b6cf13c8cd21ed338e61f3ca3d616",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "sitka-city-and-borough",
+      "input_sha256": "5275190d97b2f198cbdd3f6bdc55e0ffd8dcec3b6296995112071737934dedd0",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "skagway-municipality",
+      "input_sha256": "e87ff8b5d7bbdf9455311a51517c067dd64346463b8ee0052937489a8697827d",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "southeast-fairbanks-census-area",
+      "input_sha256": "1f29332350a83544b2edff461ade664e1599750746d442ad4a3b893c0cb4cb9a",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "wrangell-city-and-borough",
+      "input_sha256": "a057832194c8351ac730ae42ac4dc3d777100261385eee41369f4cfc888d8556",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "yakutat-city-and-borough",
+      "input_sha256": "926cf998aaca1bd48b8ebda7f9dac18884b9caadfd33ffcff4207f6b34dd1b6a",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "yukon-koyukuk-census-area",
+      "input_sha256": "3239c9da971856e9d8691d2c76acffc950fa18b1d73e6d1a43ee2919b645c06a",
+      "retrieved_at": "2026-11-06T19:13:03+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 00:24:55 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    }
+  ],
   "coverage": {},
   "election": {
     "date": "2026-11-03",

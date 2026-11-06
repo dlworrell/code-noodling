@@ -23,6 +23,10 @@ on:
         type: boolean
         default: true
   push:
+    # The publisher builds commits on short-lived *-staging branches before
+    # moving the automation branch; those pushes need no run of their own.
+    branches-ignore:
+      - "automation/*-staging"
     paths:
       # Generated reports are excluded so the automation commit does not
       # retrigger this workflow.
