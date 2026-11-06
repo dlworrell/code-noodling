@@ -30,6 +30,7 @@ from election_reporting.ci.publish_reports import (
 
 REPO = "owner/repo"
 BRANCH = "automation/election-reports"
+STAGING = BRANCH + "-staging"
 
 
 class FakeGh:
@@ -196,6 +197,9 @@ class PublishFlowTests(unittest.TestCase):
         fake.responses.setdefault(("GET", f"repos/{REPO}/compare/{self.base_sha}...dev-daily"),
                                   {"status": "identical"})
         fake.responses.setdefault(("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"), [])
+        fake.responses.setdefault(("GET", f"repos/{REPO}/git/matching-refs/heads/{STAGING}"), [])
+        fake.responses.setdefault(("POST", f"repos/{REPO}/git/refs"), {})
+        fake.responses.setdefault(("DELETE", f"repos/{REPO}/git/refs/heads/{STAGING}"), None)
         fake.responses.setdefault(("GET", f"repos/{REPO}/git/commits/{'c' * 40}"), {
             "sha": "c" * 40, "tree": {"sha": tree}, "parents": [{"sha": self.base_sha}],
             "verification": {"verified": True, "reason": "valid"},
@@ -250,18 +254,29 @@ class PublishFlowTests(unittest.TestCase):
                 ("GET", f"repos/{REPO}/compare/{self.base_sha}...dev-daily"),
                 ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"),
                 ("GET", f"repos/{REPO}/git/matching-refs/heads/{BRANCH}"),
+                ("GET", f"repos/{REPO}/git/matching-refs/heads/{STAGING}"),
                 ("GET", f"repos/{REPO}"),
                 ("POST", f"repos/{REPO}/git/refs"),
                 ("POST", "graphql"),
                 ("GET", f"repos/{REPO}/git/commits/{'c' * 40}"),
+                ("GET", f"repos/{REPO}"),
+                ("POST", f"repos/{REPO}/git/refs"),
+                ("GET", f"repos/{REPO}"),
+                ("DELETE", f"repos/{REPO}/git/refs/heads/{STAGING}"),
                 ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"),
                 ("POST", f"repos/{REPO}/pulls"),
             ],
         )
+        # The commits are built on the staging branch; the new automation
+        # branch is created directly at the last commit, never at the base.
         self.assertEqual(
-            fake.calls[4][2], {"ref": f"refs/heads/{BRANCH}", "sha": self.base_sha}
+            fake.calls[5][2], {"ref": f"refs/heads/{STAGING}", "sha": self.base_sha}
         )
-        commit_input = fake.calls[5][2]["variables"]["input"]
+        self.assertEqual(
+            fake.calls[9][2], {"ref": f"refs/heads/{BRANCH}", "sha": "c" * 40}
+        )
+        commit_input = fake.calls[6][2]["variables"]["input"]
+        self.assertEqual(commit_input["branch"]["branchName"], STAGING)
         self.assertEqual(commit_input["expectedHeadOid"], self.base_sha)
         files = commit_input["fileChanges"]
         self.assertEqual(
@@ -270,14 +285,14 @@ class PublishFlowTests(unittest.TestCase):
         )
         self.assertEqual(base64.b64decode(files["additions"][1]["contents"]), b"\x00\xff\x10")
         self.assertEqual(files["deletions"], [{"path": "election-analysis/reports/edt/old.md"}])
-        pr = fake.calls[8][2]
+        pr = fake.calls[13][2]
         self.assertEqual((pr["head"], pr["base"]), (BRANCH, "dev-daily"))
         # Nothing ever targets a base branch ref.
         for method, endpoint, _ in fake.calls:
             self.assertNotIn("heads/main", endpoint)
             self.assertNotIn("heads/dev-daily", endpoint)
 
-    def test_existing_branch_is_force_reset_and_pr_updated(self) -> None:
+    def test_existing_branch_moves_to_new_commit_and_pr_stays_open(self) -> None:
         self.regenerate()
         old_head = "e" * 40
         fake = FakeGh(
@@ -302,9 +317,52 @@ class PublishFlowTests(unittest.TestCase):
         self.assertEqual(self.run_publish(fake), "https://pr/7")
         lease = next(payload["variables"]["input"] for _, _, payload in fake.calls
                      if payload and "UpdateRefsInput" in payload.get("query", ""))
+        # One leased move from the old head straight to the new commit: the
+        # branch never equals the base, so GitHub keeps the pull request open.
         self.assertEqual(lease["refUpdates"], [{"name": f"refs/heads/{BRANCH}",
-                         "beforeOid": old_head, "afterOid": self.base_sha, "force": True}])
+                         "beforeOid": old_head, "afterOid": "c" * 40, "force": True}])
+        for _, _, payload in fake.calls:
+            if payload and "UpdateRefsInput" in payload.get("query", ""):
+                for update in payload["variables"]["input"]["refUpdates"]:
+                    if update["name"] == f"refs/heads/{BRANCH}":
+                        self.assertNotEqual(update["afterOid"], self.base_sha)
         self.assertNotIn(("POST", f"repos/{REPO}/pulls"), fake.endpoints())
+        self.assertIn(("DELETE", f"repos/{REPO}/git/refs/heads/{STAGING}"), fake.endpoints())
+
+    def test_s1_leftover_staging_branch_is_reset_with_a_lease(self) -> None:
+        self.regenerate()
+        leftover = "a" * 40
+        old = "e" * 40
+        fake = FakeGh({
+            ("GET", f"repos/{REPO}/git/matching-refs/heads/{BRANCH}"):
+                [{"ref": f"refs/heads/{BRANCH}", "object": {"sha": old}}],
+            ("GET", f"repos/{REPO}/git/matching-refs/heads/{STAGING}"):
+                [{"ref": f"refs/heads/{STAGING}", "object": {"sha": leftover}}],
+            ("GET", f"repos/{REPO}/git/commits/{old}"): {"tree": {"sha": "0" * 40}, "parents": []},
+            ("POST", "graphql"): {"data": {"updateRefs": {"clientMutationId": None},
+                "createCommitOnBranch": {"commit": {"oid": "c" * 40, "url": "u"}}}},
+            ("GET", f"repos/{REPO}/pulls?state=open&head=owner:{BRANCH}"):
+                [{"number": 7, "html_url": "https://pr/7", "base": {"ref": "dev-daily"}}],
+            ("PATCH", f"repos/{REPO}/pulls/7"): {},
+        })
+        self.assertEqual(self.run_publish(fake), "https://pr/7")
+        moves = [p["variables"]["input"]["refUpdates"][0] for _, e, p in fake.calls
+                 if e == "graphql" and "UpdateRefsInput" in p["query"]]
+        self.assertEqual(moves, [
+            {"name": f"refs/heads/{STAGING}", "beforeOid": leftover, "afterOid": self.base_sha, "force": True},
+            {"name": f"refs/heads/{BRANCH}", "beforeOid": old, "afterOid": "c" * 40, "force": True},
+        ])
+
+    def test_s2_staging_cleanup_failure_is_only_a_warning(self) -> None:
+        self.regenerate()
+        fake = FakeGh({
+            ("GET", f"repos/{REPO}/git/matching-refs/heads/{BRANCH}"): [],
+            ("POST", "graphql"): {"data": {"createCommitOnBranch": {"commit": {"oid": "c" * 40, "url": "u"}}}},
+            ("DELETE", f"repos/{REPO}/git/refs/heads/{STAGING}"): RuntimeError("HTTP 422 Reference does not exist"),
+            ("POST", f"repos/{REPO}/pulls"): {"html_url": "https://pr/1", "number": 1},
+        })
+        self.assertEqual(self.run_publish(fake), "https://pr/1")
+        self.assertTrue(any("could not delete" in line for line in self.logs))
 
     def test_identical_branch_content_skips_commit(self) -> None:
         self.regenerate()
@@ -401,20 +459,27 @@ class PublishFlowTests(unittest.TestCase):
         self.assertTrue(any("UpdateRefsInput" in q for q in mutations))
         self.assertTrue(any("CreateCommitOnBranchInput" in q for q in mutations))
 
-    def test_concurrent_branch_update_aborts_before_new_commit(self):
+    def test_concurrent_branch_update_aborts_before_any_pull_request_change(self):
         self.regenerate()
         old = "e"*40
+
+        def graphql(payload):
+            if "UpdateRefsInput" in payload["query"]:
+                return {"errors": [{"message": "beforeOid mismatch"}]}
+            return {"data": {"createCommitOnBranch": {"commit": {"oid": "c"*40, "url": "u"}}}}
+
         fake = FakeGh({
             ("GET", f"repos/{REPO}/git/matching-refs/heads/{BRANCH}"):
                 [{"ref": f"refs/heads/{BRANCH}", "object": {"sha": old}}],
             ("GET", f"repos/{REPO}/git/commits/{old}"): {"tree": {"sha": "0"*40}, "parents": []},
-            ("POST", "graphql"): {"errors": [{"message": "beforeOid mismatch"}]},
+            ("POST", "graphql"): graphql,
         })
         with self.assertRaisesRegex(PublishError, "leased"):
             self.run_publish(fake)
-        calls = [p for _, e, p in fake.calls if e == "graphql"]
-        self.assertEqual(len(calls), 1)
-        self.assertIn("UpdateRefsInput", calls[0]["query"])
+        moves = [p for _, e, p in fake.calls if e == "graphql" and "UpdateRefsInput" in p["query"]]
+        self.assertEqual(len(moves), 1)
+        self.assertEqual(moves[0]["variables"]["input"]["refUpdates"][0]["beforeOid"], old)
+        self.assertFalse(any("/pulls" in e and m != "GET" for m, e, _ in fake.calls))
 
     def test_verification_binds_tree_parent_and_identity(self):
         oid = "c"*40

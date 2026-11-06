@@ -12,8 +12,14 @@ branch and requires automation-produced commits to be GitHub-verified. A plain
 1. Detects which files under the report directory differ from the analyzed commit
    (``git add -A`` + ``git diff --cached --name-status``, staged in the local
    index only; nothing is committed or pushed locally).
-2. Creates the automation branch from the analyzed commit, or force-resets it there.
-   Only the workflow-owned automation branch is ever force-updated, never the base.
+2. Builds the new commits on a workflow-owned staging branch
+   (``<branch>-staging``) created at the analyzed commit, then moves the
+   automation branch onto the last of them in one leased update. The
+   automation branch never passes through the base commit, so an open pull
+   request is updated in place: GitHub closes a pull request whose head
+   equals its base, and resetting the branch to the base first closed and
+   reopened the pull request on every run. Only workflow-owned branches are
+   ever force-updated, never the base. The staging branch is deleted after.
 3. Commits the changes through GraphQL ``createCommitOnBranch`` using the
    workflow's ``GITHUB_TOKEN``. GitHub signs such commits, so they show Verified.
    GitHub refuses a request over 45 MB, so a larger change is split into a chain
@@ -285,6 +291,12 @@ class GitHub:
                 {"ref": f"refs/heads/{branch}", "sha": sha},
             )
 
+    def delete_branch(self, branch: str) -> None:
+        metadata = self.api("GET", f"repos/{self.repository}")
+        if branch == metadata["default_branch"]:
+            raise PublishError("refusing to delete the default branch")
+        self.api("DELETE", f"repos/{self.repository}/git/refs/heads/{branch}")
+
     def require_verified_commit(self, sha: str, parent: str, tree: str | None) -> None:
         """Require ``sha`` to be GitHub-verified with exactly ``parent`` as parent.
 
@@ -470,14 +482,21 @@ def publish(
         log(f"{branch} already holds these reports on top of {base_sha}.")
         return github.upsert_pull_request(branch, base, title, body, log)
 
-    github.point_branch(branch, base_sha, exists=head is not None, expected_head=head)
+    # Build on a staging branch so the automation branch moves straight from
+    # its old head to the new commits and its open pull request stays open.
+    staging = f"{branch}-staging"
+    if staging in (base, branch):
+        raise PublishError(f"staging branch {staging} collides with {base} or {branch}")
+    staging_head = github.branch_head(staging)
+    github.point_branch(staging, base_sha, exists=staging_head is not None,
+                        expected_head=staging_head)
     parent = base_sha
     for number, batch in enumerate(batches, start=1):
         last = number == len(batches)
         part = f" ({number}/{len(batches)})" if len(batches) > 1 else ""
         commit_input = build_commit_input(
             repository=github.repository,
-            branch=branch,
+            branch=staging,
             expected_head_oid=parent,
             headline=title + part,
             body=f"Regenerated from {base_sha}.",
@@ -486,8 +505,14 @@ def publish(
         )
         commit = github.create_commit(build_graphql_request(commit_input))
         github.require_verified_commit(commit["oid"], parent, tree if last else None)
-        log(f"Created verified commit {commit['oid']} on {branch}{part}.")
+        log(f"Created verified commit {commit['oid']} on {staging}{part}.")
         parent = commit["oid"]
+    github.point_branch(branch, parent, exists=head is not None, expected_head=head)
+    log(f"Moved {branch} to {parent}.")
+    try:
+        github.delete_branch(staging)
+    except PublishError as error:
+        log(f"::warning::could not delete {staging}: {error}")
     url = github.upsert_pull_request(branch, base, title, body, log)
     log(f"Pull request: {url}")
     return url
