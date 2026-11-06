@@ -16,6 +16,9 @@ branch and requires automation-produced commits to be GitHub-verified. A plain
    Only the workflow-owned automation branch is ever force-updated, never the base.
 3. Commits the changes through GraphQL ``createCommitOnBranch`` using the
    workflow's ``GITHUB_TOKEN``. GitHub signs such commits, so they show Verified.
+   GitHub refuses a request over 45 MB, so a larger change is split into a chain
+   of commits, each under ``MAX_BATCH_BYTES`` of encoded content; every commit in
+   the chain must be verified, and the last one must carry the complete tree.
 4. Opens a pull request from the automation branch to the base branch, or updates
    the existing one.
 
@@ -50,6 +53,12 @@ DEFAULT_BRANCH = "automation/election-reports"
 DEFAULT_PATH = "election-analysis/reports"
 DEFAULT_TITLE = "reports: update election result analysis"
 ALLOWED_BASES = frozenset({"dev-daily"})  # ADR-0013: automation -> dev-daily -> fitment -> main
+# GitHub rejects a GraphQL request larger than 45 MB. Contents travel base64
+# encoded (4/3 of the raw size) inside JSON, so each commit carries at most this
+# many encoded bytes, which leaves room for paths and the rest of the request.
+MAX_BATCH_BYTES = 24 * 1024 * 1024
+MAX_FILE_BYTES = 40 * 1024 * 1024  # one file's encoded size; above this no request can carry it
+MAX_CHAIN = 50  # commits walked back when checking an existing branch
 
 CREATE_COMMIT_MUTATION = """
 mutation($input: CreateCommitOnBranchInput!) {
@@ -116,6 +125,37 @@ def restrict_to(changes: ReportChanges, prefix: str) -> ReportChanges:
     return changes
 
 
+def encoded_size(raw_size: int) -> int:
+    """Length of the base64 encoding of ``raw_size`` bytes."""
+    return 4 * ((raw_size + 2) // 3)
+
+
+def batch_changes(changes: ReportChanges, size_of: Callable[[str], int],
+                  limit: int | None = None) -> list[ReportChanges]:
+    """Split ``changes`` into commit-sized batches, in path order.
+
+    Deletions go in the first batch. Additions are packed greedily so that each
+    batch's encoded contents stay within ``limit``; a file larger than ``limit``
+    gets a batch of its own, and one too large for any request is refused.
+    A change that fits in one request stays one batch (one commit).
+    """
+    limit = MAX_BATCH_BYTES if limit is None else limit
+    batches: list[list[str]] = [[]]
+    used = 0
+    for path in changes.additions:
+        size = encoded_size(size_of(path))
+        if size > MAX_FILE_BYTES:
+            raise PublishError(f"{path} is too large to publish through the API ({size} encoded bytes)")
+        if batches[-1] and used + size > limit:
+            batches.append([])
+            used = 0
+        batches[-1].append(path)
+        used += size
+    result = [ReportChanges(tuple(paths), ()) for paths in batches]
+    result[0] = ReportChanges(result[0].additions, changes.deletions)
+    return [batch for batch in result if not batch.empty]
+
+
 def build_commit_input(
     *,
     repository: str,
@@ -174,7 +214,8 @@ def pull_request_body(
         f"- Files deleted: {len(changes.deletions)}",
         "",
         "The commit was created through the GitHub GraphQL API "
-        "(`createCommitOnBranch`) and is signed by GitHub. This branch is owned by "
+        "(`createCommitOnBranch`) and is signed by GitHub; a change too large for "
+        "one request is split into a chain of such commits. This branch is owned by "
         "the workflow and is force-reset on each run; do not push to it by hand.",
         "",
         "Per ADR-0006, automation never pushes to the default branch; review and "
@@ -244,14 +285,39 @@ class GitHub:
                 {"ref": f"refs/heads/{branch}", "sha": sha},
             )
 
-    def require_verified_commit(self, sha: str, parent: str, tree: str) -> None:
+    def require_verified_commit(self, sha: str, parent: str, tree: str | None) -> None:
+        """Require ``sha`` to be GitHub-verified with exactly ``parent`` as parent.
+
+        ``tree`` is checked when given; intermediate commits of a split change
+        pass ``None`` because only the last commit carries the complete tree.
+        """
         observed = self.commit(sha)
         verification = observed.get("verification", {})
         if (observed.get("sha") != sha or verification.get("verified") is not True
                 or verification.get("reason") != "valid"
-                or observed.get("tree", {}).get("sha") != tree
+                or (tree is not None and observed.get("tree", {}).get("sha") != tree)
                 or [item.get("sha") for item in observed.get("parents", [])] != [parent]):
             raise PublishError(f"GitHub did not verify the exact report commit {sha}")
+
+    def holds(self, head: str, base_sha: str, tree: str) -> bool:
+        """Whether ``head`` already carries ``tree`` as verified commits on ``base_sha``.
+
+        Walks back from ``head`` through single-parent, verified commits (one
+        commit, or the chain a split change produced) until ``base_sha``.
+        """
+        sha = head
+        for depth in range(MAX_CHAIN):
+            current = self.commit(sha)
+            verification = current.get("verification", {})
+            parents = [p.get("sha") for p in current.get("parents", [])]
+            if (current.get("sha") != sha or verification.get("verified") is not True
+                    or verification.get("reason") != "valid" or len(parents) != 1
+                    or (depth == 0 and current.get("tree", {}).get("sha") != tree)):
+                return False
+            if parents[0] == base_sha:
+                return True
+            sha = parents[0]
+        return False
 
     def create_commit(self, request: dict) -> dict:
         data = self.api("POST", "graphql", request)
@@ -397,31 +463,31 @@ def publish(
     log(f"{len(changes.additions)} file(s) to add/update, {len(changes.deletions)} to delete.")
     body = pull_request_body(changes, base_sha, run_url, summary)
 
+    batches = batch_changes(changes, lambda path: (repo_root / path).stat().st_size)
+
     head = github.branch_head(branch)
-    if head is not None:
-        current = github.commit(head)
-        parents = [p["sha"] for p in current.get("parents", [])]
-        verification = current.get("verification", {})
-        if (parents == [base_sha] and current["tree"]["sha"] == tree
-                and current.get("sha") == head
-                and verification.get("verified") is True
-                and verification.get("reason") == "valid"):
-            log(f"{branch} already holds these reports on top of {base_sha}.")
-            return github.upsert_pull_request(branch, base, title, body, log)
+    if head is not None and github.holds(head, base_sha, tree):
+        log(f"{branch} already holds these reports on top of {base_sha}.")
+        return github.upsert_pull_request(branch, base, title, body, log)
 
     github.point_branch(branch, base_sha, exists=head is not None, expected_head=head)
-    commit_input = build_commit_input(
-        repository=github.repository,
-        branch=branch,
-        expected_head_oid=base_sha,
-        headline=title,
-        body=f"Regenerated from {base_sha}.",
-        changes=changes,
-        read_bytes=lambda path: (repo_root / path).read_bytes(),
-    )
-    commit = github.create_commit(build_graphql_request(commit_input))
-    github.require_verified_commit(commit["oid"], base_sha, tree)
-    log(f"Created verified commit {commit['oid']} on {branch}.")
+    parent = base_sha
+    for number, batch in enumerate(batches, start=1):
+        last = number == len(batches)
+        part = f" ({number}/{len(batches)})" if len(batches) > 1 else ""
+        commit_input = build_commit_input(
+            repository=github.repository,
+            branch=branch,
+            expected_head_oid=parent,
+            headline=title + part,
+            body=f"Regenerated from {base_sha}.",
+            changes=batch,
+            read_bytes=lambda path: (repo_root / path).read_bytes(),
+        )
+        commit = github.create_commit(build_graphql_request(commit_input))
+        github.require_verified_commit(commit["oid"], parent, tree if last else None)
+        log(f"Created verified commit {commit['oid']} on {branch}{part}.")
+        parent = commit["oid"]
     url = github.upsert_pull_request(branch, base, title, body, log)
     log(f"Pull request: {url}")
     return url
