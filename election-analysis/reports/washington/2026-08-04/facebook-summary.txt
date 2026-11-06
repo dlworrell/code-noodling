@@ -1,21 +1,31 @@
 🗳️ HISTORICAL ELECTION RESULTS — FORECASTS WITHHELD
 
 2026 Washington Primary Historical Results — EA-01 Audit Correction
+Certified results. 294 contests, latest source update 2026-09-11T17:37:08+00:00. No forecasts are published for this report; the margins below are counts, not predictions.
+
+CLOSEST RACES (CURRENT COUNT)
+• State Senator - Legislative District 42: Michael Alvarez Shepard leads Eamonn Collins by 4 votes for the last top-two spot (<0.1% of 49,654 votes counted). Lifecycle: recount_completed.
+• State Representative Pos. 2 - Legislative District 48: Jessica Forsythe leads Amy Walen by 17 votes (0.1% of 23,916 votes counted).
+• Assessor (Vote for 1): Dominique M Scarimbolo leads Christopher Roberts by 1,213 votes for the last top-two spot (0.3% of 377,846 votes counted).
+• State Representative Pos. 2 - Legislative District 1: Cliff Moon leads Jenne Alderks by 136 votes for the last top-two spot (0.3% of 39,457 votes counted).
+• State Representative Pos. 1 - Legislative District 12: Brian Burnett leads Stacy Willoughby by 174 votes (0.4% of 44,276 votes counted).
+• State Representative Pos. 2 - Legislative District 6: Julia Payne leads Aaron M. Croft by 259 votes for the last top-two spot (0.7% of 36,884 votes counted).
+
+WHY FORECASTS ARE WITHHELD
+Forecasts are switched off for this report (report mode: historical); even a contest that passed every check below would show counts only.
+• 294 contest(s): the count time is unknown or more than 48 hours old.
+• 294 contest(s): the source's origin is not fully recorded.
+• 294 contest(s): there is no estimate of ballots left to count.
+• 294 contest(s): this file has no result status (counting, certified, recount) recorded against it.
+• Other reasons are listed on each race in the full report.
+
+This audit correction supersedes earlier prospective summaries. Original inputs and the audited publication remain in repository history (audit #45).
+
+ABOUT THIS DATA
 Report mode: historical. Forecast target: none. Information time: 2026-10-25T04:27:06+00:00. Election lifecycle: certified. Experimental and uncalibrated. A versioned evidence gate checks lifecycle, source freshness, coverage, provenance, contest identity, rules and remaining-pool basis. No held-out calibration has validated predictive accuracy. Source publication range: 2026-09-11T17:37:08+00:00 to 2026-09-11T17:37:08+00:00; known source-age range: 1042.8 to 1042.8 hours at information time. Unknown source age: 151 contest record(s); unknown count-update time: 298; incomplete/unverified coverage: 0. Configured sources without snapshots: none. Retrieval and report generation times do not advance a source's count clock.
 Latest input label: 2026-10-14T11:00; individual sources may be older.
 Lifecycle: certified; tabulation stage: unknown. Authority: https://www.sos.wa.gov/about-office/news/2026/secretary-state-certifies-candidates-and-measures-november-general-election; evidence as of 2026-10-25T04:27:06+00:00.
-
 Reviewed 298 source representations of contests; overlapping jurisdictions may appear separately. Unestimated probabilities are not numerical zero; no numerical risk ranking is published.
-
-DESCRIPTIVE MARGINS WITH DATED STATUS EVIDENCE
-• State Senator - Legislative District 42: Michael Alvarez Shepard leads Eamonn Collins by 4 votes.
-Lifecycle: recount_completed; tabulation stage: plurality_count. Result version: wa-2026-primary-summary-20260911; round: not applicable. Authority: https://www.sos.wa.gov/elections/data-research/election-data-and-maps/election-results-and-voters-pamphlets/2026-primary-election; evidence as of 2026-10-25T04:27:06+00:00.
-Source published 2026-09-11T17:37:08+00:00; count updated unknown; age 1042.8 hours; coverage complete; data reported; identity reviewed; office/election rule supported; provenance https://results.votewa.gov/cdn/results/01000000-f977-1a83-1ed4-08ddd69e9e69/All%20Results_1bc1cf3c-e598-43bf-a569-3f7539add8dd.xlsx; input SHA-256 bdd7591803dc9ff69614d09a342ff27be3faa2281b4757e8034a0c1503edf3c1.
-
-WITHHOLDING REASONS
-• 1 contest(s): lifecycle_and_stage; source_time; provenance; remaining_pool; Historical report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
-
-This audit correction supersedes earlier prospective summaries. Original inputs and the audited publication remain in repository history (audit #45).
 
 Descriptive counts retain their source limits; this is not an official result, a race call, or a validated forecast. Recount and litigation probabilities are unestimated.
 

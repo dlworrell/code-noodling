@@ -1,15 +1,29 @@
 🗳️ ELECTION RESULTS — FORECASTS WITHHELD
 
 2026 General Election (November 3, 2026)
-Report mode: descriptive. Forecast target: none. Information time: unknown. Election lifecycle: unknown. Experimental and uncalibrated. A versioned evidence gate checks lifecycle, source freshness, coverage, provenance, contest identity, rules and remaining-pool basis. No held-out calibration has validated predictive accuracy. Source publication range: 2026-11-04T08:50:21+00:00 to 2026-11-05T00:24:55+00:00; known source-age range: unknown. Unknown source age: 539 contest record(s); unknown count-update time: 539; incomplete/unverified coverage: 539. Configured sources without snapshots: none. Retrieval and report generation times do not advance a source's count clock.
+Unofficial results; ballots are still being counted. 76 contests, latest source update 2026-11-05T00:24:55+00:00. No forecasts are published for this report; the margins below are counts, not predictions.
+
+CLOSEST RACES (CURRENT COUNT)
+• House District 24: McCarty, Ken leads Wall, Gina T. by 16 votes in first choices (ranked-choice tabulation not modeled) (0.3% of 6,006 votes counted).
+• U.S. Senator: Peltola, Mary leads Sullivan, Dan S. by 637 votes in first choices (ranked-choice tabulation not modeled) (0.3% of 213,733 votes counted).
+• House District 34: Cottle, Joy E. "Joy Beth" leads Tomaszewski, Harmony by 43 votes in first choices (ranked-choice tabulation not modeled) (0.7% of 6,467 votes counted).
+• Senate District M: Tilton, Cathy L. leads Berry, Ryan by 125 votes in first choices (ranked-choice tabulation not modeled) (0.9% of 13,659 votes counted).
+• House District 29: Nelson, Gerald "Garret" leads Menard, Steve by 128 votes in first choices (ranked-choice tabulation not modeled) (2.0% of 6,419 votes counted).
+• House District 28: Wright, Stephen leads Moore, Elexie B. by 135 votes in first choices (ranked-choice tabulation not modeled) (2.2% of 6,003 votes counted).
+
+WHY FORECASTS ARE WITHHELD
+Forecasts are switched off for this report (report mode: descriptive); even a contest that passed every check below would show counts only.
+• 76 contest(s): the contest has not been matched to a reviewed contest list.
+• 76 contest(s): the count time is unknown or more than 48 hours old.
+• 76 contest(s): the file covers only part of the contest, or its scope is unreviewed.
+• 76 contest(s): the office's winning rule has not been reviewed.
+• Other reasons are listed on each race in the full report.
+
+ABOUT THIS DATA
+Report mode: descriptive. Forecast target: none. Information time: unknown. Election lifecycle: counting. Experimental and uncalibrated. A versioned evidence gate checks lifecycle, source freshness, coverage, provenance, contest identity, rules and remaining-pool basis. No held-out calibration has validated predictive accuracy. Source publication range: 2026-11-04T08:50:21+00:00 to 2026-11-05T00:24:55+00:00; known source-age range: unknown. Unknown source age: 539 contest record(s); unknown count-update time: 539; incomplete/unverified coverage: 539. Configured sources without snapshots: none. Retrieval and report generation times do not advance a source's count clock.
 Latest input label: 2026-11-04T15:24; individual sources may be older.
-Lifecycle: unknown; tabulation stage: unknown.
-
+Lifecycle: counting; tabulation stage: unknown. Authority: https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv; evidence as of 2026-11-05T18:14:43+00:00.
 Reviewed 539 source representations of contests; overlapping jurisdictions may appear separately. Unestimated probabilities are not numerical zero; no numerical risk ranking is published.
-
-DESCRIPTIVE MARGINS WITH DATED STATUS EVIDENCE
-
-WITHHOLDING REASONS
 
 Descriptive counts retain their source limits; this is not an official result, a race call, or a validated forecast. Recount and litigation probabilities are unestimated.
 
