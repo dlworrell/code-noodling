@@ -31,6 +31,6 @@ decide() {
   fi
 }
 
-result=$(decide)
+result=$(decide "$@")
 echo "changed=$result" >> "${GITHUB_OUTPUT:-/dev/stdout}"
 echo "$* changed or undetermined: $result"
