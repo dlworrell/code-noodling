@@ -3,10 +3,12 @@ name: Election Source Watch
 # Checks the official result sources selected in election-analysis/data/watch.toml and
 # proposes new snapshots as a pull request (election-analysis/docs/engineering/ADR-002).
 #
-# Runs hourly at :07 until 2026-11-12T08:00Z, then once a day at 02:07 UTC
-# (cadence job below). Owner decisions: primary and backup hourly (2026-11-03);
-# backups at :12 and :42 (2026-11-05); once every 24 hours after the first 24
-# hours of November 11 (2026-11-06). The backups are an external scheduler,
+# Runs hourly at :07 until 2026-11-12T08:00Z, then once every 24 hours: the
+# first scheduled fire of each day from 02:00 UTC (6 PM Pacific) runs the
+# watcher, even if GitHub starts it late (cadence job below). Owner decisions:
+# primary and backup hourly (2026-11-03); backups at :12 and :42 (2026-11-05);
+# once every 24 hours after the first 24 hours of November 11 (2026-11-06),
+# when the external :12/:42 backups also move to one daily dispatch. The backups are an external scheduler,
 # outside this repository, that dispatches this workflow with force=false; its
 # actual configuration is not recorded
 # or guaranteed here. `python -m election_reporting.watch fetch` decides whether
@@ -50,30 +52,49 @@ env:
 
 jobs:
   # Owner decision (2026-11-06): after the first 24 hours of November 11
-  # (end of Nov 11 Pacific, 2026-11-12T08:00Z) checks move to once every 24
-  # hours. From then on only the 02:07 UTC (6:07 PM Pacific) scheduled run
-  # proceeds; the other hourly schedule fires end here without running the
-  # watch job. Manual dispatches (including the daily backup) always run.
+  # (2026-11-12T08:00Z) checks move to once every 24 hours. The hourly schedule
+  # stays; the gate (election_reporting/watch/cadence.py) lets the first
+  # scheduled fire of each cadence day (from 02:00 UTC) run the watcher, however
+  # late GitHub starts it, until a run of the watcher has succeeded that day
+  # (fitment #214). Manual dispatches always run. The external backups move to
+  # one daily dispatch at the same cutoff (session task, outside this file).
   cadence:
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
     outputs:
       run: ${{ steps.gate.outputs.run }}
     steps:
+      - name: Check out the cadence gate
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: dev-daily
+          persist-credentials: false
+          sparse-checkout: election-analysis/election_reporting
+
       - name: Daily cadence gate
         id: gate
         env:
+          GH_TOKEN: ${{ github.token }}
           EVENT: ${{ github.event_name }}
+          RUN_ID: ${{ github.run_id }}
+          REPO: ${{ github.repository }}
+        working-directory: election-analysis
         run: |
-          now=$(date -u +%s)
-          cutoff=$(date -u -d 2026-11-12T08:00:00Z +%s)
-          hour=$(date -u +%H)
-          if [ "$EVENT" != schedule ] || [ "$now" -lt "$cutoff" ] || [ "$hour" = 02 ]; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "Daily cadence since 2026-11-12T08:00Z: only the 02:07 UTC scheduled run proceeds."
-          fi
+          now=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          since=$(date -u -d '-2 days' +%Y-%m-%dT%H:%M:%SZ)
+          {
+            if [ "$EVENT" = schedule ]; then
+              gh api "repos/$REPO/actions/workflows/election-source-watch.yml/runs?created=>=$since&per_page=100" \
+                --jq ".workflow_runs[] | select(.id != $RUN_ID) | [.id, .created_at] | @tsv" |
+              while IFS=$'\t' read -r id created; do
+                watch=$(gh api "repos/$REPO/actions/runs/$id/jobs" --jq '[.jobs[] | select(.name == "watch") | .conclusion][0] // empty')
+                printf '{"created_at": "%s", "watch": "%s"}\n' "$created" "$watch"
+              done
+            fi
+          } | python3 -m election_reporting.watch.cadence --event "$EVENT" --now "$now" >> "$GITHUB_OUTPUT"
 
   watch:
     needs: cadence
