@@ -117,8 +117,13 @@ jobs:
       # required checks never appeared on bot-authored automation PRs (#91).
       # The key is a repository secret added by the owner; without it the step
       # is skipped and publishing falls back to github.token, as before.
+      # The ring-0 steps run whenever publishing does (!cancelled()), so a
+      # failed fetch for one state still publishes as catylist-ring-0. Without
+      # it the publish step fell back to github.token and the snapshot PR head
+      # got no CI (run 42259780114, 2026-11-06: Alaska HTTP 405).
       - name: Check for the catylist-ring-0 key
         id: ring0_key
+        if: ${{ !cancelled() }}
         env:
           KEY: ${{ secrets.RING0_APP_PRIVATE_KEY || secrets.RING0_PRIVATE_KEY }}
         run: |
@@ -126,7 +131,7 @@ jobs:
 
       - name: Create catylist-ring-0 token
         id: ring0
-        if: ${{ steps.ring0_key.outputs.present == 'true' }}
+        if: ${{ !cancelled() && steps.ring0_key.outputs.present == 'true' }}
         # A bad or rotated key must never stop publication: on failure the
         # publish step falls back to github.token (no CI on that PR, as before).
         continue-on-error: true
@@ -140,7 +145,7 @@ jobs:
           permission-pull-requests: write
 
       - name: Warn when publishing without ring-0
-        if: ${{ steps.ring0_key.outputs.present == 'true' && steps.ring0.outcome != 'success' }}
+        if: ${{ !cancelled() && steps.ring0_key.outputs.present == 'true' && steps.ring0.outcome != 'success' }}
         run: echo "::warning::The catylist-ring-0 token could not be created (check RING0_PRIVATE_KEY in the RING0 environment); publishing as github-actions, whose PRs get no CI."
 
       - name: Publish verified commit and pull request
