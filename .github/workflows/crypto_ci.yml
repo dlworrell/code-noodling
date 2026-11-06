@@ -5,9 +5,55 @@ on:
     branches: [main, develop, dev-daily, fitment]
   pull_request:
     branches: [main, dev-daily, fitment]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
+  # audit-and-test is a required check on dev-daily, fitment and main, so the
+  # workflow must always run; a path filter would leave other projects' pull
+  # requests waiting for it. Instead it is skipped (which counts as passing)
+  # unless the crypto subgroup's C, C++ or Objective-C sources (or its
+  # makefile) changed. Other files, repository CI edits included, do not run
+  # it (owner decisions 2026-11-06).
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      crypto: ${{ steps.diff.outputs.changed }}
+    steps:
+    - name: Check out Repository Code
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Did crypto_pipeline's C, C++ or Objective-C sources change?
+      id: diff
+      env:
+        EVENT: ${{ github.event_name }}
+        PR_BASE: ${{ github.event.pull_request.base.sha }}
+        BEFORE: ${{ github.event.before }}
+      run: >-
+        scripts/ci/scope_changed.sh
+        ':(glob)crypto_pipeline/**/*.c'
+        ':(glob)crypto_pipeline/**/*.h'
+        ':(glob)crypto_pipeline/**/*.cc'
+        ':(glob)crypto_pipeline/**/*.cpp'
+        ':(glob)crypto_pipeline/**/*.cxx'
+        ':(glob)crypto_pipeline/**/*.c++'
+        ':(glob)crypto_pipeline/**/*.hh'
+        ':(glob)crypto_pipeline/**/*.hpp'
+        ':(glob)crypto_pipeline/**/*.hxx'
+        ':(glob)crypto_pipeline/**/*.h++'
+        ':(glob)crypto_pipeline/**/*.ipp'
+        ':(glob)crypto_pipeline/**/*.inl'
+        ':(glob)crypto_pipeline/**/*.m'
+        ':(glob)crypto_pipeline/**/*.mm'
+        ':(glob)crypto_pipeline/makefile'
+
   audit-and-test:
+    needs: changes
+    if: needs.changes.outputs.crypto == 'true'
     runs-on: ubuntu-latest
 
     steps:
