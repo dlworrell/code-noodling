@@ -61,8 +61,11 @@ DEFAULT_TITLE = "reports: update election result analysis"
 ALLOWED_BASES = frozenset({"dev-daily"})  # ADR-0013: automation -> dev-daily -> fitment -> main
 # GitHub rejects a GraphQL request larger than 45 MB. Contents travel base64
 # encoded (4/3 of the raw size) inside JSON, so each commit carries at most this
-# many encoded bytes, which leaves room for paths and the rest of the request.
-MAX_BATCH_BYTES = 24 * 1024 * 1024
+# many encoded bytes. 24 MiB requests were accepted but timed out (HTTP 504)
+# twice on 2026-11-06 (runs 42245759214, 42278148003); smaller commits keep
+# each request well inside the gateway's time limit. A file larger than this
+# still goes alone in its own commit (up to MAX_FILE_BYTES).
+MAX_BATCH_BYTES = 8 * 1024 * 1024
 MAX_FILE_BYTES = 40 * 1024 * 1024  # one file's encoded size; above this no request can carry it
 MAX_CHAIN = 50  # commits walked back when checking an existing branch
 
