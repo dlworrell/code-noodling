@@ -5,9 +5,37 @@ on:
     branches: [main, develop, dev-daily, fitment]
   pull_request:
     branches: [main, dev-daily, fitment]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
+  # audit-and-test is a required check on dev-daily, fitment and main, so the
+  # workflow must always run; a path filter would leave other projects' pull
+  # requests waiting for it. Instead it is skipped (which counts as passing)
+  # unless crypto_pipeline/ or this workflow changed.
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      crypto: ${{ steps.diff.outputs.crypto }}
+    steps:
+    - name: Check out Repository Code
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Did crypto_pipeline change?
+      id: diff
+      env:
+        EVENT: ${{ github.event_name }}
+        PR_BASE: ${{ github.event.pull_request.base.sha }}
+        BEFORE: ${{ github.event.before }}
+      run: crypto_pipeline/ci/changed.sh
+
   audit-and-test:
+    needs: changes
+    if: needs.changes.outputs.crypto == 'true'
     runs-on: ubuntu-latest
 
     steps:

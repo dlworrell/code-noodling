@@ -2,8 +2,14 @@ name: Montgomery Scoped Formal Checks
 on:
   pull_request:
     branches: [main, dev-daily, fitment]
+    paths:
+      - "crypto_pipeline/**"
+      - ".github/workflows/crypto_formal.yml"
   push:
     branches: [main, develop, dev-daily, fitment]
+    paths:
+      - "crypto_pipeline/**"
+      - ".github/workflows/crypto_formal.yml"
   workflow_dispatch:
 permissions:
   contents: read
