@@ -164,6 +164,14 @@ class BatchTests(unittest.TestCase):
         with self.assertRaisesRegex(PublishError, "too large"):
             batch_changes(ReportChanges(("r/huge",), ()), lambda _: 40 * 1024 * 1024)
 
+    def test_default_batch_keeps_requests_small(self) -> None:
+        # 24 MiB commits timed out (HTTP 504) twice on 2026-11-06.
+        from election_reporting.ci import publish_reports
+        self.assertLessEqual(publish_reports.MAX_BATCH_BYTES, 8 * 1024 * 1024)
+        six_mib = 6 * 1024 * 1024  # encodes to 8 MiB: one per commit
+        batches = batch_changes(ReportChanges(("a", "b", "c"), ()), lambda _: six_mib)
+        self.assertEqual([b.additions for b in batches], [("a",), ("b",), ("c",)])
+
 
 class PublishFlowTests(unittest.TestCase):
     def setUp(self) -> None:
