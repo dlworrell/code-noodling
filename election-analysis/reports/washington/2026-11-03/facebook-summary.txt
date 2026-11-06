@@ -1,15 +1,29 @@
 🗳️ ELECTION RESULTS — FORECASTS WITHHELD
 
 2026 General (November 3, 2026)
-Report mode: descriptive. Forecast target: none. Information time: unknown. Election lifecycle: unknown. Experimental and uncalibrated. A versioned evidence gate checks lifecycle, source freshness, coverage, provenance, contest identity, rules and remaining-pool basis. No held-out calibration has validated predictive accuracy. Source publication range: 2026-11-05T17:59:36+00:00 to 2026-11-06T01:57:19+00:00; known source-age range: unknown. Unknown source age: 466 contest record(s); unknown count-update time: 466; incomplete/unverified coverage: 466. Configured sources without snapshots: none. Retrieval and report generation times do not advance a source's count clock.
+Unofficial results; ballots are still being counted. 302 contests, latest source update 2026-11-06T01:57:19+00:00. No forecasts are published for this report; the margins below are counts, not predictions.
+
+CLOSEST RACES (CURRENT COUNT)
+• Sultan School District No. 311 Proposition No. 1: Approved leads Rejected by 4 votes (0.1% of 6,070 votes counted).
+• Legislative District 12 - State Representative Pos. 1: Brian Burnett leads Stacy Willoughby by 110 votes (0.2% of 61,902 votes counted).
+• Legislative District 25 - State Representative Pos. 2: Cyndy Jacobsen leads Jenn Marie Strickling by 222 votes (0.4% of 55,900 votes counted).
+• Legislative District 23 - State Representative Pos. 1: Tarra Simmons leads Daria Ilgen by 521 votes (0.9% of 57,935 votes counted).
+• Legislative District 32 - State Senator: Cindy Ryu leads Jesse Salomon by 580 votes (1.2% of 50,188 votes counted).
+• Legislative District 25 - State Representative Pos. 1: David Berg leads Michael Keaton by 669 votes (1.2% of 55,998 votes counted).
+
+WHY FORECASTS ARE WITHHELD
+Forecasts are switched off for this report (report mode: descriptive); even a contest that passed every check below would show counts only.
+• 302 contest(s): the contest has not been matched to a reviewed contest list.
+• 302 contest(s): the count time is unknown or more than 48 hours old.
+• 302 contest(s): the file covers only part of the contest, or its scope is unreviewed.
+• 302 contest(s): the office's winning rule has not been reviewed.
+• Other reasons are listed on each race in the full report.
+
+ABOUT THIS DATA
+Report mode: descriptive. Forecast target: none. Information time: unknown. Election lifecycle: counting. Experimental and uncalibrated. A versioned evidence gate checks lifecycle, source freshness, coverage, provenance, contest identity, rules and remaining-pool basis. No held-out calibration has validated predictive accuracy. Source publication range: 2026-11-05T17:59:36+00:00 to 2026-11-06T01:57:19+00:00; known source-age range: unknown. Unknown source age: 466 contest record(s); unknown count-update time: 288; incomplete/unverified coverage: 466. Configured sources without snapshots: none. Retrieval and report generation times do not advance a source's count clock.
 Latest input label: 2026-11-05T17:57; individual sources may be older.
-Lifecycle: unknown; tabulation stage: unknown.
-
+Lifecycle: counting; tabulation stage: unknown. Authority: https://results.votewa.gov/results/public/washington; evidence as of 2026-11-05T21:14:40+00:00.
 Reviewed 466 source representations of contests; overlapping jurisdictions may appear separately. Unestimated probabilities are not numerical zero; no numerical risk ranking is published.
-
-DESCRIPTIVE MARGINS WITH DATED STATUS EVIDENCE
-
-WITHHOLDING REASONS
 
 Descriptive counts retain their source limits; this is not an official result, a race call, or a validated forecast. Recount and litigation probabilities are unestimated.
 
