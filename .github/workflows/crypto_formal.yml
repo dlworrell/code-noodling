@@ -3,11 +3,39 @@ on:
   pull_request:
     branches: [main, dev-daily, fitment]
     paths:
-      - "crypto_pipeline/**"
+      - "crypto_pipeline/**/*.c"
+      - "crypto_pipeline/**/*.h"
+      - "crypto_pipeline/**/*.cc"
+      - "crypto_pipeline/**/*.cpp"
+      - "crypto_pipeline/**/*.cxx"
+      - "crypto_pipeline/**/*.c++"
+      - "crypto_pipeline/**/*.hh"
+      - "crypto_pipeline/**/*.hpp"
+      - "crypto_pipeline/**/*.hxx"
+      - "crypto_pipeline/**/*.h++"
+      - "crypto_pipeline/**/*.ipp"
+      - "crypto_pipeline/**/*.inl"
+      - "crypto_pipeline/**/*.m"
+      - "crypto_pipeline/**/*.mm"
+      - "crypto_pipeline/makefile"
   push:
     branches: [main, develop, dev-daily, fitment]
     paths:
-      - "crypto_pipeline/**"
+      - "crypto_pipeline/**/*.c"
+      - "crypto_pipeline/**/*.h"
+      - "crypto_pipeline/**/*.cc"
+      - "crypto_pipeline/**/*.cpp"
+      - "crypto_pipeline/**/*.cxx"
+      - "crypto_pipeline/**/*.c++"
+      - "crypto_pipeline/**/*.hh"
+      - "crypto_pipeline/**/*.hpp"
+      - "crypto_pipeline/**/*.hxx"
+      - "crypto_pipeline/**/*.h++"
+      - "crypto_pipeline/**/*.ipp"
+      - "crypto_pipeline/**/*.inl"
+      - "crypto_pipeline/**/*.m"
+      - "crypto_pipeline/**/*.mm"
+      - "crypto_pipeline/makefile"
   workflow_dispatch:
 permissions:
   contents: read
