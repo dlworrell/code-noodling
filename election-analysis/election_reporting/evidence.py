@@ -17,6 +17,7 @@ from collections import Counter
 from dataclasses import replace
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
+from pathlib import Path
 
 from .model import ElectionConfig, ElectionReportError, Snapshot
 
@@ -96,6 +97,38 @@ def validate_contract(raw, source_ids):
     return raw
 
 
+RAW_COUNT_TIME_BUDGET = 64_000_000
+
+
+def votewa_count_time(directory, record) -> str | None:
+    """The results.votewa.gov ``election.lastUpdated`` stored in a capture's raw bytes.
+
+    That field is the time the county or state last published a count, unlike the
+    API's ``asOf`` (when the response was generated). It is read only from the raw
+    file the ledger names, only when that file still matches the ledger's SHA-256,
+    and only when it is not later than the retrieval.
+    """
+    import gzip
+
+    if not directory or record.get("kind") != "votewa-json" or not str(record.get("raw", "")).endswith(".json.gz"):
+        return None
+    path = Path(directory) / record["raw"]
+    if ".." in Path(record["raw"]).parts or not path.is_file() or path.stat().st_size > RAW_COUNT_TIME_BUDGET:
+        return None
+    body = path.read_bytes()
+    if hashlib.sha256(body).hexdigest() != record.get("raw_sha256"):
+        return None
+    try:
+        data = json.loads(gzip.decompress(body))
+    except (OSError, ValueError):
+        return None
+    stamp = iso((data.get("election") or {}).get("lastUpdated") if isinstance(data, dict) else None)
+    retrieved = iso(record.get("retrieved_at"))
+    if not stamp or (retrieved and timestamp(stamp) > timestamp(retrieved)):
+        return None
+    return stamp
+
+
 def hydrate_snapshots(config: ElectionConfig, source, snapshots):
     records = []
     observations = []
@@ -125,6 +158,9 @@ def hydrate_snapshots(config: ElectionConfig, source, snapshots):
             "coverage_complete": False,
             "coverage_findings": ["Source coverage has not been independently established."],
         }
+        if (count_time := votewa_count_time(config.directory, known)):
+            facts["count_updated_at"] = count_time
+            facts["count_time_basis"] = "results.votewa.gov election.lastUpdated in the hashed raw capture"
         if explicit:
             facts.update(explicit[0])
             for name in ("source_published_at", "count_updated_at", "retrieved_at"):
