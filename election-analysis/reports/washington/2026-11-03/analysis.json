@@ -2926,15 +2926,15 @@
     "watcher_coverage": {}
   },
   "election_status": {
-    "authority_url": null,
-    "evidence_as_of": null,
-    "lifecycle": "unknown",
+    "authority_url": "https://results.votewa.gov/results/public/washington",
+    "evidence_as_of": "2026-11-05T21:14:40+00:00",
+    "lifecycle": "counting",
     "result_version": null,
     "round_id": null,
     "tabulation_stage": "unknown"
   },
   "forecast_target": "none",
-  "generated_at": "2026-11-06T02:50:30+00:00",
+  "generated_at": "2026-11-06T15:44:18+00:00",
   "information_time": null,
   "inputs": [
     {
@@ -3160,7 +3160,8 @@
       ],
       "sha256": "e8217bb0e102fb193df875dd2c8089e133fa2d82dc47811bb32f99c7b9bd96bb",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-04T04:06:32.214413+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -3769,7 +3770,8 @@
       ],
       "sha256": "58398dc80a52fe98d43bf2f7a13665ed8d9bafc4532908bbe920cd4ffb6b4a74",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-04T04:15:48.792924+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -4054,7 +4056,8 @@
       ],
       "sha256": "071de954384310f03237fd670a8311a4c2929ed61549d08f8a9ff36b5cb45401",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-04T04:31:37.294875+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -4618,7 +4621,8 @@
       ],
       "sha256": "4c0c455038004edae0d4caaf856f6d7f1145f64e5654629df7ca71f5f4975a1f",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-04T04:32:30.839725+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -7498,7 +7502,8 @@
       ],
       "sha256": "e60ec1e784d0be2271cd14022592a0b3baf878b61170d7ffbc1ef3a520bc1cc6",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-04T04:06:32.214413+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -8062,7 +8067,8 @@
       ],
       "sha256": "cbe2a4a98ccad9b485ee14434fcd8888ad950a602cd7afa7515a5157bb1026ed",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T00:34:00.529972+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -8347,7 +8353,8 @@
       ],
       "sha256": "7f83c59a51c577c51276e8a83c6340ce58acab3ef6f48bd6e5209a8150acb5b1",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T00:37:37.182117+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -8956,7 +8963,8 @@
       ],
       "sha256": "b18c0da6671a4dd54a6cdb281f1c70b25de22285a2f2ffb27f7ce5f8173f766f",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T01:00:18.739965+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -11881,7 +11889,8 @@
       ],
       "sha256": "7f83c59a51c577c51276e8a83c6340ce58acab3ef6f48bd6e5209a8150acb5b1",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T00:37:37.182117+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -12121,7 +12130,8 @@
       ],
       "sha256": "e60ec1e784d0be2271cd14022592a0b3baf878b61170d7ffbc1ef3a520bc1cc6",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-04T04:06:32.214413+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -12730,7 +12740,8 @@
       ],
       "sha256": "efeae5986f6f5f23e4adae940a2b9222c1f401781966b52aa5231d0e923be363",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T01:00:18.739965+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -13294,7 +13305,8 @@
       ],
       "sha256": "cbe2a4a98ccad9b485ee14434fcd8888ad950a602cd7afa7515a5157bb1026ed",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T00:34:00.529972+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -15160,7 +15172,8 @@
       ],
       "sha256": "7f83c59a51c577c51276e8a83c6340ce58acab3ef6f48bd6e5209a8150acb5b1",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T00:37:37.182117+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -15400,7 +15413,8 @@
       ],
       "sha256": "e60ec1e784d0be2271cd14022592a0b3baf878b61170d7ffbc1ef3a520bc1cc6",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-04T04:06:32.214413+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -16009,7 +16023,8 @@
       ],
       "sha256": "efeae5986f6f5f23e4adae940a2b9222c1f401781966b52aa5231d0e923be363",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T01:00:18.739965+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -16573,7 +16588,8 @@
       ],
       "sha256": "cbe2a4a98ccad9b485ee14434fcd8888ad950a602cd7afa7515a5157bb1026ed",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T00:34:00.529972+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -16858,7 +16874,8 @@
       ],
       "sha256": "7f83c59a51c577c51276e8a83c6340ce58acab3ef6f48bd6e5209a8150acb5b1",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T00:37:37.182117+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -17098,7 +17115,8 @@
       ],
       "sha256": "e60ec1e784d0be2271cd14022592a0b3baf878b61170d7ffbc1ef3a520bc1cc6",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-04T04:06:32.214413+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -17707,7 +17725,8 @@
       ],
       "sha256": "efeae5986f6f5f23e4adae940a2b9222c1f401781966b52aa5231d0e923be363",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T01:00:18.739965+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -18271,7 +18290,8 @@
       ],
       "sha256": "cbe2a4a98ccad9b485ee14434fcd8888ad950a602cd7afa7515a5157bb1026ed",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T00:34:00.529972+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -18556,7 +18576,8 @@
       ],
       "sha256": "7f83c59a51c577c51276e8a83c6340ce58acab3ef6f48bd6e5209a8150acb5b1",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T00:37:37.182117+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -18796,7 +18817,8 @@
       ],
       "sha256": "e60ec1e784d0be2271cd14022592a0b3baf878b61170d7ffbc1ef3a520bc1cc6",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-04T04:06:32.214413+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -19405,7 +19427,8 @@
       ],
       "sha256": "efeae5986f6f5f23e4adae940a2b9222c1f401781966b52aa5231d0e923be363",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T01:00:18.739965+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -19969,7 +19992,8 @@
       ],
       "sha256": "cbe2a4a98ccad9b485ee14434fcd8888ad950a602cd7afa7515a5157bb1026ed",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T00:34:00.529972+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -20254,7 +20278,8 @@
       ],
       "sha256": "7f83c59a51c577c51276e8a83c6340ce58acab3ef6f48bd6e5209a8150acb5b1",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T00:37:37.182117+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -20863,7 +20888,8 @@
       ],
       "sha256": "efeae5986f6f5f23e4adae940a2b9222c1f401781966b52aa5231d0e923be363",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T01:00:18.739965+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -21427,7 +21453,8 @@
       ],
       "sha256": "cbe2a4a98ccad9b485ee14434fcd8888ad950a602cd7afa7515a5157bb1026ed",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T00:34:00.529972+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -21712,7 +21739,8 @@
       ],
       "sha256": "7f83c59a51c577c51276e8a83c6340ce58acab3ef6f48bd6e5209a8150acb5b1",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T00:37:37.182117+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -25114,7 +25142,8 @@
       ],
       "sha256": "b32c81c6475dbd05f69a9e4cbea1fb103b6ab40eb90b8e53fcd9a414472ffba1",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -26935,7 +26964,8 @@
       ],
       "sha256": "b32c81c6475dbd05f69a9e4cbea1fb103b6ab40eb90b8e53fcd9a414472ffba1",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -27175,7 +27205,8 @@
       ],
       "sha256": "b32c81c6475dbd05f69a9e4cbea1fb103b6ab40eb90b8e53fcd9a414472ffba1",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -27415,7 +27446,8 @@
       ],
       "sha256": "b32c81c6475dbd05f69a9e4cbea1fb103b6ab40eb90b8e53fcd9a414472ffba1",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -29281,7 +29313,8 @@
       ],
       "sha256": "2e25c94680ca0a3908bee4a9b4751892ee3cdf563148c544d4162f1490443d9f",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -29566,7 +29599,8 @@
       ],
       "sha256": "2e25c94680ca0a3908bee4a9b4751892ee3cdf563148c544d4162f1490443d9f",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -30175,7 +30209,8 @@
       ],
       "sha256": "945dc08b6c4ff7fafb77fdd69ab70a0c65ae174546617374ce222f17aa858491",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -30784,7 +30819,8 @@
       ],
       "sha256": "945dc08b6c4ff7fafb77fdd69ab70a0c65ae174546617374ce222f17aa858491",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -31348,7 +31384,8 @@
       ],
       "sha256": "2aa35d5a3edbd0e2d5b394b40761bd38e3a4fa03680eaa8a4cf5fec5b3e9a692",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -31912,7 +31949,8 @@
       ],
       "sha256": "2aa35d5a3edbd0e2d5b394b40761bd38e3a4fa03680eaa8a4cf5fec5b3e9a692",
       "source_evidence": {
-        "count_updated_at": null,
+        "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+        "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
         "coverage_complete": false,
         "coverage_findings": [
           "Source coverage has not been independently established."
@@ -35500,12 +35538,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -35729,12 +35768,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -35958,12 +35998,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -36188,12 +36229,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -36870,12 +36912,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -37099,12 +37142,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -37328,12 +37372,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -37558,12 +37603,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -38240,12 +38286,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -38469,12 +38516,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -38698,12 +38746,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -38928,12 +38977,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -39158,12 +39208,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -39626,12 +39677,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -39861,12 +39913,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -40091,12 +40144,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -40320,12 +40374,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -40925,12 +40980,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -41160,12 +41216,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -41390,12 +41447,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -41619,12 +41677,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -42087,12 +42146,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -42237,12 +42297,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -42467,12 +42528,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -42696,12 +42758,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -43164,12 +43227,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -43314,12 +43378,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -43544,12 +43609,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -44000,12 +44066,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -44384,12 +44451,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -44619,12 +44687,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -44849,12 +44918,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -45078,12 +45148,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -45312,12 +45383,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -45696,12 +45768,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -45931,12 +46004,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -46393,12 +46467,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -46623,12 +46698,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -46857,12 +46933,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -47240,12 +47317,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -47475,12 +47553,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -47710,12 +47789,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -48178,12 +48258,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -48327,12 +48408,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -48789,12 +48871,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -49024,12 +49107,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -49492,12 +49576,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -49727,12 +49812,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -49961,12 +50047,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -50430,12 +50517,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -50664,12 +50752,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -50899,12 +50988,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -51275,12 +51365,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -51510,12 +51601,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -51979,12 +52071,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -52213,12 +52306,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -52362,12 +52456,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -52831,12 +52926,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -53065,12 +53161,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -53214,12 +53311,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -53449,12 +53547,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -53917,12 +54016,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -54151,12 +54251,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -54386,12 +54487,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -54621,12 +54723,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -55089,12 +55192,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -55323,12 +55427,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -55558,12 +55663,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -55793,12 +55899,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -56027,12 +56134,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -56495,12 +56603,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -56730,12 +56839,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -56965,12 +57075,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -57199,12 +57310,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -57667,12 +57779,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -57902,12 +58015,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -58137,12 +58251,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -58371,12 +58486,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -58839,12 +58955,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -59074,12 +59191,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -59224,12 +59342,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -59459,12 +59578,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -59693,12 +59813,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -60161,12 +60282,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -60311,12 +60433,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -60461,12 +60584,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -60695,12 +60819,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -61163,12 +61288,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -61313,12 +61439,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -61463,12 +61590,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -61698,12 +61826,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -61932,12 +62061,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -62315,12 +62445,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -62550,12 +62681,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -62784,12 +62916,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -63082,12 +63215,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-05T23:08:40.592674+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T15:30:00",
           "legacy_filename_timezone": "unknown",
@@ -63232,12 +63366,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -63467,12 +63602,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -63701,12 +63837,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -64169,12 +64306,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -64318,12 +64456,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -64786,12 +64925,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -65021,12 +65161,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -65255,12 +65396,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -65638,12 +65780,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -65873,12 +66016,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -66107,12 +66251,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -66485,12 +66630,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -66715,12 +66861,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:15:48.701531+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:16:00",
           "legacy_filename_timezone": "unknown",
@@ -66950,12 +67097,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -67184,12 +67332,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -67567,12 +67716,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -67801,12 +67951,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -68269,12 +68420,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -68503,12 +68655,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -69035,12 +69188,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -69184,12 +69338,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -69418,12 +69573,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -69801,12 +69957,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -70035,12 +70192,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -70503,12 +70661,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -70737,12 +70896,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -71205,12 +71365,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -71673,12 +71834,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -71907,12 +72069,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -72375,12 +72538,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -72609,12 +72773,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -72758,12 +72923,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -73141,12 +73307,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -73290,12 +73457,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -73758,12 +73926,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -73907,12 +74076,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -74375,12 +74545,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -74524,12 +74695,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -74673,12 +74845,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -74971,12 +75144,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -75354,12 +75528,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -75503,12 +75678,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -75886,12 +76062,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -76035,12 +76212,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -76418,12 +76596,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -76801,12 +76980,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -76950,12 +77130,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -77248,12 +77429,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -77397,12 +77579,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -77780,12 +77963,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -77929,12 +78113,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -78397,12 +78582,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -78631,12 +78817,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -78860,12 +79047,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -79329,12 +79517,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -79558,12 +79747,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -79942,12 +80132,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -80171,12 +80362,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -80554,12 +80746,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -80783,12 +80976,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -81166,12 +81360,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -81395,12 +81590,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -81778,12 +81974,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -82007,12 +82204,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -82475,12 +82673,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -82938,12 +83137,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -83087,12 +83287,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -83550,12 +83751,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -83779,12 +83981,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -84008,12 +84211,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -84471,12 +84675,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -84700,12 +84905,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -85083,12 +85289,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -85546,12 +85753,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -85695,12 +85903,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -86158,12 +86367,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:33:07.981658+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:42:00",
           "legacy_filename_timezone": "unknown",
@@ -86307,12 +86517,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -86536,12 +86747,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -87233,12 +87445,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -87696,12 +87909,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -87925,12 +88139,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
@@ -88388,12 +88603,13 @@
           "supported": false
         },
         "source": {
-          "count_updated_at": null,
+          "count_time_basis": "results.votewa.gov election.lastUpdated in the hashed raw capture",
+          "count_updated_at": "2026-11-06T00:28:30.820420+00:00",
           "coverage_complete": false,
           "coverage_findings": [
             "Source coverage has not been independently established."
           ],
-          "freshness_basis": "source publication proxy; count-update time unknown",
+          "freshness_basis": "explicit count-update time",
           "geography": {},
           "legacy_filename_label": "2026-11-05T16:30:00",
           "legacy_filename_timezone": "unknown",
