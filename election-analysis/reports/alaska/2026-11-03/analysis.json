@@ -7,15 +7,15 @@
     "watcher_coverage": {}
   },
   "election_status": {
-    "authority_url": null,
-    "evidence_as_of": null,
-    "lifecycle": "unknown",
+    "authority_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+    "evidence_as_of": "2026-11-05T18:14:43+00:00",
+    "lifecycle": "counting",
     "result_version": null,
     "round_id": null,
     "tabulation_stage": "unknown"
   },
   "forecast_target": "none",
-  "generated_at": "2026-11-06T02:50:24+00:00",
+  "generated_at": "2026-11-06T15:44:14+00:00",
   "information_time": null,
   "inputs": [
     {
