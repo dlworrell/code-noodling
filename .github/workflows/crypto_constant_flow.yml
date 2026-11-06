@@ -4,12 +4,10 @@ on:
     branches: [main, develop, dev-daily, fitment]
     paths:
       - "crypto_pipeline/**"
-      - ".github/workflows/crypto_constant_flow.yml"
   pull_request:
     branches: [main, dev-daily, fitment]
     paths:
       - "crypto_pipeline/**"
-      - ".github/workflows/crypto_constant_flow.yml"
   workflow_dispatch:
 permissions:
   contents: read

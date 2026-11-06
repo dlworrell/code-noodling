@@ -14,11 +14,12 @@ jobs:
   # audit-and-test is a required check on dev-daily, fitment and main, so the
   # workflow must always run; a path filter would leave other projects' pull
   # requests waiting for it. Instead it is skipped (which counts as passing)
-  # unless crypto_pipeline/ or this workflow changed.
+  # unless crypto_pipeline/ changed. Repository CI edits (this file included)
+  # are not crypto changes and do not run it (owner decision 2026-11-06).
   changes:
     runs-on: ubuntu-latest
     outputs:
-      crypto: ${{ steps.diff.outputs.crypto }}
+      crypto: ${{ steps.diff.outputs.changed }}
     steps:
     - name: Check out Repository Code
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -31,7 +32,7 @@ jobs:
         EVENT: ${{ github.event_name }}
         PR_BASE: ${{ github.event.pull_request.base.sha }}
         BEFORE: ${{ github.event.before }}
-      run: crypto_pipeline/ci/changed.sh
+      run: scripts/ci/scope_changed.sh crypto_pipeline
 
   audit-and-test:
     needs: changes
