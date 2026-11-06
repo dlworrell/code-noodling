@@ -8,11 +8,11 @@ on:
       - "crypto_pipeline/**/*.cc"
       - "crypto_pipeline/**/*.cpp"
       - "crypto_pipeline/**/*.cxx"
-      - "crypto_pipeline/**/*.c++"
+      - 'crypto_pipeline/**/*.c\+\+'
       - "crypto_pipeline/**/*.hh"
       - "crypto_pipeline/**/*.hpp"
       - "crypto_pipeline/**/*.hxx"
-      - "crypto_pipeline/**/*.h++"
+      - 'crypto_pipeline/**/*.h\+\+'
       - "crypto_pipeline/**/*.ipp"
       - "crypto_pipeline/**/*.inl"
       - "crypto_pipeline/**/*.m"
@@ -26,11 +26,11 @@ on:
       - "crypto_pipeline/**/*.cc"
       - "crypto_pipeline/**/*.cpp"
       - "crypto_pipeline/**/*.cxx"
-      - "crypto_pipeline/**/*.c++"
+      - 'crypto_pipeline/**/*.c\+\+'
       - "crypto_pipeline/**/*.hh"
       - "crypto_pipeline/**/*.hpp"
       - "crypto_pipeline/**/*.hxx"
-      - "crypto_pipeline/**/*.h++"
+      - 'crypto_pipeline/**/*.h\+\+'
       - "crypto_pipeline/**/*.ipp"
       - "crypto_pipeline/**/*.inl"
       - "crypto_pipeline/**/*.m"
