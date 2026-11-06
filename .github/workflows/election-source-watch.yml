@@ -3,8 +3,10 @@ name: Election Source Watch
 # Checks the official result sources selected in election-analysis/data/watch.toml and
 # proposes new snapshots as a pull request (election-analysis/docs/engineering/ADR-002).
 #
-# Runs hourly at :07. Owner decisions: primary and backup hourly (2026-11-03);
-# backups at :12 and :42 (2026-11-05). The backups are an external scheduler,
+# Runs hourly at :07 until 2026-11-12T08:00Z, then once a day at 02:07 UTC
+# (cadence job below). Owner decisions: primary and backup hourly (2026-11-03);
+# backups at :12 and :42 (2026-11-05); once every 24 hours after the first 24
+# hours of November 11 (2026-11-06). The backups are an external scheduler,
 # outside this repository, that dispatches this workflow with force=false; its
 # actual configuration is not recorded
 # or guaranteed here. `python -m election_reporting.watch fetch` decides whether
@@ -47,8 +49,35 @@ env:
   SNAPSHOT_BRANCH: automation/election-sources
 
 jobs:
+  # Owner decision (2026-11-06): after the first 24 hours of November 11
+  # (end of Nov 11 Pacific, 2026-11-12T08:00Z) checks move to once every 24
+  # hours. From then on only the 02:07 UTC (6:07 PM Pacific) scheduled run
+  # proceeds; the other hourly schedule fires end here without running the
+  # watch job. Manual dispatches (including the daily backup) always run.
+  cadence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    outputs:
+      run: ${{ steps.gate.outputs.run }}
+    steps:
+      - name: Daily cadence gate
+        id: gate
+        env:
+          EVENT: ${{ github.event_name }}
+        run: |
+          now=$(date -u +%s)
+          cutoff=$(date -u -d 2026-11-12T08:00:00Z +%s)
+          hour=$(date -u +%H)
+          if [ "$EVENT" != schedule ] || [ "$now" -lt "$cutoff" ] || [ "$hour" = 02 ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Daily cadence since 2026-11-12T08:00Z: only the 02:07 UTC scheduled run proceeds."
+          fi
+
   watch:
-    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    needs: cadence
+    if: needs.cadence.outputs.run == 'true' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     runs-on: ubuntu-latest
     timeout-minutes: 15
     # The catylist-ring-0 key is a secret of the RING0 environment (owner set-up,
