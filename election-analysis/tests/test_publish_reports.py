@@ -681,7 +681,17 @@ class WorkflowRouteTests(unittest.TestCase):
             self.assertIn("actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510", text, path)
             self.assertIn("app-id: ${{ secrets.RING0_APP_ID || '5474337' }}", text, path)
             self.assertIn("environment: RING0", text, path)
-            self.assertIn("if: ${{ steps.ring0_key.outputs.present == 'true' }}", text, path)
+            if path.endswith("election-source-watch.yml"):
+                # Publishing runs even when a state's fetch failed (!cancelled()),
+                # so the ring-0 key and token steps must too, or the publish falls
+                # back to github.token and the snapshot PR gets no CI (run 42259780114).
+                key_step = text.split("- name: Check for the catylist-ring-0 key", 1)[1].split("- name:", 1)[0]
+                self.assertIn("if: ${{ !cancelled() }}", key_step, path)
+                self.assertIn("if: ${{ !cancelled() && steps.ring0_key.outputs.present == 'true' }}", text, path)
+                publish_step = text.split("- name: Publish verified commit and pull request", 1)[1].split("- name:", 1)[0]
+                self.assertIn("if: ${{ !cancelled() }}", publish_step, path)
+            else:
+                self.assertIn("if: ${{ steps.ring0_key.outputs.present == 'true' }}", text, path)
             token_step = text.split("- name: Create catylist-ring-0 token", 1)[1].split("- name:", 1)[0]
             self.assertIn("continue-on-error: true", token_step, path)  # a bad key never stops publication
             self.assertIn("GH_TOKEN: ${{ steps.ring0.outputs.token || github.token }}", text, path)
