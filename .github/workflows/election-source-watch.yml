@@ -83,33 +83,13 @@ jobs:
           RUN_ID: ${{ github.run_id }}
           REPO: ${{ github.repository }}
         working-directory: election-analysis
-        # Fails closed (fitment #221): if the run history cannot be read, this
-        # fire does not run the watcher and the next hourly fire tries again,
-        # so an API error never turns into an extra visit to the state sites.
+        # Fails closed (fitment #221, #229): cadence.py reads the run history
+        # with gh api and prints run=false if any call fails, so an API error
+        # never turns into an extra visit to the state sites.
         run: |
           set -euo pipefail
-          now=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-          since=$(date -u -d '-2 days' +%Y-%m-%dT%H:%M:%SZ)
-          prior=$(mktemp)
-          # Before the cutoff every scheduled fire runs; the history is read only after it.
-          if [ "$EVENT" = schedule ] && [ "$(date -u +%s)" -ge "$(date -u -d 2026-11-12T08:00:00Z +%s)" ]; then
-            if ! runs=$(gh api "repos/$REPO/actions/workflows/election-source-watch.yml/runs?created=>=$since&per_page=100" \
-                  --jq ".workflow_runs[] | select(.id != $RUN_ID) | [.id, .created_at] | @tsv"); then
-              echo "::warning::Run history unavailable; skipping this fire (the next hourly fire retries)."
-              echo "run=false" >> "$GITHUB_OUTPUT"
-              exit 0
-            fi
-            while IFS=$'\t' read -r id created; do
-              [ -n "$id" ] || continue
-              if ! watch=$(gh api "repos/$REPO/actions/runs/$id/jobs" --jq '[.jobs[] | select(.name == "watch") | .conclusion][0] // empty'); then
-                echo "::warning::Jobs of run $id unavailable; skipping this fire (the next hourly fire retries)."
-                echo "run=false" >> "$GITHUB_OUTPUT"
-                exit 0
-              fi
-              printf '{"created_at": "%s", "watch": "%s"}\n' "$created" "$watch" >> "$prior"
-            done <<< "$runs"
-          fi
-          python3 -m election_reporting.watch.cadence --event "$EVENT" --now "$now" < "$prior" >> "$GITHUB_OUTPUT"
+          python3 -m election_reporting.watch.cadence --event "$EVENT" \
+            --now "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --repo "$REPO" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
 
   watch:
     needs: cadence
