@@ -102,7 +102,7 @@ def collect_prior(repo: str, run_id: int, now: datetime, gh: Gh = gh_api) -> lis
             jobs = gh(f"repos/{repo}/actions/runs/{int(run['id'])}/jobs")
             watch = next((job.get("conclusion") for job in jobs["jobs"] if job.get("name") == "watch"), None)
             prior.append((_time(run["created_at"]), watch))
-    except (KeyError, TypeError, ValueError) as exc:
+    except (AttributeError, KeyError, TypeError, ValueError) as exc:
         raise HistoryUnavailable(f"unexpected run history shape: {exc!r}") from exc
     return prior
 
