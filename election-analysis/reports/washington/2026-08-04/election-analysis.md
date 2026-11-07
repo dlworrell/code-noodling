@@ -7655,7 +7655,7 @@ Lifecycle: certified; tabulation stage: unknown. Authority: https://www.sos.wa.g
 
 Latest input label 2026-10-14T11:00; 298 source representations of contests; overlapping jurisdictions may appear separately. Individual source dates may be older; this label is not an authoritative current-count time.
 
-Generated: 2026-11-06T21:29:42+00:00. Per-source vintages and coverage findings are listed in analysis.json (source_summary and coverage_summary).
+Generated: 2026-11-07T00:21:39+00:00. Per-source vintages and coverage findings are listed in analysis.json (source_summary and coverage_summary).
 
 ## Method and limits
 
