@@ -279,6 +279,285 @@
       "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
       "raw_sha256": null,
       "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "alaska",
+      "input_sha256": "c71c98246c0c6e510ca3d145b93566164d98754eaa05c26cff8449dadb8e1bd6",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": "6fc7544b54ed19e26c558def286217e3a718a3acd5648edec82e9e1f8c1df568",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "aleutians-east-borough",
+      "input_sha256": "307bc7f79d859e1ab095c196407d02a6c90c767368d7b152fce4d8e89c1c4cfa",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "aleutians-west-census-area",
+      "input_sha256": "38b37fdc0291934c4f7d47a1d7dd6149e304022bf74a46376f5a51a1e0bf2f6b",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "anchorage-municipality",
+      "input_sha256": "7d2d45a226bc75dd85c9507fdddfba73ebc3711997393c57c4d7b1d2477f2aab",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "bethel-census-area",
+      "input_sha256": "a6e4219715a0073a683da98e7b61ea086bcb4d0af7adf340dadeca5f8354ddef",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "bristol-bay-borough",
+      "input_sha256": "0b566577a12a0fc63aedf10f4e7269fef0198ecd65f9aa256144b1a4bf43ea37",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "chugach-census-area",
+      "input_sha256": "4778dd3cc03e1d453c423c439d701c864513c27d1d611c1d51f71f27499099d0",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "copper-river-census-area",
+      "input_sha256": "4d6eba6defa35c7dc3354ffe3a06efafe5253f81831012a99e0761aeba2ffd23",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "denali-borough",
+      "input_sha256": "d174f16ad10d176232dbeea538e6cc55095ed363f28b7b4e21ae92e05a1bade9",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "dillingham-census-area",
+      "input_sha256": "3d6851b0727ab26cee13f396f25dbe05eea2b87732e1ce43de125612d18c8536",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "fairbanks-north-star-borough",
+      "input_sha256": "a1fbe02f6519b556c420178bd85be3dbf9d95bed2ecb6e2290e576c37b54d8f1",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "haines-borough",
+      "input_sha256": "f97bef35e8c337706b1f24041cfb6f2d18c035ce626fbd0757d002d47e857f7b",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "hoonah-angoon-census-area",
+      "input_sha256": "6c15b5674e9ee2e81af5fd771c33ce1ea3ce3d29e15e6e6fca6401a856805adb",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "juneau-city-and-borough",
+      "input_sha256": "c384f319545d6f4b914ac7b24997bc5133c4162552d6fa01274c76297403318e",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "kenai-peninsula-borough",
+      "input_sha256": "e6cd95048a369f89f2d6feb31f653b30282a373881c5f99f1b3523e6c5f95840",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "ketchikan-gateway-borough",
+      "input_sha256": "0cf842a9d6398909ce9dc83a74dae8be3b18111a5a5de0b7e4f733e108574d86",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "kodiak-island-borough",
+      "input_sha256": "38a85c8a49eec19071001ae220a348f9748b0e10c4e4e14be265fefabfd6c626",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "kusilvak-census-area",
+      "input_sha256": "8a9db3c44f2c49a7fd1d930441f60b747f19a8e2324a2291264591a839370e2f",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "lake-and-peninsula-borough",
+      "input_sha256": "91a6f501274f010d9cfde1c8a94fbf365ba0db3c15768a8877a2594aa3695bf1",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "matanuska-susitna-borough",
+      "input_sha256": "315ad7bacefa85efcd8ef99090df602d41c27f568d631db0e4936fdfb318a226",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "nome-census-area",
+      "input_sha256": "7a790aaf2400a31a56658023d7da6303a6a3a3354ed9b36bb325d7043d87ff7b",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "north-slope-borough",
+      "input_sha256": "8051cd0e74061d31ca50cb7e9ff15e81481ca5589249165da67e4c1e66e82640",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "northwest-arctic-borough",
+      "input_sha256": "56d02947bfd6d9a76d65944b6286319ac29f2d71f9dd79af772bcef3a9549ed9",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "petersburg-borough",
+      "input_sha256": "c0e9a048200d0e86de4df377cb3df729896b305e1863b776eb1e4739d5fd633e",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "prince-of-wales-hyder-census-area",
+      "input_sha256": "48789f56863469333e6046fdf14eecaadf6b6cf13c8cd21ed338e61f3ca3d616",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "sitka-city-and-borough",
+      "input_sha256": "5275190d97b2f198cbdd3f6bdc55e0ffd8dcec3b6296995112071737934dedd0",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "skagway-municipality",
+      "input_sha256": "e87ff8b5d7bbdf9455311a51517c067dd64346463b8ee0052937489a8697827d",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "southeast-fairbanks-census-area",
+      "input_sha256": "9fed068b572c87fb6a29ebed886a7bb1288cc9d7e871dab27660f65dc24a8e14",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "wrangell-city-and-borough",
+      "input_sha256": "a057832194c8351ac730ae42ac4dc3d777100261385eee41369f4cfc888d8556",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "yakutat-city-and-borough",
+      "input_sha256": "926cf998aaca1bd48b8ebda7f9dac18884b9caadfd33ffcff4207f6b34dd1b6a",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "yukon-koyukuk-census-area",
+      "input_sha256": "22f3c99f61e79099344f02f331307b8481a7e1a0958880999477598196243db1",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_published_at": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
     }
   ],
   "coverage": {},
@@ -348,6 +627,45 @@
       "note": ""
     },
     {
+      "place": "alaska",
+      "snapshot": "2026-11-09-1540",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-10T02:00:08+00:00",
+      "source_timestamp": "Tue, 10 Nov 2026 00:40:26 GMT",
+      "input": "input/alaska/2026-11-09-1540.csv",
+      "input_sha256": "b90df6e236b7e438445a47d18d6c43075ae23d4f74a769f717d95aa6ba2a2f3e",
+      "raw": "raw/alaska/2026-11-09-1540.csv.gz",
+      "raw_sha256": "a136d986e696073cb7d687fed7d1559f3f2af5f8846054242e9428f39e0994ae",
+      "note": ""
+    },
+    {
+      "place": "alaska",
+      "snapshot": "2026-11-10-1914",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-11T14:04:12+00:00",
+      "source_timestamp": "Wed, 11 Nov 2026 04:14:01 GMT",
+      "input": "input/alaska/2026-11-10-1914.csv",
+      "input_sha256": "34683b410a68cb737af96e0ebc6284c8a39f7c686aaa42efe482594928d3efa9",
+      "raw": "raw/alaska/2026-11-10-1914.csv.gz",
+      "raw_sha256": "9e5914939c3da74d7ec97c8f4623091bdea9d62c278e0058f52535ec5ffbb264",
+      "note": ""
+    },
+    {
+      "place": "alaska",
+      "snapshot": "2026-11-12-1901",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_timestamp": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "input": "input/alaska/2026-11-12-1901.csv",
+      "input_sha256": "c71c98246c0c6e510ca3d145b93566164d98754eaa05c26cff8449dadb8e1bd6",
+      "raw": "raw/alaska/2026-11-12-1901.csv.gz",
+      "raw_sha256": "6fc7544b54ed19e26c558def286217e3a718a3acd5648edec82e9e1f8c1df568",
+      "note": ""
+    },
+    {
       "place": "aleutians-east-borough",
       "snapshot": "2026-11-03-2350",
       "kind": "alaska-precinct-csv",
@@ -374,6 +692,19 @@
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
     },
     {
+      "place": "aleutians-east-borough",
+      "snapshot": "2026-11-12-1901",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_timestamp": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "input": "input/aleutians-east-borough/2026-11-12-1901.csv",
+      "input_sha256": "307bc7f79d859e1ab095c196407d02a6c90c767368d7b152fce4d8e89c1c4cfa",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
       "place": "aleutians-west-census-area",
       "snapshot": "2026-11-03-2350",
       "kind": "alaska-precinct-csv",
@@ -395,6 +726,19 @@
       "source_timestamp": "Thu, 05 Nov 2026 00:24:55 GMT",
       "input": "input/aleutians-west-census-area/2026-11-04-1524.csv",
       "input_sha256": "a85ffe09f1a4907947cdd3e3c4fc7e5990abd3eb8f943bcd17f8d18c1a2f57b3",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
+      "place": "aleutians-west-census-area",
+      "snapshot": "2026-11-12-1901",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_timestamp": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "input": "input/aleutians-west-census-area/2026-11-12-1901.csv",
+      "input_sha256": "38b37fdc0291934c4f7d47a1d7dd6149e304022bf74a46376f5a51a1e0bf2f6b",
       "raw": "",
       "raw_sha256": "",
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
@@ -439,6 +783,19 @@
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
     },
     {
+      "place": "bethel-census-area",
+      "snapshot": "2026-11-12-1901",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_timestamp": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "input": "input/bethel-census-area/2026-11-12-1901.csv",
+      "input_sha256": "a6e4219715a0073a683da98e7b61ea086bcb4d0af7adf340dadeca5f8354ddef",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
       "place": "bristol-bay-borough",
       "snapshot": "2026-11-03-2350",
       "kind": "alaska-precinct-csv",
@@ -465,6 +822,19 @@
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
     },
     {
+      "place": "bristol-bay-borough",
+      "snapshot": "2026-11-12-1901",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_timestamp": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "input": "input/bristol-bay-borough/2026-11-12-1901.csv",
+      "input_sha256": "0b566577a12a0fc63aedf10f4e7269fef0198ecd65f9aa256144b1a4bf43ea37",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
       "place": "chugach-census-area",
       "snapshot": "2026-11-03-2350",
       "kind": "alaska-precinct-csv",
@@ -473,6 +843,19 @@
       "source_timestamp": "Wed, 04 Nov 2026 08:50:21 GMT",
       "input": "input/chugach-census-area/2026-11-03-2350.csv",
       "input_sha256": "3b783e764099c3c3a7427b52026fdfde75479c9598a7662bc6fb011697bdedcc",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
+      "place": "chugach-census-area",
+      "snapshot": "2026-11-09-1540",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-10T02:00:08+00:00",
+      "source_timestamp": "Tue, 10 Nov 2026 00:40:26 GMT",
+      "input": "input/chugach-census-area/2026-11-09-1540.csv",
+      "input_sha256": "4778dd3cc03e1d453c423c439d701c864513c27d1d611c1d51f71f27499099d0",
       "raw": "",
       "raw_sha256": "",
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
@@ -499,6 +882,19 @@
       "source_timestamp": "Thu, 05 Nov 2026 00:24:55 GMT",
       "input": "input/copper-river-census-area/2026-11-04-1524.csv",
       "input_sha256": "dc3d9a55ac112754f2f57cd4366f76cfb3914c99c358b20c0f20560df35a2861",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
+      "place": "copper-river-census-area",
+      "snapshot": "2026-11-09-1540",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-10T02:00:08+00:00",
+      "source_timestamp": "Tue, 10 Nov 2026 00:40:26 GMT",
+      "input": "input/copper-river-census-area/2026-11-09-1540.csv",
+      "input_sha256": "4d6eba6defa35c7dc3354ffe3a06efafe5253f81831012a99e0761aeba2ffd23",
       "raw": "",
       "raw_sha256": "",
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
@@ -543,6 +939,19 @@
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
     },
     {
+      "place": "dillingham-census-area",
+      "snapshot": "2026-11-12-1901",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_timestamp": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "input": "input/dillingham-census-area/2026-11-12-1901.csv",
+      "input_sha256": "3d6851b0727ab26cee13f396f25dbe05eea2b87732e1ce43de125612d18c8536",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
       "place": "fairbanks-north-star-borough",
       "snapshot": "2026-11-03-2350",
       "kind": "alaska-precinct-csv",
@@ -582,6 +991,19 @@
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
     },
     {
+      "place": "hoonah-angoon-census-area",
+      "snapshot": "2026-11-09-1540",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-10T02:00:08+00:00",
+      "source_timestamp": "Tue, 10 Nov 2026 00:40:26 GMT",
+      "input": "input/hoonah-angoon-census-area/2026-11-09-1540.csv",
+      "input_sha256": "6c15b5674e9ee2e81af5fd771c33ce1ea3ce3d29e15e6e6fca6401a856805adb",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
       "place": "juneau-city-and-borough",
       "snapshot": "2026-11-03-2350",
       "kind": "alaska-precinct-csv",
@@ -603,6 +1025,19 @@
       "source_timestamp": "Wed, 04 Nov 2026 08:50:21 GMT",
       "input": "input/kenai-peninsula-borough/2026-11-03-2350.csv",
       "input_sha256": "fa9a256461e401d194f55c9057eb90f2712baf21356f808ddedeb2db11b47ac0",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
+      "place": "kenai-peninsula-borough",
+      "snapshot": "2026-11-12-1901",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_timestamp": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "input": "input/kenai-peninsula-borough/2026-11-12-1901.csv",
+      "input_sha256": "e6cd95048a369f89f2d6feb31f653b30282a373881c5f99f1b3523e6c5f95840",
       "raw": "",
       "raw_sha256": "",
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
@@ -647,6 +1082,19 @@
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
     },
     {
+      "place": "kodiak-island-borough",
+      "snapshot": "2026-11-09-1540",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-10T02:00:08+00:00",
+      "source_timestamp": "Tue, 10 Nov 2026 00:40:26 GMT",
+      "input": "input/kodiak-island-borough/2026-11-09-1540.csv",
+      "input_sha256": "38a85c8a49eec19071001ae220a348f9748b0e10c4e4e14be265fefabfd6c626",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
       "place": "kusilvak-census-area",
       "snapshot": "2026-11-03-2350",
       "kind": "alaska-precinct-csv",
@@ -673,6 +1121,32 @@
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
     },
     {
+      "place": "kusilvak-census-area",
+      "snapshot": "2026-11-09-1540",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-10T02:00:08+00:00",
+      "source_timestamp": "Tue, 10 Nov 2026 00:40:26 GMT",
+      "input": "input/kusilvak-census-area/2026-11-09-1540.csv",
+      "input_sha256": "d45e090611f1ce3d5f02535b5f0fee6f039cd69d3fa5b156536cba80a6f37832",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
+      "place": "kusilvak-census-area",
+      "snapshot": "2026-11-12-1901",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_timestamp": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "input": "input/kusilvak-census-area/2026-11-12-1901.csv",
+      "input_sha256": "8a9db3c44f2c49a7fd1d930441f60b747f19a8e2324a2291264591a839370e2f",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
       "place": "lake-and-peninsula-borough",
       "snapshot": "2026-11-03-2350",
       "kind": "alaska-precinct-csv",
@@ -694,6 +1168,32 @@
       "source_timestamp": "Thu, 05 Nov 2026 00:24:55 GMT",
       "input": "input/lake-and-peninsula-borough/2026-11-04-1524.csv",
       "input_sha256": "98383a396b6b67b15793606597032001b1a25e6786a50d4692f69532b5599822",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
+      "place": "lake-and-peninsula-borough",
+      "snapshot": "2026-11-09-1540",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-10T02:00:08+00:00",
+      "source_timestamp": "Tue, 10 Nov 2026 00:40:26 GMT",
+      "input": "input/lake-and-peninsula-borough/2026-11-09-1540.csv",
+      "input_sha256": "8bf06db6794d3fa80943eb7668e6bdf84faa58adebb6946d0ff7fe62f2c3e92c",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
+      "place": "lake-and-peninsula-borough",
+      "snapshot": "2026-11-12-1901",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_timestamp": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "input": "input/lake-and-peninsula-borough/2026-11-12-1901.csv",
+      "input_sha256": "91a6f501274f010d9cfde1c8a94fbf365ba0db3c15768a8877a2594aa3695bf1",
       "raw": "",
       "raw_sha256": "",
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
@@ -733,6 +1233,19 @@
       "source_timestamp": "Thu, 05 Nov 2026 00:24:55 GMT",
       "input": "input/nome-census-area/2026-11-04-1524.csv",
       "input_sha256": "5ccbfef95c9ceb8f83dbedd58da401e8db2e339daac2e47614760a879c191972",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
+      "place": "nome-census-area",
+      "snapshot": "2026-11-12-1901",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_timestamp": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "input": "input/nome-census-area/2026-11-12-1901.csv",
+      "input_sha256": "7a790aaf2400a31a56658023d7da6303a6a3a3354ed9b36bb325d7043d87ff7b",
       "raw": "",
       "raw_sha256": "",
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
@@ -785,6 +1298,19 @@
       "source_timestamp": "Thu, 05 Nov 2026 00:24:55 GMT",
       "input": "input/northwest-arctic-borough/2026-11-04-1524.csv",
       "input_sha256": "3094ea3d1b121d9e9ee1cdc607a4ba9dc6ecc41d5fc5814d8017ebc924742fa1",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
+      "place": "northwest-arctic-borough",
+      "snapshot": "2026-11-12-1901",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_timestamp": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "input": "input/northwest-arctic-borough/2026-11-12-1901.csv",
+      "input_sha256": "56d02947bfd6d9a76d65944b6286319ac29f2d71f9dd79af772bcef3a9549ed9",
       "raw": "",
       "raw_sha256": "",
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
@@ -881,6 +1407,19 @@
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
     },
     {
+      "place": "southeast-fairbanks-census-area",
+      "snapshot": "2026-11-09-1540",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-10T02:00:08+00:00",
+      "source_timestamp": "Tue, 10 Nov 2026 00:40:26 GMT",
+      "input": "input/southeast-fairbanks-census-area/2026-11-09-1540.csv",
+      "input_sha256": "9fed068b572c87fb6a29ebed886a7bb1288cc9d7e871dab27660f65dc24a8e14",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
       "place": "wrangell-city-and-borough",
       "snapshot": "2026-11-03-2350",
       "kind": "alaska-precinct-csv",
@@ -928,6 +1467,32 @@
       "source_timestamp": "Thu, 05 Nov 2026 00:24:55 GMT",
       "input": "input/yukon-koyukuk-census-area/2026-11-04-1524.csv",
       "input_sha256": "3239c9da971856e9d8691d2c76acffc950fa18b1d73e6d1a43ee2919b645c06a",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
+      "place": "yukon-koyukuk-census-area",
+      "snapshot": "2026-11-09-1540",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-10T02:00:08+00:00",
+      "source_timestamp": "Tue, 10 Nov 2026 00:40:26 GMT",
+      "input": "input/yukon-koyukuk-census-area/2026-11-09-1540.csv",
+      "input_sha256": "1f26c1ef485f7aa909cdae7316758d4d55fe286cc71b31d0233d7d07132b14c8",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
+      "place": "yukon-koyukuk-census-area",
+      "snapshot": "2026-11-12-1901",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-14T03:05:57+00:00",
+      "source_timestamp": "Fri, 13 Nov 2026 04:01:05 GMT",
+      "input": "input/yukon-koyukuk-census-area/2026-11-12-1901.csv",
+      "input_sha256": "22f3c99f61e79099344f02f331307b8481a7e1a0958880999477598196243db1",
       "raw": "",
       "raw_sha256": "",
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
