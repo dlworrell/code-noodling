@@ -18,14 +18,14 @@ usable when removing its small prime factors leaves a probable prime q with
 
 Class number 1 alone does not certify every prime: some N have no usable
 order at any depth. provable_prime() draws primes until one works; certify()
-returns None on failure. For an arbitrary prime, from_pari() converts a
+returns None on failure. For a prime N >= 2^64, from_pari() converts a
 certificate made by PARI/GP's primecert() (Atkin-Morain format: one entry
 [N, t, s, a, [x, y]] per step, curve order m = N + 1 - t, q = m / s).
 
 Usage:
   python3 ecpp_cert.py BITS     print a random provable prime and its chain length
-  python3 ecpp_cert.py pari N   print PARI's certificate for N in fixture format
-                                (needs gp on PATH)
+  python3 ecpp_cert.py pari N   print PARI's certificate chain in fixture format
+                                (N >= 2^64; needs gp on PATH)
 """
 
 from __future__ import annotations
@@ -316,8 +316,16 @@ def from_pari(text: str) -> list[Step]:
 
 
 def pari_certificate(n: int, gp: str = "gp", timeout: int = 3600) -> str:
-    """Runs PARI/GP's primecert(n) and returns its certificate in fixture format."""
-    result = subprocess.run([gp, "-q", "-f"], input=PARI_SCRIPT.format(n=int(n)),
+    """Return PARI's certificate chain in fixture format for n >= 2^64.
+
+    Smaller primes have scalar PARI certificates, which are not fixture rows.
+    Raise ValueError for inputs below the chain domain without running GP.
+    """
+    n = int(n)
+    if n < U64:
+        raise ValueError("PARI certificate-chain output requires N >= 2^64; "
+                         "scalar certificates are not supported")
+    result = subprocess.run([gp, "-q", "-f"], input=PARI_SCRIPT.format(n=n),
                             capture_output=True, text=True, timeout=timeout, check=True)
     # gp reports errors such as a stack overflow with "***" and still exits 0;
     # its warnings use the same marker.
@@ -330,7 +338,13 @@ def pari_certificate(n: int, gp: str = "gp", timeout: int = 3600) -> str:
 
 def main(argv: list[str]) -> int:
     if len(argv) > 2 and argv[1] == "pari":
-        sys.stdout.write(pari_certificate(int(argv[2])))
+        n = int(argv[2])
+        try:
+            certificate = pari_certificate(n)
+        except ValueError as exc:
+            print(f"ecpp_cert.py: {exc}", file=sys.stderr)
+            return 2
+        sys.stdout.write(certificate)
         return 0
     bits = int(argv[1]) if len(argv) > 1 else 256
     n, steps = provable_prime(bits, random.Random())

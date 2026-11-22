@@ -110,16 +110,23 @@ random curves with that j-invariant. A 512-bit prime takes a few seconds and
 about 20 steps. Class number 1 alone cannot certify every prime, so
 `provable_prime` draws primes until one works and `certify` can return None.
 
-## Arbitrary primes: PARI/GP certificates
+## PARI/GP certificate chains for primes at least 2^64
 
 `ecpp_cert.from_pari` converts a certificate from PARI/GP's `primecert(N)`
 (checked against PARI 2.15.4's own help and output). Each entry is
 `[N, t, s, a, [x, y]]`: the curve y² = x³ + ax + b passes through (x, y), its
 order is m = N + 1 − t, s is the cofactor and q = m / s; PARI ends the chain
 below 2^64. That maps field for field onto a checker step (k = s), and b is
-again derived from the point. `python3 ecpp_cert.py pari N` runs gp and prints
-the fixture format; it raises an error when gp reports one, because gp exits 0
-even after a stack overflow.
+again derived from the point.
+
+`python3 ecpp_cert.py pari N` accepts integer inputs `N >= 2^64` and prints
+the certificate chain in fixture format for a prime. Below this range, PARI
+returns scalar certificates for primes; the fixture format represents chain
+rows only. The CLI rejects inputs below `2^64` before invoking GP, reports the
+supported range on stderr, exits with status 2 and prints no fixture output.
+The Python helper `pari_certificate` raises `ValueError` for these inputs.
+For in-range inputs, GP errors (including a composite input or stack overflow)
+are reported as failures even when GP itself exits 0.
 
 `tests/fixtures/ecpp/` holds six committed certificates, each with the command,
 PARI version and date in its header:

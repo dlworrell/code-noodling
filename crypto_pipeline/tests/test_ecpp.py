@@ -17,6 +17,7 @@ import errno
 import math
 import random
 import shutil
+import subprocess
 import sys
 import unittest
 from pathlib import Path
@@ -385,11 +386,27 @@ class PariFixtureTests(unittest.TestCase):
             ec.from_pari('101 2 7 1 1 1')  # 7 does not divide 101 + 1 - 2
         self.assertEqual(ec.from_pari('# comment only\n\n'), [])
 
+    def test_pari_cli_rejects_inputs_below_chain_domain(self):
+        for n in (6, 41, (1 << 64) - 1):
+            with self.subTest(n=n):
+                result = subprocess.run(
+                    [sys.executable, str(SCOPE_ROOT / 'ecpp_cert.py'), 'pari', str(n)],
+                    env={'PATH': ''}, capture_output=True, text=True, timeout=10,
+                )
+                self.assertEqual(result.returncode, 2)
+                self.assertEqual(result.stdout, '')
+                self.assertIn('N >= 2^64', result.stderr)
+                self.assertNotIn('Traceback', result.stderr)
+
     @unittest.skipUnless(shutil.which('gp'), 'PARI/GP not installed')
     def test_live_pari_certificates(self):
         rng = random.Random(12)
-        for bits in (100, 300):
-            n = next_prime_above(rng.getrandbits(bits) | (1 << (bits - 1)))
+        with self.assertRaisesRegex(RuntimeError, 'not prime'):
+            ec.pari_certificate(1 << 64)
+        primes = [18446744073709551629]  # first prime above 2**64
+        primes.extend(next_prime_above(rng.getrandbits(bits) | (1 << (bits - 1)))
+                      for bits in (100, 300))
+        for n in primes:
             steps = ec.from_pari(ec.pari_certificate(n))
             self.assertEqual(steps[0].n, n)
             self.assertEqual(verify(steps)[:2], (0, 0))
