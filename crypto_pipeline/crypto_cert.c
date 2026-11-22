@@ -10,6 +10,7 @@
  * is variable-time and works on public values. */
 
 #include "crypto_cert.h"
+#include "crypto_bigint.h"
 #include "crypto_prime.h"
 #include <errno.h>
 
@@ -54,104 +55,7 @@ int crypto_is_prime_u64(uint64_t n) {
     return 1;
 }
 
-/* ---- multi-limb helpers ------------------------------------------------ */
-
 static int valid_count(size_t n) { return n > 0 && n <= CRYPTO_MAX_LIMBS; }
-
-static size_t significant(const limb_t *a, size_t n) {
-    while (n > 1 && a[n - 1] == 0) --n;
-    return n;
-}
-
-static void copy_limbs(limb_t *dst, const limb_t *src, size_t n) {
-    for (size_t i = 0; i < n; ++i) dst[i] = src[i];
-}
-
-static void set_small(limb_t *dst, limb_t value, size_t n) {
-    dst[0] = value;
-    for (size_t i = 1; i < n; ++i) dst[i] = 0;
-}
-
-static int is_zero(const limb_t *a, size_t n) {
-    for (size_t i = 0; i < n; ++i) if (a[i]) return 0;
-    return 1;
-}
-
-static int compare(const limb_t *a, const limb_t *b, size_t n) {
-    for (size_t i = n; i-- > 0;) {
-        if (a[i] != b[i]) return a[i] > b[i] ? 1 : -1;
-    }
-    return 0;
-}
-
-/* Compares a (an limbs) with b (bn limbs) as integers. */
-static int same_value(const limb_t *a, size_t an, const limb_t *b, size_t bn) {
-    an = significant(a, an);
-    bn = significant(b, bn);
-    return an == bn && compare(a, b, an) == 0;
-}
-
-/* r = a - b mod 2^(64n); returns the borrow. r may alias a. */
-static limb_t subtract(limb_t *r, const limb_t *a, const limb_t *b, size_t n) {
-    limb_t borrow = 0;
-    for (size_t i = 0; i < n; ++i) {
-        dlimb_t sub = (dlimb_t)b[i] + borrow;
-        limb_t next = (dlimb_t)a[i] < sub;
-        r[i] = (limb_t)((dlimb_t)a[i] - sub);
-        borrow = next;
-    }
-    return borrow;
-}
-
-static void shift_right_one(limb_t *a, size_t n) {
-    for (size_t i = 0; i < n; ++i) a[i] = (a[i] >> 1) | (i + 1 < n ? a[i + 1] << 63 : 0);
-}
-
-/* wide (2n limbs) = a * b (n limbs each), schoolbook. */
-static void multiply_full(limb_t *wide, const limb_t *a, const limb_t *b, size_t n) {
-    for (size_t i = 0; i < 2 * n; ++i) wide[i] = 0;
-    for (size_t i = 0; i < n; ++i) {
-        limb_t carry = 0;
-        for (size_t j = 0; j < n; ++j) {
-            dlimb_t t = (dlimb_t)a[i] * b[j] + wide[i + j] + carry;
-            wide[i + j] = (limb_t)t;
-            carry = (limb_t)(t >> 64);
-        }
-        wide[i + n] = carry;
-    }
-}
-
-/* quot = a / d and rem = a mod d (all n limbs, d nonzero), by binary long
- * division. Invariant rem < d; after the shift rem < 2d, so one subtraction
- * restores it, using the bit shifted out when rem overflowed n limbs. */
-static void divide(limb_t *quot, limb_t *rem, const limb_t *a, const limb_t *d, size_t n) {
-    set_small(quot, 0, n);
-    set_small(rem, 0, n);
-    for (size_t bit = 64 * n; bit-- > 0;) {
-        limb_t carry = rem[n - 1] >> 63;
-        for (size_t i = n; i-- > 1;) rem[i] = (rem[i] << 1) | (rem[i - 1] >> 63);
-        rem[0] = (rem[0] << 1) | ((a[bit / 64] >> (bit % 64)) & 1);
-        if (carry || compare(rem, d, n) >= 0) {
-            (void)subtract(rem, rem, d, n);
-            quot[bit / 64] |= (limb_t)1 << (bit % 64);
-        }
-    }
-}
-
-/* g = gcd(a, b) for odd b (all n limbs), binary GCD. b stays odd throughout. */
-static void gcd_odd(limb_t *g, const limb_t *a_in, const limb_t *b_in, size_t n) {
-    limb_t a[n], b[n];
-    copy_limbs(a, a_in, n);
-    copy_limbs(b, b_in, n);
-    while (!is_zero(a, n)) {
-        while ((a[0] & 1) == 0) shift_right_one(a, n);
-        if (compare(a, b, n) < 0) {
-            for (size_t i = 0; i < n; ++i) { limb_t t = a[i]; a[i] = b[i]; b[i] = t; }
-        }
-        (void)subtract(a, a, b, n);
-    }
-    copy_limbs(g, b, n);
-}
 
 /* ---- one node ------------------------------------------------------------ */
 
@@ -164,55 +68,56 @@ static int check_node(const crypto_pocklington_node *node, uint64_t *used, uint6
         node->factor_count == 0 || node->factor_count > CRYPTO_CERT_MAX_FACTORS) return fail(EINVAL);
     const size_t width = node->limbs;
     const limb_t *big_n = node->n;
-    const size_t n = significant(big_n, width);
+    const size_t n = crypto_bn_significant(big_n, width);
     if (!(big_n[0] & 1) || (n == 1 && big_n[0] <= 2)) return fail(EDOM);
 
     limb_t n_minus_1[n], f[n], next[n], one[n], wide[2 * n];
     limb_t quot[n], rem[n], x[n], y[n], x_minus_1[n], g[n];
-    copy_limbs(n_minus_1, big_n, n);
+    crypto_bn_copy(n_minus_1, big_n, n);
     n_minus_1[0] -= 1;                                 /* N is odd: no borrow. */
-    set_small(one, 1, n);
-    set_small(f, 1, n);
+    crypto_bn_set_small(one, 1, n);
+    crypto_bn_set_small(f, 1, n);
 
     /* Range checks, leaves, and F = product of q^exponent (must fit: F <= N - 1). */
     for (size_t k = 0; k < node->factor_count; ++k) {
         const crypto_pocklington_factor *fac = &node->factors[k];
         if (!fac->prime || !fac->base || fac->exponent == 0 || fac->child < -1) return fail(EINVAL);
-        if (significant(fac->prime, width) > n || significant(fac->base, width) > n) return fail(EDOM);
+        if (crypto_bn_significant(fac->prime, width) > n ||
+            crypto_bn_significant(fac->base, width) > n) return fail(EDOM);
         const limb_t *q = fac->prime, *a = fac->base;
-        if (compare(q, big_n, n) >= 0 || (significant(q, n) == 1 && q[0] < 2)) return fail(EDOM);
-        if (compare(a, n_minus_1, n) >= 0 || (significant(a, n) == 1 && a[0] < 2)) return fail(EDOM);
+        if (crypto_bn_compare(q, big_n, n) >= 0 || (crypto_bn_significant(q, n) == 1 && q[0] < 2)) return fail(EDOM);
+        if (crypto_bn_compare(a, n_minus_1, n) >= 0 || (crypto_bn_significant(a, n) == 1 && a[0] < 2)) return fail(EDOM);
         if (fac->child == -1) {
-            if (significant(q, n) != 1) return fail(EINVAL);
+            if (crypto_bn_significant(q, n) != 1) return fail(EINVAL);
             if (!crypto_is_prime_u64(q[0])) return fail(EDOM);
         }
         if (fac->exponent > 64 * n) return fail(EDOM);   /* q >= 2, so F would exceed N. */
         for (uint32_t e = 0; e < fac->exponent; ++e) {
-            multiply_full(wide, f, q, n);
-            if (!is_zero(wide + n, n)) return fail(EDOM); /* F > N - 1: cannot divide it. */
-            copy_limbs(next, wide, n);
-            copy_limbs(f, next, n);
+            crypto_bn_mul_full(wide, f, q, n);
+            if (!crypto_bn_is_zero(wide + n, n)) return fail(EDOM); /* F > N - 1: cannot divide it. */
+            crypto_bn_copy(next, wide, n);
+            crypto_bn_copy(f, next, n);
         }
     }
 
     /* F divides N - 1, and F^2 > N. */
-    divide(quot, rem, n_minus_1, f, n);
-    if (!is_zero(rem, n)) return fail(EDOM);
-    multiply_full(wide, f, f, n);
-    if (is_zero(wide + n, n) && compare(wide, big_n, n) <= 0) return fail(EDOM);
+    crypto_bn_divide(quot, rem, n_minus_1, f, n);
+    if (!crypto_bn_is_zero(rem, n)) return fail(EDOM);
+    crypto_bn_mul_full(wide, f, f, n);
+    if (crypto_bn_is_zero(wide + n, n) && crypto_bn_compare(wide, big_n, n) <= 0) return fail(EDOM);
 
     /* For each q: a^(N-1) = 1 and gcd(a^((N-1)/q) - 1, N) = 1. */
     for (size_t k = 0; k < node->factor_count; ++k) {
         const crypto_pocklington_factor *fac = &node->factors[k];
         *used += 2;
         if (max_modexps != 0 && *used > max_modexps) return fail(ERANGE);
-        divide(quot, rem, n_minus_1, fac->prime, n);    /* exact: q | F | N - 1 */
+        crypto_bn_divide(quot, rem, n_minus_1, fac->prime, n);    /* exact: q | F | N - 1 */
         if (crypto_mod_exp(x, fac->base, quot, n, big_n, n) != 0) return -1;
         if (crypto_mod_exp(y, x, fac->prime, n, big_n, n) != 0) return -1;
-        if (compare(y, one, n) != 0) return fail(EDOM);
-        (void)subtract(x_minus_1, x, one, n);          /* x >= 1 because x^q = 1. */
-        gcd_odd(g, x_minus_1, big_n, n);
-        if (compare(g, one, n) != 0) return fail(EDOM);
+        if (crypto_bn_compare(y, one, n) != 0) return fail(EDOM);
+        (void)crypto_bn_sub(x_minus_1, x, one, n);          /* x >= 1 because x^q = 1. */
+        crypto_bn_gcd_odd(g, x_minus_1, big_n, n);
+        if (crypto_bn_compare(g, one, n) != 0) return fail(EDOM);
     }
     return 0;
 }
@@ -236,7 +141,7 @@ static int verify_node(const crypto_pocklington_node *nodes, size_t node_count, 
         if (fac->child < 0) continue;
         size_t c = (size_t)fac->child;
         if (c >= node_count || !nodes[c].n || !valid_count(nodes[c].limbs) ||
-            !same_value(nodes[c].n, nodes[c].limbs, fac->prime, node->limbs)) {
+            !crypto_bn_same_value(nodes[c].n, nodes[c].limbs, fac->prime, node->limbs)) {
             *failed = index; return fail(EINVAL);
         }
         if (verify_node(nodes, node_count, c, depth + 1, state, used, max_modexps, failed) != 0) {

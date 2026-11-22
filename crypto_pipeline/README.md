@@ -46,6 +46,10 @@ repository's [`aes-manifest.yaml`](../aes-manifest.yaml) (Catylist ADR-0004).
   trees whose leaves are 64-bit primes (`crypto_pocklington_verify`,
   variable-time), with an untrusted generator in `pocklington_cert.py`. See
   [Pocklington notes](docs/engineering/CRYPTO-POCKLINGTON.md).
+- ECPP primality certificates: an unconditional checker for elliptic-curve
+  certificate chains (`crypto_ecpp_verify`, variable-time), with an untrusted
+  class-number-1 generator in `ecpp_cert.py`. See
+  [ECPP notes](docs/engineering/CRYPTO-ECPP.md).
 - Modular exponentiation: left-to-right square-and-multiply in Montgomery form,
   for odd moduli (`crypto_mod_exp`, variable-time).
 - GRH-conditional primality test: Miller–Rabin for every base up to Bach's

@@ -66,8 +66,8 @@ malformed certificate, `EDOM` for a failed mathematical condition and `ERANGE`
 for the cap; a rejection says nothing about whether N is prime.
 
 The checker reuses `crypto_mod_exp` from the primality slice. Its other
-arithmetic (schoolbook product, binary long division, binary GCD) lives in
-`crypto_cert.c` as small static helpers, so the trusted code is in two files.
+arithmetic (schoolbook product, binary long division, binary GCD) is in
+`crypto_bigint.c`, shared with the ECPP checker.
 Everything is variable-time on public values.
 
 ## The generator is untrusted
@@ -97,8 +97,8 @@ division.
 ## Limits and next steps
 
 - N − 1 methods need F > √N, so N must be built for the method or have a
-  partially known N − 1. Certifying an arbitrary given prime needs ECPP, whose
-  checker is a natural next slice on top of this one.
+  partially known N − 1. Certifying an arbitrary given prime needs ECPP; its
+  checker is in [CRYPTO-ECPP.md](CRYPTO-ECPP.md).
 - Mathlib has the Lucas primality test (`lucas_primality`), the F = N − 1
   special case. Proving the general Pocklington statement in `proof/lean/` and
   matching it to the conditions above would tie the C checks to a checked
