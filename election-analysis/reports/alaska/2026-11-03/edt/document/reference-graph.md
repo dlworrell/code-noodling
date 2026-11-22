@@ -1,6 +1,6 @@
 # EDT Reference Index
 
-Nodes: 6791
+Nodes: 6976
 Edges: 0
 Broken references: 0
 Orphans: 0
@@ -65,6 +65,7 @@ Orphans: 0
 | race-004-u-s-senator-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-004-u-s-senator-source | paragraph |  | 0 | 0 | 0 | False |
 | race-004-u-s-senator-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-004-u-s-senator-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-004-u-s-senator-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-004-u-s-senator-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-004-u-s-senator-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -103,6 +104,7 @@ Orphans: 0
 | race-007-u-s-senator-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-007-u-s-senator-source | paragraph |  | 0 | 0 | 0 | False |
 | race-007-u-s-senator-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-007-u-s-senator-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-007-u-s-senator-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-007-u-s-senator-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-007-u-s-senator-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -153,6 +155,7 @@ Orphans: 0
 | race-011-u-s-senator-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-011-u-s-senator-source | paragraph |  | 0 | 0 | 0 | False |
 | race-011-u-s-senator-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-011-u-s-senator-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-011-u-s-senator-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-011-u-s-senator-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-011-u-s-senator-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -165,6 +168,7 @@ Orphans: 0
 | race-012-u-s-senator-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-012-u-s-senator-source | paragraph |  | 0 | 0 | 0 | False |
 | race-012-u-s-senator-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-012-u-s-senator-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-012-u-s-senator-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-012-u-s-senator-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-012-u-s-senator-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -177,6 +181,7 @@ Orphans: 0
 | race-013-u-s-senator-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-013-u-s-senator-source | paragraph |  | 0 | 0 | 0 | False |
 | race-013-u-s-senator-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-013-u-s-senator-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-013-u-s-senator-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-013-u-s-senator-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-013-u-s-senator-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -201,6 +206,7 @@ Orphans: 0
 | race-015-u-s-senator-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-015-u-s-senator-source | paragraph |  | 0 | 0 | 0 | False |
 | race-015-u-s-senator-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-015-u-s-senator-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-015-u-s-senator-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-015-u-s-senator-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-015-u-s-senator-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -213,6 +219,7 @@ Orphans: 0
 | race-016-u-s-senator-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-016-u-s-senator-source | paragraph |  | 0 | 0 | 0 | False |
 | race-016-u-s-senator-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-016-u-s-senator-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-016-u-s-senator-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-016-u-s-senator-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-016-u-s-senator-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -264,6 +271,7 @@ Orphans: 0
 | race-020-u-s-senator-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-020-u-s-senator-source | paragraph |  | 0 | 0 | 0 | False |
 | race-020-u-s-senator-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-020-u-s-senator-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-020-u-s-senator-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-020-u-s-senator-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-020-u-s-senator-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -340,6 +348,7 @@ Orphans: 0
 | race-026-u-s-senator-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-026-u-s-senator-source | paragraph |  | 0 | 0 | 0 | False |
 | race-026-u-s-senator-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-026-u-s-senator-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-026-u-s-senator-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-026-u-s-senator-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-026-u-s-senator-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -389,6 +398,7 @@ Orphans: 0
 | race-030-u-s-senator-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-030-u-s-senator-source | paragraph |  | 0 | 0 | 0 | False |
 | race-030-u-s-senator-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-030-u-s-senator-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-030-u-s-senator-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-030-u-s-senator-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-030-u-s-senator-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -453,6 +463,7 @@ Orphans: 0
 | race-035-u-s-representative-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-035-u-s-representative-source | paragraph |  | 0 | 0 | 0 | False |
 | race-035-u-s-representative-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-035-u-s-representative-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-035-u-s-representative-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-035-u-s-representative-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-035-u-s-representative-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -491,6 +502,7 @@ Orphans: 0
 | race-038-u-s-representative-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-038-u-s-representative-source | paragraph |  | 0 | 0 | 0 | False |
 | race-038-u-s-representative-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-038-u-s-representative-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-038-u-s-representative-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-038-u-s-representative-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-038-u-s-representative-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -541,6 +553,7 @@ Orphans: 0
 | race-042-u-s-representative-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-042-u-s-representative-source | paragraph |  | 0 | 0 | 0 | False |
 | race-042-u-s-representative-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-042-u-s-representative-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-042-u-s-representative-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-042-u-s-representative-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-042-u-s-representative-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -553,6 +566,7 @@ Orphans: 0
 | race-043-u-s-representative-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-043-u-s-representative-source | paragraph |  | 0 | 0 | 0 | False |
 | race-043-u-s-representative-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-043-u-s-representative-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-043-u-s-representative-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-043-u-s-representative-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-043-u-s-representative-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -565,6 +579,7 @@ Orphans: 0
 | race-044-u-s-representative-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-044-u-s-representative-source | paragraph |  | 0 | 0 | 0 | False |
 | race-044-u-s-representative-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-044-u-s-representative-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-044-u-s-representative-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-044-u-s-representative-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-044-u-s-representative-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -589,6 +604,7 @@ Orphans: 0
 | race-046-u-s-representative-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-046-u-s-representative-source | paragraph |  | 0 | 0 | 0 | False |
 | race-046-u-s-representative-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-046-u-s-representative-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-046-u-s-representative-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-046-u-s-representative-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-046-u-s-representative-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -601,6 +617,7 @@ Orphans: 0
 | race-047-u-s-representative-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-047-u-s-representative-source | paragraph |  | 0 | 0 | 0 | False |
 | race-047-u-s-representative-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-047-u-s-representative-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-047-u-s-representative-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-047-u-s-representative-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-047-u-s-representative-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -652,6 +669,7 @@ Orphans: 0
 | race-051-u-s-representative-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-051-u-s-representative-source | paragraph |  | 0 | 0 | 0 | False |
 | race-051-u-s-representative-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-051-u-s-representative-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-051-u-s-representative-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-051-u-s-representative-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-051-u-s-representative-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -728,6 +746,7 @@ Orphans: 0
 | race-057-u-s-representative-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-057-u-s-representative-source | paragraph |  | 0 | 0 | 0 | False |
 | race-057-u-s-representative-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-057-u-s-representative-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-057-u-s-representative-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-057-u-s-representative-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-057-u-s-representative-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -777,6 +796,7 @@ Orphans: 0
 | race-061-u-s-representative-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-061-u-s-representative-source | paragraph |  | 0 | 0 | 0 | False |
 | race-061-u-s-representative-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-061-u-s-representative-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-061-u-s-representative-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-061-u-s-representative-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-061-u-s-representative-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -841,6 +861,7 @@ Orphans: 0
 | race-066-governor-lieutenant-governor-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-066-governor-lieutenant-governor-source | paragraph |  | 0 | 0 | 0 | False |
 | race-066-governor-lieutenant-governor-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-066-governor-lieutenant-governor-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-066-governor-lieutenant-governor-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-066-governor-lieutenant-governor-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-066-governor-lieutenant-governor-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -879,6 +900,7 @@ Orphans: 0
 | race-069-governor-lieutenant-governor-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-069-governor-lieutenant-governor-source | paragraph |  | 0 | 0 | 0 | False |
 | race-069-governor-lieutenant-governor-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-069-governor-lieutenant-governor-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-069-governor-lieutenant-governor-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-069-governor-lieutenant-governor-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-069-governor-lieutenant-governor-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -929,6 +951,7 @@ Orphans: 0
 | race-073-governor-lieutenant-governor-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-073-governor-lieutenant-governor-source | paragraph |  | 0 | 0 | 0 | False |
 | race-073-governor-lieutenant-governor-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-073-governor-lieutenant-governor-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-073-governor-lieutenant-governor-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-073-governor-lieutenant-governor-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-073-governor-lieutenant-governor-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -941,6 +964,7 @@ Orphans: 0
 | race-074-governor-lieutenant-governor-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-074-governor-lieutenant-governor-source | paragraph |  | 0 | 0 | 0 | False |
 | race-074-governor-lieutenant-governor-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-074-governor-lieutenant-governor-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-074-governor-lieutenant-governor-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-074-governor-lieutenant-governor-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-074-governor-lieutenant-governor-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -953,6 +977,7 @@ Orphans: 0
 | race-075-governor-lieutenant-governor-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-075-governor-lieutenant-governor-source | paragraph |  | 0 | 0 | 0 | False |
 | race-075-governor-lieutenant-governor-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-075-governor-lieutenant-governor-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-075-governor-lieutenant-governor-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-075-governor-lieutenant-governor-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-075-governor-lieutenant-governor-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -977,6 +1002,7 @@ Orphans: 0
 | race-077-governor-lieutenant-governor-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-077-governor-lieutenant-governor-source | paragraph |  | 0 | 0 | 0 | False |
 | race-077-governor-lieutenant-governor-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-077-governor-lieutenant-governor-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-077-governor-lieutenant-governor-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-077-governor-lieutenant-governor-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-077-governor-lieutenant-governor-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -989,6 +1015,7 @@ Orphans: 0
 | race-078-governor-lieutenant-governor-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-078-governor-lieutenant-governor-source | paragraph |  | 0 | 0 | 0 | False |
 | race-078-governor-lieutenant-governor-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-078-governor-lieutenant-governor-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-078-governor-lieutenant-governor-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-078-governor-lieutenant-governor-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-078-governor-lieutenant-governor-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1040,6 +1067,7 @@ Orphans: 0
 | race-082-governor-lieutenant-governor-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-082-governor-lieutenant-governor-source | paragraph |  | 0 | 0 | 0 | False |
 | race-082-governor-lieutenant-governor-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-082-governor-lieutenant-governor-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-082-governor-lieutenant-governor-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-082-governor-lieutenant-governor-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-082-governor-lieutenant-governor-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1116,6 +1144,7 @@ Orphans: 0
 | race-088-governor-lieutenant-governor-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-088-governor-lieutenant-governor-source | paragraph |  | 0 | 0 | 0 | False |
 | race-088-governor-lieutenant-governor-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-088-governor-lieutenant-governor-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-088-governor-lieutenant-governor-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-088-governor-lieutenant-governor-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-088-governor-lieutenant-governor-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1165,6 +1194,7 @@ Orphans: 0
 | race-092-governor-lieutenant-governor-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-092-governor-lieutenant-governor-source | paragraph |  | 0 | 0 | 0 | False |
 | race-092-governor-lieutenant-governor-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-092-governor-lieutenant-governor-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-092-governor-lieutenant-governor-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-092-governor-lieutenant-governor-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-092-governor-lieutenant-governor-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1203,6 +1233,7 @@ Orphans: 0
 | race-095-senate-district-a-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-095-senate-district-a-source | paragraph |  | 0 | 0 | 0 | False |
 | race-095-senate-district-a-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-095-senate-district-a-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-095-senate-district-a-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-095-senate-district-a-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-095-senate-district-a-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1215,6 +1246,7 @@ Orphans: 0
 | race-096-senate-district-a-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-096-senate-district-a-source | paragraph |  | 0 | 0 | 0 | False |
 | race-096-senate-district-a-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-096-senate-district-a-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-096-senate-district-a-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-096-senate-district-a-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-096-senate-district-a-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1252,6 +1284,7 @@ Orphans: 0
 | race-099-senate-district-a-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-099-senate-district-a-source | paragraph |  | 0 | 0 | 0 | False |
 | race-099-senate-district-a-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-099-senate-district-a-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-099-senate-district-a-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-099-senate-district-a-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-099-senate-district-a-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1276,6 +1309,7 @@ Orphans: 0
 | race-101-senate-district-a-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-101-senate-district-a-source | paragraph |  | 0 | 0 | 0 | False |
 | race-101-senate-district-a-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-101-senate-district-a-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-101-senate-district-a-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-101-senate-district-a-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-101-senate-district-a-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1301,6 +1335,7 @@ Orphans: 0
 | race-103-senate-district-c-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-103-senate-district-c-source | paragraph |  | 0 | 0 | 0 | False |
 | race-103-senate-district-c-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-103-senate-district-c-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-103-senate-district-c-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-103-senate-district-c-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-103-senate-district-c-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1313,6 +1348,7 @@ Orphans: 0
 | race-104-senate-district-c-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-104-senate-district-c-source | paragraph |  | 0 | 0 | 0 | False |
 | race-104-senate-district-c-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-104-senate-district-c-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-104-senate-district-c-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-104-senate-district-c-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-104-senate-district-c-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1351,6 +1387,7 @@ Orphans: 0
 | race-107-senate-district-e-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-107-senate-district-e-source | paragraph |  | 0 | 0 | 0 | False |
 | race-107-senate-district-e-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-107-senate-district-e-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-107-senate-district-e-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-107-senate-district-e-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-107-senate-district-e-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1363,6 +1400,7 @@ Orphans: 0
 | race-108-senate-district-e-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-108-senate-district-e-source | paragraph |  | 0 | 0 | 0 | False |
 | race-108-senate-district-e-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-108-senate-district-e-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-108-senate-district-e-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-108-senate-district-e-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-108-senate-district-e-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1388,6 +1426,7 @@ Orphans: 0
 | race-110-senate-district-g-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-110-senate-district-g-source | paragraph |  | 0 | 0 | 0 | False |
 | race-110-senate-district-g-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-110-senate-district-g-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-110-senate-district-g-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-110-senate-district-g-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-110-senate-district-g-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1413,6 +1452,7 @@ Orphans: 0
 | race-112-senate-district-i-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-112-senate-district-i-source | paragraph |  | 0 | 0 | 0 | False |
 | race-112-senate-district-i-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-112-senate-district-i-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-112-senate-district-i-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-112-senate-district-i-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-112-senate-district-i-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1438,6 +1478,7 @@ Orphans: 0
 | race-114-senate-district-k-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-114-senate-district-k-source | paragraph |  | 0 | 0 | 0 | False |
 | race-114-senate-district-k-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-114-senate-district-k-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-114-senate-district-k-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-114-senate-district-k-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-114-senate-district-k-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1463,6 +1504,7 @@ Orphans: 0
 | race-116-senate-district-m-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-116-senate-district-m-source | paragraph |  | 0 | 0 | 0 | False |
 | race-116-senate-district-m-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-116-senate-district-m-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-116-senate-district-m-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-116-senate-district-m-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-116-senate-district-m-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1488,6 +1530,7 @@ Orphans: 0
 | race-118-senate-district-o-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-118-senate-district-o-source | paragraph |  | 0 | 0 | 0 | False |
 | race-118-senate-district-o-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-118-senate-district-o-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-118-senate-district-o-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-118-senate-district-o-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-118-senate-district-o-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1512,6 +1555,7 @@ Orphans: 0
 | race-120-senate-district-o-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-120-senate-district-o-source | paragraph |  | 0 | 0 | 0 | False |
 | race-120-senate-district-o-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-120-senate-district-o-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-120-senate-district-o-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-120-senate-district-o-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-120-senate-district-o-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1537,6 +1581,7 @@ Orphans: 0
 | race-122-senate-district-q-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-122-senate-district-q-source | paragraph |  | 0 | 0 | 0 | False |
 | race-122-senate-district-q-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-122-senate-district-q-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-122-senate-district-q-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-122-senate-district-q-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-122-senate-district-q-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1627,6 +1672,7 @@ Orphans: 0
 | race-129-senate-district-s-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-129-senate-district-s-source | paragraph |  | 0 | 0 | 0 | False |
 | race-129-senate-district-s-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-129-senate-district-s-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-129-senate-district-s-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-129-senate-district-s-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-129-senate-district-s-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1678,6 +1724,7 @@ Orphans: 0
 | race-133-house-district-1-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-133-house-district-1-source | paragraph |  | 0 | 0 | 0 | False |
 | race-133-house-district-1-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-133-house-district-1-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-133-house-district-1-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-133-house-district-1-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-133-house-district-1-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1728,6 +1775,7 @@ Orphans: 0
 | race-137-house-district-2-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-137-house-district-2-source | paragraph |  | 0 | 0 | 0 | False |
 | race-137-house-district-2-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-137-house-district-2-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-137-house-district-2-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-137-house-district-2-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-137-house-district-2-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1765,6 +1813,7 @@ Orphans: 0
 | race-140-house-district-2-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-140-house-district-2-source | paragraph |  | 0 | 0 | 0 | False |
 | race-140-house-district-2-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-140-house-district-2-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-140-house-district-2-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-140-house-district-2-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-140-house-district-2-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1777,6 +1826,7 @@ Orphans: 0
 | race-141-house-district-2-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-141-house-district-2-source | paragraph |  | 0 | 0 | 0 | False |
 | race-141-house-district-2-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-141-house-district-2-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-141-house-district-2-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-141-house-district-2-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-141-house-district-2-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1802,6 +1852,7 @@ Orphans: 0
 | race-143-house-district-3-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-143-house-district-3-source | paragraph |  | 0 | 0 | 0 | False |
 | race-143-house-district-3-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-143-house-district-3-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-143-house-district-3-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-143-house-district-3-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-143-house-district-3-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1814,6 +1865,7 @@ Orphans: 0
 | race-144-house-district-3-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-144-house-district-3-source | paragraph |  | 0 | 0 | 0 | False |
 | race-144-house-district-3-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-144-house-district-3-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-144-house-district-3-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-144-house-district-3-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-144-house-district-3-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1888,6 +1940,7 @@ Orphans: 0
 | race-150-house-district-5-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-150-house-district-5-source | paragraph |  | 0 | 0 | 0 | False |
 | race-150-house-district-5-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-150-house-district-5-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-150-house-district-5-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-150-house-district-5-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-150-house-district-5-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1900,6 +1953,7 @@ Orphans: 0
 | race-151-house-district-5-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-151-house-district-5-source | paragraph |  | 0 | 0 | 0 | False |
 | race-151-house-district-5-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-151-house-district-5-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-151-house-district-5-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-151-house-district-5-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-151-house-district-5-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1938,6 +1992,7 @@ Orphans: 0
 | race-154-house-district-6-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-154-house-district-6-source | paragraph |  | 0 | 0 | 0 | False |
 | race-154-house-district-6-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-154-house-district-6-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-154-house-district-6-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-154-house-district-6-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-154-house-district-6-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1963,6 +2018,7 @@ Orphans: 0
 | race-156-house-district-7-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-156-house-district-7-source | paragraph |  | 0 | 0 | 0 | False |
 | race-156-house-district-7-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-156-house-district-7-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-156-house-district-7-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-156-house-district-7-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-156-house-district-7-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -1988,6 +2044,7 @@ Orphans: 0
 | race-158-house-district-8-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-158-house-district-8-source | paragraph |  | 0 | 0 | 0 | False |
 | race-158-house-district-8-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-158-house-district-8-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-158-house-district-8-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-158-house-district-8-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-158-house-district-8-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2013,6 +2070,7 @@ Orphans: 0
 | race-160-house-district-9-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-160-house-district-9-source | paragraph |  | 0 | 0 | 0 | False |
 | race-160-house-district-9-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-160-house-district-9-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-160-house-district-9-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-160-house-district-9-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-160-house-district-9-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2025,6 +2083,7 @@ Orphans: 0
 | race-161-house-district-9-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-161-house-district-9-source | paragraph |  | 0 | 0 | 0 | False |
 | race-161-house-district-9-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-161-house-district-9-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-161-house-district-9-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-161-house-district-9-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-161-house-district-9-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2050,6 +2109,7 @@ Orphans: 0
 | race-163-house-district-10-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-163-house-district-10-source | paragraph |  | 0 | 0 | 0 | False |
 | race-163-house-district-10-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-163-house-district-10-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-163-house-district-10-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-163-house-district-10-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-163-house-district-10-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2075,6 +2135,7 @@ Orphans: 0
 | race-165-house-district-11-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-165-house-district-11-source | paragraph |  | 0 | 0 | 0 | False |
 | race-165-house-district-11-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-165-house-district-11-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-165-house-district-11-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-165-house-district-11-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-165-house-district-11-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2100,6 +2161,7 @@ Orphans: 0
 | race-167-house-district-12-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-167-house-district-12-source | paragraph |  | 0 | 0 | 0 | False |
 | race-167-house-district-12-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-167-house-district-12-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-167-house-district-12-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-167-house-district-12-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-167-house-district-12-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2125,6 +2187,7 @@ Orphans: 0
 | race-169-house-district-13-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-169-house-district-13-source | paragraph |  | 0 | 0 | 0 | False |
 | race-169-house-district-13-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-169-house-district-13-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-169-house-district-13-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-169-house-district-13-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-169-house-district-13-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2150,6 +2213,7 @@ Orphans: 0
 | race-171-house-district-14-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-171-house-district-14-source | paragraph |  | 0 | 0 | 0 | False |
 | race-171-house-district-14-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-171-house-district-14-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-171-house-district-14-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-171-house-district-14-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-171-house-district-14-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2175,6 +2239,7 @@ Orphans: 0
 | race-173-house-district-15-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-173-house-district-15-source | paragraph |  | 0 | 0 | 0 | False |
 | race-173-house-district-15-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-173-house-district-15-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-173-house-district-15-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-173-house-district-15-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-173-house-district-15-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2200,6 +2265,7 @@ Orphans: 0
 | race-175-house-district-16-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-175-house-district-16-source | paragraph |  | 0 | 0 | 0 | False |
 | race-175-house-district-16-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-175-house-district-16-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-175-house-district-16-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-175-house-district-16-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-175-house-district-16-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2225,6 +2291,7 @@ Orphans: 0
 | race-177-house-district-17-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-177-house-district-17-source | paragraph |  | 0 | 0 | 0 | False |
 | race-177-house-district-17-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-177-house-district-17-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-177-house-district-17-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-177-house-district-17-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-177-house-district-17-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2250,6 +2317,7 @@ Orphans: 0
 | race-179-house-district-18-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-179-house-district-18-source | paragraph |  | 0 | 0 | 0 | False |
 | race-179-house-district-18-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-179-house-district-18-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-179-house-district-18-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-179-house-district-18-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-179-house-district-18-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2275,6 +2343,7 @@ Orphans: 0
 | race-181-house-district-19-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-181-house-district-19-source | paragraph |  | 0 | 0 | 0 | False |
 | race-181-house-district-19-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-181-house-district-19-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-181-house-district-19-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-181-house-district-19-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-181-house-district-19-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2300,6 +2369,7 @@ Orphans: 0
 | race-183-house-district-20-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-183-house-district-20-source | paragraph |  | 0 | 0 | 0 | False |
 | race-183-house-district-20-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-183-house-district-20-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-183-house-district-20-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-183-house-district-20-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-183-house-district-20-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2325,6 +2395,7 @@ Orphans: 0
 | race-185-house-district-21-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-185-house-district-21-source | paragraph |  | 0 | 0 | 0 | False |
 | race-185-house-district-21-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-185-house-district-21-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-185-house-district-21-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-185-house-district-21-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-185-house-district-21-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2350,6 +2421,7 @@ Orphans: 0
 | race-187-house-district-22-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-187-house-district-22-source | paragraph |  | 0 | 0 | 0 | False |
 | race-187-house-district-22-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-187-house-district-22-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-187-house-district-22-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-187-house-district-22-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-187-house-district-22-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2375,6 +2447,7 @@ Orphans: 0
 | race-189-house-district-23-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-189-house-district-23-source | paragraph |  | 0 | 0 | 0 | False |
 | race-189-house-district-23-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-189-house-district-23-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-189-house-district-23-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-189-house-district-23-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-189-house-district-23-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2400,6 +2473,7 @@ Orphans: 0
 | race-191-house-district-24-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-191-house-district-24-source | paragraph |  | 0 | 0 | 0 | False |
 | race-191-house-district-24-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-191-house-district-24-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-191-house-district-24-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-191-house-district-24-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-191-house-district-24-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2425,6 +2499,7 @@ Orphans: 0
 | race-193-house-district-25-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-193-house-district-25-source | paragraph |  | 0 | 0 | 0 | False |
 | race-193-house-district-25-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-193-house-district-25-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-193-house-district-25-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-193-house-district-25-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-193-house-district-25-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2450,6 +2525,7 @@ Orphans: 0
 | race-195-house-district-26-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-195-house-district-26-source | paragraph |  | 0 | 0 | 0 | False |
 | race-195-house-district-26-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-195-house-district-26-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-195-house-district-26-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-195-house-district-26-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-195-house-district-26-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2475,6 +2551,7 @@ Orphans: 0
 | race-197-house-district-27-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-197-house-district-27-source | paragraph |  | 0 | 0 | 0 | False |
 | race-197-house-district-27-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-197-house-district-27-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-197-house-district-27-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-197-house-district-27-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-197-house-district-27-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2500,6 +2577,7 @@ Orphans: 0
 | race-199-house-district-28-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-199-house-district-28-source | paragraph |  | 0 | 0 | 0 | False |
 | race-199-house-district-28-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-199-house-district-28-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-199-house-district-28-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-199-house-district-28-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-199-house-district-28-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2525,6 +2603,7 @@ Orphans: 0
 | race-201-house-district-29-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-201-house-district-29-source | paragraph |  | 0 | 0 | 0 | False |
 | race-201-house-district-29-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-201-house-district-29-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-201-house-district-29-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-201-house-district-29-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-201-house-district-29-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2537,6 +2616,7 @@ Orphans: 0
 | race-202-house-district-29-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-202-house-district-29-source | paragraph |  | 0 | 0 | 0 | False |
 | race-202-house-district-29-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-202-house-district-29-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-202-house-district-29-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-202-house-district-29-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-202-house-district-29-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2574,6 +2654,7 @@ Orphans: 0
 | race-205-house-district-30-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-205-house-district-30-source | paragraph |  | 0 | 0 | 0 | False |
 | race-205-house-district-30-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-205-house-district-30-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-205-house-district-30-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-205-house-district-30-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-205-house-district-30-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2599,6 +2680,7 @@ Orphans: 0
 | race-207-house-district-31-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-207-house-district-31-source | paragraph |  | 0 | 0 | 0 | False |
 | race-207-house-district-31-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-207-house-district-31-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-207-house-district-31-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-207-house-district-31-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-207-house-district-31-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2624,6 +2706,7 @@ Orphans: 0
 | race-209-house-district-32-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-209-house-district-32-source | paragraph |  | 0 | 0 | 0 | False |
 | race-209-house-district-32-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-209-house-district-32-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-209-house-district-32-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-209-house-district-32-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-209-house-district-32-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2649,6 +2732,7 @@ Orphans: 0
 | race-211-house-district-33-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-211-house-district-33-source | paragraph |  | 0 | 0 | 0 | False |
 | race-211-house-district-33-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-211-house-district-33-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-211-house-district-33-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-211-house-district-33-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-211-house-district-33-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2674,6 +2758,7 @@ Orphans: 0
 | race-213-house-district-34-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-213-house-district-34-source | paragraph |  | 0 | 0 | 0 | False |
 | race-213-house-district-34-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-213-house-district-34-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-213-house-district-34-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-213-house-district-34-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-213-house-district-34-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2699,6 +2784,7 @@ Orphans: 0
 | race-215-house-district-35-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-215-house-district-35-source | paragraph |  | 0 | 0 | 0 | False |
 | race-215-house-district-35-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-215-house-district-35-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-215-house-district-35-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-215-house-district-35-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-215-house-district-35-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2737,6 +2823,7 @@ Orphans: 0
 | race-218-house-district-36-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-218-house-district-36-source | paragraph |  | 0 | 0 | 0 | False |
 | race-218-house-district-36-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-218-house-district-36-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-218-house-district-36-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-218-house-district-36-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-218-house-district-36-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -2853,6 +2940,7 @@ Orphans: 0
 | race-227-house-district-37-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-227-house-district-37-source | paragraph |  | 0 | 0 | 0 | False |
 | race-227-house-district-37-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-227-house-district-37-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-227-house-district-37-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-227-house-district-37-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-227-house-district-37-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3034,6 +3122,7 @@ Orphans: 0
 | race-241-bm-2-24eseg-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-241-bm-2-24eseg-source | paragraph |  | 0 | 0 | 0 | False |
 | race-241-bm-2-24eseg-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-241-bm-2-24eseg-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-241-bm-2-24eseg-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-241-bm-2-24eseg-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-241-bm-2-24eseg-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3072,6 +3161,7 @@ Orphans: 0
 | race-244-bm-2-24eseg-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-244-bm-2-24eseg-source | paragraph |  | 0 | 0 | 0 | False |
 | race-244-bm-2-24eseg-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-244-bm-2-24eseg-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-244-bm-2-24eseg-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-244-bm-2-24eseg-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-244-bm-2-24eseg-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3122,6 +3212,7 @@ Orphans: 0
 | race-248-bm-2-24eseg-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-248-bm-2-24eseg-source | paragraph |  | 0 | 0 | 0 | False |
 | race-248-bm-2-24eseg-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-248-bm-2-24eseg-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-248-bm-2-24eseg-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-248-bm-2-24eseg-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-248-bm-2-24eseg-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3134,6 +3225,7 @@ Orphans: 0
 | race-249-bm-2-24eseg-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-249-bm-2-24eseg-source | paragraph |  | 0 | 0 | 0 | False |
 | race-249-bm-2-24eseg-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-249-bm-2-24eseg-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-249-bm-2-24eseg-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-249-bm-2-24eseg-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-249-bm-2-24eseg-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3146,6 +3238,7 @@ Orphans: 0
 | race-250-bm-2-24eseg-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-250-bm-2-24eseg-source | paragraph |  | 0 | 0 | 0 | False |
 | race-250-bm-2-24eseg-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-250-bm-2-24eseg-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-250-bm-2-24eseg-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-250-bm-2-24eseg-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-250-bm-2-24eseg-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3170,6 +3263,7 @@ Orphans: 0
 | race-252-bm-2-24eseg-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-252-bm-2-24eseg-source | paragraph |  | 0 | 0 | 0 | False |
 | race-252-bm-2-24eseg-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-252-bm-2-24eseg-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-252-bm-2-24eseg-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-252-bm-2-24eseg-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-252-bm-2-24eseg-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3182,6 +3276,7 @@ Orphans: 0
 | race-253-bm-2-24eseg-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-253-bm-2-24eseg-source | paragraph |  | 0 | 0 | 0 | False |
 | race-253-bm-2-24eseg-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-253-bm-2-24eseg-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-253-bm-2-24eseg-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-253-bm-2-24eseg-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-253-bm-2-24eseg-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3233,6 +3328,7 @@ Orphans: 0
 | race-257-bm-2-24eseg-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-257-bm-2-24eseg-source | paragraph |  | 0 | 0 | 0 | False |
 | race-257-bm-2-24eseg-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-257-bm-2-24eseg-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-257-bm-2-24eseg-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-257-bm-2-24eseg-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-257-bm-2-24eseg-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3309,6 +3405,7 @@ Orphans: 0
 | race-263-bm-2-24eseg-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-263-bm-2-24eseg-source | paragraph |  | 0 | 0 | 0 | False |
 | race-263-bm-2-24eseg-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-263-bm-2-24eseg-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-263-bm-2-24eseg-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-263-bm-2-24eseg-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-263-bm-2-24eseg-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3358,6 +3455,7 @@ Orphans: 0
 | race-267-bm-2-24eseg-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-267-bm-2-24eseg-source | paragraph |  | 0 | 0 | 0 | False |
 | race-267-bm-2-24eseg-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-267-bm-2-24eseg-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-267-bm-2-24eseg-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-267-bm-2-24eseg-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-267-bm-2-24eseg-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3422,6 +3520,7 @@ Orphans: 0
 | race-272-bm-3-25uscv-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-272-bm-3-25uscv-source | paragraph |  | 0 | 0 | 0 | False |
 | race-272-bm-3-25uscv-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-272-bm-3-25uscv-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-272-bm-3-25uscv-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-272-bm-3-25uscv-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-272-bm-3-25uscv-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3460,6 +3559,7 @@ Orphans: 0
 | race-275-bm-3-25uscv-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-275-bm-3-25uscv-source | paragraph |  | 0 | 0 | 0 | False |
 | race-275-bm-3-25uscv-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-275-bm-3-25uscv-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-275-bm-3-25uscv-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-275-bm-3-25uscv-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-275-bm-3-25uscv-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3510,6 +3610,7 @@ Orphans: 0
 | race-279-bm-3-25uscv-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-279-bm-3-25uscv-source | paragraph |  | 0 | 0 | 0 | False |
 | race-279-bm-3-25uscv-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-279-bm-3-25uscv-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-279-bm-3-25uscv-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-279-bm-3-25uscv-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-279-bm-3-25uscv-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3522,6 +3623,7 @@ Orphans: 0
 | race-280-bm-3-25uscv-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-280-bm-3-25uscv-source | paragraph |  | 0 | 0 | 0 | False |
 | race-280-bm-3-25uscv-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-280-bm-3-25uscv-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-280-bm-3-25uscv-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-280-bm-3-25uscv-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-280-bm-3-25uscv-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3534,6 +3636,7 @@ Orphans: 0
 | race-281-bm-3-25uscv-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-281-bm-3-25uscv-source | paragraph |  | 0 | 0 | 0 | False |
 | race-281-bm-3-25uscv-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-281-bm-3-25uscv-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-281-bm-3-25uscv-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-281-bm-3-25uscv-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-281-bm-3-25uscv-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3558,6 +3661,7 @@ Orphans: 0
 | race-283-bm-3-25uscv-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-283-bm-3-25uscv-source | paragraph |  | 0 | 0 | 0 | False |
 | race-283-bm-3-25uscv-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-283-bm-3-25uscv-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-283-bm-3-25uscv-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-283-bm-3-25uscv-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-283-bm-3-25uscv-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3570,6 +3674,7 @@ Orphans: 0
 | race-284-bm-3-25uscv-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-284-bm-3-25uscv-source | paragraph |  | 0 | 0 | 0 | False |
 | race-284-bm-3-25uscv-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-284-bm-3-25uscv-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-284-bm-3-25uscv-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-284-bm-3-25uscv-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-284-bm-3-25uscv-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3621,6 +3726,7 @@ Orphans: 0
 | race-288-bm-3-25uscv-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-288-bm-3-25uscv-source | paragraph |  | 0 | 0 | 0 | False |
 | race-288-bm-3-25uscv-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-288-bm-3-25uscv-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-288-bm-3-25uscv-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-288-bm-3-25uscv-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-288-bm-3-25uscv-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3697,6 +3803,7 @@ Orphans: 0
 | race-294-bm-3-25uscv-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-294-bm-3-25uscv-source | paragraph |  | 0 | 0 | 0 | False |
 | race-294-bm-3-25uscv-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-294-bm-3-25uscv-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-294-bm-3-25uscv-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-294-bm-3-25uscv-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-294-bm-3-25uscv-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3746,6 +3853,7 @@ Orphans: 0
 | race-298-bm-3-25uscv-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-298-bm-3-25uscv-source | paragraph |  | 0 | 0 | 0 | False |
 | race-298-bm-3-25uscv-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-298-bm-3-25uscv-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-298-bm-3-25uscv-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-298-bm-3-25uscv-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-298-bm-3-25uscv-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3810,6 +3918,7 @@ Orphans: 0
 | race-303-supreme-court-pate-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-303-supreme-court-pate-source | paragraph |  | 0 | 0 | 0 | False |
 | race-303-supreme-court-pate-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-303-supreme-court-pate-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-303-supreme-court-pate-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-303-supreme-court-pate-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-303-supreme-court-pate-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3848,6 +3957,7 @@ Orphans: 0
 | race-306-supreme-court-pate-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-306-supreme-court-pate-source | paragraph |  | 0 | 0 | 0 | False |
 | race-306-supreme-court-pate-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-306-supreme-court-pate-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-306-supreme-court-pate-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-306-supreme-court-pate-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-306-supreme-court-pate-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3898,6 +4008,7 @@ Orphans: 0
 | race-310-supreme-court-pate-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-310-supreme-court-pate-source | paragraph |  | 0 | 0 | 0 | False |
 | race-310-supreme-court-pate-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-310-supreme-court-pate-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-310-supreme-court-pate-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-310-supreme-court-pate-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-310-supreme-court-pate-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3910,6 +4021,7 @@ Orphans: 0
 | race-311-supreme-court-pate-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-311-supreme-court-pate-source | paragraph |  | 0 | 0 | 0 | False |
 | race-311-supreme-court-pate-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-311-supreme-court-pate-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-311-supreme-court-pate-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-311-supreme-court-pate-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-311-supreme-court-pate-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3922,6 +4034,7 @@ Orphans: 0
 | race-312-supreme-court-pate-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-312-supreme-court-pate-source | paragraph |  | 0 | 0 | 0 | False |
 | race-312-supreme-court-pate-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-312-supreme-court-pate-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-312-supreme-court-pate-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-312-supreme-court-pate-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-312-supreme-court-pate-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3946,6 +4059,7 @@ Orphans: 0
 | race-314-supreme-court-pate-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-314-supreme-court-pate-source | paragraph |  | 0 | 0 | 0 | False |
 | race-314-supreme-court-pate-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-314-supreme-court-pate-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-314-supreme-court-pate-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-314-supreme-court-pate-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-314-supreme-court-pate-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -3958,6 +4072,7 @@ Orphans: 0
 | race-315-supreme-court-pate-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-315-supreme-court-pate-source | paragraph |  | 0 | 0 | 0 | False |
 | race-315-supreme-court-pate-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-315-supreme-court-pate-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-315-supreme-court-pate-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-315-supreme-court-pate-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-315-supreme-court-pate-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4009,6 +4124,7 @@ Orphans: 0
 | race-319-supreme-court-pate-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-319-supreme-court-pate-source | paragraph |  | 0 | 0 | 0 | False |
 | race-319-supreme-court-pate-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-319-supreme-court-pate-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-319-supreme-court-pate-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-319-supreme-court-pate-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-319-supreme-court-pate-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4085,6 +4201,7 @@ Orphans: 0
 | race-325-supreme-court-pate-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-325-supreme-court-pate-source | paragraph |  | 0 | 0 | 0 | False |
 | race-325-supreme-court-pate-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-325-supreme-court-pate-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-325-supreme-court-pate-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-325-supreme-court-pate-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-325-supreme-court-pate-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4134,6 +4251,7 @@ Orphans: 0
 | race-329-supreme-court-pate-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-329-supreme-court-pate-source | paragraph |  | 0 | 0 | 0 | False |
 | race-329-supreme-court-pate-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-329-supreme-court-pate-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-329-supreme-court-pate-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-329-supreme-court-pate-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-329-supreme-court-pate-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4172,6 +4290,7 @@ Orphans: 0
 | race-332-superior-court-jd1-carpeneti-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-332-superior-court-jd1-carpeneti-source | paragraph |  | 0 | 0 | 0 | False |
 | race-332-superior-court-jd1-carpeneti-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-332-superior-court-jd1-carpeneti-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-332-superior-court-jd1-carpeneti-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-332-superior-court-jd1-carpeneti-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-332-superior-court-jd1-carpeneti-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4184,6 +4303,7 @@ Orphans: 0
 | race-333-superior-court-jd1-carpeneti-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-333-superior-court-jd1-carpeneti-source | paragraph |  | 0 | 0 | 0 | False |
 | race-333-superior-court-jd1-carpeneti-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-333-superior-court-jd1-carpeneti-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-333-superior-court-jd1-carpeneti-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-333-superior-court-jd1-carpeneti-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-333-superior-court-jd1-carpeneti-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4208,6 +4328,7 @@ Orphans: 0
 | race-335-superior-court-jd1-carpeneti-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-335-superior-court-jd1-carpeneti-source | paragraph |  | 0 | 0 | 0 | False |
 | race-335-superior-court-jd1-carpeneti-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-335-superior-court-jd1-carpeneti-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-335-superior-court-jd1-carpeneti-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-335-superior-court-jd1-carpeneti-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-335-superior-court-jd1-carpeneti-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4245,6 +4366,7 @@ Orphans: 0
 | race-338-superior-court-jd1-carpeneti-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-338-superior-court-jd1-carpeneti-source | paragraph |  | 0 | 0 | 0 | False |
 | race-338-superior-court-jd1-carpeneti-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-338-superior-court-jd1-carpeneti-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-338-superior-court-jd1-carpeneti-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-338-superior-court-jd1-carpeneti-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-338-superior-court-jd1-carpeneti-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4281,6 +4403,7 @@ Orphans: 0
 | race-341-superior-court-jd1-carpeneti-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-341-superior-court-jd1-carpeneti-source | paragraph |  | 0 | 0 | 0 | False |
 | race-341-superior-court-jd1-carpeneti-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-341-superior-court-jd1-carpeneti-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-341-superior-court-jd1-carpeneti-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-341-superior-court-jd1-carpeneti-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-341-superior-court-jd1-carpeneti-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4306,6 +4429,7 @@ Orphans: 0
 | race-343-superior-court-jd1-doty-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-343-superior-court-jd1-doty-source | paragraph |  | 0 | 0 | 0 | False |
 | race-343-superior-court-jd1-doty-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-343-superior-court-jd1-doty-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-343-superior-court-jd1-doty-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-343-superior-court-jd1-doty-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-343-superior-court-jd1-doty-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4318,6 +4442,7 @@ Orphans: 0
 | race-344-superior-court-jd1-doty-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-344-superior-court-jd1-doty-source | paragraph |  | 0 | 0 | 0 | False |
 | race-344-superior-court-jd1-doty-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-344-superior-court-jd1-doty-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-344-superior-court-jd1-doty-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-344-superior-court-jd1-doty-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-344-superior-court-jd1-doty-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4342,6 +4467,7 @@ Orphans: 0
 | race-346-superior-court-jd1-doty-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-346-superior-court-jd1-doty-source | paragraph |  | 0 | 0 | 0 | False |
 | race-346-superior-court-jd1-doty-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-346-superior-court-jd1-doty-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-346-superior-court-jd1-doty-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-346-superior-court-jd1-doty-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-346-superior-court-jd1-doty-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4379,6 +4505,7 @@ Orphans: 0
 | race-349-superior-court-jd1-doty-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-349-superior-court-jd1-doty-source | paragraph |  | 0 | 0 | 0 | False |
 | race-349-superior-court-jd1-doty-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-349-superior-court-jd1-doty-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-349-superior-court-jd1-doty-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-349-superior-court-jd1-doty-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-349-superior-court-jd1-doty-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4415,6 +4542,7 @@ Orphans: 0
 | race-352-superior-court-jd1-doty-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-352-superior-court-jd1-doty-source | paragraph |  | 0 | 0 | 0 | False |
 | race-352-superior-court-jd1-doty-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-352-superior-court-jd1-doty-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-352-superior-court-jd1-doty-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-352-superior-court-jd1-doty-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-352-superior-court-jd1-doty-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4440,6 +4568,7 @@ Orphans: 0
 | race-354-superior-court-jd1-lybrand-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-354-superior-court-jd1-lybrand-source | paragraph |  | 0 | 0 | 0 | False |
 | race-354-superior-court-jd1-lybrand-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-354-superior-court-jd1-lybrand-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-354-superior-court-jd1-lybrand-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-354-superior-court-jd1-lybrand-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-354-superior-court-jd1-lybrand-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4452,6 +4581,7 @@ Orphans: 0
 | race-355-superior-court-jd1-lybrand-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-355-superior-court-jd1-lybrand-source | paragraph |  | 0 | 0 | 0 | False |
 | race-355-superior-court-jd1-lybrand-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-355-superior-court-jd1-lybrand-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-355-superior-court-jd1-lybrand-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-355-superior-court-jd1-lybrand-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-355-superior-court-jd1-lybrand-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4476,6 +4606,7 @@ Orphans: 0
 | race-357-superior-court-jd1-lybrand-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-357-superior-court-jd1-lybrand-source | paragraph |  | 0 | 0 | 0 | False |
 | race-357-superior-court-jd1-lybrand-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-357-superior-court-jd1-lybrand-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-357-superior-court-jd1-lybrand-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-357-superior-court-jd1-lybrand-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-357-superior-court-jd1-lybrand-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4513,6 +4644,7 @@ Orphans: 0
 | race-360-superior-court-jd1-lybrand-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-360-superior-court-jd1-lybrand-source | paragraph |  | 0 | 0 | 0 | False |
 | race-360-superior-court-jd1-lybrand-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-360-superior-court-jd1-lybrand-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-360-superior-court-jd1-lybrand-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-360-superior-court-jd1-lybrand-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-360-superior-court-jd1-lybrand-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4549,6 +4681,7 @@ Orphans: 0
 | race-363-superior-court-jd1-lybrand-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-363-superior-court-jd1-lybrand-source | paragraph |  | 0 | 0 | 0 | False |
 | race-363-superior-court-jd1-lybrand-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-363-superior-court-jd1-lybrand-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-363-superior-court-jd1-lybrand-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-363-superior-court-jd1-lybrand-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-363-superior-court-jd1-lybrand-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4652,6 +4785,7 @@ Orphans: 0
 | race-371-superior-court-jd3-hartz-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-371-superior-court-jd3-hartz-source | paragraph |  | 0 | 0 | 0 | False |
 | race-371-superior-court-jd3-hartz-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-371-superior-court-jd3-hartz-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-371-superior-court-jd3-hartz-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-371-superior-court-jd3-hartz-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-371-superior-court-jd3-hartz-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4677,6 +4811,7 @@ Orphans: 0
 | race-373-superior-court-jd3-hartz-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-373-superior-court-jd3-hartz-source | paragraph |  | 0 | 0 | 0 | False |
 | race-373-superior-court-jd3-hartz-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-373-superior-court-jd3-hartz-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-373-superior-court-jd3-hartz-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-373-superior-court-jd3-hartz-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-373-superior-court-jd3-hartz-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4715,6 +4850,7 @@ Orphans: 0
 | race-376-superior-court-jd3-hartz-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-376-superior-court-jd3-hartz-source | paragraph |  | 0 | 0 | 0 | False |
 | race-376-superior-court-jd3-hartz-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-376-superior-court-jd3-hartz-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-376-superior-court-jd3-hartz-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-376-superior-court-jd3-hartz-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-376-superior-court-jd3-hartz-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4753,6 +4889,7 @@ Orphans: 0
 | race-379-superior-court-jd3-hartz-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-379-superior-court-jd3-hartz-source | paragraph |  | 0 | 0 | 0 | False |
 | race-379-superior-court-jd3-hartz-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-379-superior-court-jd3-hartz-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-379-superior-court-jd3-hartz-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-379-superior-court-jd3-hartz-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-379-superior-court-jd3-hartz-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4804,6 +4941,7 @@ Orphans: 0
 | race-383-superior-court-jd3-lamoureux-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-383-superior-court-jd3-lamoureux-source | paragraph |  | 0 | 0 | 0 | False |
 | race-383-superior-court-jd3-lamoureux-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-383-superior-court-jd3-lamoureux-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-383-superior-court-jd3-lamoureux-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-383-superior-court-jd3-lamoureux-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-383-superior-court-jd3-lamoureux-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4829,6 +4967,7 @@ Orphans: 0
 | race-385-superior-court-jd3-lamoureux-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-385-superior-court-jd3-lamoureux-source | paragraph |  | 0 | 0 | 0 | False |
 | race-385-superior-court-jd3-lamoureux-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-385-superior-court-jd3-lamoureux-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-385-superior-court-jd3-lamoureux-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-385-superior-court-jd3-lamoureux-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-385-superior-court-jd3-lamoureux-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4867,6 +5006,7 @@ Orphans: 0
 | race-388-superior-court-jd3-lamoureux-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-388-superior-court-jd3-lamoureux-source | paragraph |  | 0 | 0 | 0 | False |
 | race-388-superior-court-jd3-lamoureux-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-388-superior-court-jd3-lamoureux-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-388-superior-court-jd3-lamoureux-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-388-superior-court-jd3-lamoureux-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-388-superior-court-jd3-lamoureux-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4905,6 +5045,7 @@ Orphans: 0
 | race-391-superior-court-jd3-lamoureux-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-391-superior-court-jd3-lamoureux-source | paragraph |  | 0 | 0 | 0 | False |
 | race-391-superior-court-jd3-lamoureux-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-391-superior-court-jd3-lamoureux-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-391-superior-court-jd3-lamoureux-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-391-superior-court-jd3-lamoureux-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-391-superior-court-jd3-lamoureux-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4956,6 +5097,7 @@ Orphans: 0
 | race-395-superior-court-jd3-lawson-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-395-superior-court-jd3-lawson-source | paragraph |  | 0 | 0 | 0 | False |
 | race-395-superior-court-jd3-lawson-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-395-superior-court-jd3-lawson-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-395-superior-court-jd3-lawson-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-395-superior-court-jd3-lawson-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-395-superior-court-jd3-lawson-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -4981,6 +5123,7 @@ Orphans: 0
 | race-397-superior-court-jd3-lawson-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-397-superior-court-jd3-lawson-source | paragraph |  | 0 | 0 | 0 | False |
 | race-397-superior-court-jd3-lawson-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-397-superior-court-jd3-lawson-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-397-superior-court-jd3-lawson-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-397-superior-court-jd3-lawson-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-397-superior-court-jd3-lawson-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5019,6 +5162,7 @@ Orphans: 0
 | race-400-superior-court-jd3-lawson-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-400-superior-court-jd3-lawson-source | paragraph |  | 0 | 0 | 0 | False |
 | race-400-superior-court-jd3-lawson-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-400-superior-court-jd3-lawson-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-400-superior-court-jd3-lawson-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-400-superior-court-jd3-lawson-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-400-superior-court-jd3-lawson-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5057,6 +5201,7 @@ Orphans: 0
 | race-403-superior-court-jd3-lawson-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-403-superior-court-jd3-lawson-source | paragraph |  | 0 | 0 | 0 | False |
 | race-403-superior-court-jd3-lawson-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-403-superior-court-jd3-lawson-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-403-superior-court-jd3-lawson-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-403-superior-court-jd3-lawson-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-403-superior-court-jd3-lawson-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5108,6 +5253,7 @@ Orphans: 0
 | race-407-superior-court-jd3-mckenna-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-407-superior-court-jd3-mckenna-source | paragraph |  | 0 | 0 | 0 | False |
 | race-407-superior-court-jd3-mckenna-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-407-superior-court-jd3-mckenna-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-407-superior-court-jd3-mckenna-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-407-superior-court-jd3-mckenna-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-407-superior-court-jd3-mckenna-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5133,6 +5279,7 @@ Orphans: 0
 | race-409-superior-court-jd3-mckenna-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-409-superior-court-jd3-mckenna-source | paragraph |  | 0 | 0 | 0 | False |
 | race-409-superior-court-jd3-mckenna-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-409-superior-court-jd3-mckenna-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-409-superior-court-jd3-mckenna-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-409-superior-court-jd3-mckenna-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-409-superior-court-jd3-mckenna-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5171,6 +5318,7 @@ Orphans: 0
 | race-412-superior-court-jd3-mckenna-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-412-superior-court-jd3-mckenna-source | paragraph |  | 0 | 0 | 0 | False |
 | race-412-superior-court-jd3-mckenna-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-412-superior-court-jd3-mckenna-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-412-superior-court-jd3-mckenna-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-412-superior-court-jd3-mckenna-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-412-superior-court-jd3-mckenna-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5209,6 +5357,7 @@ Orphans: 0
 | race-415-superior-court-jd3-mckenna-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-415-superior-court-jd3-mckenna-source | paragraph |  | 0 | 0 | 0 | False |
 | race-415-superior-court-jd3-mckenna-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-415-superior-court-jd3-mckenna-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-415-superior-court-jd3-mckenna-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-415-superior-court-jd3-mckenna-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-415-superior-court-jd3-mckenna-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5260,6 +5409,7 @@ Orphans: 0
 | race-419-superior-court-jd3-nesbett-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-419-superior-court-jd3-nesbett-source | paragraph |  | 0 | 0 | 0 | False |
 | race-419-superior-court-jd3-nesbett-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-419-superior-court-jd3-nesbett-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-419-superior-court-jd3-nesbett-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-419-superior-court-jd3-nesbett-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-419-superior-court-jd3-nesbett-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5285,6 +5435,7 @@ Orphans: 0
 | race-421-superior-court-jd3-nesbett-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-421-superior-court-jd3-nesbett-source | paragraph |  | 0 | 0 | 0 | False |
 | race-421-superior-court-jd3-nesbett-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-421-superior-court-jd3-nesbett-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-421-superior-court-jd3-nesbett-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-421-superior-court-jd3-nesbett-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-421-superior-court-jd3-nesbett-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5323,6 +5474,7 @@ Orphans: 0
 | race-424-superior-court-jd3-nesbett-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-424-superior-court-jd3-nesbett-source | paragraph |  | 0 | 0 | 0 | False |
 | race-424-superior-court-jd3-nesbett-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-424-superior-court-jd3-nesbett-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-424-superior-court-jd3-nesbett-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-424-superior-court-jd3-nesbett-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-424-superior-court-jd3-nesbett-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5361,6 +5513,7 @@ Orphans: 0
 | race-427-superior-court-jd3-nesbett-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-427-superior-court-jd3-nesbett-source | paragraph |  | 0 | 0 | 0 | False |
 | race-427-superior-court-jd3-nesbett-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-427-superior-court-jd3-nesbett-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-427-superior-court-jd3-nesbett-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-427-superior-court-jd3-nesbett-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-427-superior-court-jd3-nesbett-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5412,6 +5565,7 @@ Orphans: 0
 | race-431-superior-court-jd3-rankin-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-431-superior-court-jd3-rankin-source | paragraph |  | 0 | 0 | 0 | False |
 | race-431-superior-court-jd3-rankin-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-431-superior-court-jd3-rankin-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-431-superior-court-jd3-rankin-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-431-superior-court-jd3-rankin-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-431-superior-court-jd3-rankin-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5437,6 +5591,7 @@ Orphans: 0
 | race-433-superior-court-jd3-rankin-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-433-superior-court-jd3-rankin-source | paragraph |  | 0 | 0 | 0 | False |
 | race-433-superior-court-jd3-rankin-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-433-superior-court-jd3-rankin-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-433-superior-court-jd3-rankin-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-433-superior-court-jd3-rankin-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-433-superior-court-jd3-rankin-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5475,6 +5630,7 @@ Orphans: 0
 | race-436-superior-court-jd3-rankin-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-436-superior-court-jd3-rankin-source | paragraph |  | 0 | 0 | 0 | False |
 | race-436-superior-court-jd3-rankin-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-436-superior-court-jd3-rankin-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-436-superior-court-jd3-rankin-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-436-superior-court-jd3-rankin-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-436-superior-court-jd3-rankin-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5513,6 +5669,7 @@ Orphans: 0
 | race-439-superior-court-jd3-rankin-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-439-superior-court-jd3-rankin-source | paragraph |  | 0 | 0 | 0 | False |
 | race-439-superior-court-jd3-rankin-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-439-superior-court-jd3-rankin-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-439-superior-court-jd3-rankin-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-439-superior-court-jd3-rankin-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-439-superior-court-jd3-rankin-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5564,6 +5721,7 @@ Orphans: 0
 | race-443-superior-court-jd3-reigh-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-443-superior-court-jd3-reigh-source | paragraph |  | 0 | 0 | 0 | False |
 | race-443-superior-court-jd3-reigh-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-443-superior-court-jd3-reigh-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-443-superior-court-jd3-reigh-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-443-superior-court-jd3-reigh-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-443-superior-court-jd3-reigh-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5589,6 +5747,7 @@ Orphans: 0
 | race-445-superior-court-jd3-reigh-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-445-superior-court-jd3-reigh-source | paragraph |  | 0 | 0 | 0 | False |
 | race-445-superior-court-jd3-reigh-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-445-superior-court-jd3-reigh-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-445-superior-court-jd3-reigh-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-445-superior-court-jd3-reigh-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-445-superior-court-jd3-reigh-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5627,6 +5786,7 @@ Orphans: 0
 | race-448-superior-court-jd3-reigh-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-448-superior-court-jd3-reigh-source | paragraph |  | 0 | 0 | 0 | False |
 | race-448-superior-court-jd3-reigh-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-448-superior-court-jd3-reigh-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-448-superior-court-jd3-reigh-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-448-superior-court-jd3-reigh-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-448-superior-court-jd3-reigh-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5665,6 +5825,7 @@ Orphans: 0
 | race-451-superior-court-jd3-reigh-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-451-superior-court-jd3-reigh-source | paragraph |  | 0 | 0 | 0 | False |
 | race-451-superior-court-jd3-reigh-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-451-superior-court-jd3-reigh-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-451-superior-court-jd3-reigh-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-451-superior-court-jd3-reigh-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-451-superior-court-jd3-reigh-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5716,6 +5877,7 @@ Orphans: 0
 | race-455-superior-court-jd3-wheeles-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-455-superior-court-jd3-wheeles-source | paragraph |  | 0 | 0 | 0 | False |
 | race-455-superior-court-jd3-wheeles-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-455-superior-court-jd3-wheeles-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-455-superior-court-jd3-wheeles-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-455-superior-court-jd3-wheeles-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-455-superior-court-jd3-wheeles-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5741,6 +5903,7 @@ Orphans: 0
 | race-457-superior-court-jd3-wheeles-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-457-superior-court-jd3-wheeles-source | paragraph |  | 0 | 0 | 0 | False |
 | race-457-superior-court-jd3-wheeles-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-457-superior-court-jd3-wheeles-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-457-superior-court-jd3-wheeles-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-457-superior-court-jd3-wheeles-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-457-superior-court-jd3-wheeles-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5779,6 +5942,7 @@ Orphans: 0
 | race-460-superior-court-jd3-wheeles-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-460-superior-court-jd3-wheeles-source | paragraph |  | 0 | 0 | 0 | False |
 | race-460-superior-court-jd3-wheeles-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-460-superior-court-jd3-wheeles-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-460-superior-court-jd3-wheeles-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-460-superior-court-jd3-wheeles-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-460-superior-court-jd3-wheeles-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5817,6 +5981,7 @@ Orphans: 0
 | race-463-superior-court-jd3-wheeles-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-463-superior-court-jd3-wheeles-source | paragraph |  | 0 | 0 | 0 | False |
 | race-463-superior-court-jd3-wheeles-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-463-superior-court-jd3-wheeles-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-463-superior-court-jd3-wheeles-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-463-superior-court-jd3-wheeles-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-463-superior-court-jd3-wheeles-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5868,6 +6033,7 @@ Orphans: 0
 | race-467-superior-court-jd3-woodman-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-467-superior-court-jd3-woodman-source | paragraph |  | 0 | 0 | 0 | False |
 | race-467-superior-court-jd3-woodman-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-467-superior-court-jd3-woodman-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-467-superior-court-jd3-woodman-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-467-superior-court-jd3-woodman-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-467-superior-court-jd3-woodman-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5893,6 +6059,7 @@ Orphans: 0
 | race-469-superior-court-jd3-woodman-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-469-superior-court-jd3-woodman-source | paragraph |  | 0 | 0 | 0 | False |
 | race-469-superior-court-jd3-woodman-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-469-superior-court-jd3-woodman-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-469-superior-court-jd3-woodman-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-469-superior-court-jd3-woodman-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-469-superior-court-jd3-woodman-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5931,6 +6098,7 @@ Orphans: 0
 | race-472-superior-court-jd3-woodman-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-472-superior-court-jd3-woodman-source | paragraph |  | 0 | 0 | 0 | False |
 | race-472-superior-court-jd3-woodman-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-472-superior-court-jd3-woodman-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-472-superior-court-jd3-woodman-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-472-superior-court-jd3-woodman-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-472-superior-court-jd3-woodman-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -5969,6 +6137,7 @@ Orphans: 0
 | race-475-superior-court-jd3-woodman-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-475-superior-court-jd3-woodman-source | paragraph |  | 0 | 0 | 0 | False |
 | race-475-superior-court-jd3-woodman-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-475-superior-court-jd3-woodman-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-475-superior-court-jd3-woodman-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-475-superior-court-jd3-woodman-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-475-superior-court-jd3-woodman-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -6020,6 +6189,7 @@ Orphans: 0
 | race-479-district-court-jd3-darnall-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-479-district-court-jd3-darnall-source | paragraph |  | 0 | 0 | 0 | False |
 | race-479-district-court-jd3-darnall-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-479-district-court-jd3-darnall-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-479-district-court-jd3-darnall-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-479-district-court-jd3-darnall-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-479-district-court-jd3-darnall-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -6045,6 +6215,7 @@ Orphans: 0
 | race-481-district-court-jd3-darnall-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-481-district-court-jd3-darnall-source | paragraph |  | 0 | 0 | 0 | False |
 | race-481-district-court-jd3-darnall-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-481-district-court-jd3-darnall-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-481-district-court-jd3-darnall-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-481-district-court-jd3-darnall-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-481-district-court-jd3-darnall-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -6083,6 +6254,7 @@ Orphans: 0
 | race-484-district-court-jd3-darnall-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-484-district-court-jd3-darnall-source | paragraph |  | 0 | 0 | 0 | False |
 | race-484-district-court-jd3-darnall-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-484-district-court-jd3-darnall-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-484-district-court-jd3-darnall-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-484-district-court-jd3-darnall-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-484-district-court-jd3-darnall-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -6121,6 +6293,7 @@ Orphans: 0
 | race-487-district-court-jd3-darnall-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-487-district-court-jd3-darnall-source | paragraph |  | 0 | 0 | 0 | False |
 | race-487-district-court-jd3-darnall-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-487-district-court-jd3-darnall-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-487-district-court-jd3-darnall-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-487-district-court-jd3-darnall-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-487-district-court-jd3-darnall-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -6172,6 +6345,7 @@ Orphans: 0
 | race-491-district-court-jd3-fallon-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-491-district-court-jd3-fallon-source | paragraph |  | 0 | 0 | 0 | False |
 | race-491-district-court-jd3-fallon-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-491-district-court-jd3-fallon-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-491-district-court-jd3-fallon-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-491-district-court-jd3-fallon-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-491-district-court-jd3-fallon-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -6197,6 +6371,7 @@ Orphans: 0
 | race-493-district-court-jd3-fallon-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-493-district-court-jd3-fallon-source | paragraph |  | 0 | 0 | 0 | False |
 | race-493-district-court-jd3-fallon-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-493-district-court-jd3-fallon-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-493-district-court-jd3-fallon-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-493-district-court-jd3-fallon-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-493-district-court-jd3-fallon-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -6235,6 +6410,7 @@ Orphans: 0
 | race-496-district-court-jd3-fallon-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-496-district-court-jd3-fallon-source | paragraph |  | 0 | 0 | 0 | False |
 | race-496-district-court-jd3-fallon-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-496-district-court-jd3-fallon-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-496-district-court-jd3-fallon-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-496-district-court-jd3-fallon-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-496-district-court-jd3-fallon-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -6273,6 +6449,7 @@ Orphans: 0
 | race-499-district-court-jd3-fallon-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-499-district-court-jd3-fallon-source | paragraph |  | 0 | 0 | 0 | False |
 | race-499-district-court-jd3-fallon-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-499-district-court-jd3-fallon-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-499-district-court-jd3-fallon-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-499-district-court-jd3-fallon-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-499-district-court-jd3-fallon-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -6324,6 +6501,7 @@ Orphans: 0
 | race-503-district-court-jd3-traini-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-503-district-court-jd3-traini-source | paragraph |  | 0 | 0 | 0 | False |
 | race-503-district-court-jd3-traini-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-503-district-court-jd3-traini-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-503-district-court-jd3-traini-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-503-district-court-jd3-traini-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-503-district-court-jd3-traini-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -6349,6 +6527,7 @@ Orphans: 0
 | race-505-district-court-jd3-traini-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-505-district-court-jd3-traini-source | paragraph |  | 0 | 0 | 0 | False |
 | race-505-district-court-jd3-traini-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-505-district-court-jd3-traini-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-505-district-court-jd3-traini-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-505-district-court-jd3-traini-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-505-district-court-jd3-traini-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -6387,6 +6566,7 @@ Orphans: 0
 | race-508-district-court-jd3-traini-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-508-district-court-jd3-traini-source | paragraph |  | 0 | 0 | 0 | False |
 | race-508-district-court-jd3-traini-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-508-district-court-jd3-traini-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-508-district-court-jd3-traini-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-508-district-court-jd3-traini-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-508-district-court-jd3-traini-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -6425,6 +6605,7 @@ Orphans: 0
 | race-511-district-court-jd3-traini-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-511-district-court-jd3-traini-source | paragraph |  | 0 | 0 | 0 | False |
 | race-511-district-court-jd3-traini-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-511-district-court-jd3-traini-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-511-district-court-jd3-traini-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-511-district-court-jd3-traini-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-511-district-court-jd3-traini-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -6475,6 +6656,7 @@ Orphans: 0
 | race-515-superior-court-jd4-peters-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-515-superior-court-jd4-peters-source | paragraph |  | 0 | 0 | 0 | False |
 | race-515-superior-court-jd4-peters-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-515-superior-court-jd4-peters-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-515-superior-court-jd4-peters-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-515-superior-court-jd4-peters-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-515-superior-court-jd4-peters-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -6564,6 +6746,7 @@ Orphans: 0
 | race-522-superior-court-jd4-schwalm-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-522-superior-court-jd4-schwalm-source | paragraph |  | 0 | 0 | 0 | False |
 | race-522-superior-court-jd4-schwalm-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-522-superior-court-jd4-schwalm-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-522-superior-court-jd4-schwalm-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-522-superior-court-jd4-schwalm-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-522-superior-court-jd4-schwalm-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -6653,6 +6836,7 @@ Orphans: 0
 | race-529-superior-court-jd4-welch-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-529-superior-court-jd4-welch-source | paragraph |  | 0 | 0 | 0 | False |
 | race-529-superior-court-jd4-welch-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-529-superior-court-jd4-welch-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-529-superior-court-jd4-welch-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-529-superior-court-jd4-welch-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-529-superior-court-jd4-welch-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
@@ -6742,6 +6926,7 @@ Orphans: 0
 | race-536-district-court-jd4-seekins-forecast-status | paragraph |  | 0 | 0 | 0 | False |
 | race-536-district-court-jd4-seekins-source | paragraph |  | 0 | 0 | 0 | False |
 | race-536-district-court-jd4-seekins-evidence | paragraph |  | 0 | 0 | 0 | False |
+| race-536-district-court-jd4-seekins-excluded-history | paragraph |  | 0 | 0 | 0 | False |
 | race-536-district-court-jd4-seekins-decision-1-heading | heading3 |  | 0 | 0 | 0 | False |
 | race-536-district-court-jd4-seekins-decision-1-event | paragraph |  | 0 | 0 | 0 | False |
 | race-536-district-court-jd4-seekins-decision-1-state | paragraph |  | 0 | 0 | 0 | False |
