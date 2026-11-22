@@ -1,0 +1,13 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:92893dbd-1dcd-4d02-8ac2-ed962c189476
+#
+# ECPP certificate for N = 2^127 + 45 (prime just above 2^127).
+# Generated 2026-11-22 by PARI/GP 2.15.4 primecert(N) (Atkin-Morain), converted
+# with `python3 ecpp_cert.py pari N`. Untrusted input: crypto_ecpp_verify checks
+# it; regenerate rather than edit. One step per line: N t s a x y, where the
+# curve is y^2 = x^3 + a x + b through (x, y), its order is m = N + 1 - t, the
+# cofactor is s and q = m / s is the next line's N.
+170141183460469231731687303715884105773 -25539349531462704964 20540467426 35000936110980051226365652303316341582 158901421511587771482939198791232823539 33765072796654604188380757794007484446
+8283218679099071820568736713 -24482753115946 89741108340 6099488300253692335585908754 3620265676550490189968257972 1685334634230511581996208206

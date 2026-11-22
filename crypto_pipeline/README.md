@@ -48,7 +48,8 @@ repository's [`aes-manifest.yaml`](../aes-manifest.yaml) (Catylist ADR-0004).
   [Pocklington notes](docs/engineering/CRYPTO-POCKLINGTON.md).
 - ECPP primality certificates: an unconditional checker for elliptic-curve
   certificate chains (`crypto_ecpp_verify`, variable-time), with an untrusted
-  class-number-1 generator in `ecpp_cert.py`. See
+  class-number-1 generator and a PARI/GP certificate converter in
+  `ecpp_cert.py`. See
   [ECPP notes](docs/engineering/CRYPTO-ECPP.md).
 - Modular exponentiation: left-to-right square-and-multiply in Montgomery form,
   for odd moduli (`crypto_mod_exp`, variable-time).

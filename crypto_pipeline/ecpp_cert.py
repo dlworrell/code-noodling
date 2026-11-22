@@ -18,17 +18,21 @@ usable when removing its small prime factors leaves a probable prime q with
 
 Class number 1 alone does not certify every prime: some N have no usable
 order at any depth. provable_prime() draws primes until one works; certify()
-returns None on failure. Arbitrary primes need more discriminants or an
-external prover (docs/engineering/CRYPTO-ECPP.md, slice 2).
+returns None on failure. For an arbitrary prime, from_pari() converts a
+certificate made by PARI/GP's primecert() (Atkin-Morain format: one entry
+[N, t, s, a, [x, y]] per step, curve order m = N + 1 - t, q = m / s).
 
-Usage: python3 ecpp_cert.py BITS  prints a random provable prime and its chain
-length.
+Usage:
+  python3 ecpp_cert.py BITS     print a random provable prime and its chain length
+  python3 ecpp_cert.py pari N   print PARI's certificate for N in fixture format
+                                (needs gp on PATH)
 """
 
 from __future__ import annotations
 
 import math
 import random
+import subprocess
 import sys
 from dataclasses import dataclass
 
@@ -278,7 +282,56 @@ def provable_prime(bits: int, rng: random.Random) -> tuple[int, list[Step]]:
             return n, steps
 
 
+# ---- PARI/GP certificates -------------------------------------------------
+
+# Changing parisizemax resets the PARI stack, which discards the rest of its
+# input line, so the defaults go on a line of their own.
+PARI_SCRIPT = (
+    'default(colors, "no"); default(parisizemax, 2^32)\n'
+    'N = {n}; c = primecert(N);'
+    ' if(c == 0, error("not prime"));'
+    ' for(i = 1, #c, my(e = c[i]);'
+    ' print(e[1], " ", e[2], " ", e[3], " ", e[4], " ", e[5][1], " ", e[5][2]))'
+)
+
+
+def from_pari(text: str) -> list[Step]:
+    """Steps from fixture text: one line "N t s a x y" per step; lines starting
+    with # and blank lines are ignored. Raises ValueError on a malformed line
+    or when s does not divide N + 1 - t. The checker still checks everything."""
+    steps = []
+    for line in text.splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        fields = line.split()
+        if len(fields) != 6:
+            raise ValueError(f"expected 6 fields, got {len(fields)}")
+        n, t, s, a, x, y = (int(f) for f in fields)
+        m = n + 1 - t
+        if s <= 0 or m % s:
+            raise ValueError("s must divide N + 1 - t")
+        steps.append(Step(n, a % n, x % n, y % n, s, m // s))
+    return steps
+
+
+def pari_certificate(n: int, gp: str = "gp", timeout: int = 3600) -> str:
+    """Runs PARI/GP's primecert(n) and returns its certificate in fixture format."""
+    result = subprocess.run([gp, "-q", "-f"], input=PARI_SCRIPT.format(n=int(n)),
+                            capture_output=True, text=True, timeout=timeout, check=True)
+    # gp reports errors such as a stack overflow with "***" and still exits 0;
+    # its warnings use the same marker.
+    errors = [line for line in (result.stderr + result.stdout).splitlines()
+              if "***" in line and "Warning" not in line]
+    if errors or not result.stdout.strip():
+        raise RuntimeError(f"gp failed: {' '.join(errors)[:300] or 'no output'}")
+    return result.stdout
+
+
 def main(argv: list[str]) -> int:
+    if len(argv) > 2 and argv[1] == "pari":
+        sys.stdout.write(pari_certificate(int(argv[2])))
+        return 0
     bits = int(argv[1]) if len(argv) > 1 else 256
     n, steps = provable_prime(bits, random.Random())
     print(n)
