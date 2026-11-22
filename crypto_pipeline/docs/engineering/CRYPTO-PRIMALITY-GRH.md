@@ -7,9 +7,10 @@ Catalyst-File-ID: urn:uuid:cea4a8b5-da90-45c1-b012-1eec41e79357
 
 # GRH-conditional primality test and square roots
 
-Status: Experimental (slices 1 and 2)
+Status: Experimental (slices 1 and 2, with a Lean link)
 Scope: `crypto_pipeline/` (governed project scope, Catylist ADR-0004)
-Files: `crypto_prime.h`, `crypto_prime.c`, `tests/test_prime.c`, `tests/test_prime.py`
+Files: `crypto_prime.h`, `crypto_prime.c`, `tests/test_prime.c`, `tests/test_prime.py`,
+`proof/lean/`
 
 ## What it does
 
@@ -152,10 +153,24 @@ Tests (added to `tests/test_prime.c` and `tests/test_prime.py`):
 - composite moduli, checking that any returned root is a true root;
 - the trial cap and argument errors.
 
-## Next slice (not in this change)
+## Formal link (Lean)
 
-A formal link: state Bach's bound in Lean and prove that the C loop computes
-it. Proving Bach's theorem itself is research-sized; Mathlib does not yet
-contain it. A bounded first step is to prove, with Bach's bound as an explicit
-hypothesis, that the integer bound in `crypto_grh_witness_bound` is at least
-2 (ln N)² and that a Miller test over all bases up to it decides primality.
+`proof/lean/` (see its [README](../../proof/lean/README.md)) proves, with
+Mathlib and CI-checked by `.github/workflows/crypto_lean.yml`:
+
+- the C bound's numerator stays below 2^61 for every supported size, so the
+  `uint64_t` arithmetic in `crypto_grh_witness_bound` cannot overflow;
+- that bound is at least 2 (ln N)², the bound in Bach's theorem;
+- every prime passes every base the C loop tries, so the test never calls a
+  prime composite (unconditional);
+- with Bach's theorem as an explicit hypothesis (`BachWitnessBound`), an odd
+  N ≥ 3 that passes every base up to the bound is prime.
+
+The axiom audit shows only Lean's three standard axioms (`propext`,
+`Classical.choice`, `Quot.sound`) and no `sorry`. Two gaps remain: Bach's
+theorem itself, which needs the extended Riemann hypothesis and analytic
+number theory that Mathlib does not contain; and the correspondence between
+the C code and the Lean model, which is tested, not proved.
+
+For primality without GRH, see the unconditional certificate checkers:
+[Pocklington](CRYPTO-POCKLINGTON.md) and, where merged, ECPP (`CRYPTO-ECPP.md`).
