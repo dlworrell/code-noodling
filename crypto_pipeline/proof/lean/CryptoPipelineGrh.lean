@@ -89,7 +89,7 @@ theorem two_log_sq_le_cBound (N : ℕ) (hN : 0 < N) :
     mul_le_mul_of_nonneg_left hl2.le hL
   have hle : Real.log N ≤ N.size * (13863 / 20000) := by linarith
   have hsq : (Real.log N) ^ 2 ≤ (N.size * (13863 / 20000 : ℝ)) ^ 2 :=
-    pow_le_pow_left hlog0 hle 2
+    pow_le_pow_left₀ hlog0 hle 2
   have hc := real_le_cBound N.size
   nlinarith [hsq, hc]
 
