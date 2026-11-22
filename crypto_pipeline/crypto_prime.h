@@ -9,7 +9,8 @@
 #define CRYPTO_PRIME_H
 #include "crypto_multiplier.h"
 
-/* Modular exponentiation and a GRH-conditional deterministic primality test.
+/* Modular exponentiation, a GRH-conditional deterministic primality test, and
+ * square roots modulo a prime with a GRH-bounded non-residue search.
  * Research prototype: every routine here is VARIABLE-TIME and is meant for
  * public values (candidate primes, public moduli), never for secrets.
  * Conventions follow crypto_multiplier.h: little-endian base-2^64 limbs,
@@ -52,6 +53,23 @@ uint64_t crypto_grh_witness_bound(const limb_t *candidate, size_t n);
  * Returns 0, or -1 with errno. */
 int crypto_is_prime_grh(int *is_prime, const limb_t *candidate, size_t n,
                         uint64_t max_bases);
+
+/* Square root modulo an odd prime p, by Tonelli-Shanks with a deterministic
+ * search for a quadratic non-residue. a, p and root have n limbs; a need not
+ * be reduced. p must be prime: the routine does not prove that, but it checks
+ * every step it relies on, verifies root^2 = a mod p before returning, and
+ * fails with EDOM if p is shown to be composite. p = 2 is accepted.
+ *
+ * Returns the smaller of the two roots (r <= p - r), or 0 for a = 0 mod p.
+ * Fails with EDOM if a is not a square mod p, if p is even (other than 2) or
+ * not above 1, or if no non-residue exists below crypto_grh_witness_bound(p).
+ * Under ERH the least non-residue of a prime p is below 2 (ln p)^2 (Bach 1990),
+ * so for a prime p that last case would be a counterexample to ERH; in
+ * practice it means p is composite. The search usually ends within a few
+ * candidates; max_trials caps it (ERANGE, root unchanged); 0 means no cap.
+ * Variable-time. Returns 0, or -1 with errno. */
+int crypto_mod_sqrt_grh(limb_t *root, const limb_t *a, const limb_t *p, size_t n,
+                        uint64_t max_trials);
 
 #ifdef __cplusplus
 }

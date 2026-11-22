@@ -28,6 +28,8 @@ LIB.crypto_grh_witness_bound.argtypes = [P, c.c_size_t]
 LIB.crypto_grh_witness_bound.restype = U
 LIB.crypto_is_prime_grh.argtypes = [c.POINTER(c.c_int), P, c.c_size_t, U]
 LIB.crypto_is_prime_grh.restype = c.c_int
+LIB.crypto_mod_sqrt_grh.argtypes = [P, P, P, c.c_size_t, U]
+LIB.crypto_mod_sqrt_grh.restype = c.c_int
 
 
 def limbs(value, n):
@@ -85,6 +87,22 @@ def c_mod_exp(base, exponent, mod, n=None, exp_n=None):
     out = (U * n)()
     rc = LIB.crypto_mod_exp(out, limbs(base, n), limbs(exponent, exp_n), exp_n, limbs(mod, n), n)
     return rc, c.get_errno(), integer(out, n)
+
+
+def c_sqrt(a, p, n=None, max_trials=0):
+    n = n or size_of(max(a, p))
+    out = (U * n)(*([0x5A5A] * n))
+    rc = LIB.crypto_mod_sqrt_grh(out, limbs(a, n), limbs(p, n), n, max_trials)
+    return rc, c.get_errno(), integer(out, n)
+
+
+def random_prime(rng, bits, residue=None):
+    while True:
+        v = rng.getrandbits(bits) | 1 | (1 << (bits - 1))
+        if residue is not None and v % residue[0] != residue[1]:
+            continue
+        if all(strong_probable_prime(v, a) for a in (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41)):
+            return v
 
 
 def c_is_prime(value, n=None, max_bases=0):
@@ -195,6 +213,71 @@ class GrhPrimalityTests(unittest.TestCase):
         self.assertEqual((c.get_errno(), result.value), (errno.EINVAL, -7))
         self.assertEqual(LIB.crypto_is_prime_grh(None, limbs(7, 1), 1, 0), -1)
         self.assertEqual(c.get_errno(), errno.EINVAL)
+
+
+class GrhSquareRootTests(unittest.TestCase):
+    def check_root(self, a, p, n=None):
+        rc, err, root = c_sqrt(a, p, n)
+        self.assertEqual((rc, err), (0, 0), (a, p))
+        self.assertEqual(root * root % p, a % p, (a, p))
+        self.assertLessEqual(root, p - root if root else 0, (a, p))
+        return root
+
+    def test_squares_modulo_random_primes(self):
+        rng = random.Random(1122)
+        for bits in (8, 31, 64, 65, 127, 256, 521):
+            for residue in (None, (4, 3), (8, 1)):
+                p = random_prime(rng, bits, residue)
+                for _ in range(4):
+                    x = rng.randrange(p)
+                    self.check_root(x * x, p)          # unreduced a: x*x may exceed p
+
+    def test_primes_with_large_two_power(self):
+        # p - 1 divisible by a high power of two exercises the Tonelli-Shanks loop.
+        for p in (998244353, 1004535809, (1 << 64) - (1 << 32) + 1, 3 * (1 << 189) + 1):
+            self.assertTrue(all(strong_probable_prime(p, a) for a in range(2, 60)), p)
+            rng = random.Random(p)
+            for _ in range(20):
+                x = rng.randrange(p)
+                self.check_root(x * x % p, p)
+
+    def test_every_residue_of_small_primes(self):
+        for p in (2, 3, 5, 7, 11, 13, 17, 41, 97, 257):
+            squares = {x * x % p for x in range(p)}
+            for a in range(p):
+                rc, err, root = c_sqrt(a, p)
+                if a in squares:
+                    self.assertEqual((rc, err), (0, 0), (a, p))
+                    self.assertEqual(root, min(r for r in range(p) if r * r % p == a))
+                else:
+                    self.assertEqual((rc, err, root), (-1, errno.EDOM, 0x5A5A), (a, p))
+
+    def test_padded_limbs(self):
+        p = (1 << 89) - 1
+        self.assertEqual(c_sqrt(49, p, n=4)[:3], (0, 0, 7))
+
+    def test_composite_modulus_never_returns_a_wrong_root(self):
+        rng = random.Random(5)
+        for p in (15, 21, 561, 3215031751, 3825123056546413051, ((1 << 61) - 1) * ((1 << 31) - 1)):
+            for _ in range(10):
+                x = rng.randrange(1, p)
+                rc, err, root = c_sqrt(x * x % p, p)
+                if rc == 0:
+                    self.assertEqual(root * root % p, x * x % p)
+                else:
+                    self.assertEqual(err, errno.EDOM)
+
+    def test_trial_cap(self):
+        p = 998244353                     # least non-residue is 3
+        self.assertEqual(c_sqrt(4, p, max_trials=1)[:2], (-1, errno.ERANGE))
+        self.assertEqual(c_sqrt(4, p, max_trials=2)[:3], (0, 0, 2))
+
+    def test_argument_errors(self):
+        out = (U * 1)(77)
+        self.assertEqual(LIB.crypto_mod_sqrt_grh(out, limbs(4, 1), limbs(7, 1), 0, 0), -1)
+        self.assertEqual((c.get_errno(), out[0]), (errno.EINVAL, 77))
+        self.assertEqual(c_sqrt(4, 18)[:2], (-1, errno.EDOM))
+        self.assertEqual(c_sqrt(4, 1)[:2], (-1, errno.EDOM))
 
 
 if __name__ == '__main__':

@@ -49,6 +49,9 @@ repository's [`aes-manifest.yaml`](../aes-manifest.yaml) (Catylist ADR-0004).
   answers are unconditional; prime answers assume the generalized Riemann
   hypothesis for Dirichlet L-functions. See
   [GRH primality notes](docs/engineering/CRYPTO-PRIMALITY-GRH.md).
+- Square roots modulo a prime: Tonelli–Shanks with a deterministic
+  non-residue search bounded by the same ERH bound (`crypto_mod_sqrt_grh`,
+  variable-time). Every returned root is verified by squaring.
 
 The bounded NTT is not the Harvey–van der Hoeven algorithm discussed in the
 article. Its two-prime reconstruction is valid for this implementation's maximum
