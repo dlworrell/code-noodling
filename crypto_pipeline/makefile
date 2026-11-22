@@ -13,7 +13,7 @@ TARGET = test_suite
 # Object files
 OBJS = crypto_multiplier.o test_suite.o
 
-all: $(TARGET)
+all: $(TARGET) test_prime
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LDFLAGS)
@@ -23,12 +23,18 @@ crypto_multiplier.o: crypto_multiplier.c crypto_multiplier.h
 
 test_suite.o: tests/test_suite.c crypto_multiplier.h
 	$(CC) $(CFLAGS) -I. -c tests/test_suite.c
+
+crypto_prime.o: crypto_prime.c crypto_prime.h crypto_multiplier.h
+	$(CC) $(CFLAGS) -c crypto_prime.c
+
+test_prime: crypto_multiplier.o crypto_prime.o tests/test_prime.c
+	$(CC) $(CFLAGS) -I. -o test_prime tests/test_prime.c crypto_multiplier.o crypto_prime.o $(LDFLAGS)
 	
-shared: crypto_multiplier.c crypto_multiplier.h crypto_montgomery_ct.c crypto_montgomery_ct.h
-	$(CC) $(CFLAGS) -fPIC -shared -o libcryptomult.so crypto_multiplier.c crypto_montgomery_ct.c
+shared: crypto_multiplier.c crypto_multiplier.h crypto_montgomery_ct.c crypto_montgomery_ct.h crypto_prime.c crypto_prime.h
+	$(CC) $(CFLAGS) -fPIC -shared -o libcryptomult.so crypto_multiplier.c crypto_montgomery_ct.c crypto_prime.c
 	
 clean:
-	rm -f *.o $(TARGET) test_bounds libcryptomult.so
+	rm -f *.o $(TARGET) test_prime test_bounds test_prime_sanitize libcryptomult.so
 
 .PHONY: all shared clean
 
@@ -36,5 +42,7 @@ clean:
 bounds-sanitize: crypto_multiplier.c crypto_multiplier.h tests/test_bounds.c
 	$(CC) -std=c11 -O1 -g -Wall -Wextra -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -I. crypto_multiplier.c tests/test_bounds.c -o test_bounds
 	./test_bounds
+	$(CC) -std=c11 -O1 -g -Wall -Wextra -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -I. crypto_multiplier.c crypto_prime.c tests/test_prime.c -o test_prime_sanitize
+	./test_prime_sanitize
 
 .PHONY: bounds-sanitize

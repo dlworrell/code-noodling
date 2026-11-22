@@ -42,6 +42,13 @@ repository's [`aes-manifest.yaml`](../aes-manifest.yaml) (Catylist ADR-0004).
 - Modular inverse: variable-time binary extended GCD for odd moduli.
 - Blinding: rejection-sampled invertible factor `k`, `a*k mod m`, and ordinary
   modular unblinding. Both the blinded value and `k` are returned.
+- Modular exponentiation: left-to-right square-and-multiply in Montgomery form,
+  for odd moduli (`crypto_mod_exp`, variable-time).
+- GRH-conditional primality test: Miller–Rabin for every base up to Bach's
+  explicit bound 2 (ln N)² (`crypto_is_prime_grh`, variable-time). Composite
+  answers are unconditional; prime answers assume the generalized Riemann
+  hypothesis for Dirichlet L-functions. See
+  [GRH primality notes](docs/engineering/CRYPTO-PRIMALITY-GRH.md).
 
 The bounded NTT is not the Harvey–van der Hoeven algorithm discussed in the
 article. Its two-prime reconstruction is valid for this implementation's maximum
@@ -58,6 +65,8 @@ make shared all
 ./test_suite
 python3 tests/test_arithmetic.py
 make bounds-sanitize
+./test_prime
+python3 tests/test_prime.py
 python3 benchmark_multiply.py
 ```
 
