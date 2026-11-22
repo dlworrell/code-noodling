@@ -7,10 +7,10 @@ Catalyst-File-ID: urn:uuid:705d3f55-92dc-4e75-adc2-6e49677682c9
 
 # ECPP primality certificates
 
-Status: Experimental (slice 1 of 4)
+Status: Experimental (slices 1 and 2 of 4)
 Scope: `crypto_pipeline/` (governed project scope, Catylist ADR-0004)
 Files: `crypto_ecpp.h`, `crypto_ecpp.c`, `crypto_bigint.h`, `crypto_bigint.c`,
-`ecpp_cert.py`, `tests/test_ecpp.c`, `tests/test_ecpp.py`
+`ecpp_cert.py`, `tests/test_ecpp.c`, `tests/test_ecpp.py`, `tests/fixtures/ecpp/`
 
 ## Why
 
@@ -110,15 +110,50 @@ random curves with that j-invariant. A 512-bit prime takes a few seconds and
 about 20 steps. Class number 1 alone cannot certify every prime, so
 `provable_prime` draws primes until one works and `certify` can return None.
 
+## PARI/GP certificate chains for primes at least 2^64
+
+`ecpp_cert.from_pari` converts a certificate from PARI/GP's `primecert(N)`
+(checked against PARI 2.15.4's own help and output). Each entry is
+`[N, t, s, a, [x, y]]`: the curve y² = x³ + ax + b passes through (x, y), its
+order is m = N + 1 − t, s is the cofactor and q = m / s; PARI ends the chain
+below 2^64. That maps field for field onto a checker step (k = s), and b is
+again derived from the point.
+
+`python3 ecpp_cert.py pari N` accepts integer inputs `N >= 2^64` and prints
+the certificate chain in fixture format for a prime. Below this range, PARI
+returns scalar certificates for primes; the fixture format represents chain
+rows only. The CLI rejects inputs below `2^64` before invoking GP, reports the
+supported range on stderr, exits with status 2 and prints no fixture output.
+The Python helper `pari_certificate` raises `ValueError` for these inputs.
+For in-range inputs, GP errors (including a composite input or stack overflow)
+are reported as failures even when GP itself exits 0.
+
+`tests/fixtures/ecpp/` holds six committed certificates, each with the command,
+PARI version and date in its header:
+
+| Fixture | N | Bits | Steps |
+|---|---|---|---|
+| `p127` | 2^127 + 45 | 128 | 2 |
+| `p255` | 2^255 − 19 (Curve25519) | 255 | 6 |
+| `p256` | 2^256 − 2^224 + 2^192 + 2^96 − 1 (NIST P-256) | 256 | 9 |
+| `p333` | first prime above 10^100 | 333 | 12 |
+| `p513` | first prime above 3 · 2^511 | 513 | 17 |
+| `p1024` | first prime above 2^1023 + 2^512 | 1024 | 41 |
+
+The checker accepts all six unchanged; the 1024-bit chain takes about 0.4 s.
+The class-number-1 generator finds no certificate for the last four within its
+search budget, so these are primes this repository could not certify before.
+CI checks only the committed fixtures and does not need PARI;
+`test_live_pari_certificates` also certifies fresh random primes when gp is
+installed. PARI is the prover only: a wrong certificate from it would be
+rejected, never accepted.
+
 ## Limits and next slices
 
 - Soundness rests on Hasse's theorem and the Bosma–Lenstra property of the
   addition law (both proven, not machine-checked here; the law's property is
   also tested exhaustively above) and on the published 64-bit Miller–Rabin
   computation.
-- Slice 2: certify arbitrary primes by converting certificates from an
-  external prover (PARI/GP `primecertify`; its format to be confirmed) and
-  committing a few as fixtures with the command and version recorded.
 - Slice 3: mixed certificates, where an ECPP step's q is proven by a
   Pocklington tree or the reverse.
 - Slice 4: the theorem in Lean with Hasse's bound as a hypothesis.

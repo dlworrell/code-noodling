@@ -16,6 +16,8 @@ import ctypes as c
 import errno
 import math
 import random
+import shutil
+import subprocess
 import sys
 import unittest
 from pathlib import Path
@@ -29,6 +31,7 @@ P = c.POINTER(U)
 MASK = (1 << 64) - 1
 FIELDS = ('n', 'a', 'x', 'y', 'k', 'q')
 LIB = c.CDLL(str(SCOPE_ROOT / 'libcryptomult.so'), use_errno=True)
+FIXTURES = SCOPE_ROOT / 'tests' / 'fixtures' / 'ecpp'
 
 
 class Step(c.Structure):
@@ -330,6 +333,83 @@ class RejectionTests(unittest.TestCase):
         self.assertEqual((c.get_errno(), failed.value), (errno.EINVAL, 0))
         self.assertEqual(LIB.crypto_ecpp_verify(arr, 0, 0, None), -1)
         self.assertEqual(c.get_errno(), errno.EINVAL)
+
+
+def next_prime_above(v):
+    v += 1
+    while not ec.probable_prime(v):
+        v += 1
+    return v
+
+
+class PariFixtureTests(unittest.TestCase):
+    """Certificates for chosen primes from PARI/GP's primecert, converted with
+    ecpp_cert.from_pari. Several are primes the class-number-1 generator in
+    ecpp_cert.py cannot certify."""
+
+    EXPECTED = {
+        'p127': 2 ** 127 + 45,
+        'p255': 2 ** 255 - 19,
+        'p256': 2 ** 256 - 2 ** 224 + 2 ** 192 + 2 ** 96 - 1,
+        'p333': next_prime_above(10 ** 100),
+        'p513': next_prime_above(3 * 2 ** 511),
+        'p1024': next_prime_above(2 ** 1023 + 2 ** 512),
+    }
+
+    @staticmethod
+    def load(name):
+        return ec.from_pari((FIXTURES / f'{name}.txt').read_text())
+
+    def test_fixtures_prove_their_primes(self):
+        self.assertEqual(sorted(f.stem for f in FIXTURES.glob('*.txt')), sorted(self.EXPECTED))
+        for name, n in self.EXPECTED.items():
+            steps = self.load(name)
+            self.assertEqual(steps[0].n, n, name)
+            python_check(steps)
+            self.assertEqual(verify(steps)[:2], (0, 0), name)
+        self.assertEqual(len(self.load('p1024')), 41)
+
+    def test_mutated_fixture_rejected_at_that_step(self):
+        steps = self.load('p1024')
+        for index in (0, 20, 40):
+            bad = copy.deepcopy(steps)
+            bad[index].k += 1
+            self.assertEqual(verify(bad), (-1, errno.EDOM, index))
+        bad = copy.deepcopy(steps)
+        bad[20].q = bad[21].n + 2
+        self.assertEqual(verify(bad)[:2], (-1, errno.EDOM))
+
+    def test_from_pari_input_errors(self):
+        with self.assertRaises(ValueError):
+            ec.from_pari('1 2 3 4 5')
+        with self.assertRaises(ValueError):
+            ec.from_pari('101 2 7 1 1 1')  # 7 does not divide 101 + 1 - 2
+        self.assertEqual(ec.from_pari('# comment only\n\n'), [])
+
+    def test_pari_cli_rejects_inputs_below_chain_domain(self):
+        for n in (6, 41, (1 << 64) - 1):
+            with self.subTest(n=n):
+                result = subprocess.run(
+                    [sys.executable, str(SCOPE_ROOT / 'ecpp_cert.py'), 'pari', str(n)],
+                    env={'PATH': ''}, capture_output=True, text=True, timeout=10,
+                )
+                self.assertEqual(result.returncode, 2)
+                self.assertEqual(result.stdout, '')
+                self.assertIn('N >= 2^64', result.stderr)
+                self.assertNotIn('Traceback', result.stderr)
+
+    @unittest.skipUnless(shutil.which('gp'), 'PARI/GP not installed')
+    def test_live_pari_certificates(self):
+        rng = random.Random(12)
+        with self.assertRaisesRegex(RuntimeError, 'not prime'):
+            ec.pari_certificate(1 << 64)
+        primes = [18446744073709551629]  # first prime above 2**64
+        primes.extend(next_prime_above(rng.getrandbits(bits) | (1 << (bits - 1)))
+                      for bits in (100, 300))
+        for n in primes:
+            steps = ec.from_pari(ec.pari_certificate(n))
+            self.assertEqual(steps[0].n, n)
+            self.assertEqual(verify(steps)[:2], (0, 0))
 
 
 if __name__ == '__main__':
