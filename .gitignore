@@ -45,3 +45,7 @@ __pycache__/
 # manifest, proof and timing evidence) must be committed the same way
 # (crypto_pipeline/tests/test_repository_files.py checks these paths).
 !crypto_pipeline/**/*.json
+
+# Lean build output for crypto_pipeline/proof/lean (Mathlib checkout and caches).
+crypto_pipeline/proof/lean/.lake/
+crypto_pipeline/proof/lean/lake-manifest.json
