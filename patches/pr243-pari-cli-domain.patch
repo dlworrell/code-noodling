@@ -1,0 +1,130 @@
+diff --git a/crypto_pipeline/docs/engineering/CRYPTO-ECPP.md b/crypto_pipeline/docs/engineering/CRYPTO-ECPP.md
+index 5921ef3..f0d7f2e 100644
+--- a/crypto_pipeline/docs/engineering/CRYPTO-ECPP.md
++++ b/crypto_pipeline/docs/engineering/CRYPTO-ECPP.md
+@@ -110,16 +110,23 @@ random curves with that j-invariant. A 512-bit prime takes a few seconds and
+ about 20 steps. Class number 1 alone cannot certify every prime, so
+ `provable_prime` draws primes until one works and `certify` can return None.
+ 
+-## Arbitrary primes: PARI/GP certificates
++## PARI/GP certificate chains for primes at least 2^64
+ 
+ `ecpp_cert.from_pari` converts a certificate from PARI/GP's `primecert(N)`
+ (checked against PARI 2.15.4's own help and output). Each entry is
+ `[N, t, s, a, [x, y]]`: the curve y² = x³ + ax + b passes through (x, y), its
+ order is m = N + 1 − t, s is the cofactor and q = m / s; PARI ends the chain
+ below 2^64. That maps field for field onto a checker step (k = s), and b is
+-again derived from the point. `python3 ecpp_cert.py pari N` runs gp and prints
+-the fixture format; it raises an error when gp reports one, because gp exits 0
+-even after a stack overflow.
++again derived from the point.
++
++`python3 ecpp_cert.py pari N` accepts integer inputs `N >= 2^64` and prints
++the certificate chain in fixture format for a prime. Below this range, PARI
++returns scalar certificates for primes; the fixture format represents chain
++rows only. The CLI rejects inputs below `2^64` before invoking GP, reports the
++supported range on stderr, exits with status 2 and prints no fixture output.
++The Python helper `pari_certificate` raises `ValueError` for these inputs.
++For in-range inputs, GP errors (including a composite input or stack overflow)
++are reported as failures even when GP itself exits 0.
+ 
+ `tests/fixtures/ecpp/` holds six committed certificates, each with the command,
+ PARI version and date in its header:
+diff --git a/crypto_pipeline/ecpp_cert.py b/crypto_pipeline/ecpp_cert.py
+index 6719c39..9454425 100644
+--- a/crypto_pipeline/ecpp_cert.py
++++ b/crypto_pipeline/ecpp_cert.py
+@@ -18,14 +18,14 @@ usable when removing its small prime factors leaves a probable prime q with
+ 
+ Class number 1 alone does not certify every prime: some N have no usable
+ order at any depth. provable_prime() draws primes until one works; certify()
+-returns None on failure. For an arbitrary prime, from_pari() converts a
++returns None on failure. For a prime N >= 2^64, from_pari() converts a
+ certificate made by PARI/GP's primecert() (Atkin-Morain format: one entry
+ [N, t, s, a, [x, y]] per step, curve order m = N + 1 - t, q = m / s).
+ 
+ Usage:
+   python3 ecpp_cert.py BITS     print a random provable prime and its chain length
+-  python3 ecpp_cert.py pari N   print PARI's certificate for N in fixture format
+-                                (needs gp on PATH)
++  python3 ecpp_cert.py pari N   print PARI's certificate chain in fixture format
++                                (N >= 2^64; needs gp on PATH)
+ """
+ 
+ from __future__ import annotations
+@@ -316,8 +316,16 @@ def from_pari(text: str) -> list[Step]:
+ 
+ 
+ def pari_certificate(n: int, gp: str = "gp", timeout: int = 3600) -> str:
+-    """Runs PARI/GP's primecert(n) and returns its certificate in fixture format."""
+-    result = subprocess.run([gp, "-q", "-f"], input=PARI_SCRIPT.format(n=int(n)),
++    """Return PARI's certificate chain in fixture format for n >= 2^64.
++
++    Smaller primes have scalar PARI certificates, which are not fixture rows.
++    Raise ValueError for inputs below the chain domain without running GP.
++    """
++    n = int(n)
++    if n < U64:
++        raise ValueError("PARI certificate-chain output requires N >= 2^64; "
++                         "scalar certificates are not supported")
++    result = subprocess.run([gp, "-q", "-f"], input=PARI_SCRIPT.format(n=n),
+                             capture_output=True, text=True, timeout=timeout, check=True)
+     # gp reports errors such as a stack overflow with "***" and still exits 0;
+     # its warnings use the same marker.
+@@ -330,7 +338,13 @@ def pari_certificate(n: int, gp: str = "gp", timeout: int = 3600) -> str:
+ 
+ def main(argv: list[str]) -> int:
+     if len(argv) > 2 and argv[1] == "pari":
+-        sys.stdout.write(pari_certificate(int(argv[2])))
++        n = int(argv[2])
++        try:
++            certificate = pari_certificate(n)
++        except ValueError as exc:
++            print(f"ecpp_cert.py: {exc}", file=sys.stderr)
++            return 2
++        sys.stdout.write(certificate)
+         return 0
+     bits = int(argv[1]) if len(argv) > 1 else 256
+     n, steps = provable_prime(bits, random.Random())
+diff --git a/crypto_pipeline/tests/test_ecpp.py b/crypto_pipeline/tests/test_ecpp.py
+index 145a25c..c0b42a5 100644
+--- a/crypto_pipeline/tests/test_ecpp.py
++++ b/crypto_pipeline/tests/test_ecpp.py
+@@ -17,6 +17,7 @@ import errno
+ import math
+ import random
+ import shutil
++import subprocess
+ import sys
+ import unittest
+ from pathlib import Path
+@@ -385,11 +386,27 @@ class PariFixtureTests(unittest.TestCase):
+             ec.from_pari('101 2 7 1 1 1')  # 7 does not divide 101 + 1 - 2
+         self.assertEqual(ec.from_pari('# comment only\n\n'), [])
+ 
++    def test_pari_cli_rejects_inputs_below_chain_domain(self):
++        for n in (6, 41, (1 << 64) - 1):
++            with self.subTest(n=n):
++                result = subprocess.run(
++                    [sys.executable, str(SCOPE_ROOT / 'ecpp_cert.py'), 'pari', str(n)],
++                    env={'PATH': ''}, capture_output=True, text=True, timeout=10,
++                )
++                self.assertEqual(result.returncode, 2)
++                self.assertEqual(result.stdout, '')
++                self.assertIn('N >= 2^64', result.stderr)
++                self.assertNotIn('Traceback', result.stderr)
++
+     @unittest.skipUnless(shutil.which('gp'), 'PARI/GP not installed')
+     def test_live_pari_certificates(self):
+         rng = random.Random(12)
+-        for bits in (100, 300):
+-            n = next_prime_above(rng.getrandbits(bits) | (1 << (bits - 1)))
++        with self.assertRaisesRegex(RuntimeError, 'not prime'):
++            ec.pari_certificate(1 << 64)
++        primes = [18446744073709551629]  # first prime above 2**64
++        primes.extend(next_prime_above(rng.getrandbits(bits) | (1 << (bits - 1)))
++                      for bits in (100, 300))
++        for n in primes:
+             steps = ec.from_pari(ec.pari_certificate(n))
+             self.assertEqual(steps[0].n, n)
+             self.assertEqual(verify(steps)[:2], (0, 0))
