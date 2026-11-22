@@ -13,7 +13,7 @@ TARGET = test_suite
 # Object files
 OBJS = crypto_multiplier.o test_suite.o
 
-all: $(TARGET) test_prime test_cert
+all: $(TARGET) test_prime test_cert test_ecpp
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LDFLAGS)
@@ -30,17 +30,28 @@ crypto_prime.o: crypto_prime.c crypto_prime.h crypto_multiplier.h
 test_prime: crypto_multiplier.o crypto_prime.o tests/test_prime.c
 	$(CC) $(CFLAGS) -I. -o test_prime tests/test_prime.c crypto_multiplier.o crypto_prime.o $(LDFLAGS)
 
-crypto_cert.o: crypto_cert.c crypto_cert.h crypto_prime.h crypto_multiplier.h
+crypto_bigint.o: crypto_bigint.c crypto_bigint.h crypto_multiplier.h
+	$(CC) $(CFLAGS) -c crypto_bigint.c
+
+crypto_cert.o: crypto_cert.c crypto_cert.h crypto_bigint.h crypto_prime.h crypto_multiplier.h
 	$(CC) $(CFLAGS) -c crypto_cert.c
 
-test_cert: crypto_multiplier.o crypto_prime.o crypto_cert.o tests/test_cert.c
-	$(CC) $(CFLAGS) -I. -o test_cert tests/test_cert.c crypto_multiplier.o crypto_prime.o crypto_cert.o $(LDFLAGS)
+crypto_ecpp.o: crypto_ecpp.c crypto_ecpp.h crypto_bigint.h crypto_cert.h crypto_multiplier.h
+	$(CC) $(CFLAGS) -c crypto_ecpp.c
+
+CERT_OBJS = crypto_multiplier.o crypto_prime.o crypto_bigint.o crypto_cert.o
+
+test_cert: $(CERT_OBJS) tests/test_cert.c
+	$(CC) $(CFLAGS) -I. -o test_cert tests/test_cert.c $(CERT_OBJS) $(LDFLAGS)
+
+test_ecpp: $(CERT_OBJS) crypto_ecpp.o tests/test_ecpp.c
+	$(CC) $(CFLAGS) -I. -o test_ecpp tests/test_ecpp.c $(CERT_OBJS) crypto_ecpp.o $(LDFLAGS)
 	
-shared: crypto_multiplier.c crypto_multiplier.h crypto_montgomery_ct.c crypto_montgomery_ct.h crypto_prime.c crypto_prime.h crypto_cert.c crypto_cert.h
-	$(CC) $(CFLAGS) -fPIC -shared -o libcryptomult.so crypto_multiplier.c crypto_montgomery_ct.c crypto_prime.c crypto_cert.c
+shared: crypto_multiplier.c crypto_multiplier.h crypto_montgomery_ct.c crypto_montgomery_ct.h crypto_prime.c crypto_prime.h crypto_bigint.c crypto_bigint.h crypto_cert.c crypto_cert.h crypto_ecpp.c crypto_ecpp.h
+	$(CC) $(CFLAGS) -fPIC -shared -o libcryptomult.so crypto_multiplier.c crypto_montgomery_ct.c crypto_prime.c crypto_bigint.c crypto_cert.c crypto_ecpp.c
 	
 clean:
-	rm -f *.o $(TARGET) test_prime test_cert test_bounds test_prime_sanitize test_cert_sanitize libcryptomult.so
+	rm -f *.o $(TARGET) test_prime test_cert test_ecpp test_bounds test_prime_sanitize test_cert_sanitize test_ecpp_sanitize libcryptomult.so
 
 .PHONY: all shared clean
 
@@ -50,7 +61,9 @@ bounds-sanitize: crypto_multiplier.c crypto_multiplier.h tests/test_bounds.c
 	./test_bounds
 	$(CC) -std=c11 -O1 -g -Wall -Wextra -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -I. crypto_multiplier.c crypto_prime.c tests/test_prime.c -o test_prime_sanitize
 	./test_prime_sanitize
-	$(CC) -std=c11 -O1 -g -Wall -Wextra -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -I. crypto_multiplier.c crypto_prime.c crypto_cert.c tests/test_cert.c -o test_cert_sanitize
+	$(CC) -std=c11 -O1 -g -Wall -Wextra -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -I. crypto_multiplier.c crypto_prime.c crypto_bigint.c crypto_cert.c tests/test_cert.c -o test_cert_sanitize
 	./test_cert_sanitize
+	$(CC) -std=c11 -O1 -g -Wall -Wextra -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -I. crypto_multiplier.c crypto_prime.c crypto_bigint.c crypto_cert.c crypto_ecpp.c tests/test_ecpp.c -o test_ecpp_sanitize
+	./test_ecpp_sanitize
 
 .PHONY: bounds-sanitize
