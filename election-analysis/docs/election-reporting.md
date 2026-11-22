@@ -144,12 +144,17 @@ default-branch route is retargeted to `dev-daily` rather than duplicated. Severa
 open pull requests from the same automation branch are refused.
 
 The publishing job runs `python -m election_reporting.ci.publish_reports`. It
-creates `automation/election-reports` from the analyzed commit (or force-resets it
-there; this branch belongs to the workflow, so do not push to it by hand) and writes
-the commit through the GraphQL `createCommitOnBranch` mutation with the workflow's
-`GITHUB_TOKEN`. GitHub signs those commits, so they show **Verified** and satisfy a
-`required_signatures` ruleset. If the branch already contains exactly the same
-reports on top of the same commit, no new commit is made.
+builds the commits on `automation/election-reports-staging` from the analyzed
+commit using GitHub's GraphQL `createCommitOnBranch` mutation. GitHub signs the
+commits, so they show **Verified**. A timed-out create request (HTTP 504) may
+already have landed: the publisher does not retry it. It continues only if
+the staging tip remains stable and GitHub verifies the exact commit identity,
+its sole expected parent, and the full repository tree for that batch. An
+unchanged, missing, or mismatched tip stops the job before publication. After
+the complete tree is verified, the publisher promotes the last commit to the
+workflow-owned `automation/election-reports` branch, with a lease if the branch
+already exists. If the branch already carries the exact verified reports on the
+same analyzed base, the publisher ensures the pull request without a new commit.
 
 The commit and pull request title omit `[skip ci]` so the pull request's checks are
 not suppressed. Note that GitHub does not start new workflow runs for events created
