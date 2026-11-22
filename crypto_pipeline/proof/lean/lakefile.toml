@@ -1,0 +1,17 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:a89b862a-a1aa-457c-9fb9-eccdebfb4aac
+
+# Lean proofs for crypto_pipeline's GRH-conditional primality test.
+# Checked by .github/workflows/crypto_lean.yml; see README.md here.
+name = "crypto_pipeline_grh"
+defaultTargets = ["CryptoPipelineGrh"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "v4.15.0"
+
+[[lean_lib]]
+name = "CryptoPipelineGrh"
