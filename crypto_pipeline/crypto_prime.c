@@ -189,3 +189,119 @@ int crypto_is_prime_grh(int *is_prime, const limb_t *candidate, size_t n, uint64
     errno = 0;
     return 0;
 }
+
+/* a >>= 1 over n limbs. */
+static void shift_right_one(limb_t *a, size_t n) {
+    for (size_t i = 0; i < n; ++i) a[i] = (a[i] >> 1) | (i + 1 < n ? a[i + 1] << 63 : 0);
+}
+
+/* a += 1 over n limbs; the caller guarantees no carry out. */
+static void add_one(limb_t *a, size_t n) {
+    for (size_t i = 0; i < n; ++i) {
+        if (++a[i] != 0) break;
+    }
+}
+
+int crypto_mod_sqrt_grh(limb_t *root, const limb_t *a, const limb_t *p, size_t n,
+                        uint64_t max_trials) {
+    if (!root || !a || !p || !valid_count(n)) { errno = EINVAL; return -1; }
+    size_t pn = significant_limbs(p, n);
+
+    if (pn == 1 && p[0] == 2) { /* The only even prime: every value is its own root. */
+        limb_t low = a[0] & 1;
+        set_small(root, low, n);
+        errno = 0; return 0;
+    }
+    if (!odd_modulus_above_one(p, pn)) { errno = EDOM; return -1; }
+
+    limb_t unit[pn], value[pn], one[pn], r2[pn], minus_one[pn], wide[2 * pn];
+    limb_t e[pn], q[pn], q1[pn], value_m[pn], z[pn], z_m[pn];
+    limb_t c[pn], t[pn], r[pn], b[pn], x[pn], check[pn];
+    set_small(unit, 1, pn);
+    /* value = a mod p; a has n limbs, p has pn <= n. */
+    {
+        limb_t a_wide[n], p_wide[n], reduced[n];
+        copy_limbs(p_wide, p, n);
+        for (size_t i = pn; i < n; ++i) p_wide[i] = 0;
+        set_small(a_wide, 1, n);
+        if (crypto_mod_multiply(reduced, a, a_wide, p_wide, n) != 0) return -1;
+        copy_limbs(value, reduced, pn);
+    }
+    int value_is_zero = 1;
+    for (size_t i = 0; i < pn; ++i) value_is_zero &= value[i] == 0;
+    if (value_is_zero) { set_small(root, 0, n); errno = 0; return 0; }
+
+    montgomery_constants(one, r2, p, pn);
+    (void)subtract_limbs(minus_one, p, one, pn);     /* Montgomery form of p - 1. */
+    if (mont_mul(value_m, value, r2, p, pn, wide) != 0) return -1;
+
+    /* Euler's criterion: value^((p-1)/2) must be 1 for a quadratic residue. */
+    copy_limbs(e, p, pn);
+    e[0] -= 1;                                       /* p is odd: no borrow. */
+    shift_right_one(e, pn);
+    if (mont_pow(x, value_m, e, pn, one, p, pn, wide) != 0) return -1;
+    if (!equal_limbs(x, one, pn)) { errno = EDOM; return -1; } /* not a residue, or p composite */
+
+    /* p - 1 = q * 2^s with q odd. */
+    copy_limbs(q, p, pn);
+    q[0] -= 1;
+    size_t s = 0;
+    while ((q[0] & 1) == 0) { shift_right_one(q, pn); ++s; }
+
+    /* Least quadratic non-residue z: below 2 (ln p)^2 under ERH (Bach 1990). */
+    uint64_t last = crypto_grh_witness_bound(p, pn);
+    if (pn == 1 && last > p[0] - 1) last = p[0] - 1;
+    uint64_t trials = 0;
+    int found = 0;
+    for (uint64_t candidate = 2; candidate <= last; ++candidate) {
+        if (max_trials != 0 && ++trials > max_trials) { errno = ERANGE; return -1; }
+        set_small(z, (limb_t)candidate, pn);
+        if (mont_mul(z_m, z, r2, p, pn, wide) != 0) return -1;
+        if (mont_pow(x, z_m, e, pn, one, p, pn, wide) != 0) return -1;
+        if (equal_limbs(x, minus_one, pn)) { found = 1; break; }
+        if (!equal_limbs(x, one, pn)) { errno = EDOM; return -1; } /* p is composite */
+    }
+    if (!found) { errno = EDOM; return -1; } /* p composite, or a counterexample to ERH */
+
+    /* Tonelli-Shanks in Montgomery form. */
+    copy_limbs(q1, q, pn);
+    add_one(q1, pn);                                 /* q < p, so q + 1 fits. */
+    shift_right_one(q1, pn);                         /* (q + 1) / 2 */
+    if (mont_pow(c, z_m, q, pn, one, p, pn, wide) != 0) return -1;
+    if (mont_pow(t, value_m, q, pn, one, p, pn, wide) != 0) return -1;
+    if (mont_pow(r, value_m, q1, pn, one, p, pn, wide) != 0) return -1;
+    size_t m = s;
+    while (!equal_limbs(t, one, pn)) {
+        /* Least i, 0 < i < m, with t^(2^i) = 1. */
+        size_t i = 0;
+        copy_limbs(x, t, pn);
+        while (!equal_limbs(x, one, pn)) {
+            if (++i >= m) { errno = EDOM; return -1; } /* p is composite */
+            if (mont_mul(x, x, x, p, pn, wide) != 0) return -1;
+        }
+        copy_limbs(b, c, pn);                        /* b = c^(2^(m-i-1)) */
+        for (size_t k = 0; k + i + 1 < m; ++k) {
+            if (mont_mul(b, b, b, p, pn, wide) != 0) return -1;
+        }
+        m = i;
+        if (mont_mul(c, b, b, p, pn, wide) != 0) return -1;
+        if (mont_mul(t, t, c, p, pn, wide) != 0) return -1;
+        if (mont_mul(r, r, b, p, pn, wide) != 0) return -1;
+    }
+
+    /* Leave Montgomery form, confirm r^2 = value, and return min(r, p - r). */
+    if (mont_mul(r, r, unit, p, pn, wide) != 0) return -1;
+    {
+        limb_t r_m[pn], sq[pn];
+        if (mont_mul(r_m, r, r2, p, pn, wide) != 0) return -1;
+        if (mont_mul(sq, r_m, r_m, p, pn, wide) != 0) return -1;
+        if (mont_mul(check, sq, unit, p, pn, wide) != 0) return -1;
+    }
+    if (!equal_limbs(check, value, pn)) { errno = EDOM; return -1; }
+    limb_t other[pn];
+    (void)subtract_limbs(other, p, r, pn);
+    const limb_t *smaller = compare_limbs(other, r, pn) < 0 ? other : r;
+    for (size_t i = 0; i < n; ++i) root[i] = i < pn ? smaller[i] : 0;
+    errno = 0;
+    return 0;
+}

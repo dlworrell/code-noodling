@@ -5,9 +5,9 @@ SPDX-License-Identifier: Apache-2.0
 Catalyst-File-ID: urn:uuid:cea4a8b5-da90-45c1-b012-1eec41e79357
 -->
 
-# GRH-conditional primality test
+# GRH-conditional primality test and square roots
 
-Status: Experimental (first slice)
+Status: Experimental (slices 1 and 2)
 Scope: `crypto_pipeline/` (governed project scope, Catylist ADR-0004)
 Files: `crypto_prime.h`, `crypto_prime.c`, `tests/test_prime.c`, `tests/test_prime.py`
 
@@ -115,9 +115,47 @@ cryptographic sizes.
     (318665857834031151167461 and 3317044064679887385961981);
   - known primes up to 2^127 − 1, the bound formula, the work cap, and errors.
 
-## Next slices (not in this change)
+## Square roots modulo a prime (slice 2)
 
-- A deterministic Tonelli–Shanks square root modulo a prime, using the same
-  ERH bound for the least quadratic non-residue.
-- A formal link: state Bach's bound in Lean and prove that the C loop computes
-  it. This is a research-sized task; Mathlib does not yet contain Bach's theorem.
+`crypto_mod_sqrt_grh` computes a square root of `a` modulo a prime `p` by
+Tonelli–Shanks. The one step of Tonelli–Shanks that is normally randomized is
+finding a quadratic non-residue `z`. Here it is a deterministic search over
+`z = 2, 3, …` up to the same bound, `crypto_grh_witness_bound(p)`:
+
+> Assuming ERH, the least quadratic non-residue modulo a prime p is below
+> 2 (ln p)². (Bach 1990, as above.)
+
+What the routine guarantees:
+
+- **Any root it returns is correct, unconditionally.** It squares the result
+  and compares with `a mod p` before returning, so even a composite `p` cannot
+  produce a wrong root. It returns the smaller root, `min(r, p − r)`.
+- **ERH only bounds the search.** It guarantees the search ends within the
+  bound for a prime `p`. If no non-residue is found below the bound, the call
+  fails with `EDOM`: for a prime `p` that would be a counterexample to ERH, so
+  in practice it means `p` is composite.
+- **Composite moduli are rejected when detected.** Euler's criterion, the
+  non-residue search and the Tonelli–Shanks loop each check an identity that
+  holds for primes; a failure gives `EDOM`.
+- **The search is short in practice.** The least non-residue is usually 2, 3
+  or 5. `max_trials` caps it anyway (`ERANGE`, output unchanged).
+- `p = 2` is accepted; other even moduli and `p ≤ 1` give `EDOM`.
+
+Tests (added to `tests/test_prime.c` and `tests/test_prime.py`):
+
+- every residue of small primes, against brute force, including that
+  non-residues fail with `EDOM` and leave the output unchanged;
+- random primes from 8 to 521 bits, in each class p ≡ 3 (mod 4) and
+  p ≡ 1 (mod 8), with unreduced inputs;
+- primes where p − 1 has a large power of two (998244353, 1004535809,
+  2^64 − 2^32 + 1, 3·2^189 + 1), which exercise the Tonelli–Shanks loop;
+- composite moduli, checking that any returned root is a true root;
+- the trial cap and argument errors.
+
+## Next slice (not in this change)
+
+A formal link: state Bach's bound in Lean and prove that the C loop computes
+it. Proving Bach's theorem itself is research-sized; Mathlib does not yet
+contain it. A bounded first step is to prove, with Bach's bound as an explicit
+hypothesis, that the integer bound in `crypto_grh_witness_bound` is at least
+2 (ln N)² and that a Miller test over all bases up to it decides primality.

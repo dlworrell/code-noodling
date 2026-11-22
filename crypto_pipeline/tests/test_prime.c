@@ -105,6 +105,32 @@ int main(void) {
     assert(crypto_grh_witness_bound(NULL, 1) == 0 && errno == EINVAL);
     printf("[PASS] error contracts\n");
 
+    /* 7. Square roots modulo primes, checked by squaring. */
+    const uint64_t primes[] = {2u, 3u, 5u, 7u, 13u, 17u, 97u, 65537u, 998244353u,
+                               UINT64_C(0xFFFFFFFF00000001) /* 2^64 - 2^32 + 1, s = 32 */};
+    for (size_t i = 0; i < sizeof primes / sizeof primes[0]; ++i) {
+        uint64_t pr = primes[i];
+        limb_t pm[1] = {pr};
+        for (uint64_t v = 0; v < 40; ++v) {
+            uint64_t sq = (uint64_t)(((dlimb_t)v * v) % pr);
+            limb_t av[1] = {sq}, rt[1] = {UINT64_MAX};
+            assert(crypto_mod_sqrt_grh(rt, av, pm, 1, 0) == 0 && errno == 0);
+            assert((uint64_t)(((dlimb_t)rt[0] * rt[0]) % pr) == sq);
+            assert(rt[0] <= pr - rt[0] || rt[0] == 0);
+        }
+    }
+    /* A non-residue fails with EDOM and leaves the output unchanged. */
+    limb_t p7[1] = {7}, three[1] = {3}, kept[1] = {99};
+    assert(crypto_mod_sqrt_grh(kept, three, p7, 1, 0) == -1 && errno == EDOM && kept[0] == 99);
+    /* 2^89 - 1 is 3 mod 4; 2^64 + 13 is a two-limb prime. */
+    limb_t nine[2] = {9, 0}, rt2[2];
+    assert(crypto_mod_sqrt_grh(rt2, nine, m89, 2, 0) == 0 && rt2[0] == 3 && rt2[1] == 0);
+    limb_t even_mod[1] = {10}, one_mod[1] = {1};
+    assert(crypto_mod_sqrt_grh(kept, three, even_mod, 1, 0) == -1 && errno == EDOM);
+    assert(crypto_mod_sqrt_grh(kept, three, one_mod, 1, 0) == -1 && errno == EDOM);
+    assert(crypto_mod_sqrt_grh(kept, three, p7, 0, 0) == -1 && errno == EINVAL);
+    printf("[PASS] square roots modulo primes\n");
+
     printf("=== crypto_prime tests passed ===\n");
     return 0;
 }
