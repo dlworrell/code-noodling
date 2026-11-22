@@ -25,6 +25,9 @@ branch and requires automation-produced commits to be GitHub-verified. A plain
    GitHub refuses a request over 45 MB, so a larger change is split into a chain
    of commits, each under ``MAX_BATCH_BYTES`` of encoded content; every commit in
    the chain must be verified, and the last one must carry the complete tree.
+   A create request can report HTTP 504 after GitHub wrote its commit. Recover
+   only from a stable staging tip with the expected parent, signature status,
+   and exact intermediate tree; never blindly repeat the write.
 4. Opens a pull request from the automation branch to the base branch, or updates
    the existing one.
 
@@ -48,6 +51,7 @@ import argparse
 import base64
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -80,6 +84,10 @@ mutation($input: CreateCommitOnBranchInput!) {
 
 class PublishError(RuntimeError):
     """Raised when publishing cannot complete."""
+
+
+class GatewayTimeout(PublishError):
+    """gh reported an HTTP 504; a dispatched write may already have landed."""
 
 
 @dataclass(frozen=True)
@@ -255,7 +263,10 @@ class GitHub:
         result = self.runner(args, input=stdin, capture_output=True, check=False)
         if result.returncode != 0:
             stderr = result.stderr.decode("utf-8", "replace").strip()
-            raise PublishError(f"gh api {method} {endpoint} failed: {stderr}")
+            error_type = GatewayTimeout if re.search(
+                r"(?m)^gh: (?:[^\n]*\()?(?:HTTP 504)(?:\)|\b)", stderr
+            ) else PublishError
+            raise error_type(f"gh api {method} {endpoint} failed: {stderr}")
         text = result.stdout.decode("utf-8").strip()
         return json.loads(text) if text else None
 
@@ -414,9 +425,10 @@ class GitHub:
         return created["html_url"]
 
 
-def git(args: Sequence[str], cwd: Path, env: dict | None = None) -> bytes:
+def git(args: Sequence[str], cwd: Path, env: dict | None = None, *,
+        stdin: bytes | None = None) -> bytes:
     result = subprocess.run(
-        ["git", *args], cwd=cwd, env=env, capture_output=True, check=False
+        ["git", *args], cwd=cwd, env=env, input=stdin, capture_output=True, check=False
     )
     if result.returncode != 0:
         raise PublishError(
@@ -441,6 +453,38 @@ def detect_changes(repo_root: Path, report_path: str) -> tuple[ReportChanges, st
         )
         tree = git(["write-tree"], repo_root, env).decode("ascii").strip()
     return restrict_to(parse_name_status(raw), report_path), tree
+
+
+def batch_trees(repo_root: Path, base_sha: str, final_tree: str,
+                batches: Sequence[ReportChanges]) -> list[str]:
+    """Calculate the full repository tree expected after each cumulative batch.
+
+    Use exact index entries from the already-detected final tree, not directory
+    pathspecs or later reads of the checkout. Untouched paths stay as in the
+    analyzed commit. The temporary index does not change the checked-out index.
+    """
+    entries = {}
+    for record in git(["ls-tree", "-rz", final_tree], repo_root).split(b"\0"):
+        if record:
+            meta, path = record.split(b"\t", 1)
+            mode, _, oid = meta.split(b" ")
+            entries[path] = mode + b" " + oid + b"\t" + path + b"\0"
+
+    expected = []
+    with tempfile.TemporaryDirectory() as tmp:
+        env = dict(os.environ, GIT_INDEX_FILE=str(Path(tmp) / "index"))
+        git(["read-tree", base_sha], repo_root, env)
+        for batch in batches:
+            deletions = [b"0 " + b"0" * len(final_tree) + b"\t" + os.fsencode(path) + b"\0"
+                         for path in batch.deletions]
+            try:
+                additions = [entries[os.fsencode(path)] for path in batch.additions]
+            except KeyError as error:
+                raise PublishError(f"batch path absent from the expected report tree: {error}") from error
+            git(["update-index", "-z", "--index-info"], repo_root, env,
+                stdin=b"".join(deletions + additions))
+            expected.append(git(["write-tree"], repo_root, env).decode("ascii").strip())
+    return expected
 
 
 def publish(
@@ -490,6 +534,9 @@ def publish(
     staging = f"{branch}-staging"
     if staging in (base, branch):
         raise PublishError(f"staging branch {staging} collides with {base} or {branch}")
+    expected_trees = batch_trees(repo_root, base_sha, tree, batches)
+    if expected_trees[-1] != tree:
+        raise PublishError("the batch trees do not reproduce the full expected report tree")
     staging_head = github.branch_head(staging)
     github.point_branch(staging, base_sha, exists=staging_head is not None,
                         expected_head=staging_head)
@@ -506,10 +553,23 @@ def publish(
             changes=batch,
             read_bytes=lambda path: (repo_root / path).read_bytes(),
         )
-        commit = github.create_commit(build_graphql_request(commit_input))
-        github.require_verified_commit(commit["oid"], parent, tree if last else None)
-        log(f"Created verified commit {commit['oid']} on {staging}{part}.")
-        parent = commit["oid"]
+        try:
+            oid = github.create_commit(build_graphql_request(commit_input))["oid"]
+        except GatewayTimeout:
+            # The request might have completed on GitHub. Do not replay or move
+            # the public ref if staging is unchanged, unreadable, or ambiguous.
+            observed = github.branch_head(staging)
+            if observed is None or observed == parent:
+                raise
+            github.require_verified_commit(observed, parent, expected_trees[number - 1])
+            if github.branch_head(staging) != observed:
+                raise PublishError(f"{staging} moved while verifying the timed-out report commit")
+            oid = observed
+            log(f"Recovered verified commit {oid} on {staging}{part} after HTTP 504.")
+        else:
+            github.require_verified_commit(oid, parent, tree if last else None)
+            log(f"Created verified commit {oid} on {staging}{part}.")
+        parent = oid
     github.point_branch(branch, parent, exists=head is not None, expected_head=head)
     log(f"Moved {branch} to {parent}.")
     try:
