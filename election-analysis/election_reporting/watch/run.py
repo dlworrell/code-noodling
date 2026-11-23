@@ -438,7 +438,17 @@ def _fetch_king_county(store, config, place, plan_, fetch, now, result) -> None:
     # string) to publish a correction. _record keeps a new immutable snapshot
     # when the bytes differ and skips identical bytes, so a repeated file stays
     # idempotent. A URL is never treated as a content identity.
+    today = now.astimezone(config.timezone).date()
     for item in files:
+        # A file named for a day after today is misdated at the source (King
+        # County published webresults-20271117.csv for November 17, 2026).
+        # Its label would sort it after every real export, so refuse it.
+        if item.day > today:
+            result.errors.append(
+                f"{place.place_id}: {item.url} is named for {item.day.isoformat()}, "
+                f"after today ({today.isoformat()}); not stored (misdated export)"
+            )
+            continue
         response = fetch(item.url)
         local = (response.last_modified or now).astimezone(config.timezone)
         if local.date() != item.day:

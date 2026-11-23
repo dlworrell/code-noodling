@@ -524,6 +524,24 @@ class FetchTests(unittest.TestCase):
             fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
             self.assertEqual((election / "input/king-county/2026-11-03-2030.csv").read_bytes(), first)
 
+    def test_k_misdated_future_export_is_refused_and_reported(self) -> None:
+        # King County published webresults-20271117.csv (2027) for the
+        # November 17, 2026 count; it must not be stored or sort as newest.
+        misdated = KC_FILE.replace("20261103", "20271117")
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fake = web(root)
+            fake.routes[KC_PAGE] = Response(
+                KC_PAGE,
+                f'<a href="{KC_FILE}?rev=1&amp;hash=2">Nov 3</a><a href="{misdated}?rev=9">Nov 17</a>'.encode(),
+            )
+            fake.routes[misdated + "?rev=9"] = Response(misdated, KC_CSV.encode("utf-8"))
+            result = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
+            self.assertNotIn(misdated + "?rev=9", fake.requests)
+            self.assertEqual([s for s, _ in self.king_snapshots(root)], ["2026-11-03-2030"])
+            self.assertTrue(any("2027-11-17" in e and "misdated" in e for e in result.errors))
+
     # K5-K6 (Em's review of df4c59e): controls.
 
     def test_k5_substantive_count_change_is_kept_with_new_counts(self) -> None:
