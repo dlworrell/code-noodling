@@ -142,7 +142,12 @@ def hydrate_snapshots(config: ElectionConfig, source, snapshots):
     output = []
     for snapshot in snapshots:
         matches = [r for r in records if r.get("place") == source.source_id and r.get("input_sha256") == snapshot.sha256]
-        known = matches[0] if matches else {}
+        # A VoteWA raw-only revision can carry an earlier or later source
+        # timestamp. It remains retrieval evidence, not a new count clock
+        # for the shared physical CSV; use the first physical snapshot record.
+        known = next((r for r in matches if r.get("kind") != "votewa-json"
+                      or r.get("input") == f"input/{source.source_id}/{r.get('snapshot')}.csv"),
+                     matches[0] if matches else {})
         explicit = [r for r in overrides if r.get("source_id") == source.source_id and r.get("snapshot_sha256") == snapshot.sha256]
         if len(explicit) > 1:
             raise ElectionReportError("duplicate source version evidence")
