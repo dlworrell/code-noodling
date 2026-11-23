@@ -10,7 +10,8 @@ Catalyst-File-ID: urn:uuid:69b21e2b-f4e3-4b4c-ab25-5a34a78de4b6
 Status: Experimental (slice 2: Gabcke's bound confirmed)
 Scope: `crypto_pipeline/` (governed project scope, Catylist ADR-0004)
 Files: `crypto_zeta_ball.h`, `crypto_zeta_ball.c`, `crypto_zeta.h`,
-`crypto_zeta.c`, `zeta_verify.c`, `tests/test_zeta.c`, `tests/test_zeta.py`
+`crypto_zeta.c`, `zeta_verify.c`, `tests/test_zeta.c`, `tests/test_zeta.py`,
+`proof/lean/CryptoPipelineTuring.lean`
 
 ## Result
 
@@ -199,6 +200,26 @@ check fails (`ZZ_ERR_TURING`); if higher, something is inconsistent
 (`ZZ_ERR_INCONSISTENT`). For T = 10⁴ the bound is 10144.57, so N(g₁₀₁₄₃) ≤
 10144, matching the 10144 sign changes found.
 
+### 7. Formal link (Lean)
+
+`proof/lean/CryptoPipelineTuring.lean` (see its
+[README](../../proof/lean/README.md)) proves the integral argument of §6 in
+Lean with Mathlib, checked by `.github/workflows/crypto_lean.yml`:
+
+- `integral_step`, `integral_stepCount`: ∫_{t₀}^{t₁} L = Σᵢ (t₁ − hᵢ) exactly,
+  for right ends hᵢ in [t₀, t₁] (the C code's ∫L lower bound);
+- `turing_upper_bound`: N(t₀) ≤ 1 + (A − Σᵢ (t₁ − hᵢ) + Iθ/π)/(t₁ − t₀);
+- `turing_count_exact`, `turing_verifies`: if N(t₀) is a natural number at
+  least the count c and the floor of that bound is c, then N(t₀) = c.
+
+Trudgian's Theorem 2.2 combined with (∗), the fact that each sign change
+counts a zero, and the bound on ∫θ are explicit hypotheses (`hTrud`,
+`hcount`, `hIθ`), never axioms. The axiom audit shows only Lean's three
+standard axioms (`propext`, `Classical.choice`, `Quot.sound`) and no `sorry`.
+Not formalized: those hypotheses themselves, and the correspondence between
+the C evaluation of the bound and the Lean statement (by inspection and
+tests).
+
 ## Sources and their status
 
 | Item | Used for | Status |
@@ -309,17 +330,16 @@ Tested with MPFR 4.2.1 and GMP 6.3.0 (Ubuntu 24.04.5 packages).
 ## Limits
 
 - Soundness rests on MPFR's documented correct rounding, the cited theorems,
-  and (∗) as derived here. None of it is machine-checked; the C code is
-  tested, not proved.
+  and (∗) as derived here. Only the Turing step's integral argument is
+  machine-checked (§7); the rest, and the C code, are tested, not proved.
 - Gabcke's bound is taken from the thesis as stated; its proof (Chapters 3
   and 4) was not re-checked here. The RS–EM spot checks and the 49-point
   overlap test are consistent with it but are not a proof of it.
 - Variable-time, public inputs; research prototype. Heights up to 10⁶ are
   accepted; Euler–Maclaurin cost grows like T² overall, so large heights
   should use `--rs`.
-- Not included: higher Riemann–Siegel corrections (C₁, …), Lean
-  formalization of the Turing step, and a mixed method that trusts
-  Riemann–Siegel only where Euler–Maclaurin confirms it.
+- Not included: higher Riemann–Siegel corrections (C₁, …), and a Lean
+  model of the C code itself.
 
 ## References
 
