@@ -97,11 +97,14 @@ def load_targets(path: Path) -> list[Target]:
     if document.get("schema_version") != 1:
         raise ElectionReportError(f"{path}: schema_version must be 1")
     defaults = document.get("defaults", {})
+    tables = document.get("capture", [])
+    if not isinstance(defaults, dict) or not isinstance(tables, list):
+        raise ElectionReportError(f"{path}: expected defaults table and capture array of tables")
     targets = []
-    for index, table in enumerate(document.get("capture", []), start=1):
-        entry = {**defaults, **table}
+    for index, table in enumerate(tables, start=1):
         where = f"{path}: capture #{index}"
         try:
+            entry = {**defaults, **table}
             target = Target(
                 state=str(entry["state"]),
                 platform=str(entry["platform"]),
@@ -116,6 +119,12 @@ def load_targets(path: Path) -> list[Target]:
             )
         except KeyError as missing:
             raise ElectionReportError(f"{where}: missing {missing}") from None
+        except (TypeError, ValueError, OverflowError) as error:
+            raise ElectionReportError(f"{where}: invalid entry ({error})") from None
+        try:
+            timedelta(hours=target.night_hours)
+        except (ValueError, OverflowError):
+            raise ElectionReportError(f"{where}: night_hours is not a valid duration") from None
         if target.platform not in PLATFORMS:
             raise ElectionReportError(f"{where}: platform must be one of {', '.join(PLATFORMS)}")
         if not isinstance(target.election, date) or isinstance(target.election, datetime):
@@ -196,6 +205,21 @@ class Capture:
             self.log(f"::warning::capture: {url} is not JSON")
             return None
 
+    def listing(self, value, context: str, expected_type: type = dict):
+        """Yield entries of the expected shape without dropping valid siblings."""
+        if value is None:
+            return
+        if not isinstance(value, list):
+            self.failures.append(f"{context}: expected a list")
+            self.log(f"::warning::capture: {self.failures[-1]}")
+            return
+        for index, item in enumerate(value):
+            if not isinstance(item, expected_type):
+                self.failures.append(f"{context}[{index}]: expected {expected_type.__name__}")
+                self.log(f"::warning::capture: {self.failures[-1]}")
+                continue
+            yield item
+
     def time_left(self) -> bool:
         return self.clock() < self.deadline
 
@@ -205,13 +229,14 @@ class Capture:
 
 def _enhanced_statewide(cap: Capture, t: Target) -> list[str]:
     api = f"https://{t.host}/results/public/api"
-    jurisdiction = cap.json(f"{api}/jurisdictions/{t.jurisdiction}")
+    listing_url = f"{api}/jurisdictions/{t.jurisdiction}"
+    jurisdiction = cap.json(listing_url)
     if not isinstance(jurisdiction, dict):
         return []
     wanted = t.election.isoformat()
     # Every election listed for the day: a state can list several (a recount,
     # one primary per party, a special election alongside the general).
-    elections = [e for e in jurisdiction.get("elections") or []
+    elections = [e for e in cap.listing(jurisdiction.get("elections"), f"{listing_url}: elections")
                  if str(e.get("electionDate", ""))[:10] == wanted and e.get("publicElectionId")]
     if not elections:
         cap.log(f"capture {t.state}: no {wanted} election listed yet")
@@ -224,22 +249,23 @@ def _enhanced_statewide(cap: Capture, t: Target) -> list[str]:
 
 
 def _enhanced_election(cap: Capture, t: Target, api: str, jurisdiction: dict, public_id: str) -> list[str]:
-    metadata = cap.json(f"{api}/elections/{t.jurisdiction}/{public_id}")
+    election_url = f"{api}/elections/{t.jurisdiction}/{public_id}"
+    metadata = cap.json(election_url)
     if isinstance(metadata, dict):
         jurisdiction_id = urllib.parse.quote(str(metadata.get("jurisdictionId") or ""), safe="")
-        for category in metadata.get("publicReportCategories") or []:
-            for report in category.get("reports") or []:
+        for category in cap.listing(metadata.get("publicReportCategories"), f"{election_url}: publicReportCategories"):
+            for report in cap.listing(category.get("reports"), f"{election_url}: reports"):
                 blob = report.get("blobName")
                 if blob and jurisdiction_id:
                     cap.get(f"https://{t.host}/cdn/results/{jurisdiction_id}/"
                             f"{urllib.parse.quote(str(blob))}", large=True)
-    data = cap.json(f"{api}/elections/{t.jurisdiction}/{public_id}/data")
+    data = cap.json(f"{election_url}/data")
     if not t.counties or not isinstance(data, dict):
         return []
     with_election = {str(e.get("jurisdictionId", "")).casefold()
-                     for e in data.get("localityElections") or []}
+                     for e in cap.listing(data.get("localityElections"), f"{election_url}/data: localityElections")}
     urls = []
-    for child in jurisdiction.get("childLocalities") or []:
+    for child in cap.listing(jurisdiction.get("childLocalities"), f"{t.state}: childLocalities"):
         short = str(child.get("shortName") or "")
         if short and str(child.get("id", "")).casefold() in with_election:
             urls.append(f"{api}/elections/{urllib.parse.quote(short, safe='')}/{public_id}/data")
@@ -252,7 +278,7 @@ def _clarity_statewide(cap: Capture, t: Target) -> list[str]:
     if not isinstance(elections, list):
         return []
     wanted = f"{t.election.month}/{t.election.day}/{t.election.year}"
-    matches = [e for e in elections if str(e.get("Date", "")).split(" ")[0] == wanted
+    matches = [e for e in cap.listing(elections, f"{base}/elections.json") if str(e.get("Date", "")).split(" ")[0] == wanted
                and str(e.get("EID", "")).isdigit()]
     if not matches:
         cap.log(f"capture {t.state}: no {t.election.isoformat()} election listed yet")
@@ -276,10 +302,18 @@ def _clarity_election(cap: Capture, t: Target, base: str, eid: str) -> list[str]
         cap.get(f"{base}/{eid}/{ver}/reports/{name}", large=True)
     if not t.counties or not isinstance(settings, dict):
         return []
-    details = (settings.get("settings") or {}).get("electiondetails") or {}
+    details = settings
+    for field_name in ("settings", "electiondetails"):
+        details = details.get(field_name)
+        if details is None:
+            return []
+        if not isinstance(details, dict):
+            cap.failures.append(f"{base}/{eid}: {field_name} must be an object")
+            cap.log(f"::warning::capture: {cap.failures[-1]}")
+            return []
     urls = []
-    for item in details.get("participatingcounties") or []:
-        parts = str(item).split("|")
+    for item in cap.listing(details.get("participatingcounties"), f"{base}/{eid}: participatingcounties", str):
+        parts = item.split("|")
         if len(parts) >= 3 and parts[1].isdigit() and parts[2].isdigit():
             county = urllib.parse.quote(parts[0], safe="_")
             urls.append(f"{base}/{county}/{parts[1]}/{parts[2]}/reports/detailxml.zip")
@@ -344,7 +378,11 @@ def main(argv: list[str] | None = None) -> int:
     except (ElectionReportError, OSError, tomllib.TOMLDecodeError) as error:
         print(f"::error::capture configuration: {error}")
         return 2
-    now = datetime.fromisoformat(args.now) if args.now else datetime.now(timezone.utc)
+    try:
+        now = datetime.fromisoformat(args.now) if args.now is not None else datetime.now(timezone.utc)
+    except ValueError:
+        print("::error::capture configuration: --now must be an ISO date-time")
+        return 2
     if now.tzinfo is None:
         now = now.replace(tzinfo=timezone.utc)
     keeper = OriginalsKeeper(args.directory)

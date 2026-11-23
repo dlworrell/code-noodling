@@ -70,7 +70,8 @@ int crypto_ecpp_verify(const crypto_ecpp_step *steps, size_t count, uint64_t max
 /* Test hook: (X:Y:Z) = k * (x:y:1) on y^2 = x^3 + a x + b mod m with the
  * checker's addition law and double-and-add, starting from (0:1:0). Inputs and
  * outputs are ordinary residues (not Montgomery form); m odd > 1, all values
- * n limbs and below m. Returns 0, or -1 with errno = EINVAL. */
+ * n limbs and below m. Returns 0, or -1 with errno set: EINVAL for bad
+ * arguments, otherwise the error crypto_multiply_reduce reported. */
 int crypto_ecpp_scalar_mul(limb_t *X, limb_t *Y, limb_t *Z, const limb_t *a, const limb_t *b,
                            const limb_t *x, const limb_t *y, const limb_t *k, const limb_t *m,
                            size_t n);

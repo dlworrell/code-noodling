@@ -135,6 +135,7 @@ therefore never runs `git push`. Its behavior depends on the triggering event:
 | `pull_request` | Tests, generates, and uploads the `election-result-reports` artifact. Nothing is committed. Stale committed reports produce a warning, not a failure. |
 | `push` to `dev-daily`, or `workflow_dispatch` on `dev-daily` with `commit_reports` | If the reports changed, a second job commits them to the workflow-owned branch `automation/election-reports` and opens or updates a pull request into `dev-daily`. |
 | `push` to any other branch, or dispatch from another branch | Tests, generates, and uploads the artifact only. |
+| `schedule` | No scheduled trigger for this workflow. The separate Election Source Watch is scheduled; merging its snapshot pull request into `dev-daily` can trigger report generation via the push above. |
 | Reports unchanged | Nothing is published. |
 
 The publisher (`election_reporting/ci/publish_reports.py`) enforces the route before
@@ -226,6 +227,14 @@ not_before = 2026-11-03T21:00:00-08:00
 | States | Each state is planned and fetched on its own schedule and in its own directory; one state failing does not stop the others. |
 | Config | Creates `election.toml` for a new election (state priority 100, counties 10, certification dates filled in) and appends sources when places are added later. |
 
+When VoteWA returns different retained JSON for the same normalized CSV hash
+and place, the watcher saves the new raw capture and links its ledger record
+to the earliest existing physical CSV for that hash. It does not write a
+duplicate input or remove historical files. The original physical snapshot
+remains the count/publication reference; later retrieval observations do not
+move the count clock. Carry-forward verifies the hashes and refuses to overwrite
+a conflicting copy of that shared input.
+
 The **Election Source Watch** workflow launches hourly at :07 UTC for offline
 validation. An external backup scheduler, outside this repository, dispatches
 it with `force=false`; under the owner's decision (2026-11-03: two hourly
@@ -287,6 +296,8 @@ How a run does it:
    after first retrieval. `MANIFEST.json` lists every retrieval in the run.
    If a file cannot be saved (for example a full disk), the run warns and
    the snapshot fetch carries on.
+   A manifest write failure logs `could not write the originals manifest` and
+   does not itself fail the fetch.
 2. The workflow uploads the directory as the run's
    `election-originals-<run>-<attempt>` artifact, kept for 90 days.
 3. After snapshot publication, `ci/watch.sh archive` copies the same layout
@@ -303,6 +314,11 @@ How a run does it:
    the manifest succeeded. A network error or timeout fails that one file; the others are
    still attempted. A failed upload marks the
    step red without affecting snapshot publication.
+   If there is no `MANIFEST.json` when the archive runs, it logs
+   `No downloaded originals to archive.` and uploads nothing, even if bodies
+   and headers were saved. A failed manifest update can also leave an existing
+   manifest that omits later retrievals. Check the run's GitHub artifact for
+   saved files and retain it; rerun if a fresh capture and manifest are needed.
 
 Dropbox credentials are the repository secrets `DROPBOX_APP_KEY`,
 `DROPBOX_APP_SECRET` and `DROPBOX_REFRESH_TOKEN`, for a Dropbox app named

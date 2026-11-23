@@ -17,17 +17,20 @@ K9 fails closed (fitment #221, #229): a failing gh call on the run list, on any
    run's jobs, a missing gh, unreadable JSON or an unexpected shape give run=false and exit 0;
 K10 an empty run history after the cutoff runs the watcher;
 K11 before the cutoff, and for dispatches, the history is not read at all;
-K12 the collected history drives the decision and leaves out this run.
+K12 the collected history drives the decision and leaves out this run;
+K13 workflow concurrency prevents overlap while the cadence gate counts only completed successes.
 """
 
 from __future__ import annotations
 
 import io
 import json
+import re
 import subprocess
 import unittest
 from contextlib import redirect_stdout, redirect_stderr
 from datetime import datetime, timezone
+from pathlib import Path
 from unittest import mock
 
 from election_reporting.watch import cadence
@@ -181,6 +184,25 @@ class FailClosedTests(unittest.TestCase):
         self.assertNotIn("repos/o/r/actions/runs/2/jobs", gh.calls)
         self.assertFalse(cadence.decide("schedule", t(AFTER), "o/r", 2, gh)[0])
         self.assertTrue(cadence.decide("schedule", t(AFTER), "o/r", 2, FakeGh(HISTORY[1:], JOBS))[0])
+
+
+class WorkflowConcurrencyTests(unittest.TestCase):
+    def test_k13_in_progress_watcher_is_serialized_at_workflow_level(self) -> None:
+        # Scope and group are fixed across scheduled and dispatched runs. Moving
+        # this to a job or using a run-specific group would allow overlap.
+        root = Path(__file__).resolve().parents[2]
+        workflow = (root / ".github/workflows/election-source-watch.yml").read_text(encoding="utf-8")
+        policy = re.search(r"(?m)^concurrency:\n((?:  [^\n]+\n)+)", workflow)
+        self.assertIsNotNone(policy)
+        self.assertIn("  group: election-source-watch", policy.group(1).splitlines())
+        self.assertIn("  cancel-in-progress: false", policy.group(1).splitlines())
+
+        # The serialized later gate sees a completed verdict, not a running job.
+        # A null conclusion alone must not be mistaken for the day's success.
+        for conclusion, permitted in ((None, True), ("failure", True), ("success", False)):
+            with self.subTest(conclusion=conclusion):
+                gh = FakeGh(HISTORY, {1: [{"name": "watch", "conclusion": conclusion}]})
+                self.assertEqual(cadence.decide("schedule", t(AFTER), "o/r", 2, gh)[0], permitted)
 
 
 if __name__ == "__main__":

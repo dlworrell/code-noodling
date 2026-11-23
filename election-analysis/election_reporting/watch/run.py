@@ -240,19 +240,34 @@ def _record(
     note: str = "",
 ) -> None:
     digest = sha256(input_bytes)
+    raw_digest = sha256(raw_bytes) if raw_bytes is not None else ""
+    matches = [r for r in store.records if r.place == place.place_id and r.input_sha256 == digest]
     store.observations.append({"place": place.place_id, "input_sha256": digest,
         "retrieved_at": retrieved.astimezone(timezone.utc).isoformat(timespec="seconds"),
         "source_published_at": source_timestamp or None, "source_url": source_url,
-        "raw_sha256": sha256(raw_bytes) if raw_bytes else None,
+        "raw_sha256": raw_digest or None,
         "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"})
-    if any(r.place == place.place_id and r.input_sha256 == digest and (raw_bytes is None or r.raw_sha256 == sha256(raw_bytes)) for r in store.records):
+    if any(raw_bytes is None or r.raw_sha256 == raw_digest for r in matches):
         result.skipped.append(f"{place.place_id}: unchanged")
         return
     stamp = _free_stamp(store, place.place_id, _stamp(moment, config))
     input_path = f"input/{place.place_id}/{stamp}.csv"
     raw_path = f"raw/{place.place_id}/{stamp}.{raw_ext}" if raw_bytes is not None else ""
-    store.write_file(input_path, input_bytes)
-    raw_digest = store.write_file(raw_path, raw_bytes) if raw_bytes is not None else ""
+    # VoteWA can revise retained JSON (e.g. asOf) without changing any
+    # normalized result row. Keep each distinct raw capture and ledger record
+    # but link it to the earliest physical CSV for that place and hash.
+    canonical = min((r for r in matches if r.kind == "votewa-json"
+                     and r.input == f"input/{place.place_id}/{r.snapshot}.csv"),
+                    key=lambda r: r.snapshot, default=None) if kind == "votewa-json" else None
+    if canonical is None:
+        store.write_file(input_path, input_bytes)
+    else:
+        input_path = canonical.input
+        target = contained(store.directory, input_path)
+        if not target.is_file() or target.read_bytes() != input_bytes:
+            raise ElectionReportError(f"{input_path} does not match its recorded VoteWA input")
+    if raw_bytes is not None:
+        store.write_file(raw_path, raw_bytes)
     record = SnapshotRecord(
         place=place.place_id,
         snapshot=stamp,
@@ -423,7 +438,17 @@ def _fetch_king_county(store, config, place, plan_, fetch, now, result) -> None:
     # string) to publish a correction. _record keeps a new immutable snapshot
     # when the bytes differ and skips identical bytes, so a repeated file stays
     # idempotent. A URL is never treated as a content identity.
+    today = now.astimezone(config.timezone).date()
     for item in files:
+        # A file named for a day after today is misdated at the source (King
+        # County published webresults-20271117.csv for November 17, 2026).
+        # Its label would sort it after every real export, so refuse it.
+        if item.day > today:
+            result.errors.append(
+                f"{place.place_id}: {item.url} is named for {item.day.isoformat()}, "
+                f"after today ({today.isoformat()}); not stored (misdated export)"
+            )
+            continue
         response = fetch(item.url)
         local = (response.last_modified or now).astimezone(config.timezone)
         if local.date() != item.day:
@@ -756,7 +781,11 @@ def fetch_snapshots(
     if result.added or store.path.exists() or store.observations or store.coverage:
         store.save()
     for record in result.added:
-        log(f"new snapshot {record.place} {record.snapshot} ({record.kind})")
+        if (record.kind == "votewa-json"
+                and record.input != f"input/{record.place}/{record.snapshot}.csv"):
+            log(f"new raw capture {record.place} {record.snapshot} (normalized input unchanged)")
+        else:
+            log(f"new snapshot {record.place} {record.snapshot} ({record.kind})")
     for line in result.skipped:
         log(f"skipped {line}")
     for line in result.errors:
@@ -889,10 +918,18 @@ def carry_forward(source_root: Path, target_root: Path, log: Callable[[str], Non
             for stored, digest in ((record.input, record.input_sha256), (record.raw, record.raw_sha256)):
                 if not stored:
                     continue
-                contained(target.directory, stored)
+                destination = contained(target.directory, stored)
                 data = contained(source_dir, stored).read_bytes()
                 if sha256(data) != digest:
                     raise ElectionReportError(f"{source_dir / stored} does not match its recorded SHA-256")
+                if (record.kind == "votewa-json" and stored == record.input
+                        and stored != f"input/{record.place}/{record.snapshot}.csv"
+                        and destination.exists()):
+                    # Never replace an existing canonical input while carrying
+                    # an alias from the pending branch, even on a path collision.
+                    if not destination.is_file() or destination.read_bytes() != data:
+                        raise ElectionReportError(f"{destination} conflicts with the shared VoteWA input")
+                    continue
                 files.append((stored, data))
             staged.append((record, files))
         # Step 6: write (write_file confines each path again).

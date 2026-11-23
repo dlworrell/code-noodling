@@ -43,6 +43,8 @@ on:
 permissions:
   contents: read
 
+# Serialize scheduled and manual runs, including their cadence gates. The
+# active run finishes before a later run checks its outcome (fitment #223).
 concurrency:
   group: election-source-watch
   cancel-in-progress: false

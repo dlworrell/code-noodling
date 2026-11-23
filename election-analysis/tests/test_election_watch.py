@@ -6,21 +6,24 @@
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 import os
 import shutil
 import tempfile
 import unittest
-from unittest import mock
-from datetime import date, datetime, timezone
+from contextlib import redirect_stderr
+from dataclasses import replace
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from unittest import mock
 from zoneinfo import ZoneInfo
 
 from election_reporting.analysis import analyze_election
 from election_reporting.config import load_config
-from election_reporting.ingest import read_snapshot
+from election_reporting.ingest import load_source_snapshots, read_snapshot
 from election_reporting.model import ElectionReportError, SourceConfig
-from election_reporting.watch import csvformat
+from election_reporting.watch import __main__ as watch_cli, csvformat
 from election_reporting.watch.config import load_watch_settings
 from election_reporting.watch.http import LARGE_MAX_BYTES, Response, check_url
 from election_reporting.watch.run import carry_forward, fetch_snapshots
@@ -354,6 +357,113 @@ class FetchTests(unittest.TestCase):
             later = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
             self.assertEqual([(r.place, r.snapshot) for r in later.added], [("pierce-county", "2026-11-03-2145")])
 
+    def test_votewa_raw_revision_reuses_normalized_input_and_carries_forward(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            election = root / "elections/washington/2026-11-03"
+            first = ElectionStore(election).latest("pierce-county")
+            original_csv = (election / first.input).read_bytes()
+            original_raw = (election / first.raw).read_bytes()
+            revised = web(root, pierce_as_of="2026-11-04T05:45:00Z")
+            later = fetch_snapshots(config, revised, ELECTION_NIGHT, log=lambda _: None)
+            self.assertEqual(len(later.added), 1)
+            second = later.added[0]
+            self.assertEqual(second.input, first.input)
+            self.assertEqual(second.input_sha256, first.input_sha256)
+            self.assertNotEqual(second.raw, first.raw)
+            self.assertNotEqual(second.raw_sha256, first.raw_sha256)
+            self.assertNotEqual(second.source_timestamp, first.source_timestamp)
+            self.assertEqual(hashlib.sha256((election / second.raw).read_bytes()).hexdigest(),
+                             second.raw_sha256)
+            self.assertEqual((election / first.raw).read_bytes(), original_raw)
+            self.assertEqual(list((election / "input/pierce-county").glob("*.csv")),
+                             [election / first.input])
+            self.assertEqual((election / first.input).read_bytes(), original_csv)
+            self.assertEqual(fetch_snapshots(config, revised, ELECTION_NIGHT, log=lambda _: None).added, [])
+            carried = root / "carried"
+            carry_forward(root / "elections", carried, log=lambda _: None)
+            replica = carried / "washington/2026-11-03"
+            self.assertEqual(ElectionStore(replica).latest("pierce-county"), second)
+            self.assertEqual((replica / second.input).read_bytes(), original_csv)
+            self.assertEqual((replica / second.raw).read_bytes(),
+                             (election / second.raw).read_bytes())
+            # Carry-forward deliberately retains local config rather than copying it.
+            shutil.copyfile(election / "election.toml", replica / "election.toml")
+            source = next(s for s in load_config(replica / "election.toml").sources
+                          if s.source_id == "pierce-county")
+            self.assertEqual([s.sha256 for s in load_source_snapshots(source)],
+                             [first.input_sha256])
+
+    def test_votewa_reuse_does_not_delete_legacy_duplicate_inputs(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            election = root / "elections/washington/2026-11-03"
+            store = ElectionStore(election)
+            first = store.latest("pierce-county")
+            legacy = "input/pierce-county/2026-11-03-2130.csv"
+            store.write_file(legacy, (election / first.input).read_bytes())
+            store.add(replace(first, snapshot="2026-11-03-2130", input=legacy))
+            store.save()
+            latest = fetch_snapshots(config, web(root, pierce_as_of="2026-11-04T05:45:00Z"),
+                                     ELECTION_NIGHT, log=lambda _: None).added[0]
+            self.assertEqual(latest.input, first.input)
+            self.assertEqual({p.relative_to(election).as_posix()
+                              for p in (election / "input/pierce-county").glob("*.csv")},
+                             {first.input, legacy})
+            self.assertIn(legacy, {r.input for r in ElectionStore(election).records})
+
+    def test_votewa_out_of_order_raw_revision_does_not_advance_report_count_clock(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            election = root / "elections/washington/2026-11-03"
+            url = f"{API}/elections/pierce-county-wa/20261103/data"
+            first_web = web(root)
+            first_payload = votewa_data("2026-11-04T04:15:00Z")
+            first_payload["election"]["lastUpdated"] = "2026-11-04T04:14:00Z"
+            first_web.routes[url] = json_response(url, first_payload)
+            fetch_snapshots(config, first_web, ELECTION_NIGHT, log=lambda _: None)
+            first = ElectionStore(election).latest("pierce-county")
+
+            revised = web(root)
+            revised_payload = votewa_data("2026-11-04T04:05:00Z")
+            revised_payload["election"]["lastUpdated"] = "2026-11-04T04:50:00Z"
+            revised.routes[url] = json_response(url, revised_payload)
+            now = ELECTION_NIGHT + timedelta(minutes=30)
+            alias = fetch_snapshots(config, revised, now, force=True, log=lambda _: None).added[0]
+            self.assertLess(alias.snapshot, first.snapshot)
+            self.assertEqual(alias.input, first.input)
+            report = analyze_election(load_config(election / "election.toml"))
+            county = [snapshot for snapshot in report.snapshots
+                      if snapshot.source_id == "pierce-county"]
+            self.assertEqual(len(county), 1)
+            self.assertEqual(county[0].contests, read_snapshot(election / first.input, "pierce-county").contests)
+            self.assertEqual(county[0].source_metadata["source_published_at"], "2026-11-04T04:15:00+00:00")
+            self.assertEqual(county[0].source_metadata["count_updated_at"], "2026-11-04T04:14:00+00:00")
+            self.assertEqual(county[0].source_metadata["retrieved_at"], now.astimezone(timezone.utc).isoformat())
+
+    def test_votewa_carry_forward_refuses_conflicting_canonical_input(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fetch_snapshots(config, web(root), ELECTION_NIGHT, log=lambda _: None)
+            target = root / "carried"
+            carry_forward(root / "elections", target, log=lambda _: None)
+            later = fetch_snapshots(config, web(root, pierce_as_of="2026-11-04T05:45:00Z"),
+                                    ELECTION_NIGHT, log=lambda _: None)
+            alias = later.added[0]
+            destination = target / "washington/2026-11-03"
+            canonical = destination / alias.input
+            canonical.write_bytes(b"conflicting historical file")
+            with self.assertRaisesRegex(ElectionReportError, "conflicts with the shared VoteWA input"):
+                carry_forward(root / "elections", target, log=lambda _: None)
+            self.assertEqual(canonical.read_bytes(), b"conflicting historical file")
+            self.assertFalse((destination / alias.raw).exists())
+
     # WATCH-02 acceptance cases (King County exports replaced in place):
     # K1 a corrected body B at the same URL is kept as a new immutable snapshot;
     # K2 a correction that changes only the query string is kept the same way;
@@ -413,6 +523,24 @@ class FetchTests(unittest.TestCase):
                                   KC_CSV + "\n", "Wed, 04 Nov 2026 05:10:00 GMT")
             fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
             self.assertEqual((election / "input/king-county/2026-11-03-2030.csv").read_bytes(), first)
+
+    def test_k_misdated_future_export_is_refused_and_reported(self) -> None:
+        # King County published webresults-20271117.csv (2027) for the
+        # November 17, 2026 count; it must not be stored or sort as newest.
+        misdated = KC_FILE.replace("20261103", "20271117")
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = load_watch_config(write_watch(root))
+            fake = web(root)
+            fake.routes[KC_PAGE] = Response(
+                KC_PAGE,
+                f'<a href="{KC_FILE}?rev=1&amp;hash=2">Nov 3</a><a href="{misdated}?rev=9">Nov 17</a>'.encode(),
+            )
+            fake.routes[misdated + "?rev=9"] = Response(misdated, KC_CSV.encode("utf-8"))
+            result = fetch_snapshots(config, fake, ELECTION_NIGHT, log=lambda _: None)
+            self.assertNotIn(misdated + "?rev=9", fake.requests)
+            self.assertEqual([s for s, _ in self.king_snapshots(root)], ["2026-11-03-2030"])
+            self.assertTrue(any("2027-11-17" in e and "misdated" in e for e in result.errors))
 
     # K5-K6 (Em's review of df4c59e): controls.
 
@@ -823,6 +951,29 @@ class CarryForwardTests(unittest.TestCase):
     def test_p15_workflow_passes_the_trusted_root(self) -> None:
         script = (Path(__file__).resolve().parents[1] / "ci" / "watch.sh").read_text(encoding="utf-8")
         self.assertIn('carry --from "$pending" --trusted-root "$checkout"', script)
+
+    def test_carry_cli_forwards_trusted_root_and_reports_refusal(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = write_watch(root)
+            checkout = root / "pending"
+            source = checkout / "elections"
+            target = root / "elections"
+            stderr = io.StringIO()
+
+            # The carry tests above cover filesystem confinement. At this
+            # boundary, check CLI argument forwarding and refusal handling.
+            with mock.patch.object(
+                watch_cli, "carry_forward", side_effect=ElectionReportError("symlink refused")
+            ) as carry, redirect_stderr(stderr):
+                status = watch_cli.main(
+                    ["carry", "--from", str(source), "--trusted-root", str(checkout), "--config", str(config)]
+                )
+
+            carry.assert_called_once_with(source, target, source_base=checkout)
+            self.assertEqual(status, 1)
+            self.assertIn("error: symlink refused", stderr.getvalue())
+            self.assertFalse(target.exists())
 
 
 class DeploymentConfigTests(unittest.TestCase):

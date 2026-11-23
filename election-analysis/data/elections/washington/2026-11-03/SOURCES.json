@@ -6503,16 +6503,16 @@
     },
     {
       "place": "king-county",
-      "snapshot": "2027-11-17-2359",
+      "snapshot": "2026-11-17-2359",
       "kind": "county-csv",
       "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20271117.csv?rev=4b91556a3fe24f68917c5af155affb44&hash=5027926AA0121A7EA25BA55E2B2CA498",
       "retrieved_at": "2026-11-19T03:14:57+00:00",
       "source_timestamp": "Thu, 19 Nov 2026 01:49:33 GMT",
-      "input": "input/king-county/2027-11-17-2359.csv",
+      "input": "input/king-county/2026-11-17-2359.csv",
       "input_sha256": "3cbf6d5af17cbbaea049266595000300b7ee4c75a6542520f899bdb2885e9bae",
       "raw": "",
       "raw_sha256": "",
-      "note": "Official King County Elections export, stored unmodified."
+      "note": "Official King County Elections export, stored unmodified. King County named this file webresults-20271117.csv (year 2027) for the November 17, 2026 count; the snapshot label was corrected from 2027-11-17-2359 to 2026-11-17-2359 on 2026-11-23. Bytes, SHA-256 and source URL are unchanged."
     },
     {
       "place": "kitsap-county",

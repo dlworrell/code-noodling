@@ -789,6 +789,15 @@ class WorkflowRouteTests(unittest.TestCase):
         self.assertIn("BASE_BRANCH: dev-daily", text)
         self.assertNotIn("BASE_BRANCH: ${{ github.event.repository.default_branch }}", text)
 
+    def test_reports_workflow_has_no_scheduled_trigger_or_publish_route(self) -> None:
+        text = self.read(".github/workflows/election-result-reports.yml")
+        triggers = text.split("\non:\n", 1)[1].split("\npermissions:", 1)[0]
+        publish_if = text.split("\n  publish-pull-request:\n", 1)[1].split("\n    runs-on:", 1)[0]
+        self.assertNotIn("schedule:", triggers)
+        self.assertNotIn("github.event_name == 'schedule'", publish_if)
+        self.assertIn("github.event_name == 'push'", publish_if)
+        self.assertIn("github.event_name == 'workflow_dispatch' && inputs.commit_reports", publish_if)
+
     def test_source_watch_checks_out_and_publishes_into_dev_daily(self) -> None:
         text = self.read(".github/workflows/election-source-watch.yml")
         self.assertIn("ref: dev-daily", text)
