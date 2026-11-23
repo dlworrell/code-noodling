@@ -21,11 +21,10 @@
  * - theta(t) = Im log Gamma(1/4 + i t/2) - (t/2) log pi, from Stirling's
  *   series with its complex-argument remainder bound (DLMF 5.11.1, 5.11(ii)).
  * - zeta(1/2 + i t) by Euler-Maclaurin summation with the remainder bound
- *   derived from DLMF 2.10.1 and 24.9.1 (unconditional; used for every t).
- * - Z(t) by the Riemann-Siegel formula with the C_0 correction for t >= 200,
- *   with Gabcke's remainder constant 0.127 tau^(-3/4). That constant is NOT
- *   confirmed from its primary source in this repository, so results using it
- *   are reported as conditional (ZZ_METHOD_RS_GABCKE).
+ *   derived from DLMF 2.10.1 and 24.9.1 (ZZ_METHOD_EM uses it for every t).
+ * - Z(t) by the Riemann-Siegel formula with the C_0 correction for t >= 200
+ *   and Gabcke's remainder bound |R_0(t)| < 0.127 t^(-3/4) (W. Gabcke,
+ *   Dissertation, Goettingen 1979, Satz 3.2.2 (b); ZZ_METHOD_RS_GABCKE).
  * - Turing's method with Trudgian's constants (Math. Comp. 80 (2011),
  *   Theorem 2.2: for t2 > t1 > 168 pi, the integral of S(t) from t1 to t2 is
  *   at most 2.067 + 0.059 log t2) bounds N(t0) from above; equality with the
@@ -59,17 +58,20 @@ extern "C" {
 /** Turing's upper bound exceeds the number of sign changes found. */
 #define ZZ_ERR_TURING (-5)
 
-/** Euler-Maclaurin everywhere: unconditional. */
+/** Euler-Maclaurin everywhere: slower, independent of Gabcke's bound. */
 #define ZZ_METHOD_EM 0
-/** Riemann-Siegel with Gabcke's C_0 remainder constant for t >= 200,
+/** Riemann-Siegel with Gabcke's remainder bound for t >= 200,
  *  Euler-Maclaurin below 200 and wherever Riemann-Siegel cannot decide the
- *  sign. Conditional on the unconfirmed constant ZZ_GABCKE_D0. */
+ *  sign. */
 #define ZZ_METHOD_RS_GABCKE 1
 
-/** Gabcke's bound |R_0(t)| <= d_0 tau^(-3/4), t >= 200, tau = t / (2 pi),
- *  as quoted in secondary literature. Not confirmed from the primary source
- *  (W. Gabcke, Dissertation, Goettingen 1979). */
-#define ZZ_GABCKE_D0 0.127
+/** Gabcke's bound |R_0(t)| < (127/1000) t^(-3/4) for t >= 200, for the
+ *  Riemann-Siegel formula with the C_0 term only: W. Gabcke, Neue Herleitung
+ *  und explizite Restabschaetzung der Riemann-Siegel-Formel, Dissertation,
+ *  Goettingen 1979, Satz 3.2.2 (b), p. 55, and Einleitung (6), (8), p. 3. */
+#define ZZ_GABCKE_D0_NUM 127
+/** Denominator of Gabcke's constant 0.127. */
+#define ZZ_GABCKE_D0_DEN 1000
 
 /** Trudgian (2011), Theorem 2.2: a = 2.067 = 2067/1000. */
 #define ZZ_TRUDGIAN_A_NUM 2067
@@ -110,7 +112,7 @@ typedef struct zz_ctx {
     long evaluations;                /**< Z evaluations */
     long em_evaluations;             /**< of which Euler-Maclaurin */
     long rs_fallbacks;               /**< RS evaluations that fell back */
-    int conditional;                 /**< a sign relied on ZZ_GABCKE_D0 */
+    int used_riemann_siegel;         /**< a sign came from Riemann-Siegel */
 } zz_ctx;
 
 /** Initializes ctx with prec-bit midpoints (64..4096). Returns ZZ_OK or
@@ -134,7 +136,7 @@ int zz_zeta_em(zz_ctx *ctx, zz_cball *out, const zz_ball *t);
 int zz_z_em(zz_ctx *ctx, zz_ball *out, const zz_ball *t);
 
 /** out = Z(t) by Riemann-Siegel with C_0 and the radius widened by
- *  ZZ_GABCKE_D0 * tau^(-3/4) (conditional, see above). Requires t >= 200.
+ *  Gabcke's bound 0.127 t^(-3/4) (see above). Requires t >= 200.
  *  Fails with ZZ_ERR_EVAL when floor(sqrt(tau)) or C_0 cannot be resolved
  *  (t near a square of sqrt(2 pi) n, or p near 1/4 or 3/4). */
 int zz_z_rs(zz_ctx *ctx, zz_ball *out, const zz_ball *t);
@@ -208,13 +210,12 @@ typedef struct zz_verify_result {
     long evaluations;         /**< Z evaluations */
     long em_evaluations;      /**< of which by Euler-Maclaurin */
     long rs_fallbacks;        /**< RS evaluations that fell back to EM */
-    int conditional;          /**< 1 if any sign relied on ZZ_GABCKE_D0 */
+    int used_riemann_siegel;  /**< 1 if any sign came from Riemann-Siegel */
 } zz_verify_result;
 
 /** Runs the verification. Returns result->status. On ZZ_OK every zero of
  *  zeta with 0 < t <= result->t0 (>= T) is on the critical line and simple,
- *  and zeros_to_height is N(T) exactly (unconditionally for ZZ_METHOD_EM;
- *  conditionally on ZZ_GABCKE_D0 when result->conditional is 1). Fails with
+ *  and zeros_to_height is N(T) exactly. Fails with
  *  ZZ_ERR_ARGS ("workspace too small") if work_cap is exhausted. */
 int zz_verify(const zz_verify_params *params, zz_verify_result *result);
 

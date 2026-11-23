@@ -15,7 +15,9 @@ compares the results with published values (OEIS, retrieved 2026-11-23):
 - A013629: zeros 6709 and 6710 (Lehmer's pair) both have floor 7005;
 - A058303 and A065434: the first two zeros.
 
-The Euler-Maclaurin run is the unconditional proof and takes about 4 minutes.
+Both runs are proofs: Euler-Maclaurin everywhere (about 4 minutes), and
+Riemann-Siegel with Gabcke's bound (Dissertation 1979, Satz 3.2.2 (b)) for
+t >= 200 (seconds). They must agree.
 """
 import json
 import subprocess
@@ -43,10 +45,10 @@ class ZetaZerosTests(unittest.TestCase):
         cls.em_rc, cls.em = run('--brackets', '10000', '100', '1000')
         cls.rs_rc, cls.rs = run('--rs', '--brackets', '10000', '100', '1000')
 
-    def check_result(self, rc, res, conditional):
+    def check_result(self, rc, res, used_riemann_siegel):
         self.assertEqual(rc, 0, res['reason'])
         self.assertEqual(res['status'], 0)
-        self.assertEqual(res['conditional'], conditional)
+        self.assertEqual(res['used_riemann_siegel'], used_riemann_siegel)
         self.assertEqual(res['zeros_to_height'], 10142)
         self.assertEqual(res['checkpoints'], [[100, 29], [1000, 649]])
         # Turing: every zero up to t0 is a counted sign change.
@@ -62,7 +64,7 @@ class ZetaZerosTests(unittest.TestCase):
         self.assertEqual(self.em['rs_fallbacks'], 0)
         self.assertEqual(self.em['evaluations'], self.em['em_evaluations'])
 
-    def test_riemann_siegel_conditional(self):
+    def test_riemann_siegel_proof(self):
         self.check_result(self.rs_rc, self.rs, 1)
 
     def test_methods_agree(self):
