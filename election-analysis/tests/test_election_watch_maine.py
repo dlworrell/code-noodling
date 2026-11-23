@@ -25,6 +25,7 @@ from election_reporting.watch.config import load_watch_settings
 from election_reporting.watch.http import Response
 from election_reporting.watch.run import fetch_snapshots
 from election_reporting.watch.schedule import is_due, watch_window
+from election_reporting.watch.store import ElectionStore
 
 from test_election_watch import FakeWeb
 
@@ -382,6 +383,13 @@ class MaineFetchTests(unittest.TestCase):
             self.assertEqual(len(result.errors), 2)
             self.assertTrue(all("discovery page" in e and "could not be read" in e for e in result.errors))
 
+            coverage = ElectionStore(config.elections_root / "2026-11-03").coverage["maine"]
+            self.assertEqual(coverage["status"], "discovery_failed")
+            self.assertCountEqual(
+                [page["url"] for page in coverage["failed_discovery_pages"]],
+                [maine.RESULTS_PAGE, maine.YEAR_PAGE.format(year=2026)],
+            )
+
     def test_m3_current_page_failure_keeps_year_page_results_and_reports_it(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             config = load_watch_settings(write_watch(Path(tmp))).watches[0]
@@ -408,6 +416,13 @@ class MaineFetchTests(unittest.TestCase):
             self.assertNotIn("maine: no results posted for this election yet", result.skipped)
             self.assertEqual(result.skipped, ["maine: no results found on the discovery pages that could be "
                                               "read; discovery incomplete (see errors)"])
+
+            coverage = ElectionStore(config.elections_root / "2026-11-03").coverage["maine"]
+            self.assertEqual(coverage["status"], "discovery_incomplete")
+            self.assertEqual(
+                [page["url"] for page in coverage["failed_discovery_pages"]],
+                [maine.YEAR_PAGE.format(year=2026)],
+            )
 
     def test_window_is_daily_for_35_days(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

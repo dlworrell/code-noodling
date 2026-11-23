@@ -8,7 +8,8 @@ name: Election Result Reports
 # automation -> dev-daily -> fitment -> main). It publishes only from a run on
 # dev-daily: a push to dev-daily, or a manual workflow_dispatch on dev-daily
 # with commit_reports set. Either way, reports are generated from, and proposed
-# to, the same dev-daily commit.
+# to, the same dev-daily commit. This workflow has no scheduled trigger; the
+# separate Election Source Watch schedule can lead to a dev-daily push.
 # Never add pull_request_target: the publish job holds a write token.
 #
 # Logic lives in election-analysis/ci/reports.sh (governed scope, Catylist
@@ -109,7 +110,6 @@ jobs:
       needs.analyze.outputs.reports_changed == 'true' &&
       github.ref == 'refs/heads/dev-daily' &&
       (github.event_name == 'push' ||
-       github.event_name == 'schedule' ||
        (github.event_name == 'workflow_dispatch' && inputs.commit_reports))
     runs-on: ubuntu-latest
     permissions:

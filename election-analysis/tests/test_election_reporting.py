@@ -752,10 +752,6 @@ class ResultStageTests(unittest.TestCase):
                             for item in analysis.races for decision in item.decisions))
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 def one_cell_xlsx(reference: str, sheet: str = "Sheet1") -> bytes:
     """A minimal workbook whose only cell carries ``reference``."""
     import io
@@ -875,3 +871,7 @@ class XlsxCoordinateBoundTests(unittest.TestCase):
     def test_c5_cell_without_reference_is_ignored(self) -> None:
         for read in self.readers(""):
             self.assertEqual(read(), [[]])
+
+
+if __name__ == "__main__":
+    unittest.main()

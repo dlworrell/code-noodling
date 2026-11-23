@@ -56,6 +56,13 @@ jobs:
           if git ls-remote --exit-code --tags origin "refs/tags/v$VERSION" >/dev/null; then
             echo "::error::Tag v$VERSION already exists; release tags are immutable."
             exit 1
+          else
+            status=$?
+            # git ls-remote --exit-code returns 2 only when no matching ref exists.
+            if [ "$status" -ne 2 ]; then
+              echo "::error::Release tag lookup failed for v$VERSION (git exit $status); refusing to release."
+              exit 1
+            fi
           fi
       - name: Require every check on main's head to have passed
         env:

@@ -10,6 +10,9 @@ Catalyst-File-ID: urn:uuid:c7d6364c-e0fe-4597-b941-eab09dea4086
 Status: Accepted by owner decision on 2026-11-01
 Date: 2026-10-23
 
+Amended: [ADR-004](ADR-004-scientific-evidence-contract.md) supersedes this ADR's
+numerical, identity, timing and remaining-pool assumptions.
+
 Amended 2026-10-23: election files moved under `election-analysis/`. Paths below read
 `election-data/` → `election-analysis/data/` and `reports/elections/` → `election-analysis/reports/`.
 
@@ -87,35 +90,41 @@ committed files.
 
 ## November 2026 operating restriction
 
-The November 3, 2026 deployment is pinned to that election and must not make any
-live source request before one hour after the scheduled final poll closing in
-the applicable state. The configured hard floors are 02:00 UTC November 4 for
-Maine, 05:00 UTC for Washington and 07:00 UTC for statewide Alaska (including
-the later Aleutian closing). Runtime guards precede discovery, `plan` and
-fetching; neither manual dispatch, an earlier `start`, nor `--force` bypasses
-these guards. A simulated `--now` is allowed only for offline status.
+The November 3, 2026 parsed-snapshot watcher is pinned to that election and
+must not make any live source request before one hour after the scheduled final
+poll closing in the applicable state. The configured hard floors on November 4
+are 02:00 UTC for Maine, 05:00 UTC for Washington and 07:00 UTC for statewide
+Alaska (including the later Aleutian closing). Runtime guards precede
+discovery, `plan` and fetching; neither manual dispatch, an earlier `start`,
+nor `--force` bypasses these guards. A simulated `--now` is allowed only for offline status.
 
 The existing root workflow retains its every-30-minute launch for offline
 validation. Its scope-owned `watch.sh` commands perform an offline eligibility
-check before pending-branch lookup, carry-forward, collection or publication.
+check before pending-branch lookup, carry-forward, parsed collection or publication.
 The fixed 2026 end dates suppress result-source requests in later annual cron
 seasons. Offline fixture tests and historical analysis remain available. See the source-linked [deployment table](../../README.md#november-3-2026-collection-gates).
+
+The separate [capture-only collection](../election-reporting.md#capture-only-states)
+uses additional official hosts. When originals are enabled, `ci/watch.sh fetch`
+runs it before the parsed-snapshot gate. Capture-only states have their own
+hard floors in `data/capture.toml`; their files are retained as originals, not
+parsed into snapshots or committed.
 
 ## Consequences
 
 - Every new snapshot has recorded provenance and is reviewable before it is used.
-- Following another Washington county is a one-word change to `watch.toml`.
+- Washington watches all 39 counties (`counties = "all"` in `data/watch.toml`).
 - Each merged snapshot pull request regenerates the reports through the existing
   workflow.
 - The workflow launches hourly at :07 for offline validation, and an external
   backup scheduler outside this repository dispatches it with `force=false`,
   intended at :37 (owner decision, 2026-11-03); its actual configuration is
   not recorded here. Per-state 30-minute eligibility is unchanged, so half-hour
-  collection depends on both triggers arriving. All live and
-  publication commands are held before the first state gate; per-state gates
-  and cadence control collection afterwards. A run delayed by GitHub past its
-  slot can skip one hourly check. Start times are lower bounds, not a guarantee
-  of punctual GitHub scheduling.
+  collection depends on both triggers arriving. Parsed collection and
+  publication commands are held before the first parsed state gate; per-state
+  gates and cadence control parsed collection afterwards. A run delayed by
+  GitHub past its slot can skip one hourly check. Start times are lower bounds,
+  not a guarantee of punctual GitHub scheduling.
 - County data from the results API has no ballots-cast, overvote or undervote
   counts, so those contests' denominators are vote totals.
 - Two watched counties' shares of a multi-county local contest are not summed;
