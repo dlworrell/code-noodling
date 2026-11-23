@@ -126,35 +126,60 @@ static void test_balls(void) {
     printf("[PASS] ball arithmetic encloses exact values\n");
 }
 
-/* theta against the asymptotic expansion t/2 log(t/2pi) - t/2 - pi/8 +
- * 1/(48t) + 7/(5760 t^3), whose next term is 31/(80640 t^5). */
+/* theta against Gabcke's expansion (Dissertation 1979, Einleitung (4), (5)):
+ *   theta(t) = t/2 log(t/2pi) - t/2 - pi/8 + 1/(48t) + 7/(5760t^3)
+ *              + 31/(80640t^5) + R(t),  |R(t)| < 1/(3322 t^7) for t >= 10.
+ * Our theta comes from Stirling's series instead (DLMF 5.11); the two
+ * independent routes must agree within Gabcke's bound, plus our radius.
+ * Without its last term the expansion must miss (the check has teeth). */
+static void expansion(mpfr_t out, double tt, int terms, const mpfr_t pi) {
+    mpfr_t x, a;
+    mpfr_inits2(256, x, a, (mpfr_ptr)0);
+    mpfr_set_d(x, tt, MPFR_RNDN);
+    mpfr_div(out, x, pi, MPFR_RNDN);
+    mpfr_div_ui(out, out, 2, MPFR_RNDN);
+    mpfr_log(out, out, MPFR_RNDN);
+    mpfr_sub_ui(out, out, 1, MPFR_RNDN);
+    mpfr_mul(out, out, x, MPFR_RNDN);
+    mpfr_div_ui(out, out, 2, MPFR_RNDN); /* t/2 (log(t/2pi) - 1) */
+    mpfr_div_ui(a, pi, 8, MPFR_RNDN);
+    mpfr_sub(out, out, a, MPFR_RNDN);
+    const unsigned long num[3] = {1, 7, 31};
+    const unsigned long den[3] = {48, 5760, 80640};
+    for (int k = 0; k < terms; k++) {
+        mpfr_pow_si(a, x, -(2 * k + 1), MPFR_RNDN);
+        mpfr_mul_ui(a, a, num[k], MPFR_RNDN);
+        mpfr_div_ui(a, a, den[k], MPFR_RNDN);
+        mpfr_add(out, out, a, MPFR_RNDN);
+    }
+    mpfr_clears(x, a, (mpfr_ptr)0);
+}
+
 static void test_theta(zz_ctx *ctx) {
     zz_ball t, th;
     zz_init(&t, PREC);
-    zz_init(&th, PREC);
+    zz_init(&th, 192); /* 128 bits would round theta(10^4) by ~1e-34 */
     mpfr_t x, a, pi;
     mpfr_inits2(256, x, a, pi, (mpfr_ptr)0);
     mpfr_const_pi(pi, MPFR_RNDN);
-    const double ts[] = {50.0, 200.0, 1000.0, 7005.0};
-    for (int i = 0; i < 4; i++) {
-        zz_set_d(&t, ts[i]);
-        assert(zz_theta(ctx, &th, &t) == ZZ_OK);
-        assert(mpfr_cmp_d(th.r, 1e-30) < 0);
+    const double ts[] = {10.0, 20.0, 50.0, 200.0, 1000.0, 7005.0, 10000.0};
+    for (int i = 0; i < 7; i++) {
         double tt = ts[i];
-        mpfr_set_d(x, tt, MPFR_RNDN);
-        mpfr_div(a, x, pi, MPFR_RNDN);
-        mpfr_div_ui(a, a, 2, MPFR_RNDN);
-        mpfr_log(a, a, MPFR_RNDN);
-        mpfr_sub_ui(a, a, 1, MPFR_RNDN);
-        mpfr_mul(a, a, x, MPFR_RNDN);
-        mpfr_div_ui(a, a, 2, MPFR_RNDN); /* t/2 (log(t/2pi) - 1) */
-        mpfr_div_ui(x, pi, 8, MPFR_RNDN);
-        mpfr_sub(a, a, x, MPFR_RNDN);
-        mpfr_set_d(x, 1.0 / (48.0 * tt) + 7.0 / (5760.0 * tt * tt * tt), MPFR_RNDN);
-        mpfr_add(a, a, x, MPFR_RNDN);
+        zz_set_d(&t, tt);
+        assert(zz_theta(ctx, &th, &t) == ZZ_OK);
+        assert(mpfr_cmp_d(th.r, 1e-35) < 0); /* far below 1/(3322 t^7) */
+        mpfr_set_d(x, tt, MPFR_RNDN); /* Gabcke's bound 1/(3322 t^7) */
+        mpfr_pow_si(x, x, -7, MPFR_RNDN);
+        mpfr_div_ui(x, x, 3322, MPFR_RNDN);
+        expansion(a, tt, 3, pi);
         mpfr_sub(a, a, th.m, MPFR_RNDN);
-        double diff = fabs(mpfr_get_d(a, MPFR_RNDN));
-        assert(diff < 2.0 * 31.0 / (80640.0 * pow(tt, 5.0)) + 1e-15);
+        mpfr_abs(a, a, MPFR_RNDN);
+        mpfr_sub(a, a, th.r, MPFR_RNDN);
+        assert(mpfr_cmp(a, x) < 0);
+        expansion(a, tt, 2, pi); /* last term dropped */
+        mpfr_sub(a, a, th.m, MPFR_RNDN);
+        mpfr_abs(a, a, MPFR_RNDN);
+        assert(mpfr_cmp(a, x) > 0);
     }
     /* A wrong offset is visible far above the radius. */
     zz_faults f = {.theta_offset = 0.01, .skip_interval = ZZ_NO_SKIP};
@@ -169,7 +194,7 @@ static void test_theta(zz_ctx *ctx) {
     zz_clear(&t);
     zz_clear(&th);
     mpfr_clears(x, a, pi, (mpfr_ptr)0);
-    printf("[PASS] theta matches its asymptotic expansion\n");
+    printf("[PASS] theta (Stirling) matches Gabcke's expansion within 1/(3322 t^7)\n");
 }
 
 /* Each published zero gamma_k: Z(gamma_k - 1e-20) and Z(gamma_k + 1e-20)

@@ -7,7 +7,7 @@ Catalyst-File-ID: urn:uuid:69b21e2b-f4e3-4b4c-ab25-5a34a78de4b6
 
 # Zeros of the Riemann zeta function on the critical line, to T = 10^4
 
-Status: Experimental (first slice)
+Status: Experimental (slice 2: Gabcke's bound confirmed)
 Scope: `crypto_pipeline/` (governed project scope, Catylist ADR-0004)
 Files: `crypto_zeta_ball.h`, `crypto_zeta_ball.c`, `crypto_zeta.h`,
 `crypto_zeta.c`, `zeta_verify.c`, `tests/test_zeta.c`, `tests/test_zeta.py`
@@ -25,11 +25,11 @@ point g₁₀₁₄₃) lies on the critical line Re s = ½ and is simple, and t
 | 10⁴ | 10142 | 10142 |
 
 The run uses the Euler–Maclaurin formula for every value of ζ (method `em`,
-13,045 evaluations, about 4 minutes on one core of this container). With `--rs` the
-same result comes from the Riemann–Siegel formula in about 7 s, but that
-result is **conditional**: it uses Gabcke's remainder constant, which this
-repository has not confirmed from its primary source (see
-[Sources](#sources-and-their-status)).
+13,045 evaluations, about 4 minutes on one core of this container). With
+`--rs`, the Riemann–Siegel formula with Gabcke's remainder bound (confirmed
+from his dissertation, see [Sources](#sources-and-their-status)) proves the
+same result in about 8 s. The two methods are independent ways to the same
+counts.
 
 This is a proof only up to T = 10⁴. It is a first slice: a small,
 independent, rigorous checker.
@@ -82,13 +82,15 @@ At |w| ≥ 40 the remainder is below 10⁻⁴⁰. θ is evaluated on balls, so i
 also be enclosed over a whole interval of t (used by Turing's method below).
 
 The asymptotic expansion θ(t) ≈ (t/2) log(t/2π) − t/2 − π/8 + 1/(48t) +
-7/(5760t³) is **not** used in any proof. It places approximate Gram points
-(a heuristic), and `test_theta` checks the Stirling value against it: the
-difference is below twice the next term, 31/(80640t⁵), at t = 50, 200, 1000
-and 7005. The coefficients follow from DLMF 5.11.1; they were not checked
-against a separate primary source.
+7/(5760t³) is **not** used in any proof; it places approximate Gram points (a
+heuristic). Gabcke (1979, Einleitung (4), (5), p. 2) states it with one more
+term and an explicit remainder: θ(t) = (t/2) log(t/2π) − t/2 − π/8 + 1/(48t) +
+7/(5760t³) + 31/(80640t⁵) + Rθ(t) with |Rθ(t)| < 1/(3322 t⁷) for t ≥ 10.
+`test_theta` checks the Stirling value against that, an independent route, at
+t = 10, 20, 50, 200, 1000, 7005 and 10⁴ (agreement within 1/(3322 t⁷) plus the
+radius), and checks that dropping the 31/(80640t⁵) term breaks the agreement.
 
-### 3. ζ(½ + it) by Euler–Maclaurin (unconditional)
+### 3. ζ(½ + it) by Euler–Maclaurin
 
 With f(x) = x^{−s} in DLMF 2.10.1 (a = N, upper limit → ∞, first for
 Re s > 1, then by analytic continuation to Re s > 1 − 2M):
@@ -109,21 +111,33 @@ the enclosure of Im(e^{iθ}ζ), which is exactly 0, must contain 0; otherwise
 the evaluation fails with `ZZ_ERR_INCONSISTENT`. Since ζ is computed without
 θ, this check catches an error in θ (or ζ) larger than the enclosure radius.
 
-### 4. Z(t) by Riemann–Siegel (conditional)
+### 4. Z(t) by Riemann–Siegel with Gabcke's bound
 
 For t ≥ 200, with τ = t/2π, N = ⌊√τ⌋ and p = √τ − N:
 
 Z(t) = 2 Σ_{n≤N} n^{−½} cos(θ(t) − t log n) + (−1)^{N−1} τ^{−¼} C₀(p) + R₀(t),
 C₀(p) = cos(2π(p² − p − 1/16)) / cos(2πp),
 
-with |R₀(t)| ≤ 0.127 τ^{−¾} attributed to Gabcke (1979). This form of the
-formula matches Rubinstein (2005); the constant is unconfirmed (below).
+with |R₀(t)| < 0.127 t^{−¾} for t ≥ 200: Gabcke (1979), Satz 3.2.2 (b),
+p. 55, also stated in the Einleitung, (6) and (8), p. 3. The bound is in t,
+not τ. Gabcke writes the formula in D. H. Lehmer's form (Einleitung (1), (2),
+p. 2) with a = √(t/2π) (so a^{−½} = τ^{−¼}), N = ⌊a⌋, z = 1 − 2(a − N) =
+1 − 2p and C₀(z) = F(z) = cos(π/2·(z² + ¾)) / cos(πz). Substituting z = 1 − 2p
+gives π/2·(z² + ¾) = 2π(p² − p − 1/16) + π and πz = π − 2πp, so numerator and
+denominator each change sign and F(1 − 2p) is exactly the C₀(p) above. The
+code adds (127/1000) t^{−¾}, evaluated at the smallest t of the input ball and
+rounded up.
+
+Slice 1 used 0.127 τ^{−¾} before the thesis could be read; that is
+(2π)^{¾} ≈ 3.96 times Gabcke's bound, so it was sound but looser, and its
+results were reported as conditional. With the exact bound, Riemann–Siegel
+falls back to Euler–Maclaurin at 2 points up to 10⁴ instead of 6.
 `zz_z_rs` refuses t < 200, a ball for √τ that straddles an integer, and a C₀
 denominator ball that contains 0 (p near ¼ or ¾); the verifier then falls back
 to Euler–Maclaurin. Every 64th Gram sample at t ≥ 200 is also evaluated by
 Euler–Maclaurin: its Im check must pass and the two enclosures of Z must
-overlap. This spot check guards against defects. It does not make Gabcke's
-constant unconditional.
+overlap. This spot check guards against defects in the implementation (a
+wrong θ or a dropped term), which Gabcke's bound by itself cannot catch.
 
 ### 5. Isolating sign changes on Gram intervals
 
@@ -193,14 +207,10 @@ check fails (`ZZ_ERR_TURING`); if higher, something is inconsistent
 | DLMF 5.11.1 and §5.11(ii) (Stirling's series; complex remainder at most sec^{2n}(½ ph z) times the first neglected term; DLMF cites Olver 1997) | θ(t) | Confirmed from dlmf.nist.gov/5.11 |
 | DLMF 2.10.1 (Euler–Maclaurin), 24.2.11 and 24.9.1 (\|B₂ₙ(x)\| < \|B₂ₙ\| on (0, 1)) | ζ and its remainder | Confirmed from dlmf.nist.gov; the remainder bound above is derived from them here |
 | Riemann–von Mangoldt identity (∗) | Turing's bound | Derived here (argument principle); not compared against a textbook |
-| W. Gabcke, *Neue Herleitung und explizite Restabschätzung der Riemann-Siegel-Formel*, Dissertation, Göttingen 1979: \|R₀(t)\| ≤ 0.127 τ^{−¾}, t ≥ 200 | `--rs` only | **Not confirmed.** The eDiss host refused automated access (HTTP 403; the handle server returned 522). Rubinstein (arXiv:math/0412181) quotes Gabcke only for the next order, as \|R₁(t)\| ≤ 0.053 t^{−5/4}, t ≥ 200, written with t. The code uses 0.127 τ^{−¾}; since τ < t, that is the larger of the two possible readings, but the constant itself is unverified. |
-| θ asymptotic expansion | Heuristic sample placement; a test cross-check | Coefficients derived from DLMF 5.11.1; not used in proofs |
+| W. Gabcke, *Neue Herleitung und explizite Restabschätzung der Riemann-Siegel-Formel*, Dissertation, Göttingen 1979, Satz 3.2.2 (b): \|R₀(t)\| < 0.127 t^{−¾} for t ≥ 200, for the formula with C₀ only | `--rs` | Confirmed from the dissertation PDF (2015 typesetting of the 1979 thesis, 133 pages; printed p. 55 = PDF p. 63; restated in the Einleitung, (6) and (8), printed p. 3), read 2026-11-23. Formula and C₀: Einleitung (1), (2), printed p. 2. Not committed. |
+| Gabcke, Einleitung (4), (5): θ expansion with \|Rθ(t)\| < 1/(3322 t⁷), t ≥ 10 | A test cross-check; heuristic sample placement | Confirmed from the same PDF (printed p. 2); not used in proofs |
 | MPFR correct rounding and ternary values | Every enclosure | MPFR documentation |
 | OEIS A072080, A114856, A013629, A002505, A058303, A065434, A065452, A065453, A192492, A305741–A305744, A306004 | Test expectations | Retrieved 2026-11-23 |
-
-To make `--rs` unconditional, confirm Gabcke's Satz (statement, variable t or
-τ, range, constant) from the thesis and record it here. The code needs no
-change if the τ form with 0.127 is confirmed.
 
 ## Evidence
 
@@ -208,9 +218,9 @@ change if the τ form with 0.127 is confirmed.
   N(100) = 29, t₀ = g₁₀₁₄₃ = 10000.8818, t₁ = 10034.9635, Turing bound
   10144.567, 10144 sign changes up to t₀, 13,045 evaluations, all by
   Euler–Maclaurin.
-- Method `rs`: the same counts and the same 840 bad Gram points; 13,367
-  evaluations, of which 245 by Euler–Maclaurin (spot checks, t < 200, and 6
-  fallbacks).
+- Method `rs` (Gabcke's bound): the same counts and the same 840 bad Gram
+  points; 13,363 evaluations, of which 241 by Euler–Maclaurin (spot checks,
+  t < 200, and 2 fallbacks), about 8 s.
 - Compared locally with the full OEIS b-files (not committed: OEIS data is
   CC BY-SA 4.0):
   - the 840 bad Gram points up to n = 10143 equal OEIS A114856 exactly;
@@ -229,7 +239,8 @@ change if the τ form with 0.127 is confirmed.
 - ball arithmetic: enclosures of e, 1/3, π/4 and log 2 / 2 checked against
   512-bit values; propagation through sin; refusals for log, sqrt and 1/x
   of balls reaching 0, and complex log off the right half-plane;
-- θ against its asymptotic expansion, and a θ offset of 0.01 visible;
+- θ against Gabcke's expansion within 1/(3322 t⁷) at seven heights from 10
+  to 10⁴, failing without its last term; a θ offset of 0.01 visible;
 - the first ten published zeros (OEIS): Z changes sign across γ_k ± 10⁻²⁰;
 - Gram's law holds for n = −1, …, 125 and fails at 126 and 134, on
   certified enclosures of g_n;
@@ -300,10 +311,12 @@ Tested with MPFR 4.2.1 and GMP 6.3.0 (Ubuntu 24.04.5 packages).
 - Soundness rests on MPFR's documented correct rounding, the cited theorems,
   and (∗) as derived here. None of it is machine-checked; the C code is
   tested, not proved.
-- `--rs` is conditional on Gabcke's constant until it is confirmed.
+- Gabcke's bound is taken from the thesis as stated; its proof (Chapters 3
+  and 4) was not re-checked here. The RS–EM spot checks and the 49-point
+  overlap test are consistent with it but are not a proof of it.
 - Variable-time, public inputs; research prototype. Heights up to 10⁶ are
   accepted; Euler–Maclaurin cost grows like T² overall, so large heights
-  should use `--rs` once its constant is confirmed.
+  should use `--rs`.
 - Not included: higher Riemann–Siegel corrections (C₁, …), Lean
   formalization of the Turing step, and a mixed method that trusts
   Riemann–Siegel only where Euler–Maclaurin confirms it.
@@ -319,7 +332,7 @@ Tested with MPFR 4.2.1 and GMP 6.3.0 (Ubuntu 24.04.5 packages).
   Functions*, A K Peters, 1997.
 - W. Gabcke, *Neue Herleitung und explizite Restabschätzung der
   Riemann-Siegel-Formel*, Dissertation, Göttingen, 1979,
-  hdl:11858/00-1735-0000-0022-6013-8 (not consulted; see above).
+  hdl:11858/00-1735-0000-0022-6013-8 (Satz 3.2.2; Einleitung (1)–(8)).
 - M. Rubinstein, "Computational methods and experiments in analytic number
   theory", arXiv:math/0412181 (2005).
 - The MPFR library manual, mpfr.org.

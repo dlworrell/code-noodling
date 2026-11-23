@@ -64,8 +64,8 @@ repository's [`aes-manifest.yaml`](../aes-manifest.yaml) (Catylist ADR-0004).
 - Zeros of the Riemann zeta function: a rigorous check that every zero with
   0 < t ≤ 10^4 lies on the critical line (`zz_verify`, `./zeta_verify`).
   MPFR ball arithmetic encloses every value; Z(t) comes from Euler–Maclaurin
-  summation (unconditional) or, with `--rs`, from Riemann–Siegel with
-  Gabcke's constant (conditional: not yet confirmed from its source); sign
+  summation or, with `--rs` (much faster), from Riemann–Siegel with Gabcke's
+  remainder bound 0.127 t^(-3/4) (his 1979 dissertation, Satz 3.2.2); sign
   changes on Gram intervals and Turing's method with Trudgian's constants
   give N(100) = 29, N(1000) = 649 and N(10^4) = 10142. Needs MPFR. See
   [zeta-zeros notes](docs/engineering/CRYPTO-ZETA-ZEROS.md).

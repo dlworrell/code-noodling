@@ -82,7 +82,7 @@ int zz_ctx_init(zz_ctx *ctx, mpfr_prec_t prec) {
     ctx->evaluations = 0;
     ctx->em_evaluations = 0;
     ctx->rs_fallbacks = 0;
-    ctx->conditional = 0;
+    ctx->used_riemann_siegel = 0;
     mpq_t b[BERN_COUNT];
     for (int i = 0; i < BERN_COUNT; i++) {
         mpq_init(b[i]);
@@ -414,13 +414,16 @@ int zz_z_em(zz_ctx *ctx, zz_ball *out, const zz_ball *t) {
     return rc;
 }
 
-/* ---- Riemann-Siegel (conditional on ZZ_GABCKE_D0) ---------------------- */
+/* ---- Riemann-Siegel with Gabcke's remainder bound ---------------------- */
 
 /* Z(t) = 2 sum_{n<=N} n^(-1/2) cos(theta - t log n)
  *        + (-1)^(N-1) tau^(-1/4) C_0(p) + R_0(t),
  * tau = t/(2 pi), N = floor(sqrt(tau)), p = sqrt(tau) - N,
  * C_0(p) = cos(2 pi (p^2 - p - 1/16)) / cos(2 pi p),
- * |R_0(t)| <= ZZ_GABCKE_D0 tau^(-3/4) for t >= 200 (unconfirmed constant). */
+ * |R_0(t)| < 0.127 t^(-3/4) for t >= 200 (Gabcke 1979, Satz 3.2.2 (b)).
+ * Gabcke writes the correction as C_0(z) = cos(pi/2 (z^2 + 3/4)) / cos(pi z)
+ * with z = 1 - 2p; substituting z turns numerator and denominator each into
+ * -1 times the ones above, so the two are the same function. */
 int zz_z_rs(zz_ctx *ctx, zz_ball *out, const zz_ball *t) {
     mpfr_prec_t p = ctx->prec + 32;
     int rc = ZZ_OK;
@@ -507,11 +510,13 @@ int zz_z_rs(zz_ctx *ctx, zz_ball *out, const zz_ball *t) {
     } else {
         zz_sub(&sum, &sum, &a);
     }
-    /* Remainder: d_0 tau^(-3/4) = d_0 f^3. */
-    zz_abs_upper(e, &f);
-    mpfr_pow_ui(e, e, 3, MPFR_RNDU);
-    mpfr_mul_d(e, e, ZZ_GABCKE_D0, MPFR_RNDU);
-    mpfr_mul_d(e, e, 1.0 + 1e-15, MPFR_RNDU); /* 0.127 as a double is inexact */
+    /* Remainder: (127/1000) t^(-3/4), at the smallest t of the ball (where
+     * t^(-3/4) is largest), rounded up. */
+    zz_lower(e, t);
+    mpfr_set_d(hi, -0.75, MPFR_RNDN); /* exact */
+    mpfr_pow(e, e, hi, MPFR_RNDU);
+    mpfr_mul_ui(e, e, ZZ_GABCKE_D0_NUM, MPFR_RNDU);
+    mpfr_div_ui(e, e, ZZ_GABCKE_D0_DEN, MPFR_RNDU);
     zz_add_error(&sum, e);
     zz_set(out, &sum);
 done:
@@ -544,7 +549,7 @@ int zz_z_sign(zz_ctx *ctx, double t, int method, int *err) {
             sign = zz_sign(&z);
         }
         if (sign != 0) {
-            ctx->conditional = 1;
+            ctx->used_riemann_siegel = 1;
         } else {
             ctx->rs_fallbacks++;
         }
@@ -740,7 +745,7 @@ static int sign_at(verifier *vf, double t, double nudge, double *used) {
 /* RS mode cross-check at t: Euler-Maclaurin must pass its Im check (which
  * catches a wrong theta) and its enclosure of Z must overlap the
  * Riemann-Siegel one (which catches a wrong RS value or bound). This guards
- * against defects; it does not make the RS bound unconditional. */
+ * against defects in the implementation, which Gabcke's bound cannot. */
 static int rs_spot_check(verifier *vf, double t) {
     zz_ctx *ctx = vf->ctx;
     zz_ball tb, zr, ze;
@@ -1142,7 +1147,7 @@ out:
     res->evaluations = ctx.evaluations;
     res->em_evaluations = ctx.em_evaluations;
     res->rs_fallbacks = ctx.rs_fallbacks;
-    res->conditional = ctx.conditional;
+    res->used_riemann_siegel = ctx.used_riemann_siegel;
     zz_ctx_clear(&ctx);
     mpfr_free_cache();
     return res->status;

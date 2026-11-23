@@ -8,7 +8,7 @@
 /* Command-line driver for zz_verify (crypto_zeta.h).
  *
  * Usage: zeta_verify [--rs] [--json] [--brackets] T [checkpoint...]
- *   --rs        Riemann-Siegel with Gabcke's constant (conditional result)
+ *   --rs        Riemann-Siegel with Gabcke's bound for t >= 200 (faster)
  *   --json      one JSON object on stdout
  *   --brackets  include every sign change in the JSON output
  * Exit status: 0 when the claim is proven, 1 when verification failed,
@@ -104,8 +104,8 @@ int main(int argc, char **argv) {
     size_t ng = res.n_bad_gram < BAD_GRAM_CAP ? res.n_bad_gram : BAD_GRAM_CAP;
     if (json) {
         printf("{\"status\": %d, \"reason\": \"%s\", \"fail_t\": %.17g, \"method\": \"%s\","
-               " \"conditional\": %d,\n",
-               status, reason, res.fail_t, rs ? "rs-gabcke" : "em", res.conditional);
+               " \"used_riemann_siegel\": %d,\n",
+               status, reason, res.fail_t, rs ? "rs-gabcke" : "em", res.used_riemann_siegel);
         printf(" \"height\": %.17g, \"zeros_to_height\": %ld, \"t0\": %.17g, \"t1\": %.17g,\n",
                height, res.zeros_to_height, res.t0, res.t1);
         printf(" \"gram_t0\": %ld, \"sign_changes_to_t0\": %ld, \"turing_bound\": %ld,"
@@ -133,7 +133,7 @@ int main(int argc, char **argv) {
     } else if (status == ZZ_OK) {
         printf("PROVEN%s: all %ld zeros of zeta with 0 < t <= %.17g lie on the critical line"
                " and are simple; N(%.17g) = %ld\n",
-               res.conditional ? " (conditional on Gabcke's constant)" : "", res.sign_changes_to_t0,
+               res.used_riemann_siegel ? " (Riemann-Siegel with Gabcke's bound)" : "", res.sign_changes_to_t0,
                res.t0, height, res.zeros_to_height);
         for (size_t k = 0; k < ncp; k++) {
             printf("N(%.17g) = %ld\n", cps[k], res.checkpoint_counts[k]);
