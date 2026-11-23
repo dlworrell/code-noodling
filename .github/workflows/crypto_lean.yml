@@ -1,0 +1,78 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+#
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:3baeee44-d980-4e80-bf5f-be3fe79e5963
+
+name: Crypto Lean proofs
+
+# Builds the Lean proofs in crypto_pipeline/proof/lean (Mathlib, pinned in
+# lakefile.toml): the GRH primality link and the zeta-zeros Turing step. Fails
+# unless the main theorems use only Lean's three standard axioms. The elan installer is a pinned release checked by SHA-256.
+on:
+  pull_request:
+    branches: [main, dev-daily, fitment]
+    paths:
+      - "crypto_pipeline/proof/lean/**"
+      - ".github/workflows/crypto_lean.yml"
+  push:
+    branches: [main, dev-daily, fitment]
+    paths:
+      - "crypto_pipeline/proof/lean/**"
+      - ".github/workflows/crypto_lean.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: crypto-lean-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lean:
+    name: Lean proofs (GRH primality link)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      ELAN_VERSION: v4.1.2
+      ELAN_SHA256: f81c2e48c1588d4612cd2c8851947898a45ac8d72748a07dff3a5694f1cf589b
+    defaults:
+      run:
+        working-directory: crypto_pipeline/proof/lean
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install elan (pinned, checksum-verified)
+        run: |
+          set -euo pipefail
+          curl -sSfL -o "$RUNNER_TEMP/elan.tar.gz" \
+            "https://github.com/leanprover/elan/releases/download/${ELAN_VERSION}/elan-x86_64-unknown-linux-gnu.tar.gz"
+          echo "${ELAN_SHA256}  $RUNNER_TEMP/elan.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP"
+          "$RUNNER_TEMP/elan-init" -y --default-toolchain none --no-modify-path
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Fetch Mathlib build cache
+        run: lake exe cache get
+
+      - name: Build proofs
+        run: lake build
+
+      - name: Check axioms (no sorry, no added axioms)
+        run: |
+          set -euo pipefail
+          lake env lean CheckAxioms.lean | tee "$RUNNER_TEMP/axioms.txt"
+          # One report per theorem: "depends on axioms: [...]" or "does not depend on any axioms".
+          test "$(grep -cE "depends on axioms|does not depend on any axioms" "$RUNNER_TEMP/axioms.txt")" -eq 10
+          if grep -q "sorryAx" "$RUNNER_TEMP/axioms.txt"; then
+            echo "::error::a proof uses sorry"; exit 1
+          fi
+          allowed='^(propext|Classical\.choice|Quot\.sound)$'
+          extra=$(grep -o "depends on axioms: \[.*\]" "$RUNNER_TEMP/axioms.txt" \
+            | sed -e 's/.*\[//' -e 's/\]//' | tr ',' '\n' | sed 's/^ *//' \
+            | grep -Ev "$allowed" || true)
+          if [ -n "$extra" ]; then
+            echo "::error::unexpected axioms: $extra"; exit 1
+          fi

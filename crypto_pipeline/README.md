@@ -42,6 +42,33 @@ repository's [`aes-manifest.yaml`](../aes-manifest.yaml) (Catylist ADR-0004).
 - Modular inverse: variable-time binary extended GCD for odd moduli.
 - Blinding: rejection-sampled invertible factor `k`, `a*k mod m`, and ordinary
   modular unblinding. Both the blinded value and `k` are returned.
+- Pocklington primality certificates: an unconditional checker for certificate
+  trees whose leaves are 64-bit primes (`crypto_pocklington_verify`,
+  variable-time), with an untrusted generator in `pocklington_cert.py`. See
+  [Pocklington notes](docs/engineering/CRYPTO-POCKLINGTON.md).
+- ECPP primality certificates: an unconditional checker for elliptic-curve
+  certificate chains (`crypto_ecpp_verify`, variable-time), with an untrusted
+  class-number-1 generator and a PARI/GP certificate converter in
+  `ecpp_cert.py`. See
+  [ECPP notes](docs/engineering/CRYPTO-ECPP.md).
+- Modular exponentiation: left-to-right square-and-multiply in Montgomery form,
+  for odd moduli (`crypto_mod_exp`, variable-time).
+- GRH-conditional primality test: Miller–Rabin for every base up to Bach's
+  explicit bound 2 (ln N)² (`crypto_is_prime_grh`, variable-time). Composite
+  answers are unconditional; prime answers assume the generalized Riemann
+  hypothesis for Dirichlet L-functions. See
+  [GRH primality notes](docs/engineering/CRYPTO-PRIMALITY-GRH.md).
+- Square roots modulo a prime: Tonelli–Shanks with a deterministic
+  non-residue search bounded by the same ERH bound (`crypto_mod_sqrt_grh`,
+  variable-time). Every returned root is verified by squaring.
+- Zeros of the Riemann zeta function: a rigorous check that every zero with
+  0 < t ≤ 10^4 lies on the critical line (`zz_verify`, `./zeta_verify`).
+  MPFR ball arithmetic encloses every value; Z(t) comes from Euler–Maclaurin
+  summation or, with `--rs` (much faster), from Riemann–Siegel with Gabcke's
+  remainder bound 0.127 t^(-3/4) (his 1979 dissertation, Satz 3.2.2); sign
+  changes on Gram intervals and Turing's method with Trudgian's constants
+  give N(100) = 29, N(1000) = 649 and N(10^4) = 10142. Needs MPFR. See
+  [zeta-zeros notes](docs/engineering/CRYPTO-ZETA-ZEROS.md).
 
 The bounded NTT is not the Harvey–van der Hoeven algorithm discussed in the
 article. Its two-prime reconstruction is valid for this implementation's maximum
@@ -58,6 +85,8 @@ make shared all
 ./test_suite
 python3 tests/test_arithmetic.py
 make bounds-sanitize
+./test_prime
+python3 tests/test_prime.py
 python3 benchmark_multiply.py
 ```
 
