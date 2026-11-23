@@ -80,3 +80,10 @@ CI runs `.github/workflows/crypto_lean.yml`:
 - `lake env lean CheckAxioms.lean` runs the axiom audit.
 
 Locally, with elan installed, run the same three commands from this directory.
+
+## Pinned sources
+
+`lake-manifest.json` pins every dependency (Mathlib and the packages it pulls
+in) to an exact commit, and [`SOURCES.md`](SOURCES.md) lists those commits
+and the Lean toolchain with their Software Heritage identifiers, so the build
+can be reproduced from the archive if an upstream repository disappears.
