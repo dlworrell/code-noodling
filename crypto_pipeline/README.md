@@ -61,14 +61,6 @@ repository's [`aes-manifest.yaml`](../aes-manifest.yaml) (Catylist ADR-0004).
 - Square roots modulo a prime: Tonelli–Shanks with a deterministic
   non-residue search bounded by the same ERH bound (`crypto_mod_sqrt_grh`,
   variable-time). Every returned root is verified by squaring.
-- Zeros of the Riemann zeta function: a rigorous check that every zero with
-  0 < t ≤ 10^4 lies on the critical line (`zz_verify`, `./zeta_verify`).
-  MPFR ball arithmetic encloses every value; Z(t) comes from Euler–Maclaurin
-  summation or, with `--rs` (much faster), from Riemann–Siegel with Gabcke's
-  remainder bound 0.127 t^(-3/4) (his 1979 dissertation, Satz 3.2.2); sign
-  changes on Gram intervals and Turing's method with Trudgian's constants
-  give N(100) = 29, N(1000) = 649 and N(10^4) = 10142. Needs MPFR. See
-  [zeta-zeros notes](docs/engineering/CRYPTO-ZETA-ZEROS.md).
 
 The bounded NTT is not the Harvey–van der Hoeven algorithm discussed in the
 article. Its two-prime reconstruction is valid for this implementation's maximum
