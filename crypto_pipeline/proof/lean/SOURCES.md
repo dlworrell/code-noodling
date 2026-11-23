@@ -61,7 +61,8 @@ SWHID=swh:1:rev:9837ca9d65d9de6fad1ef4381750ca688774e608   # e.g. mathlib
 curl -X POST https://archive.softwareheritage.org/api/1/vault/git-bare/$SWHID/
 curl https://archive.softwareheritage.org/api/1/vault/git-bare/$SWHID/   # until "status": "done"
 curl -LOJ https://archive.softwareheritage.org/api/1/vault/git-bare/$SWHID/raw/
-tar -xf swh_1_rev_*.git.tar && git clone swh_1_rev_*.git mathlib
+tar -xf swh_1_rev_*.git.tar        # unpacks to the directory swh:1:rev:<sha>.git
+git clone swh:1:rev:*.git mathlib
 ```
 
 Then point the package's `url` in `lake-manifest.json` (or a local
