@@ -173,4 +173,4 @@ number theory that Mathlib does not contain; and the correspondence between
 the C code and the Lean model, which is tested, not proved.
 
 For primality without GRH, see the unconditional certificate checkers:
-[Pocklington](CRYPTO-POCKLINGTON.md) and, where merged, ECPP (`CRYPTO-ECPP.md`).
+[Pocklington](CRYPTO-POCKLINGTON.md) and [ECPP](CRYPTO-ECPP.md).

@@ -125,6 +125,16 @@ int main(void) {
     /* 2^89 - 1 is 3 mod 4; 2^64 + 13 is a two-limb prime. */
     limb_t nine[2] = {9, 0}, rt2[2];
     assert(crypto_mod_sqrt_grh(rt2, nine, m89, 2, 0) == 0 && rt2[0] == 3 && rt2[1] == 0);
+    /* 2^64 + 13 is 5 mod 8, so this takes the general (non 3 mod 4) path. The
+     * smaller root of (2^64 + 13 - 0xFEDCBA9876543210)^2 is that difference;
+     * expected values computed independently in Python. 3 is a non-residue. */
+    limb_t p64_13[2] = {13, 1};
+    limb_t sq64[2] = {UINT64_C(0xFC70A5227119A54D), 0}, rt64[2] = {0, 0};
+    assert(crypto_mod_sqrt_grh(rt64, sq64, p64_13, 2, 0) == 0 && errno == 0);
+    assert(rt64[0] == UINT64_C(0x0123456789ABCDFD) && rt64[1] == 0);
+    limb_t three2[2] = {3, 0}, kept2[2] = {99, 99};
+    assert(crypto_mod_sqrt_grh(kept2, three2, p64_13, 2, 0) == -1 && errno == EDOM);
+    assert(kept2[0] == 99 && kept2[1] == 99);
     limb_t even_mod[1] = {10}, one_mod[1] = {1};
     assert(crypto_mod_sqrt_grh(kept, three, even_mod, 1, 0) == -1 && errno == EDOM);
     assert(crypto_mod_sqrt_grh(kept, three, one_mod, 1, 0) == -1 && errno == EDOM);
