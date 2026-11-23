@@ -15821,7 +15821,7 @@ Lifecycle: counting; tabulation stage: unknown. Authority: https://www.elections
 
 Latest input label 2026-11-18T17:58; 539 source representations of contests; overlapping jurisdictions may appear separately. Individual source dates may be older; this label is not an authoritative current-count time.
 
-Generated: 2026-11-22T22:52:21+00:00. Per-source vintages and coverage findings are listed in analysis.json (source_summary and coverage_summary).
+Generated: 2026-11-23T19:14:03+00:00. Per-source vintages and coverage findings are listed in analysis.json (source_summary and coverage_summary).
 
 ## Method and limits
 
