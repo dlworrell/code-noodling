@@ -279,6 +279,7 @@ class RejectionTests(unittest.TestCase):
         self.assertEqual(LIB.crypto_pocklington_verify(None, 1, 0, 0, None), -1)
         self.assertEqual(c.get_errno(), errno.EINVAL)
         self.assertEqual(LIB.crypto_pocklington_verify(nodes, 0, 0, 0, None), -1)
+        self.assertEqual(c.get_errno(), errno.EINVAL)
         self.assertEqual(LIB.crypto_pocklington_verify(nodes, len(self.cert.nodes),
                                                        len(self.cert.nodes), 0, None), -1)
         self.assertEqual(c.get_errno(), errno.EINVAL)
