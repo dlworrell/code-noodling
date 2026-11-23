@@ -3,10 +3,11 @@
 # SPDX-License-Identifier: Apache-2.0
 # Catalyst-File-ID: urn:uuid:a89b862a-a1aa-457c-9fb9-eccdebfb4aac
 
-# Lean proofs for crypto_pipeline's GRH-conditional primality test.
+# Lean proofs for crypto_pipeline: the GRH-conditional primality test and the
+# Turing step of the zeta-zeros verification.
 # Checked by .github/workflows/crypto_lean.yml; see README.md here.
 name = "crypto_pipeline_grh"
-defaultTargets = ["CryptoPipelineGrh"]
+defaultTargets = ["CryptoPipelineGrh", "CryptoPipelineTuring"]
 
 [[require]]
 name = "mathlib"
@@ -15,3 +16,6 @@ rev = "v4.15.0"
 
 [[lean_lib]]
 name = "CryptoPipelineGrh"
+
+[[lean_lib]]
+name = "CryptoPipelineTuring"
