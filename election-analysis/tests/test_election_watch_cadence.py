@@ -148,6 +148,12 @@ class FailClosedTests(unittest.TestCase):
         self.assertEqual((code, out), (0, "run=false"))
         self.assertEqual(len(self.subprocess_calls), 2)
         self.assertEqual(self.subprocess_calls[1].args[0], ["gh", "api", "repos/o/r/actions/runs/1/jobs"])
+        for body in ('{"jobs": ["x"]}', '{"jobs": [["watch"]]}', '{"jobs": null}', '["x"]'):
+            malformed = subprocess.CompletedProcess(["gh"], 0, stdout=body, stderr="")
+            code, out, err = self.cli(["--event", "schedule", "--now", AFTER, "--repo", "o/r", "--run-id", "2"],
+                                      side_effect=[listing, malformed])
+            self.assertEqual((code, out), (0, "run=false"), body)
+            self.assertIn("::warning::run history unavailable", err)
 
     def test_k10_empty_history_runs(self) -> None:
         gh = FakeGh([], {})

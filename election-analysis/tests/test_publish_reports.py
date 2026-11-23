@@ -611,6 +611,83 @@ class PublishFlowTests(unittest.TestCase):
                 "verification": {"verified": ok, "reason": "valid" if ok else "unsigned"}}
         return FakeGh(responses)
 
+    def gateway_timeout_fake(self, outcome: str) -> FakeGh:
+        # Build the full expected first-batch tree independently of the publisher.
+        reports = self.root / "election-analysis" / "reports"
+        (reports / "analysis.json").write_text('{"v": 2}\n')
+        (reports / "edt" / "old.md").unlink()
+        _, first_tree = detect_changes(self.root, "election-analysis/reports")
+        self.regenerate_after_first_batch(reports)
+        _, final_tree = detect_changes(self.root, "election-analysis/reports")
+        fake = self.chain_fake(final_tree)
+        create = fake.responses[("POST", "graphql")]
+        first, second = "1" * 40, "2" * 40
+        staging = None
+
+        def ref(_payload):
+            return [{"ref": f"refs/heads/{STAGING}", "object": {"sha": staging}}] if staging else []
+
+        def graphql(payload):
+            nonlocal staging
+            parent = payload["variables"]["input"]["expectedHeadOid"]
+            if parent == self.base_sha:
+                staging = self.base_sha if outcome == "no-write" else first
+                return RuntimeError("gh: HTTP 504")
+            if parent != staging:
+                return {"errors": [{"message": "expectedHeadOid mismatch"}]}
+            staging = second
+            return create(payload)
+
+        fake.responses[("POST", "graphql")] = graphql
+        fake.responses[("GET", f"repos/{REPO}/git/matching-refs/heads/{STAGING}")] = ref
+        first_metadata = fake.responses[("GET", f"repos/{REPO}/git/commits/{first}")]
+        first_metadata["tree"]["sha"] = first_tree if outcome != "wrong-tree" else "f" * 40
+        if outcome == "wrong-parent":
+            first_metadata["parents"] = [{"sha": "f" * 40}]
+        if outcome == "unsigned":
+            first_metadata["verification"] = {"verified": False, "reason": "unsigned"}
+        return fake
+
+    def regenerate_after_first_batch(self, reports: Path) -> None:
+        """Finish the test checkout after taking the first-batch tree snapshot."""
+        (reports / "edt" / "new.bin").write_bytes(b"\x00\xff\x10")
+        (self.root / "README.md").write_text("unrelated local edit\n")
+
+    def test_504_after_write_recovers_exact_intermediate_commit(self) -> None:
+        fake = self.gateway_timeout_fake("applied")
+        with mock.patch("election_reporting.ci.publish_reports.MAX_BATCH_BYTES", 4):
+            self.assertEqual(self.run_publish(fake), "https://pr/2")
+        inputs = [p["variables"]["input"] for _, e, p in fake.calls if e == "graphql"]
+        self.assertEqual([i["expectedHeadOid"] for i in inputs], [self.base_sha, "1" * 40])
+        created_refs = [p["ref"] for m, e, p in fake.calls if (m, e) == ("POST", f"repos/{REPO}/git/refs")]
+        self.assertEqual(created_refs, [f"refs/heads/{STAGING}", f"refs/heads/{BRANCH}"])
+
+    def test_504_without_write_does_not_retry_or_publish(self) -> None:
+        fake = self.gateway_timeout_fake("no-write")
+        with mock.patch("election_reporting.ci.publish_reports.MAX_BATCH_BYTES", 4), \
+                self.assertRaisesRegex(PublishError, "HTTP 504"):
+            self.run_publish(fake)
+        self.assert_504_did_not_publish(fake)
+
+    def test_504_with_mismatched_remote_commit_does_not_publish(self) -> None:
+        for outcome in ("wrong-tree", "wrong-parent", "unsigned"):
+            with self.subTest(outcome=outcome):
+                # Restore the fixture between cases; the fake never writes to Git.
+                run_git(self.root, "restore", ".")
+                new = self.root / "election-analysis/reports/edt/new.bin"
+                new.unlink(missing_ok=True)
+                fake = self.gateway_timeout_fake(outcome)
+                with mock.patch("election_reporting.ci.publish_reports.MAX_BATCH_BYTES", 4), \
+                        self.assertRaisesRegex(PublishError, "did not verify"):
+                    self.run_publish(fake)
+                self.assert_504_did_not_publish(fake)
+
+    def assert_504_did_not_publish(self, fake: FakeGh) -> None:
+        writes = [(m, e, p) for m, e, p in fake.calls if m != "GET"]
+        self.assertEqual([(m, e) for m, e, _ in writes],
+                         [("POST", f"repos/{REPO}/git/refs"), ("POST", "graphql")])
+        self.assertEqual(writes[0][2]["ref"], f"refs/heads/{STAGING}")
+
     def test_b5_large_change_is_published_as_a_verified_chain(self) -> None:
         self.regenerate()
         _, tree = detect_changes(self.root, "election-analysis/reports")
