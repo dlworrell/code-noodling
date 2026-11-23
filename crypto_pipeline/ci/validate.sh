@@ -13,13 +13,12 @@ cd "$(dirname "$0")/.."
 case "${1:-}" in
   install-tools)
     sudo apt-get update
-    sudo apt-get install -y build-essential clang clang-tidy valgrind libssl-dev libmpfr-dev
+    sudo apt-get install -y build-essential clang clang-tidy valgrind libssl-dev
     ;;
   static-analysis)
     clang-tidy crypto_multiplier.c crypto_montgomery_ct.c crypto_prime.c crypto_bigint.c crypto_cert.c crypto_ecpp.c \
-      crypto_zeta_ball.c crypto_zeta.c zeta_verify.c \
       tests/test_montgomery_ct.c tests/test_suite.c tests/test_bounds.c tests/test_prime.c \
-      tests/test_cert.c tests/test_ecpp.c tests/test_zeta.c -- -std=c11 -I.
+      tests/test_cert.c tests/test_ecpp.c -- -std=c11 -I.
     ;;
   build)
     make clean
@@ -32,7 +31,6 @@ case "${1:-}" in
     valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_prime
     valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_cert
     valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_ecpp
-    valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_zeta
     ;;
   smoke)
     # This smoke test does not establish constant-time or side-channel safety.
@@ -40,7 +38,6 @@ case "${1:-}" in
     ./test_prime
     ./test_cert
     ./test_ecpp
-    ./test_zeta
     echo "[CI Pipeline Pass] Build and functional smoke tests completed."
     ;;
   bounds)
@@ -52,7 +49,6 @@ case "${1:-}" in
     python3 tests/test_prime.py
     python3 tests/test_pocklington.py
     python3 tests/test_ecpp.py
-    python3 tests/test_zeta.py
     python3 tests/test_repository_files.py
     ;;
   *)

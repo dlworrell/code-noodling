@@ -6,8 +6,6 @@
 CC = gcc
 CFLAGS = -O2 -Wall -Wextra -std=c11 -fno-strict-aliasing -fno-omit-frame-pointer -fwrapv -fno-aggressive-loop-optimizations
 LDFLAGS = 
-# The zeta-zeros slice needs MPFR (and GMP); nothing else links them.
-MPFR_LIBS = -lmpfr -lgmp -lm
 
 # Target binaries
 TARGET = test_suite
@@ -15,7 +13,7 @@ TARGET = test_suite
 # Object files
 OBJS = crypto_multiplier.o test_suite.o
 
-all: $(TARGET) test_prime test_cert test_ecpp test_zeta zeta_verify
+all: $(TARGET) test_prime test_cert test_ecpp
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LDFLAGS)
@@ -48,26 +46,12 @@ test_cert: $(CERT_OBJS) tests/test_cert.c
 
 test_ecpp: $(CERT_OBJS) crypto_ecpp.o tests/test_ecpp.c
 	$(CC) $(CFLAGS) -I. -o test_ecpp tests/test_ecpp.c $(CERT_OBJS) crypto_ecpp.o $(LDFLAGS)
-
-crypto_zeta_ball.o: crypto_zeta_ball.c crypto_zeta_ball.h
-	$(CC) $(CFLAGS) -c crypto_zeta_ball.c
-
-crypto_zeta.o: crypto_zeta.c crypto_zeta.h crypto_zeta_ball.h
-	$(CC) $(CFLAGS) -c crypto_zeta.c
-
-ZETA_OBJS = crypto_zeta_ball.o crypto_zeta.o
-
-test_zeta: $(ZETA_OBJS) tests/test_zeta.c
-	$(CC) $(CFLAGS) -I. -o test_zeta tests/test_zeta.c $(ZETA_OBJS) $(LDFLAGS) $(MPFR_LIBS)
-
-zeta_verify: $(ZETA_OBJS) zeta_verify.c
-	$(CC) $(CFLAGS) -I. -o zeta_verify zeta_verify.c $(ZETA_OBJS) $(LDFLAGS) $(MPFR_LIBS)
 	
 shared: crypto_multiplier.c crypto_multiplier.h crypto_montgomery_ct.c crypto_montgomery_ct.h crypto_prime.c crypto_prime.h crypto_bigint.c crypto_bigint.h crypto_cert.c crypto_cert.h crypto_ecpp.c crypto_ecpp.h
 	$(CC) $(CFLAGS) -fPIC -shared -o libcryptomult.so crypto_multiplier.c crypto_montgomery_ct.c crypto_prime.c crypto_bigint.c crypto_cert.c crypto_ecpp.c
 	
 clean:
-	rm -f *.o $(TARGET) test_prime test_cert test_ecpp test_zeta zeta_verify test_bounds test_prime_sanitize test_cert_sanitize test_ecpp_sanitize test_zeta_sanitize libcryptomult.so
+	rm -f *.o $(TARGET) test_prime test_cert test_ecpp test_bounds test_prime_sanitize test_cert_sanitize test_ecpp_sanitize libcryptomult.so
 
 .PHONY: all shared clean
 
@@ -81,7 +65,5 @@ bounds-sanitize: crypto_multiplier.c crypto_multiplier.h tests/test_bounds.c
 	./test_cert_sanitize
 	$(CC) -std=c11 -O1 -g -Wall -Wextra -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -I. crypto_multiplier.c crypto_prime.c crypto_bigint.c crypto_cert.c crypto_ecpp.c tests/test_ecpp.c -o test_ecpp_sanitize
 	./test_ecpp_sanitize
-	$(CC) -std=c11 -O1 -g -Wall -Wextra -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -I. crypto_zeta_ball.c crypto_zeta.c tests/test_zeta.c -o test_zeta_sanitize $(MPFR_LIBS)
-	./test_zeta_sanitize
 
 .PHONY: bounds-sanitize
