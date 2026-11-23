@@ -209,8 +209,10 @@ class RejectionTests(unittest.TestCase):
         self.assert_rejected(cert, errno.EDOM)
 
     def test_composite_leaf(self):
-        cert = pc.certify(65537, {2: 16})
-        cert.nodes[0].factors.append(pc.Factor(15, 1, 3, -1))  # 15 does not divide 65536 either
+        # In both cases the composite leaf divides N - 1, F^2 > N and its base
+        # passes the Pocklington conditions, so leaf primality is the only defect.
+        cert = pc.certify(7681, {2: 9})
+        cert.nodes[0].factors.append(pc.Factor(15, 1, 2, -1))  # 15 = 3 * 5; 7680 = 2^9 * 15
         self.assert_rejected(cert, errno.EDOM)
         cert = pc.certify(998244353, {2: 23})
         cert.nodes[0].factors.append(pc.Factor(119, 1, 3, -1))  # 119 = 7 * 17 divides N - 1
