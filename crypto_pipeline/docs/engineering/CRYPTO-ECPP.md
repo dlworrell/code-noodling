@@ -126,7 +126,10 @@ rows only. The CLI rejects inputs below `2^64` before invoking GP, reports the
 supported range on stderr, exits with status 2 and prints no fixture output.
 The Python helper `pari_certificate` raises `ValueError` for these inputs.
 For in-range inputs, GP errors (including a composite input or stack overflow)
-are reported as failures even when GP itself exits 0.
+are reported as failures even when GP itself exits 0. CI does not install
+PARI, so `tests/test_ecpp.py` checks this with a stub `gp` that exits 0: an
+error line on stdout or stderr, or no output, raises `RuntimeError`, while a
+`*** Warning` line alone does not.
 
 `tests/fixtures/ecpp/` holds six committed certificates, each with the command,
 PARI version and date in its header:

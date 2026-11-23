@@ -16,9 +16,11 @@ import ctypes as c
 import errno
 import math
 import random
+import shlex
 import shutil
 import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -397,6 +399,30 @@ class PariFixtureTests(unittest.TestCase):
                 self.assertEqual(result.stdout, '')
                 self.assertIn('N >= 2^64', result.stderr)
                 self.assertNotIn('Traceback', result.stderr)
+
+    def test_pari_error_detection_with_stub_gp(self):
+        """gp can report an error and still exit 0, so pari_certificate scans
+        its output. Exercised with a stub gp, since CI does not install PARI."""
+        fixture = shlex.quote(str(FIXTURES / 'p127.txt'))
+        cases = {
+            # (stub body after draining stdin, expected outcome)
+            'error_on_stdout': ("echo '  ***   user error: boom'; cat " + fixture, RuntimeError),
+            'error_on_stderr': ("echo '  ***   not enough memory' >&2; cat " + fixture, RuntimeError),
+            'no_output': (":", RuntimeError),
+            'warning_only': ("echo '  *** Warning: increasing stack size' >&2; cat " + fixture, None),
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            for name, (body, expected) in cases.items():
+                with self.subTest(name=name):
+                    stub = Path(tmp) / f'gp_{name}'
+                    stub.write_text('#!/bin/sh\ncat >/dev/null\n' + body + '\nexit 0\n')
+                    stub.chmod(0o755)
+                    if expected is None:
+                        steps = ec.from_pari(ec.pari_certificate(1 << 64, gp=str(stub)))
+                        self.assertEqual(steps[0].n, self.EXPECTED['p127'])
+                    else:
+                        with self.assertRaises(expected):
+                            ec.pari_certificate(1 << 64, gp=str(stub))
 
     @unittest.skipUnless(shutil.which('gp'), 'PARI/GP not installed')
     def test_live_pari_certificates(self):
