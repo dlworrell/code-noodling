@@ -84,7 +84,12 @@ division.
 
 - `tests/test_cert.c` (also under Valgrind and ASan/UBSan): 64-bit leaves
   against trial division and known strong pseudoprimes; 65537 with the F² > N
-  boundary on both sides; each defect with its error code; argument checks.
+  boundary on both sides; each defect with its error code; argument checks;
+  multi-node trees: a DAG whose shared node is counted once (exact modexp cap),
+  an out-of-range child index, a two-node cycle, and the depth limit (a
+  65-node chain accepted, 66 rejected). A cycle is always caught by the
+  child-value check first, because every edge goes from N to some q < N; the
+  in-progress guard is defence in depth.
 - `tests/test_pocklington.py` (ctypes): Proth and Fermat primes, 2^127 − 1 with
   the full factorization of N − 1, random provable primes of 64 to 2048 bits
   with nested nodes, zero-padded limbs, a DAG sharing one grandchild, and
