@@ -124,7 +124,13 @@ python3 tests/test_pocklington.py
 python3 tests/test_ecpp.py
 python3 tests/test_mixed.py
 python3 benchmark_multiply.py
+bash ci/fuzz.sh exhaustive
+bash ci/fuzz.sh smoke
 ```
+
+Coverage-guided fuzzing (`bash ci/fuzz.sh libfuzzer`, needs clang and the
+libFuzzer runtime) and what the fuzz and exhaustive checks do and do not show
+are described in the [fuzzing notes](docs/engineering/CRYPTO-FUZZING.md).
 
 The makefile's default optimization flags target GCC. GitHub CI additionally
 runs clang-tidy, Valgrind, and sanitizer boundary tests. This project's platform
