@@ -1,16 +1,21 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:c27d4dbd-0920-4a13-8426-3c5b89a1d681
 name: Release
-
-# Catylist ADR-0013 section 5. Dispatched by the owner with a version after
-# the release candidate pull request (fitment -> main) has merged. It
-# refuses unless every check on main's head passed, then parks at the
-# `release` environment until the owner approves. Only the approved job
-# creates the v<version> tag, which ADR-0006 makes immutable.
 
 on:
   workflow_dispatch:
     inputs:
+      project:
+        description: Project to release from the tested main commit
+        type: choice
+        required: true
+        options:
+          - prime-number-suite
+          - crypto-pipeline
+          - election-analysis
       version:
-        description: Version to release, for example 0.1.0 (no leading v)
+        description: Version, for example 1.2.3 or 1.2.3-rc.1 (no leading v)
         required: true
         type: string
 
@@ -30,83 +35,151 @@ jobs:
       contents: read
     outputs:
       sha: ${{ steps.target.outputs.sha }}
+      scope: ${{ steps.target.outputs.scope }}
+      tag: ${{ steps.target.outputs.tag }}
+      asset: ${{ steps.target.outputs.asset }}
+      prerelease: ${{ steps.target.outputs.prerelease }}
     steps:
-      - name: Refuse anything but main and a plain version
-        env:
-          REF: ${{ github.ref }}
-          VERSION: ${{ inputs.version }}
-        run: |
-          set -euo pipefail
-          if [ "$REF" != "refs/heads/main" ]; then
-            echo "::error::Releases are cut from main only (dispatched from $REF)."
-            exit 1
-          fi
-          if ! printf '%s' "$VERSION" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]+)?$'; then
-            echo "::error::Version must look like 0.1.0 or 0.1.0-rc.1."
-            exit 1
-          fi
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Refuse an existing tag
+      - name: Select an immutable release target
+        id: target
         env:
+          PROJECT: ${{ inputs.project }}
           VERSION: ${{ inputs.version }}
-        run: |
-          set -euo pipefail
-          if git ls-remote --exit-code --tags origin "refs/tags/v$VERSION" >/dev/null; then
-            echo "::error::Tag v$VERSION already exists; release tags are immutable."
-            exit 1
-          else
-            status=$?
-            # git ls-remote --exit-code returns 2 only when no matching ref exists.
-            if [ "$status" -ne 2 ]; then
-              echo "::error::Release tag lookup failed for v$VERSION (git exit $status); refusing to release."
-              exit 1
-            fi
-          fi
-      - name: Require every check on main's head to have passed
-        env:
+          REF: ${{ github.ref }}
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
+          selection=$(python3 scripts/ci/project_release.py select "$PROJECT" "$VERSION" "$REF")
           sha=$(git rev-parse HEAD)
-          runs=$(gh api --paginate "repos/$REPO/commits/$sha/check-runs?per_page=100" \
-            --jq '.check_runs[] | select(.name != "Verify main" and .name != "Publish (parks for owner approval)")
-                  | [.name, .status, (.conclusion // "")] | @tsv')
-          if [ -z "$runs" ]; then
-            echo "::error::No check has run on main's head ($sha); nothing proves it is releasable."
-            exit 1
-          fi
-          bad=$(printf '%s\n' "$runs" | awk -F'\t' '$2 != "completed" || ($3 != "success" && $3 != "neutral" && $3 != "skipped")')
-          if [ -n "$bad" ]; then
-            echo "::error::Not every check on main's head ($sha) passed:"
-            printf '%s\n' "$bad"
-            exit 1
-          fi
-          echo "All $(printf '%s\n' "$runs" | wc -l) checks on $sha passed." >> "$GITHUB_STEP_SUMMARY"
-      - name: Record the tested commit
-        id: target
-        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          live=$(gh api "repos/$REPO/branches/main" --jq '.commit.sha')
+          python3 scripts/ci/project_release.py main "$sha" "$live"
+          tag=$(jq -r .tag <<<"$selection")
+          python3 scripts/ci/project_release.py tag-absent "$tag"
+          {
+            printf 'sha=%s\n' "$sha"
+            jq -r '"scope=\(.root)", "tag=\(.tag)", "asset=\(.asset)", "prerelease=\(.prerelease)"' <<<"$selection"
+          } >>"$GITHUB_OUTPUT"
+      - name: Require every check on the selected main commit to have passed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ steps.target.outputs.sha }}
+        run: |
+          set -euo pipefail
+          bash scripts/ci/verify-release-checks.sh "$REPO" "$SHA"
+      - name: Verify the tag namespace has immutable, no-bypass protection
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_RULESET_READ_TOKEN || github.token }}
+          REPO: ${{ github.repository }}
+          PROJECT: ${{ inputs.project }}
+        run: bash scripts/ci/verify-release-rules.sh "$REPO" "$PROJECT"
+
+  package:
+    name: Package and attest release source
+    needs: verify
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+    outputs:
+      sha256: ${{ steps.package.outputs.sha256 }}
+      notes_sha256: ${{ steps.package.outputs.notes_sha256 }}
+      artifact_id: ${{ steps.upload.outputs.artifact-id }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.verify.outputs.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Prepare archive and scoped notes
+        id: package
+        env:
+          PROJECT: ${{ inputs.project }}
+          VERSION: ${{ inputs.version }}
+          SHA: ${{ needs.verify.outputs.sha }}
+          SCOPE: ${{ needs.verify.outputs.scope }}
+          ASSET: ${{ needs.verify.outputs.asset }}
+          TAG: ${{ needs.verify.outputs.tag }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$SHA"
+          mkdir release-out
+          bash "$SCOPE/ci/package-release.sh" "$SHA" "$VERSION" "release-out/$ASSET"
+          digest=$(sha256sum "release-out/$ASSET" | cut -d' ' -f1)
+          python3 scripts/ci/project_release.py notes "$PROJECT" "$VERSION" "$SHA" >release-out/notes.md
+          printf '\nSource archive: `%s`\n\nSHA-256: `%s`\n' "$ASSET" "$digest" >>release-out/notes.md
+          {
+            printf 'sha256=%s\n' "$digest"
+            printf 'notes_sha256=%s\n' "$(sha256sum release-out/notes.md | cut -d' ' -f1)"
+          } >>"$GITHUB_OUTPUT"
+          printf 'Approval candidate: `%s` at `%s`\n\nArchive SHA-256: `%s`\n' "$TAG" "$SHA" "$digest" >>"$GITHUB_STEP_SUMMARY"
+      - name: Attest the bytes destined for the release
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        with:
+          subject-path: release-out/${{ needs.verify.outputs.asset }}
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        id: upload
+        with:
+          name: project-release-${{ github.run_attempt }}
+          path: release-out/
+          if-no-files-found: error
 
   publish:
     name: Publish (parks for owner approval)
-    needs: verify
+    needs: [verify, package]
     runs-on: ubuntu-24.04
     environment: release
     permissions:
+      checks: read
       contents: write
     steps:
-      - name: Tag the tested commit and publish the release
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.verify.outputs.sha }}
+          persist-credentials: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          artifact-ids: ${{ needs.package.outputs.artifact_id }}
+          path: release-out
+      - name: Recheck immutable tag protection after approval
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_RULESET_READ_TOKEN || github.token }}
+          REPO: ${{ github.repository }}
+          PROJECT: ${{ inputs.project }}
+        run: bash scripts/ci/verify-release-rules.sh "$REPO" "$PROJECT"
+      - name: Publish the exact approved archive and target
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
           SHA: ${{ needs.verify.outputs.sha }}
-          VERSION: ${{ inputs.version }}
+          TAG: ${{ needs.verify.outputs.tag }}
+          ASSET: ${{ needs.verify.outputs.asset }}
+          DIGEST: ${{ needs.package.outputs.sha256 }}
+          NOTES_DIGEST: ${{ needs.package.outputs.notes_sha256 }}
+          PRERELEASE: ${{ needs.verify.outputs.prerelease }}
         run: |
           set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$SHA"
+          [[ $DIGEST =~ ^[a-f0-9]{64}$ && $NOTES_DIGEST =~ ^[a-f0-9]{64}$ ]]
+          printf '%s  %s\n' "$DIGEST" "release-out/$ASSET" "$NOTES_DIGEST" release-out/notes.md | sha256sum --check --strict
+          bash scripts/ci/verify-release-checks.sh "$REPO" "$SHA"
+          python3 scripts/ci/project_release.py tag-absent "$TAG"
+          live=$(gh api "repos/$REPO/branches/main" --jq '.commit.sha')
+          python3 scripts/ci/project_release.py main "$SHA" "$live"
           prerelease=()
-          case "$VERSION" in *-*) prerelease=(--prerelease) ;; esac
-          gh release create "v$VERSION" --repo "$REPO" --target "$SHA" \
-            --title "v$VERSION" --generate-notes "${prerelease[@]}"
-          echo "Released v$VERSION at $SHA." >> "$GITHUB_STEP_SUMMARY"
+          if [[ "$PRERELEASE" == true ]]; then prerelease=(--prerelease); fi
+          # Create the ref atomically. A concurrent or existing tag is never reused.
+          if ! gh api --method POST "repos/$REPO/git/refs" -f "ref=refs/tags/$TAG" -f "sha=$SHA" >/dev/null; then
+            echo "::error::Tag creation did not succeed. Inspect $TAG before any further action; never move or delete it."
+            exit 1
+          fi
+          if ! gh release create "$TAG" "release-out/$ASSET" --repo "$REPO" --verify-tag \
+            --latest=false --title "$TAG" --notes-file release-out/notes.md "${prerelease[@]}"; then
+            echo "::error::Inspect immutable tag $TAG at $SHA and its release/asset state. Do not delete, retarget or rerun against this tag."
+            exit 1
+          fi
