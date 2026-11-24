@@ -46,6 +46,10 @@ __pycache__/
 # (crypto_pipeline/tests/test_repository_files.py checks these paths).
 !crypto_pipeline/**/*.json
 
+# prime-number-suite scope ledger and evidence records (aes-manifest.yaml).
+!prime-number-suite/docs/engineering/AES-SEC-001-review-dispositions.json
+!prime-number-suite/docs/engineering/evidence/*.json
+
 # Lean build output for crypto_pipeline/proof/lean (Mathlib checkout and caches).
 # lake-manifest.json is committed: it pins the exact dependency commits
 # (crypto_pipeline/proof/lean/SOURCES.md).

@@ -54,3 +54,15 @@ scopes:
         reason: >-
           Python-only scope with no C or C++ surface. Revisit if the scope
           adds C or C++ (Catylist ADR-0004 rule 8).
+  - id: prime-number-suite
+    path: prime-number-suite/
+    owner: dlworrell
+    class: experimental
+    lifecycle: active
+    standards:
+      - id: AES-SEC-001
+        applicability: applicable
+        evidence:
+          profile: prime-number-suite/docs/engineering/SECURE-C-CXX.md
+          waiver_log: prime-number-suite/docs/engineering/AES-SEC-001-waivers.md
+          review_dispositions: prime-number-suite/docs/engineering/AES-SEC-001-review-dispositions.json
