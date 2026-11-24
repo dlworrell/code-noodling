@@ -113,6 +113,11 @@ class ConfigTests(unittest.TestCase):
             'not_before = 2026-11-04T00:00:00',  # no offset
             'end = 2026-11-03T00:00:00Z',  # before the floor
             'every_minutes = 5',
+            'every_minutes = "not-a-number"',
+            'night_hours = []',
+            'night_hours = nan',
+            'night_hours = inf',
+            'night_hours = 1e99',
             'host = ""',
         ]
         for case in cases:
@@ -126,6 +131,16 @@ class ConfigTests(unittest.TestCase):
                                 'jurisdiction = "georgia"\n' + "\n".join(lines.values()) + "\n")
                 with self.assertRaises(ElectionReportError, msg=case):
                     capture.load_targets(path)
+
+
+    def test_invalid_config_container_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            config = Path(directory) / "capture.toml"
+            for bad_config in ("capture = 1", "defaults = []"):
+                with self.subTest(config=bad_config):
+                    config.write_text(f"schema_version = 1\n{bad_config}\n")
+                    with self.assertRaises(ElectionReportError):
+                        capture.load_targets(config)
 
 
 class DueTests(unittest.TestCase):
@@ -218,6 +233,30 @@ class PlatformTests(unittest.TestCase):
         self.assertEqual(len(result.failures), 1)
         self.assertIn(nc, result.fetched)
         self.assertTrue(any("/appling-county-ga/" in url for url in result.fetched))
+
+    def test_malformed_listing_entries_do_not_stop_good_entries_or_other_states(self) -> None:
+        routes = georgia_routes()
+        jurisdiction = next(url for url in routes if "/jurisdictions/" in url)
+        listing = json.loads(routes[jurisdiction].body)
+        listing["elections"].insert(0, None)
+        listing["childLocalities"].insert(0, "bad")
+        routes[jurisdiction] = as_json(jurisdiction, listing)
+        metadata_url = next(url for url in routes if "/elections/georgia/" in url and not url.endswith("/data"))
+        metadata = json.loads(routes[metadata_url].body)
+        metadata["publicReportCategories"][:0] = [7, {"reports": "bad"}, {"reports": [False]}]
+        routes[metadata_url] = as_json(metadata_url, metadata)
+        nc = "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2026_11_03/results_pct_20261103.zip"
+        routes[nc] = Response(nc, b"PK zip")
+        _, result, _ = self.run_capture(
+            [target(), target(state="north-carolina", platform="ncsbe", counties=False)], routes)
+        self.assertEqual(len(result.failures), 5)
+        self.assertIn(nc, result.fetched)
+        self.assertTrue(any("/appling-county-ga/" in url for url in result.fetched))
+        self.assertTrue(any(url.endswith("total%20votes.xlsx") for url in result.fetched))
+
+    def test_bad_now_is_a_configuration_error(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            self.assertEqual(capture.main([directory, "--config", str(CONFIG), "--now", "not-a-date"]), 2)
 
     def test_p5_election_not_listed_yet_is_quiet(self) -> None:
         routes = georgia_routes()

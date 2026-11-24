@@ -21,7 +21,7 @@ Forecasts are switched off for this report (report mode: descriptive); even a co
 
 ABOUT THIS DATA
 Report mode: descriptive. Forecast target: none. Information time: unknown. Election lifecycle: counting. Experimental and uncalibrated. A versioned evidence gate checks lifecycle, source freshness, coverage, provenance, contest identity, rules and remaining-pool basis. No held-out calibration has validated predictive accuracy. Source publication range: 2026-11-05T00:27:39.356694+00:00 to 2026-11-21T01:59:25+00:00; known source-age range: unknown. Unknown source age: 1465 contest record(s); unknown count-update time: 288; incomplete/unverified coverage: 1465. Configured sources without snapshots: none. Retrieval and report generation times do not advance a source's count clock.
-Latest input label: 2027-11-17T23:59; individual sources may be older.
+Latest input label: 2026-11-20T17:59; individual sources may be older.
 Lifecycle: counting; tabulation stage: unknown. Authority: https://results.votewa.gov/results/public/washington; evidence as of 2026-11-05T21:14:40+00:00.
 Reviewed 1465 source representations of contests; overlapping jurisdictions may appear separately. Unestimated probabilities are not numerical zero; no numerical risk ranking is published.
 

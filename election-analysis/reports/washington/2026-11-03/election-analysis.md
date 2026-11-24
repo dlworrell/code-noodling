@@ -1228,30 +1228,30 @@ Margin history: 2026-11-19T12:08 +2,769.
 
 | Choice | Votes | Share |
 |---|---|---|
-| No | 629,817 | 67.0% |
-| Yes | 309,762 | 33.0% |
+| No | 633,931 | 67.0% |
+| Yes | 311,705 | 33.0% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 950,444. Valid votes: 939,579. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 954,142. Valid votes: 945,636. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Yes strictly overtakes No. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-No leads Yes by 320,055 votes.
+No leads Yes by 322,226 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +320,055.
+Margin history: 2026-11-20T17:01 +322,226.
 
 ### Initiative Measure No. IL26-001 (Washington State portion)
 
@@ -2388,30 +2388,30 @@ Margin history: 2026-11-19T12:08 +14,263.
 
 | Choice | Votes | Share |
 |---|---|---|
-| No | 599,405 | 65.7% |
-| Yes | 312,814 | 34.3% |
+| No | 602,861 | 65.7% |
+| Yes | 314,140 | 34.3% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 950,444. Valid votes: 912,219. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 954,142. Valid votes: 917,001. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Yes strictly overtakes No. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-No leads Yes by 286,591 votes.
+No leads Yes by 288,721 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +286,591.
+Margin history: 2026-11-20T17:01 +288,721.
 
 ### Initiative Measure No. IL26-638 (Washington State portion)
 
@@ -5007,30 +5007,30 @@ Margin history: 2026-11-07T04:43 +77.
 
 | Choice | Votes | Share |
 |---|---|---|
-| No | 541,340 | 58.2% |
-| Yes | 388,297 | 41.8% |
+| No | 544,678 | 58.3% |
+| Yes | 389,789 | 41.7% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 950,444. Valid votes: 929,637. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 954,142. Valid votes: 934,467. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Yes strictly overtakes No. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-No leads Yes by 153,043 votes.
+No leads Yes by 154,889 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +153,043.
+Margin history: 2026-11-20T17:01 +154,889.
 
 ### Legislative District 10 - State Representative Pos. 1 (Skagit County, Washington portion)
 
@@ -7895,31 +7895,31 @@ Margin history: 2026-11-19T15:16 +50,186.
 
 | Choice | Votes | Share |
 |---|---|---|
-| Suzan DelBene | 87,113 | 74.7% |
-| Mary Silva | 28,991 | 24.9% |
-| Write-in | 448 | 0.4% |
+| Suzan DelBene | 87,527 | 74.8% |
+| Mary Silva | 29,069 | 24.8% |
+| Write-in | 465 | 0.4% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 119,859. Valid votes: 116,552. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 120,315. Valid votes: 117,061. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Mary Silva strictly overtakes Suzan DelBene. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Suzan DelBene leads Mary Silva by 58,122 votes.
+Suzan DelBene leads Mary Silva by 58,458 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +58,122.
+Margin history: 2026-11-20T17:01 +58,458.
 
 ### Assessor (Okanogan County, Washington portion)
 
@@ -9897,31 +9897,31 @@ Margin history: 2026-11-19T15:16 +70,009.
 
 | Choice | Votes | Share |
 |---|---|---|
-| Pramila Jayapal | 326,508 | 87.6% |
-| Nirav Sheth | 44,850 | 12.0% |
-| Write-in | 1,359 | 0.4% |
+| Pramila Jayapal | 328,188 | 87.6% |
+| Nirav Sheth | 44,989 | 12.0% |
+| Write-in | 1,357 | 0.4% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 381,445. Valid votes: 372,717. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 383,224. Valid votes: 374,534. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Nirav Sheth strictly overtakes Pramila Jayapal. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Pramila Jayapal leads Nirav Sheth by 281,658 votes.
+Pramila Jayapal leads Nirav Sheth by 283,199 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +281,658.
+Margin history: 2026-11-20T17:01 +283,199.
 
 ### Assessor (Chelan County, Washington portion)
 
@@ -11989,31 +11989,31 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Kim Schrier | 121,359 | 65.4% |
-| Spencer Meline | 63,637 | 34.3% |
-| Write-in | 608 | 0.3% |
+| Kim Schrier | 121,830 | 65.5% |
+| Spencer Meline | 63,750 | 34.3% |
+| Write-in | 523 | 0.3% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 189,710. Valid votes: 185,604. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 190,249. Valid votes: 186,103. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Spencer Meline strictly overtakes Kim Schrier. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Kim Schrier leads Spencer Meline by 57,722 votes.
+Kim Schrier leads Spencer Meline by 58,080 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +57,722.
+Margin history: 2026-11-20T17:01 +58,080.
 
 ### Assessor (Douglas County, Washington portion)
 
@@ -13939,31 +13939,31 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Adam Smith | 191,135 | 75.7% |
-| Doug Basler | 59,506 | 23.6% |
-| Write-in | 1,841 | 0.7% |
+| Adam Smith | 191,970 | 75.7% |
+| Doug Basler | 59,674 | 23.5% |
+| Write-in | 1,834 | 0.7% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 259,430. Valid votes: 252,482. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 260,354. Valid votes: 253,478. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Doug Basler strictly overtakes Adam Smith. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Adam Smith leads Doug Basler by 131,629 votes.
+Adam Smith leads Doug Basler by 132,296 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +131,629.
+Margin history: 2026-11-20T17:01 +132,296.
 
 ### Auditor (Franklin County, Washington portion)
 
@@ -36572,168 +36572,168 @@ Margin history: 2026-11-20T17:59 +131.
 
 | Choice | Votes | Share |
 |---|---|---|
-| Davina Duerr | 33,019 | 75.0% |
-| Maggie Wang | 10,956 | 24.9% |
-| Write-in | 68 | 0.2% |
+| Davina Duerr | 33,143 | 75.0% |
+| Maggie Wang | 10,986 | 24.9% |
+| Write-in | 73 | 0.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 45,227. Valid votes: 44,043. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 45,370. Valid votes: 44,202. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Maggie Wang strictly overtakes Davina Duerr. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Davina Duerr leads Maggie Wang by 22,063 votes.
+Davina Duerr leads Maggie Wang by 22,157 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +22,063.
+Margin history: 2026-11-20T17:01 +22,157.
 
 ### Legislative District No. 1 State Representative Pos. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Shelley Kloba | 32,727 | 74.5% |
-| Cliff Moon | 11,085 | 25.2% |
-| Write-in | 89 | 0.2% |
+| Shelley Kloba | 32,843 | 74.6% |
+| Cliff Moon | 11,110 | 25.2% |
+| Write-in | 92 | 0.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 45,227. Valid votes: 43,901. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 45,370. Valid votes: 44,045. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Cliff Moon strictly overtakes Shelley Kloba. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Shelley Kloba leads Cliff Moon by 21,642 votes.
+Shelley Kloba leads Cliff Moon by 21,733 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +21,642.
+Margin history: 2026-11-20T17:01 +21,733.
 
 ### Legislative District No. 5 State Representative Pos. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Zach Hall | 41,267 | 56.6% |
-| Michelle Bennett | 31,615 | 43.3% |
-| Write-in | 68 | 0.1% |
+| Zach Hall | 41,418 | 56.6% |
+| Michelle Bennett | 31,655 | 43.3% |
+| Write-in | 66 | 0.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 74,613. Valid votes: 72,950. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 74,804. Valid votes: 73,139. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Michelle Bennett strictly overtakes Zach Hall. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Zach Hall leads Michelle Bennett by 9,652 votes.
+Zach Hall leads Michelle Bennett by 9,763 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +9,652.
+Margin history: 2026-11-20T17:01 +9,763.
 
 ### Legislative District No. 5 State Representative Pos. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Lisa Callan | 42,423 | 58.4% |
-| Patrick Peacock | 30,148 | 41.5% |
-| Write-in | 72 | 0.1% |
+| Lisa Callan | 42,578 | 58.5% |
+| Patrick Peacock | 30,180 | 41.4% |
+| Write-in | 73 | 0.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 74,613. Valid votes: 72,643. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 74,804. Valid votes: 72,831. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Patrick Peacock strictly overtakes Lisa Callan. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Lisa Callan leads Patrick Peacock by 12,275 votes.
+Lisa Callan leads Patrick Peacock by 12,398 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +12,275.
+Margin history: 2026-11-20T17:01 +12,398.
 
 ### Legislative District No. 11 State Representative Pos. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| David Hackney | 24,921 | 56.8% |
-| Ashley Fedan | 17,458 | 39.8% |
-| Write-in | 1,488 | 3.4% |
+| David Hackney | 25,002 | 57.0% |
+| Ashley Fedan | 17,606 | 40.1% |
+| Write-in | 1,267 | 2.9% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 50,560. Valid votes: 43,867. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 50,707. Valid votes: 43,875. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Ashley Fedan strictly overtakes David Hackney. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-David Hackney leads Ashley Fedan by 7,463 votes.
+David Hackney leads Ashley Fedan by 7,396 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +7,463.
+Margin history: 2026-11-20T17:01 +7,396.
 
 ### Legislative District No. 11 State Representative Pos. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Steve Bergquist | 37,209 | 95.8% |
-| Write-in | 1,625 | 4.2% |
+| Steve Bergquist | 37,321 | 96.3% |
+| Write-in | 1,448 | 3.7% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 50,560. Valid votes: 38,834. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 50,707. Valid votes: 38,769. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -36741,348 +36741,348 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Stacy Willoughby | 11,289 | 58.5% |
-| Brian Burnett | 7,988 | 41.4% |
+| Stacy Willoughby | 11,340 | 58.6% |
+| Brian Burnett | 8,007 | 41.4% |
 | Write-in | 14 | 0.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 19,836. Valid votes: 19,291. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 19,890. Valid votes: 19,361. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Brian Burnett strictly overtakes Stacy Willoughby. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Stacy Willoughby leads Brian Burnett by 3,301 votes.
+Stacy Willoughby leads Brian Burnett by 3,333 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +3,301.
+Margin history: 2026-11-20T17:01 +3,333.
 
 ### Legislative District No. 12 State Representative Pos. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Maggie Adams | 10,639 | 55.5% |
-| Mike Steele | 8,511 | 44.4% |
+| Maggie Adams | 10,683 | 55.5% |
+| Mike Steele | 8,530 | 44.3% |
 | Write-in | 21 | 0.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 19,836. Valid votes: 19,171. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 19,890. Valid votes: 19,234. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Mike Steele strictly overtakes Maggie Adams. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Maggie Adams leads Mike Steele by 2,128 votes.
+Maggie Adams leads Mike Steele by 2,153 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +2,128.
+Margin history: 2026-11-20T17:01 +2,153.
 
 ### Legislative District No. 30 State Senator (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Claire Wilson | 28,656 | 64.3% |
-| Michael Rutland | 15,874 | 35.6% |
-| Write-in | 42 | 0.1% |
-
-Lifecycle: unknown; tabulation stage: unknown.
-
-Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
-
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 45,459. Valid votes: 44,572. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
-
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
-
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
-
-### Winner
-
-Event: Selected pair: Michael Rutland strictly overtakes Claire Wilson. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
-
-Claire Wilson leads Michael Rutland by 12,782 votes.
-
-Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
-
-Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
-
-Margin history: 2027-11-17T23:59 +12,782.
-
-### Legislative District No. 30 State Representative Pos. 1 (Vote for 1) (King County, Washington portion)
-
-| Choice | Votes | Share |
-|---|---|---|
-| Jamila E. Taylor | 29,205 | 65.6% |
-| Tiffany Bowyer | 15,257 | 34.3% |
+| Claire Wilson | 28,778 | 64.3% |
+| Michael Rutland | 15,903 | 35.6% |
 | Write-in | 41 | 0.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 45,459. Valid votes: 44,503. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 45,604. Valid votes: 44,722. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
-Event: Selected pair: Tiffany Bowyer strictly overtakes Jamila E. Taylor. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
+Event: Selected pair: Michael Rutland strictly overtakes Claire Wilson. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Jamila E. Taylor leads Tiffany Bowyer by 13,948 votes.
+Claire Wilson leads Michael Rutland by 12,875 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +13,948.
+Margin history: 2026-11-20T17:01 +12,875.
+
+### Legislative District No. 30 State Representative Pos. 1 (Vote for 1) (King County, Washington portion)
+
+| Choice | Votes | Share |
+|---|---|---|
+| Jamila E. Taylor | 29,323 | 65.7% |
+| Tiffany Bowyer | 15,289 | 34.2% |
+| Write-in | 41 | 0.1% |
+
+Lifecycle: unknown; tabulation stage: unknown.
+
+Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
+
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 45,604. Valid votes: 44,653. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
+
+### Winner
+
+Event: Selected pair: Tiffany Bowyer strictly overtakes Jamila E. Taylor. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
+
+Jamila E. Taylor leads Tiffany Bowyer by 14,034 votes.
+
+Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
+
+Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
+
+Margin history: 2026-11-20T17:01 +14,034.
 
 ### Legislative District No. 30 State Representative Pos. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Kristine Reeves | 28,558 | 65.4% |
-| Paul McDaniel | 14,973 | 34.3% |
+| Kristine Reeves | 28,675 | 65.5% |
+| Paul McDaniel | 15,005 | 34.3% |
 | Write-in | 118 | 0.3% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 45,459. Valid votes: 43,649. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 45,604. Valid votes: 43,798. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Paul McDaniel strictly overtakes Kristine Reeves. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Kristine Reeves leads Paul McDaniel by 13,585 votes.
+Kristine Reeves leads Paul McDaniel by 13,670 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +13,585.
+Margin history: 2026-11-20T17:01 +13,670.
 
 ### Legislative District No. 31 State Senator (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Tamara Stramel | 3,692 | 50.0% |
-| Phil Fortunato | 3,683 | 49.9% |
+| Tamara Stramel | 3,714 | 50.1% |
+| Phil Fortunato | 3,688 | 49.8% |
 | Write-in | 8 | 0.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 7,563. Valid votes: 7,383. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 7,591. Valid votes: 7,410. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Phil Fortunato strictly overtakes Tamara Stramel. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Tamara Stramel leads Phil Fortunato by 9 votes.
+Tamara Stramel leads Phil Fortunato by 26 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +9.
+Margin history: 2026-11-20T17:01 +26.
 
 ### Legislative District No. 31 State Representative Pos. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Drew Stokesbary | 3,798 | 51.8% |
-| Stephen Szczurko-Walton | 3,530 | 48.1% |
+| Drew Stokesbary | 3,804 | 51.7% |
+| Stephen Szczurko-Walton | 3,551 | 48.2% |
 | Write-in | 8 | 0.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 7,563. Valid votes: 7,336. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 7,591. Valid votes: 7,363. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Stephen Szczurko-Walton strictly overtakes Drew Stokesbary. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Drew Stokesbary leads Stephen Szczurko-Walton by 268 votes.
+Drew Stokesbary leads Stephen Szczurko-Walton by 253 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +268.
+Margin history: 2026-11-20T17:01 +253.
 
 ### Legislative District No. 31 State Representative Pos. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| John Bielka | 3,752 | 51.4% |
-| Joshua Penner | 3,541 | 48.5% |
+| John Bielka | 3,774 | 51.5% |
+| Joshua Penner | 3,548 | 48.4% |
 | Write-in | 5 | 0.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 7,563. Valid votes: 7,298. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 7,591. Valid votes: 7,327. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Joshua Penner strictly overtakes John Bielka. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-John Bielka leads Joshua Penner by 211 votes.
+John Bielka leads Joshua Penner by 226 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +211.
+Margin history: 2026-11-20T17:01 +226.
 
 ### Legislative District No. 32 State Senator (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Cindy Ryu | 18,124 | 51.4% |
-| Jesse Salomon | 16,768 | 47.5% |
-| Write-in | 403 | 1.1% |
+| Cindy Ryu | 18,214 | 51.4% |
+| Jesse Salomon | 16,829 | 47.5% |
+| Write-in | 414 | 1.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 37,869. Valid votes: 35,295. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 37,966. Valid votes: 35,457. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Jesse Salomon strictly overtakes Cindy Ryu. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Cindy Ryu leads Jesse Salomon by 1,356 votes.
+Cindy Ryu leads Jesse Salomon by 1,385 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +1,356.
+Margin history: 2026-11-20T17:01 +1,385.
 
 ### Legislative District No. 32 State Representative Pos. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Danica Noble | 17,068 | 49.9% |
-| Keith Scully | 16,744 | 48.9% |
-| Write-in | 412 | 1.2% |
+| Danica Noble | 17,145 | 49.9% |
+| Keith Scully | 16,794 | 48.9% |
+| Write-in | 418 | 1.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 37,869. Valid votes: 34,224. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 37,966. Valid votes: 34,357. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Keith Scully strictly overtakes Danica Noble. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Danica Noble leads Keith Scully by 324 votes.
+Danica Noble leads Keith Scully by 351 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +324.
+Margin history: 2026-11-20T17:01 +351.
 
 ### Legislative District No. 32 State Representative Pos. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Lauren Davis | 22,765 | 67.4% |
-| Imraan Siddiqi | 10,664 | 31.5% |
-| Write-in | 372 | 1.1% |
+| Lauren Davis | 22,818 | 67.3% |
+| Imraan Siddiqi | 10,725 | 31.6% |
+| Write-in | 376 | 1.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 37,869. Valid votes: 33,801. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 37,966. Valid votes: 33,919. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Imraan Siddiqi strictly overtakes Lauren Davis. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Lauren Davis leads Imraan Siddiqi by 12,101 votes.
+Lauren Davis leads Imraan Siddiqi by 12,093 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +12,101.
+Margin history: 2026-11-20T17:01 +12,093.
 
 ### Legislative District No. 33 State Senator (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Tina L. Orwall | 36,797 | 95.3% |
-| Write-in | 1,834 | 4.7% |
+| Tina L. Orwall | 36,916 | 95.3% |
+| Write-in | 1,836 | 4.7% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 48,621. Valid votes: 38,631. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 48,754. Valid votes: 38,752. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -37090,78 +37090,78 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Edwin Obras | 34,677 | 73.5% |
-| Chris Martinez | 12,416 | 26.3% |
-| Write-in | 64 | 0.1% |
+| Edwin Obras | 34,792 | 73.6% |
+| Chris Martinez | 12,433 | 26.3% |
+| Write-in | 66 | 0.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 48,621. Valid votes: 47,157. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 48,754. Valid votes: 47,291. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Chris Martinez strictly overtakes Edwin Obras. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Edwin Obras leads Chris Martinez by 22,261 votes.
+Edwin Obras leads Chris Martinez by 22,359 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +22,261.
+Margin history: 2026-11-20T17:01 +22,359.
 
 ### Legislative District No. 33 State Representative Pos. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Mia Su-Ling Gregerson | 34,612 | 74.0% |
-| Yuri Marinchik | 12,094 | 25.9% |
-| Write-in | 76 | 0.2% |
+| Mia Su-Ling Gregerson | 34,720 | 74.0% |
+| Yuri Marinchik | 12,113 | 25.8% |
+| Write-in | 78 | 0.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 48,621. Valid votes: 46,782. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 48,754. Valid votes: 46,911. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Yuri Marinchik strictly overtakes Mia Su-Ling Gregerson. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Mia Su-Ling Gregerson leads Yuri Marinchik by 22,518 votes.
+Mia Su-Ling Gregerson leads Yuri Marinchik by 22,607 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +22,518.
+Margin history: 2026-11-20T17:01 +22,607.
 
 ### Legislative District No. 34 State Senator (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Emily Alvarado | 60,135 | 98.0% |
-| Write-in | 1,238 | 2.0% |
+| Emily Alvarado | 60,397 | 98.0% |
+| Write-in | 1,254 | 2.0% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 76,852. Valid votes: 61,373. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 77,163. Valid votes: 61,651. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -37169,18 +37169,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Brianna K. Thomas | 59,098 | 98.0% |
-| Write-in | 1,181 | 2.0% |
+| Brianna K. Thomas | 59,356 | 98.0% |
+| Write-in | 1,198 | 2.0% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 76,852. Valid votes: 60,279. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 77,163. Valid votes: 60,554. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -37188,78 +37188,78 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Joe Fitzgibbon | 46,938 | 67.7% |
-| Mary Anito | 21,700 | 31.3% |
-| Write-in | 722 | 1.0% |
+| Joe Fitzgibbon | 47,173 | 67.6% |
+| Mary Anito | 21,839 | 31.3% |
+| Write-in | 733 | 1.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 76,852. Valid votes: 69,360. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 77,163. Valid votes: 69,745. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Mary Anito strictly overtakes Joe Fitzgibbon. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Joe Fitzgibbon leads Mary Anito by 25,238 votes.
+Joe Fitzgibbon leads Mary Anito by 25,334 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +25,238.
+Margin history: 2026-11-20T17:01 +25,334.
 
 ### Legislative District No. 36 State Senator (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Noel C. Frame | 73,659 | 87.6% |
-| Jillian England | 10,301 | 12.2% |
-| Write-in | 147 | 0.2% |
+| Noel C. Frame | 74,066 | 87.6% |
+| Jillian England | 10,337 | 12.2% |
+| Write-in | 149 | 0.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 86,742. Valid votes: 84,107. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 87,183. Valid votes: 84,552. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Jillian England strictly overtakes Noel C. Frame. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Noel C. Frame leads Jillian England by 63,358 votes.
+Noel C. Frame leads Jillian England by 63,729 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +63,358.
+Margin history: 2026-11-20T17:01 +63,729.
 
 ### Legislative District No. 36 State Representative Pos. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Julia Grant Reed | 69,203 | 98.7% |
-| Write-in | 892 | 1.3% |
+| Julia Grant Reed | 69,577 | 98.7% |
+| Write-in | 898 | 1.3% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 86,742. Valid votes: 70,095. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 87,183. Valid votes: 70,475. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -37267,18 +37267,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Liz Berry | 68,899 | 98.7% |
-| Write-in | 879 | 1.3% |
+| Liz Berry | 69,271 | 98.7% |
+| Write-in | 889 | 1.3% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 86,742. Valid votes: 69,778. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 87,183. Valid votes: 70,160. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -37286,228 +37286,228 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Chipalo Street | 45,197 | 72.0% |
-| Tatiana Brown | 17,096 | 27.2% |
-| Write-in | 448 | 0.7% |
+| Chipalo Street | 45,451 | 71.9% |
+| Tatiana Brown | 17,291 | 27.4% |
+| Write-in | 457 | 0.7% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 68,221. Valid votes: 62,741. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 68,554. Valid votes: 63,199. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Tatiana Brown strictly overtakes Chipalo Street. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Chipalo Street leads Tatiana Brown by 28,101 votes.
+Chipalo Street leads Tatiana Brown by 28,160 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +28,101.
+Margin history: 2026-11-20T17:01 +28,160.
 
 ### Legislative District No. 37 State Representative Pos. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Kelabe Tewolde | 41,371 | 65.0% |
-| Sharon Tomiko Santos | 21,932 | 34.5% |
-| Write-in | 344 | 0.5% |
+| Kelabe Tewolde | 41,662 | 65.0% |
+| Sharon Tomiko Santos | 22,047 | 34.4% |
+| Write-in | 347 | 0.5% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 68,221. Valid votes: 63,647. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 68,554. Valid votes: 64,056. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Sharon Tomiko Santos strictly overtakes Kelabe Tewolde. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Kelabe Tewolde leads Sharon Tomiko Santos by 19,439 votes.
+Kelabe Tewolde leads Sharon Tomiko Santos by 19,615 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +19,439.
+Margin history: 2026-11-20T17:01 +19,615.
 
 ### Legislative District No. 37 State Representative Pos. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Jaelynn Scott | 54,977 | 87.5% |
-| Evon McCorkle | 7,415 | 11.8% |
-| Write-in | 403 | 0.6% |
+| Jaelynn Scott | 55,266 | 87.6% |
+| Evon McCorkle | 7,443 | 11.8% |
+| Write-in | 406 | 0.6% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 68,221. Valid votes: 62,795. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 68,554. Valid votes: 63,115. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Evon McCorkle strictly overtakes Jaelynn Scott. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Jaelynn Scott leads Evon McCorkle by 47,562 votes.
+Jaelynn Scott leads Evon McCorkle by 47,823 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +47,562.
+Margin history: 2026-11-20T17:01 +47,823.
 
 ### Legislative District No. 41 State Representative Pos. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Janice Zahn | 45,405 | 70.7% |
-| Elle Nguyen | 18,680 | 29.1% |
-| Write-in | 94 | 0.1% |
+| Janice Zahn | 45,639 | 70.8% |
+| Elle Nguyen | 18,738 | 29.1% |
+| Write-in | 96 | 0.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 66,427. Valid votes: 64,179. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 66,689. Valid votes: 64,473. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Elle Nguyen strictly overtakes Janice Zahn. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Janice Zahn leads Elle Nguyen by 26,725 votes.
+Janice Zahn leads Elle Nguyen by 26,901 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +26,725.
+Margin history: 2026-11-20T17:01 +26,901.
 
 ### Legislative District No. 41 State Representative Pos. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| My-Linh T Thai | 38,206 | 60.2% |
-| Michael Rosen | 25,216 | 39.7% |
-| Write-in | 89 | 0.1% |
+| My-Linh T Thai | 38,407 | 60.2% |
+| Michael Rosen | 25,310 | 39.7% |
+| Write-in | 93 | 0.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 66,427. Valid votes: 63,511. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 66,689. Valid votes: 63,810. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Michael Rosen strictly overtakes My-Linh T Thai. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-My-Linh T Thai leads Michael Rosen by 12,990 votes.
+My-Linh T Thai leads Michael Rosen by 13,097 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +12,990.
+Margin history: 2026-11-20T17:01 +13,097.
 
 ### Legislative District No. 43 State Senator (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Jamie Pedersen | 46,840 | 71.7% |
-| Hannah Sabio-Howell | 17,928 | 27.4% |
-| Write-in | 588 | 0.9% |
+| Jamie Pedersen | 47,139 | 71.5% |
+| Hannah Sabio-Howell | 18,200 | 27.6% |
+| Write-in | 598 | 0.9% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 70,367. Valid votes: 65,356. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 70,813. Valid votes: 65,937. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Hannah Sabio-Howell strictly overtakes Jamie Pedersen. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Jamie Pedersen leads Hannah Sabio-Howell by 28,912 votes.
+Jamie Pedersen leads Hannah Sabio-Howell by 28,939 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +28,912.
+Margin history: 2026-11-20T17:01 +28,939.
 
 ### Legislative District No. 43 State Representative Pos. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Nicole Macri | 58,001 | 91.1% |
-| Alby Clendennin | 5,165 | 8.1% |
-| Write-in | 503 | 0.8% |
+| Nicole Macri | 58,361 | 91.1% |
+| Alby Clendennin | 5,210 | 8.1% |
+| Write-in | 507 | 0.8% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 70,367. Valid votes: 63,669. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 70,813. Valid votes: 64,078. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Alby Clendennin strictly overtakes Nicole Macri. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Nicole Macri leads Alby Clendennin by 52,836 votes.
+Nicole Macri leads Alby Clendennin by 53,151 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +52,836.
+Margin history: 2026-11-20T17:01 +53,151.
 
 ### Legislative District No. 43 State Representative Pos. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Shaun Scott | 51,671 | 97.8% |
-| Write-in | 1,189 | 2.2% |
+| Shaun Scott | 52,003 | 97.8% |
+| Write-in | 1,153 | 2.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 70,367. Valid votes: 52,860. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 70,813. Valid votes: 53,156. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -37515,18 +37515,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Manka Dhingra | 48,564 | 93.5% |
-| Write-in | 3,375 | 6.5% |
+| Manka Dhingra | 48,725 | 93.5% |
+| Write-in | 3,402 | 6.5% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 69,928. Valid votes: 51,939. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 70,140. Valid votes: 52,127. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -37534,258 +37534,258 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Roger Goodman | 48,251 | 71.4% |
-| JoAnn Tolentino | 19,211 | 28.4% |
-| Write-in | 80 | 0.1% |
+| Roger Goodman | 48,438 | 71.5% |
+| JoAnn Tolentino | 19,250 | 28.4% |
+| Write-in | 81 | 0.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 69,928. Valid votes: 67,542. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 70,140. Valid votes: 67,769. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: JoAnn Tolentino strictly overtakes Roger Goodman. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Roger Goodman leads JoAnn Tolentino by 29,040 votes.
+Roger Goodman leads JoAnn Tolentino by 29,188 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +29,040.
+Margin history: 2026-11-20T17:01 +29,188.
 
 ### Legislative District No. 45 State Representative Pos. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Vanessa Kritzer | 49,428 | 74.8% |
-| John P Gibbons | 16,469 | 24.9% |
+| Vanessa Kritzer | 49,613 | 74.8% |
+| John P Gibbons | 16,496 | 24.9% |
 | Write-in | 180 | 0.3% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 69,928. Valid votes: 66,077. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 70,140. Valid votes: 66,289. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: John P Gibbons strictly overtakes Vanessa Kritzer. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Vanessa Kritzer leads John P Gibbons by 32,959 votes.
+Vanessa Kritzer leads John P Gibbons by 33,117 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +32,959.
+Margin history: 2026-11-20T17:01 +33,117.
 
 ### Legislative District No. 46 State Senator (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Javier Valdez | 68,026 | 89.8% |
-| Sandra Stephens | 7,579 | 10.0% |
+| Javier Valdez | 68,372 | 89.9% |
+| Sandra Stephens | 7,606 | 10.0% |
 | Write-in | 113 | 0.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 78,027. Valid votes: 75,718. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 78,413. Valid votes: 76,091. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Sandra Stephens strictly overtakes Javier Valdez. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Javier Valdez leads Sandra Stephens by 60,447 votes.
+Javier Valdez leads Sandra Stephens by 60,766 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +60,447.
+Margin history: 2026-11-20T17:01 +60,766.
 
 ### Legislative District No. 46 State Representative Pos. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Gerry Pollet | 45,405 | 62.8% |
-| Will Dreher | 26,459 | 36.6% |
-| Write-in | 450 | 0.6% |
+| Gerry Pollet | 45,676 | 62.7% |
+| Will Dreher | 26,727 | 36.7% |
+| Write-in | 458 | 0.6% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 78,027. Valid votes: 72,314. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 78,413. Valid votes: 72,861. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Will Dreher strictly overtakes Gerry Pollet. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Gerry Pollet leads Will Dreher by 18,946 votes.
+Gerry Pollet leads Will Dreher by 18,949 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +18,946.
+Margin history: 2026-11-20T17:01 +18,949.
 
 ### Legislative District No. 46 State Representative Pos. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Darya Farivar | 65,767 | 89.5% |
-| Rodney 'Star' Thornley | 7,412 | 10.1% |
-| Write-in | 264 | 0.4% |
+| Darya Farivar | 66,101 | 89.6% |
+| Rodney 'Star' Thornley | 7,440 | 10.1% |
+| Write-in | 269 | 0.4% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 78,027. Valid votes: 73,443. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 78,413. Valid votes: 73,810. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Rodney 'Star' Thornley strictly overtakes Darya Farivar. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Darya Farivar leads Rodney 'Star' Thornley by 58,355 votes.
+Darya Farivar leads Rodney 'Star' Thornley by 58,661 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +58,355.
+Margin history: 2026-11-20T17:01 +58,661.
 
 ### Legislative District No. 47 State Senator (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Claudia Kauffman | 32,031 | 61.3% |
-| Kristina Soltys | 20,211 | 38.7% |
+| Claudia Kauffman | 32,147 | 61.3% |
+| Kristina Soltys | 20,253 | 38.6% |
 | Write-in | 43 | 0.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 53,287. Valid votes: 52,285. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 53,428. Valid votes: 52,443. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Kristina Soltys strictly overtakes Claudia Kauffman. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Claudia Kauffman leads Kristina Soltys by 11,820 votes.
+Claudia Kauffman leads Kristina Soltys by 11,894 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +11,820.
+Margin history: 2026-11-20T17:01 +11,894.
 
 ### Legislative District No. 47 State Representative Pos. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Debra Jean Entenman | 31,974 | 63.7% |
-| Cobi Clark | 17,954 | 35.8% |
-| Write-in | 279 | 0.6% |
+| Debra Jean Entenman | 32,085 | 63.7% |
+| Cobi Clark | 18,007 | 35.7% |
+| Write-in | 282 | 0.6% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 53,287. Valid votes: 50,207. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 53,428. Valid votes: 50,374. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Cobi Clark strictly overtakes Debra Jean Entenman. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Debra Jean Entenman leads Cobi Clark by 14,020 votes.
+Debra Jean Entenman leads Cobi Clark by 14,078 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +14,020.
+Margin history: 2026-11-20T17:01 +14,078.
 
 ### Legislative District No. 47 State Representative Pos. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Chris Stearns | 32,462 | 62.8% |
-| Ted Cooke | 19,213 | 37.2% |
-| Write-in | 42 | 0.1% |
+| Chris Stearns | 32,585 | 62.8% |
+| Ted Cooke | 19,246 | 37.1% |
+| Write-in | 43 | 0.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 53,287. Valid votes: 51,717. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 53,428. Valid votes: 51,874. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Ted Cooke strictly overtakes Chris Stearns. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Chris Stearns leads Ted Cooke by 13,249 votes.
+Chris Stearns leads Ted Cooke by 13,339 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +13,249.
+Margin history: 2026-11-20T17:01 +13,339.
 
 ### Legislative District No. 48 State Senator (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Vandana Slatter | 36,554 | 96.8% |
-| Write-in | 1,221 | 3.2% |
+| Vandana Slatter | 36,735 | 96.8% |
+| Write-in | 1,229 | 3.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 50,843. Valid votes: 37,775. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 51,070. Valid votes: 37,964. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -37793,78 +37793,78 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Osman Salahuddin | 33,685 | 69.1% |
-| Jeffery Poppe | 14,962 | 30.7% |
-| Write-in | 66 | 0.1% |
+| Osman Salahuddin | 33,860 | 69.2% |
+| Jeffery Poppe | 15,010 | 30.7% |
+| Write-in | 67 | 0.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 50,843. Valid votes: 48,713. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 51,070. Valid votes: 48,937. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Jeffery Poppe strictly overtakes Osman Salahuddin. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Osman Salahuddin leads Jeffery Poppe by 18,723 votes.
+Osman Salahuddin leads Jeffery Poppe by 18,850 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +18,723.
+Margin history: 2026-11-20T17:01 +18,850.
 
 ### Legislative District No. 48 State Representative Pos. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Jessica Forsythe | 23,293 | 52.6% |
-| Amy Walen | 20,313 | 45.9% |
-| Write-in | 640 | 1.4% |
+| Jessica Forsythe | 23,451 | 52.7% |
+| Amy Walen | 20,425 | 45.9% |
+| Write-in | 647 | 1.5% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 50,843. Valid votes: 44,246. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 51,070. Valid votes: 44,523. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Amy Walen strictly overtakes Jessica Forsythe. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Jessica Forsythe leads Amy Walen by 2,980 votes.
+Jessica Forsythe leads Amy Walen by 3,026 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +2,980.
+Margin history: 2026-11-20T17:01 +3,026.
 
 ### Prosecuting Attorney (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Leesa Manion | 638,276 | 97.8% |
-| Write-in | 14,287 | 2.2% |
+| Leesa Manion | 640,915 | 97.8% |
+| Write-in | 14,352 | 2.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 950,444. Valid votes: 652,563. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 954,142. Valid votes: 655,267. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -37872,48 +37872,48 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Rob Foxcurran | 577,808 | 71.2% |
-| Dominique M Scarimbolo | 230,650 | 28.4% |
-| Write-in | 3,345 | 0.4% |
+| Rob Foxcurran | 580,239 | 71.2% |
+| Dominique M Scarimbolo | 231,771 | 28.4% |
+| Write-in | 3,361 | 0.4% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 950,444. Valid votes: 811,803. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 954,142. Valid votes: 815,371. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Dominique M Scarimbolo strictly overtakes Rob Foxcurran. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Rob Foxcurran leads Dominique M Scarimbolo by 347,158 votes.
+Rob Foxcurran leads Dominique M Scarimbolo by 348,468 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +347,158.
+Margin history: 2026-11-20T17:01 +348,468.
 
 ### Director of Elections (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Julie Wise | 642,602 | 98.5% |
-| Write-in | 10,108 | 1.5% |
+| Julie Wise | 645,140 | 98.4% |
+| Write-in | 10,166 | 1.6% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 950,444. Valid votes: 652,710. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 954,142. Valid votes: 655,306. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -37921,48 +37921,48 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Rebecca Saldaña | 62,155 | 61.5% |
-| Toshiko Grace Hasegawa | 38,459 | 38.0% |
-| Write-in | 530 | 0.5% |
+| Rebecca Saldaña | 62,559 | 61.5% |
+| Toshiko Grace Hasegawa | 38,670 | 38.0% |
+| Write-in | 538 | 0.5% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 112,709. Valid votes: 101,144. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 113,348. Valid votes: 101,767. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Toshiko Grace Hasegawa strictly overtakes Rebecca Saldaña. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Rebecca Saldaña leads Toshiko Grace Hasegawa by 23,696 votes.
+Rebecca Saldaña leads Toshiko Grace Hasegawa by 23,889 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +23,696.
+Margin history: 2026-11-20T17:01 +23,889.
 
 ### Metropolitan King County Council District No. 4 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Jorge L. Barón | 90,437 | 99.0% |
-| Write-in | 882 | 1.0% |
+| Jorge L. Barón | 90,883 | 99.0% |
+| Write-in | 892 | 1.0% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 131,256. Valid votes: 91,319. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 131,920. Valid votes: 91,775. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -37970,18 +37970,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Claudia Balducci | 60,619 | 98.1% |
-| Write-in | 1,147 | 1.9% |
+| Claudia Balducci | 60,864 | 98.1% |
+| Write-in | 1,160 | 1.9% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 91,909. Valid votes: 61,766. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 92,298. Valid votes: 62,024. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -37989,198 +37989,198 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Teresa Mosqueda | 71,293 | 70.2% |
-| Nick Duda | 29,747 | 29.3% |
-| Write-in | 500 | 0.5% |
+| Teresa Mosqueda | 71,638 | 70.2% |
+| Nick Duda | 29,850 | 29.3% |
+| Write-in | 507 | 0.5% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 112,891. Valid votes: 101,540. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 113,387. Valid votes: 101,995. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Nick Duda strictly overtakes Teresa Mosqueda. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Teresa Mosqueda leads Nick Duda by 41,546 votes.
+Teresa Mosqueda leads Nick Duda by 41,788 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +41,546.
+Margin history: 2026-11-20T17:01 +41,788.
 
 ### Supreme Court Justice Position 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Colleen Melody | 627,914 | 72.7% |
-| Scott Edwards | 233,515 | 27.1% |
-| Write-in | 1,724 | 0.2% |
+| Colleen Melody | 630,848 | 72.8% |
+| Scott Edwards | 234,155 | 27.0% |
+| Write-in | 1,739 | 0.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 950,444. Valid votes: 863,153. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 954,142. Valid votes: 866,742. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Scott Edwards strictly overtakes Colleen Melody. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Colleen Melody leads Scott Edwards by 394,399 votes.
+Colleen Melody leads Scott Edwards by 396,693 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +394,399.
+Margin history: 2026-11-20T17:01 +396,693.
 
 ### Supreme Court Justice Position 3 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Jaime Michelle Hawk | 604,361 | 70.3% |
-| David Stevens | 253,242 | 29.4% |
+| Jaime Michelle Hawk | 607,440 | 70.3% |
+| David Stevens | 253,964 | 29.4% |
 | Write-in | 2,681 | 0.3% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 950,444. Valid votes: 860,284. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 954,142. Valid votes: 864,085. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: David Stevens strictly overtakes Jaime Michelle Hawk. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Jaime Michelle Hawk leads David Stevens by 351,119 votes.
+Jaime Michelle Hawk leads David Stevens by 353,476 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +351,119.
+Margin history: 2026-11-20T17:01 +353,476.
 
 ### Supreme Court Justice Position 4 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Ian Birk | 506,200 | 59.1% |
-| Sean O'Donnell | 347,354 | 40.6% |
-| Write-in | 2,295 | 0.3% |
+| Ian Birk | 509,064 | 59.2% |
+| Sean O'Donnell | 348,640 | 40.5% |
+| Write-in | 2,243 | 0.3% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 950,444. Valid votes: 855,849. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 954,142. Valid votes: 859,947. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Sean O'Donnell strictly overtakes Ian Birk. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Ian Birk leads Sean O'Donnell by 158,846 votes.
+Ian Birk leads Sean O'Donnell by 160,424 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +158,846.
+Margin history: 2026-11-20T17:01 +160,424.
 
 ### Supreme Court Justice Position 5 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Theo Angelis | 603,529 | 70.5% |
-| Dave Larson | 250,229 | 29.2% |
-| Write-in | 1,987 | 0.2% |
+| Theo Angelis | 606,427 | 70.6% |
+| Dave Larson | 250,931 | 29.2% |
+| Write-in | 1,931 | 0.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 950,444. Valid votes: 855,745. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 954,142. Valid votes: 859,289. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Dave Larson strictly overtakes Theo Angelis. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Theo Angelis leads Dave Larson by 353,300 votes.
+Theo Angelis leads Dave Larson by 355,496 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +353,300.
+Margin history: 2026-11-20T17:01 +355,496.
 
 ### Supreme Court Justice Position 7 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Debra L. Stephens | 645,492 | 75.6% |
-| Todd A. Bloom | 205,742 | 24.1% |
-| Write-in | 2,053 | 0.2% |
+| Debra L. Stephens | 648,386 | 75.7% |
+| Todd A. Bloom | 206,272 | 24.1% |
+| Write-in | 2,037 | 0.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 950,444. Valid votes: 853,287. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 954,142. Valid votes: 856,695. Scope: This is a county-only slice of a broader contest. Add the controlling district or statewide export before treating the risk as an outcome forecast. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Todd A. Bloom strictly overtakes Debra L. Stephens. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Debra L. Stephens leads Todd A. Bloom by 439,750 votes.
+Debra L. Stephens leads Todd A. Bloom by 442,114 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +439,750.
+Margin history: 2026-11-20T17:01 +442,114.
 
 ### CoA Judge Position 5 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| David S. Mann | 586,493 | 98.1% |
-| Write-in | 11,151 | 1.9% |
+| David S. Mann | 588,920 | 98.1% |
+| Write-in | 11,146 | 1.9% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 950,444. Valid votes: 597,644. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 954,142. Valid votes: 600,066. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38188,18 +38188,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Bill A. Bowman | 580,562 | 98.2% |
-| Write-in | 10,926 | 1.8% |
+| Bill A. Bowman | 582,952 | 98.2% |
+| Write-in | 10,851 | 1.8% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 950,444. Valid votes: 591,488. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 954,142. Valid votes: 593,803. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38207,48 +38207,48 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Jan Trasen | 130,439 | 62.6% |
-| Bianca Tse | 76,613 | 36.8% |
-| Write-in | 1,195 | 0.6% |
+| Jan Trasen | 130,892 | 62.6% |
+| Bianca Tse | 76,957 | 36.8% |
+| Write-in | 1,209 | 0.6% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 261,011. Valid votes: 208,247. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 261,947. Valid votes: 209,058. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Bianca Tse strictly overtakes Jan Trasen. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Jan Trasen leads Bianca Tse by 53,826 votes.
+Jan Trasen leads Bianca Tse by 53,935 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +53,826.
+Margin history: 2026-11-20T17:01 +53,935.
 
 ### Northeast Electoral District Judge Position No. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Michelle Gehlsen | 154,883 | 98.4% |
-| Write-in | 2,464 | 1.6% |
+| Michelle Gehlsen | 155,477 | 98.4% |
+| Write-in | 2,479 | 1.6% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 261,011. Valid votes: 157,347. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 261,947. Valid votes: 157,956. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38256,18 +38256,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Lisa O'Toole | 156,927 | 98.3% |
-| Write-in | 2,650 | 1.7% |
+| Lisa O'Toole | 157,512 | 98.3% |
+| Write-in | 2,659 | 1.7% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 261,011. Valid votes: 159,577. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 261,947. Valid votes: 160,171. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38275,18 +38275,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Kevin Peck | 156,542 | 98.3% |
-| Write-in | 2,716 | 1.7% |
+| Kevin Peck | 157,114 | 98.3% |
+| Write-in | 2,730 | 1.7% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 261,011. Valid votes: 159,258. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 261,947. Valid votes: 159,844. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38294,18 +38294,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Jill Klinge | 154,083 | 98.4% |
-| Write-in | 2,439 | 1.6% |
+| Jill Klinge | 154,674 | 98.4% |
+| Write-in | 2,454 | 1.6% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 261,011. Valid votes: 156,522. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 261,947. Valid votes: 157,128. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38313,18 +38313,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Denice Gagner | 155,473 | 98.2% |
-| Write-in | 2,792 | 1.8% |
+| Denice Gagner | 156,117 | 98.2% |
+| Write-in | 2,800 | 1.8% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 261,011. Valid votes: 158,265. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 261,947. Valid votes: 158,917. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38332,18 +38332,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Peter Peaquin | 148,811 | 98.1% |
-| Write-in | 2,893 | 1.9% |
+| Peter Peaquin | 149,395 | 98.1% |
+| Write-in | 2,902 | 1.9% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 261,011. Valid votes: 151,704. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 261,947. Valid votes: 152,297. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38351,18 +38351,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Raul Martinez | 31,475 | 98.4% |
-| Write-in | 497 | 1.6% |
+| Raul Martinez | 31,573 | 98.4% |
+| Write-in | 502 | 1.6% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 48,522. Valid votes: 31,972. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 48,650. Valid votes: 32,075. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38370,18 +38370,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Karama H. Hawkins | 31,394 | 98.4% |
-| Write-in | 509 | 1.6% |
+| Karama H. Hawkins | 31,483 | 98.4% |
+| Write-in | 512 | 1.6% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 48,522. Valid votes: 31,903. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 48,650. Valid votes: 31,995. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38389,18 +38389,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Leah Taguba | 108,374 | 96.7% |
-| Write-in | 3,663 | 3.3% |
+| Leah Taguba | 108,667 | 96.8% |
+| Write-in | 3,608 | 3.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 175,599. Valid votes: 112,037. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 176,063. Valid votes: 112,275. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38408,18 +38408,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Matthew York | 108,570 | 97.2% |
-| Write-in | 3,147 | 2.8% |
+| Matthew York | 108,871 | 97.2% |
+| Write-in | 3,095 | 2.8% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 175,599. Valid votes: 111,717. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 176,063. Valid votes: 111,966. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38427,18 +38427,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Tricia Grove Johnson | 108,726 | 97.0% |
-| Write-in | 3,379 | 3.0% |
+| Tricia Grove Johnson | 109,021 | 97.0% |
+| Write-in | 3,318 | 3.0% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 175,599. Valid votes: 112,105. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 176,063. Valid votes: 112,339. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38446,18 +38446,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Corinna Harn | 107,506 | 97.0% |
-| Write-in | 3,298 | 3.0% |
+| Corinna Harn | 107,785 | 97.1% |
+| Write-in | 3,241 | 2.9% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 175,599. Valid votes: 110,804. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 176,063. Valid votes: 111,026. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38465,48 +38465,48 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Heather M. Barker | 94,843 | 66.0% |
-| Joshua C. Harris | 47,541 | 33.1% |
-| Write-in | 1,302 | 0.9% |
+| Heather M. Barker | 95,168 | 66.0% |
+| Joshua C. Harris | 47,636 | 33.1% |
+| Write-in | 1,282 | 0.9% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 175,599. Valid votes: 143,686. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 176,063. Valid votes: 144,086. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Joshua C. Harris strictly overtakes Heather M. Barker. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Heather M. Barker leads Joshua C. Harris by 47,302 votes.
+Heather M. Barker leads Joshua C. Harris by 47,532 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +47,302.
+Margin history: 2026-11-20T17:01 +47,532.
 
 ### Southeast Electoral District Judge Position No. 6 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Rhonda Laumann | 104,112 | 97.0% |
-| Write-in | 3,263 | 3.0% |
+| Rhonda Laumann | 104,392 | 97.0% |
+| Write-in | 3,202 | 3.0% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 175,599. Valid votes: 107,375. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 176,063. Valid votes: 107,594. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38514,18 +38514,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Brian Todd | 65,662 | 97.9% |
-| Write-in | 1,416 | 2.1% |
+| Brian Todd | 65,881 | 97.9% |
+| Write-in | 1,428 | 2.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 101,861. Valid votes: 67,078. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 102,195. Valid votes: 67,309. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38533,18 +38533,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Andrea Samonica Jarmon | 65,731 | 97.4% |
-| Write-in | 1,748 | 2.6% |
+| Andrea Samonica Jarmon | 65,944 | 97.4% |
+| Write-in | 1,747 | 2.6% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 101,861. Valid votes: 67,479. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 102,195. Valid votes: 67,691. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38552,18 +38552,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Mitch Greene | 64,634 | 97.8% |
+| Mitch Greene | 64,842 | 97.8% |
 | Write-in | 1,445 | 2.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 101,861. Valid votes: 66,079. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 102,195. Valid votes: 66,287. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38571,108 +38571,108 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Harry Steinmetz | 46,553 | 54.6% |
-| Fa'amomoi Masaniai, Jr. | 38,263 | 44.8% |
-| Write-in | 521 | 0.6% |
+| Harry Steinmetz | 46,725 | 54.5% |
+| Fa'amomoi Masaniai, Jr. | 38,416 | 44.8% |
+| Write-in | 525 | 0.6% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 101,861. Valid votes: 85,337. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 102,195. Valid votes: 85,666. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Fa'amomoi Masaniai, Jr. strictly overtakes Harry Steinmetz. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Harry Steinmetz leads Fa'amomoi Masaniai, Jr. by 8,290 votes.
+Harry Steinmetz leads Fa'amomoi Masaniai, Jr. by 8,309 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +8,290.
+Margin history: 2026-11-20T17:01 +8,309.
 
 ### Southwest Electoral District Judge Position No. 5 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Renee Walls | 46,984 | 57.0% |
-| Noel Merfeld | 34,769 | 42.2% |
-| Write-in | 618 | 0.8% |
+| Renee Walls | 47,140 | 57.0% |
+| Noel Merfeld | 34,909 | 42.2% |
+| Write-in | 627 | 0.8% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 101,861. Valid votes: 82,371. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 102,195. Valid votes: 82,676. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Noel Merfeld strictly overtakes Renee Walls. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Renee Walls leads Noel Merfeld by 12,215 votes.
+Renee Walls leads Noel Merfeld by 12,231 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +12,215.
+Margin history: 2026-11-20T17:01 +12,231.
 
 ### West Electoral District Judge Position No. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Bardi Martin | 200,268 | 66.1% |
-| Nyjat Rose-Akins | 101,802 | 33.6% |
-| Write-in | 886 | 0.3% |
+| Bardi Martin | 201,272 | 66.1% |
+| Nyjat Rose-Akins | 102,375 | 33.6% |
+| Write-in | 901 | 0.3% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 363,449. Valid votes: 302,956. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 365,284. Valid votes: 304,548. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Nyjat Rose-Akins strictly overtakes Bardi Martin. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Bardi Martin leads Nyjat Rose-Akins by 98,466 votes.
+Bardi Martin leads Nyjat Rose-Akins by 98,897 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +98,466.
+Margin history: 2026-11-20T17:01 +98,897.
 
 ### West Electoral District Judge Position No. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Kuljinder K. Dhillon | 220,785 | 98.9% |
-| Write-in | 2,446 | 1.1% |
+| Kuljinder K. Dhillon | 221,928 | 98.9% |
+| Write-in | 2,453 | 1.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 363,449. Valid votes: 223,231. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 365,284. Valid votes: 224,381. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38680,18 +38680,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Rebecca Robertson | 220,344 | 99.0% |
-| Write-in | 2,128 | 1.0% |
+| Rebecca Robertson | 221,470 | 99.0% |
+| Write-in | 2,126 | 1.0% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 363,449. Valid votes: 222,472. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 365,284. Valid votes: 223,596. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38699,18 +38699,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Yvonne Chin | 221,669 | 99.0% |
-| Write-in | 2,202 | 1.0% |
+| Yvonne Chin | 222,810 | 99.0% |
+| Write-in | 2,206 | 1.0% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 363,449. Valid votes: 223,871. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 365,284. Valid votes: 225,016. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38718,18 +38718,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Kristin Shotwell | 220,344 | 99.0% |
-| Write-in | 2,229 | 1.0% |
+| Kristin Shotwell | 221,490 | 99.0% |
+| Write-in | 2,239 | 1.0% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 363,449. Valid votes: 222,573. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 365,284. Valid votes: 223,729. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38737,251 +38737,251 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Yes | 10,262 | 84.1% |
-| No | 1,939 | 15.9% |
+| Yes | 10,310 | 84.0% |
+| No | 1,960 | 16.0% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 13,024. Valid votes: 12,201. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 13,069. Valid votes: 12,270. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: No strictly overtakes Yes. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Yes leads No by 8,323 votes.
+Yes leads No by 8,350 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +8,323.
+Margin history: 2026-11-20T17:01 +8,350.
 
 ### City of Clyde Hill Proposition No. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Yes | 948 | 66.3% |
+| Yes | 950 | 66.3% |
 | No | 482 | 33.7% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 1,474. Valid votes: 1,430. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 1,475. Valid votes: 1,432. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: No strictly overtakes Yes. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Yes leads No by 466 votes.
+Yes leads No by 468 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +466.
+Margin history: 2026-11-20T17:01 +468.
 
 ### City of Issaquah Proposition No. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Yes | 11,815 | 74.1% |
-| No | 4,136 | 25.9% |
+| Yes | 11,874 | 74.1% |
+| No | 4,151 | 25.9% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 16,534. Valid votes: 15,951. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 16,598. Valid votes: 16,025. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: No strictly overtakes Yes. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Yes leads No by 7,679 votes.
+Yes leads No by 7,723 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +7,679.
+Margin history: 2026-11-20T17:01 +7,723.
 
 ### City of Kenmore Proposition No. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| No | 7,629 | 67.4% |
-| Yes | 3,698 | 32.6% |
+| No | 7,642 | 67.3% |
+| Yes | 3,719 | 32.7% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 11,688. Valid votes: 11,327. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 11,723. Valid votes: 11,361. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Yes strictly overtakes No. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-No leads Yes by 3,931 votes.
+No leads Yes by 3,923 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +3,931.
+Margin history: 2026-11-20T17:01 +3,923.
 
 ### City of Lake Forest Park Proposition No. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Yes | 4,758 | 61.8% |
-| No | 2,938 | 38.2% |
+| Yes | 4,778 | 61.9% |
+| No | 2,946 | 38.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 8,009. Valid votes: 7,696. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 8,030. Valid votes: 7,724. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: No strictly overtakes Yes. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Yes leads No by 1,820 votes.
+Yes leads No by 1,832 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +1,820.
+Margin history: 2026-11-20T17:01 +1,832.
 
 ### City of Milton Proposition No. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Yes | 381 | 60.8% |
-| No | 246 | 39.2% |
+| Yes | 381 | 60.6% |
+| No | 248 | 39.4% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 662. Valid votes: 627. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 663. Valid votes: 629. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: No strictly overtakes Yes. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Yes leads No by 135 votes.
+Yes leads No by 133 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +135.
+Margin history: 2026-11-20T17:01 +133.
 
 ### City of SeaTac Proposition No. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Yes | 4,632 | 61.9% |
-| No | 2,854 | 38.1% |
+| Yes | 4,653 | 61.9% |
+| No | 2,869 | 38.1% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 7,755. Valid votes: 7,486. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 7,778. Valid votes: 7,522. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: No strictly overtakes Yes. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Yes leads No by 1,778 votes.
+Yes leads No by 1,784 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +1,778.
+Margin history: 2026-11-20T17:01 +1,784.
 
 ### Seattle City Council District No. 5 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Nilu Jenks | 28,457 | 59.2% |
-| Julie Kang | 19,430 | 40.4% |
+| Nilu Jenks | 28,574 | 59.3% |
+| Julie Kang | 19,488 | 40.4% |
 | Write-in | 149 | 0.3% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 52,825. Valid votes: 48,036. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 53,004. Valid votes: 48,211. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Julie Kang strictly overtakes Nilu Jenks. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Nilu Jenks leads Julie Kang by 9,027 votes.
+Nilu Jenks leads Julie Kang by 9,086 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +9,027.
+Margin history: 2026-11-20T17:01 +9,086.
 
 ### Seattle Municipal Court Judge Position No. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Cat McDowall | 221,150 | 99.0% |
-| Write-in | 2,307 | 1.0% |
+| Cat McDowall | 222,324 | 99.0% |
+| Write-in | 2,227 | 1.0% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 363,449. Valid votes: 223,457. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 365,284. Valid votes: 224,551. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -38989,18 +38989,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Katharine Edwards | 221,937 | 99.0% |
-| Write-in | 2,351 | 1.0% |
+| Katharine Edwards | 223,070 | 99.0% |
+| Write-in | 2,235 | 1.0% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 363,449. Valid votes: 224,288. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 365,284. Valid votes: 225,305. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -39008,18 +39008,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Pooja Vaddadi | 207,541 | 97.8% |
-| Write-in | 4,625 | 2.2% |
+| Pooja Vaddadi | 208,617 | 97.8% |
+| Write-in | 4,636 | 2.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 363,449. Valid votes: 212,166. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 365,284. Valid votes: 213,253. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -39027,18 +39027,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Anita Crawford-Willis | 221,693 | 99.0% |
-| Write-in | 2,204 | 1.0% |
+| Anita Crawford-Willis | 222,818 | 99.0% |
+| Write-in | 2,192 | 1.0% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 363,449. Valid votes: 223,897. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 365,284. Valid votes: 225,010. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -39046,48 +39046,48 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Gabe Rothstein | 205,344 | 67.5% |
-| Garmon Newsom | 97,790 | 32.2% |
-| Write-in | 1,014 | 0.3% |
+| Gabe Rothstein | 206,538 | 67.5% |
+| Garmon Newsom | 98,209 | 32.1% |
+| Write-in | 1,034 | 0.3% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 363,449. Valid votes: 304,148. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 365,284. Valid votes: 305,781. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Garmon Newsom strictly overtakes Gabe Rothstein. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Gabe Rothstein leads Garmon Newsom by 107,554 votes.
+Gabe Rothstein leads Garmon Newsom by 108,329 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +107,554.
+Margin history: 2026-11-20T17:01 +108,329.
 
 ### Seattle Municipal Court Judge Position No. 6 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Shantrice Anderson | 221,190 | 99.0% |
-| Write-in | 2,315 | 1.0% |
+| Shantrice Anderson | 222,377 | 99.0% |
+| Write-in | 2,309 | 1.0% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 363,449. Valid votes: 223,505. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 365,284. Valid votes: 224,686. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -39095,18 +39095,18 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Damon Shadid | 218,809 | 98.8% |
-| Write-in | 2,573 | 1.2% |
+| Damon Shadid | 219,957 | 98.8% |
+| Write-in | 2,575 | 1.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 363,449. Valid votes: 221,382. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 365,284. Valid votes: 222,532. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 No supported numeric decision boundary is published for this rule, stage or candidate count. Descriptive tallies do not establish a zero chance of outcome change.
 
@@ -39114,233 +39114,233 @@ No supported numeric decision boundary is published for this rule, stage or cand
 
 | Choice | Votes | Share |
 |---|---|---|
-| Yes | 253,152 | 72.9% |
-| No | 93,985 | 27.1% |
+| Yes | 254,754 | 73.0% |
+| No | 94,372 | 27.0% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 363,449. Valid votes: 347,137. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 365,284. Valid votes: 349,126. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: No strictly overtakes Yes. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Yes leads No by 159,167 votes.
+Yes leads No by 160,382 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +159,167.
+Margin history: 2026-11-20T17:01 +160,382.
 
 ### City of Shoreline Proposition No. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Against | 14,937 | 54.5% |
-| For | 12,470 | 45.5% |
+| Against | 14,976 | 54.5% |
+| For | 12,524 | 45.5% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 28,825. Valid votes: 27,407. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 28,897. Valid votes: 27,500. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: For strictly overtakes Against. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Against leads For by 2,467 votes.
+Against leads For by 2,452 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +2,467.
+Margin history: 2026-11-20T17:01 +2,452.
 
 ### Auburn School District No. 408 Proposition No. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Approved | 13,705 | 52.9% |
-| Rejected | 12,181 | 47.1% |
+| Approved | 13,767 | 53.0% |
+| Rejected | 12,218 | 47.0% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 26,799. Valid votes: 25,886. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 26,887. Valid votes: 25,985. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Rejected strictly overtakes Approved. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Approved leads Rejected by 1,524 votes.
+Approved leads Rejected by 1,549 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +1,524.
+Margin history: 2026-11-20T17:01 +1,549.
 
 ### Highline School District No. 401 Proposition No. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Approved | 29,544 | 64.7% |
-| Rejected | 16,150 | 35.3% |
+| Approved | 29,667 | 64.7% |
+| Rejected | 16,186 | 35.3% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 47,410. Valid votes: 45,694. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 47,551. Valid votes: 45,853. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Rejected strictly overtakes Approved. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Approved leads Rejected by 13,394 votes.
+Approved leads Rejected by 13,481 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +13,394.
+Margin history: 2026-11-20T17:01 +13,481.
 
 ### Highline School District No. 401 Proposition No. 2 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Yes | 27,097 | 59.5% |
-| No | 18,480 | 40.5% |
+| Yes | 27,219 | 59.5% |
+| No | 18,524 | 40.5% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 47,410. Valid votes: 45,577. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 47,551. Valid votes: 45,743. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: No strictly overtakes Yes. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Yes leads No by 8,617 votes.
+Yes leads No by 8,695 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +8,617.
+Margin history: 2026-11-20T17:01 +8,695.
 
 ### Kent School District No. 415 Proposition No. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Yes | 31,262 | 54.1% |
-| No | 26,478 | 45.9% |
+| Yes | 31,420 | 54.2% |
+| No | 26,526 | 45.8% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 60,697. Valid votes: 57,740. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 60,854. Valid votes: 57,946. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: No strictly overtakes Yes. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Yes leads No by 4,784 votes.
+Yes leads No by 4,894 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +4,784.
+Margin history: 2026-11-20T17:01 +4,894.
 
 ### King County Fire No. 20 Proposition No. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Approved | 4,292 | 78.8% |
-| Rejected | 1,154 | 21.2% |
+| Approved | 4,304 | 78.8% |
+| Rejected | 1,158 | 21.2% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 5,746. Valid votes: 5,446. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 5,764. Valid votes: 5,462. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Rejected strictly overtakes Approved. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Approved leads Rejected by 3,138 votes.
+Approved leads Rejected by 3,146 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +3,138.
+Margin history: 2026-11-20T17:01 +3,146.
 
 ### King County Cemetery District No. 1 Proposition No. 1 (Vote for 1) (King County, Washington portion)
 
 | Choice | Votes | Share |
 |---|---|---|
-| Approved | 4,946 | 71.4% |
-| Rejected | 1,981 | 28.6% |
+| Approved | 4,979 | 71.4% |
+| Rejected | 1,992 | 28.6% |
 
 Lifecycle: unknown; tabulation stage: unknown.
 
 Forecast: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Source: King County, Washington (king-county), snapshot 2027-11-17T23:59. Ballots with contest: 7,372. Valid votes: 6,927. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
+Source: King County, Washington (king-county), snapshot 2026-11-20T17:01. Ballots with contest: 7,414. Valid votes: 6,971. Scope: This source is treated as controlling for the reported contest. Unreviewed identity and jurisdiction coverage; descriptive source record only. No reviewed election/jurisdiction/office/source-ID crosswalk.
 
-Evidence: data reported; count updated unknown (published 2026-11-19T01:49:33+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
+Evidence: data reported; count updated unknown (published 2026-11-21T01:01:35+00:00); coverage incomplete/unverified; geography not_joined; remaining pool unknown; rule unreviewed/unsupported; calibration unvalidated. Findings: Source coverage has not been independently established.
 
-Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-20-1701.csv: incompatible or unknown tabulation stage/result version.
+Excluded from comparable history: 2026-11-03-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-04-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-05-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-06-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-07-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-09-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-10-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-11-1551.csv: incompatible or unknown tabulation stage/result version; 2026-11-12-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-13-1616.csv: incompatible or unknown tabulation stage/result version; 2026-11-14-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-16-1603.csv: incompatible or unknown tabulation stage/result version; 2026-11-17-2359.csv: incompatible or unknown tabulation stage/result version; 2026-11-18-1750.csv: incompatible or unknown tabulation stage/result version; 2026-11-19-2359.csv: incompatible or unknown tabulation stage/result version.
 
 ### Winner
 
 Event: Selected pair: Rejected strictly overtakes Approved. Remaining pool: unknown, unknown count, as of unknown. Jurisdictions: unknown; ballot categories: unreviewed. Basis: unknown. Contest/pair participation: unknown/unknown; mapping unreviewed. Sensitivity is conditional and uncalibrated; it is not a confidence interval.
 
-Approved leads Rejected by 2,965 votes.
+Approved leads Rejected by 2,987 votes.
 
 Experimental, uncalibrated conditional probability: Not estimable. Unvalidated evidence rubric: 0/100 (Insufficient; not validated). Selected-boundary triage band: Unknown. Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
 Evidence rubric basis: Forecast withheld: lifecycle_and_stage; source_time; identity; complete_scope; source_coverage; supported_rule; remaining_pool; Descriptive report: outstanding-ballot forecasts are withheld.; No contemporaneous remaining-count evidence or explicit scenario.
 
-Margin history: 2027-11-17T23:59 +2,965.
+Margin history: 2026-11-20T17:01 +2,987.
 
 ## About this data
 
@@ -39348,9 +39348,9 @@ Report mode: descriptive. Forecast target: none. Information time: unknown. Elec
 
 Lifecycle: counting; tabulation stage: unknown. Authority: https://results.votewa.gov/results/public/washington; evidence as of 2026-11-05T21:14:40+00:00.
 
-Latest input label 2027-11-17T23:59; 1465 source representations of contests; overlapping jurisdictions may appear separately. Individual source dates may be older; this label is not an authoritative current-count time.
+Latest input label 2026-11-20T17:59; 1465 source representations of contests; overlapping jurisdictions may appear separately. Individual source dates may be older; this label is not an authoritative current-count time.
 
-Generated: 2026-11-22T22:52:33+00:00. Per-source vintages and coverage findings are listed in analysis.json (source_summary and coverage_summary).
+Generated: 2026-11-23T20:39:52+00:00. Per-source vintages and coverage findings are listed in analysis.json (source_summary and coverage_summary).
 
 ## Method and limits
 

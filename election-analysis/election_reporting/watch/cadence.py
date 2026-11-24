@@ -14,7 +14,12 @@ A cadence day starts at 02:00 UTC (6 PM Pacific, after Washington's afternoon
 county releases). The first scheduled fire of a cadence day runs the watcher,
 however late GitHub starts it, unless a watcher run (scheduled or dispatched)
 already succeeded in that cadence day. A failed run does not count, so the
-next hourly fire retries. Manual dispatches always run.
+next hourly fire retries. Manual dispatches bypass the daily gate.
+
+Workflow-level concurrency serializes scheduled and dispatched runs without
+cancelling the active run (fitment #223). A later cadence gate starts after
+the active run finishes, so only completed successes count. A null conclusion
+is not a success; it does not need to act as an in-progress lock.
 
 Usage in the workflow (reads the run history itself with ``gh api``):
     python -m election_reporting.watch.cadence --event schedule --now 2026-11-13T03:07:00Z \
