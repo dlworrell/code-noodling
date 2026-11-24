@@ -16,6 +16,29 @@ algorithms and their practical crossover costs.
 Python integers, but no API is certified constant-time or side-channel resistant.
 Legacy `secure_`, `ct_`, and `is_constant_time` names do not establish those properties.
 
+### Two kinds of code, two different standings
+
+- **Arithmetic on secrets is research only.** This covers multiplication,
+  Montgomery reduction (including the constant-flow candidate), modular
+  exponentiation, the modular inverse and blinding. It must not process keys or
+  other secret values. Several of these functions are variable-time by design.
+  The constant-flow candidate has no timing clearance on controlled hardware,
+  no compiled-code proof and no independent review
+  ([constant-flow notes](docs/engineering/CRYPTO-CONSTANT-FLOW.md)). Secret
+  zeroization, the randomness source and misuse resistance have not been
+  assessed. Use a vetted library, such as libsodium, BoringSSL or OpenSSL, for
+  anything that handles secrets. Moving this code beyond research would need
+  constant-time redesign, timing evidence on controlled hardware, proof or
+  large-scale differential testing of the arithmetic, and an independent
+  cryptographic audit. None of that is planned.
+- **The primality certificate checkers handle only public values.** These are
+  Pocklington, ECPP and mixed certificates. A certificate and the prime it
+  proves are public, so their variable-time behaviour leaks nothing secret.
+  What matters is that an accepted certificate always proves a prime. They are
+  being hardened toward that use, through machine-checked proofs of the
+  checking rules, fuzzing, cross-checks against an independent checker, and
+  review. Until that work is complete they remain experimental too.
+
 ## Scope layout
 
 This directory is the `crypto-pipeline` governed project scope declared in the
@@ -51,6 +74,10 @@ repository's [`aes-manifest.yaml`](../aes-manifest.yaml) (Catylist ADR-0004).
   class-number-1 generator and a PARI/GP certificate converter in
   `ecpp_cert.py`. See
   [ECPP notes](docs/engineering/CRYPTO-ECPP.md).
+- Mixed primality certificates: Pocklington nodes and ECPP steps in one graph,
+  each prime proven by whichever method suits it (`crypto_mixed_verify`,
+  variable-time), with an untrusted generator in `mixed_cert.py`. See
+  [ECPP notes, "Mixed certificates"](docs/engineering/CRYPTO-ECPP.md#mixed-certificates-slice-3).
 - Modular exponentiation: left-to-right square-and-multiply in Montgomery form,
   for odd moduli (`crypto_mod_exp`, variable-time).
 - GRH-conditional primality test: Miller–Rabin for every base up to Bach's
@@ -81,8 +108,10 @@ make bounds-sanitize
 python3 tests/test_prime.py
 ./test_cert
 ./test_ecpp
+./test_mixed
 python3 tests/test_pocklington.py
 python3 tests/test_ecpp.py
+python3 tests/test_mixed.py
 python3 benchmark_multiply.py
 ```
 
