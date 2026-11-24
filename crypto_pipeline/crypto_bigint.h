@@ -10,7 +10,7 @@
 #include "crypto_multiplier.h"
 
 /* Internal multi-limb helpers shared by the certificate checkers
- * (crypto_cert.c, crypto_ecpp.c). Not a public API: no argument checks beyond
+ * (crypto_cert.c, crypto_ecpp.c, crypto_mixed.c). Not a public API: no argument checks beyond
  * what each comment states. Little-endian base-2^64, n >= 1 limbs. All are
  * variable-time and meant for public values. */
 #ifdef __cplusplus

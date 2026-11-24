@@ -6,8 +6,8 @@
 name: Crypto Lean proofs
 
 # Builds the Lean proofs in crypto_pipeline/proof/lean (Mathlib, pinned in
-# lakefile.toml) and fails unless the main theorems use only Lean's three
-# standard axioms. The elan installer is a pinned release checked by SHA-256.
+# lakefile.toml): the GRH primality link and the zeta-zeros Turing step. Fails
+# unless the main theorems use only Lean's three standard axioms. The elan installer is a pinned release checked by SHA-256.
 on:
   pull_request:
     branches: [main, dev-daily, fitment]
@@ -65,7 +65,7 @@ jobs:
           set -euo pipefail
           lake env lean CheckAxioms.lean | tee "$RUNNER_TEMP/axioms.txt"
           # One report per theorem: "depends on axioms: [...]" or "does not depend on any axioms".
-          test "$(grep -cE "depends on axioms|does not depend on any axioms" "$RUNNER_TEMP/axioms.txt")" -eq 5
+          test "$(grep -cE "depends on axioms|does not depend on any axioms" "$RUNNER_TEMP/axioms.txt")" -eq 10
           if grep -q "sorryAx" "$RUNNER_TEMP/axioms.txt"; then
             echo "::error::a proof uses sorry"; exit 1
           fi

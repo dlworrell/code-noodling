@@ -55,6 +55,15 @@ jobs:
       include_dangerous_primitives: true
       strict: true
       strict_review_ratchet: true
+  prime:
+    name: Prime Number Suite scope
+    uses: dlworrell/AEMS/.github/workflows/aes-sec-001-distributed.yml@4df3a37418536d97865c9774701d910eb6f11bdb
+    with:
+      scan_root: prime-number-suite
+      evidence_name: prime-number-suite
+      include_dangerous_primitives: true
+      strict: true
+      strict_review_ratchet: true
   remainder:
     name: Repository remainder
     uses: dlworrell/AEMS/.github/workflows/aes-sec-001-distributed.yml@4df3a37418536d97865c9774701d910eb6f11bdb
@@ -62,6 +71,7 @@ jobs:
       exclude_paths: |
         crypto_pipeline
         election-analysis
+        prime-number-suite
       evidence_name: repository-remainder
       include_dangerous_primitives: true
       strict: true

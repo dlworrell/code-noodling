@@ -19,6 +19,11 @@ operating-system randomness source.
 
 ## Layout
 
+This directory, including `dice/`, is the `prime-number-suite` governed project
+scope declared in the repository's [`aes-manifest.yaml`](../aes-manifest.yaml)
+(Catylist ADR-0004). AES-SEC-001 applies; see the
+[secure C/C++ profile](docs/engineering/SECURE-C-CXX.md).
+
 ```text
 prime-number-suite/
 ├── README.md

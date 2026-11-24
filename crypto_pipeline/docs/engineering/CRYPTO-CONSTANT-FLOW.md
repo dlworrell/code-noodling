@@ -144,6 +144,42 @@ a root cause, or rule out an additional arithmetic leak. In particular, the new
 candidate non-crossings do not erase the earlier t=10.11 result. Both datasets
 remain part of the record. No arithmetic changes were made to chase a green run.
 
+## Diagnostic matrix: 2026-11-22 (GitHub-hosted runners)
+
+The `timing-experiment` job of
+[run 45035047877](https://github.com/dlworrell/code-noodling/actions/runs/45035047877)
+(workflow_dispatch, commit 4b9305f) ran the same ten-experiment matrix at
+16 limbs, 101 batches, with GCC 15.2 at O2 and O3, on a shared virtualized
+AMD EPYC 7763 runner (Microsoft hypervisor, SMT sibling present, no governor
+information). The tested `crypto_montgomery_ct.c` and `crypto_montgomery_ct.h`
+are byte-identical to `main` at 3c3eb27. The run has two attempts; both are
+recorded. Final reported t for each 16-limb matrix (zero class / m-1 class):
+
+| Mode | O2 (attempt 2) | O3 (attempt 1) | O3 (attempt 2) |
+|---|---:|---:|---:|
+| Deliberate leak | 148.71 / 174.23 | 140.26 / 124.88 | 125.17 / 173.34 |
+| Public baseline | 1.07 / 1.17 | 2.09 / 1.90 | 1.91 / 2.13 |
+| Input only | 4.50 / 2.31 | **10.13 / 10.13** | 1.54 / 1.30 |
+| Random labels | 2.18 / 1.67 | 1.86 / 1.01 | 1.99 / 2.14 |
+| Candidate | 2.73 / 2.78 | 6.59 / 2.24 | 1.96 / 1.94 |
+
+The deliberate-leak controls crossed the threshold in every matrix, so the
+harness was able to detect a leak. The candidate did not cross in any of these
+matrices. The O3 matrix of attempt 1 reported `diagnostic_failure: true`
+because its input-only controls crossed, which is the same pattern as
+2026-10-13; attempt 2 did not repeat it. A clean attempt does not replace a
+failed one.
+
+**Inference:** the earlier 16-limb candidate crossing was not reproduced
+here. That is consistent with, but does not establish, a measurement or
+input-preparation cause. These are shared cloud runners, not the controlled
+target hardware below, and the input-only control is still unstable. The
+candidate remains **not cleared for secret use**. The three 16-limb matrices
+(artifacts `montgomery-timing-O2-16` 14759616222 and `montgomery-timing-O3-16`
+14759680969 and 14760030016, which expire on GitHub on 2027-02-20) are retained
+in [evidence](evidence/montgomery-timing-gha-20261122.json): reports, raw logs,
+environment, assembly, and hashes of every file including the binaries.
+
 ### Controlled target procedure
 
 Run on the actual intended deployment CPU and OS, preferably an otherwise idle

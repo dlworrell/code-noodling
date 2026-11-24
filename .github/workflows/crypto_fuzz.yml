@@ -1,0 +1,56 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:595159bf-d9e1-43ea-bdf7-e4235a230125
+name: Crypto Certificate Fuzzing
+
+# Exhaustive small-certificate soundness, a sanitizer smoke run and a short
+# coverage-guided libFuzzer run for the Pocklington, ECPP and mixed checkers.
+# Logic lives in crypto_pipeline/ci/fuzz.sh (Catylist ADR-0004).
+
+on:
+  pull_request:
+    branches: [main, dev-daily, fitment]
+    paths:
+      - "crypto_pipeline/**"
+      - ".github/workflows/crypto_fuzz.yml"
+  push:
+    branches: [main, dev-daily, fitment]
+    paths:
+      - "crypto_pipeline/**"
+      - ".github/workflows/crypto_fuzz.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fuzz:
+    name: Certificate checker fuzzing
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install clang and the libFuzzer runtime
+        run: crypto_pipeline/ci/fuzz.sh install-tools
+      - name: Exhaustive small-certificate soundness
+        run: crypto_pipeline/ci/fuzz.sh exhaustive
+        env:
+          FUZZ_OUTPUT: ${{ runner.temp }}/fuzz
+      - name: Sanitizer smoke run (seeds and deterministic mutations)
+        run: crypto_pipeline/ci/fuzz.sh smoke
+        env:
+          FUZZ_OUTPUT: ${{ runner.temp }}/fuzz
+      - name: Coverage-guided libFuzzer run
+        run: crypto_pipeline/ci/fuzz.sh libfuzzer
+        env:
+          FUZZ_OUTPUT: ${{ runner.temp }}/fuzz
+          FUZZ_SECONDS: '120'
+      - name: Retain corpus, logs and any crash input
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: crypto-fuzz-${{ github.run_id }}
+          path: ${{ runner.temp }}/fuzz/
+          if-no-files-found: error

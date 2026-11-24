@@ -12,6 +12,7 @@
 #include "crypto_ecpp.h"
 #include "crypto_bigint.h"
 #include "crypto_cert.h"
+#include "crypto_checks_internal.h"
 #include <errno.h>
 
 static int fail(int code) { errno = code; return -1; }
@@ -219,4 +220,10 @@ int crypto_ecpp_scalar_mul(limb_t *X, limb_t *Y, limb_t *Z, const limb_t *a, con
 #undef MUL
     errno = 0;
     return 0;
+}
+
+/* Single-step check for the mixed-certificate checker (crypto_checks_internal.h).
+ * The step's q is not followed; the caller links it. */
+int crypto_ecpp_check_step(const crypto_ecpp_step *step, uint64_t *used, uint64_t max_point_ops) {
+    return check_step(step, used, max_point_ops);
 }

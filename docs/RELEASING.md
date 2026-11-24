@@ -42,17 +42,41 @@ one into `main` whose head is not `fitment`.
 5. **Publish.** The owner runs the **Release** workflow
    (`.github/workflows/release.yml`) on `main`:
    [Actions → Release → Run workflow](https://github.com/dlworrell/code-noodling/actions/workflows/release.yml),
-   branch `main`, version such as `0.1.0` (no leading `v`; `0.1.0-rc.1` makes
-   a pre-release).
+   branch `main`, select the project ID (`prime-number-suite`, `crypto-pipeline`,
+   or `election-analysis`), and enter the version (no leading `v`;
+   `0.1.0-rc.1` makes a pre-release). The workflow builds an attested source
+   archive and records the exact tested commit and archive SHA-256.
 6. **Approve.** The `publish` job waits at the `release` environment. Open the
    run, choose **Review deployments**, tick `release` and **Approve and
-   deploy**. Only then is the `v<version>` tag created on the tested commit,
-   with a GitHub release and generated notes.
+   deploy**. The workflow rechecks main and protection before atomically
+   creating `<project>/v<version>` on the tested commit, then attaches the
+   verified archive and scoped notes to the GitHub release. Existing
+   repository-wide tags such as `v0.1.0` stay immutable and unchanged.
 
 The workflow refuses, before anything is published, when it is run from any
 branch but `main`, when the version is malformed, when the tag already exists
 (release tags are immutable), or when any check on `main`'s head has not
-passed.
+passed. If main advances while approval is pending, dispatch again for the new
+commit. If ref creation succeeds but release or asset publication fails,
+inspect the immutable tag and the release state; do not delete, move or blindly
+retry that tag via this workflow.
+
+## What the project asset contains
+
+The custom attachment is a deterministic archive of the selected project's
+tracked source and applicable license texts, not a binary build. Election
+source archives keep the tracked watcher/capture configuration, but exclude
+third-party election snapshots, crosswalks and data-bearing test fixtures
+and omit generated reports. Report publishing still submits separate report
+updates to `dev-daily`. GitHub's automatic “Source code” archives are
+repository-wide; use the named, attested attachment for the project archive.
+
+Notes cover the project directory and shared licenses since the newest
+reachable tag in that project's namespace by Git tag creation date. The
+first project release instead shows the scoped history through its tested
+commit; a repository-wide tag is never used as a per-project baseline.
+Use `gh attestation verify <archive> --repo dlworrell/code-noodling` to
+verify provenance for the downloaded attachment.
 
 ## One-time setup: the `release` environment
 
@@ -68,3 +92,24 @@ AEMS's **Apply Catylist Rulesets** workflow creates and checks this setup for
 every repository in AEMS `config/fitment.json`. Without the environment,
 `publish` runs without waiting for approval, so check it before the first
 release.
+
+## One-time setup: immutable project tags
+
+Before first use, extend the existing active repository tag ruleset
+`protect-release-tags` (ID 25747644) without removing its existing
+`refs/tags/v*` include. Add these exact includes:
+
+- `refs/tags/prime-number-suite/v*`
+- `refs/tags/crypto-pipeline/v*`
+- `refs/tags/election-analysis/v*`
+
+Keep no ref exclusions, no bypass actors, and update, deletion, and
+non-fast-forward restrictions. The workflow fails closed before packaging
+and again after approval if it cannot verify these conditions for the
+selected project. The stock Actions token may not see `bypass_actors`; GitHub
+documents that the API hides this field from identities without write
+access to the ruleset. `RELEASE_RULESET_READ_TOKEN` is optional input to the
+read-only check; if supplied, use an explicitly authorized, repository-scoped
+credential, and do not add it merely to attempt to bypass a failed check.
+If the field is unavailable, no release proceeds. The setup is separate from
+releasing, does not change legacy tags, and does not itself authorize a tag.

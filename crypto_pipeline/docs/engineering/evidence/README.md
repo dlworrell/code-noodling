@@ -40,3 +40,4 @@ capture time. The records are not rewritten to match later layouts.
 | `carry-refinement-20261014.json` | 2026-10-14 | REDC suffix carry refinement at 16 limbs |
 | `header-equivalence-20261023.json` | 2026-10-23 | REUSE headers and File-IDs leave behavior unchanged (PRM-0012 step 2) |
 | `attestation-verification-20261023.json` | 2026-10-23 | Live attestation runs on main verified independently; pull requests cannot sign (PRM-0012 step 5) |
+| `montgomery-timing-gha-20261122.json` | 2026-11-24 | 16-limb timing diagnosis matrices from GitHub-hosted run 45035047877 (2026-11-22) |

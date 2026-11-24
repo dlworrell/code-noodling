@@ -1,0 +1,28 @@
+# SPDX-FileCopyrightText: 2026 Donovan Worrell
+# SPDX-License-Identifier: Apache-2.0
+# Catalyst-File-ID: urn:uuid:3edcb9a8-c1be-437d-8de1-7a28694768fc
+name: Release tooling
+
+# Runs the project release selector's tests (tests/ci/test_project_release.py)
+# on every change, so release.yml's helpers are exercised before a release is
+# ever dispatched. Publishes nothing.
+
+on:
+  push:
+    branches: [main, dev-daily, fitment]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: Project release selector tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s tests/ci -p 'test_project_release.py' -v
