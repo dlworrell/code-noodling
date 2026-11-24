@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "scope": "prime-number-suite",
+  "approvals_created": 0,
+  "baseline_before": 3,
+  "baseline_moved": 3,
+  "baseline_remaining": 0,
+  "dispositions_before": 3,
+  "dispositions_moved": 3,
+  "dispositions_remaining": 0,
+  "identities": [
+    {
+      "old_finding_id": "aes-sec-001:6fc5de1abf023dd4f2ea18c07e2865023a6d76e69a1045ee850a0ba813f42f9d",
+      "new_finding_id": "aes-sec-001:6e63820c244c7fbb35e3d5e9b768a00e04a566b5691ea7ba0e7141a3f416b1b7",
+      "old_path": "prime-number-suite/generators/ose.c",
+      "new_path": "generators/ose.c",
+      "old_source_fingerprint": "sha256:a1978bd34505f504f6dddabc0897c82186f7f976619bb773ca9cedbe9b5741d0",
+      "new_source_fingerprint": "sha256:63a22bf3c19a82339323f05bf4e3d34a665b597b1f9dd3ad8b4ad70855ebb23b"
+    },
+    {
+      "old_finding_id": "aes-sec-001:877a13f5e585a695813d08a07360e0ac67fc64e917c36c37de26e62675f0d604",
+      "new_finding_id": "aes-sec-001:2c08f7fc2312856604ebcb9ba19a7cdefe9eb72577596367450077d7210de76c",
+      "old_path": "prime-number-suite/generators/ose.c",
+      "new_path": "generators/ose.c",
+      "old_source_fingerprint": "sha256:fa62e16d8e20638dff64e449e0793f6bbac627a53545bc55873babfa77f8989d",
+      "new_source_fingerprint": "sha256:92f25fb4a08f26d16857ee803a1b7d8741df1e95bfe3446da1083c85dd206b75"
+    },
+    {
+      "old_finding_id": "aes-sec-001:e6b6f675e8900b075424c735b58a4a7c71d2151d861d144015bad05c40099d08",
+      "new_finding_id": "aes-sec-001:d5968703c3f0195fe2216f5b438bef949a36d8a1964f287ef607cb221d892e96",
+      "old_path": "prime-number-suite/generators/ose.c",
+      "new_path": "generators/ose.c",
+      "old_source_fingerprint": "sha256:ee4da8e07ac8f9715acf2da869a924080bc770c6c61275d653f348e5c29dc658",
+      "new_source_fingerprint": "sha256:6f309088d61c510b975bbab50f346712839304e90017caa2f336e16bdb77f519"
+    }
+  ]
+}

@@ -30,5 +30,7 @@ Review-required primitives and their approved invariants are recorded in the
 [review dispositions](AES-SEC-001-review-dispositions.json). Existing baseline
 entries and dispositions were rekeyed from repository-relative identities to
 scope-relative identities with the pinned AEMS migration tool without making
-new approvals. Approved exceptions, if any, belong only in the [scope waiver
+new approvals: all 3 baseline entries and 3 dispositions moved, and none remain
+in the root ledger. The identity map is recorded in
+[`scope-ledger-rekey-20261124.json`](evidence/scope-ledger-rekey-20261124.json). Approved exceptions, if any, belong only in the [scope waiver
 log](AES-SEC-001-waivers.md).
