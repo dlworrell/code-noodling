@@ -127,14 +127,26 @@ static int check_node(const crypto_pocklington_node *node, uint64_t *used, uint6
 
 enum { UNSEEN = 0, IN_PROGRESS = 1, VERIFIED = 2 };
 
+_Static_assert(CRYPTO_CERT_MAX_DEPTH <= 0xFFFFu, "node heights are stored in 16 bits");
+
+/* Verifies node `index`, reached at `depth` links from the root, and sets
+ * *height to the longest path below it (in links). The depth limit applies to
+ * every path: a node verified earlier is not re-walked, but its stored height
+ * is checked against the new depth, so the result does not depend on the order
+ * of factors. */
 static int verify_node(const crypto_pocklington_node *nodes, size_t node_count, size_t index,
-                       unsigned depth, unsigned char *state, uint64_t *used,
-                       uint64_t max_modexps, size_t *failed) {
-    if (state[index] == VERIFIED) return 0;
+                       unsigned depth, unsigned char *state, uint16_t *heights,
+                       unsigned *height, uint64_t *used, uint64_t max_modexps, size_t *failed) {
+    if (state[index] == VERIFIED) {
+        *height = heights[index];
+        if (depth + *height > CRYPTO_CERT_MAX_DEPTH) { *failed = index; return fail(EINVAL); }
+        return 0;
+    }
     if (state[index] == IN_PROGRESS || depth > CRYPTO_CERT_MAX_DEPTH) {
         *failed = index; return fail(EINVAL);
     }
     state[index] = IN_PROGRESS;
+    unsigned longest = 0;
     const crypto_pocklington_node *node = &nodes[index];
     if (check_node(node, used, max_modexps) != 0) { *failed = index; return -1; }
     for (size_t k = 0; k < node->factor_count; ++k) {
@@ -145,11 +157,16 @@ static int verify_node(const crypto_pocklington_node *nodes, size_t node_count, 
             !crypto_bn_same_value(nodes[c].n, nodes[c].limbs, fac->prime, node->limbs)) {
             *failed = index; return fail(EINVAL);
         }
-        if (verify_node(nodes, node_count, c, depth + 1, state, used, max_modexps, failed) != 0) {
+        unsigned child_height = 0;
+        if (verify_node(nodes, node_count, c, depth + 1, state, heights, &child_height, used,
+                        max_modexps, failed) != 0) {
             return -1;
         }
+        if (child_height + 1 > longest) longest = child_height + 1;
     }
+    heights[index] = (uint16_t)longest;      /* depth + longest <= MAX_DEPTH */
     state[index] = VERIFIED;
+    *height = longest;
     return 0;
 }
 
@@ -159,10 +176,16 @@ int crypto_pocklington_verify(const crypto_pocklington_node *nodes, size_t node_
         return fail(EINVAL);
     }
     unsigned char state[node_count];
-    for (size_t i = 0; i < node_count; ++i) state[i] = UNSEEN;
+    uint16_t heights[node_count];
+    for (size_t i = 0; i < node_count; ++i) {
+        state[i] = UNSEEN;
+        heights[i] = 0;
+    }
     uint64_t used = 0;
     size_t failed = root;
-    if (verify_node(nodes, node_count, root, 0, state, &used, max_modexps, &failed) != 0) {
+    unsigned root_height = 0;
+    if (verify_node(nodes, node_count, root, 0, state, heights, &root_height, &used, max_modexps,
+                    &failed) != 0) {
         if (failed_node) *failed_node = failed;
         return -1;
     }

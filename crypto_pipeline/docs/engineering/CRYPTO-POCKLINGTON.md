@@ -10,7 +10,7 @@ Catalyst-File-ID: urn:uuid:bca5c6a8-9554-4cbc-bfa6-ed1a5f33c1d1
 Status: Experimental (first slice)
 Scope: `crypto_pipeline/` (governed project scope, Catylist ADR-0004)
 Files: `crypto_cert.h`, `crypto_cert.c`, `pocklington_cert.py`,
-`tests/test_cert.c`, `tests/test_pocklington.py`
+`tests/test_cert.c`, `tests/test_cert_depth.c`, `tests/test_pocklington.py`
 
 ## Why
 
@@ -59,8 +59,12 @@ for every node reachable from `root`:
 4. Leaves have q < 2^64 and pass `crypto_is_prime_u64`; a child's N equals its
    q exactly (zero-padded limb counts may differ).
 
-Structure is checked too: indices in range, depth at most 64, no cycles, and a
-shared child (a DAG) verified once. `max_modexps` caps the work at two
+Structure is checked too: indices in range, no cycles, a shared child (a DAG)
+verified once, and every path from the root at most 64 links long. A verified
+node stores its height (the longest path below it), and a later visit checks
+the new depth plus that height, so a shared node first reached on a short path
+is still counted on a longer one and acceptance does not depend on factor
+order. The limit bounds recursion; soundness does not depend on it. `max_modexps` caps the work at two
 exponentiations per factor; 0 means no cap. Error codes are `EINVAL` for a
 malformed certificate, `EDOM` for a failed mathematical condition and `ERANGE`
 for the cap; a rejection says nothing about whether N is prime.
@@ -90,6 +94,12 @@ division.
   65-node chain accepted, 66 rejected). A cycle is always caught by the
   child-value check first, because every edge goes from N to some q < N; the
   in-progress guard is defence in depth.
+- `tests/test_cert_depth.c`, built with `CRYPTO_CERT_MAX_DEPTH` set to 2 (also
+  under Valgrind and ASan/UBSan): a four-node tree whose shared node is reached
+  at depths 1, 2 and 3. A path of exactly the limit is accepted with the
+  factors in either order; the 3-link path is rejected (`EINVAL` at the shared
+  node) whether that node is first reached at depth 1 or 3. Skipping a verified
+  node before its depth check makes this test fail.
 - `tests/test_pocklington.py` (ctypes): Proth and Fermat primes, 2^127 − 1 with
   the full factorization of N − 1, random provable primes of 64 to 2048 bits
   with nested nodes, zero-padded limbs, a DAG sharing one grandchild, and

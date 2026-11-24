@@ -117,6 +117,7 @@ make bounds-sanitize
 ./test_prime
 python3 tests/test_prime.py
 ./test_cert
+./test_cert_depth
 ./test_ecpp
 ./test_mixed
 ./test_mixed_depth
