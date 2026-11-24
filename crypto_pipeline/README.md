@@ -22,8 +22,10 @@ Legacy `secure_`, `ct_`, and `is_constant_time` names do not establish those pro
   Montgomery reduction (including the constant-flow candidate), modular
   exponentiation, the modular inverse and blinding. It must not process keys or
   other secret values. Several of these functions are variable-time by design.
-  The constant-flow candidate has no timing clearance on controlled hardware,
-  no compiled-code proof and no independent review
+  The constant-flow candidate is not cleared for secret use. Its formal work is
+  scoped 16-limb proof fragments and source checks, not an end-to-end or
+  compiled-code proof ([proof package](proof/README.md)). It has no timing
+  clearance on controlled hardware and no independent review
   ([constant-flow notes](docs/engineering/CRYPTO-CONSTANT-FLOW.md)). Secret
   zeroization, the randomness source and misuse resistance have not been
   assessed. Use a vetted library, such as libsodium, BoringSSL or OpenSSL, for
@@ -163,4 +165,9 @@ variable-time dispatcher. See [scope and evidence](docs/engineering/CRYPTO-CONST
 
 **Not cleared for secret use:** an extended local timing test crossed dudect's
 threshold at 16 limbs. Constant-flow instrumentation and arithmetic checks do
-not settle this timing signal. The PR remains experimental.
+not settle this timing signal. The PR remains experimental. A 2026-11-22
+run on GitHub-hosted runners, on code identical to `main`, did not reproduce
+the 16-limb crossing at O2 or O3, and its deliberate-leak controls fired. One
+attempt's input-only control crossed, and shared runners are not controlled
+hardware, so this does not clear it
+([details](docs/engineering/CRYPTO-CONSTANT-FLOW.md#diagnostic-matrix-2026-11-22-github-hosted-runners)).
