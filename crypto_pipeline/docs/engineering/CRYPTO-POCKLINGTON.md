@@ -103,7 +103,9 @@ division.
 
 - N − 1 methods need F > √N, so N must be built for the method or have a
   partially known N − 1. Certifying an arbitrary given prime needs ECPP; its
-  checker is in [CRYPTO-ECPP.md](CRYPTO-ECPP.md).
+  checker is in [CRYPTO-ECPP.md](CRYPTO-ECPP.md). Mixed certificates
+  (`crypto_mixed.h`) let a Pocklington factor be proven by ECPP and the
+  reverse, using this checker's node check unchanged.
 - Mathlib has the Lucas primality test (`lucas_primality`), the F = N − 1
   special case. Proving the general Pocklington statement in `proof/lean/` and
   matching it to the conditions above would tie the C checks to a checked
