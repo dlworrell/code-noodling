@@ -71,4 +71,7 @@ crypto_pipeline/test_cert_sanitize
 crypto_pipeline/test_ecpp_sanitize
 crypto_pipeline/test_mixed_sanitize
 crypto_pipeline/test_mixed_depth_sanitize
+crypto_pipeline/test_zeta
+crypto_pipeline/test_zeta_sanitize
+crypto_pipeline/zeta_verify
 crypto_pipeline/build/provenance/
