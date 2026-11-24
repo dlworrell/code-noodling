@@ -50,3 +50,21 @@ __pycache__/
 # lake-manifest.json is committed: it pins the exact dependency commits
 # (crypto_pipeline/proof/lean/SOURCES.md).
 crypto_pipeline/proof/lean/.lake/
+
+# crypto_pipeline build outputs, listed by exact path so that new tests and
+# evidence are never hidden. Executables come from crypto_pipeline/makefile
+# (`all` and `bounds-sanitize`); build/provenance/ from ci/provenance.py. The
+# directory rule must follow the `!crypto_pipeline/**/*.json` exception above.
+crypto_pipeline/test_suite
+crypto_pipeline/test_prime
+crypto_pipeline/test_cert
+crypto_pipeline/test_ecpp
+crypto_pipeline/test_mixed
+crypto_pipeline/test_mixed_depth
+crypto_pipeline/test_bounds
+crypto_pipeline/test_prime_sanitize
+crypto_pipeline/test_cert_sanitize
+crypto_pipeline/test_ecpp_sanitize
+crypto_pipeline/test_mixed_sanitize
+crypto_pipeline/test_mixed_depth_sanitize
+crypto_pipeline/build/provenance/
