@@ -20,7 +20,7 @@ it owns: everything under `crypto_pipeline/`. It applies the repository
 profile without relaxation and adds the scope-specific requirements below.
 
 The scope's C sources are `crypto_multiplier.c`, `crypto_montgomery_ct.c`,
-`crypto_prime.c`, `crypto_bigint.c`, `crypto_cert.c`, `crypto_ecpp.c`, their
+`crypto_prime.c`, `crypto_bigint.c`, `crypto_cert.c`, `crypto_ecpp.c`, `crypto_mixed.c`, their
 headers, the timing harness `dudect_montgomery.c`, the
 tests under `tests/`, and the formal harness `proof/memory16.c`. The analysis
 configuration is the repository root `.clang-tidy`.

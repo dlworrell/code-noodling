@@ -16,9 +16,10 @@ case "${1:-}" in
     sudo apt-get install -y build-essential clang clang-tidy valgrind libssl-dev
     ;;
   static-analysis)
-    clang-tidy crypto_multiplier.c crypto_montgomery_ct.c crypto_prime.c crypto_bigint.c crypto_cert.c crypto_ecpp.c \
+    clang-tidy crypto_multiplier.c crypto_montgomery_ct.c crypto_prime.c crypto_bigint.c crypto_cert.c crypto_ecpp.c crypto_mixed.c \
       tests/test_montgomery_ct.c tests/test_suite.c tests/test_bounds.c tests/test_prime.c \
-      tests/test_cert.c tests/test_ecpp.c -- -std=c11 -I.
+      tests/test_cert.c tests/test_ecpp.c tests/test_mixed.c -- -std=c11 -I.
+    clang-tidy crypto_mixed.c tests/test_mixed_depth.c -- -std=c11 -I. -DCRYPTO_MIXED_MAX_DEPTH=2u
     ;;
   build)
     make clean
@@ -31,6 +32,8 @@ case "${1:-}" in
     valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_prime
     valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_cert
     valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_ecpp
+    valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_mixed
+    valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_mixed_depth
     ;;
   smoke)
     # This smoke test does not establish constant-time or side-channel safety.
@@ -38,6 +41,8 @@ case "${1:-}" in
     ./test_prime
     ./test_cert
     ./test_ecpp
+    ./test_mixed
+    ./test_mixed_depth
     echo "[CI Pipeline Pass] Build and functional smoke tests completed."
     ;;
   bounds)
@@ -49,6 +54,7 @@ case "${1:-}" in
     python3 tests/test_prime.py
     python3 tests/test_pocklington.py
     python3 tests/test_ecpp.py
+    python3 tests/test_mixed.py
     python3 tests/test_repository_files.py
     ;;
   *)

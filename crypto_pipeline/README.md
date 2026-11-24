@@ -16,6 +16,31 @@ algorithms and their practical crossover costs.
 Python integers, but no API is certified constant-time or side-channel resistant.
 Legacy `secure_`, `ct_`, and `is_constant_time` names do not establish those properties.
 
+### Two kinds of code, two different standings
+
+- **Arithmetic on secrets is research only.** This covers multiplication,
+  Montgomery reduction (including the constant-flow candidate), modular
+  exponentiation, the modular inverse and blinding. It must not process keys or
+  other secret values. Several of these functions are variable-time by design.
+  The constant-flow candidate is not cleared for secret use. Its formal work is
+  scoped 16-limb proof fragments and source checks, not an end-to-end or
+  compiled-code proof ([proof package](proof/README.md)). It has no timing
+  clearance on controlled hardware and no independent review
+  ([constant-flow notes](docs/engineering/CRYPTO-CONSTANT-FLOW.md)). Secret
+  zeroization, the randomness source and misuse resistance have not been
+  assessed. Use a vetted library, such as libsodium, BoringSSL or OpenSSL, for
+  anything that handles secrets. Moving this code beyond research would need
+  constant-time redesign, timing evidence on controlled hardware, proof or
+  large-scale differential testing of the arithmetic, and an independent
+  cryptographic audit. None of that is planned.
+- **The primality certificate checkers handle only public values.** These are
+  Pocklington, ECPP and mixed certificates. A certificate and the prime it
+  proves are public, so their variable-time behaviour leaks nothing secret.
+  What matters is that an accepted certificate always proves a prime. They are
+  being hardened toward that use, through machine-checked proofs of the
+  checking rules, fuzzing, cross-checks against an independent checker, and
+  review. Until that work is complete they remain experimental too.
+
 ## Scope layout
 
 This directory is the `crypto-pipeline` governed project scope declared in the
@@ -51,6 +76,10 @@ repository's [`aes-manifest.yaml`](../aes-manifest.yaml) (Catylist ADR-0004).
   class-number-1 generator and a PARI/GP certificate converter in
   `ecpp_cert.py`. See
   [ECPP notes](docs/engineering/CRYPTO-ECPP.md).
+- Mixed primality certificates: Pocklington nodes and ECPP steps in one graph,
+  each prime proven by whichever method suits it (`crypto_mixed_verify`,
+  variable-time), with an untrusted generator in `mixed_cert.py`. See
+  [ECPP notes, "Mixed certificates"](docs/engineering/CRYPTO-ECPP.md#mixed-certificates-slice-3).
 - Modular exponentiation: left-to-right square-and-multiply in Montgomery form,
   for odd moduli (`crypto_mod_exp`, variable-time).
 - GRH-conditional primality test: Miller–Rabin for every base up to Bach's
@@ -81,8 +110,11 @@ make bounds-sanitize
 python3 tests/test_prime.py
 ./test_cert
 ./test_ecpp
+./test_mixed
+./test_mixed_depth
 python3 tests/test_pocklington.py
 python3 tests/test_ecpp.py
+python3 tests/test_mixed.py
 python3 benchmark_multiply.py
 ```
 
@@ -134,4 +166,9 @@ variable-time dispatcher. See [scope and evidence](docs/engineering/CRYPTO-CONST
 
 **Not cleared for secret use:** an extended local timing test crossed dudect's
 threshold at 16 limbs. Constant-flow instrumentation and arithmetic checks do
-not settle this timing signal. The PR remains experimental.
+not settle this timing signal. The PR remains experimental. A 2026-11-22
+run on GitHub-hosted runners, on code identical to `main`, did not reproduce
+the 16-limb crossing at O2 or O3, and its deliberate-leak controls fired. One
+attempt's input-only control crossed, and shared runners are not controlled
+hardware, so this does not clear it
+([details](docs/engineering/CRYPTO-CONSTANT-FLOW.md#diagnostic-matrix-2026-11-22-github-hosted-runners)).

@@ -12,6 +12,7 @@
 #include "crypto_cert.h"
 #include "crypto_bigint.h"
 #include "crypto_prime.h"
+#include "crypto_checks_internal.h"
 #include <errno.h>
 
 /* ---- 64-bit leaves ---------------------------------------------------- */
@@ -167,4 +168,11 @@ int crypto_pocklington_verify(const crypto_pocklington_node *nodes, size_t node_
     }
     errno = 0;
     return 0;
+}
+
+/* Single-node check for the mixed-certificate checker (crypto_checks_internal.h).
+ * Factor children are not followed; the caller links them. */
+int crypto_pocklington_check_node(const crypto_pocklington_node *node, uint64_t *used,
+                                  uint64_t max_modexps) {
+    return check_node(node, used, max_modexps);
 }

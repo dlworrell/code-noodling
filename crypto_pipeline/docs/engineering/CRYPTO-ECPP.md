@@ -7,10 +7,12 @@ Catalyst-File-ID: urn:uuid:705d3f55-92dc-4e75-adc2-6e49677682c9
 
 # ECPP primality certificates
 
-Status: Experimental (slices 1 and 2 of 4)
+Status: Experimental (slices 1 to 3 of 4)
 Scope: `crypto_pipeline/` (governed project scope, Catylist ADR-0004)
 Files: `crypto_ecpp.h`, `crypto_ecpp.c`, `crypto_bigint.h`, `crypto_bigint.c`,
-`ecpp_cert.py`, `tests/test_ecpp.c`, `tests/test_ecpp.py`, `tests/fixtures/ecpp/`
+`ecpp_cert.py`, `tests/test_ecpp.c`, `tests/test_ecpp.py`, `tests/fixtures/ecpp/`;
+mixed certificates: `crypto_mixed.h`, `crypto_mixed.c`, `crypto_checks_internal.h`,
+`mixed_cert.py`, `tests/test_mixed.c`, `tests/test_mixed_depth.c`, `tests/test_mixed.py`
 
 ## Why
 
@@ -151,14 +153,87 @@ CI checks only the committed fixtures and does not need PARI;
 installed. PARI is the prover only: a wrong certificate from it would be
 rejected, never accepted.
 
+## Mixed certificates (slice 3)
+
+`crypto_mixed_verify` (`crypto_mixed.h`) checks one graph that holds both kinds
+of node, so each prime is proven by whichever method suits it:
+
+- a **Pocklington node** (`crypto_cert.h`) whose factors' `child` fields index
+  the mixed node array, so a large factor can be proven by an ECPP step;
+- an **ECPP node**, one step, whose q is proven by node `q_child`, which may be
+  a Pocklington node, or by a 64-bit leaf when `q_child` is -1.
+
+**Soundness is unchanged.** Each node is checked by exactly the code the
+single-method verifiers use. Those checks are reached through the internal
+header `crypto_checks_internal.h`, as `crypto_pocklington_check_node` and
+`crypto_ecpp_check_step`, which do not follow links. The mixed checker only
+links nodes: a child must prove exactly the value its parent assumed prime
+(otherwise `EINVAL`), and a leaf must be below 2^64 and pass
+`crypto_is_prime_u64`.
+
+**The walk** checks a shared node once, and a cycle is malformed. Every link
+goes from N to some q < N, so a cycle is always caught first by the value check,
+and the in-progress guard is defence in depth.
+
+**The depth limit** applies to every path: no path from the root may have more
+than `CRYPTO_MIXED_MAX_DEPTH` (4096) links. A verified node stores its height
+(the longest path below it), and a later visit to it checks the new depth plus
+that height, so a shared node reached first on a short path and later on a long
+one is still counted on the long one. Whether a certificate is accepted
+therefore does not depend on the order of factors or links. The limit is not
+needed for soundness; it bounds recursion and gives a fixed, order-independent
+rule. `crypto_cert.c` still skips a verified node before its depth check, so
+its 64-level limit bounds recursion but not every path; changing that is a
+separate change to an existing API. Work is capped separately, by
+Pocklington modular exponentiations and by ECPP point additions, with the same
+costs as the single-method checkers.
+
+**The generator** (`mixed_cert.py`, untrusted) proves a prime by Pocklington
+when n − 1 = (primes below 2^16) × (1 or one prime R), so that n − 1 is fully
+factored and R is proven by its own node. Otherwise it uses a class-number-1
+ECPP step. With `alternate=True` the preferred method switches at each depth,
+so chains mix both kinds. For 128- to 256-bit primes this takes well under a
+second.
+
+**Evidence:**
+
+- `tests/test_mixed.c`, also under Valgrind and ASan/UBSan, covers:
+  - two single-limb certificates, Pocklington → ECPP → leaf and ECPP →
+    Pocklington → leaves, each with its work caps at the exact boundary;
+  - a link to a different valid node, out-of-range and negative links, and a
+    self-link;
+  - a composite 64-bit leaf, q = 3 · 62773 with Q of order 62773, where only
+    the leaf test can reject it;
+  - a wrong cofactor, a base of order 3, and an unknown kind or null node.
+- `tests/test_mixed_depth.c`, built with `CRYPTO_MIXED_MAX_DEPTH` set to 2
+  (also under Valgrind and ASan/UBSan), covers the depth rule on a four-node
+  Pocklington graph with a shared node S reached at depths 1, 2 and 3:
+  - a path of exactly the limit is accepted, with the factors in either order;
+  - the 3-link path through S is rejected (`EINVAL` at S) whether S is first
+    reached at depth 1 or at depth 3.
+- `tests/test_mixed.py` (ctypes) covers:
+  - generated 128-, 160-, 200- and 256-bit certificates containing both link
+    directions, also with zero-padded limbs;
+  - the p127 ECPP fixture and a 512-bit Pocklington tree, each as a mixed
+    certificate;
+  - both work caps at their exact boundary;
+  - a rejection for each defect at the node that holds it.
+
+  Every valid certificate is re-checked by an independent Python
+  implementation of both methods' conditions.
+- Mutation checks: skipping the link value check, accepting any leaf, not
+  following links, or skipping a verified node before its depth check each
+  makes the tests fail.
+- Not exercised: the production limit of 4096 itself (it needs 4097 genuinely
+  nested primes). The same code is tested at a limit of 2.
+
 ## Limits and next slices
 
 - Soundness rests on Hasse's theorem and the Bosma–Lenstra property of the
   addition law (both proven, not machine-checked here; the law's property is
   also tested exhaustively above) and on the published 64-bit Miller–Rabin
   computation.
-- Slice 3: mixed certificates, where an ECPP step's q is proven by a
-  Pocklington tree or the reverse.
+- Slice 3 (mixed certificates) is done; see above.
 - Slice 4: the theorem in Lean with Hasse's bound as a hypothesis.
 - Variable-time, public values only; research prototype.
 
