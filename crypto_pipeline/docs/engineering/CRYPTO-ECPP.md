@@ -182,9 +182,7 @@ that height, so a shared node reached first on a short path and later on a long
 one is still counted on the long one. Whether a certificate is accepted
 therefore does not depend on the order of factors or links. The limit is not
 needed for soundness; it bounds recursion and gives a fixed, order-independent
-rule. `crypto_cert.c` still skips a verified node before its depth check, so
-its 64-level limit bounds recursion but not every path; changing that is a
-separate change to an existing API. Work is capped separately, by
+rule. `crypto_cert.c` applies the same rule to its 64-link limit. Work is capped separately, by
 Pocklington modular exponentiations and by ECPP point additions, with the same
 costs as the single-method checkers.
 

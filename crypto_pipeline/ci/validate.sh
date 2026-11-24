@@ -21,6 +21,7 @@ case "${1:-}" in
       tests/test_montgomery_ct.c tests/test_suite.c tests/test_bounds.c tests/test_prime.c \
       tests/test_cert.c tests/test_ecpp.c tests/test_mixed.c tests/test_zeta.c -- -std=c11 -I.
     clang-tidy crypto_mixed.c tests/test_mixed_depth.c -- -std=c11 -I. -DCRYPTO_MIXED_MAX_DEPTH=2u
+    clang-tidy crypto_cert.c tests/test_cert_depth.c -- -std=c11 -I. -DCRYPTO_CERT_MAX_DEPTH=2u
     ;;
   build)
     make clean
@@ -32,6 +33,7 @@ case "${1:-}" in
     valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_suite
     valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_prime
     valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_cert
+    valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_cert_depth
     valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_ecpp
     valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_mixed
     valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./test_mixed_depth
@@ -42,6 +44,7 @@ case "${1:-}" in
     ./test_suite
     ./test_prime
     ./test_cert
+    ./test_cert_depth
     ./test_ecpp
     ./test_mixed
     ./test_mixed_depth

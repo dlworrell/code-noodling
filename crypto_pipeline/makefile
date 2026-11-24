@@ -15,7 +15,7 @@ TARGET = test_suite
 # Object files
 OBJS = crypto_multiplier.o test_suite.o
 
-all: $(TARGET) test_prime test_cert test_ecpp test_mixed test_mixed_depth test_zeta zeta_verify
+all: $(TARGET) test_prime test_cert test_cert_depth test_ecpp test_mixed test_mixed_depth test_zeta zeta_verify
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LDFLAGS)
@@ -49,6 +49,12 @@ CERT_OBJS = crypto_multiplier.o crypto_prime.o crypto_bigint.o crypto_cert.o
 test_cert: $(CERT_OBJS) tests/test_cert.c
 	$(CC) $(CFLAGS) -I. -o test_cert tests/test_cert.c $(CERT_OBJS) $(LDFLAGS)
 
+# The Pocklington walk's depth rule at a small limit: its own copy of crypto_cert.c.
+CERT_DEPTH_FLAGS = -DCRYPTO_CERT_MAX_DEPTH=2u
+CERT_DEPTH_SRCS = crypto_multiplier.c crypto_prime.c crypto_bigint.c crypto_cert.c
+test_cert_depth: $(CERT_DEPTH_SRCS) crypto_cert.h crypto_checks_internal.h tests/test_cert_depth.c
+	$(CC) $(CFLAGS) $(CERT_DEPTH_FLAGS) -I. -o test_cert_depth tests/test_cert_depth.c $(CERT_DEPTH_SRCS) $(LDFLAGS)
+
 test_ecpp: $(CERT_OBJS) crypto_ecpp.o tests/test_ecpp.c
 	$(CC) $(CFLAGS) -I. -o test_ecpp tests/test_ecpp.c $(CERT_OBJS) crypto_ecpp.o $(LDFLAGS)
 
@@ -78,7 +84,7 @@ shared: crypto_multiplier.c crypto_multiplier.h crypto_montgomery_ct.c crypto_mo
 	$(CC) $(CFLAGS) -fPIC -shared -o libcryptomult.so crypto_multiplier.c crypto_montgomery_ct.c crypto_prime.c crypto_bigint.c crypto_cert.c crypto_ecpp.c crypto_mixed.c
 	
 clean:
-	rm -f *.o $(TARGET) test_prime test_cert test_ecpp test_mixed test_mixed_depth test_zeta zeta_verify test_bounds test_prime_sanitize test_cert_sanitize test_ecpp_sanitize test_mixed_sanitize test_mixed_depth_sanitize test_zeta_sanitize libcryptomult.so
+	rm -f *.o $(TARGET) test_prime test_cert test_cert_depth test_ecpp test_mixed test_mixed_depth test_zeta zeta_verify test_bounds test_prime_sanitize test_cert_sanitize test_cert_depth_sanitize test_ecpp_sanitize test_mixed_sanitize test_mixed_depth_sanitize test_zeta_sanitize libcryptomult.so
 
 .PHONY: all shared clean
 
@@ -90,6 +96,8 @@ bounds-sanitize: crypto_multiplier.c crypto_multiplier.h tests/test_bounds.c
 	./test_prime_sanitize
 	$(CC) -std=c11 -O1 -g -Wall -Wextra -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -I. crypto_multiplier.c crypto_prime.c crypto_bigint.c crypto_cert.c tests/test_cert.c -o test_cert_sanitize
 	./test_cert_sanitize
+	$(CC) -std=c11 -O1 -g -Wall -Wextra -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover=all $(CERT_DEPTH_FLAGS) -I. $(CERT_DEPTH_SRCS) tests/test_cert_depth.c -o test_cert_depth_sanitize
+	./test_cert_depth_sanitize
 	$(CC) -std=c11 -O1 -g -Wall -Wextra -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -I. crypto_multiplier.c crypto_prime.c crypto_bigint.c crypto_cert.c crypto_ecpp.c tests/test_ecpp.c -o test_ecpp_sanitize
 	./test_ecpp_sanitize
 	$(CC) -std=c11 -O1 -g -Wall -Wextra -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -I. crypto_multiplier.c crypto_prime.c crypto_bigint.c crypto_cert.c crypto_ecpp.c crypto_mixed.c tests/test_mixed.c -o test_mixed_sanitize

@@ -32,7 +32,9 @@ extern "C" {
 
 #define CRYPTO_CERT_MAX_NODES 4096u
 #define CRYPTO_CERT_MAX_FACTORS 512u
+#ifndef CRYPTO_CERT_MAX_DEPTH              /* overridable only for tests of the walk */
 #define CRYPTO_CERT_MAX_DEPTH 64u
+#endif
 
 typedef struct crypto_pocklington_factor {
     const limb_t *prime;   /* q: node.limbs limbs, 2 <= q < N */
@@ -51,10 +53,16 @@ typedef struct crypto_pocklington_node {
 /* Verifies that nodes[root] proves its N prime. Each node reachable from root
  * is checked once, however many times it is referenced.
  *
+ * Depth: every path from root, counted in links (root at 0), must have at most
+ * CRYPTO_CERT_MAX_DEPTH links, including paths that reach an already-checked
+ * shared node a second time. Whether a certificate is accepted therefore does
+ * not depend on the order of factors; for a certificate with several defects,
+ * which error and failed_node are reported may.
+ *
  * Returns 0 when the certificate proves N prime. Otherwise returns -1 and sets:
  *   EINVAL  malformed certificate: null pointer, count or index out of range,
- *           a child whose N differs from its q, a cycle, depth above
- *           CRYPTO_CERT_MAX_DEPTH, or child = -1 for q >= 2^64;
+ *           a child whose N differs from its q, a cycle, a path longer
+ *           than CRYPTO_CERT_MAX_DEPTH links, or child = -1 for q >= 2^64;
  *   EDOM    a mathematical check failed: N even or <= 2, q or a out of range,
  *           F does not divide N - 1, F^2 <= N, a base condition fails, or a
  *           64-bit q is not prime;
