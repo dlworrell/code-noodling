@@ -174,9 +174,11 @@ failed one.
 here. That is consistent with, but does not establish, a measurement or
 input-preparation cause. These are shared cloud runners, not the controlled
 target hardware below, and the input-only control is still unstable. The
-candidate remains **not cleared for secret use**. The run's artifacts
-(`montgomery-timing-O2-16` 14759616222, `montgomery-timing-O3-16` 14759680969
-and 14760030016) expire on 2027-02-20.
+candidate remains **not cleared for secret use**. The three 16-limb matrices
+(artifacts `montgomery-timing-O2-16` 14759616222 and `montgomery-timing-O3-16`
+14759680969 and 14760030016, which expire on GitHub on 2027-02-20) are retained
+in [evidence](evidence/montgomery-timing-gha-20261122.json): reports, raw logs,
+environment, assembly, and hashes of every file including the binaries.
 
 ### Controlled target procedure
 
