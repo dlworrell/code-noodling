@@ -12,7 +12,7 @@ Scope: `crypto_pipeline/` (governed project scope, Catylist ADR-0004)
 Files: `crypto_ecpp.h`, `crypto_ecpp.c`, `crypto_bigint.h`, `crypto_bigint.c`,
 `ecpp_cert.py`, `tests/test_ecpp.c`, `tests/test_ecpp.py`, `tests/fixtures/ecpp/`;
 mixed certificates: `crypto_mixed.h`, `crypto_mixed.c`, `crypto_checks_internal.h`,
-`mixed_cert.py`, `tests/test_mixed.c`, `tests/test_mixed.py`
+`mixed_cert.py`, `tests/test_mixed.c`, `tests/test_mixed_depth.c`, `tests/test_mixed.py`
 
 ## Why
 
@@ -171,10 +171,20 @@ links nodes: a child must prove exactly the value its parent assumed prime
 (otherwise `EINVAL`), and a leaf must be below 2^64 and pass
 `crypto_is_prime_u64`.
 
-**The walk** follows `crypto_cert.c`: a shared node is checked once, and a cycle
-or depth above `CRYPTO_MIXED_MAX_DEPTH` (4096) is malformed. Every link goes
-from N to some q < N, so a cycle is always caught first by the value check, and
-the in-progress guard is defence in depth. Work is capped separately, by
+**The walk** checks a shared node once, and a cycle is malformed. Every link
+goes from N to some q < N, so a cycle is always caught first by the value check,
+and the in-progress guard is defence in depth.
+
+**The depth limit** applies to every path: no path from the root may have more
+than `CRYPTO_MIXED_MAX_DEPTH` (4096) links. A verified node stores its height
+(the longest path below it), and a later visit to it checks the new depth plus
+that height, so a shared node reached first on a short path and later on a long
+one is still counted on the long one. Whether a certificate is accepted
+therefore does not depend on the order of factors or links. The limit is not
+needed for soundness; it bounds recursion and gives a fixed, order-independent
+rule. `crypto_cert.c` still skips a verified node before its depth check, so
+its 64-level limit bounds recursion but not every path; changing that is a
+separate change to an existing API. Work is capped separately, by
 Pocklington modular exponentiations and by ECPP point additions, with the same
 costs as the single-method checkers.
 
@@ -195,6 +205,12 @@ second.
   - a composite 64-bit leaf, q = 3 · 62773 with Q of order 62773, where only
     the leaf test can reject it;
   - a wrong cofactor, a base of order 3, and an unknown kind or null node.
+- `tests/test_mixed_depth.c`, built with `CRYPTO_MIXED_MAX_DEPTH` set to 2
+  (also under Valgrind and ASan/UBSan), covers the depth rule on a four-node
+  Pocklington graph with a shared node S reached at depths 1, 2 and 3:
+  - a path of exactly the limit is accepted, with the factors in either order;
+  - the 3-link path through S is rejected (`EINVAL` at S) whether S is first
+    reached at depth 1 or at depth 3.
 - `tests/test_mixed.py` (ctypes) covers:
   - generated 128-, 160-, 200- and 256-bit certificates containing both link
     directions, also with zero-padded limbs;
@@ -205,11 +221,11 @@ second.
 
   Every valid certificate is re-checked by an independent Python
   implementation of both methods' conditions.
-- Mutation checks: skipping the link value check, accepting any leaf, or not
-  following links each makes the tests fail.
-- Not exercised: the depth limit (it needs 4097 genuinely nested primes) and a
-  node shared by two parents (it does not arise from the generator). The walk
-  is the same as `crypto_cert.c`, whose tests cover both.
+- Mutation checks: skipping the link value check, accepting any leaf, not
+  following links, or skipping a verified node before its depth check each
+  makes the tests fail.
+- Not exercised: the production limit of 4096 itself (it needs 4097 genuinely
+  nested primes). The same code is tested at a limit of 2.
 
 ## Limits and next slices
 

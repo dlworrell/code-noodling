@@ -111,6 +111,7 @@ python3 tests/test_prime.py
 ./test_cert
 ./test_ecpp
 ./test_mixed
+./test_mixed_depth
 python3 tests/test_pocklington.py
 python3 tests/test_ecpp.py
 python3 tests/test_mixed.py

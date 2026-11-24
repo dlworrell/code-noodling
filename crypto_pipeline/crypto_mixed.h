@@ -32,7 +32,9 @@ extern "C" {
 #endif
 
 #define CRYPTO_MIXED_MAX_NODES 8192u
+#ifndef CRYPTO_MIXED_MAX_DEPTH            /* overridable only for tests of the walk */
 #define CRYPTO_MIXED_MAX_DEPTH 4096u
+#endif
 
 enum { CRYPTO_MIXED_POCKLINGTON = 1u, CRYPTO_MIXED_ECPP = 2u };
 
@@ -46,11 +48,17 @@ typedef struct crypto_mixed_node {
 /* Verifies that nodes[root] proves its N prime. Each node reachable from root
  * is checked once, however many times it is referenced.
  *
+ * Depth: every path from root, counted in links (root at 0), must have at most
+ * CRYPTO_MIXED_MAX_DEPTH links, including paths that reach an already-checked
+ * shared node a second time. Whether a certificate is accepted therefore does
+ * not depend on the order of factors or links; for a certificate with several
+ * defects, which error and failed_node are reported may.
+ *
  * Returns 0 when the certificate proves N prime. Otherwise returns -1 and sets:
  *   EINVAL  malformed: null pointer, unknown kind, count or index out of range,
- *           a child whose N differs from the prime it proves, a cycle, depth
- *           above CRYPTO_MIXED_MAX_DEPTH, or a leaf (child or q_child -1) of
- *           2^64 or more;
+ *           a child whose N differs from the prime it proves, a cycle, a
+ *           path longer than CRYPTO_MIXED_MAX_DEPTH links, or a leaf (child
+ *           or q_child -1) of 2^64 or more;
  *   EDOM    a mathematical check failed (as documented by the two checkers),
  *           including a 64-bit leaf that is not prime;
  *   ERANGE  more than max_modexps modular exponentiations (Pocklington) or
