@@ -39350,7 +39350,7 @@ Lifecycle: counting; tabulation stage: unknown. Authority: https://results.votew
 
 Latest input label 2026-11-20T17:59; 1465 source representations of contests; overlapping jurisdictions may appear separately. Individual source dates may be older; this label is not an authoritative current-count time.
 
-Generated: 2026-11-23T20:39:52+00:00. Per-source vintages and coverage findings are listed in analysis.json (source_summary and coverage_summary).
+Generated: 2026-11-24T03:41:32+00:00. Per-source vintages and coverage findings are listed in analysis.json (source_summary and coverage_summary).
 
 ## Method and limits
 
