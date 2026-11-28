@@ -873,6 +873,510 @@
       "source_url": "https://results.votewa.gov/results/public/api/elections/yakima-county-wa/20261103/data",
       "raw_sha256": "1d7dbe2be8e6858b883e909bf2b28a203be66a2ca899f67e461a4b167eef031d",
       "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "washington",
+      "input_sha256": "cb6a767fd0131d49935146cfad719be61db279bb6f785a26a3bcc9a89bdef508",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Wed, 25 Nov 2026 08:01:02 GMT",
+      "source_url": "https://results.votewa.gov/cdn/results/01000000-f977-1a83-1ed4-08ddd69e9e69/All%20Results_aac7876f-8115-4dd0-bea7-22f1d65b32bf.xlsx",
+      "raw_sha256": "57783b0197bd9a7a5480d90a1048beeaa74372851d4851afc9ce2c68e355c558",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "adams-county",
+      "input_sha256": "0d9c7cfd085b3ad8655e3e2aaa65c47e16e85a962668a20bf9f4401a90b7d507",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:40.5289426Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/adams-county-wa/20261103/data",
+      "raw_sha256": "4bcced4aff214f2e1e60ed645abcfd971717a20e32985a97c0a91dd543113020",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "asotin-county",
+      "input_sha256": "ad1d6ab2273ec365e8dffce3f0c553fae361532f10cae1f3dd00fd45b958bd79",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:38.1118647Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/asotin-county-wa/20261103/data",
+      "raw_sha256": "1a568686f9727c32bb1f9ce3e6299e49af34df8b3d44c17c27b9c6223a0cfd56",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "benton-county",
+      "input_sha256": "e0d2989deb96dcaefa249d91fae6b3a4c16087f3d45aa01b3ffceb42bc4d6767",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:45.6816648Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/benton-county-wa/20261103/data",
+      "raw_sha256": "750d94ab1c63903baf5349d1908d0d197530be56813e2dd35acc8eaa76cb6a9b",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "chelan-county",
+      "input_sha256": "52e0dd65141b993a728a183291f1bec40bf935b1b374c2b67fb622e712eda8d4",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:38.1021376Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/chelan-county-wa/20261103/data",
+      "raw_sha256": "e98cba0a41124eb1b4e94dfa97d0bd8132e5448a2680f5bde155e2510ea86745",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "clallam-county",
+      "input_sha256": "1f8718a5d37edf99b081025df1ec6b844b56c14ed7d1dde73be783b5fe2684f3",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:40.5548071Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/clallam-county-wa/20261103/data",
+      "raw_sha256": "77e1c16095ed597430c4a5865aed2eebb4c4724d65efdd38b10657dfaf124591",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "clark-county",
+      "input_sha256": "9f61577bdcc4fbcdb8646f89f3de1178cbea6005bd706f24809e1693ac8c0307",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:42.2465994Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/clark-county-wa/20261103/data",
+      "raw_sha256": "910a9effa2eccc1ce810af6fb6aad2c0fc403a78d492178ae93a1b19363b0e5b",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "columbia-county",
+      "input_sha256": "f0eae20cd09b19ec4de233bdf59a29c33148c104fb15c1c1e5f91e64ea1f0045",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:40.4321213Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/columbia-county-wa/20261103/data",
+      "raw_sha256": "cc29d5875e4868d2a9b28d552386af9c0dee4ddfd7cf67f89dc19f999751e904",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "cowlitz-county",
+      "input_sha256": "02f98d3241d11fcaacb813d8c9122fda8e6573fd81a365a063498bc577176928",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:38.9543275Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/cowlitz-county-wa/20261103/data",
+      "raw_sha256": "6090aef8c691518e92395880daf5112027485fadf80db4a8c09b89febdd57941",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "douglas-county",
+      "input_sha256": "ef31f6bd32d8f5833a4687be19824220d21ac6edcab11eb51d5b1b6e0210b4c0",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:38.9210015Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/douglas-county-wa/20261103/data",
+      "raw_sha256": "41e7c735a3ec8a74c85b63d9bcec70117787bab14812d47748874f56b6f7ac96",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "ferry-county",
+      "input_sha256": "85772db74c3a05518528593eb43d697571573f8b36b8be3125f3a84f24dd0b78",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:38.8756821Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/ferry-county-wa/20261103/data",
+      "raw_sha256": "764d41a412b4d46eda944356e8c5b7ce942d3115da8934ed850076285b781cd2",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "franklin-county",
+      "input_sha256": "737381cc8deab6d006ceefd7ef9d4dc2c82801e334da58bc494463ebf289fe74",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:43.406275Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/franklin-county-wa/20261103/data",
+      "raw_sha256": "6ce895388da94f2d4e0e09bc4a050e0ce8f94871f7e39c995bb1332032e71374",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "garfield-county",
+      "input_sha256": "a5b58ecff44a11aecd594eded376ec7c48247441e53d2fc41568f7de79a21056",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:39.3519009Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/garfield-county-wa/20261103/data",
+      "raw_sha256": "c48012bc5bc2efb100b90022e5281540286df74a8dd6fed5f1a02a1bc9437edc",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "grant-county",
+      "input_sha256": "e1c02a246061ba49ec2e3b8176b0c62a157ece8f33dfc9ccf94584d61a8efaec",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:38.2276936Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/grant-county-wa/20261103/data",
+      "raw_sha256": "6ec4fb21fa7b744ef5e0d6bfadb3a6c787eac20a0e4adec24b28332fdab2a938",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "grays-harbor-county",
+      "input_sha256": "d16a6dc3573c3693ddc74069503d899e40dcdf7b3f2457d3663367cdabe82a86",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:44.6779223Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/grays-harbor-county-wa/20261103/data",
+      "raw_sha256": "edfd50f9b22fbc37b1b093e7bc371bc6b96a40d7d40f0d6adbb24b2071b046f9",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "island-county",
+      "input_sha256": "e344ccdf4fd97635dd08fa9b20e8af2ccb1fe740babba777dd9682df054775c9",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:39.4767479Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/island-county-wa/20261103/data",
+      "raw_sha256": "dd41466fa6ceecfc04013386c4a4d84e21de1905f58d03983c72c614f0a5001e",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "jefferson-county",
+      "input_sha256": "c1581549675f199e9ae392a4e1adc02a7dbdbf2514feeff5e50d369731fa2b12",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:39.4012092Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/jefferson-county-wa/20261103/data",
+      "raw_sha256": "d23ac37b34a40241a48528189d560f88a0f7f7e32c847f7e73d8f834f82b0f47",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "0a6ebe9ab5289cc665d8b68a4a17a7343e7ae62ee38af43e37a5d87cdfcdde7c",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Wed, 04 Nov 2026 23:11:50 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261103.csv?rev=a34f4cc0c92044e4b613540a47f0c307&hash=6D50F7244B6E6367671954C368C5BBA2",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "9aee905e1b38bde9e023631f7bc6f3bbe7c677703c3e1da765e84676423f83fc",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Thu, 05 Nov 2026 17:59:36 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261104.csv?rev=5856caf05d7f46319cf25f7e29ac93f3&hash=233CA8DA9F046A209F5BBB417100AFF3",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "0a7d0de86ea218098c9620cec1817125f318dccb1917bd46df976a31d985b1a4",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Fri, 06 Nov 2026 19:03:49 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261105.csv?rev=1100b4ec7dc04e398aec5894f56859f5&hash=CF28B638E642D1C1D0523DE3B575EE98",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "6c23acee58f13defc822ad5a4105ba6a936bb43f0cecfe87112dd865e91711a1",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Sat, 07 Nov 2026 18:48:32 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261106.csv?rev=6f500a06bf704f418363b48f2f0a7376&hash=23F8DDDE60CBD5032B44E6FE2490DBC1",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "1220580d43fc1b6572c5d4cdd7cc5e37c8a7c9d5ab378e74c8354774a03351cb",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Sun, 08 Nov 2026 18:39:07 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261107.csv?rev=c8cded09c9ee4fbfba84e75f8f5f68d8&hash=C185EF5C9D3E7083381573375419170A",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "aa71c5ee66eabb3f0541a60654feab76bc557a5a10c58bca33e7e02e3a1013d4",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Tue, 10 Nov 2026 16:50:21 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261109.csv?rev=eca18d1040a14d2e9cba539de59a1bb7&hash=844DD560ADFBE6EA4387840476F6BF6E",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "2e73c2585fbd1bdeda5a7a84b7338d3c4e0efce3251322366d9e40b7a43d23d2",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Wed, 11 Nov 2026 23:50:58 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261110.csv?rev=4905bedb5b7548e882e303d288ee716d&hash=4B6F412C221D1CD7BC6D8EFF53DA20AA",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "2810e688981ca8122f46a209c8ac255f8ff44a82fe5db0056e423a762d4b134e",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Wed, 11 Nov 2026 23:51:34 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261111.csv?rev=1a68d3ea7aa04ac2a0296ba22e4e4084&hash=8E23CE241839DC5AC19C02FEE1E4D0DB",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "d6b04daf7b6c4284e2fa87bdb28477051f16f8083271b505807ccec43b8eb622",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Sat, 14 Nov 2026 00:15:41 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261112.csv?rev=88437de4dbfc4272870e523ec87d06a5&hash=5FEF4C6B62E81350DE028872407525D6",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "60d26c4b9ee614062ef6476ef5771d08240d2f04aa099f5564d701cac86b1053",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Sat, 14 Nov 2026 00:16:21 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261113.csv?rev=8c18270958f34eba843d36ca4b6bd38d&hash=ABAF84FFD63AEC0E326DB93DF6E6A6B8",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "62df6184483e58d0f2a643c926159cb2581e67a73be76527d61099df29e32bc2",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Sun, 15 Nov 2026 23:35:10 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261114.csv?rev=f0a0d48a6bf0479d8c5d43d51264b214&hash=49780DF7551CA4FAE2B49200313C315D",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "e3855908bc1a327f127098197e4d028b8f7aa2303ad8140c62ab2f7bf248628f",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Tue, 17 Nov 2026 00:03:06 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261116.csv?rev=9bea65f47f8a4377a05bbd6a722367f8&hash=2F1CEEC5F94E2B3C55E520C62E7DC7A3",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "c9c3336dd1437141a10b097d82738d34b566d0eb4a7ac877e23cbf80c161427d",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Thu, 19 Nov 2026 01:50:00 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261118.csv?rev=1a6d92e17e4946838a85d5e6bc7b0c73&hash=990BC16A3AF5B9CD1F4F0641407AAD51",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "0f9293cc98d3135494e6e17169280743f06167c46861224fb65c725cda0fc143",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Fri, 20 Nov 2026 22:49:40 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261119.csv?rev=cdb2aa9a62ac43a29b8c1933113c3107&hash=7A6E138CA837B3340B090DB6B5336329",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "bddbbb2d0b5bae8b3e4c3db1f6763b911275a5c926bcdf3d0bb8e15988209982",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Sat, 21 Nov 2026 01:01:35 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261120.csv?rev=ce275ef343f548b0ab599ed66ff4e843&hash=5B1EAFB0C85C906BA14C4601140B508F",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "e25f8af85023186aff6c2543f7ffa20eb57e70fc334169fad673f9b1ce6cb389",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Tue, 24 Nov 2026 01:08:43 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261123.csv?rev=30b29d2835a646a480ca5cd0dbf57607&hash=2D6FD216A5D16DBE03ED6C4CFD7EA70D",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "king-county",
+      "input_sha256": "0540c862de2c4fcd339f6137d5bd04a49fafae702ce6471a66e0dac18cd95609",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "Wed, 25 Nov 2026 00:06:48 GMT",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261124.csv?rev=f6c5f339ae9641f08591b8f127c21d3a&hash=C6F513B6DB7CA9B4FFF170A78643EDBE",
+      "raw_sha256": null,
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "kitsap-county",
+      "input_sha256": "81a9473c4feca35fb62b7f50b116448ad0f16a101828c0e28ecf0168f4537c23",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:40.7173159Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/kitsap-county-wa/20261103/data",
+      "raw_sha256": "f55878a4a78009d0ab54f20760aa792f263136a257e581d529c1aa1251045a81",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "kittitas-county",
+      "input_sha256": "f4e92668b4be48c2d351a0ce0535bb691335f128de06bbf4930c6963c66cb821",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:40.5228285Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/kittitas-county-wa/20261103/data",
+      "raw_sha256": "feab3faf24d07a52d8cfb87e75c806bb5a8d27001ae475cbf459593f2439891b",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "klickitat-county",
+      "input_sha256": "97731d497d0943ba9b0d4104353e4f2f51c70d4c477c4a1171a97e4ecadf687e",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:41.5381418Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/klickitat-county-wa/20261103/data",
+      "raw_sha256": "05579613e98776791bc62131397ad1bbedb1270ae0699a2aeff8fba52725eb27",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "lewis-county",
+      "input_sha256": "2dabb3358dbf0392377050cc62f00f6cbf1978c6e56bd5e7b3ce39644c38df3f",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:40.8402366Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/lewis-county-wa/20261103/data",
+      "raw_sha256": "ac6e5bd5795f15d0314926c9b8c7df9a9cbe61243667b37802a9f6b0f018a4d9",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "lincoln-county",
+      "input_sha256": "25c9a49e4003141cfe663c8e35f464725afb076fa1f6209a167e34c676bd1621",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:40.0081147Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/lincoln-county-wa/20261103/data",
+      "raw_sha256": "ef6647d4eb13179b264867f181e67a9e9f8e9e0a5d9fedd6e2008e6331f8cd32",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "mason-county",
+      "input_sha256": "3e87ee8cd25f3470ab37cd435ad499fff607872aa555c22c71ae5f2739c75723",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:40.8222593Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/mason-county-wa/20261103/data",
+      "raw_sha256": "a74226715c76215ae1a05076278d7b8820fce44dae81cb82a812a208c928425a",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "okanogan-county",
+      "input_sha256": "8f52013940d125dedb213788df055ae64a178625d64e7f88afd3e75225c98142",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:41.2991216Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/okanogan-county-wa/20261103/data",
+      "raw_sha256": "ced3bbec6c883b36e46265901c6440eb86ecb5845c202376030f07200ad8af8e",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "pacific-county",
+      "input_sha256": "a9f966fefbcf54dfa70f433ad327888abf0430bec8e100dde6b59ba36172553e",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:41.1692433Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/pacific-county-wa/20261103/data",
+      "raw_sha256": "dab076160ffa1e97acf608feb9c9ef39e340383370823ed4c8f999fcb386efb2",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "pend-oreille-county",
+      "input_sha256": "e515ccbf1f4256627117783c60a8c67d0587720adf0e7f15e1deecea52b9d1d0",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:41.5271246Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/pend-oreille-county-wa/20261103/data",
+      "raw_sha256": "41a0276858726fde408ec7acc0694e702c402ef757ea5a0dac2542298b19fee8",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "pierce-county",
+      "input_sha256": "aeb463533588498cca9ac3471097f239d025d523891c398291970b8a1e851ef9",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:44.4941686Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/pierce-county-wa/20261103/data",
+      "raw_sha256": "bc236a3b72732b520b0fc227382d683e654ac06214527e419b29b95553ee2eb0",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "san-juan-county",
+      "input_sha256": "db6a661a1f80123d25151579fa52b54fa7c712290965a890f8c1cf83ed0cc35b",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:41.2377924Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/san-juan-county-wa/20261103/data",
+      "raw_sha256": "d0ec527a6f28e539967be9ea6bb89967acdf810524f4852ec759f16b7eb56c0d",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "skagit-county",
+      "input_sha256": "900b18e052bcfa69ad84692f7609bd98e998dc26f32b14ee6a8edc80319e10a6",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:41.6884946Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/skagit-county-wa/20261103/data",
+      "raw_sha256": "71701a98d581f050b5fc76f41ccfa2dfbe5bf1e79de8a6d1bf49ebbfe3bc5935",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "skamania-county",
+      "input_sha256": "3587778f70f29be09e913d03e2e8dbfe7802ebe489ae93855bcc71bc59b15687",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:42.0679189Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/skamania-county-wa/20261103/data",
+      "raw_sha256": "71e5067bd0cb87e4b706d6691c4ea6b127868f3305d258577c758c1ea5a2ac28",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "snohomish-county",
+      "input_sha256": "245f2a7fbbd691f9a3d2e5ddd0aa1de8d70b0efd007e37b5e3ee114465b18ab6",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:46.5674492Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/snohomish-county-wa/20261103/data",
+      "raw_sha256": "60300d8dbb781a06461572de1fa58df34199bfd7cbacf7baea943dc75ff8977b",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "spokane-county",
+      "input_sha256": "3fd02124bcb5bea8ea362dc18afb9307ae5fe75dab2a56c9716d86a5338e0bce",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:45.1168787Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/spokane-county-wa/20261103/data",
+      "raw_sha256": "4955b27d69b9d7ef11e2e329c36f931136fb98d6731c22dfd8526877bdc5eda0",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "stevens-county",
+      "input_sha256": "c37eddd3b7fc8e0394a0ccc35b18e78e76889ad440dab157fa01abc67d90ffa1",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:42.2345597Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/stevens-county-wa/20261103/data",
+      "raw_sha256": "3fe40949a08e2abe4fae249482e40550a6d90f1b9876458247290cc213c7b719",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "thurston-county",
+      "input_sha256": "264cee5e59178d3ac0ee879826efe4481434e0ed454d7e9fff31577683a7a402",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:44.0314654Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/thurston-county-wa/20261103/data",
+      "raw_sha256": "c07d185d801cd33feb90910fdea320dfb6e9d0c43c520172e0a0347bebd5ef7c",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "wahkiakum-county",
+      "input_sha256": "cb0c91ff1a691c0876894379cdbc771ff8b6967278c2d5af0c1e1ec0d373403c",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:41.9223694Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/wahkiakum-county-wa/20261103/data",
+      "raw_sha256": "ae8298dcacc73b2b25960aabf8c686e1765aefac424df180a45d79b2762ff3fc",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "walla-walla-county",
+      "input_sha256": "7b57c55439dee23582f0ba5b0128edc46d97bb14999020101692169569751996",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:45.1583255Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/walla-walla-county-wa/20261103/data",
+      "raw_sha256": "3fb44167d907bf0dda2be305a7c2aa255e4d193e88411e3d6fb36430152a4c71",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "whatcom-county",
+      "input_sha256": "5f80109ab57576c45d82d7b8700e1c9e8573bb91bf4b667edb2b0c3823289023",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:43.4626733Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/whatcom-county-wa/20261103/data",
+      "raw_sha256": "479f11c76bc82d06d301c17a3269c168e109963b8e0a774fe2099047cbf32c53",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "whitman-county",
+      "input_sha256": "30b8cde56041245308deb032878c41461d8449ac4b32dc97e36807354f21b721",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:45.5093622Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/whitman-county-wa/20261103/data",
+      "raw_sha256": "8a7267da0b77326d87b99f0aa52c9d9076a7687a2e4e9038da50e4f5e1a9779b",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
+    },
+    {
+      "place": "yakima-county",
+      "input_sha256": "61fbc7e70e3321baed6a710061700b48313ba46bc56752140320bbdb41ab803f",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_published_at": "2026-11-25T07:59:42.6834763Z",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/yakima-county-wa/20261103/data",
+      "raw_sha256": "0b4ed415afbc18945f93314f66b2670433f429d1750838a5eaee62c981ea5366",
+      "interpretation": "retrieval is not a count update; identical bytes do not advance the count clock"
     }
   ],
   "coverage": {},
@@ -1276,6 +1780,32 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "adams-county",
+      "snapshot": "2026-11-24-1429",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/adams-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T22:29:34.9796367Z",
+      "input": "input/adams-county/2026-11-24-1429.csv",
+      "input_sha256": "0d9c7cfd085b3ad8655e3e2aaa65c47e16e85a962668a20bf9f4401a90b7d507",
+      "raw": "raw/adams-county/2026-11-24-1429.json.gz",
+      "raw_sha256": "34c6abe6fe877427ca82ebf12e99166f7c083074f7eceff6f087535694bcd4ae",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "adams-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/adams-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:40.5289426Z",
+      "input": "input/adams-county/2026-11-24-1429.csv",
+      "input_sha256": "0d9c7cfd085b3ad8655e3e2aaa65c47e16e85a962668a20bf9f4401a90b7d507",
+      "raw": "raw/adams-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "4bcced4aff214f2e1e60ed645abcfd971717a20e32985a97c0a91dd543113020",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "asotin-county",
       "snapshot": "2026-11-03-2015",
       "kind": "votewa-json",
@@ -1627,6 +2157,32 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "asotin-county",
+      "snapshot": "2026-11-24-1049",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/asotin-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T18:49:09.8820659Z",
+      "input": "input/asotin-county/2026-11-24-1049.csv",
+      "input_sha256": "ad1d6ab2273ec365e8dffce3f0c553fae361532f10cae1f3dd00fd45b958bd79",
+      "raw": "raw/asotin-county/2026-11-24-1049.json.gz",
+      "raw_sha256": "677e191ea46d72d654e00f99b415b1e609ea340d35d596c19093709d080f2f80",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "asotin-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/asotin-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:38.1118647Z",
+      "input": "input/asotin-county/2026-11-24-1049.csv",
+      "input_sha256": "ad1d6ab2273ec365e8dffce3f0c553fae361532f10cae1f3dd00fd45b958bd79",
+      "raw": "raw/asotin-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "1a568686f9727c32bb1f9ce3e6299e49af34df8b3d44c17c27b9c6223a0cfd56",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "benton-county",
       "snapshot": "2026-11-03-2011",
       "kind": "votewa-json",
@@ -1949,6 +2505,45 @@
       "input_sha256": "c36796c3e9f1155bf05a6b269335f7f50f0875f846b95aeb03e4231ece926c5e",
       "raw": "raw/benton-county/2026-11-18-1434.json.gz",
       "raw_sha256": "34aeeee5c657bb0f79d21a4dde78f8af0cc1d858f173ca02924426ddcd3686ca",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "benton-county",
+      "snapshot": "2026-11-24-1223",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/benton-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T20:23:03.9562317Z",
+      "input": "input/benton-county/2026-11-24-1223.csv",
+      "input_sha256": "e0d2989deb96dcaefa249d91fae6b3a4c16087f3d45aa01b3ffceb42bc4d6767",
+      "raw": "raw/benton-county/2026-11-24-1223.json.gz",
+      "raw_sha256": "e12c35e72ba70f9d93a2a49d81090a1982521ed634a318db73d9f2961014430c",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "benton-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/benton-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:45.6816648Z",
+      "input": "input/benton-county/2026-11-24-1223.csv",
+      "input_sha256": "e0d2989deb96dcaefa249d91fae6b3a4c16087f3d45aa01b3ffceb42bc4d6767",
+      "raw": "raw/benton-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "05866d68e5ec174d37b828c0a90a05da9a44dc7e9e914aa75946d3f756ca7f58",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "benton-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/benton-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:45.6816648Z",
+      "input": "input/benton-county/2026-11-24-1223.csv",
+      "input_sha256": "e0d2989deb96dcaefa249d91fae6b3a4c16087f3d45aa01b3ffceb42bc4d6767",
+      "raw": "raw/benton-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "750d94ab1c63903baf5349d1908d0d197530be56813e2dd35acc8eaa76cb6a9b",
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
@@ -2303,6 +2898,45 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "chelan-county",
+      "snapshot": "2026-11-24-1350",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/chelan-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T21:50:27.925946Z",
+      "input": "input/chelan-county/2026-11-24-1350.csv",
+      "input_sha256": "52e0dd65141b993a728a183291f1bec40bf935b1b374c2b67fb622e712eda8d4",
+      "raw": "raw/chelan-county/2026-11-24-1350.json.gz",
+      "raw_sha256": "35e6313d4a76f6e79f15d5222e6ef19805861501b9df8bf0734b542ec9288ba8",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "chelan-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/chelan-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:38.1021376Z",
+      "input": "input/chelan-county/2026-11-24-1350.csv",
+      "input_sha256": "52e0dd65141b993a728a183291f1bec40bf935b1b374c2b67fb622e712eda8d4",
+      "raw": "raw/chelan-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "0dda59afe2666d2db310fa6fa2f894ea152894badc6f803b066061bd5f664d53",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "chelan-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/chelan-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:38.1021376Z",
+      "input": "input/chelan-county/2026-11-24-1350.csv",
+      "input_sha256": "52e0dd65141b993a728a183291f1bec40bf935b1b374c2b67fb622e712eda8d4",
+      "raw": "raw/chelan-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "e98cba0a41124eb1b4e94dfa97d0bd8132e5448a2680f5bde155e2510ea86745",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "clallam-county",
       "snapshot": "2026-11-03-2010",
       "kind": "votewa-json",
@@ -2641,6 +3275,45 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "clallam-county",
+      "snapshot": "2026-11-24-1613",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/clallam-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-25T00:13:45.7091707Z",
+      "input": "input/clallam-county/2026-11-24-1613.csv",
+      "input_sha256": "1f8718a5d37edf99b081025df1ec6b844b56c14ed7d1dde73be783b5fe2684f3",
+      "raw": "raw/clallam-county/2026-11-24-1613.json.gz",
+      "raw_sha256": "2c5ee35d2367f78d7510b8b7a580de3678957a30e1d94a8aa7ba720f036548e5",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "clallam-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/clallam-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:40.5548071Z",
+      "input": "input/clallam-county/2026-11-24-1613.csv",
+      "input_sha256": "1f8718a5d37edf99b081025df1ec6b844b56c14ed7d1dde73be783b5fe2684f3",
+      "raw": "raw/clallam-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "037a61a577d303cd15a1493bd24902d0a24c1b397f3be8b9934bd10e2eb2e2f9",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "clallam-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/clallam-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:40.5548071Z",
+      "input": "input/clallam-county/2026-11-24-1613.csv",
+      "input_sha256": "1f8718a5d37edf99b081025df1ec6b844b56c14ed7d1dde73be783b5fe2684f3",
+      "raw": "raw/clallam-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "77e1c16095ed597430c4a5865aed2eebb4c4724d65efdd38b10657dfaf124591",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "clark-county",
       "snapshot": "2026-11-03-2032",
       "kind": "votewa-json",
@@ -2963,6 +3636,32 @@
       "input_sha256": "f4e0255a4ce22b9570482a48783e1b4ffaebe6b09ee899158704d1d7882a514d",
       "raw": "raw/clark-county/2026-11-19-1516.json.gz",
       "raw_sha256": "1d28d17b721cb20490e209e8c47a14ffc714268bbf71663c644dcf2ba7753840",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "clark-county",
+      "snapshot": "2026-11-24-1150",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/clark-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T19:50:42.79302Z",
+      "input": "input/clark-county/2026-11-24-1150.csv",
+      "input_sha256": "9f61577bdcc4fbcdb8646f89f3de1178cbea6005bd706f24809e1693ac8c0307",
+      "raw": "raw/clark-county/2026-11-24-1150.json.gz",
+      "raw_sha256": "1c04b328c281143c38a66bf811d5e880dca24b4ed32f331e0a9e1504d976593a",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "clark-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/clark-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:42.2465994Z",
+      "input": "input/clark-county/2026-11-24-1150.csv",
+      "input_sha256": "9f61577bdcc4fbcdb8646f89f3de1178cbea6005bd706f24809e1693ac8c0307",
+      "raw": "raw/clark-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "910a9effa2eccc1ce810af6fb6aad2c0fc403a78d492178ae93a1b19363b0e5b",
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
@@ -3304,6 +4003,32 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "columbia-county",
+      "snapshot": "2026-11-24-1232",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/columbia-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T20:32:04.1792476Z",
+      "input": "input/columbia-county/2026-11-24-1232.csv",
+      "input_sha256": "f0eae20cd09b19ec4de233bdf59a29c33148c104fb15c1c1e5f91e64ea1f0045",
+      "raw": "raw/columbia-county/2026-11-24-1232.json.gz",
+      "raw_sha256": "a4b0af5f5d66ea8c302e40a25033984dbaa424dec37b564adf58c59f2e94272e",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "columbia-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/columbia-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:40.4321213Z",
+      "input": "input/columbia-county/2026-11-24-1232.csv",
+      "input_sha256": "f0eae20cd09b19ec4de233bdf59a29c33148c104fb15c1c1e5f91e64ea1f0045",
+      "raw": "raw/columbia-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "cc29d5875e4868d2a9b28d552386af9c0dee4ddfd7cf67f89dc19f999751e904",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "cowlitz-county",
       "snapshot": "2026-11-03-2006",
       "kind": "votewa-json",
@@ -3639,6 +4364,45 @@
       "input_sha256": "282aaf635a3854a4bdc6da0291665e010118667a24eb5cb777186922d857285c",
       "raw": "raw/cowlitz-county/2026-11-19-1253.json.gz",
       "raw_sha256": "ada011e336a1b21355c426e2adbecf44b218a28c9d4efb0921f634dba071ddc0",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "cowlitz-county",
+      "snapshot": "2026-11-24-1428",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/cowlitz-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T22:28:34.9334121Z",
+      "input": "input/cowlitz-county/2026-11-24-1428.csv",
+      "input_sha256": "02f98d3241d11fcaacb813d8c9122fda8e6573fd81a365a063498bc577176928",
+      "raw": "raw/cowlitz-county/2026-11-24-1428.json.gz",
+      "raw_sha256": "49e0ea92813fc6b4df623aafa2b4db2aa12d352fda216b32119c0aa333f5f48f",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "cowlitz-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/cowlitz-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:38.9543275Z",
+      "input": "input/cowlitz-county/2026-11-24-1428.csv",
+      "input_sha256": "02f98d3241d11fcaacb813d8c9122fda8e6573fd81a365a063498bc577176928",
+      "raw": "raw/cowlitz-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "df2158fa107c86ae3e0f1844752de6ccec7dd0072a6eac8a26f8584762f27836",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "cowlitz-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/cowlitz-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:38.9543275Z",
+      "input": "input/cowlitz-county/2026-11-24-1428.csv",
+      "input_sha256": "02f98d3241d11fcaacb813d8c9122fda8e6573fd81a365a063498bc577176928",
+      "raw": "raw/cowlitz-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "6090aef8c691518e92395880daf5112027485fadf80db4a8c09b89febdd57941",
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
@@ -3993,6 +4757,45 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "douglas-county",
+      "snapshot": "2026-11-24-1022",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/douglas-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T18:22:06.1810882Z",
+      "input": "input/douglas-county/2026-11-24-1022.csv",
+      "input_sha256": "ef31f6bd32d8f5833a4687be19824220d21ac6edcab11eb51d5b1b6e0210b4c0",
+      "raw": "raw/douglas-county/2026-11-24-1022.json.gz",
+      "raw_sha256": "34127f98d69093ab59d11f79772f6af43924328e38e9bedb4fa1f1d2eee587f9",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "douglas-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/douglas-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:38.9210015Z",
+      "input": "input/douglas-county/2026-11-24-1022.csv",
+      "input_sha256": "ef31f6bd32d8f5833a4687be19824220d21ac6edcab11eb51d5b1b6e0210b4c0",
+      "raw": "raw/douglas-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "8f2489163784521685ff55b1beb8d6564eb4304e606c6461a679a522edcfd853",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "douglas-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/douglas-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:38.9210015Z",
+      "input": "input/douglas-county/2026-11-24-1022.csv",
+      "input_sha256": "ef31f6bd32d8f5833a4687be19824220d21ac6edcab11eb51d5b1b6e0210b4c0",
+      "raw": "raw/douglas-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "41e7c735a3ec8a74c85b63d9bcec70117787bab14812d47748874f56b6f7ac96",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "ferry-county",
       "snapshot": "2026-11-03-2024",
       "kind": "votewa-json",
@@ -4331,6 +5134,45 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "ferry-county",
+      "snapshot": "2026-11-24-1212",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/ferry-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T20:12:39.1938153Z",
+      "input": "input/ferry-county/2026-11-24-1212.csv",
+      "input_sha256": "85772db74c3a05518528593eb43d697571573f8b36b8be3125f3a84f24dd0b78",
+      "raw": "raw/ferry-county/2026-11-24-1212.json.gz",
+      "raw_sha256": "155b69f4ac51b0122833ce708096ad9d3e961c666e97f1c226fc8d8247a389e0",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "ferry-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/ferry-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:38.8756821Z",
+      "input": "input/ferry-county/2026-11-24-1212.csv",
+      "input_sha256": "85772db74c3a05518528593eb43d697571573f8b36b8be3125f3a84f24dd0b78",
+      "raw": "raw/ferry-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "fb1351c97d47a0c994ca4cde2d6568332dda1ba198a1188fbd16f43435452cb5",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "ferry-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/ferry-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:38.8756821Z",
+      "input": "input/ferry-county/2026-11-24-1212.csv",
+      "input_sha256": "85772db74c3a05518528593eb43d697571573f8b36b8be3125f3a84f24dd0b78",
+      "raw": "raw/ferry-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "764d41a412b4d46eda944356e8c5b7ce942d3115da8934ed850076285b781cd2",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "franklin-county",
       "snapshot": "2026-11-03-2004",
       "kind": "votewa-json",
@@ -4653,6 +5495,45 @@
       "input_sha256": "6c8e73db116157387a84c3e43895ef7afb610dfe19c276c048722dddca028ea6",
       "raw": "raw/franklin-county/2026-11-10-0920.json.gz",
       "raw_sha256": "125f4b69e6986bb70911bafc17fd0a38cbec2b071b27a194c80ca0e4887bcfdf",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "franklin-county",
+      "snapshot": "2026-11-24-0948",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/franklin-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T17:48:47.8171641Z",
+      "input": "input/franklin-county/2026-11-24-0948.csv",
+      "input_sha256": "737381cc8deab6d006ceefd7ef9d4dc2c82801e334da58bc494463ebf289fe74",
+      "raw": "raw/franklin-county/2026-11-24-0948.json.gz",
+      "raw_sha256": "e572b58a2b30913753b42df9a56daeea53adf8b9be1f5a0885c33b8c04efeeff",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "franklin-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/franklin-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:43.406275Z",
+      "input": "input/franklin-county/2026-11-24-0948.csv",
+      "input_sha256": "737381cc8deab6d006ceefd7ef9d4dc2c82801e334da58bc494463ebf289fe74",
+      "raw": "raw/franklin-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "f6c35e3be6a7b5ce33afe4228918719cfd351eff2d54b954ebb53e84c1e43688",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "franklin-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/franklin-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:43.406275Z",
+      "input": "input/franklin-county/2026-11-24-0948.csv",
+      "input_sha256": "737381cc8deab6d006ceefd7ef9d4dc2c82801e334da58bc494463ebf289fe74",
+      "raw": "raw/franklin-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "6ce895388da94f2d4e0e09bc4a050e0ce8f94871f7e39c995bb1332032e71374",
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
@@ -4994,6 +5875,32 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "garfield-county",
+      "snapshot": "2026-11-24-1207",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/garfield-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T20:07:54.712242Z",
+      "input": "input/garfield-county/2026-11-24-1207.csv",
+      "input_sha256": "a5b58ecff44a11aecd594eded376ec7c48247441e53d2fc41568f7de79a21056",
+      "raw": "raw/garfield-county/2026-11-24-1207.json.gz",
+      "raw_sha256": "462c7c4740e35c7f487af302ab8350375bb943f04fa3f52603c4f436f17d5601",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "garfield-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/garfield-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:39.3519009Z",
+      "input": "input/garfield-county/2026-11-24-1207.csv",
+      "input_sha256": "a5b58ecff44a11aecd594eded376ec7c48247441e53d2fc41568f7de79a21056",
+      "raw": "raw/garfield-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "c48012bc5bc2efb100b90022e5281540286df74a8dd6fed5f1a02a1bc9437edc",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "grant-county",
       "snapshot": "2026-11-03-2010",
       "kind": "votewa-json",
@@ -5332,6 +6239,32 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "grant-county",
+      "snapshot": "2026-11-24-0944",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/grant-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T17:44:19.8833061Z",
+      "input": "input/grant-county/2026-11-24-0944.csv",
+      "input_sha256": "e1c02a246061ba49ec2e3b8176b0c62a157ece8f33dfc9ccf94584d61a8efaec",
+      "raw": "raw/grant-county/2026-11-24-0944.json.gz",
+      "raw_sha256": "821f9e5d0d4022bf6abb63619970a67ebb918ed751059f9816a4a49fca2fd836",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "grant-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/grant-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:38.2276936Z",
+      "input": "input/grant-county/2026-11-24-0944.csv",
+      "input_sha256": "e1c02a246061ba49ec2e3b8176b0c62a157ece8f33dfc9ccf94584d61a8efaec",
+      "raw": "raw/grant-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "6ec4fb21fa7b744ef5e0d6bfadb3a6c787eac20a0e4adec24b28332fdab2a938",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "grays-harbor-county",
       "snapshot": "2026-11-03-2032",
       "kind": "votewa-json",
@@ -5654,6 +6587,32 @@
       "input_sha256": "620c4c8801520debff9807c69b497c2ccb3622d95ce96c0df8e0006f2fe22037",
       "raw": "raw/grays-harbor-county/2026-11-18-1036.json.gz",
       "raw_sha256": "64361b69ccfd47b6cc3a9559c4e7f57f70fbcf586260031b2b5cf40ccfb5400f",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "grays-harbor-county",
+      "snapshot": "2026-11-24-1219",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/grays-harbor-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T20:19:47.4982066Z",
+      "input": "input/grays-harbor-county/2026-11-24-1219.csv",
+      "input_sha256": "d16a6dc3573c3693ddc74069503d899e40dcdf7b3f2457d3663367cdabe82a86",
+      "raw": "raw/grays-harbor-county/2026-11-24-1219.json.gz",
+      "raw_sha256": "8f286fbaee442cf1fa6dafa2d2a8c32c182a7890e0bfbd317e64effd46c043de",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "grays-harbor-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/grays-harbor-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:44.6779223Z",
+      "input": "input/grays-harbor-county/2026-11-24-1219.csv",
+      "input_sha256": "d16a6dc3573c3693ddc74069503d899e40dcdf7b3f2457d3663367cdabe82a86",
+      "raw": "raw/grays-harbor-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "edfd50f9b22fbc37b1b093e7bc371bc6b96a40d7d40f0d6adbb24b2071b046f9",
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
@@ -5982,6 +6941,45 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "island-county",
+      "snapshot": "2026-11-24-1318",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/island-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T21:18:01.201982Z",
+      "input": "input/island-county/2026-11-24-1318.csv",
+      "input_sha256": "e344ccdf4fd97635dd08fa9b20e8af2ccb1fe740babba777dd9682df054775c9",
+      "raw": "raw/island-county/2026-11-24-1318.json.gz",
+      "raw_sha256": "556160ffe1150e00d40140548209a783af5b88c58683eda5b08da5d6dd91ef5f",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "island-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/island-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:39.4767479Z",
+      "input": "input/island-county/2026-11-24-1318.csv",
+      "input_sha256": "e344ccdf4fd97635dd08fa9b20e8af2ccb1fe740babba777dd9682df054775c9",
+      "raw": "raw/island-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "03055ef97150f527a5a6d80617a0be081a34af37b901ae4f0768e6820483aba8",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "island-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/island-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:39.4767479Z",
+      "input": "input/island-county/2026-11-24-1318.csv",
+      "input_sha256": "e344ccdf4fd97635dd08fa9b20e8af2ccb1fe740babba777dd9682df054775c9",
+      "raw": "raw/island-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "dd41466fa6ceecfc04013386c4a4d84e21de1905f58d03983c72c614f0a5001e",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "jefferson-county",
       "snapshot": "2026-11-03-2029",
       "kind": "votewa-json",
@@ -6307,6 +7305,32 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "jefferson-county",
+      "snapshot": "2026-11-24-1410",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/jefferson-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T22:10:09.936684Z",
+      "input": "input/jefferson-county/2026-11-24-1410.csv",
+      "input_sha256": "c1581549675f199e9ae392a4e1adc02a7dbdbf2514feeff5e50d369731fa2b12",
+      "raw": "raw/jefferson-county/2026-11-24-1410.json.gz",
+      "raw_sha256": "c9717c6ac8a67057d34030c3c7e18a9b49f94a77eea8d864f67757eacddae95a",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "jefferson-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/jefferson-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:39.4012092Z",
+      "input": "input/jefferson-county/2026-11-24-1410.csv",
+      "input_sha256": "c1581549675f199e9ae392a4e1adc02a7dbdbf2514feeff5e50d369731fa2b12",
+      "raw": "raw/jefferson-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "d23ac37b34a40241a48528189d560f88a0f7f7e32c847f7e73d8f834f82b0f47",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "king-county",
       "snapshot": "2026-11-03-2359",
       "kind": "county-csv",
@@ -6464,6 +7488,19 @@
     },
     {
       "place": "king-county",
+      "snapshot": "2026-11-17-2359",
+      "kind": "county-csv",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20271117.csv?rev=4b91556a3fe24f68917c5af155affb44&hash=5027926AA0121A7EA25BA55E2B2CA498",
+      "retrieved_at": "2026-11-19T03:14:57+00:00",
+      "source_timestamp": "Thu, 19 Nov 2026 01:49:33 GMT",
+      "input": "input/king-county/2026-11-17-2359.csv",
+      "input_sha256": "3cbf6d5af17cbbaea049266595000300b7ee4c75a6542520f899bdb2885e9bae",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Official King County Elections export, stored unmodified. King County named this file webresults-20271117.csv (year 2027) for the November 17, 2026 count; the snapshot label was corrected from 2027-11-17-2359 to 2026-11-17-2359 on 2026-11-23. Bytes, SHA-256 and source URL are unchanged."
+    },
+    {
+      "place": "king-county",
       "snapshot": "2026-11-18-1750",
       "kind": "county-csv",
       "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261118.csv?rev=1a6d92e17e4946838a85d5e6bc7b0c73&hash=990BC16A3AF5B9CD1F4F0641407AAD51",
@@ -6503,16 +7540,29 @@
     },
     {
       "place": "king-county",
-      "snapshot": "2026-11-17-2359",
+      "snapshot": "2026-11-23-1708",
       "kind": "county-csv",
-      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20271117.csv?rev=4b91556a3fe24f68917c5af155affb44&hash=5027926AA0121A7EA25BA55E2B2CA498",
-      "retrieved_at": "2026-11-19T03:14:57+00:00",
-      "source_timestamp": "Thu, 19 Nov 2026 01:49:33 GMT",
-      "input": "input/king-county/2026-11-17-2359.csv",
-      "input_sha256": "3cbf6d5af17cbbaea049266595000300b7ee4c75a6542520f899bdb2885e9bae",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261123.csv?rev=30b29d2835a646a480ca5cd0dbf57607&hash=2D6FD216A5D16DBE03ED6C4CFD7EA70D",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "Tue, 24 Nov 2026 01:08:43 GMT",
+      "input": "input/king-county/2026-11-23-1708.csv",
+      "input_sha256": "e25f8af85023186aff6c2543f7ffa20eb57e70fc334169fad673f9b1ce6cb389",
       "raw": "",
       "raw_sha256": "",
-      "note": "Official King County Elections export, stored unmodified. King County named this file webresults-20271117.csv (year 2027) for the November 17, 2026 count; the snapshot label was corrected from 2027-11-17-2359 to 2026-11-17-2359 on 2026-11-23. Bytes, SHA-256 and source URL are unchanged."
+      "note": "Official King County Elections export, stored unmodified."
+    },
+    {
+      "place": "king-county",
+      "snapshot": "2026-11-24-1606",
+      "kind": "county-csv",
+      "source_url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/webresults-20261124.csv?rev=f6c5f339ae9641f08591b8f127c21d3a&hash=C6F513B6DB7CA9B4FFF170A78643EDBE",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "Wed, 25 Nov 2026 00:06:48 GMT",
+      "input": "input/king-county/2026-11-24-1606.csv",
+      "input_sha256": "0540c862de2c4fcd339f6137d5bd04a49fafae702ce6471a66e0dac18cd95609",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Official King County Elections export, stored unmodified."
     },
     {
       "place": "kitsap-county",
@@ -6837,6 +7887,32 @@
       "input_sha256": "348cccbea4170468a245c525887f58d32a76877cd5578f1cfbcd4f584500d677",
       "raw": "raw/kitsap-county/2026-11-20-1516.json.gz",
       "raw_sha256": "1805d39572d32a44d01987afe338253ce189fcbc4ce4788eca8dc04f93ecee1b",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "kitsap-county",
+      "snapshot": "2026-11-24-0937",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/kitsap-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T17:37:48.4651436Z",
+      "input": "input/kitsap-county/2026-11-24-0937.csv",
+      "input_sha256": "81a9473c4feca35fb62b7f50b116448ad0f16a101828c0e28ecf0168f4537c23",
+      "raw": "raw/kitsap-county/2026-11-24-0937.json.gz",
+      "raw_sha256": "e9460feefe8c0a6306687c1be1f44f742de6668cf341cb8cbd0e217b06ddaaa7",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "kitsap-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/kitsap-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:40.7173159Z",
+      "input": "input/kitsap-county/2026-11-24-0937.csv",
+      "input_sha256": "81a9473c4feca35fb62b7f50b116448ad0f16a101828c0e28ecf0168f4537c23",
+      "raw": "raw/kitsap-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "f55878a4a78009d0ab54f20760aa792f263136a257e581d529c1aa1251045a81",
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
@@ -7191,6 +8267,32 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "kittitas-county",
+      "snapshot": "2026-11-24-1345",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/kittitas-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T21:45:27.5701534Z",
+      "input": "input/kittitas-county/2026-11-24-1345.csv",
+      "input_sha256": "f4e92668b4be48c2d351a0ce0535bb691335f128de06bbf4930c6963c66cb821",
+      "raw": "raw/kittitas-county/2026-11-24-1345.json.gz",
+      "raw_sha256": "0145739bb55a839cf89e15551a1b19174eb660004023fbc2dd6e2b544f80a180",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "kittitas-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/kittitas-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:40.5228285Z",
+      "input": "input/kittitas-county/2026-11-24-1345.csv",
+      "input_sha256": "f4e92668b4be48c2d351a0ce0535bb691335f128de06bbf4930c6963c66cb821",
+      "raw": "raw/kittitas-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "feab3faf24d07a52d8cfb87e75c806bb5a8d27001ae475cbf459593f2439891b",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "klickitat-county",
       "snapshot": "2026-11-03-2030",
       "kind": "votewa-json",
@@ -7513,6 +8615,45 @@
       "input_sha256": "4d8e96d4f17e2db5974a0268bfff6bfa60460d9329151d7ecb945424f8ba1d53",
       "raw": "raw/klickitat-county/2026-11-17-0904.json.gz",
       "raw_sha256": "826f0dd113e8891e1465105e4e2575d21899f4d1bf8886898aaaaa9d30a2d7a3",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "klickitat-county",
+      "snapshot": "2026-11-24-1405",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/klickitat-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T22:05:53.3779895Z",
+      "input": "input/klickitat-county/2026-11-24-1405.csv",
+      "input_sha256": "97731d497d0943ba9b0d4104353e4f2f51c70d4c477c4a1171a97e4ecadf687e",
+      "raw": "raw/klickitat-county/2026-11-24-1405.json.gz",
+      "raw_sha256": "124df5a51085f8bdd22686031a484adc7242fb6cb20547555acbc8e6cf8dde93",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "klickitat-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/klickitat-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:41.5381418Z",
+      "input": "input/klickitat-county/2026-11-24-1405.csv",
+      "input_sha256": "97731d497d0943ba9b0d4104353e4f2f51c70d4c477c4a1171a97e4ecadf687e",
+      "raw": "raw/klickitat-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "198f81ef51a2b844a8cfcbb2f711f5ec2f084e204d0c2e4d2e186ff474940281",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "klickitat-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/klickitat-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:41.5381418Z",
+      "input": "input/klickitat-county/2026-11-24-1405.csv",
+      "input_sha256": "97731d497d0943ba9b0d4104353e4f2f51c70d4c477c4a1171a97e4ecadf687e",
+      "raw": "raw/klickitat-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "05579613e98776791bc62131397ad1bbedb1270ae0699a2aeff8fba52725eb27",
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
@@ -7854,6 +8995,45 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "lewis-county",
+      "snapshot": "2026-11-24-1056",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/lewis-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T18:56:42.0391035Z",
+      "input": "input/lewis-county/2026-11-24-1056.csv",
+      "input_sha256": "2dabb3358dbf0392377050cc62f00f6cbf1978c6e56bd5e7b3ce39644c38df3f",
+      "raw": "raw/lewis-county/2026-11-24-1056.json.gz",
+      "raw_sha256": "c1849e65479049220b5a17a2441b9524954fc49576ef97a21cc4e1d2fafb3f7e",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "lewis-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/lewis-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:40.8402366Z",
+      "input": "input/lewis-county/2026-11-24-1056.csv",
+      "input_sha256": "2dabb3358dbf0392377050cc62f00f6cbf1978c6e56bd5e7b3ce39644c38df3f",
+      "raw": "raw/lewis-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "974d7dd7d835fee66686fa2cd2de3cf25d17847ddb01bd26c6fcd6f18d616c64",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "lewis-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/lewis-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:40.8402366Z",
+      "input": "input/lewis-county/2026-11-24-1056.csv",
+      "input_sha256": "2dabb3358dbf0392377050cc62f00f6cbf1978c6e56bd5e7b3ce39644c38df3f",
+      "raw": "raw/lewis-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "ac6e5bd5795f15d0314926c9b8c7df9a9cbe61243667b37802a9f6b0f018a4d9",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "lincoln-county",
       "snapshot": "2026-11-03-2011",
       "kind": "votewa-json",
@@ -8189,6 +9369,32 @@
       "input_sha256": "9907be0f4f2e84a4f934eae45db2536ccb7eb8db302e5b15a46e92b18664350f",
       "raw": "raw/lincoln-county/2026-11-13-1445.json.gz",
       "raw_sha256": "88877fb5de7ad38e02657cf8de367a441e08b50415882f6f8c347d27b8ea043d",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "lincoln-county",
+      "snapshot": "2026-11-24-1255",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/lincoln-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T20:55:04.6767999Z",
+      "input": "input/lincoln-county/2026-11-24-1255.csv",
+      "input_sha256": "25c9a49e4003141cfe663c8e35f464725afb076fa1f6209a167e34c676bd1621",
+      "raw": "raw/lincoln-county/2026-11-24-1255.json.gz",
+      "raw_sha256": "a9835b9006548d563096e142f05e3206ae7dd6c451e12f9e66e30fc4044928b5",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "lincoln-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/lincoln-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:40.0081147Z",
+      "input": "input/lincoln-county/2026-11-24-1255.csv",
+      "input_sha256": "25c9a49e4003141cfe663c8e35f464725afb076fa1f6209a167e34c676bd1621",
+      "raw": "raw/lincoln-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "ef6647d4eb13179b264867f181e67a9e9f8e9e0a5d9fedd6e2008e6331f8cd32",
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
@@ -8530,6 +9736,32 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "mason-county",
+      "snapshot": "2026-11-24-1431",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/mason-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T22:31:28.0815109Z",
+      "input": "input/mason-county/2026-11-24-1431.csv",
+      "input_sha256": "3e87ee8cd25f3470ab37cd435ad499fff607872aa555c22c71ae5f2739c75723",
+      "raw": "raw/mason-county/2026-11-24-1431.json.gz",
+      "raw_sha256": "b3b87267c4e23477484a7b562b4a00ede2318547611c9dc3cbabab3611a1d433",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "mason-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/mason-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:40.8222593Z",
+      "input": "input/mason-county/2026-11-24-1431.csv",
+      "input_sha256": "3e87ee8cd25f3470ab37cd435ad499fff607872aa555c22c71ae5f2739c75723",
+      "raw": "raw/mason-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "a74226715c76215ae1a05076278d7b8820fce44dae81cb82a812a208c928425a",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "okanogan-county",
       "snapshot": "2026-11-03-2110",
       "kind": "votewa-json",
@@ -8852,6 +10084,45 @@
       "input_sha256": "83d3548656b7cf806239c8b4ffb3d0c7053e305514efa5f583819906067bf540",
       "raw": "raw/okanogan-county/2026-11-20-1758.json.gz",
       "raw_sha256": "d6c87f1904d773298b20d44f72746802eb7952831e749ff05fa0b72ac4d16af8",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "okanogan-county",
+      "snapshot": "2026-11-24-0924",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/okanogan-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T17:24:24.2136873Z",
+      "input": "input/okanogan-county/2026-11-24-0924.csv",
+      "input_sha256": "8f52013940d125dedb213788df055ae64a178625d64e7f88afd3e75225c98142",
+      "raw": "raw/okanogan-county/2026-11-24-0924.json.gz",
+      "raw_sha256": "be0fa8ebd022dc1d02d36ac9fe307553cf5719f1c8e3eb93697bad968201f1a4",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "okanogan-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/okanogan-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:41.2991216Z",
+      "input": "input/okanogan-county/2026-11-24-0924.csv",
+      "input_sha256": "8f52013940d125dedb213788df055ae64a178625d64e7f88afd3e75225c98142",
+      "raw": "raw/okanogan-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "f623f1f64a39104965eb43c6d7cc8e7f876ec80a9e8e8d2f6578a821967a34b5",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "okanogan-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/okanogan-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:41.2991216Z",
+      "input": "input/okanogan-county/2026-11-24-0924.csv",
+      "input_sha256": "8f52013940d125dedb213788df055ae64a178625d64e7f88afd3e75225c98142",
+      "raw": "raw/okanogan-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "ced3bbec6c883b36e46265901c6440eb86ecb5845c202376030f07200ad8af8e",
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
@@ -9193,6 +10464,32 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "pacific-county",
+      "snapshot": "2026-11-24-1353",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/pacific-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T21:53:55.5709449Z",
+      "input": "input/pacific-county/2026-11-24-1353.csv",
+      "input_sha256": "a9f966fefbcf54dfa70f433ad327888abf0430bec8e100dde6b59ba36172553e",
+      "raw": "raw/pacific-county/2026-11-24-1353.json.gz",
+      "raw_sha256": "7b1115cda98432bcc3e02ef0584db7a365b29b330b9b60a6d2c90773f48209e3",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "pacific-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/pacific-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:41.1692433Z",
+      "input": "input/pacific-county/2026-11-24-1353.csv",
+      "input_sha256": "a9f966fefbcf54dfa70f433ad327888abf0430bec8e100dde6b59ba36172553e",
+      "raw": "raw/pacific-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "dab076160ffa1e97acf608feb9c9ef39e340383370823ed4c8f999fcb386efb2",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "pend-oreille-county",
       "snapshot": "2026-11-03-2009",
       "kind": "votewa-json",
@@ -9531,6 +10828,45 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "pend-oreille-county",
+      "snapshot": "2026-11-24-1633",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/pend-oreille-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-25T00:33:53.2121202Z",
+      "input": "input/pend-oreille-county/2026-11-24-1633.csv",
+      "input_sha256": "e515ccbf1f4256627117783c60a8c67d0587720adf0e7f15e1deecea52b9d1d0",
+      "raw": "raw/pend-oreille-county/2026-11-24-1633.json.gz",
+      "raw_sha256": "38770ff2a67f9c19df292259505e9cddaed8c0e55d45a45e30729e3134f4006e",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "pend-oreille-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/pend-oreille-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:41.5271246Z",
+      "input": "input/pend-oreille-county/2026-11-24-1633.csv",
+      "input_sha256": "e515ccbf1f4256627117783c60a8c67d0587720adf0e7f15e1deecea52b9d1d0",
+      "raw": "raw/pend-oreille-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "4c18e3ed6b0658ca1207a94e8e47f47800e0f5dd2fa85a7da0d197ba010f4188",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "pend-oreille-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/pend-oreille-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:41.5271246Z",
+      "input": "input/pend-oreille-county/2026-11-24-1633.csv",
+      "input_sha256": "e515ccbf1f4256627117783c60a8c67d0587720adf0e7f15e1deecea52b9d1d0",
+      "raw": "raw/pend-oreille-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "41a0276858726fde408ec7acc0694e702c402ef757ea5a0dac2542298b19fee8",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "pierce-county",
       "snapshot": "2026-11-03-2016",
       "kind": "votewa-json",
@@ -9856,6 +11192,32 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "pierce-county",
+      "snapshot": "2026-11-24-1058",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/pierce-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T18:58:12.5747957Z",
+      "input": "input/pierce-county/2026-11-24-1058.csv",
+      "input_sha256": "aeb463533588498cca9ac3471097f239d025d523891c398291970b8a1e851ef9",
+      "raw": "raw/pierce-county/2026-11-24-1058.json.gz",
+      "raw_sha256": "cfe6dac80170ce1e26552cd445bff738cb8dbcfab9dd2c2c7e02a3ef9a7e26b2",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "pierce-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/pierce-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:44.4941686Z",
+      "input": "input/pierce-county/2026-11-24-1058.csv",
+      "input_sha256": "aeb463533588498cca9ac3471097f239d025d523891c398291970b8a1e851ef9",
+      "raw": "raw/pierce-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "bc236a3b72732b520b0fc227382d683e654ac06214527e419b29b95553ee2eb0",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "san-juan-county",
       "snapshot": "2026-11-03-2005",
       "kind": "votewa-json",
@@ -10178,6 +11540,45 @@
       "input_sha256": "289dd747fbe8a69b770e6ea25521a06e4903f272428fb88517c6683eeb412612",
       "raw": "raw/san-juan-county/2026-11-19-1614.json.gz",
       "raw_sha256": "b90b8d7eea32f7c490992b2a2854534ba2c638cdf0a715840b26f516b26fd59b",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "san-juan-county",
+      "snapshot": "2026-11-24-0947",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/san-juan-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T17:47:45.8740659Z",
+      "input": "input/san-juan-county/2026-11-24-0947.csv",
+      "input_sha256": "db6a661a1f80123d25151579fa52b54fa7c712290965a890f8c1cf83ed0cc35b",
+      "raw": "raw/san-juan-county/2026-11-24-0947.json.gz",
+      "raw_sha256": "a11616ca54fa916ce05bd3d7f38b5c8fa4ebdbf0e74c23eb1e5493118fd25775",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "san-juan-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/san-juan-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:41.2377924Z",
+      "input": "input/san-juan-county/2026-11-24-0947.csv",
+      "input_sha256": "db6a661a1f80123d25151579fa52b54fa7c712290965a890f8c1cf83ed0cc35b",
+      "raw": "raw/san-juan-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "a63e595fa1776a94d4a944a04e80a3b9e0a07bbdb6eb31e0e031e6e1674a965e",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "san-juan-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/san-juan-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:41.2377924Z",
+      "input": "input/san-juan-county/2026-11-24-0947.csv",
+      "input_sha256": "db6a661a1f80123d25151579fa52b54fa7c712290965a890f8c1cf83ed0cc35b",
+      "raw": "raw/san-juan-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "d0ec527a6f28e539967be9ea6bb89967acdf810524f4852ec759f16b7eb56c0d",
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
@@ -10519,6 +11920,32 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "skagit-county",
+      "snapshot": "2026-11-24-1408",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/skagit-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T22:08:30.4045042Z",
+      "input": "input/skagit-county/2026-11-24-1408.csv",
+      "input_sha256": "900b18e052bcfa69ad84692f7609bd98e998dc26f32b14ee6a8edc80319e10a6",
+      "raw": "raw/skagit-county/2026-11-24-1408.json.gz",
+      "raw_sha256": "437628109e39bc4e650f051ff4b6b80ab5cd5c864e2f352c77f1d4047c59d9d6",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "skagit-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/skagit-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:41.6884946Z",
+      "input": "input/skagit-county/2026-11-24-1408.csv",
+      "input_sha256": "900b18e052bcfa69ad84692f7609bd98e998dc26f32b14ee6a8edc80319e10a6",
+      "raw": "raw/skagit-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "71701a98d581f050b5fc76f41ccfa2dfbe5bf1e79de8a6d1bf49ebbfe3bc5935",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "skamania-county",
       "snapshot": "2026-11-03-2011",
       "kind": "votewa-json",
@@ -10841,6 +12268,32 @@
       "input_sha256": "8828b2a9f5bfbd535321790320e3e065c162db3ed727db4f4375f6b27dc99ec0",
       "raw": "raw/skamania-county/2026-11-16-1414.json.gz",
       "raw_sha256": "bc37bdffdcb548fa50f8186d497a22688b670722c63f9b7a1c657c643b3502ec",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "skamania-county",
+      "snapshot": "2026-11-24-0856",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/skamania-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T16:56:58.760862Z",
+      "input": "input/skamania-county/2026-11-24-0856.csv",
+      "input_sha256": "3587778f70f29be09e913d03e2e8dbfe7802ebe489ae93855bcc71bc59b15687",
+      "raw": "raw/skamania-county/2026-11-24-0856.json.gz",
+      "raw_sha256": "b5adefa01fc571771fa7d1b0b8a26d7332b2584088905159e9ee3b9d8fc42cd0",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "skamania-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/skamania-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:42.0679189Z",
+      "input": "input/skamania-county/2026-11-24-0856.csv",
+      "input_sha256": "3587778f70f29be09e913d03e2e8dbfe7802ebe489ae93855bcc71bc59b15687",
+      "raw": "raw/skamania-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "71e5067bd0cb87e4b706d6691c4ea6b127868f3305d258577c758c1ea5a2ac28",
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
@@ -11182,6 +12635,32 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "snohomish-county",
+      "snapshot": "2026-11-24-1401",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/snohomish-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T22:01:30.9773206Z",
+      "input": "input/snohomish-county/2026-11-24-1401.csv",
+      "input_sha256": "245f2a7fbbd691f9a3d2e5ddd0aa1de8d70b0efd007e37b5e3ee114465b18ab6",
+      "raw": "raw/snohomish-county/2026-11-24-1401.json.gz",
+      "raw_sha256": "8d03b5ebb8a8452a1d4e16797db815e4ca916b808d5952eea06673e8694afd5e",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "snohomish-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/snohomish-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:46.5674492Z",
+      "input": "input/snohomish-county/2026-11-24-1401.csv",
+      "input_sha256": "245f2a7fbbd691f9a3d2e5ddd0aa1de8d70b0efd007e37b5e3ee114465b18ab6",
+      "raw": "raw/snohomish-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "60300d8dbb781a06461572de1fa58df34199bfd7cbacf7baea943dc75ff8977b",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "spokane-county",
       "snapshot": "2026-11-03-2020",
       "kind": "votewa-json",
@@ -11504,6 +12983,32 @@
       "input_sha256": "88e2a305b79cb8859491980b72024e950bc8f949f79d9236c6825b2aa7643819",
       "raw": "raw/spokane-county/2026-11-10-1805.json.gz",
       "raw_sha256": "25388ebf820e16c601e0eab642a98ded111f4ce9b92de0d12814c1f2df65cfb9",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "spokane-county",
+      "snapshot": "2026-11-24-1632",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/spokane-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-25T00:32:18.6794169Z",
+      "input": "input/spokane-county/2026-11-24-1632.csv",
+      "input_sha256": "3fd02124bcb5bea8ea362dc18afb9307ae5fe75dab2a56c9716d86a5338e0bce",
+      "raw": "raw/spokane-county/2026-11-24-1632.json.gz",
+      "raw_sha256": "f65ded1abcf25dbbe73c5c027447482610778a86ac651e4e2614de931b38cba5",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "spokane-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/spokane-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:45.1168787Z",
+      "input": "input/spokane-county/2026-11-24-1632.csv",
+      "input_sha256": "3fd02124bcb5bea8ea362dc18afb9307ae5fe75dab2a56c9716d86a5338e0bce",
+      "raw": "raw/spokane-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "4955b27d69b9d7ef11e2e329c36f931136fb98d6731c22dfd8526877bdc5eda0",
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
@@ -11842,6 +13347,32 @@
       "input_sha256": "33b141281906218dc9739e634164f1704b504582e615e0e6de65c92c9ac7fd41",
       "raw": "raw/stevens-county/2026-11-18-1237.json.gz",
       "raw_sha256": "6a44863f01668fbdba2f3892b8d81322ef377aecae58acbbb1b4cb5f074f955c",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "stevens-county",
+      "snapshot": "2026-11-24-1042",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/stevens-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T18:42:17.0340518Z",
+      "input": "input/stevens-county/2026-11-24-1042.csv",
+      "input_sha256": "c37eddd3b7fc8e0394a0ccc35b18e78e76889ad440dab157fa01abc67d90ffa1",
+      "raw": "raw/stevens-county/2026-11-24-1042.json.gz",
+      "raw_sha256": "2303b417389df8f065fe4a8e524b45a0e85d870ed145fc7391c40211db9c9d0f",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "stevens-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/stevens-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:42.2345597Z",
+      "input": "input/stevens-county/2026-11-24-1042.csv",
+      "input_sha256": "c37eddd3b7fc8e0394a0ccc35b18e78e76889ad440dab157fa01abc67d90ffa1",
+      "raw": "raw/stevens-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "3fe40949a08e2abe4fae249482e40550a6d90f1b9876458247290cc213c7b719",
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
@@ -12196,6 +13727,32 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "thurston-county",
+      "snapshot": "2026-11-24-1230",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/thurston-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T20:30:07.2795346Z",
+      "input": "input/thurston-county/2026-11-24-1230.csv",
+      "input_sha256": "264cee5e59178d3ac0ee879826efe4481434e0ed454d7e9fff31577683a7a402",
+      "raw": "raw/thurston-county/2026-11-24-1230.json.gz",
+      "raw_sha256": "74ae61c6dad23e195a77cb8488d99a33df00ec1d6e54e0d8d8be0a7c0ad87e5e",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "thurston-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/thurston-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:44.0314654Z",
+      "input": "input/thurston-county/2026-11-24-1230.csv",
+      "input_sha256": "264cee5e59178d3ac0ee879826efe4481434e0ed454d7e9fff31577683a7a402",
+      "raw": "raw/thurston-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "c07d185d801cd33feb90910fdea320dfb6e9d0c43c520172e0a0347bebd5ef7c",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "wahkiakum-county",
       "snapshot": "2026-11-03-2115",
       "kind": "votewa-json",
@@ -12531,6 +14088,45 @@
       "input_sha256": "78c188da68aa13cad7cb4153d3c365010dcc1b3d7edd3104d3f79c58d1896993",
       "raw": "raw/wahkiakum-county/2026-11-07-0443.json.gz",
       "raw_sha256": "fe97c15b757d35da268e08c879a02d0b9af13738f87968a2f1f789afa2fa160e",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "wahkiakum-county",
+      "snapshot": "2026-11-24-1449",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/wahkiakum-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T22:49:21.2218528Z",
+      "input": "input/wahkiakum-county/2026-11-24-1449.csv",
+      "input_sha256": "cb0c91ff1a691c0876894379cdbc771ff8b6967278c2d5af0c1e1ec0d373403c",
+      "raw": "raw/wahkiakum-county/2026-11-24-1449.json.gz",
+      "raw_sha256": "d822bc2cb82d65beab607d6f7111a68bd6ad93974f9da10db88f3f8dc124a365",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "wahkiakum-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/wahkiakum-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:41.9223694Z",
+      "input": "input/wahkiakum-county/2026-11-24-1449.csv",
+      "input_sha256": "cb0c91ff1a691c0876894379cdbc771ff8b6967278c2d5af0c1e1ec0d373403c",
+      "raw": "raw/wahkiakum-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "4aa75d93c93317acca8f8611c371a23624d6ef2615e6ea66fca509ea0fbe181c",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "wahkiakum-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/wahkiakum-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:41.9223694Z",
+      "input": "input/wahkiakum-county/2026-11-24-1449.csv",
+      "input_sha256": "cb0c91ff1a691c0876894379cdbc771ff8b6967278c2d5af0c1e1ec0d373403c",
+      "raw": "raw/wahkiakum-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "ae8298dcacc73b2b25960aabf8c686e1765aefac424df180a45d79b2762ff3fc",
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
@@ -12872,6 +14468,45 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "walla-walla-county",
+      "snapshot": "2026-11-24-1652",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/walla-walla-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-25T00:52:06.1230552Z",
+      "input": "input/walla-walla-county/2026-11-24-1652.csv",
+      "input_sha256": "7b57c55439dee23582f0ba5b0128edc46d97bb14999020101692169569751996",
+      "raw": "raw/walla-walla-county/2026-11-24-1652.json.gz",
+      "raw_sha256": "8dda11e7f7f5f7abc7ff8a910da7cf8e05c4d0100e56574db4c6d1144b783dce",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "walla-walla-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/walla-walla-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:45.1583255Z",
+      "input": "input/walla-walla-county/2026-11-24-1652.csv",
+      "input_sha256": "7b57c55439dee23582f0ba5b0128edc46d97bb14999020101692169569751996",
+      "raw": "raw/walla-walla-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "cd0459529a3480b07bd56258c74935f7da7d493c8b6d5da24eab7a1921fc5a63",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "walla-walla-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/walla-walla-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:45.1583255Z",
+      "input": "input/walla-walla-county/2026-11-24-1652.csv",
+      "input_sha256": "7b57c55439dee23582f0ba5b0128edc46d97bb14999020101692169569751996",
+      "raw": "raw/walla-walla-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "3fb44167d907bf0dda2be305a7c2aa255e4d193e88411e3d6fb36430152a4c71",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "washington",
       "snapshot": "2026-11-03-2153",
       "kind": "state-xlsx",
@@ -13194,6 +14829,32 @@
       "input_sha256": "546f505209824bdeb43f5ffb2a3931fb15be8cf14aadd030d27bab98050a909b",
       "raw": "raw/washington/2026-11-20-1759.xlsx",
       "raw_sha256": "5a531a546783be2f8890a4b4ce2fbf6b0bdffb0fee3f554b1a557fc55ae95880",
+      "note": ""
+    },
+    {
+      "place": "washington",
+      "snapshot": "2026-11-24-1653",
+      "kind": "state-xlsx",
+      "source_url": "https://results.votewa.gov/cdn/results/01000000-f977-1a83-1ed4-08ddd69e9e69/All%20Results_0cbe960a-57ac-4f61-aa79-e18e7ca047dd.xlsx",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "Wed, 25 Nov 2026 00:53:06 GMT",
+      "input": "input/washington/2026-11-24-1653.csv",
+      "input_sha256": "cb6a767fd0131d49935146cfad719be61db279bb6f785a26a3bcc9a89bdef508",
+      "raw": "raw/washington/2026-11-24-1653.xlsx",
+      "raw_sha256": "27dc19435abd4527d9f7f223aa36c3be370cd2d1d93a45382b989d35a16e3b11",
+      "note": ""
+    },
+    {
+      "place": "washington",
+      "snapshot": "2026-11-25-0001",
+      "kind": "state-xlsx",
+      "source_url": "https://results.votewa.gov/cdn/results/01000000-f977-1a83-1ed4-08ddd69e9e69/All%20Results_aac7876f-8115-4dd0-bea7-22f1d65b32bf.xlsx",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "Wed, 25 Nov 2026 08:01:02 GMT",
+      "input": "input/washington/2026-11-25-0001.csv",
+      "input_sha256": "cb6a767fd0131d49935146cfad719be61db279bb6f785a26a3bcc9a89bdef508",
+      "raw": "raw/washington/2026-11-25-0001.xlsx",
+      "raw_sha256": "57783b0197bd9a7a5480d90a1048beeaa74372851d4851afc9ce2c68e355c558",
       "note": ""
     },
     {
@@ -13821,6 +15482,45 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "whatcom-county",
+      "snapshot": "2026-11-24-0947",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/whatcom-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T17:47:08.1830182Z",
+      "input": "input/whatcom-county/2026-11-24-0947.csv",
+      "input_sha256": "5f80109ab57576c45d82d7b8700e1c9e8573bb91bf4b667edb2b0c3823289023",
+      "raw": "raw/whatcom-county/2026-11-24-0947.json.gz",
+      "raw_sha256": "a06796ffffaafa1501a3eaa91ef9254e56be10818ce161bee3d834db3c7be2b0",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "whatcom-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/whatcom-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:43.4626733Z",
+      "input": "input/whatcom-county/2026-11-24-0947.csv",
+      "input_sha256": "5f80109ab57576c45d82d7b8700e1c9e8573bb91bf4b667edb2b0c3823289023",
+      "raw": "raw/whatcom-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "1003fae9d22e952411d070beafb90576504f1a13213338c59bc843ce8e3a4201",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "whatcom-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/whatcom-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:43.4626733Z",
+      "input": "input/whatcom-county/2026-11-24-0947.csv",
+      "input_sha256": "5f80109ab57576c45d82d7b8700e1c9e8573bb91bf4b667edb2b0c3823289023",
+      "raw": "raw/whatcom-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "479f11c76bc82d06d301c17a3269c168e109963b8e0a774fe2099047cbf32c53",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "whitman-county",
       "snapshot": "2026-11-03-2018",
       "kind": "votewa-json",
@@ -14159,6 +15859,32 @@
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     },
     {
+      "place": "whitman-county",
+      "snapshot": "2026-11-24-1516",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/whitman-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T23:16:44.4505614Z",
+      "input": "input/whitman-county/2026-11-24-1516.csv",
+      "input_sha256": "30b8cde56041245308deb032878c41461d8449ac4b32dc97e36807354f21b721",
+      "raw": "raw/whitman-county/2026-11-24-1516.json.gz",
+      "raw_sha256": "f86dd77d9ce74f5e8f32f87de12dd3d52f551ba557ea83cced8ef40105c8085d",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "whitman-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/whitman-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:45.5093622Z",
+      "input": "input/whitman-county/2026-11-24-1516.csv",
+      "input_sha256": "30b8cde56041245308deb032878c41461d8449ac4b32dc97e36807354f21b721",
+      "raw": "raw/whitman-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "8a7267da0b77326d87b99f0aa52c9d9076a7687a2e4e9038da50e4f5e1a9779b",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
       "place": "yakima-county",
       "snapshot": "2026-11-03-2018",
       "kind": "votewa-json",
@@ -14494,6 +16220,45 @@
       "input_sha256": "00b832ac65b32532c27af4e9fca0eb879c7d90c6eb1e5dc1ace5fe15ef4a79a6",
       "raw": "raw/yakima-county/2026-11-19-1208.json.gz",
       "raw_sha256": "1d7dbe2be8e6858b883e909bf2b28a203be66a2ca899f67e461a4b167eef031d",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "yakima-county",
+      "snapshot": "2026-11-24-1230",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/yakima-county-wa/20261103/data",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "2026-11-24T20:30:38.7116933Z",
+      "input": "input/yakima-county/2026-11-24-1230.csv",
+      "input_sha256": "61fbc7e70e3321baed6a710061700b48313ba46bc56752140320bbdb41ab803f",
+      "raw": "raw/yakima-county/2026-11-24-1230.json.gz",
+      "raw_sha256": "2669b4c54c7de9141e63ec6c5b829186b455651cf69688a3f8fb7512550f2bf3",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "yakima-county",
+      "snapshot": "2026-11-24-2359",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/yakima-county-wa/20261103/data",
+      "retrieved_at": "2026-11-27T08:09:20+00:00",
+      "source_timestamp": "2026-11-25T07:59:42.6834763Z",
+      "input": "input/yakima-county/2026-11-24-1230.csv",
+      "input_sha256": "61fbc7e70e3321baed6a710061700b48313ba46bc56752140320bbdb41ab803f",
+      "raw": "raw/yakima-county/2026-11-24-2359.json.gz",
+      "raw_sha256": "8ae8964397aec1887fb6b9b3dc25441643d406be1798c756c30612afa7f4c557",
+      "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
+    },
+    {
+      "place": "yakima-county",
+      "snapshot": "2026-11-25-0000",
+      "kind": "votewa-json",
+      "source_url": "https://results.votewa.gov/results/public/api/elections/yakima-county-wa/20261103/data",
+      "retrieved_at": "2026-11-28T02:19:52+00:00",
+      "source_timestamp": "2026-11-25T07:59:42.6834763Z",
+      "input": "input/yakima-county/2026-11-24-1230.csv",
+      "input_sha256": "61fbc7e70e3321baed6a710061700b48313ba46bc56752140320bbdb41ab803f",
+      "raw": "raw/yakima-county/2026-11-25-0000.json.gz",
+      "raw_sha256": "0b4ed415afbc18945f93314f66b2670433f429d1750838a5eaee62c981ea5366",
       "note": "Ballots are votes plus any reported overvotes and undervotes; the results API does not report ballots cast."
     }
   ]

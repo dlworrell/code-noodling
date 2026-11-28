@@ -203,3 +203,11 @@ priority = 10
 # expected_final_ballots = 0       # add a turnout forecast to enable
 # forecast_reliability = 50        # remaining-ballot estimates
 # forecast_basis = "..."
+
+[[contest_rules]]
+contest_id = "representative-to-congress-district-1"
+rule = "rcv"
+
+[[contest_rules]]
+contest_id = "representative-to-congress-district-2"
+rule = "rcv"

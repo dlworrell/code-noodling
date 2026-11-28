@@ -705,6 +705,19 @@
       "note": ""
     },
     {
+      "place": "alaska",
+      "snapshot": "2026-11-23-1201",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "Mon, 23 Nov 2026 21:01:34 GMT",
+      "input": "input/alaska/2026-11-23-1201.csv",
+      "input_sha256": "e890dd03a5bcea4fa09e435165f530a63e9c4d0cffaf59d3f738fa1be2a2b9d4",
+      "raw": "raw/alaska/2026-11-23-1201.csv.gz",
+      "raw_sha256": "186cd2fc10a10ce3c34e0d2b7c01e5ce8e9306fa25a7dd967fab647c208ac4d0",
+      "note": ""
+    },
+    {
       "place": "aleutians-east-borough",
       "snapshot": "2026-11-03-2350",
       "kind": "alaska-precinct-csv",
@@ -921,6 +934,19 @@
       "source_timestamp": "Wed, 18 Nov 2026 03:10:34 GMT",
       "input": "input/bethel-census-area/2026-11-17-1810.csv",
       "input_sha256": "e34fa4730c485e490cca4485e9385b89909e376e04526acca87fa99fbe1c7050",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
+      "place": "bethel-census-area",
+      "snapshot": "2026-11-23-1201",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "Mon, 23 Nov 2026 21:01:34 GMT",
+      "input": "input/bethel-census-area/2026-11-23-1201.csv",
+      "input_sha256": "04bc964b0422030578f9130c9b0a9e2844186af11de61b3e0f1dec34d7c10eae",
       "raw": "",
       "raw_sha256": "",
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
@@ -1610,6 +1636,19 @@
       "source_timestamp": "Wed, 18 Nov 2026 03:10:34 GMT",
       "input": "input/nome-census-area/2026-11-17-1810.csv",
       "input_sha256": "fca105fe13cc08b917ce8a3101be14d98a3a61a209dab19a9bcf41e3a74bf2f9",
+      "raw": "",
+      "raw_sha256": "",
+      "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
+    },
+    {
+      "place": "nome-census-area",
+      "snapshot": "2026-11-23-1201",
+      "kind": "alaska-precinct-csv",
+      "source_url": "https://www.elections.alaska.gov/enr/26GENR/results/GA_ENR_Precinct_State_of_Alaska.csv",
+      "retrieved_at": "2026-11-25T02:17:06+00:00",
+      "source_timestamp": "Mon, 23 Nov 2026 21:01:34 GMT",
+      "input": "input/nome-census-area/2026-11-23-1201.csv",
+      "input_sha256": "d4750d0f5be9877ddf526c71b13d2fdb376ad1db188431d63895ad8ce4b2a943",
       "raw": "",
       "raw_sha256": "",
       "note": "Election-day precinct votes only. Alaska reports absentee, early, questioned and remote ballots per House district, and federal-only overseas ballots statewide, so they are in the statewide totals only."
