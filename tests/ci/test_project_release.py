@@ -3,6 +3,7 @@
 # Catalyst-File-ID: urn:uuid:7cff44bf-2863-43b0-bfaa-3cad184db7e8
 
 import json
+import os
 from pathlib import Path
 import subprocess
 import tarfile
@@ -13,14 +14,14 @@ ROOT = Path(__file__).resolve().parents[2]
 SCRIPT = ROOT / 'scripts/ci/project_release.py'
 PROJECTS = {'prime-number-suite': 'prime-number-suite', 'crypto-pipeline': 'crypto_pipeline',
             'election-analysis': 'election-analysis'}
-def git(*args, cwd=ROOT):
-    return subprocess.check_output(['git', *args], cwd=cwd, text=True).strip()
+def git(*args, cwd=ROOT, env=None):
+    return subprocess.check_output(['git', *args], cwd=cwd, env=env, text=True).strip()
 
 
 
 class ReleaseTest(unittest.TestCase):
-    def call(self, *args, ok=True):
-        result = subprocess.run(['python3', str(SCRIPT), *args], cwd=ROOT,
+    def call(self, *args, ok=True, cwd=ROOT):
+        result = subprocess.run(['python3', str(SCRIPT), *args], cwd=cwd,
                                 capture_output=True, text=True)
         self.assertEqual(result.returncode == 0, ok, result.stderr)
         return result.stdout
@@ -94,6 +95,55 @@ class ReleaseTest(unittest.TestCase):
                                              for name in names for entry in excluded))
                         self.assertIn(prefix + scope + '/data/watch.toml', names)
 
+    def test_notes_use_the_latest_reachable_project_tag_or_scoped_history(self):
+        with tempfile.TemporaryDirectory() as directory:
+            repo = Path(directory)
+            git('init', '--quiet', cwd=repo)
+
+            def commit(day, file, subject):
+                path = repo / file
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(subject + '\n', encoding='utf-8')
+                git('add', '--', file, cwd=repo)
+                date = f'2026-01-{day:02d}T12:00:00Z'
+                git('-c', 'user.name=Test Fixture', '-c', 'user.email=fixture@example.invalid',
+                    '-c', 'commit.gpgsign=false', '-c', 'core.hooksPath=/dev/null',
+                    'commit', '-qm', subject, cwd=repo,
+                    env=os.environ | {'GIT_AUTHOR_DATE': date, 'GIT_COMMITTER_DATE': date})
+                return git('rev-parse', 'HEAD', cwd=repo)
+
+            commit(1, 'crypto_pipeline/before.txt', 'initial crypto change')
+            older = commit(2, 'crypto_pipeline/older.txt', 'older crypto release')
+            baseline = commit(3, 'crypto_pipeline/baseline.txt', 'latest crypto release')
+            commit(4, 'crypto_pipeline/after.txt', 'new crypto change')
+            commit(5, 'LICENSES/shared.txt', 'new shared license change')
+            tested = commit(6, 'election-analysis/other.txt', 'unrelated election change')
+
+            # A newer repository-wide tag must never become a project baseline.
+            git('-c', 'tag.gpgSign=false', 'tag', 'v0.1.0', tested, cwd=repo)
+            command = ('notes', 'crypto-pipeline', '3.0.0', tested)
+            first_release = self.call(*command, cwd=repo)
+            self.assertIn('No prior reachable project tag.', first_release)
+            self.assertNotIn('v0.1.0', first_release)
+            self.assertIn('initial crypto change', first_release)
+            self.assertIn('new shared license change', first_release)
+            self.assertNotIn('unrelated election change', first_release)
+
+            git('-c', 'tag.gpgSign=false', 'tag', 'crypto-pipeline/v2.0.0', older, cwd=repo)
+            git('-c', 'tag.gpgSign=false', 'tag', 'crypto-pipeline/v1.0.0', baseline, cwd=repo)
+            git('-c', 'tag.gpgSign=false', 'tag', 'crypto-pipeline/vinvalid', tested, cwd=repo)
+            git('-c', 'advice.detachedHead=false', 'checkout', '--quiet', '--detach', baseline, cwd=repo)
+            unreachable = commit(7, 'crypto_pipeline/off-branch.txt', 'unreachable crypto change')
+            git('-c', 'tag.gpgSign=false', 'tag', 'crypto-pipeline/v2.5.0', unreachable, cwd=repo)
+
+            notes = self.call(*command, cwd=repo)
+            self.assertIn('Changes since `crypto-pipeline/v1.0.0`', notes)
+            self.assertIn('new crypto change', notes)
+            self.assertIn('new shared license change', notes)
+            for subject in ('initial crypto change', 'older crypto release', 'latest crypto release',
+                            'unrelated election change', 'unreachable crypto change'):
+                self.assertNotIn(subject, notes)
+
     def test_head_check_refuses_a_different_commit(self):
         sha = git('rev-parse', 'HEAD')
         self.call('main', sha, sha)
@@ -108,7 +158,7 @@ class ReleaseTest(unittest.TestCase):
             command = ['python3', str(SCRIPT), 'tag-absent', target]
             git('remote', 'set-url', 'origin', str(repo), cwd=repo)
             self.assertEqual(subprocess.run(command, cwd=repo, capture_output=True).returncode, 0)
-            git('tag', target, sha, cwd=repo)  # fixture only, never the actual checkout
+            git('-c', 'tag.gpgSign=false', 'tag', target, sha, cwd=repo)  # fixture only, never the actual checkout
             self.assertNotEqual(subprocess.run(command, cwd=repo, capture_output=True).returncode, 0)
             git('remote', 'set-url', 'origin', str(repo / 'missing'), cwd=repo)
             self.assertNotEqual(subprocess.run(command, cwd=repo, capture_output=True).returncode, 0)
